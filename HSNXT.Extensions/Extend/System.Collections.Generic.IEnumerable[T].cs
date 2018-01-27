@@ -1,5 +1,4 @@
-﻿#region Usings
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
@@ -15,6 +14,23 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
+#region Usings
+//using System;
+//using System.Collections.Generic;
+//using System.Reflection;
+//using JetBrains.Annotations;
+//using System.Linq;
+//using System.IO;
+//using System.Diagnostics;
+//using System.Threading.Tasks;
+//using System.Collections.ObjectModel;
+//using System.Text;
+//using System.Globalization;
+//using System.Collections;
+//using System.Linq.Expressions;
+//using System.Text.RegularExpressions;
+//using System.Collections.Concurrent;
+//using HSNXT.Internal;
 
 //using System;
 //using System.Collections.Generic;
@@ -356,75 +372,6 @@ namespace HSNXT
 
 //using System;
 //using System.Collections.Generic;
-//using System.Diagnostics;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
-
-namespace HSNXT
-{
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Performs the specified action on each object in the given enumerable.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The source collection can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the given enumerable.</typeparam>
-        /// <param name="enumerable">The enumerable containing all the items.</param>
-        /// <param name="action">The action to perform on each item of the given enumerable.</param>
-        [PublicAPI]
-        [NotNull]
-        [DebuggerStepThrough]
-        public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            action.ThrowIfNull( nameof(action) );
-
-            var forEach = enumerable as IList<T> ?? enumerable.ToList();
-            foreach ( var x in forEach )
-                action( x );
-
-            return forEach;
-        }
-
-        /// <summary>
-        ///     Performs the specified action on each object in the given enumerable.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The source collection can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the given enumerable.</typeparam>
-        /// <param name="enumerable">The enumerable containing all the items.</param>
-        /// <param name="action">
-        ///     The action to perform on each item of the given enumerable.
-        ///     The action takes a item of the given enumerable and it's index as parameter.
-        /// </param>
-        [PublicAPI]
-        [NotNull]
-        [DebuggerStepThrough]
-        public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T, Int32> action )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            action.ThrowIfNull( nameof(action) );
-
-            var counter = 0;
-            var forEach = enumerable as IList<T> ?? enumerable.ToList();
-            foreach ( var x in forEach )
-                action( x, counter++ );
-
-            return forEach;
-        }
-    }
-}
-#region Usings
-
-//using System;
-//using System.Collections.Generic;
 //using System.Linq;
 //using JetBrains.Annotations;
 
@@ -645,59 +592,6 @@ namespace HSNXT
             var internalComparer = IEqualityComparerEx.By( keySelector, comparer );
 
             return first.Intersect( second, internalComparer );
-        }
-    }
-}
-#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
-
-namespace HSNXT
-{
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Gets whether the IEnumerable contains more than one item matching the given predicate.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="enumerable">The IEnumerable.</param>
-        /// <param name="predicate">The predicate.</param>
-        /// <returns>Returns true if the IEnumerable contains more than one item matching the given predicate, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean Many<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            predicate.ThrowIfNull( nameof(predicate) );
-
-            return enumerable.Count( predicate ) > 1;
-        }
-
-        /// <summary>
-        ///     Gets whether the IEnumerable contains more than one item.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="enumerable">The IEnumerable.</param>
-        /// <returns>Returns true if the IEnumerable contains more than one item, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean Many<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-
-            return enumerable.Count() > 1;
         }
     }
 }

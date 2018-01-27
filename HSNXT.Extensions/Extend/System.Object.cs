@@ -1,5 +1,4 @@
-﻿#region Usings
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
@@ -15,6 +14,23 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
+#region Usings
+//using System;
+//using System.Collections.Generic;
+//using System.Reflection;
+//using JetBrains.Annotations;
+//using System.Linq;
+//using System.IO;
+//using System.Diagnostics;
+//using System.Threading.Tasks;
+//using System.Collections.ObjectModel;
+//using System.Text;
+//using System.Globalization;
+//using System.Collections;
+//using System.Linq.Expressions;
+//using System.Text.RegularExpressions;
+//using System.Collections.Concurrent;
+//using HSNXT.Internal;
 
 //using System;
 //using JetBrains.Annotations;
@@ -48,24 +64,6 @@ namespace HSNXT
 
 #endregion
 
-namespace HSNXT
-{
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Gets whether the given <see cref="Object" /> is NOT null or not.
-        /// </summary>
-        /// <param name="obj">The <see cref="Object" /> to check.</param>
-        /// <returns>A value of true if the <see cref="Object" /> is NOT null, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsNotNull( [CanBeNull] this Object obj )
-            => obj != null;
-    }
-}
 #region Usings
 
 //using System;
@@ -73,24 +71,6 @@ namespace HSNXT
 
 #endregion
 
-namespace HSNXT
-{
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Gets whether the given <see cref="Object" /> is null or not.
-        /// </summary>
-        /// <param name="obj">The <see cref="Object" /> to check.</param>
-        /// <returns>A value of true if the <see cref="Object" /> is null, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsNull( [CanBeNull] this Object obj )
-            => obj == null;
-    }
-}
 #region Usings
 
 //using System;

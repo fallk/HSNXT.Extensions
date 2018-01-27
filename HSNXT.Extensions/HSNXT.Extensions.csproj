@@ -138,4 +138,7 @@
       <LastGenOutput>TextTemplate1.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extend\New folder" />
+  </ItemGroup>
 </Project>

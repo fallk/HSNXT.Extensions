@@ -1,5 +1,4 @@
-﻿#region Usings
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
@@ -15,6 +14,23 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
+#region Usings
+//using System;
+//using System.Collections.Generic;
+//using System.Reflection;
+//using JetBrains.Annotations;
+//using System.Linq;
+//using System.IO;
+//using System.Diagnostics;
+//using System.Threading.Tasks;
+//using System.Collections.ObjectModel;
+//using System.Text;
+//using System.Globalization;
+//using System.Collections;
+//using System.Linq.Expressions;
+//using System.Text.RegularExpressions;
+//using System.Collections.Concurrent;
+//using HSNXT.Internal;
 
 // ReSharper disable once RedundantUsingDirective
 //using System;
@@ -449,30 +465,6 @@ namespace HSNXT
 
 #endregion
 
-namespace HSNXT
-{
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="Type" />.
-    /// </summary>
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Gets a value indicating whether the current type is a generic type.
-        /// </summary>
-        /// <param name="type">The type to check.</param>
-        /// <returns>Returns a value of true if the given type is a generic type; otherwise, false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsGenericType( [NotNull] this Type type )
-        {
-            type.ThrowIfNull( nameof(type) );
-
-            return type
-                .GetTypeInfo()
-                .IsGenericType;
-        }
-    }
-}
 #region Usings
 
 //using System;

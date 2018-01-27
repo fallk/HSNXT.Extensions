@@ -1552,8 +1552,12 @@
         </e>
         <e p="EnumerationExtensions.cs" t="Include" />
         <e p="Extend" t="Include">
-          <e p="bap.bat" t="Include" />
+          <e p="Convert.cs" t="Include" />
+          <e p="ConvertSafe.cs" t="Include" />
           <e p="Extend.snk" t="Include" />
+          <e p="ExtractNumbers.cs" t="Include" />
+          <e p="FromMonth.cs" t="Include" />
+          <e p="Generic.cs" t="Include" />
           <e p="JetBrains.Annotations.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="AttributeDefinitionProperty.cs" t="Include" />
@@ -1567,9 +1571,11 @@
             <e p="ExecutionResult.cs" t="Include" />
             <e p="IndexedItem.cs" t="Include" />
           </e>
+          <e p="Pars.cs" t="Include" />
           <e p="PortableExtensions.ISpecification[T].cs" t="Include" />
           <e p="System.Action.cs" t="Include" />
           <e p="System.Array.cs" t="Include" />
+          <e p="System.Array.Generic.cs" t="Include" />
           <e p="System.Assembly.cs" t="Include" />
           <e p="System.Boolean.cs" t="Include" />
           <e p="System.Char.cs" t="Include" />
@@ -1579,6 +1585,7 @@
           <e p="System.Collections.Generic.IEnumerable[T].cs" t="Include" />
           <e p="System.Collections.Generic.IEqualityComparer[T].cs" t="Include" />
           <e p="System.DateTime.cs" t="Include" />
+          <e p="System.DateTime2.cs" t="Include" />
           <e p="System.Decimal.cs" t="Include" />
           <e p="System.Double.cs" t="Include" />
           <e p="System.Enum.cs" t="Include" />
@@ -1588,6 +1595,7 @@
           <e p="System.Int16.cs" t="Include" />
           <e p="System.Int32.cs" t="Include" />
           <e p="System.Int64.cs" t="Include" />
+          <e p="System.IO.Path.cs" t="Include" />
           <e p="System.Lazy[T].cs" t="Include" />
           <e p="System.Linq.Expressions.Expression.cs" t="Include" />
           <e p="System.Linq.Expressions.Expression[TDelegate].cs" t="Include" />
@@ -1595,9 +1603,12 @@
           <e p="System.Random.cs" t="Include" />
           <e p="System.Reflection.PropertyInfo.cs" t="Include" />
           <e p="System.String.cs" t="Include" />
+          <e p="System.Text.RegularExpressions.Regex.cs" t="Include" />
           <e p="System.Text.StringBuilder.cs" t="Include" />
           <e p="System.TimeSpan.cs" t="Include" />
+          <e p="System.TimeSpan2.cs" t="Include" />
           <e p="System.Type.cs" t="Include" />
+          <e p="ToDateTimeFormat.cs" t="Include" />
           <e p="Utilities" t="Include">
             <e p="Compare" t="Include">
               <e p="KeyEqualityComparer.cs" t="Include" />

@@ -1,5 +1,4 @@
-﻿#region Usings
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
@@ -15,6 +14,23 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
+#region Usings
+//using System;
+//using System.Collections.Generic;
+//using System.Reflection;
+//using JetBrains.Annotations;
+//using System.Linq;
+//using System.IO;
+//using System.Diagnostics;
+//using System.Threading.Tasks;
+//using System.Collections.ObjectModel;
+//using System.Text;
+//using System.Globalization;
+//using System.Collections;
+//using System.Linq.Expressions;
+//using System.Text.RegularExpressions;
+//using System.Collections.Concurrent;
+//using HSNXT.Internal;
 
 //using System;
 //using JetBrains.Annotations;
@@ -491,29 +507,6 @@ namespace HSNXT
 
 #endregion
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Extracts all letters of the input string.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to extract the letters from.</param>
-        /// <returns>The extracted letters.</returns>
-        [Pure]
-        [NotNull]
-        [PublicAPI]
-        public static String ExtractLetters( [NotNull] this String str )
-        {
-            str.ThrowIfNull( nameof(str) );
-
-            return new String( str.ToCharArray()
-                                  .Where( x => x.IsLetter() )
-                                  .ToArray() );
-        }
-    }
-}
 #region Usings
 
 //using System;
@@ -1960,28 +1953,6 @@ namespace HSNXT
 
 #endregion
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Returns the specified number of characters from the start of the string.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">s can not be null.</exception>
-        /// <param name="s">The string to get the substring of.</param>
-        /// <param name="length">The number of characters.</param>
-        /// <returns>Returns the specified number of characters from the start of the string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String SubstringLeft( [NotNull] this String s, Int32 length )
-        {
-            s.ThrowIfNull( nameof(s) );
-
-            return s.Substring( 0, length );
-        }
-    }
-}
 #region Usings
 
 //using System;
@@ -2039,28 +2010,6 @@ namespace HSNXT
 
 #endregion
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
-        /// <summary>
-        ///     Returns the specified number of characters from the end of the string.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to get the substring of.</param>
-        /// <param name="length">The number of characters.</param>
-        /// <returns>Returns the specified number of characters from the end of the string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String SubstringRight( [NotNull] this String str, Int32 length )
-        {
-            str.ThrowIfNull( nameof(str) );
-
-            return str.Substring( str.Length - length );
-        }
-    }
-}
 #region Usings
 
 //using System;
