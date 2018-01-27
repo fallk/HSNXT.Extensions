@@ -29,8 +29,8 @@ before_build:
 build: off
 
 build_script:
-  - ps: dotnet build "TestProject.sln" -c Release
-  - ps: dotnet publish "TestProject.sln" --configuration Release -f net47
+  - ps: dotnet build "HSNXT.Extensions.sln" -c Release
+  - ps: dotnet publish "HSNXT.Extensions.sln" --configuration Release -f net47
   - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj" -c Release -f netstandard2.0
   - ps: dotnet pack "HSNXT.Extensions/HSNXT.Extensions.csproj" -c Release -o "Proj1" --no-build
 
