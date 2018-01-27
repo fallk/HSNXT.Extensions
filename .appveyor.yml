@@ -40,8 +40,8 @@ artifacts:
   - path: "**\\bin\\Release\\net47\\*.dll"
     name: Release DLLs (.NET 4.7)
     type: zip
-  - path: "**\\bin\\Release\\netcoreapp2.0\\*.dll"
-    name: Release DLLs (.NET Core 2.0)
+  - path: "**\\bin\\Release\\netstandard2.0\\*.dll"
+    name: Release DLLs (.NET Standard 2.0)
     type: zip
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
