@@ -169,14 +169,6 @@ namespace HSNXT
 
             return value;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
@@ -329,14 +321,6 @@ namespace HSNXT
 
             return value;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the true or false value based on the given Boolean value.
         /// </summary>

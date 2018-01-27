@@ -33,14 +33,7 @@ namespace HSNXT
         [PublicAPI]
         public static Int32 DaysInMonth( this Int16 year, Int16 month )
             => DateTime.DaysInMonth( year, month );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns whether the given year is a leap year or not.
         /// </summary>
@@ -50,14 +43,7 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsLeapYear( this Int16 year )
             => DateTime.IsLeapYear( year );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the number of days in the specified month of the specified year.
         /// </summary>
@@ -71,14 +57,7 @@ namespace HSNXT
         [PublicAPI]
         public static Int32 DaysInMonth( this Int32 year, Int32 month )
             => DateTime.DaysInMonth( year, month );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns whether the given year is a leap year or not.
         /// </summary>

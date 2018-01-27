@@ -34,14 +34,6 @@ namespace HSNXT
 
             Array.Clear( array, index, length );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Clears the given array.
         /// </summary>
@@ -54,14 +46,6 @@ namespace HSNXT
 
             Array.Clear( array, 0, array.Length );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Copies a range of elements from an array starting at the first element and pastes them into another array starting
         ///     at the first element. The length is specified as a 32-bit integer.
@@ -103,14 +87,6 @@ namespace HSNXT
 
             Array.Copy( sourceArray, sourceIndex, destinationArray, destinationIndex, length );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
         /// </summary>
@@ -171,14 +147,6 @@ namespace HSNXT
 
             return Array.IndexOf( array, value, startIndex, count );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Searches for the specified object and returns the index of the last occurrence within the entire one-dimensional
         ///     Array.
@@ -242,14 +210,6 @@ namespace HSNXT
 
             return Array.LastIndexOf( array, value, startIndex, count );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Reverses the sequence of the elements in the entire one-dimensional array.
         /// </summary>
@@ -277,14 +237,6 @@ namespace HSNXT
 
             Array.Reverse( array, index, length );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given array to a list using the specified selector.
         /// </summary>
@@ -304,14 +256,6 @@ namespace HSNXT
             return ( from Object item in items
                      select selector( item ) ).ToList();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given index is within the array or not.
         /// </summary>

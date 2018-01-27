@@ -34,14 +34,6 @@ namespace HSNXT
                    .Cast<Enum>()
                    .Where( enumValue.HasFlag )
                    .Cast<T>();
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the values of the specified enumeration as strings.
         /// </summary>
@@ -53,14 +45,6 @@ namespace HSNXT
         [NotNull]
         public static IEnumerable<String> GetStringValues<T>() where T : struct => GetValues<T>()
             .Select( x => x.ToString() );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets a dictionary containing the string value for each value of the enumeration of the given type.
         /// </summary>
@@ -75,14 +59,6 @@ namespace HSNXT
             var values = GetValues<T>();
             return values.ToDictionary( x => x, x => x.ToString() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the values of the specified enumeration.
         /// </summary>
@@ -125,14 +101,6 @@ namespace HSNXT
 
             return Enum.GetValues( type );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets all values of the specified enumeration type, expect the specified values.
         /// </summary>

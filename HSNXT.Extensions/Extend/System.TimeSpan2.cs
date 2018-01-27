@@ -29,14 +29,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToDays( this Double value )
             => TimeSpan.FromDays( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the given Double value as hours.
         /// </summary>
@@ -46,14 +39,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToHours( this Double value )
             => TimeSpan.FromHours( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the given Double value as milliseconds.
         /// </summary>
@@ -63,14 +49,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMilliseconds( this Double value )
             => TimeSpan.FromMilliseconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the given Double value as minutes.
         /// </summary>
@@ -80,14 +59,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMinutes( this Double value )
             => TimeSpan.FromMinutes( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the given Double value as seconds.
         /// </summary>
@@ -97,14 +69,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToSeconds( this Double value )
             => TimeSpan.FromSeconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of days, where the specification is accurate
         ///     to the nearest millisecond.
@@ -118,14 +83,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToDays( this Int16 value )
             => TimeSpan.FromDays( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of hours, where  the specification is accurate
         ///     to the nearest millisecond.
@@ -139,14 +97,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToHours( this Int16 value )
             => TimeSpan.FromHours( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of milliseconds, where  the specification is
         ///     accurate
@@ -161,14 +112,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMilliseconds( this Int16 value )
             => TimeSpan.FromMilliseconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of minutes, where  the specification is
         ///     accurate
@@ -183,14 +127,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMinutes( this Int16 value )
             => TimeSpan.FromMinutes( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of seconds, where  the specification is
         ///     accurate
@@ -205,14 +142,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToSeconds( this Int16 value )
             => TimeSpan.FromSeconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of days, where the specification is accurate
         ///     to the nearest millisecond.
@@ -226,14 +156,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToDays( this Int32 value )
             => TimeSpan.FromDays( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of hours, where  the specification is accurate
         ///     to the nearest millisecond.
@@ -247,14 +170,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToHours( this Int32 value )
             => TimeSpan.FromHours( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of milliseconds, where  the specification is
         ///     accurate
@@ -269,14 +185,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMilliseconds( this Int32 value )
             => TimeSpan.FromMilliseconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of minutes, where  the specification is
         ///     accurate
@@ -291,14 +200,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMinutes( this Int32 value )
             => TimeSpan.FromMinutes( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of seconds, where  the specification is
         ///     accurate
@@ -313,14 +215,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToSeconds( this Int32 value )
             => TimeSpan.FromSeconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of days, where the specification is accurate
         ///     to the nearest millisecond.
@@ -334,14 +229,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToDays( this Int64 value )
             => TimeSpan.FromDays( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of hours, where  the specification is accurate
         ///     to the nearest millisecond.
@@ -355,14 +243,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToHours( this Int64 value )
             => TimeSpan.FromHours( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of milliseconds, where  the specification is
         ///     accurate
@@ -377,14 +258,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMilliseconds( this Int64 value )
             => TimeSpan.FromMilliseconds( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of minutes, where  the specification is
         ///     accurate
@@ -399,14 +273,7 @@ namespace HSNXT
         [PublicAPI]
         public static TimeSpan ToMinutes( this Int64 value )
             => TimeSpan.FromMinutes( value );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a <see cref="TimeSpan" /> that represents a specified number of seconds, where  the specification is
         ///     accurate

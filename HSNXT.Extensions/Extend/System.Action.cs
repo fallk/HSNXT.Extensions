@@ -291,14 +291,6 @@ namespace HSNXT
 
             falseAction( parameter1, parameter2, parameter3, parameter4 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the specified action if one of the given Boolean values is true,
         ///     otherwise it executes the specified false action, if one is specified.
@@ -563,14 +555,6 @@ namespace HSNXT
 
             trueAction( parameter1, parameter2, parameter3, parameter4 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the specified action if the given Boolean values are false,
         ///     otherwise it executes the specified true action, if one is specified.
@@ -842,14 +826,6 @@ namespace HSNXT
 
             falseAction( parameter1, parameter2, parameter3, parameter4 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the specified action if the given Boolean values are true,
         ///     otherwise it executes the specified false action, if one is specified.
@@ -1121,14 +1097,6 @@ namespace HSNXT
 
             trueAction( parameter1, parameter2, parameter3, parameter4 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the given action inside of a try catch block and catches all exceptions.
         /// </summary>
@@ -1238,14 +1206,6 @@ namespace HSNXT
                 return false;
             }
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the given action inside of a try catch block and catches all exception expect the specified type.
         /// </summary>

@@ -34,14 +34,7 @@ namespace HSNXT
         public static List<Decimal> ExtractAllDecimal( [NotNull] this String value, Int32 startIndex = 0 )
             => new List<Decimal>( ExtractAllFloatingNumbers( value, startIndex )
                                       .Select( x => x.ToDecimal() ) );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts all Doubles from the given string.
         /// </summary>
@@ -56,14 +49,7 @@ namespace HSNXT
         public static List<Double> ExtractAllDouble( [NotNull] this String value, Int32 startIndex = 0 )
             => new List<Double>( ExtractAllFloatingNumbers( value, startIndex )
                                      .Select( x => x.ToDouble() ) );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts all Int16 from the given string.
         /// </summary>
@@ -78,14 +64,7 @@ namespace HSNXT
         public static List<Int16> ExtractAllInt16( [NotNull] this String value, Int32 startIndex = 0 )
             => new List<Int16>( ExtractAllNumbers( value, startIndex )
                                     .Select( x => x.ToInt16() ) );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts all Int32 from the given string.
         /// </summary>
@@ -100,14 +79,7 @@ namespace HSNXT
         public static List<Int32> ExtractAllInt32( [NotNull] this String value, Int32 startIndex = 0 )
             => new List<Int32>( ExtractAllNumbers( value, startIndex )
                                     .Select( x => x.ToInt32() ) );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts all Int64 from the given string.
         /// </summary>
@@ -122,14 +94,7 @@ namespace HSNXT
         public static List<Int64> ExtractAllInt64( [NotNull] this String value, Int32 startIndex = 0 )
             => new List<Int64>( ExtractAllNumbers( value, startIndex )
                                     .Select( x => x.ToInt64() ) );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first Decimal from the given string.
         /// </summary>
@@ -143,14 +108,7 @@ namespace HSNXT
         public static Decimal ExtractFirstDecimal( [NotNull] this String value, Int32 startIndex = 0 )
             => ExtractFloatingNumber( value, startIndex )
                 .ToDecimal();
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first double from the given string.
         /// </summary>
@@ -164,14 +122,7 @@ namespace HSNXT
         public static Double ExtractFirstDouble( [NotNull] this String value, Int32 startIndex = 0 )
             => ExtractFloatingNumber( value, startIndex )
                 .ToDouble();
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first Int16 from the given string.
         /// </summary>
@@ -185,14 +136,7 @@ namespace HSNXT
         public static Int16 ExtractFirstInt16( [NotNull] this String value, Int32 startIndex = 0 )
             => ExtractNumber( value, startIndex )
                 .ToInt16();
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first Int32 from the given string.
         /// </summary>
@@ -206,14 +150,7 @@ namespace HSNXT
         public static Int32 ExtractFirstInt32( [NotNull] this String value, Int32 startIndex = 0 )
             => ExtractNumber( value, startIndex )
                 .ToInt32();
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first Int64 from the given string.
         /// </summary>
@@ -227,14 +164,7 @@ namespace HSNXT
         public static Int64 ExtractFirstInt64( [NotNull] this String value, Int32 startIndex = 0 )
             => ExtractNumber( value, startIndex )
                 .ToInt64();
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts all floating point numbers from the given string.
         /// </summary>
@@ -280,14 +210,7 @@ namespace HSNXT
 
             return decimals;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts all numbers from the given string.
         /// </summary>
@@ -329,14 +252,7 @@ namespace HSNXT
 
             return numbers;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first floating point number from the given string.
         /// </summary>
@@ -375,14 +291,7 @@ namespace HSNXT
 
             return sb.ToString();
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts the first none floating point number from the given string.
         /// </summary>

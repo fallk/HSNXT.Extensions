@@ -125,14 +125,6 @@ namespace HSNXT
             dictionary.Add( key, valueFactory( key ) );
             return true;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds the given key value pair to the dictionary, if the key does not already exist,
         ///     otherwise updates the value of the given key in the dictionary.
@@ -243,14 +235,6 @@ namespace HSNXT
 
             return dictionary[key];
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds the values of the given dictionary to the dictionary.
         /// </summary>
@@ -271,14 +255,6 @@ namespace HSNXT
             otherDictionary.ForEach( x => dictionary.Add( x.Key, x.Value ) );
             return dictionary;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates the given sequences.
         /// </summary>
@@ -312,14 +288,6 @@ namespace HSNXT
 
             return result;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates the given sequences in a safe manner.
         /// </summary>
@@ -360,14 +328,6 @@ namespace HSNXT
 
             return result;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates the given sequences.
         /// </summary>
@@ -396,14 +356,6 @@ namespace HSNXT
                 .Concat( second )
                 .ToDictionary( x => x.Key, x => x.Value );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates the given sequences in a safe manner.
         /// </summary>
@@ -437,14 +389,6 @@ namespace HSNXT
                                x => x.First()
                                      .Value );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the dictionary contains all given keys.
         /// </summary>
@@ -486,14 +430,6 @@ namespace HSNXT
 
             return keys.All( dictionary.ContainsKey );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the dictionary contains any of the given keys.
         /// </summary>
@@ -535,14 +471,6 @@ namespace HSNXT
 
             return keys.Any( dictionary.ContainsKey );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets all keys of the given dictionary.
         /// </summary>
@@ -560,14 +488,6 @@ namespace HSNXT
 
             return dictionary.Select( x => x.Key );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets all keys of the given dictionary as list.
         /// </summary>
@@ -586,14 +506,6 @@ namespace HSNXT
             return dictionary.Select( x => x.Key )
                              .ToList();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds the given key value pair to the dictionary if the key does not already exist.
         /// </summary>
@@ -715,14 +627,6 @@ namespace HSNXT
 
             return dictionary[key];
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates all the elements of a first  using the specified separator between each element.
         /// </summary>

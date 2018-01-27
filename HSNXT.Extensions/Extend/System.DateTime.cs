@@ -62,14 +62,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsSameDay( this DateTime dateTime, DateTime otherDateTime )
             => dateTime.Date == otherDateTime.Date;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets whether the given date-time values are the same month and year.
         /// </summary>
@@ -80,14 +72,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsSameMonthAndYear( this DateTime dateTime, DateTime otherDateTime )
             => dateTime.Year == otherDateTime.Year && dateTime.Month == otherDateTime.Month;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the time is equals to the given time.
         /// </summary>
@@ -138,14 +122,6 @@ namespace HSNXT
         public static DateTime NextMonthStart( this DateTime dateTime )
             => dateTime.AddMonths( 1 )
                        .StartOfMonth();
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the next week day, based on the given day.
         /// </summary>

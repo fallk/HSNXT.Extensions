@@ -41,14 +41,6 @@ namespace HSNXT
 
             return propertyInfo.GetValue( source );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Creates a <see cref="IMemberInformation" /> based on the given <see cref="PropertyInfo" /> and parent information.
         /// </summary>

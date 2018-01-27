@@ -31,14 +31,6 @@ namespace HSNXT
         [Pure]
         public static Boolean FactorOf( this Int64 value, Int64 factorNumer )
             => factorNumer % value == 0;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the Int64 is even.
         /// </summary>
@@ -48,14 +40,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsEven( this Int64 value )
             => value % 2 == 0;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the Int64 value is a multiple of the given factor.
         /// </summary>
@@ -67,14 +51,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsMultipleOf( this Int64 value, Int64 factor )
             => value != 0 && value % factor == 0;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the Int64 is odd.
         /// </summary>
@@ -84,14 +60,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsOdd( this Int64 value )
             => value % 2 != 0;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the specified percentage of the number.
         /// </summary>
@@ -135,14 +103,6 @@ namespace HSNXT
         [Pure]
         public static Double PercentageOf( this Int64 number, Int64 percent )
             => (Double) number * percent / 100;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the percentage of the number.
         /// </summary>
@@ -193,14 +153,6 @@ namespace HSNXT
 
             return total / (Double) number * 100;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a list containing all values of the given range.
         /// </summary>
@@ -220,14 +172,6 @@ namespace HSNXT
                 list.Add( i );
             return list;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>

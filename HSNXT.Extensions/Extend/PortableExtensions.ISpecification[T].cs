@@ -42,14 +42,6 @@ namespace HSNXT
             var newSpecification = new ExpressionSpecification<T>( expression, message );
             return specification.And( newSpecification );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Combines the current specification with the given expression using a OR link.
         /// </summary>
@@ -72,14 +64,6 @@ namespace HSNXT
             var newSpecification = new ExpressionSpecification<T>( expression, message );
             return specification.Or( newSpecification );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Combines the current specification with the given expression using a XOr link.
         /// </summary>

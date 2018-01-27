@@ -39,14 +39,6 @@ namespace HSNXT
 
             return target + append;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
         ///     the specified object.
@@ -150,14 +142,6 @@ namespace HSNXT
 
             return (T) Convert.ChangeType( value, typeof(T), formatProvider );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the character of the given string at the specified position.
         /// </summary>
@@ -177,14 +161,6 @@ namespace HSNXT
 
             return value[index];
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Compares the given strings using <see cref="StringComparison.Ordinal" />.
         /// </summary>
@@ -195,14 +171,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean CompareOrdinal( this String value, String compareValue )
             => String.Compare( value, compareValue, StringComparison.Ordinal ) == 0;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Compares the given strings using <see cref="StringComparison.OrdinalIgnoreCase" />.
         /// </summary>
@@ -213,14 +181,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean CompareOrdinalIgnoreCase( [CanBeNull] this String value, [CanBeNull] String compareValue )
             => String.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates all given strings.
         /// </summary>
@@ -286,14 +246,6 @@ namespace HSNXT
 
             return String.Concat( values );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks whether a specified substring occurs within the given string, or not.
         /// </summary>
@@ -313,14 +265,6 @@ namespace HSNXT
 
             return s.IndexOf( value, stringComparison ) >= 0;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the string contains all values given.
         /// </summary>
@@ -357,14 +301,6 @@ namespace HSNXT
 
             return values.NotAny( x => s.IndexOf( x, comparisonType ) == -1 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the string contains any of the values given.
         /// </summary>
@@ -401,14 +337,6 @@ namespace HSNXT
 
             return values.Any( x => str.IndexOf( x, comparisonType ) != -1 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Extracts parts of the input string, based on the predicate given.
         /// </summary>
@@ -455,14 +383,6 @@ namespace HSNXT
                                   .Where( x => x.IsNumber() )
                                   .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Replaces the format item in a specified <see cref="String" /> with the <see cref="String" /> representation of a
         ///     corresponding <see cref="Object" /> in a specified array.
@@ -520,14 +440,6 @@ namespace HSNXT
 
             return String.Format( formatProvider, format, args );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Formats the given file extension.
         /// </summary>
@@ -552,14 +464,6 @@ namespace HSNXT
                 fileExtension = fileExtension.Insert( 0, "." );
             return fileExtension.ToLower();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the part of the string after the specified value, starting at the given start index.
         /// </summary>
@@ -655,14 +559,6 @@ namespace HSNXT
                 ? String.Empty
                 : s.Substring( valueIndex + 1 );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the part of the string before the specified value, starting at the given start index.
         /// </summary>
@@ -770,14 +666,6 @@ namespace HSNXT
                 ? String.Empty
                 : s.Substring( 0, valueIndex );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the part of the input string between the before and after value, starting at the given start index.
         /// </summary>
@@ -891,14 +779,6 @@ namespace HSNXT
                 ? String.Empty
                 : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Enumerates all lines in the given string.
         /// </summary>
@@ -919,14 +799,6 @@ namespace HSNXT
                     yield return line;
             }
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the input value if it's not empty, otherwise the alternative value.
         /// </summary>
@@ -938,14 +810,6 @@ namespace HSNXT
         [PublicAPI]
         public static String IfNotEmpty( [CanBeNull] this String value, [CanBeNull] String alternativeValue )
             => !value.IsEmpty() ? value : alternativeValue;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the string is alpha.
         /// </summary>
@@ -961,14 +825,6 @@ namespace HSNXT
             return str.ToCharArray()
                       .All( x => x.IsLetter() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the string is alpha numeric.
         /// </summary>
@@ -984,14 +840,6 @@ namespace HSNXT
             return str.ToCharArray()
                       .All( x => x.IsLetter() || x.IsNumber() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets whether the given <see cref="String" /> is empty or not.
         /// </summary>
@@ -1001,14 +849,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsEmpty( [CanBeNull] this String str )
             => String.IsNullOrEmpty( str ) || String.IsNullOrWhiteSpace( str );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets whether the given <see cref="String" /> is empty or not.
         /// </summary>
@@ -1018,14 +858,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsNotEmpty( [CanBeNull] this String input )
             => !IsEmpty( input );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the string is numeric.
         /// </summary>
@@ -1041,14 +873,6 @@ namespace HSNXT
             return str.ToCharArray()
                       .All( x => x.IsNumber() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates all the elements of a string array, using the specified separator between each element.
         /// </summary>
@@ -1147,14 +971,6 @@ namespace HSNXT
 
             return String.Join( separator, values, startIndex, count );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes all characters which aren't letters.
         /// </summary>
@@ -1172,14 +988,6 @@ namespace HSNXT
                                   .Where( x => x.IsLetter() )
                                   .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes all characters which aren't letters or numbers.
         /// </summary>
@@ -1197,14 +1005,6 @@ namespace HSNXT
                                   .Where( x => x.IsNumber() || x.IsLetter() )
                                   .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes all characters which aren't numbers.
         /// </summary>
@@ -1222,14 +1022,6 @@ namespace HSNXT
                                   .Where( x => x.IsNumber() )
                                   .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a string which only contains the characters matching the given predicate.
         /// </summary>
@@ -1250,14 +1042,6 @@ namespace HSNXT
                                   .Where( predicate )
                                   .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a string containing a specified number of characters from the left side of a string.
         /// </summary>
@@ -1278,14 +1062,6 @@ namespace HSNXT
 
             return value.Substring( 0, count );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes all letters from the given string.
         /// </summary>
@@ -1303,14 +1079,6 @@ namespace HSNXT
                                   .Where( x => !x.IsLetter() )
                                   .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes all letters and numbers from the given string.
         /// </summary>
@@ -1328,14 +1096,6 @@ namespace HSNXT
                                 .Where( x => !x.IsNumber() && !x.IsLetter() )
                                 .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes all numbers from the given string.
         /// </summary>
@@ -1353,14 +1113,6 @@ namespace HSNXT
                                 .Where( x => !x.IsNumber() )
                                 .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes some characters from the given string, based on the predicate specified.
         /// </summary>
@@ -1381,14 +1133,6 @@ namespace HSNXT
                                 .Where( x => !predicate( x ) )
                                 .ToArray() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Repeats the given string a specified number of times.
         /// </summary>
@@ -1412,14 +1156,6 @@ namespace HSNXT
 
             return sb.ToString();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Replaces a single character at the specified position with the specified replacement character.
         /// </summary>
@@ -1444,14 +1180,6 @@ namespace HSNXT
 
             return new String( chars );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Replace all given values by an empty string.
         /// </summary>
@@ -1471,14 +1199,6 @@ namespace HSNXT
             values.ForEach( x => s = s.Replace( x, String.Empty ) );
             return s;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Reverses the given string.
         /// </summary>
@@ -1497,14 +1217,6 @@ namespace HSNXT
                 : new String( s.ToCharArray()
                                .Reverse() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a string containing a specified number of characters from the right side of a string.
         /// </summary>
@@ -1525,14 +1237,6 @@ namespace HSNXT
 
             return value.Substring( value.Length - count, count );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Tries to create a new <see cref="CultureInfo" /> with the given name.
         /// </summary>
@@ -1572,14 +1276,6 @@ namespace HSNXT
                 return fallbackCulture;
             }
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a string array that contains the substrings in this string that are
         ///     delimited by the given separator. A parameter specifies
@@ -1647,14 +1343,6 @@ namespace HSNXT
 
             return value.Split( separators, stringSplitOption );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Splits the given string at each line break (<see cref="Environment.NewLine" />).
         /// </summary>
@@ -1771,14 +1459,6 @@ namespace HSNXT
 
             return str.Substring( Math.Max( 0, str.Length - length ) );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns a specified number of characters from the start of the given value
         ///     and removes the returned characters from the value.
@@ -1807,14 +1487,6 @@ namespace HSNXT
             value = value.Remove( 0, count );
             return returnValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Creates a new <see cref="CultureInfo" /> with the given name.
         /// </summary>
@@ -1831,14 +1503,6 @@ namespace HSNXT
 
             return new CultureInfo( name );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts a string to an enumeration.
         /// </summary>
@@ -1855,14 +1519,6 @@ namespace HSNXT
 
             return (T) Enum.Parse( typeof(T), value, ignoreCase );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Truncates the given string to the specified maximum length and adds the specified
         ///     suffix to the end of the truncated string.
@@ -1884,14 +1540,6 @@ namespace HSNXT
             return str.Substring( 0, Math.Max( 0, maxLength - suffix.Length ) )
                       .ConcatAll( suffix );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Tries to convert a string value to an enum.
         /// </summary>
@@ -1905,14 +1553,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean TryToEnum<T>( [CanBeNull] String value, out T outValue, Boolean ignoreCase = true ) where T : struct
             => Enum.TryParse( value, ignoreCase, out outValue );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given wild-card pattern to a RegEx.
         /// </summary>

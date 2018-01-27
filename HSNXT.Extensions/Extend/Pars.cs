@@ -38,14 +38,7 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean TryParsBoolean( [CanBeNull] this String value, out Boolean outValue )
             => Boolean.TryParse( value, out outValue );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
         ///     equivalent, and returns a value that indicates whether the conversion succeeded.
@@ -109,14 +102,7 @@ namespace HSNXT
 
             return Byte.TryParse( value, numberStyle, formatProvider, out outValue );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified string to its equivalent Unicode character.
         ///     A return code indicates whether the conversion succeeded or failed.
@@ -133,14 +119,7 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean TryParsChar( [CanBeNull] this String value, out Char outValue )
             => Char.TryParse( value, out outValue );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent and
         ///     returns a value that
@@ -200,14 +179,7 @@ namespace HSNXT
 
             return DateTime.TryParse( value, formatProvider, dateTimeStyle, out result );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the specified string representation of a date and time to its DateTime equivalent using the specified
         ///     format,
@@ -308,14 +280,7 @@ namespace HSNXT
 
             return DateTime.TryParseExact( value, formats, formatProvider, dateTimeStyle, out outValue );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its <see cref="Decimal" /> equivalent.
         ///     A return value indicates whether the conversion succeeded or failed.
@@ -372,14 +337,7 @@ namespace HSNXT
 
             return Decimal.TryParse( value, numberStyle, CultureInfo.InvariantCulture, out outValue );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its double-precision floating-point
         ///     number equivalent. A return value indicates whether the conversion succeeded
@@ -441,14 +399,7 @@ namespace HSNXT
 
             return Double.TryParse( value, numberStyle, formatProvider, out outValue );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a GUID to the equivalent <see cref="Guid" /> structure.
         /// </summary>
@@ -462,14 +413,7 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean TryParsGuid( [CanBeNull] this String value, out Guid outValue )
             => Guid.TryParse( value, out outValue );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its 16-bit signed integer
         ///     equivalent. A return value indicates whether the conversion succeeded or
@@ -528,14 +472,7 @@ namespace HSNXT
 
             return Int16.TryParse( value, numberStyle, formatProvider, out outValue );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its 32-bit signed integer
         ///     equivalent. A return value indicates whether the conversion succeeded or
@@ -595,14 +532,7 @@ namespace HSNXT
 
             return Int32.TryParse( value, numberStyles, formatProvider, out outValue );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its 64-bit signed integer
         ///     equivalent. A return value indicates whether the conversion succeeded or

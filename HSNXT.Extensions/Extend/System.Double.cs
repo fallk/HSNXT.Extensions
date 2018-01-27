@@ -29,14 +29,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsInfinity( this Double value )
             => Double.IsInfinity( value );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns whether the specified value is not a number.
         /// </summary>
@@ -46,14 +38,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsNaN( this Double value )
             => Double.IsNaN( value );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns whether the specified number evaluates to negative infinity.
         /// </summary>
@@ -63,14 +47,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsNegativeInfinity( this Double value )
             => Double.IsNegativeInfinity( value );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns whether the specified number evaluates to positive infinity.
         /// </summary>
@@ -80,14 +56,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsPositiveInfinity( this Double value )
             => Double.IsPositiveInfinity( value );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the specified percentage of the number.
         /// </summary>
@@ -120,14 +88,6 @@ namespace HSNXT
         [Pure]
         public static Double PercentageOf( this Double number, Int64 percent )
             => number * percent / 100;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the percentage of the number.
         /// </summary>
@@ -163,14 +123,6 @@ namespace HSNXT
         [Pure]
         public static Double PercentOf( this Double number, Int64 total )
             => total / number * 100;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>

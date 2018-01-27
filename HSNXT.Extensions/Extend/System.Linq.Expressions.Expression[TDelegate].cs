@@ -43,14 +43,6 @@ namespace HSNXT
             expression.TryGetMemberExpression( out var memberExpression );
             return memberExpression.Member;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets a dotted path of property names representing the property expression. E.g. Parent.Child.Sibling.Name.
         /// </summary>

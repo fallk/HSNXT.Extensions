@@ -34,14 +34,6 @@ namespace HSNXT
 
             return random.Next( 2 ) == 0;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns randomly one of the given values.
         /// </summary>

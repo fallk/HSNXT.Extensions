@@ -38,14 +38,7 @@ namespace HSNXT
             Array.Clear( array, index, length );
             return array;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Clears the given array.
         /// </summary>
@@ -62,14 +55,7 @@ namespace HSNXT
             Array.Clear( array, 0, array.Length );
             return array;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
         /// </summary>
@@ -134,14 +120,7 @@ namespace HSNXT
 
             return Array.IndexOf( array, value, startIndex, count );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Searches for the specified object and returns the index of the last occurrence within the entire
         ///     <see cref="Array" />.
@@ -207,14 +186,7 @@ namespace HSNXT
 
             return Array.LastIndexOf( array, value, startIndex, count );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Populates the given array with the specified value.
         /// </summary>
@@ -233,14 +205,7 @@ namespace HSNXT
 
             return array;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Resizes the given array to the specified size.
         /// </summary>
@@ -258,14 +223,7 @@ namespace HSNXT
             Array.Resize( ref array, newSize );
             return array;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Reverses the sequence of the elements in the entire one-dimensional array.
         /// </summary>
@@ -299,14 +257,7 @@ namespace HSNXT
             Array.Reverse( array, index, length );
             return array;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Copies the specified range of items from the source array to the given target array.
         /// </summary>
@@ -431,14 +382,7 @@ namespace HSNXT
             var targetArray = new T[itemsToCpoy];
             return array.Slice( 0, itemsToCpoy, targetArray );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given array to a list using the specified selector.
         /// </summary>

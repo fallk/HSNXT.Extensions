@@ -29,14 +29,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsDigit( this Char c )
             => Char.IsDigit( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a Unicode letter.
         /// </summary>
@@ -46,14 +38,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsLetter( this Char c )
             => Char.IsLetter( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a letter or a decimal digit.
         /// </summary>
@@ -63,14 +47,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsLetterOrDigit( this Char c )
             => Char.IsLetterOrDigit( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a lowercase letter.
         /// </summary>
@@ -80,14 +56,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsLower( this Char c )
             => Char.IsLower( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a number.
         /// </summary>
@@ -97,14 +65,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsNumber( this Char c )
             => Char.IsNumber( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as an uppercase letter.
         /// </summary>
@@ -114,14 +74,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsUpper( this Char c )
             => Char.IsUpper( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as white space.
         /// </summary>
@@ -131,14 +83,6 @@ namespace HSNXT
         [Pure]
         public static Boolean IsWhiteSpace( this Char c )
             => Char.IsWhiteSpace( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Repeats the given Char the specified number of times.
         /// </summary>
@@ -150,14 +94,6 @@ namespace HSNXT
         [Pure]
         public static String Repeat( this Char c, Int32 repeatCount )
             => new String( c, repeatCount );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of a Unicode character to its lowercase equivalent.
         /// </summary>
@@ -170,14 +106,6 @@ namespace HSNXT
         [Pure]
         public static Char ToLower( this Char c )
             => Char.ToLower( c );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of a Unicode character to its uppercase equivalent.
         /// </summary>

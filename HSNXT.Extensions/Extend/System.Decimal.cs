@@ -52,14 +52,6 @@ namespace HSNXT
         [PublicAPI]
         public static Decimal PercentageOf( this Decimal number, Int64 percent )
             => number * percent / 100;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the percentage of the number.
         /// </summary>
@@ -110,14 +102,6 @@ namespace HSNXT
 
             return total / number * 100;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>

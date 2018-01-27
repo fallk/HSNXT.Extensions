@@ -45,14 +45,6 @@ namespace HSNXT
                 } )
                 .Where( x => x.Attributes.Any() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the <see cref="Assembly" /> in which the type is declared. For generic types, gets the
         ///     <see cref="Assembly" /> in which the generic type is defined.
@@ -70,14 +62,6 @@ namespace HSNXT
             return type.GetTypeInfo()
                        .Assembly;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the first generic argument of the given type.
         /// </summary>
@@ -94,14 +78,6 @@ namespace HSNXT
             return type.GetGenericTypeArguments()
                        .FirstOrDefault();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns an array of <see cref="Type" /> objects that represent the type arguments of a generic type or the type
         ///     parameters of a generic type definition.
@@ -121,14 +97,6 @@ namespace HSNXT
             return type.GetTypeInfo()
                        .GenericTypeArguments;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets a collection of the interfaces implemented by the given type.
         /// </summary>
@@ -146,14 +114,6 @@ namespace HSNXT
                 .GetTypeInfo()
                 .ImplementedInterfaces;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the name including namespace and assembly of the given type.
         /// </summary>
@@ -209,14 +169,6 @@ namespace HSNXT
         [Pure]
         private static String GetNameWithNamespaceSimpleType( [NotNull] this Type type )
             => $"{type.FullName}, {type.GetAssemblyName()}";
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the public properties of the given type.
         /// </summary>
@@ -233,14 +185,6 @@ namespace HSNXT
             return type.GetRuntimeProperties()
                        .Where( x => x.GetMethod.IsPublic );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the property info of each public settable property of the given type.
         /// </summary>
@@ -259,14 +203,6 @@ namespace HSNXT
 
             return propertyInfos.Where( x => x.CanWrite );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the 'inner' type from a nullable type.
         /// </summary>
@@ -284,14 +220,6 @@ namespace HSNXT
 
             return possibleNullableType.GetGenericTypeArgument();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given type implements <see cref="ICollection{T}" />
         /// </summary>
@@ -309,14 +237,6 @@ namespace HSNXT
 
             return isGenericType && interfaces.Any( x => x.Name == "ICollection`1" );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given type is an enumeration.
         /// </summary>
@@ -356,14 +276,6 @@ namespace HSNXT
 
             return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(ICollection<>);
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given type implements <see cref="IEnumerable{T}" />
         /// </summary>
@@ -378,14 +290,6 @@ namespace HSNXT
 
             return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(IEnumerable<>);
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given type implements <see cref="IList{T}" />
         /// </summary>
@@ -400,14 +304,6 @@ namespace HSNXT
 
             return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(IList<>);
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if th given type is a Microsoft type, based on the company attribute of it's declaring assembly.
         /// </summary>

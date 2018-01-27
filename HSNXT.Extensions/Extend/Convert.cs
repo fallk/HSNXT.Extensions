@@ -65,14 +65,6 @@ namespace HSNXT
         [Pure]
         public static Boolean ToBoolean( [CanBeNull] this Object obj, IFormatProvider formatProvider )
             => Convert.ToBoolean( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to an 8-bit unsigned integer.
         /// </summary>
@@ -112,14 +104,6 @@ namespace HSNXT
         [PublicAPI]
         public static Byte ToByte( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
             => Convert.ToByte( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to a Unicode character.
         /// </summary>
@@ -161,14 +145,6 @@ namespace HSNXT
         [PublicAPI]
         public static Char ToChar( [CanBeNull] this Object obj, IFormatProvider provider )
             => Convert.ToChar( obj, provider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to a System.DateTime object.
         /// </summary>
@@ -208,14 +184,6 @@ namespace HSNXT
         [PublicAPI]
         public static DateTime ToDateTime( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
             => Convert.ToDateTime( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to an equivalent decimal number.
         /// </summary>
@@ -255,14 +223,6 @@ namespace HSNXT
         [PublicAPI]
         public static Decimal ToDecimal( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
             => Convert.ToDecimal( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to a double-precision floating-point number.
         /// </summary>
@@ -302,14 +262,6 @@ namespace HSNXT
         [PublicAPI]
         public static Double ToDouble( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
             => Convert.ToDouble( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to a 16-bit signed integer.
         /// </summary>
@@ -349,14 +301,6 @@ namespace HSNXT
         [PublicAPI]
         public static Int16 ToInt16( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
             => Convert.ToInt16( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to a 32-bit signed integer.
         /// </summary>
@@ -396,14 +340,6 @@ namespace HSNXT
         [PublicAPI]
         public static Int32 ToInt32( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
             => Convert.ToInt32( obj, formatProvider );
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified object to a 64-bit signed integer.
         /// </summary>
@@ -473,14 +409,6 @@ namespace HSNXT
 
             return Boolean.Parse( value );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a byte.
         /// </summary>
@@ -503,14 +431,6 @@ namespace HSNXT
 
             return Byte.Parse( value, formatProvider );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the first character of a specified string to a Unicode character.
         /// </summary>
@@ -529,14 +449,6 @@ namespace HSNXT
 
             return Convert.ToChar( value );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a date time value.
         /// </summary>
@@ -552,14 +464,6 @@ namespace HSNXT
 
             return DateTime.Parse( value, CultureInfo.InvariantCulture );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a decimal.
         /// </summary>
@@ -602,14 +506,6 @@ namespace HSNXT
 
             return Decimal.Parse( value, formatProvider );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a double.
         /// </summary>
@@ -652,14 +548,6 @@ namespace HSNXT
 
             return Double.Parse( value, formatProvider );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a GUID.
         /// </summary>
@@ -675,14 +563,6 @@ namespace HSNXT
 
             return Guid.Parse( value );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a Int16.
         /// </summary>
@@ -725,14 +605,6 @@ namespace HSNXT
 
             return Int16.Parse( value, formatProvider );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a Int32.
         /// </summary>
@@ -775,14 +647,6 @@ namespace HSNXT
 
             return Int32.Parse( value, formatProvider );
         }
-    }
-}
-﻿
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given string to a Int64.
         /// </summary>

@@ -64,14 +64,7 @@ namespace HSNXT
 
             return dateTime.ToString( "F", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a long date short time string.
         /// </summary>
@@ -116,14 +109,7 @@ namespace HSNXT
 
             return dateTime.ToString( "f", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a long date time string.
         /// </summary>
@@ -168,14 +154,7 @@ namespace HSNXT
 
             return dateTime.ToString( "D", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a long time string.
         /// </summary>
@@ -220,14 +199,7 @@ namespace HSNXT
 
             return dateTime.ToString( "T", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a month day string.
         /// </summary>
@@ -272,14 +244,7 @@ namespace HSNXT
 
             return dateTime.ToString( "m", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a month string.
         /// </summary>
@@ -324,14 +289,7 @@ namespace HSNXT
 
             return dateTime.ToString( "MMMM", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a short date long time string.
         /// </summary>
@@ -376,14 +334,7 @@ namespace HSNXT
 
             return dateTime.ToString( "G", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a short date string.
         /// </summary>
@@ -429,14 +380,7 @@ namespace HSNXT
 
             return dateTime.ToString( "d", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a short date time string.
         /// </summary>
@@ -481,14 +425,7 @@ namespace HSNXT
 
             return dateTime.ToString( "g", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a short time string.
         /// </summary>
@@ -532,14 +469,7 @@ namespace HSNXT
 
             return dateTime.ToString( "t", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a sortable date time string.
         /// </summary>
@@ -584,14 +514,7 @@ namespace HSNXT
 
             return dateTime.ToString( "s", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a universal sortable date time string.
         /// </summary>
@@ -636,14 +559,7 @@ namespace HSNXT
 
             return dateTime.ToString( "u", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a universal sortable long date time string.
         /// </summary>
@@ -688,14 +604,7 @@ namespace HSNXT
 
             return dateTime.ToString( "U", culture );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the DateTime value to a year month string.
         /// </summary>

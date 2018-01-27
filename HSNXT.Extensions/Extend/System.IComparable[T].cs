@@ -41,14 +41,6 @@ namespace HSNXT
 
             return minValue.CompareTo( value ) == -1 && value.CompareTo( maxValue ) == -1;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given value is between (inclusive) the minValue and maxValue.
         /// </summary>
@@ -70,14 +62,6 @@ namespace HSNXT
 
             return value.CompareTo( minValue ) >= 0 && value.CompareTo( maxValue ) <= 0;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the value is greater than the given compare value.
         /// </summary>
@@ -98,14 +82,6 @@ namespace HSNXT
 
             return value.CompareTo( compareValue ) > 0;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the value is greater or equals to the given compare value.
         /// </summary>
@@ -126,14 +102,6 @@ namespace HSNXT
 
             return value.CompareTo( compareValue ) >= 0;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the value is smaller than the given compare value.
         /// </summary>
@@ -154,14 +122,6 @@ namespace HSNXT
 
             return value.CompareTo( compareValue ) == -1;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the value is smaller or equals to the given compare value.
         /// </summary>

@@ -29,14 +29,6 @@ namespace HSNXT
         [PublicAPI]
         public static DateTime Future( this TimeSpan timeSpan )
             => DateTime.Now.Add( timeSpan );
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Subtracts the specified time span to the current date time.
         /// </summary>

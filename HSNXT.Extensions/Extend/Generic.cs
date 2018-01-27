@@ -40,14 +40,7 @@ namespace HSNXT
             action( obj );
             return obj;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Return the first not null value (including <paramref name="value" />).
         /// </summary>
@@ -82,14 +75,7 @@ namespace HSNXT
         [Pure]
         public static T Coalesce<T>( [CanBeNull] this T value, [CanBeNull] T value0 ) where T : class
             => value ?? value0;
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Return the first not null value (including <paramref name="value" />).
         ///     If all values are null, returns a default value.
@@ -147,14 +133,7 @@ namespace HSNXT
                 .ToList();
             return notNullValues.Any() ? notNullValues.First() : defaultValueFactory();
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the given action with the value as parameter and handles any exceptions during the execution.
         /// </summary>
@@ -210,14 +189,7 @@ namespace HSNXT
             }
             return result;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the name of the member to which the given expression points.
         /// </summary>
@@ -283,14 +255,7 @@ namespace HSNXT
 
             return memberExpression.Member.Name;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the name, including a full name chain, of the member to which the given expression points.
         /// </summary>
@@ -377,14 +342,7 @@ namespace HSNXT
 
             return memberNames.StringJoin( "." );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the given value if it is not null, otherwise returns the alternative value.
         /// </summary>
@@ -397,14 +355,7 @@ namespace HSNXT
         [PublicAPI]
         public static T IfNull<T>( [CanBeNull] this T value, [CanBeNull] T alternativeValue ) where T : class
             => value ?? alternativeValue;
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the given value is the default value of it's type.
         /// </summary>
@@ -415,14 +366,7 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsDefault<T>( [CanBeNull] this T value )
             => Equals( value, default(T) );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the value is present in the given array.
         /// </summary>
@@ -456,14 +400,7 @@ namespace HSNXT
 
             return values.Contains( value );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the value is not present in the given array.
         /// </summary>
@@ -489,14 +426,7 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean IsNotIn<T>( [CanBeNull] this T value, [NotNull] IEnumerable<T> values )
             => !IsIn( value, values );
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the maximum value.
         /// </summary>
@@ -542,14 +472,7 @@ namespace HSNXT
             list.Add( value );
             return list.Max( selector );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the minimum value.
         /// </summary>
@@ -595,14 +518,7 @@ namespace HSNXT
             list.Add( value );
             return list.Min( selector );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the objects satisfies the given specification.
         /// </summary>
@@ -619,14 +535,7 @@ namespace HSNXT
 
             return specification.IsSatisfiedBy( obj );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the objects satisfies the given specification.
         /// </summary>
@@ -644,14 +553,7 @@ namespace HSNXT
 
             return specification.IsSatisfiedByWithMessages( obj );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Creates a specification with the given condition and message.
         /// </summary>
@@ -670,14 +572,7 @@ namespace HSNXT
 
             return new ExpressionSpecification<T>( expression, message );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Swaps the given values.
         /// </summary>
@@ -692,14 +587,7 @@ namespace HSNXT
             value0 = value1;
             value1 = temp;
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Throws a <see cref="ArgumentNullException" /> exception if <paramref name="obj" /> is null.
         /// </summary>
@@ -725,14 +613,7 @@ namespace HSNXT
             throw new ArgumentNullException( parameterName,
                                              errorMessage ?? $"{parameterName} can not be null." );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Creates a array with the given value as only item.
         /// </summary>

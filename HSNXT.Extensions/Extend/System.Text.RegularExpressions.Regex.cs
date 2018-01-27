@@ -79,14 +79,7 @@ namespace HSNXT
 
             return Regex.IsMatch( input, pattern, options, timeOut );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets whether a <see cref="System.Text.RegularExpressions" /> with the specified pattern finds not a match in the
         ///     specified input <see cref="String" />.
@@ -146,14 +139,7 @@ namespace HSNXT
 
             return !IsMatch( input, pattern, options, timeOut );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Searches the specified input string for the first occurrence of the specified regular expression.
         /// </summary>
@@ -216,14 +202,7 @@ namespace HSNXT
 
             return Regex.Match( input, pattern, options, timeOut );
         }
-    }
-}
-﻿
 
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Searches the specified input string for all occurrences of a specified regular expression.
         /// </summary>

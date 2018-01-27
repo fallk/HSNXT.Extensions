@@ -31,14 +31,6 @@ namespace HSNXT
         [PublicAPI]
         public static Boolean SafeToBoolean( [CanBeNull] this String value, Boolean defaultValue = default(Boolean) )
             => value.TryParsBoolean( out var outValue ) ? outValue : defaultValue;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
         ///     equivalent.
@@ -91,14 +83,6 @@ namespace HSNXT
 
             return value.TryParsByte( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the value of the specified string to its equivalent Unicode character.
         /// </summary>
@@ -109,14 +93,6 @@ namespace HSNXT
         [PublicAPI]
         public static Char SafeToChar( [CanBeNull] this String value, Char defaultValue = default(Char) )
             => value.TryParsChar( out var outValue ) ? outValue : defaultValue;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent.
         /// </summary>
@@ -161,14 +137,6 @@ namespace HSNXT
 
             return value.TryParsDateTime( formatProvider, dateTimeStyle, out var outValue ) ? outValue : defaultValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its <see cref="Decimal" /> equivalent.
         /// </summary>
@@ -208,14 +176,6 @@ namespace HSNXT
 
             return value.TryParsDecimal( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its double-precision floating-point
         ///     number equivalent.
@@ -259,14 +219,6 @@ namespace HSNXT
 
             return value.TryParsDouble( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a GUID to the equivalent <see cref="Guid" /> structure.
         /// </summary>
@@ -280,14 +232,6 @@ namespace HSNXT
         [PublicAPI]
         public static Guid SafeToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) )
             => value.TryParsGuid( out var outValue ) ? outValue : defaultValue;
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its 16-bit signed integer
         ///     equivalent.
@@ -329,14 +273,6 @@ namespace HSNXT
 
             return value.TryParsInt16( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its 32-bit signed integer
         ///     equivalent.
@@ -378,14 +314,6 @@ namespace HSNXT
 
             return value.TryParsInt32( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the string representation of a number to its 64-bit signed integer
         ///     equivalent.

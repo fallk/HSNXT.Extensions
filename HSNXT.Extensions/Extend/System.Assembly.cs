@@ -40,14 +40,6 @@ namespace HSNXT
 
             return assembly.GetCustomAttributes<T>();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets the types defined in the given assembly.
         /// </summary>
@@ -65,14 +57,6 @@ namespace HSNXT
                 .Select( x => x.AsType() )
                 .ToArray();
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
         /// </summary>

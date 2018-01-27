@@ -42,14 +42,6 @@ namespace HSNXT
             collection.Add( value );
             return true;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds the given value to the collection if the collection doesn't contains it already.
         /// </summary>
@@ -69,14 +61,6 @@ namespace HSNXT
             collection.Add( value );
             return true;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds the given range of values to the collection.
         /// </summary>
@@ -114,14 +98,6 @@ namespace HSNXT
             enumerable.ForEach( collection.Add );
             return collection;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds all given values who satisfies the predicate to the collection.
         /// </summary>
@@ -175,14 +151,6 @@ namespace HSNXT
                 .ForEach( collection.Add );
             return collection;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Adds the given values to the collection, if it not already contains it.
         /// </summary>
@@ -230,14 +198,6 @@ namespace HSNXT
             } );
             return collection;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes the given value from the collection, if it matches the predicate.
         /// </summary>
@@ -259,14 +219,6 @@ namespace HSNXT
                 collection.Remove( value );
             return collection;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes the given values from the collection.
         /// </summary>
@@ -306,14 +258,6 @@ namespace HSNXT
             enumerable.ForEach( x => collection.Remove( x ) );
             return collection;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes the given values that satisfy the predicate from the collection.
         /// </summary>

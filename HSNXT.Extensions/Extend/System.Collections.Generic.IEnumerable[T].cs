@@ -59,14 +59,6 @@ namespace HSNXT
 
             return enumerable != null && enumerable.Any( predicate );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Appends the given item to the given sequence.
         /// </summary>
@@ -85,14 +77,6 @@ namespace HSNXT
             source = source.Concat( new[] { item } );
             return source;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     s
         ///     Checks if the IEnumerable contains all given values.
@@ -132,14 +116,6 @@ namespace HSNXT
 
             return values.All( enumerable.Contains );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Checks if the IEnumerable contains any of the given values.
         /// </summary>
@@ -180,14 +156,6 @@ namespace HSNXT
 
             return values.Any( enumerable.Contains );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns all unique items, based on the given predicate.
         /// </summary>
@@ -209,14 +177,6 @@ namespace HSNXT
                              .Select( g => g )
                              .Select( x => x.First() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Ensures that the given <see cref="IEnumerable{T}" /> is not null.
         /// </summary>
@@ -228,14 +188,6 @@ namespace HSNXT
         [Pure]
         public static IEnumerable<T> EnsureNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
             => enumerable ?? new T[0];
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Produces the set difference of two sequences by using the specified
         ///     <see cref="System.Collections.Generic.IEqualityComparer{TKey}" /> to compare values.
@@ -275,14 +227,6 @@ namespace HSNXT
 
             return first.Except( second, internalComparer );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the given action for each item in the IEnumerable in a reversed order.
         /// </summary>
@@ -304,14 +248,6 @@ namespace HSNXT
 
             return list;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Executes the given action for each item in the IEnumerable in a reversed order.
         /// </summary>
@@ -335,14 +271,6 @@ namespace HSNXT
             // ReSharper disable once PossibleMultipleEnumeration
             return enumerable;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns the equal items of two IEnumerables, according to the specified comparer.
         ///     Beginning at the start of the IEnumerables, ending when first different item is found.
@@ -376,14 +304,6 @@ namespace HSNXT
                     else
                         yield break;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets a random item form the given IEnumerable.
         /// </summary>
@@ -402,14 +322,6 @@ namespace HSNXT
             var index = RandomValueEx.GetRandomInt32( 0, list.Count );
             return list.ElementAt( index );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Produces the set intersection of two sequences.
         /// </summary>
@@ -448,14 +360,6 @@ namespace HSNXT
 
             return first.Intersect( second, internalComparer );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Gets whether the IEnumerable contains at least the specified number of items matching the specified predicate.
         /// </summary>
@@ -495,14 +399,6 @@ namespace HSNXT
 
             return enumerable.Count() >= count;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Determines whether the given IEnumerable contains no items, or not.
         /// </summary>
@@ -537,14 +433,6 @@ namespace HSNXT
 
             return !enumerable.Any( predicate );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Partitions the given sequence into blocks with the specified size.
         /// </summary>
@@ -568,14 +456,6 @@ namespace HSNXT
                 .GroupBy( x => x.Index / size )
                 .Select( x => x.WithoutIndex() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Prepends the given item to the given sequence.
         /// </summary>
@@ -593,14 +473,6 @@ namespace HSNXT
 
             return new[] { item }.Concat( source );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Orders the items in the IEnumerable randomly.
         /// </summary>
@@ -617,14 +489,6 @@ namespace HSNXT
             var rnd = new Random();
             return enumerable.OrderBy( x => rnd.Next() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Creates a specification with the given condition and message.
         /// </summary>
@@ -645,14 +509,6 @@ namespace HSNXT
 
             return new ExpressionSpecification<T>( expression, message );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Concatenates all the elements of a IEnumerable, using the specified separator between each element.
         /// </summary>
@@ -702,14 +558,6 @@ namespace HSNXT
 
             return String.Join( separator, enumerable.Select( selector ) );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Takes items from the given IEnumerable until the first item matches the specified predicate.
         /// </summary>
@@ -729,14 +577,6 @@ namespace HSNXT
 
             return enumerable.TakeWhile( x => !predicate( x ) );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the IEnumerable containing the groupings into a Dictionary of those groupings.
         /// </summary>
@@ -758,14 +598,6 @@ namespace HSNXT
 
             return groupings.ToDictionary( x => x.Key, x => x.ToList() );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given sequence to a new <see cref="HashSet{T}" />.
         /// </summary>
@@ -779,14 +611,6 @@ namespace HSNXT
 
             return new HashSet<T>( collection );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Converts the given IEnumerable to a ObservableCollection.
         /// </summary>
@@ -803,14 +627,6 @@ namespace HSNXT
 
             return new ObservableCollection<T>( enumerable );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Builds a tree node collection containing the items of the given collection.
         /// </summary>
@@ -912,14 +728,6 @@ namespace HSNXT
 
             return rootNodes;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns all items of the given enumerable which satisfy the given specification.
         /// </summary>
@@ -939,14 +747,6 @@ namespace HSNXT
 
             return enumerable.Where( specification.IsSatisfiedBy );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Performs a where predicate on the IEnumerable, if the given condition is true,
         ///     otherwise returns all items of the IEnumerable.
@@ -994,14 +794,6 @@ namespace HSNXT
 
             return condition ? source.Where( predicate ) : source;
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Returns all items of the given enumerable which doesn't satisfy the given specification.
         /// </summary>
@@ -1021,14 +813,6 @@ namespace HSNXT
 
             return enumerable.Where( x => !specification.IsSatisfiedBy( x ) );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Associates an index to each element of the source IEnumerable.
         /// </summary>
@@ -1045,14 +829,6 @@ namespace HSNXT
 
             return source.Select( ( item, index ) => new IndexedItem<T>( index, item ) );
         }
-    }
-}
-
-
-namespace HSNXT
-{
-    public static partial class Extensions
-    {
         /// <summary>
         ///     Removes the indexes from a IEnumerable of indexed elements, returning only the elements themselves.
         /// </summary>
