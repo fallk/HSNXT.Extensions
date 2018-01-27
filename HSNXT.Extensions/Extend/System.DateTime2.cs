@@ -18,9 +18,6 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="short" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -42,9 +39,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="short" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -62,9 +56,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="int" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -86,9 +77,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="int" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>

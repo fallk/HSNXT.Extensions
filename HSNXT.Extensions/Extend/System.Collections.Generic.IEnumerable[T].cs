@@ -18,10 +18,6 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -69,10 +65,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -99,10 +91,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -150,10 +138,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -202,10 +186,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -235,10 +215,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -258,10 +234,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -309,10 +281,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -342,10 +310,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -377,10 +341,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -422,10 +382,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -452,10 +408,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -502,10 +454,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -553,10 +501,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -599,10 +543,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -634,10 +574,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -663,10 +599,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -691,10 +623,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -723,10 +651,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -784,10 +708,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -815,10 +735,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -848,10 +764,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -873,10 +785,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -901,10 +809,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -1014,10 +918,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -1045,10 +945,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -1104,10 +1000,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -1135,10 +1027,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -1163,10 +1051,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>

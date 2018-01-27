@@ -18,10 +18,6 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IComparable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -51,10 +47,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IComparable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -84,10 +76,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IComparable{T}" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -116,10 +104,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IComparable" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -148,10 +132,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IComparable" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>
@@ -180,10 +160,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IComparable" />.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
     public static partial class Extensions
     {
         /// <summary>

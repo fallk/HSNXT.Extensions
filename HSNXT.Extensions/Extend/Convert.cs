@@ -18,9 +18,6 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -74,9 +71,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -124,9 +118,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -176,9 +167,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -226,9 +214,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -276,9 +261,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -326,9 +308,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -376,9 +355,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
@@ -426,9 +402,6 @@ namespace HSNXT
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="object" />.
-    /// </summary>
     public static partial class Extensions
     {
         /// <summary>
