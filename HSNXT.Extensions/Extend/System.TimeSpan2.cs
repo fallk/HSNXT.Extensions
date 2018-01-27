@@ -14,12 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -39,12 +34,7 @@ namespace HSNXT
             => TimeSpan.FromDays( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -64,12 +54,7 @@ namespace HSNXT
             => TimeSpan.FromHours( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -89,12 +74,7 @@ namespace HSNXT
             => TimeSpan.FromMilliseconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -114,12 +94,7 @@ namespace HSNXT
             => TimeSpan.FromMinutes( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -139,12 +114,7 @@ namespace HSNXT
             => TimeSpan.FromSeconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -168,12 +138,7 @@ namespace HSNXT
             => TimeSpan.FromDays( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -197,12 +162,7 @@ namespace HSNXT
             => TimeSpan.FromHours( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -227,12 +187,7 @@ namespace HSNXT
             => TimeSpan.FromMilliseconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -257,12 +212,7 @@ namespace HSNXT
             => TimeSpan.FromMinutes( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -287,12 +237,7 @@ namespace HSNXT
             => TimeSpan.FromSeconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -316,12 +261,7 @@ namespace HSNXT
             => TimeSpan.FromDays( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -345,12 +285,7 @@ namespace HSNXT
             => TimeSpan.FromHours( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -375,12 +310,7 @@ namespace HSNXT
             => TimeSpan.FromMilliseconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -405,12 +335,7 @@ namespace HSNXT
             => TimeSpan.FromMinutes( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -435,12 +360,7 @@ namespace HSNXT
             => TimeSpan.FromSeconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -464,12 +384,7 @@ namespace HSNXT
             => TimeSpan.FromDays( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -493,12 +408,7 @@ namespace HSNXT
             => TimeSpan.FromHours( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -523,12 +433,7 @@ namespace HSNXT
             => TimeSpan.FromMilliseconds( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -553,12 +458,7 @@ namespace HSNXT
             => TimeSpan.FromMinutes( value );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {

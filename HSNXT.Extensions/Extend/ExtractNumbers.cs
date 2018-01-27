@@ -14,14 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -43,14 +36,7 @@ namespace HSNXT
                                       .Select( x => x.ToDecimal() ) );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -72,14 +58,7 @@ namespace HSNXT
                                      .Select( x => x.ToDouble() ) );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -101,14 +80,7 @@ namespace HSNXT
                                     .Select( x => x.ToInt16() ) );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -130,14 +102,7 @@ namespace HSNXT
                                     .Select( x => x.ToInt32() ) );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -159,12 +124,7 @@ namespace HSNXT
                                     .Select( x => x.ToInt64() ) );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -185,12 +145,7 @@ namespace HSNXT
                 .ToDecimal();
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -211,12 +166,7 @@ namespace HSNXT
                 .ToDouble();
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -237,12 +187,7 @@ namespace HSNXT
                 .ToInt16();
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -263,12 +208,7 @@ namespace HSNXT
                 .ToInt32();
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -289,14 +229,7 @@ namespace HSNXT
                 .ToInt64();
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -349,14 +282,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -405,13 +331,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Text;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -457,13 +377,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Text;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {

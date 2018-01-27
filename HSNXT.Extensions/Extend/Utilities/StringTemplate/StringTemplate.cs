@@ -14,15 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using System.Text;
-//using HSNXT.Internal;
-
-#endregion
 
 namespace HSNXT
 {

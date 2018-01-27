@@ -14,12 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -38,13 +33,7 @@ namespace HSNXT
             => value.TryParsBoolean( out var outValue ) ? outValue : defaultValue;
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -104,12 +93,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -127,13 +111,7 @@ namespace HSNXT
             => value.TryParsChar( out var outValue ) ? outValue : defaultValue;
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -185,13 +163,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -238,13 +210,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -295,12 +261,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -321,13 +282,7 @@ namespace HSNXT
             => value.TryParsGuid( out var outValue ) ? outValue : defaultValue;
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -376,13 +331,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -431,13 +380,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {

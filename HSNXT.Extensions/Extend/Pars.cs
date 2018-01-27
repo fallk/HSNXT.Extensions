@@ -14,12 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -45,13 +40,7 @@ namespace HSNXT
             => Boolean.TryParse( value, out outValue );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -122,12 +111,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -151,13 +135,7 @@ namespace HSNXT
             => Char.TryParse( value, out outValue );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -224,13 +202,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -338,13 +310,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -408,13 +374,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -483,12 +443,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -509,13 +464,7 @@ namespace HSNXT
             => Guid.TryParse( value, out outValue );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -581,13 +530,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -654,13 +597,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {

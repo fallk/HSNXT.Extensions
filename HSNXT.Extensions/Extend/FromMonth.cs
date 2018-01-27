@@ -14,12 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -41,11 +36,7 @@ namespace HSNXT
             => new DateTime( year, 4, day );
     }
 }
-﻿#region Usings
-
-//using System;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -67,12 +58,7 @@ namespace HSNXT
             => new DateTime( year, 8, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -94,12 +80,7 @@ namespace HSNXT
             => new DateTime( year, 12, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -121,11 +102,7 @@ namespace HSNXT
             => new DateTime( year, 2, day );
     }
 }
-﻿#region Usings
-
-//using System;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -147,11 +124,7 @@ namespace HSNXT
             => new DateTime( year, 1, day );
     }
 }
-﻿#region Usings
-
-//using System;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -173,11 +146,7 @@ namespace HSNXT
             => new DateTime( year, 7, day );
     }
 }
-﻿#region Usings
-
-//using System;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -199,12 +168,7 @@ namespace HSNXT
             => new DateTime( year, 6, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -226,12 +190,7 @@ namespace HSNXT
             => new DateTime( year, 3, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -253,12 +212,7 @@ namespace HSNXT
             => new DateTime( year, 5, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -280,12 +234,7 @@ namespace HSNXT
             => new DateTime( year, 11, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -307,12 +256,7 @@ namespace HSNXT
             => new DateTime( year, 10, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -334,12 +278,7 @@ namespace HSNXT
             => new DateTime( year, 9, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -361,12 +300,7 @@ namespace HSNXT
             => new DateTime( year, 4, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -388,12 +322,7 @@ namespace HSNXT
             => new DateTime( year, 8, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -415,12 +344,7 @@ namespace HSNXT
             => new DateTime( year, 12, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -442,12 +366,7 @@ namespace HSNXT
             => new DateTime( year, 2, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -469,12 +388,7 @@ namespace HSNXT
             => new DateTime( year, 1, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -496,12 +410,7 @@ namespace HSNXT
             => new DateTime( year, 7, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -523,12 +432,7 @@ namespace HSNXT
             => new DateTime( year, 6, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -550,12 +454,7 @@ namespace HSNXT
             => new DateTime( year, 3, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -577,12 +476,7 @@ namespace HSNXT
             => new DateTime( year, 5, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -604,12 +498,7 @@ namespace HSNXT
             => new DateTime( year, 11, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -631,12 +520,7 @@ namespace HSNXT
             => new DateTime( year, 10, day );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {

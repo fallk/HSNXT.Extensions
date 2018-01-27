@@ -14,28 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
-//using System;
-//using System.Collections.Generic;
-//using System.Reflection;
-//using JetBrains.Annotations;
-//using System.Linq;
-//using System.IO;
-//using System.Diagnostics;
-//using System.Threading.Tasks;
-//using System.Collections.ObjectModel;
-//using System.Text;
-//using System.Globalization;
-//using System.Collections;
-//using System.Linq.Expressions;
-//using System.Text.RegularExpressions;
-//using System.Collections.Concurrent;
-//using HSNXT.Internal;
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -55,12 +34,7 @@ namespace HSNXT
             => Double.IsInfinity( value );
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -80,12 +54,7 @@ namespace HSNXT
             => Double.IsNaN( value );
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -105,12 +74,7 @@ namespace HSNXT
             => Double.IsNegativeInfinity( value );
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -130,12 +94,7 @@ namespace HSNXT
             => Double.IsPositiveInfinity( value );
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -178,12 +137,7 @@ namespace HSNXT
             => number * percent / 100;
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -229,13 +183,7 @@ namespace HSNXT
             => total / number * 100;
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {

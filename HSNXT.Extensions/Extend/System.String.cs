@@ -14,28 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
-//using System;
-//using System.Collections.Generic;
-//using System.Reflection;
-//using JetBrains.Annotations;
-//using System.Linq;
-//using System.IO;
-//using System.Diagnostics;
-//using System.Threading.Tasks;
-//using System.Collections.ObjectModel;
-//using System.Text;
-//using System.Globalization;
-//using System.Collections;
-//using System.Linq.Expressions;
-//using System.Text.RegularExpressions;
-//using System.Collections.Concurrent;
-//using HSNXT.Internal;
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -62,13 +41,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -179,12 +152,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -211,12 +179,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -234,12 +197,7 @@ namespace HSNXT
             => String.Compare( value, compareValue, StringComparison.Ordinal ) == 0;
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -257,12 +215,7 @@ namespace HSNXT
             => String.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -335,12 +288,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -367,12 +315,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -416,13 +359,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -466,13 +403,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -499,21 +430,9 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
 
-#endregion
 
-#region Usings
-
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -538,12 +457,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -608,12 +522,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -645,12 +554,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -753,12 +657,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -873,12 +772,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -999,14 +893,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1034,12 +921,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1058,13 +940,7 @@ namespace HSNXT
             => !value.IsEmpty() ? value : alternativeValue;
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1087,13 +963,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1116,12 +986,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1138,12 +1003,7 @@ namespace HSNXT
             => String.IsNullOrEmpty( str ) || String.IsNullOrWhiteSpace( str );
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1160,13 +1020,7 @@ namespace HSNXT
             => !IsEmpty( input );
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1189,13 +1043,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Collections.Generic;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1301,13 +1149,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1332,13 +1174,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1363,13 +1199,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1394,13 +1224,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1428,12 +1252,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1461,13 +1280,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1492,13 +1305,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1523,13 +1330,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1554,13 +1355,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1588,13 +1383,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Text;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1625,12 +1414,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1662,12 +1446,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1694,12 +1473,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1725,12 +1499,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1758,13 +1527,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1811,12 +1574,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1891,12 +1649,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -1946,19 +1699,9 @@ namespace HSNXT
             => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
 
-#endregion
 
-#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2003,19 +1746,9 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
 
-#endregion
 
-#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2040,13 +1773,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Linq;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2082,13 +1809,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2112,12 +1833,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2141,12 +1857,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2175,12 +1886,7 @@ namespace HSNXT
         }
     }
 }
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -2201,13 +1907,7 @@ namespace HSNXT
             => Enum.TryParse( value, ignoreCase, out outValue );
     }
 }
-#region Usings
 
-//using System;
-//using System.Text.RegularExpressions;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {

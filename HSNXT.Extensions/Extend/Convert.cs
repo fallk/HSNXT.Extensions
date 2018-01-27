@@ -14,12 +14,7 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Collections.Concurrent;
 using HSNXT.Internal;
-#region Usings
 
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
 
 namespace HSNXT
 {
@@ -75,13 +70,7 @@ namespace HSNXT
             => Convert.ToBoolean( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -131,12 +120,7 @@ namespace HSNXT
             => Convert.ToByte( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -188,12 +172,7 @@ namespace HSNXT
             => Convert.ToChar( obj, provider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -243,12 +222,7 @@ namespace HSNXT
             => Convert.ToDateTime( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -298,12 +272,7 @@ namespace HSNXT
             => Convert.ToDecimal( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -353,12 +322,7 @@ namespace HSNXT
             => Convert.ToDouble( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -408,12 +372,7 @@ namespace HSNXT
             => Convert.ToInt16( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -463,12 +422,7 @@ namespace HSNXT
             => Convert.ToInt32( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -518,12 +472,7 @@ namespace HSNXT
             => Convert.ToInt64( obj, formatProvider );
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -553,13 +502,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -589,12 +532,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -620,13 +558,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using System.Globalization;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -649,12 +581,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -704,12 +631,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -759,12 +681,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -787,12 +704,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -842,12 +754,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
@@ -897,12 +804,7 @@ namespace HSNXT
         }
     }
 }
-﻿#region Usings
-
-//using System;
-//using JetBrains.Annotations;
-
-#endregion
+﻿
 
 namespace HSNXT
 {
