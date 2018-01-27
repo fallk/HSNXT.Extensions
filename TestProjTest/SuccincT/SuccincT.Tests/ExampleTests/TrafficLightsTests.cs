@@ -12,7 +12,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
         {
             var pairs = SequenceTrafficLightDeclarative().Zip(SequenceTrafficLightImperative(), (x, y) => (x, y));
             var count = 10;
-            foreach(var pair in pairs)
+            foreach (var pair in pairs)
             {
                 Assert.AreEqual(pair.x.Red, pair.y.Red);
                 Assert.AreEqual(pair.x.Amber, pair.y.Amber);

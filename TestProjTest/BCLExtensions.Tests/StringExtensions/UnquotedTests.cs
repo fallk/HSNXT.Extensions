@@ -1,4 +1,6 @@
-﻿using Xunit; using HSNXT;
+﻿using Xunit;
+using HSNXT;
+
 // ReSharper disable ExpressionIsAlwaysNull
 
 namespace BCLExtensions.Tests.StringExtensions
@@ -8,13 +10,13 @@ namespace BCLExtensions.Tests.StringExtensions
         [Fact]
         public void NullReturnsNull()
         {
-            string input=null;
+            string input = null;
 
             var output = input.Unquoted();
 
             Assert.Equal(input, output);
         }
-        
+
         [Fact]
         public void EmptyStringReturnsEmpty()
         {

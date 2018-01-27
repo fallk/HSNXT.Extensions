@@ -36,7 +36,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_CanBeMatchedViaWhere()
         {
             var result = 1.Match().To<bool>().Where(x => x == 1).Do(x => true)
-                                             .Else(x => false).Result();
+                .Else(x => false).Result();
             Assert.IsTrue(result);
         }
 
@@ -44,7 +44,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_WhenNoMatchViaWhereElseLambdaUsed()
         {
             var result = 1.Match().To<bool>().Where(x => x == 2).Do(x => true)
-                                             .Else(x => false).Result();
+                .Else(x => false).Result();
             Assert.IsFalse(result);
         }
 
@@ -52,7 +52,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_WhenNoMatchViaWhereElseExpressionUsed()
         {
             var result = 1.Match().To<bool>().Where(x => x == 2).Do(x => true)
-                                             .Else(false).Result();
+                .Else(false).Result();
             Assert.IsFalse(result);
         }
 
@@ -60,7 +60,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_WithAndWhereDefinedWhereCorrectlyUsed()
         {
             var result = 5.Match().To<bool>().With(1).Or(2).Do(x => false)
-                                            .Where(x => x == 5).Do(x => true).Result();
+                .Where(x => x == 5).Do(x => true).Result();
             Assert.IsTrue(result);
         }
 
@@ -68,7 +68,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_WithAndWhereDefinedWithCorrectlyUsed()
         {
             var result = 2.Match().To<bool>().With(1).Or(2).Do(x => false)
-                                             .Where(x => x == 5).Do(x => true).Result();
+                .Where(x => x == 5).Do(x => true).Result();
             Assert.IsFalse(result);
         }
 
@@ -76,7 +76,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_WithDoExpressionHandledCorrectly()
         {
             var result = 2.Match().To<bool>().With(1).Or(2).Do(false)
-                                             .Where(x => x == 5).Do(x => true).Result();
+                .Where(x => x == 5).Do(x => true).Result();
             Assert.IsFalse(result);
         }
 
@@ -84,7 +84,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         public void IntValue_WhereDoExpressionHandledCorrectly()
         {
             var result = 3.Match().To<bool>().With(1).Or(2).Do(x => false)
-                                             .Where(x => x > 2).Do(true).Result();
+                .Where(x => x > 2).Do(true).Result();
             Assert.IsTrue(result);
         }
     }

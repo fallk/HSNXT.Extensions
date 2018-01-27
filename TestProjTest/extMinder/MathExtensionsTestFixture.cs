@@ -134,7 +134,6 @@ namespace HSNXT.Tests
             var result = x.RoundDownToNearest(10);
 
             result.ShouldEqual(790);
-
         }
 
         [Fact]
@@ -144,7 +143,6 @@ namespace HSNXT.Tests
             var result = x.RoundDownToNearest(5);
 
             result.ShouldEqual(795);
-
         }
 
         [Fact]
@@ -154,7 +152,6 @@ namespace HSNXT.Tests
             var result = x.RoundDownToNearest(5);
 
             result.ShouldEqual(795);
-
         }
 
         [Fact]
@@ -182,7 +179,6 @@ namespace HSNXT.Tests
             var result = x.RoundUpToNearest(10);
 
             result.ShouldEqual(800);
-
         }
 
         [Fact]
@@ -192,7 +188,6 @@ namespace HSNXT.Tests
             var result = x.RoundUpToNearest(5);
 
             result.ShouldEqual(795);
-
         }
 
         [Fact]
@@ -202,14 +197,13 @@ namespace HSNXT.Tests
             var result = x.RoundUpToNearest(5);
 
             result.ShouldEqual(795);
-
         }
 
         [Fact]
         public void AddWithFunc_Works_ByAddingOne()
         {
             var x = 1.2m;
-            var result = x.Add(a => a%1 == 0 ? 0 : 1);
+            var result = x.Add(a => a % 1 == 0 ? 0 : 1);
             result.ShouldEqual(2.2m);
         }
 

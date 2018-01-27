@@ -11,7 +11,7 @@ namespace HSNXT.C5.Tests
         public void Serialize()
         {
             var source = new ArrayList<int>();
-            source.AddAll(new[] { 1, 2, 3, 4, 5 });
+            source.AddAll(new[] {1, 2, 3, 4, 5});
 
             ArrayList<int> target;
             var formatter = new BinaryFormatter();

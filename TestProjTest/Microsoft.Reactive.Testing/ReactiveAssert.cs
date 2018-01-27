@@ -126,7 +126,9 @@ namespace Microsoft.Reactive.Testing
             }
             catch (Exception ex)
             {
-                Assert.True(false, string.Format(CultureInfo.CurrentCulture, "Expected {0} threw {1}.\r\n\r\nStack trace:\r\n{2}", typeof(TException).Name, ex.GetType().Name, ex.StackTrace));
+                Assert.True(false,
+                    string.Format(CultureInfo.CurrentCulture, "Expected {0} threw {1}.\r\n\r\nStack trace:\r\n{2}",
+                        typeof(TException).Name, ex.GetType().Name, ex.StackTrace));
             }
 
             if (failed)
@@ -187,7 +189,9 @@ namespace Microsoft.Reactive.Testing
             }
             catch (Exception ex)
             {
-                Assert.True(false, string.Format(CultureInfo.CurrentCulture, "Expected {0} threw {1}.\r\n\r\nStack trace:\r\n{2}", typeof(TException).Name, ex.GetType().Name, ex.StackTrace));
+                Assert.True(false,
+                    string.Format(CultureInfo.CurrentCulture, "Expected {0} threw {1}.\r\n\r\nStack trace:\r\n{2}",
+                        typeof(TException).Name, ex.GetType().Name, ex.StackTrace));
             }
 
             if (failed)
@@ -202,7 +206,8 @@ namespace Microsoft.Reactive.Testing
         /// <param name="action">Action to run.</param>
         /// <param name="message">Error message for assert failure.</param>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static void Throws<TException>(TException exception, Action action, string message) where TException : Exception
+        public static void Throws<TException>(TException exception, Action action, string message)
+            where TException : Exception
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));

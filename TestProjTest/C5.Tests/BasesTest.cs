@@ -29,28 +29,40 @@ namespace HSNXT.C5UnitTests.support
 {
     namespace bases
     {
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
         public class ArrayBaseTest : BaseMemoryType
         {
-
             public ArrayBaseTest(MemoryType memoryType)
                 : base(memoryType)
             {
-
             }
+
             class ABT : ArrayBase<string>
             {
-                public ABT(MemoryType memoryType) : base(8, C5.EqualityComparer<string>.Default, memoryType) { }
+                public ABT(MemoryType memoryType) : base(8, C5.EqualityComparer<string>.Default, memoryType)
+                {
+                }
 
-                public override string Choose() { if (size > 0) return array[0]; throw new NoSuchItemException(); }
+                public override string Choose()
+                {
+                    if (size > 0) return array[0];
+                    throw new NoSuchItemException();
+                }
 
-                public string this[int i] { get { return array[i]; } set { array[i] = value; } }
+                public string this[int i]
+                {
+                    get { return array[i]; }
+                    set { array[i] = value; }
+                }
 
 
-                public int thesize { get { return size; } set { size = value; } }
+                public int thesize
+                {
+                    get { return size; }
+                    set { size = value; }
+                }
             }
 
 
@@ -78,13 +90,21 @@ namespace HSNXT.C5UnitTests.support
             {
                 double d;
 
-                public dbl(double din) { d = din; }
+                public dbl(double din)
+                {
+                    d = din;
+                }
 
                 public int CompareTo(dbl that)
                 {
-                    return d < that.d ? -1 : d == that.d ? 0 : 1;
+                    return d < that.d ? -1 :
+                        d == that.d ? 0 : 1;
                 }
-                public bool Equals(dbl that) { return d == that.d; }
+
+                public bool Equals(dbl that)
+                {
+                    return d == that.d;
+                }
             }
 
             [Test]
@@ -138,7 +158,6 @@ namespace HSNXT.C5UnitTests.support
                 Assert.AreEqual(0, h.Compare(s, t));
                 Assert.IsTrue(h.Compare(s, u) < 0);
                 Assert.AreSame(h, SCG.Comparer<string>.Default);
-
             }
 
             public void ComparerViaBuilderTest<T>(T item1, T item2)
@@ -428,9 +447,15 @@ namespace HSNXT.C5UnitTests.support
                 C5.ICollection<int> s = new LinkedList<int>();
                 C5.ICollection<int> t = new LinkedList<int>();
                 C5.ICollection<int> u = new LinkedList<int>();
-                s.Add(1); s.Add(2); s.Add(3);
-                t.Add(3); t.Add(2); t.Add(1);
-                u.Add(3); u.Add(2); u.Add(4);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
+                t.Add(3);
+                t.Add(2);
+                t.Add(1);
+                u.Add(3);
+                u.Add(2);
+                u.Add(4);
                 Assert.AreEqual(s.GetUnsequencedHashCode(), h.GetHashCode(s));
                 Assert.IsTrue(h.Equals(s, t));
                 Assert.IsFalse(h.Equals(s, u));
@@ -442,7 +467,9 @@ namespace HSNXT.C5UnitTests.support
             {
                 var h = C5.EqualityComparer<LinkedList<int>>.Default;
                 var s = new LinkedList<int>();
-                s.Add(1); s.Add(2); s.Add(3);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
                 Assert.AreEqual(CHC.sequencedhashcode(1, 2, 3), h.GetHashCode(s));
             }
 
@@ -451,7 +478,9 @@ namespace HSNXT.C5UnitTests.support
             {
                 var h = C5.EqualityComparer<C5.HashSet<int>>.Default;
                 var s = new C5.HashSet<int>();
-                s.Add(1); s.Add(2); s.Add(3);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
                 Assert.AreEqual(CHC.unsequencedhashcode(1, 2, 3), h.GetHashCode(s));
             }
 
@@ -461,16 +490,26 @@ namespace HSNXT.C5UnitTests.support
             {
                 var h = C5.EqualityComparer<C5.IList<int>>.Default;
                 C5.IList<int> s = new LinkedList<int>();
-                s.Add(1); s.Add(2); s.Add(3);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
                 Assert.AreEqual(CHC.sequencedhashcode(1, 2, 3), h.GetHashCode(s));
             }
 
-            interface IFoo<T> : C5.ICollection<T> { void Bamse();      }
+            interface IFoo<T> : C5.ICollection<T>
+            {
+                void Bamse();
+            }
 
             class Foo<T> : C5.HashSet<T>, IFoo<T>
             {
-                internal Foo() : base() { }
-                public void Bamse() { }
+                internal Foo() : base()
+                {
+                }
+
+                public void Bamse()
+                {
+                }
             }
 
             [Test]
@@ -478,17 +517,28 @@ namespace HSNXT.C5UnitTests.support
             {
                 var h = C5.EqualityComparer<IFoo<int>>.Default;
                 IFoo<int> s = new Foo<int>();
-                s.Add(1); s.Add(2); s.Add(3);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
                 Assert.AreEqual(CHC.unsequencedhashcode(1, 2, 3), h.GetHashCode(s));
             }
 
             //Nongeneric types implementing collection types:
-            interface IBaz : ISequenced<int> { void Bamse(); }
+            interface IBaz : ISequenced<int>
+            {
+                void Bamse();
+            }
 
             class Baz : LinkedList<int>, IBaz
             {
-                internal Baz() : base() { }
-                public void Bamse() { }
+                internal Baz() : base()
+                {
+                }
+
+                public void Bamse()
+                {
+                }
+
                 //int ISequenced<int>.GetHashCode() { return sequencedhashcode(); }
                 //bool ISequenced<int>.Equals(ISequenced<int> that) { return sequencedequals(that); }
             }
@@ -498,7 +548,9 @@ namespace HSNXT.C5UnitTests.support
             {
                 var h = C5.EqualityComparer<IBaz>.Default;
                 IBaz s = new Baz();
-                s.Add(1); s.Add(2); s.Add(3);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
                 Assert.AreEqual(CHC.sequencedhashcode(1, 2, 3), h.GetHashCode(s));
             }
 
@@ -509,8 +561,13 @@ namespace HSNXT.C5UnitTests.support
 
             class Bar : C5.HashSet<int>, IBar
             {
-                internal Bar() : base() { }
-                public void Bamse() { }
+                internal Bar() : base()
+                {
+                }
+
+                public void Bamse()
+                {
+                }
 
                 //TODO: remove all this workaround stuff:
 
@@ -533,7 +590,6 @@ namespace HSNXT.C5UnitTests.support
                 {
                     throw new NotImplementedException();
                 }
-
             }
 
             [Test]
@@ -541,7 +597,9 @@ namespace HSNXT.C5UnitTests.support
             {
                 var h = C5.EqualityComparer<IBar>.Default;
                 IBar s = new Bar();
-                s.Add(1); s.Add(2); s.Add(3);
+                s.Add(1);
+                s.Add(2);
+                s.Add(3);
                 Assert.AreEqual(CHC.unsequencedhashcode(1, 2, 3), h.GetHashCode(s));
             }
 
@@ -576,7 +634,7 @@ namespace HSNXT.C5UnitTests.support
                 SCG.IEqualityComparer<Object> eqc = new EveryThingIsEqual();
                 Object o1 = new Object(), o2 = new Object();
                 C5.ICollection<Object> coll1 = new ArrayList<Object>(eqc),
-                  coll2 = new ArrayList<Object>(eqc);
+                    coll2 = new ArrayList<Object>(eqc);
                 coll1.Add(o1);
                 coll2.Add(o2);
                 Assert.IsFalse(o1.Equals(o2));

@@ -3,7 +3,8 @@
 // Forum: https://github.com/zzzprojects/Z.ExtensionMethods/issues
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+// Copyright Â© ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,7 +20,8 @@ namespace HSNXT.Z.Data.Test
             var @this = new DataTable();
 
             // Exemples
-            @this.Columns.AddRange("Column1", "Column2", "Column3"); // Add "Column1", "Column2", "Column3" to the collection
+            @this.Columns.AddRange("Column1", "Column2",
+                "Column3"); // Add "Column1", "Column2", "Column3" to the collection
 
             // Unit Test
             Assert.AreEqual(3, @this.Columns.Count);

@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -36,7 +38,7 @@ namespace HSNXT.Test
             const string one = "one";
             const string two = "two";
             const string three = "three";
-            var result = new[] { one, two, three }.Index();
+            var result = new[] {one, two, three}.Index();
             result.AssertSequenceEqual(
                 KeyValuePair.Create(0, one),
                 KeyValuePair.Create(1, two),
@@ -49,7 +51,7 @@ namespace HSNXT.Test
             const string one = "one";
             const string two = "two";
             const string three = "three";
-            var result = new[] { one, two, three }.Index(10);
+            var result = new[] {one, two, three}.Index(10);
             result.AssertSequenceEqual(
                 KeyValuePair.Create(10, one),
                 KeyValuePair.Create(11, two),

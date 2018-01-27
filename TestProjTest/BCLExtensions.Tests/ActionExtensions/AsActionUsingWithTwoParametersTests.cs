@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.ActionExtensions
 {
-
     public class AsActionUsingWithTwoParametersTests
     {
         [Fact]
@@ -26,11 +26,8 @@ namespace BCLExtensions.Tests.ActionExtensions
         public void InternalActionExecutes()
         {
             var internalActionWasCalled = false;
-            Action<int, string> action = (p1,p2) =>
-            {
-                internalActionWasCalled = true;
-            };
-            var result = action.AsActionUsing(12,"24");
+            Action<int, string> action = (p1, p2) => { internalActionWasCalled = true; };
+            var result = action.AsActionUsing(12, "24");
             result();
 
             Assert.True(internalActionWasCalled);
@@ -43,7 +40,7 @@ namespace BCLExtensions.Tests.ActionExtensions
             const string expectedParameter2 = "24";
             var passedParameter1 = 0;
             string passedParameter2 = null;
-            Action<int, string> action = (p1,p2) =>
+            Action<int, string> action = (p1, p2) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;
@@ -59,6 +56,5 @@ namespace BCLExtensions.Tests.ActionExtensions
         private void SampleAction(int parameter1, string parameter2)
         {
         }
-
     }
 }

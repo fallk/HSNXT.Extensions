@@ -11,6 +11,6 @@ namespace dff.ExtensionsTests
         {
             var x = new TimeSpan(12, 12, 12, 12).GetDescription();
             Assert.AreEqual(x, "vor 12 Tagen");
-        } 
+        }
     }
 }

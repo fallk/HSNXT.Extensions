@@ -35,7 +35,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void LastOrNoneWithList_ReturnsLastElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.AreEqual(3, collection.TryLast().Value);
         }
 
@@ -48,14 +48,14 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void LastOrNoneWithCollectionAndFunc_ReturnsCorrectElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.AreEqual(3, collection.TryLast(x => true).Value);
         }
 
         [Test]
         public void LastOrNoneWithNullFunc_ThrowsExcpetion()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.Throws<ArgumentNullException>(() => collection.TryLast(null));
         }
 

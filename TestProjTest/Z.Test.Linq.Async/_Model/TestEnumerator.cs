@@ -25,6 +25,7 @@ namespace Z.Test.Linq.Async.Model
                         throw new Exception("TestEnumerable;ErrorPredicate;Value=" + currentValue);
                     }
                 }
+
                 return currentValue;
             }
         }

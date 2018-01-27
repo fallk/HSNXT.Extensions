@@ -9,7 +9,12 @@ namespace HSNXT.SuccincTTests.ExampleTests
     [TestFixture]
     public class DiscountTests
     {
-        public enum Customer { Simple, Valuable, MostValuable }
+        public enum Customer
+        {
+            Simple,
+            Valuable,
+            MostValuable
+        }
 
         private class Registered
         {
@@ -23,26 +28,29 @@ namespace HSNXT.SuccincTTests.ExampleTests
             }
         }
 
-        private class UnRegistered { }
+        private class UnRegistered
+        {
+        }
 
         private static int CustomerDiscount(Customer customer) =>
             customer.Match().To<int>()
-                    .With(Simple).Do(1)
-                    .With(Valuable).Do(3)
-                    .With(MostValuable).Do(5)
-                    .Result();
+                .With(Simple).Do(1)
+                .With(Valuable).Do(3)
+                .With(MostValuable).Do(5)
+                .Result();
 
         private static int YearsDiscount(int years) =>
             years.Match().To<int>()
-                 .Where(y => y > 5).Do(5)
-                 .Else(y => y)
-                 .Result();
+                .Where(y => y > 5).Do(5)
+                .Else(y => y)
+                .Result();
 
-        private static (int customerDiscount, int yearsDiscount) AccountDiscount(Union<Registered, UnRegistered> customer) =>
+        private static (int customerDiscount, int yearsDiscount) AccountDiscount(
+            Union<Registered, UnRegistered> customer) =>
             customer.Match<(int, int)>()
-                    .CaseOf<Registered>().Do(c => (CustomerDiscount(c.CustomerType), YearsDiscount(c.Years)))
-                    .CaseOf<UnRegistered>().Do((0, 0))
-                    .Result();
+                .CaseOf<Registered>().Do(c => (CustomerDiscount(c.CustomerType), YearsDiscount(c.Years)))
+                .CaseOf<UnRegistered>().Do((0, 0))
+                .Result();
 
         private static decimal AsPercent(int amount) => amount / 100.0m;
 

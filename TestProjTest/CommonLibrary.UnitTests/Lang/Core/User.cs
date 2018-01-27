@@ -15,7 +15,6 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         */
     public class User
     {
-
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public DateTime BirthDate { get; set; }

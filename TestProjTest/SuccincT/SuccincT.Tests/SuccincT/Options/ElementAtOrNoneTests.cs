@@ -23,21 +23,21 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void TryElementAtWithList_ReturnsCorrectElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.AreEqual(3, collection.TryElementAt(2).Value);
         }
 
         [Test]
         public void TryElementAtWithTooSmallList_ReturnsCorrectElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.IsFalse(collection.TryElementAt(3).HasValue);
         }
 
         [Test]
         public void TryElementAtWithNegativeIndex_ReturnsNone()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.IsFalse(collection.TryElementAt(-1).HasValue);
         }
 

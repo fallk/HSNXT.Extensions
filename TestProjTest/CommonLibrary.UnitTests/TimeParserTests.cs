@@ -5,8 +5,6 @@ using HSNXT.ComLib;
 
 namespace CommonLibrary.Tests
 {
-    
-
     [TestFixture]
     public class TimeParserTests
     {
@@ -23,7 +21,7 @@ namespace CommonLibrary.Tests
         {
             var time = TimeHelper.Parse("1").Item;
             Assert.AreEqual(time.Hours, 1);
-            Assert.AreEqual(time.Minutes, 0);           
+            Assert.AreEqual(time.Minutes, 0);
         }
 
 
@@ -32,7 +30,7 @@ namespace CommonLibrary.Tests
         {
             var time = TimeHelper.Parse("1pm").Item;
             Assert.AreEqual(time.Hours, 13);
-            Assert.AreEqual(time.Minutes, 0);       
+            Assert.AreEqual(time.Minutes, 0);
         }
 
 
@@ -41,7 +39,7 @@ namespace CommonLibrary.Tests
         {
             var time = TimeHelper.Parse("8am").Item;
             Assert.AreEqual(time.Hours, 8);
-            Assert.AreEqual(time.Minutes, 0);       
+            Assert.AreEqual(time.Minutes, 0);
         }
 
 
@@ -50,7 +48,7 @@ namespace CommonLibrary.Tests
         {
             var time = TimeHelper.Parse("10:45pm").Item;
             Assert.AreEqual(time.Hours, 22);
-            Assert.AreEqual(time.Minutes, 45);       
+            Assert.AreEqual(time.Minutes, 45);
         }
 
 
@@ -59,7 +57,7 @@ namespace CommonLibrary.Tests
         {
             var time = TimeHelper.Parse("6:30am").Item;
             Assert.AreEqual(time.Hours, 6);
-            Assert.AreEqual(time.Minutes, 30);       
+            Assert.AreEqual(time.Minutes, 30);
         }
 
 
@@ -72,7 +70,7 @@ namespace CommonLibrary.Tests
             var end = new TimeSpan(13, 0, 0);
             Assert.IsTrue(result.IsValid);
             Assert.AreEqual(start, result.Start);
-            Assert.AreEqual(end, result.End);           
+            Assert.AreEqual(end, result.End);
         }
 
 
@@ -111,7 +109,7 @@ namespace CommonLibrary.Tests
             Assert.IsTrue(result.IsValid);
             Assert.AreEqual(start, result.Start);
             Assert.AreEqual(TimeSpan.MaxValue, result.End);
-            Assert.AreEqual(TimeParserConstants.MaxDate, result.EndTimeAsDate);           
+            Assert.AreEqual(TimeParserConstants.MaxDate, result.EndTimeAsDate);
         }
 
 
@@ -124,7 +122,7 @@ namespace CommonLibrary.Tests
             var end = new TimeSpan(13, 0, 0);
             Assert.IsTrue(result.IsValid);
             Assert.AreEqual(start, result.Start);
-            Assert.AreEqual(end, result.End);   
+            Assert.AreEqual(end, result.End);
         }
 
 

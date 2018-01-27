@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Security;
-
 using Shouldly;
-
 using Xunit;
 
 namespace HSNXT.Tests
@@ -60,7 +58,8 @@ namespace HSNXT.Tests
             {
                 valuePtr = Marshal.SecureStringToGlobalAllocUnicode(secureString);
                 return Marshal.PtrToStringUni(valuePtr);
-            } finally
+            }
+            finally
             {
                 Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
             }

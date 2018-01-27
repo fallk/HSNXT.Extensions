@@ -112,15 +112,19 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void WhenThereAreAnyOptionsWithValuesInCollection_ChooseReturnsThoseValuesAsAnotherCollection()
         {
-            var opts = new[] { Option<int>.None(), Option<int>.Some(10), Option<int>.Some(20), Option<int>.None(), Option<int>.Some(30), Option<int>.None() };
+            var opts = new[]
+            {
+                Option<int>.None(), Option<int>.Some(10), Option<int>.Some(20), Option<int>.None(),
+                Option<int>.Some(30), Option<int>.None()
+            };
             var chosenOpts = opts.Choose();
-            CollectionAssert.AreEqual(new[] { 10, 20, 30 }, chosenOpts);
+            CollectionAssert.AreEqual(new[] {10, 20, 30}, chosenOpts);
         }
 
         [Test]
         public void WhenThereAreNoOptionsWithValuesInCollection_ChooseReturnsEmptyCollection()
         {
-            var opts = new[] { Option<bool>.None(), Option<bool>.None() };
+            var opts = new[] {Option<bool>.None(), Option<bool>.None()};
             var chosenOpts = opts.Choose();
             CollectionAssert.IsEmpty(chosenOpts);
         }
@@ -130,13 +134,13 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var items = new[]
             {
-                new { Parent = Option<int>.None() },
-                new { Parent = Option<int>.Some(1) },
-                new { Parent = Option<int>.None() }
+                new {Parent = Option<int>.None()},
+                new {Parent = Option<int>.Some(1)},
+                new {Parent = Option<int>.None()}
             };
 
             var chosenOpts = items.Choose(x => x.Parent);
-            CollectionAssert.AreEqual(new[] { 1 }, chosenOpts);
+            CollectionAssert.AreEqual(new[] {1}, chosenOpts);
         }
 
         [Test]
@@ -144,8 +148,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var items = new[]
             {
-                new { Parent = Option<int>.None() },
-                new { Parent = Option<int>.None() }
+                new {Parent = Option<int>.None()},
+                new {Parent = Option<int>.None()}
             };
 
             var chosenOpts = items.Choose(x => x.Parent);

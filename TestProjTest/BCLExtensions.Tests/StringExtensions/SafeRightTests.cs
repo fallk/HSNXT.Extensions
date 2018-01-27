@@ -27,7 +27,7 @@ namespace BCLExtensions.Tests.StringExtensions
 
             // ReSharper disable once ExpressionIsAlwaysNull
             var formattedString = input.SafeRight(length);
-            
+
             Assert.Equal(string.Empty, formattedString);
         }
     }

@@ -30,13 +30,14 @@ namespace HSNXT.C5UnitTests.Templates
     public abstract class GenericCollectionTester<U, W>
     {
         protected CircularQueue<MethodInfo> testMethods;
+
         public GenericCollectionTester()
         {
             testMethods = new CircularQueue<MethodInfo>();
             foreach (var minfo in this.GetType().GetMethods())
             {
                 if (minfo.GetParameters().Length == 0 &&
-                     minfo.GetCustomAttributes(typeof(TestAttribute), false).Length > 0)
+                    minfo.GetCustomAttributes(typeof(TestAttribute), false).Length > 0)
                     testMethods.Enqueue(minfo);
             }
         }
@@ -61,6 +62,7 @@ namespace HSNXT.C5UnitTests.Templates
                         //else
                         throw;
                     }
+
                     //tearDown
                 }
             }
@@ -74,7 +76,7 @@ namespace HSNXT.C5UnitTests.Templates
     {
         public override System.Collections.Generic.IEnumerable<int> GetSpecs()
         {
-            return new int[] { 0 };
+            return new int[] {0};
         }
 
         public override void SetUp(U collection, int testSpec, MemoryType memoryType)

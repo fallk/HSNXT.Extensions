@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using HSNXT.ComLib.Lang.Types;
 using NUnit.Framework;
-
-
 using HSNXT.ComLib.Lang.Parsing;
-
 using HSNXT.ComLib.Tests;
 
 namespace HSNXT.ComLib.Lang.Tests.Common
@@ -17,7 +14,8 @@ namespace HSNXT.ComLib.Lang.Tests.Common
             return new List<Tuple<string, Type, object, string>>();
         }
 
-        protected static Tuple<string, Type, object, string> TestCase(string resultVarName, Type resultType, object resultValue, string script)
+        protected static Tuple<string, Type, object, string> TestCase(string resultVarName, Type resultType,
+            object resultValue, string script)
         {
             return new Tuple<string, Type, object, string>
                 (resultVarName, resultType, resultValue, script);
@@ -72,8 +70,8 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         /// <param name="initializer"></param>
         /// <param name="replaceSemicolonsWithNewLines"></param>
         protected void RunTests(TestCases testCases, TestType testType,
-                bool execute = true, Action<Interpreter> initializer = null,
-                bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
+            bool execute = true, Action<Interpreter> initializer = null,
+            bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
         {
             var statements = testCases.Positive;
             Parse(statements, execute, (i) =>
@@ -87,7 +85,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
                         for (var ndx = 0; ndx < testCases.SetupPlugins.Length; ndx++)
                         {
                             var plugin = testCases.SetupPlugins[ndx];
-                            i.Context.Plugins.Register((ISetupPlugin)plugin);
+                            i.Context.Plugins.Register((ISetupPlugin) plugin);
                         }
                     }
 
@@ -108,11 +106,11 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         /// <param name="initializer"></param>
         /// <param name="replaceSemicolonsWithNewLines"></param>
         protected void ExpectErrors(TestCases testCases, TestType testType,
-                bool execute = true, Action<Interpreter> initializer = null,
-                bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
+            bool execute = true, Action<Interpreter> initializer = null,
+            bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
         {
             var statements = testCases.Positive;
-            for(var ndx = 0; ndx < testCases.Failures.Count; ndx++)
+            for (var ndx = 0; ndx < testCases.Failures.Count; ndx++)
             {
                 var scenario = testCases.Failures[ndx];
                 var i = new Interpreter();
@@ -125,6 +123,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
                     if (testType == TestType.Integration)
                         InitIntegrationTests(i, testCases);
                 }
+
                 Console.WriteLine(scenario.Item3);
                 i.Execute(scenario.Item3);
                 Assert.IsFalse(i.Result.Success);
@@ -151,7 +150,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
                 testCases.RequiredTypes.ForEach(type => i.Context.Types.Register(type, null));
 
             if (testCases.RequiredPlugins != null && testCases.RequiredPlugins.Length > 0)
-                testCases.RequiredPlugins.ForEach( pluginType => i.Context.Plugins.RegisterCustomByType(pluginType));            
+                testCases.RequiredPlugins.ForEach(pluginType => i.Context.Plugins.RegisterCustomByType(pluginType));
         }
 
 
@@ -166,7 +165,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         {
             if (testCases.RequiredTypes != null && testCases.RequiredTypes.Length > 0)
                 testCases.RequiredTypes.ForEach(type => i.Context.Types.Register(type, null));
-            
+
             i.Context.Plugins.RegisterAllCustom();
         }
 
@@ -179,8 +178,8 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         /// <param name="initializer"></param>
         /// <param name="replaceSemicolonsWithNewLines"></param>
         protected void Parse(Tuple<string, Type, object, string> statement,
-                bool execute = true, Action<Interpreter> initializer = null,
-                bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
+            bool execute = true, Action<Interpreter> initializer = null,
+            bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
         {
             var statements = new List<Tuple<string, Type, object, string>>();
             statements.Add(statement);
@@ -195,9 +194,9 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         /// <param name="execute"></param>
         /// <param name="initializer"></param>
         /// <param name="replaceSemicolonsWithNewLines"></param>
-        protected void Parse(List<Tuple<string, Type, object, string>> statements, 
-                bool execute = true, Action<Interpreter> initializer = null, 
-                bool replaceSemicolonsWithNewLines = false, Action onNewScript = null )
+        protected void Parse(List<Tuple<string, Type, object, string>> statements,
+            bool execute = true, Action<Interpreter> initializer = null,
+            bool replaceSemicolonsWithNewLines = false, Action onNewScript = null)
         {
             for (var ndx = 0; ndx < statements.Count; ndx++)
             {
@@ -205,7 +204,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
                 var i = new Interpreter();
                 if (initializer != null)
                     initializer(i);
-                
+
                 if (execute)
                 {
                     Console.WriteLine();
@@ -217,53 +216,53 @@ namespace HSNXT.ComLib.Lang.Tests.Common
                     if (stmt.Item1 != null)
                     {
                         var obj = i.Memory[stmt.Item1];
-                        Compare(obj, stmt.Item3); 
+                        Compare(obj, stmt.Item3);
                     }
+
                     if (replaceSemicolonsWithNewLines)
                     {
                         var newText = stmt.Item4.Replace(";", Environment.NewLine);
-                        if(onNewScript != null) 
+                        if (onNewScript != null)
                             onNewScript();
-                        
+
                         i.Execute(newText);
 
                         // For print statements no check for any result.
                         if (stmt.Item1 != null)
                         {
                             var obj = i.Memory[stmt.Item1];
-                            Compare(obj, stmt.Item3); 
+                            Compare(obj, stmt.Item3);
                         }
                     }
                 }
                 else
                 {
                     i.Parse(stmt.Item4);
-                }                
+                }
             }
         }
 
 
-        protected void CompareExpected(object expected, object actual )
+        protected void CompareExpected(object expected, object actual)
         {
             Compare(actual, expected);
         }
 
 
-
         protected void Compare(object actual, object expected)
         {
             Assert.IsTrue(actual is LObject);
-                
+
 
             if (actual is LObject && actual != LObjects.Null)
-                actual = ((LObject)actual).GetValue();
+                actual = ((LObject) actual).GetValue();
 
             if (actual is DateTime)
             {
-                var d1 = (DateTime)actual;
-                var d2 = (DateTime)expected;
-                if ( ( d1.Hour > 0 || d1.Minute > 0 || d1.Second > 0 || d1.Millisecond > 0 )
-                     && ( d2.Hour > 0 || d2.Minute > 0 || d2.Second > 0 || d2.Millisecond > 0 ))
+                var d1 = (DateTime) actual;
+                var d2 = (DateTime) expected;
+                if ((d1.Hour > 0 || d1.Minute > 0 || d1.Second > 0 || d1.Millisecond > 0)
+                    && (d2.Hour > 0 || d2.Minute > 0 || d2.Second > 0 || d2.Millisecond > 0))
                     Assert.AreEqual(d1, d2);
                 else
                     Assert.AreEqual(d1.Date, d2);
@@ -298,6 +297,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
                         result = exp.ParamList[Convert.ToInt32(exp.ParamList[0])];
                         return result;
                     }
+
                     result = 1;
                     return result;
                 });
@@ -329,6 +329,4 @@ namespace HSNXT.ComLib.Lang.Tests.Common
             }
         }
     }
-
-
 }

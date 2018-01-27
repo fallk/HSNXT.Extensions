@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.Runtime.Caching;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -31,8 +32,10 @@ namespace HSNXT.Z.Caching.Test
             var cache3_1 = cache.AddOrGetExisting("cache3", i => cache3.Increment(), new CacheItemPolicy());
             var cache3_2 = cache.AddOrGetExisting("cache3", i => cache3.Increment(), new CacheItemPolicy());
 
-            var cache4_1 = cache.AddOrGetExisting("cache4", i => cache4.Increment(), new DateTimeOffset(new DateTime(2100, 01, 01)));
-            var cache4_2 = cache.AddOrGetExisting("cache4", i => cache4.Increment(), new DateTimeOffset(new DateTime(2100, 01, 01)));
+            var cache4_1 = cache.AddOrGetExisting("cache4", i => cache4.Increment(),
+                new DateTimeOffset(new DateTime(2100, 01, 01)));
+            var cache4_2 = cache.AddOrGetExisting("cache4", i => cache4.Increment(),
+                new DateTimeOffset(new DateTime(2100, 01, 01)));
 
             Assert.AreEqual(1, cache1_1);
             Assert.AreEqual(1, cache1_2);

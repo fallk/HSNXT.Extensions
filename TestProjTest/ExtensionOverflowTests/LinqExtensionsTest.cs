@@ -4,8 +4,6 @@ using HSNXT;
 
 namespace ExtensionOverflowTests
 {
-    
-    
     /// <summary>
     ///This is a test class for LinqExtensionsTest and is intended
     ///to contain all LinqExtensionsTest Unit Tests

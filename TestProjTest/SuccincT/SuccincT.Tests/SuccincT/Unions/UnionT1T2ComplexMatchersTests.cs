@@ -11,9 +11,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>(2);
             var result = union.Match<int>()
-                              .Case1().Of(1).Do(x => 1)
-                              .Case1().Do(x => 2)
-                              .Case2().Do(x => 3).Result();
+                .Case1().Of(1).Do(x => 1)
+                .Case1().Do(x => 2)
+                .Case2().Do(x => 3).Result();
             AreEqual(2, result);
         }
 
@@ -23,8 +23,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string>(2);
             var result = 0;
             union.Match().Case1().Of(1).Do(x => result = 1)
-                 .Case1().Do(x => result = 2)
-                 .Case2().Do(x => result = 3).Exec();
+                .Case1().Do(x => result = 2)
+                .Case2().Do(x => result = 3).Exec();
             AreEqual(2, result);
         }
 
@@ -33,10 +33,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>("t");
             var result = union.Match<int>()
-                              .Case1().Of(1).Do(x => 1)
-                              .Case1().Do(x => 2)
-                              .Case2().Of("t").Do(x => 3)
-                              .Case2().Do(x => 4).Result();
+                .Case1().Of(1).Do(x => 1)
+                .Case1().Do(x => 2)
+                .Case2().Of("t").Do(x => 3)
+                .Case2().Do(x => 4).Result();
             AreEqual(3, result);
         }
 
@@ -46,9 +46,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string>("t");
             var result = 0;
             union.Match().Case1().Of(1).Do(x => result = 1)
-                 .Case1().Do(x => result = 2)
-                 .Case2().Of("t").Do(x => result = 3)
-                 .Case2().Do(x => result = 4).Exec();
+                .Case1().Do(x => result = 2)
+                .Case2().Of("t").Do(x => result = 3)
+                .Case2().Do(x => result = 4).Exec();
             AreEqual(3, result);
         }
 
@@ -57,9 +57,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>(2);
             var result = union.Match<int>()
-                              .Case1().Of(1).Or(2).Do(x => 1)
-                              .Case1().Do(x => 3)
-                              .Case2().Do(x => 4).Result();
+                .Case1().Of(1).Or(2).Do(x => 1)
+                .Case1().Do(x => 3)
+                .Case2().Do(x => 4).Result();
             AreEqual(1, result);
         }
 
@@ -69,8 +69,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string>(2);
             var result = 0;
             union.Match().Case1().Of(1).Or(2).Do(x => result = 1)
-                 .Case1().Do(x => result = 3)
-                 .Case2().Do(x => result = 4).Exec();
+                .Case1().Do(x => result = 3)
+                .Case2().Do(x => result = 4).Exec();
             AreEqual(1, result);
         }
 
@@ -79,9 +79,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>("x");
             var result = union.Match<int>()
-                              .Case2().Of("y").Or("x").Do(x => 1)
-                              .Case2().Do(x => 3)
-                              .Case1().Do(x => 4).Result();
+                .Case2().Of("y").Or("x").Do(x => 1)
+                .Case2().Do(x => 3)
+                .Case1().Do(x => 4).Result();
             AreEqual(1, result);
         }
 
@@ -91,8 +91,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string>("x");
             var result = 0;
             union.Match().Case2().Of("y").Or("x").Do(x => result = 1)
-                 .Case2().Do(x => result = 3)
-                 .Case1().Do(x => result = 4).Exec();
+                .Case2().Do(x => result = 3)
+                .Case1().Do(x => result = 4).Exec();
             AreEqual(1, result);
         }
 
@@ -101,10 +101,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>(2);
             var result = union.Match<int>()
-                              .Case1().Of(1).Or(0).Do(x => 1)
-                              .Case2().Do(x => 4)
-                              .Case1().Of(3).Or(2).Do(x => 2)
-                              .Case1().Do(x => 3).Result();
+                .Case1().Of(1).Or(0).Do(x => 1)
+                .Case2().Do(x => 4)
+                .Case1().Of(3).Or(2).Do(x => 2)
+                .Case1().Do(x => 3).Result();
             AreEqual(2, result);
         }
 
@@ -114,9 +114,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string>(2);
             var result = 0;
             union.Match().Case1().Of(1).Or(0).Do(x => result = 1)
-                 .Case2().Do(x => result = 4)
-                 .Case1().Of(3).Or(2).Do(x => result = 2)
-                 .Case1().Do(x => result = 3).Exec();
+                .Case2().Do(x => result = 4)
+                .Case1().Of(3).Or(2).Do(x => result = 2)
+                .Case1().Do(x => result = 3).Exec();
             AreEqual(2, result);
         }
 
@@ -125,10 +125,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>("c");
             var result = union.Match<int>()
-                              .Case2().Of("a").Or("b").Do(x => 1)
-                              .Case1().Do(x => 2)
-                              .Case2().Of("c").Or("d").Do(x => 3)
-                              .Case1().Do(x => 4).Result();
+                .Case2().Of("a").Or("b").Do(x => 1)
+                .Case1().Do(x => 2)
+                .Case2().Of("c").Or("d").Do(x => 3)
+                .Case1().Do(x => 4).Result();
             AreEqual(3, result);
         }
 
@@ -138,9 +138,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string>("c");
             var result = 0;
             union.Match().Case2().Of("a").Or("b").Do(x => result = 1)
-                 .Case1().Do(x => result = 2)
-                 .Case2().Of("c").Or("d").Do(x => result = 3)
-                 .Case1().Do(x => result = 4).Exec();
+                .Case1().Do(x => result = 2)
+                .Case2().Of("c").Or("d").Do(x => result = 3)
+                .Case1().Do(x => result = 4).Exec();
             AreEqual(3, result);
         }
     }

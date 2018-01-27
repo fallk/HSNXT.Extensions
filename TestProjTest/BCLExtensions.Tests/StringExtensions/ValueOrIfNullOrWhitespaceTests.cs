@@ -7,7 +7,7 @@ namespace BCLExtensions.Tests.StringExtensions
     {
         public abstract class WithInputStringBase
         {
-            protected abstract string input{ get; }
+            protected abstract string input { get; }
 
             [Fact]
             public void DefaultStringReturnsDefaultString()
@@ -67,6 +67,7 @@ namespace BCLExtensions.Tests.StringExtensions
                 var result = input.ValueOrIfNullOrWhitespace(string.Empty);
                 Assert.Equal(input, result);
             }
+
             [Fact]
             public void WithNonNullNonWhitespaceReplacementReturnsInputString()
             {

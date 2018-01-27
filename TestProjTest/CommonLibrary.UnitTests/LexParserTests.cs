@@ -5,11 +5,9 @@ using HSNXT.ComLib;
 
 namespace CommonLibrary.Tests
 {
-
     [TestFixture]
     public class LexArgsTests
     {
-
         [Test]
         public void CanParseArguments()
         {
@@ -43,15 +41,13 @@ namespace CommonLibrary.Tests
         public void CanParseArgumentsWithTabs()
         {
             var args = LexArgs.Parse(" 'squote'	's\"quote'	's\\'quote'");
-            
+
             Assert.IsTrue(args.ContainsKey("squote"));
             Assert.IsTrue(args.ContainsKey("s\"quote"));
             Assert.IsTrue(args.ContainsKey("s'quote"));
             Assert.AreEqual(args.Count, 3);
         }
-
     }
-
 
 
     [TestFixture]
@@ -85,7 +81,7 @@ namespace CommonLibrary.Tests
         public void CanParseMultiLineSingleQuotedListWithCommaSeparator()
         {
             var line = "'batman', 'lantern', 'superman' " + Environment.NewLine
-                        + "'cyclops', 'colossus', 'logon'";
+                                                          + "'cyclops', 'colossus', 'logon'";
             var items = LexList.ParseTable(line);
 
             Assert.IsTrue(items[0].Contains("batman"));

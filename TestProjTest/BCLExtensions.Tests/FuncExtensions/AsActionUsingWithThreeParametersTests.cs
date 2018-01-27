@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.FuncExtensions
@@ -25,12 +26,12 @@ namespace BCLExtensions.Tests.FuncExtensions
         public void InternalFunctionExecutes()
         {
             var internalFunctionWasCalled = false;
-            Func<int, string, bool, decimal> function = (p1,p2,p3) =>
+            Func<int, string, bool, decimal> function = (p1, p2, p3) =>
             {
                 internalFunctionWasCalled = true;
                 return 42m;
             };
-            var action = function.AsActionUsing(12,"24",true);
+            var action = function.AsActionUsing(12, "24", true);
             action();
 
             Assert.True(internalFunctionWasCalled);
@@ -45,7 +46,7 @@ namespace BCLExtensions.Tests.FuncExtensions
             var passedParameter1 = 0;
             string passedParameter2 = null;
             var passedParameter3 = false;
-            Func<int, string, bool, decimal> function = (p1,p2,p3) =>
+            Func<int, string, bool, decimal> function = (p1, p2, p3) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;

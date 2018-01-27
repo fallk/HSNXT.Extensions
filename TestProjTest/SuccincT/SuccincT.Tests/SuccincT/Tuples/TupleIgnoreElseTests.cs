@@ -36,7 +36,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         [Test]
         public void TupleOfTwoWithNoMatchAndIgnoreElse_DoesNothing()
         {
-            var tuple = new TestClassOf2 { A = 1, B = "a" };
+            var tuple = new TestClassOf2 {A = 1, B = "a"};
             var result = false;
             tuple.Match().With(1, "b").Do((x, y) => result = true).IgnoreElse().Exec();
             Assert.IsFalse(result);
@@ -45,7 +45,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         [Test]
         public void TupleOfThreeWithNoMatchAndIgnoreElse_DoesNothing()
         {
-            var tuple = new TestClassOf3 { A = 1, B = "a", C = 1.0 };
+            var tuple = new TestClassOf3 {A = 1, B = "a", C = 1.0};
             var result = false;
             tuple.Match().With(1, "b", 1.0).Do((x, y, z) => result = true).IgnoreElse().Exec();
             Assert.IsFalse(result);
@@ -54,7 +54,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         [Test]
         public void TupleOfFourWithNoMatchAndIgnoreElse_DoesNothing()
         {
-            var tuple = new TestClassOf4 { A = 1, B = "a", C = 1.0, D = false };
+            var tuple = new TestClassOf4 {A = 1, B = "a", C = 1.0, D = false};
             var result = false;
             tuple.Match().With(1, "a", 1.0, true).Do((w, x, y, z) => result = true).IgnoreElse().Exec();
             Assert.IsFalse(result);

@@ -6,8 +6,15 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
 {
     public sealed class UnionT1T2T3T4DirectValueTests
     {
-        private enum Plants { Rose }
-        private enum Foods { Cake }
+        private enum Plants
+        {
+            Rose
+        }
+
+        private enum Foods
+        {
+            Cake
+        }
 
         [Test]
         public void UnionWithT1_ValueMatchesCorrectly()

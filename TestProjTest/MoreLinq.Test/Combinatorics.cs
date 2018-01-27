@@ -1,4 +1,3 @@
-
 namespace HSNXT.Test
 {
     static class Combinatorics

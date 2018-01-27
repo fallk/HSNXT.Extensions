@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2016 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,7 +28,7 @@ namespace HSNXT.Test
         [Test]
         public void CountBySimpleTest()
         {
-            var result = new[] { 1, 2, 3, 4, 5, 6, 1, 2, 3, 1, 1, 2 }.CountBy(c => c);
+            var result = new[] {1, 2, 3, 4, 5, 6, 1, 2, 3, 1, 1, 2}.CountBy(c => c);
 
             result.AssertSequenceEqual(
                 KeyValuePair.Create(1, 4),
@@ -49,7 +51,7 @@ namespace HSNXT.Test
                 KeyValuePair.Create('e', 1),
                 KeyValuePair.Create('r', 1));
         }
-                
+
         [Test]
         public void CountByEvenOddTest()
         {
@@ -63,14 +65,14 @@ namespace HSNXT.Test
         [Test]
         public void CountByWithEqualityComparer()
         {
-            var result = new[] { "a", "B", "c", "A", "b", "A" }.CountBy(c => c, StringComparer.OrdinalIgnoreCase);
+            var result = new[] {"a", "B", "c", "A", "b", "A"}.CountBy(c => c, StringComparer.OrdinalIgnoreCase);
 
             result.AssertSequenceEqual(
                 KeyValuePair.Create("a", 3),
                 KeyValuePair.Create("B", 2),
                 KeyValuePair.Create("c", 1));
         }
-        
+
         [Test]
         public void CountByHasKeysOrderedLikeGroupBy()
         {
@@ -81,7 +83,7 @@ namespace HSNXT.Test
 
             countByKeys.AssertSequenceEqual(groupByKeys);
         }
-        
+
         [Test]
         public void CountByIsLazy()
         {

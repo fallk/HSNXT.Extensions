@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.Serialization;
-
 using Xunit.Sdk;
 
 namespace XunitShould.Sdk
@@ -27,8 +26,10 @@ namespace XunitShould.Sdk
         /// </param>
         /// <param name="messageHeader">exception message header</param>
         /// <remarks></remarks>
-        protected RangeException(object actual, object low, bool lowInclusive, object high, bool highInclusive, string messageHeader)
-            : base(messageHeader) {
+        protected RangeException(object actual, object low, bool lowInclusive, object high, bool highInclusive,
+            string messageHeader)
+            : base(messageHeader)
+        {
             _actual = actual == null ? null : actual.ToString();
             _low = low == null ? null : low.ToString();
             _lowInclusive = lowInclusive;
@@ -38,7 +39,8 @@ namespace XunitShould.Sdk
 
         /// <inheritdoc/>
         protected RangeException(SerializationInfo info, StreamingContext context)
-            : base(info, context) {
+            : base(info, context)
+        {
             _actual = info.GetString("Actual");
             _low = info.GetString("Low");
             _lowInclusive = info.GetBoolean("LowInclusive");
@@ -49,14 +51,16 @@ namespace XunitShould.Sdk
         /// <summary>
         ///     Gets the actual object value
         /// </summary>
-        public string Actual {
+        public string Actual
+        {
             get { return _actual; }
         }
 
         /// <summary>
         ///     Gets the high value of the range
         /// </summary>
-        public string High {
+        public string High
+        {
             get { return _high; }
         }
 
@@ -64,14 +68,16 @@ namespace XunitShould.Sdk
         ///     Gets a value indicating whether high is considered in the range.
         /// </summary>
         /// <remarks></remarks>
-        public bool HighInclusive {
+        public bool HighInclusive
+        {
             get { return _highInclusive; }
         }
 
         /// <summary>
         ///     Gets the low value of the range
         /// </summary>
-        public string Low {
+        public string Low
+        {
             get { return _low; }
         }
 
@@ -79,27 +85,32 @@ namespace XunitShould.Sdk
         ///     Gets a value indicating whether low is considered in the range.
         /// </summary>
         /// <remarks></remarks>
-        public bool LowInclusive {
+        public bool LowInclusive
+        {
             get { return _lowInclusive; }
         }
 
         /// <inheritdoc/>
-        public override string Message {
-            get {
+        public override string Message
+        {
+            get
+            {
                 return string.Format("{0}{6}Range:  {1}{2} - {3}{4}{6}Actual: {5}",
-                                     base.Message,
-                                     LowInclusive ? "[" : "(",
-                                     Low,
-                                     High,
-                                     HighInclusive ? "]" : ")",
-                                     Actual ?? "(null)",
-                                     Environment.NewLine);
+                    base.Message,
+                    LowInclusive ? "[" : "(",
+                    Low,
+                    High,
+                    HighInclusive ? "]" : ")",
+                    Actual ?? "(null)",
+                    Environment.NewLine);
             }
         }
 
         /// <inheritdoc/>
-        public override void GetObjectData(SerializationInfo info, StreamingContext context) {
-            if (info == null) {
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+            {
                 throw new ArgumentNullException("info");
             }
 

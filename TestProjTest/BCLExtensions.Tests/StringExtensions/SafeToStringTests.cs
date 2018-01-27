@@ -1,4 +1,5 @@
-﻿using Xunit; using HSNXT;
+﻿using Xunit;
+using HSNXT;
 
 namespace BCLExtensions.Tests.StringExtensions
 {

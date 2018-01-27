@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2015 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -24,7 +26,11 @@ namespace HSNXT.Test
     [TestFixture]
     public class LeftJoinTest
     {
-        public enum Side { Left, Both }
+        public enum Side
+        {
+            Left,
+            Both
+        }
 
         [Test]
         public void LeftJoinWithHomogeneousSequencesIsLazy()
@@ -79,60 +85,60 @@ namespace HSNXT.Test
         [Test]
         public void LeftJoinResults()
         {
-            var foo  = (1, "foo");
+            var foo = (1, "foo");
             var bar1 = (2, "bar");
             var bar2 = (2, "Bar");
             var bar3 = (2, "BAR");
-            var baz  = (3, "baz");
-            var qux  = (4, "qux");
+            var baz = (3, "baz");
+            var qux = (4, "qux");
 
-            var xs = new[] { foo, bar1, qux };
-            var ys = new[] { bar2, baz, bar3 };
+            var xs = new[] {foo, bar1, qux};
+            var ys = new[] {bar2, baz, bar3};
 
             var missing = default((int, string));
 
             var result =
                 xs.LeftJoin(ys,
-                            x => x.Item1,
-                            y => y.Item1,
-                            x => (Left, x, missing),
-                            (x, y) => (Both, x, y));
+                    x => x.Item1,
+                    y => y.Item1,
+                    x => (Left, x, missing),
+                    (x, y) => (Both, x, y));
 
             result.AssertSequenceEqual(
-                (Left, foo , missing),
-                (Both, bar1, bar2   ),
-                (Both, bar1, bar3   ),
-                (Left, qux , missing));
+                (Left, foo, missing),
+                (Both, bar1, bar2 ),
+                (Both, bar1, bar3 ),
+                (Left, qux, missing));
         }
 
         [Test]
         public void LeftJoinWithComparerResults()
         {
-            var foo  = ("one"  , "foo");
-            var bar1 = ("two"  , "bar");
-            var bar2 = ("Two"  , "bar");
-            var bar3 = ("TWO"  , "bar");
-            var baz  = ("three", "baz");
-            var qux  = ("four" , "qux");
+            var foo = ("one", "foo");
+            var bar1 = ("two", "bar");
+            var bar2 = ("Two", "bar");
+            var bar3 = ("TWO", "bar");
+            var baz = ("three", "baz");
+            var qux = ("four", "qux");
 
-            var xs = new[] { foo, bar1, qux };
-            var ys = new[] { bar2, baz, bar3 };
+            var xs = new[] {foo, bar1, qux};
+            var ys = new[] {bar2, baz, bar3};
 
             var missing = default((string, string));
 
             var result =
                 xs.LeftJoin(ys,
-                            x => x.Item1,
-                            y => y.Item1,
-                            x => (Left, x, missing),
-                            (x, y) => (Both, x, y),
-                            StringComparer.OrdinalIgnoreCase);
+                    x => x.Item1,
+                    y => y.Item1,
+                    x => (Left, x, missing),
+                    (x, y) => (Both, x, y),
+                    StringComparer.OrdinalIgnoreCase);
 
             result.AssertSequenceEqual(
-                (Left, foo , missing),
-                (Both, bar1, bar2   ),
-                (Both, bar1, bar3   ),
-                (Left, qux , missing));
+                (Left, foo, missing),
+                (Both, bar1, bar2 ),
+                (Both, bar1, bar3 ),
+                (Left, qux, missing));
         }
 
         [Test]
@@ -143,16 +149,16 @@ namespace HSNXT.Test
             var baz = (3, "baz");
 
             var xs = new (int, string)[0];
-            var ys = new[] { foo, bar, baz };
+            var ys = new[] {foo, bar, baz};
 
             var missing = default((int, string));
 
             var result =
                 xs.LeftJoin(ys,
-                            x => x.Item1,
-                            y => y.Item1,
-                            x => (Left, x, missing),
-                            (x, y) => (Both, x, y));
+                    x => x.Item1,
+                    y => y.Item1,
+                    x => (Left, x, missing),
+                    (x, y) => (Both, x, y));
 
             Assert.That(result, Is.Empty);
         }
@@ -164,17 +170,17 @@ namespace HSNXT.Test
             var bar = (2, "bar");
             var baz = (3, "baz");
 
-            var xs = new[] { foo, bar, baz };
+            var xs = new[] {foo, bar, baz};
             var ys = new (int, string)[0];
 
             var missing = default((int, string));
 
             var result =
                 xs.LeftJoin(ys,
-                            x => x.Item1,
-                            y => y.Item1,
-                            x => (Left, x, missing),
-                            (x, y) => (Both, x, y));
+                    x => x.Item1,
+                    y => y.Item1,
+                    x => (Left, x, missing),
+                    (x, y) => (Both, x, y));
 
             result.AssertSequenceEqual(
                 (Left, foo, missing),
@@ -183,4 +189,3 @@ namespace HSNXT.Test
         }
     }
 }
-

@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 #pragma warning disable 612 // 'ToDelimitedString' is obsolete
@@ -35,7 +37,7 @@ namespace HSNXT.Test
         [Test]
         public void ToDelimitedStringWithNonEmptySequenceAndDelimiter()
         {
-            var result = new[] { 1, 2, 3 }.ToDelimitedString("-");
+            var result = new[] {1, 2, 3}.ToDelimitedString("-");
             Assert.That(result, Is.EqualTo("1-2-3"));
         }
 
@@ -44,7 +46,7 @@ namespace HSNXT.Test
         {
             using (new CurrentThreadCultureScope(new CultureInfo("fr-FR")))
             {
-                var xs = new[] { 1, 2, 3 };
+                var xs = new[] {1, 2, 3};
                 var result = xs.ToDelimitedString();
                 var separator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
                 Assert.That(result, Is.EqualTo(string.Join(separator, xs)));
@@ -56,7 +58,7 @@ namespace HSNXT.Test
         {
             using (new CurrentThreadCultureScope(new CultureInfo("fr-FR")))
             {
-                var xs = new[] { 1, 2, 3 };
+                var xs = new[] {1, 2, 3};
                 var result = xs.ToDelimitedString(null);
                 var separator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
                 Assert.That(result, Is.EqualTo(string.Join(separator, xs)));
@@ -66,7 +68,7 @@ namespace HSNXT.Test
         [Test]
         public void ToDelimitedStringWithNonEmptySequenceContainingNulls()
         {
-            var result = new object[] { 1, null, "foo", true }.ToDelimitedString(",");
+            var result = new object[] {1, null, "foo", true}.ToDelimitedString(",");
             Assert.That(result, Is.EqualTo("1,,foo,True"));
         }
 
@@ -74,7 +76,7 @@ namespace HSNXT.Test
         public void ToDelimitedStringWithNonEmptySequenceContainingNullsAtStart()
         {
             // See: https://github.com/morelinq/MoreLINQ/issues/43
-            var result = new object[] { null, null, "foo" }.ToDelimitedString(",");
+            var result = new object[] {null, null, "foo"}.ToDelimitedString(",");
             Assert.That(result, Is.EqualTo(",,foo"));
         }
     }

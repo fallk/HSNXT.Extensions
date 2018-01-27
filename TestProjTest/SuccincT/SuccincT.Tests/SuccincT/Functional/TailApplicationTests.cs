@@ -39,7 +39,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void FiveParamFunctionIsTailComposable()
         {
-            var testFunction = TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
+            var testFunction =
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
             var expected = testFunction(1, 2, 3, 4, 5);
             var composedFunction = testFunction.TailApply(5);
             var actual = composedFunction(1, 2, 3, 4);
@@ -50,7 +51,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SixParamFunctionIsTailComposable()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) => (p1 + p2) * (p3 + p4) * (p5 + p6));
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6));
             var expected = testFunction(1, 2, 3, 4, 5, 6);
             var composedFunction = testFunction.TailApply(6);
             var actual = composedFunction(1, 2, 3, 4, 5);
@@ -61,7 +63,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SevenParamFunctionIsTailComposable()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6, int p7) => (p1 + p2)*(p3 + p4)*(p5 + p6)*p7);
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6, int p7) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6) * p7);
             var expected = testFunction(1, 2, 3, 4, 5, 6, 7);
             var composedFunction = testFunction.TailApply(7);
             var actual = composedFunction(1, 2, 3, 4, 5, 6);
@@ -73,7 +76,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         {
             var testFunction =
                 TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8) =>
-                           (p1 + p2)*(p3 + p4)*(p5 + p6)*(p7 + p8));
+                    (p1 + p2) * (p3 + p4) * (p5 + p6) * (p7 + p8));
             var expected = testFunction(1, 2, 3, 4, 5, 6, 7, 8);
             var composedFunction = testFunction.TailApply(8);
             var actual = composedFunction(1, 2, 3, 4, 5, 6, 7);
@@ -85,7 +88,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         {
             var testFunction =
                 TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, int p9) =>
-                           (p1 + p2)*(p3 + p4)*(p5 + p6)*(p7 + p8)*p9);
+                    (p1 + p2) * (p3 + p4) * (p5 + p6) * (p7 + p8) * p9);
             var expected = testFunction(1, 2, 3, 4, 5, 6, 7, 8, 9);
             var composedFunction = testFunction.TailApply(9);
             var actual = composedFunction(1, 2, 3, 4, 5, 6, 7, 8);
@@ -97,7 +100,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         {
             var testFunction =
                 TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, int p9, int p10) =>
-                           (p1 + p2)*(p3 + p4)*(p5 + p6)*(p7 + p8)*(p9 + p10));
+                    (p1 + p2) * (p3 + p4) * (p5 + p6) * (p7 + p8) * (p9 + p10));
             var expected = testFunction(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
             var composedFunction = testFunction.TailApply(10);
             var actual = composedFunction(1, 2, 3, 4, 5, 6, 7, 8, 9);

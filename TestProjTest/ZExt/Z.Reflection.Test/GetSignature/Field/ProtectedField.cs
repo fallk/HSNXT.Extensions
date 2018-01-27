@@ -17,7 +17,8 @@ namespace HSNXT.Z.Reflection.Test
         public void GetSignature()
         {
             // Type
-            var @this = typeof(FieldModel<int>).GetField("ProtectedField", BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var @this = typeof(FieldModel<int>).GetField("ProtectedField",
+                BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
             // Exemples
             var result = @this.GetSignature();

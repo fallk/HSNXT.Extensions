@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Xunit;
 using Xunit.Sdk;
-
 using XunitShould.Sdk;
 
 namespace XunitShould
@@ -18,7 +16,8 @@ namespace XunitShould
         /// <param name="actual">The value to be compared against</param>
         /// <param name="expected">The expected value</param>
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
-        public static void ShouldEqual<T>(this T actual, T expected) {
+        public static void ShouldEqual<T>(this T actual, T expected)
+        {
             Assert.Equal(expected, actual);
         }
 
@@ -30,36 +29,49 @@ namespace XunitShould
         /// <param name="expected">The expected value</param>
         /// <param name="comparer">The comparer used to compare the two objects</param>
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
-        public static void ShouldEqual<T>(this T actual, T expected, IEqualityComparer<T> comparer) {
+        public static void ShouldEqual<T>(this T actual, T expected, IEqualityComparer<T> comparer)
+        {
             Assert.Equal(expected, actual, comparer);
         }
 
-        public static void ShouldEqual<T>(this IEnumerable<T> actual, params T[] expected) {
+        public static void ShouldEqual<T>(this IEnumerable<T> actual, params T[] expected)
+        {
             ShouldEqual(actual, expected, Comparer<T>.Default);
         }
 
-        public static void ShouldEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected) {
+        public static void ShouldEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected)
+        {
             ShouldEqual(actual, expected, Comparer<T>.Default);
         }
 
-        public static void ShouldEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected, IComparer<T> comparer) {
+        public static void ShouldEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected, IComparer<T> comparer)
+        {
             var actualList = actual.ToList();
             var expectedList = expected.ToList();
 
             var index = 0;
             var lastBoth = Math.Min(actualList.Count, expectedList.Count);
-            for (; index < lastBoth; index++) {
+            for (; index < lastBoth; index++)
+            {
                 var actualItem = actualList[index];
                 var expectedItem = expectedList[index];
-                if (comparer.Compare(actualItem, expectedItem) != 0) {
-                    throw new EnumerableEqualException(expectedItem, actualItem, index, expectedList.Count, actualList.Count);
+                if (comparer.Compare(actualItem, expectedItem) != 0)
+                {
+                    throw new EnumerableEqualException(expectedItem, actualItem, index, expectedList.Count,
+                        actualList.Count);
                 }
             }
-            if (index != expectedList.Count) {
-                throw new EnumerableEqualException(expectedList[index], null, index, expectedList.Count, actualList.Count);
+
+            if (index != expectedList.Count)
+            {
+                throw new EnumerableEqualException(expectedList[index], null, index, expectedList.Count,
+                    actualList.Count);
             }
-            if (index != actualList.Count) {
-                throw new EnumerableEqualException(null, actualList[index], index, expectedList.Count, actualList.Count);
+
+            if (index != actualList.Count)
+            {
+                throw new EnumerableEqualException(null, actualList[index], index, expectedList.Count,
+                    actualList.Count);
             }
         }
 
@@ -71,16 +83,19 @@ namespace XunitShould
         /// <param name="comparisonType">Type of the comparison.</param>
         /// <remarks></remarks>
         public static void ShouldEqual(this string actual,
-                                       string expected,
-                                       StringComparison comparisonType = StringComparison.CurrentCulture) {
+            string expected,
+            StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
             Assert.Equal(expected, actual, comparisonType.GetComparer());
         }
 
-        public static void ShouldEqualWithinPrecision(this double actual, double expected, int precision) {
+        public static void ShouldEqualWithinPrecision(this double actual, double expected, int precision)
+        {
             Assert.Equal(expected, actual, precision);
         }
 
-        public static void ShouldEqualWithinPrecision(this decimal actual, decimal expected, int precision) {
+        public static void ShouldEqualWithinPrecision(this decimal actual, decimal expected, int precision)
+        {
             Assert.Equal(expected, actual, precision);
         }
 
@@ -91,7 +106,8 @@ namespace XunitShould
         /// <param name="actual">The actual object</param>
         /// <param name="expected">The expected object</param>
         /// <exception cref="NotEqualException">Thrown when the objects are equal</exception>
-        public static void ShouldNotEqual<T>(this T actual, T expected) {
+        public static void ShouldNotEqual<T>(this T actual, T expected)
+        {
             Assert.NotEqual(expected, actual);
         }
 
@@ -103,7 +119,8 @@ namespace XunitShould
         /// <param name="expected">The expected object</param>
         /// <param name="comparer">The comparer used to examine the objects</param>
         /// <exception cref="NotEqualException">Thrown when the objects are equal</exception>
-        public static void ShouldNotEqual<T>(this T actual, T expected, IEqualityComparer<T> comparer) {
+        public static void ShouldNotEqual<T>(this T actual, T expected, IEqualityComparer<T> comparer)
+        {
             Assert.NotEqual(expected, actual, comparer);
         }
     }

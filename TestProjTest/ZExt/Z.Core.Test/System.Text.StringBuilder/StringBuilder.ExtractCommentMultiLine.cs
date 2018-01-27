@@ -22,7 +22,8 @@ namespace HSNXT.Z.Core.Test
             Assert.AreEqual(null, new StringBuilder(" ").ExtractCommentMultiLine());
             Assert.AreEqual("/*z", new StringBuilder("/*z").ExtractCommentMultiLine().ToString());
             Assert.AreEqual("/*z", new StringBuilder("/*/*z").ExtractCommentMultiLine(2).ToString());
-            Assert.AreEqual("/*z*/", new StringBuilder("/**//*z*/").ExtractCommentMultiLine(4, out endIndex).ToString());
+            Assert.AreEqual("/*z*/",
+                new StringBuilder("/**//*z*/").ExtractCommentMultiLine(4, out endIndex).ToString());
             Assert.AreEqual(8, endIndex);
         }
     }

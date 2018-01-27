@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2017 Felipe Sateler. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -49,7 +51,11 @@ namespace HSNXT.Test
             var evals = 0;
             var factories = new Func<int>[]
             {
-                () => { evals++; return -2; },
+                () =>
+                {
+                    evals++;
+                    return -2;
+                },
             };
             var results = factories.Evaluate();
 

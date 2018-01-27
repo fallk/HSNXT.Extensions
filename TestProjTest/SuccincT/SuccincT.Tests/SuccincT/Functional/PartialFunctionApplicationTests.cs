@@ -74,7 +74,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void FiveParamFunctionIsComposableWithOneParam()
         {
-            var testFunction = TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
+            var testFunction =
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
             var expected = testFunction(1, 2, 3, 4, 5);
             var partiallyComposedFunction1 = testFunction.Apply(1);
             var partiallyComposedFunction2 = partiallyComposedFunction1.Apply(2);
@@ -87,7 +88,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void FiveParamFunctionIsComposableWithTwoParams()
         {
-            var testFunction = TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
+            var testFunction =
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
             var expected = testFunction(1, 2, 3, 4, 5);
             var partiallyComposedFunction1 = testFunction.Apply(1, 2);
             var partiallyComposedFunction2 = partiallyComposedFunction1.Apply(3);
@@ -99,7 +101,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void FiveParamFunctionIsComposableWithThreeParams()
         {
-            var testFunction = TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
+            var testFunction =
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
             var expected = testFunction(1, 2, 3, 4, 5);
             var partiallyComposedFunction = testFunction.Apply(1, 2, 3);
             var completelyComposedFunction = partiallyComposedFunction.Apply(4);
@@ -110,7 +113,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void FiveParamFunctionIsComposableWithFourParams()
         {
-            var testFunction = TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
+            var testFunction =
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5) => (p1 + p2) * (p3 + p4) + p5);
             var expected = testFunction(1, 2, 3, 4, 5);
             var completelyComposedFunction = testFunction.Apply(1, 2, 3, 4);
             var actual = completelyComposedFunction(5);
@@ -131,7 +135,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SixParamFunctionIsComposableWithOneParam()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) => (p1 + p2) * (p3 + p4) * (p5 + p6));
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6));
             var expected = testFunction(1, 2, 3, 4, 5, 6);
             var partiallyComposedFunction1 = testFunction.Apply(1);
             var partiallyComposedFunction2 = partiallyComposedFunction1.Apply(2);
@@ -146,7 +151,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SixParamFunctionIsComposableWithTwoParams()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) => (p1 + p2) * (p3 + p4) * (p5 + p6));
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6));
             var expected = testFunction(1, 2, 3, 4, 5, 6);
             var partiallyComposedFunction1 = testFunction.Apply(1, 2);
             var partiallyComposedFunction2 = partiallyComposedFunction1.Apply(3);
@@ -160,7 +166,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SixParamFunctionIsComposableWithThreeParams()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) => (p1 + p2) * (p3 + p4) * (p5 + p6));
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6));
             var expected = testFunction(1, 2, 3, 4, 5, 6);
             var partiallyComposedFunction1 = testFunction.Apply(1, 2, 3);
             var partiallyComposedFunction2 = partiallyComposedFunction1.Apply(4);
@@ -173,7 +180,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SixParamFunctionIsComposableWithFourParams()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) => (p1 + p2) * (p3 + p4) * (p5 + p6));
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6));
             var expected = testFunction(1, 2, 3, 4, 5, 6);
             var partiallyComposedFunction = testFunction.Apply(1, 2, 3, 4);
             var completelyComposedFunction = partiallyComposedFunction.Apply(5);
@@ -185,7 +193,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SixParamFunctionIsComposableWithFiveParams()
         {
             var testFunction =
-                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) => (p1 + p2) * (p3 + p4) * (p5 + p6));
+                TypedLambdas.Lambda((int p1, int p2, int p3, int p4, int p5, int p6) =>
+                    (p1 + p2) * (p3 + p4) * (p5 + p6));
             var expected = testFunction(1, 2, 3, 4, 5, 6);
             var completelyComposedFunction = testFunction.Apply(1, 2, 3, 4, 5);
             var actual = completelyComposedFunction(6);

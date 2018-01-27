@@ -119,7 +119,7 @@ namespace HSNXT.Test
         public void TestIncrementalVisitsEveryAdjacentPair()
         {
             var sequence = Enumerable.Range(1, 10);
-            var result = sequence.Incremental((a, b) => new { A = a, B = b });
+            var result = sequence.Incremental((a, b) => new {A = a, B = b});
             Assert.IsTrue(result.All(x => x.B == (x.A + 1)));
             Assert.IsTrue(result.Select(x => x.B).SequenceEqual(Enumerable.Range(2, 9)));
         }

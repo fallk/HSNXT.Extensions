@@ -26,7 +26,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(7));
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(9));
 
-                AreEqual(ExpectedBuilder(new[] { "1", "3", "5", "7", "9" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"1", "3", "5", "7", "9"}), sw.ToString());
             }
         }
 
@@ -41,7 +41,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(4));
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(6));
 
-                AreEqual(ExpectedBuilder(new[] { "2 isn't odd", "4 isn't odd", "6 isn't odd" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"2 isn't odd", "4 isn't odd", "6 isn't odd"}), sw.ToString());
             }
         }
 
@@ -52,8 +52,8 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(0));
-                AreEqual(ExpectedBuilder(new[] { "0 isn't positive or negative" }),
-                                sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"0 isn't positive or negative"}),
+                    sw.ToString());
             }
         }
 
@@ -64,7 +64,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(10));
-                AreEqual(ExpectedBuilder(new[] { "10 isn't 1 digit" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"10 isn't 1 digit"}), sw.ToString());
             }
         }
 
@@ -75,7 +75,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(-20));
-                AreEqual(ExpectedBuilder(new[] { "-20 isn't positive" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"-20 isn't positive"}), sw.ToString());
             }
         }
 
@@ -86,7 +86,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(true));
-                AreEqual(ExpectedBuilder(new[] { "Found true" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"Found true"}), sw.ToString());
             }
         }
 
@@ -97,7 +97,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 UnionMatcherExamples.SinglePositiveOddDigitAndTruePrinter(new Union<int, bool>(false));
-                AreEqual(ExpectedBuilder(new[] { "False isn't true or single odd digit." }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"False isn't true or single odd digit."}), sw.ToString());
             }
         }
 

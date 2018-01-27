@@ -6,16 +6,26 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
 {
     public sealed class UnionT1T2T3T4BasicMatchElseTests
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
-        private enum Animals { Dog, Cow, Sheep }
+        private enum Animals
+        {
+            Dog,
+            Cow,
+            Sheep
+        }
 
         [Test]
         public void UnionWithT1_UsesElseIfNoCase1Match()
         {
             var union = new Union<int, string, Colors, Animals>(5);
             var result = union.Match<bool>()
-                              .Case2().Do(x => false).Case3().Do(false).Case4().Do(false).Else(x => true).Result();
+                .Case2().Do(x => false).Case3().Do(false).Case4().Do(false).Else(x => true).Result();
             IsTrue(result);
         }
 
@@ -24,7 +34,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>("fred");
             var result = union.Match<bool>()
-                              .Case1().Do(x => false).Case3().Do(x => false).Case4().Do(false).Else(x => true).Result();
+                .Case1().Do(x => false).Case3().Do(x => false).Case4().Do(false).Else(x => true).Result();
             IsTrue(result);
         }
 
@@ -33,7 +43,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>(Colors.Green);
             var result = union.Match<bool>()
-                              .Case1().Do(x => false).Case2().Do(x => false).Case4().Do(false).Else(x => true).Result();
+                .Case1().Do(x => false).Case2().Do(x => false).Case4().Do(false).Else(x => true).Result();
             IsTrue(result);
         }
 
@@ -42,7 +52,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>(Animals.Dog);
             var result = union.Match<bool>()
-                              .Case1().Do(x => false).Case2().Do(x => false).Case3().Do(false).Else(x => true).Result();
+                .Case1().Do(x => false).Case2().Do(x => false).Case3().Do(false).Else(x => true).Result();
             IsTrue(result);
         }
 
@@ -51,7 +61,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>(5);
             var result = union.Match<bool>()
-                              .Case2().Do(x => false).Case3().Do(x => false).Case4().Do(false).Else(true).Result();
+                .Case2().Do(x => false).Case3().Do(x => false).Case4().Do(false).Else(true).Result();
             IsTrue(result);
         }
 
@@ -60,7 +70,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>("fred");
             var result = union.Match<bool>()
-                              .Case1().Do(x => false).Case3().Do(x => false).Case4().Do(false).Else(true).Result();
+                .Case1().Do(x => false).Case3().Do(x => false).Case4().Do(false).Else(true).Result();
             IsTrue(result);
         }
 
@@ -69,7 +79,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>(Colors.Red);
             var result = union.Match<bool>()
-                              .Case1().Do(x => false).Case2().Do(x => false).Case4().Do(false).Else(true).Result();
+                .Case1().Do(x => false).Case2().Do(x => false).Case4().Do(false).Else(true).Result();
             IsTrue(result);
         }
 
@@ -78,7 +88,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors, Animals>(Animals.Cow);
             var result = union.Match<bool>()
-                              .Case1().Do(x => false).Case2().Do(x => false).Case3().Do(false).Else(true).Result();
+                .Case1().Do(x => false).Case2().Do(x => false).Case3().Do(false).Else(true).Result();
             IsTrue(result);
         }
 

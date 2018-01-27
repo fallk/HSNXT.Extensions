@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,7 +28,7 @@ namespace HSNXT.Test
         [Test]
         public void DistinctBy()
         {
-            string[] source = { "first", "second", "third", "fourth", "fifth" };
+            string[] source = {"first", "second", "third", "fourth", "fifth"};
             var distinct = source.DistinctBy(word => word.Length);
             distinct.AssertSequenceEqual("first", "second");
         }
@@ -40,7 +42,7 @@ namespace HSNXT.Test
         [Test]
         public void DistinctByWithComparer()
         {
-            string[] source = { "first", "FIRST", "second", "second", "third" };
+            string[] source = {"first", "FIRST", "second", "second", "third"};
             var distinct = source.DistinctBy(word => word, StringComparer.OrdinalIgnoreCase);
             distinct.AssertSequenceEqual("first", "second", "third");
         }
@@ -48,7 +50,7 @@ namespace HSNXT.Test
         [Test]
         public void DistinctByNullComparer()
         {
-            string[] source = { "first", "second", "third", "fourth", "fifth" };
+            string[] source = {"first", "second", "third", "fourth", "fifth"};
             var distinct = source.DistinctBy(word => word.Length, null);
             distinct.AssertSequenceEqual("first", "second");
         }

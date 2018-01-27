@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.FuncExtensions
 {
-
     public class AsActionUsingWithFourParametersTests
     {
         [Fact]
@@ -26,12 +26,12 @@ namespace BCLExtensions.Tests.FuncExtensions
         public void InternalFunctionExecutes()
         {
             var internalFunctionWasCalled = false;
-            Func<int, string, bool, decimal, decimal> function = (p1,p2,p3,p4) =>
+            Func<int, string, bool, decimal, decimal> function = (p1, p2, p3, p4) =>
             {
                 internalFunctionWasCalled = true;
                 return 42m;
             };
-            var action = function.AsActionUsing(12,"24",true, 3.14m);
+            var action = function.AsActionUsing(12, "24", true, 3.14m);
             action();
 
             Assert.True(internalFunctionWasCalled);
@@ -49,7 +49,7 @@ namespace BCLExtensions.Tests.FuncExtensions
             string passedParameter2 = null;
             var passedParameter3 = false;
             var passedParameter4 = 0.0m;
-            Func<int, string, bool, decimal, decimal> function = (p1,p2,p3,p4) =>
+            Func<int, string, bool, decimal, decimal> function = (p1, p2, p3, p4) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;
@@ -58,7 +58,8 @@ namespace BCLExtensions.Tests.FuncExtensions
                 return 42;
             };
 
-            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4);
+            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4);
             action();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -71,6 +72,5 @@ namespace BCLExtensions.Tests.FuncExtensions
         {
             return 42m;
         }
-
     }
 }

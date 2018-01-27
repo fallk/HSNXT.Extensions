@@ -12,10 +12,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(t => t.F2())
-                             .CaseOf<Test2>().Do(t => t.F2())
-                             .CaseOf<Test1>().Do(t => t.F1())
-                             .Result();
+                .CaseOf<Test3>().Do(t => t.F2())
+                .CaseOf<Test2>().Do(t => t.F2())
+                .CaseOf<Test1>().Do(t => t.F1())
+                .Result();
 
             Assert.AreEqual(1, result);
         }
@@ -25,10 +25,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(3)
-                             .CaseOf<Test2>().Do(2)
-                             .CaseOf<Test1>().Do(1)
-                             .Result();
+                .CaseOf<Test3>().Do(3)
+                .CaseOf<Test2>().Do(2)
+                .CaseOf<Test1>().Do(1)
+                .Result();
 
             Assert.AreEqual(1, result);
         }
@@ -38,10 +38,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test2();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(t => t.F2())
-                             .CaseOf<Test2>().Do(t => t.F2())
-                             .CaseOf<Test1>().Do(t => t.F1())
-                             .Result();
+                .CaseOf<Test3>().Do(t => t.F2())
+                .CaseOf<Test2>().Do(t => t.F2())
+                .CaseOf<Test1>().Do(t => t.F1())
+                .Result();
 
             Assert.AreEqual(2, result);
         }
@@ -51,10 +51,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test2();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(3)
-                             .CaseOf<Test2>().Do(2)
-                             .CaseOf<Test1>().Do(1)
-                             .Result();
+                .CaseOf<Test3>().Do(3)
+                .CaseOf<Test2>().Do(2)
+                .CaseOf<Test1>().Do(1)
+                .Result();
 
             Assert.AreEqual(2, result);
         }
@@ -64,10 +64,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test3();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(t => t.F2())
-                             .CaseOf<Test2>().Do(t => t.F2())
-                             .CaseOf<Test1>().Do(t => t.F1())
-                             .Result();
+                .CaseOf<Test3>().Do(t => t.F2())
+                .CaseOf<Test2>().Do(t => t.F2())
+                .CaseOf<Test1>().Do(t => t.F1())
+                .Result();
 
             Assert.AreEqual(3, result);
         }
@@ -77,10 +77,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test3();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(3)
-                             .CaseOf<Test2>().Do(2)
-                             .CaseOf<Test1>().Do(1)
-                             .Result();
+                .CaseOf<Test3>().Do(3)
+                .CaseOf<Test2>().Do(2)
+                .CaseOf<Test1>().Do(1)
+                .Result();
 
             Assert.AreEqual(3, result);
         }
@@ -90,10 +90,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<string>()
-                             .CaseOf<Test3>().Do(t => t.F2().ToString())
-                             .CaseOf<Test2>().Do(t => t.F2().ToString())
-                             .CaseOf<Test1>().Do(t => t.F1().ToString())
-                             .Result();
+                .CaseOf<Test3>().Do(t => t.F2().ToString())
+                .CaseOf<Test2>().Do(t => t.F2().ToString())
+                .CaseOf<Test1>().Do(t => t.F1().ToString())
+                .Result();
 
             Assert.AreEqual("1", result);
         }
@@ -103,10 +103,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(t => t.F2())
-                             .CaseOf<Test2>().Do(t => t.F2())
-                             .Else(0)
-                             .Result();
+                .CaseOf<Test3>().Do(t => t.F2())
+                .CaseOf<Test2>().Do(t => t.F2())
+                .Else(0)
+                .Result();
 
             Assert.AreEqual(0, result);
         }
@@ -116,10 +116,10 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Do(t => t.F2())
-                             .CaseOf<Test2>().Do(t => t.F2())
-                             .Else(t => 0)
-                             .Result();
+                .CaseOf<Test3>().Do(t => t.F2())
+                .CaseOf<Test2>().Do(t => t.F2())
+                .Else(t => 0)
+                .Result();
 
             Assert.AreEqual(0, result);
         }
@@ -129,9 +129,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             Assert.Catch<NoMatchException>(() => test.TypeMatch().To<int>()
-                                                     .CaseOf<Test3>().Do(t => t.F2())
-                                                     .CaseOf<Test2>().Do(t => t.F2())
-                                                     .Result());
+                .CaseOf<Test3>().Do(t => t.F2())
+                .CaseOf<Test2>().Do(t => t.F2())
+                .Result());
         }
 
         [Test]
@@ -139,9 +139,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test1>().Where(t => t.F1() == 2).Do(t => 2)
-                             .CaseOf<Test1>().Where(t => t.F1() == 1).Do(t => 1)
-                             .Result();
+                .CaseOf<Test1>().Where(t => t.F1() == 2).Do(t => 2)
+                .CaseOf<Test1>().Where(t => t.F1() == 1).Do(t => 1)
+                .Result();
 
             Assert.AreEqual(1, result);
         }
@@ -151,9 +151,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test1>().Where(t => t.F1() == 2).Do(2)
-                             .CaseOf<Test1>().Where(t => t.F1() == 1).Do(1)
-                             .Result();
+                .CaseOf<Test1>().Where(t => t.F1() == 2).Do(2)
+                .CaseOf<Test1>().Where(t => t.F1() == 1).Do(1)
+                .Result();
 
             Assert.AreEqual(1, result);
         }
@@ -163,9 +163,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test2();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test2>().Where(t => t.F2() == 2).Do(t => 2)
-                             .CaseOf<Test2>().Where(t => t.F2() == 1).Do(t => 1)
-                             .Result();
+                .CaseOf<Test2>().Where(t => t.F2() == 2).Do(t => 2)
+                .CaseOf<Test2>().Where(t => t.F2() == 1).Do(t => 1)
+                .Result();
 
             Assert.AreEqual(2, result);
         }
@@ -175,9 +175,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test2();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test2>().Where(t => t.F2() == 2).Do(2)
-                             .CaseOf<Test2>().Where(t => t.F2() == 1).Do(1)
-                             .Result();
+                .CaseOf<Test2>().Where(t => t.F2() == 2).Do(2)
+                .CaseOf<Test2>().Where(t => t.F2() == 1).Do(1)
+                .Result();
 
             Assert.AreEqual(2, result);
         }
@@ -187,9 +187,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test3();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Where(t => t.F2() == 2).Do(t => 2)
-                             .CaseOf<Test3>().Where(t => t.F2() == 3).Do(t => 3)
-                             .Result();
+                .CaseOf<Test3>().Where(t => t.F2() == 2).Do(t => 2)
+                .CaseOf<Test3>().Where(t => t.F2() == 3).Do(t => 3)
+                .Result();
 
             Assert.AreEqual(3, result);
         }
@@ -199,9 +199,9 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test3();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test3>().Where(t => t.F2() == 2).Do(2)
-                             .CaseOf<Test3>().Where(t => t.F2() == 3).Do(3)
-                             .Result();
+                .CaseOf<Test3>().Where(t => t.F2() == 2).Do(2)
+                .CaseOf<Test3>().Where(t => t.F2() == 3).Do(3)
+                .Result();
 
             Assert.AreEqual(3, result);
         }
@@ -211,8 +211,8 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             Assert.Catch<NoMatchException>(() => test.TypeMatch().To<int>()
-                                                     .CaseOf<Test1>().Where(_ => false).Do(t => t.F1())
-                                                     .Result());
+                .CaseOf<Test1>().Where(_ => false).Do(t => t.F1())
+                .Result());
         }
 
         [Test]
@@ -220,14 +220,16 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             ITest test = new Test1();
             var result = test.TypeMatch().To<int>()
-                             .CaseOf<Test1>().Where(_ => false).Do(t => 1)
-                             .Else(t => 0)
-                             .Result();
+                .CaseOf<Test1>().Where(_ => false).Do(t => 1)
+                .Else(t => 0)
+                .Result();
 
             Assert.AreEqual(0, result);
         }
 
-        private interface ITest {}
+        private interface ITest
+        {
+        }
 
         private class Test1 : ITest
         {

@@ -3,7 +3,8 @@
 // Forum: https://github.com/zzzprojects/Z.ExtensionMethods/issues
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+// Copyright Â© ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -29,7 +30,8 @@ namespace HSNXT.Z.Core.Test
             Assert.AreEqual(null, new StringBuilder(" ").ExtractComment());
             Assert.AreEqual("//z", new StringBuilder("//z").ExtractComment().ToString());
             Assert.AreEqual("//z", new StringBuilder("////z").ExtractComment(2).ToString());
-            Assert.AreEqual("//z", new StringBuilder("////z" + Environment.NewLine + "z").ExtractComment(2, out endIndex).ToString());
+            Assert.AreEqual("//z",
+                new StringBuilder("////z" + Environment.NewLine + "z").ExtractComment(2, out endIndex).ToString());
             Assert.AreEqual(5, endIndex);
         }
     }

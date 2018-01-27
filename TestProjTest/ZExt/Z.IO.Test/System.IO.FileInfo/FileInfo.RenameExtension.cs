@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,12 +18,15 @@ namespace HSNXT.Z.IO.Test
         public void Rename()
         {
             // Type
-            var workingDirectory = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "System_IO_FileInfo_Rename"));
+            var workingDirectory =
+                new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "System_IO_FileInfo_Rename"));
             workingDirectory.EnsureDirectoryExists();
             workingDirectory.Clear();
 
-            var @this = new FileInfo(Path.Combine(workingDirectory.FullName, "Examples_System_IO_FileInfo_RenameExtension.txt"));
-            var @thisNewFile = new FileInfo(Path.Combine(workingDirectory.FullName, "Examples_System_IO_FileInfo_RenameExtension.cs"));
+            var @this = new FileInfo(Path.Combine(workingDirectory.FullName,
+                "Examples_System_IO_FileInfo_RenameExtension.txt"));
+            var @thisNewFile = new FileInfo(Path.Combine(workingDirectory.FullName,
+                "Examples_System_IO_FileInfo_RenameExtension.cs"));
             var result1 = @thisNewFile.Exists;
 
             // Intialization
@@ -34,7 +38,8 @@ namespace HSNXT.Z.IO.Test
             @this.RenameExtension("cs");
 
             // Unit Test
-            @thisNewFile = new FileInfo(Path.Combine(workingDirectory.FullName, "Examples_System_IO_FileInfo_RenameExtension.cs"));
+            @thisNewFile = new FileInfo(Path.Combine(workingDirectory.FullName,
+                "Examples_System_IO_FileInfo_RenameExtension.cs"));
             var result2 = @thisNewFile.Exists;
 
             Assert.IsFalse(result1);

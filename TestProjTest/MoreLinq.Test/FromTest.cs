@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2017 Felipe Sateler. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -46,10 +48,18 @@ namespace HSNXT.Test
 
             switch (numArgs)
             {
-                case 1: Extensions.From(F1).AssertSequenceEqual(F1()); break;
-                case 2: Extensions.From(F1, F2).AssertSequenceEqual(F1(), F2()); break;
-                case 3: Extensions.From(F1, F2, F3).AssertSequenceEqual(F1(), F2(), F3()); break;
-                case 4: Extensions.From(F1, F2, F3, F4).AssertSequenceEqual(F1(), F2(), F3(), F4()); break;
+                case 1:
+                    Extensions.From(F1).AssertSequenceEqual(F1());
+                    break;
+                case 2:
+                    Extensions.From(F1, F2).AssertSequenceEqual(F1(), F2());
+                    break;
+                case 3:
+                    Extensions.From(F1, F2, F3).AssertSequenceEqual(F1(), F2(), F3());
+                    break;
+                case 4:
+                    Extensions.From(F1, F2, F3, F4).AssertSequenceEqual(F1(), F2(), F3(), F4());
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(numArgs));
             }
         }
@@ -60,19 +70,47 @@ namespace HSNXT.Test
         [TestCase(4)]
         public void TestFromInvokesMethodsMultipleTimes(int numArgs)
         {
-            var evals = new [] { 0, 0, 0, 0 };
-            int F1() { evals[0]++; return -2; }
-            int F2() { evals[1]++; return -2; }
-            int F3() { evals[2]++; return -2; }
-            int F4() { evals[3]++; return -2; }
+            var evals = new[] {0, 0, 0, 0};
+
+            int F1()
+            {
+                evals[0]++;
+                return -2;
+            }
+
+            int F2()
+            {
+                evals[1]++;
+                return -2;
+            }
+
+            int F3()
+            {
+                evals[2]++;
+                return -2;
+            }
+
+            int F4()
+            {
+                evals[3]++;
+                return -2;
+            }
 
             IEnumerable<int> results;
             switch (numArgs)
             {
-                case 1: results = Extensions.From(F1); break;
-                case 2: results = Extensions.From(F1, F2); break;
-                case 3: results = Extensions.From(F1, F2, F3); break;
-                case 4: results = Extensions.From(F1, F2, F3, F4); break;
+                case 1:
+                    results = Extensions.From(F1);
+                    break;
+                case 2:
+                    results = Extensions.From(F1, F2);
+                    break;
+                case 3:
+                    results = Extensions.From(F1, F2, F3);
+                    break;
+                case 4:
+                    results = Extensions.From(F1, F2, F3, F4);
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(numArgs));
             }
 

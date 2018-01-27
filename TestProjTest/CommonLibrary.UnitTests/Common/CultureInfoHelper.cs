@@ -2,7 +2,6 @@
 
 namespace CommonLibrary.Tests
 {
-
     /// <summary>
     /// Helper class providing culture info methods. 
     /// </summary>
@@ -12,7 +11,6 @@ namespace CommonLibrary.Tests
     /// </remarks>
     public class CultureInfoHelper
     {
-
         /// <summary>
         /// Returns the decimal separator used in the system.
         /// </summary>
@@ -40,12 +38,11 @@ namespace CommonLibrary.Tests
             {
                 // If it doesn't the date format is different.
                 // Replace with what is universally understood.
-                return csvText.Replace("4/10/2009","2009/04/10")
-                              .Replace("4/11/2009","2009/04/11")
-                              .Replace("4/12/2009","2009/04/12")
-                              .Replace("4/13/2009","2009/04/13");
+                return csvText.Replace("4/10/2009", "2009/04/10")
+                    .Replace("4/11/2009", "2009/04/11")
+                    .Replace("4/12/2009", "2009/04/12")
+                    .Replace("4/13/2009", "2009/04/13");
             }
-
         }
     }
 }

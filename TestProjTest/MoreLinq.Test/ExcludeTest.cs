@@ -25,7 +25,7 @@ namespace HSNXT.Test
         [Test]
         public void TestExcludeNegativeStartIndexException()
         {
-            AssertThrowsArgument.OutOfRangeException("startIndex",() =>
+            AssertThrowsArgument.OutOfRangeException("startIndex", () =>
                 Enumerable.Range(1, 10).Exclude(-10, 10));
         }
 
@@ -35,7 +35,7 @@ namespace HSNXT.Test
         [Test]
         public void TestExcludeNegativeCountException()
         {
-            AssertThrowsArgument.OutOfRangeException("count",() =>
+            AssertThrowsArgument.OutOfRangeException("count", () =>
                 Enumerable.Range(1, 10).Exclude(0, -5));
         }
 
@@ -60,7 +60,7 @@ namespace HSNXT.Test
             var sequence = Enumerable.Empty<int>();
             var resultA = sequence.Exclude(0, 0);
             var resultB = sequence.Exclude(0, 10); // shouldn't matter how many we ask for past end
-            var resultC = sequence.Exclude(5, 5);  // shouldn't matter where we start
+            var resultC = sequence.Exclude(5, 5); // shouldn't matter where we start
             Assert.IsTrue(resultA.SequenceEqual(sequence));
             Assert.IsTrue(resultB.SequenceEqual(sequence));
             Assert.IsTrue(resultC.SequenceEqual(sequence));
@@ -104,7 +104,8 @@ namespace HSNXT.Test
             var sequence = Enumerable.Range(1, count);
             var result = sequence.Exclude(startIndex, excludeCount);
 
-            Assert.IsTrue(result.SequenceEqual(sequence.Take(startIndex).Concat(sequence.Skip(startIndex + excludeCount))));
+            Assert.IsTrue(result.SequenceEqual(sequence.Take(startIndex)
+                .Concat(sequence.Skip(startIndex + excludeCount))));
         }
 
         /// <summary>

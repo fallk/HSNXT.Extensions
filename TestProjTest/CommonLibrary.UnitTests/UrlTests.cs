@@ -18,9 +18,6 @@ namespace CommonLibrary.Tests
         }
 
 
-        
-
-
         [Test]
         public void CanBuildValidUrlWithInvalidChars()
         {

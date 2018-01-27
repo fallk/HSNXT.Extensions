@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,7 +17,8 @@ namespace HSNXT.Z.IO.Test
         [TestMethod]
         public void ReadToEnd()
         {
-            var fileInfo = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Examples_System_IO_FileInfo_ReadToEnd.txt"));
+            var fileInfo = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                "Examples_System_IO_FileInfo_ReadToEnd.txt"));
 
             // Examples
             var value = "";

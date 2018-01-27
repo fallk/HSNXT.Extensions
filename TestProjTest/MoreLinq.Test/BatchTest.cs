@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,21 +28,21 @@ namespace HSNXT.Test
         [Test]
         public void BatchZeroSize()
         {
-            AssertThrowsArgument.OutOfRangeException("size",() =>
+            AssertThrowsArgument.OutOfRangeException("size", () =>
                 new object[0].Batch(0));
         }
 
         [Test]
         public void BatchNegativeSize()
         {
-            AssertThrowsArgument.OutOfRangeException("size",() =>
+            AssertThrowsArgument.OutOfRangeException("size", () =>
                 new object[0].Batch(-1));
         }
 
         [Test]
         public void BatchEvenlyDivisibleSequence()
         {
-            var result = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Batch(3);
+            var result = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9}.Batch(3);
             using (var reader = result.Read())
             {
                 reader.Read().AssertSequenceEqual(1, 2, 3);
@@ -53,7 +55,7 @@ namespace HSNXT.Test
         [Test]
         public void BatchUnevenlyDivisbleSequence()
         {
-            var result = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Batch(4);
+            var result = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9}.Batch(4);
             using (var reader = result.Read())
             {
                 reader.Read().AssertSequenceEqual(1, 2, 3, 4);
@@ -66,14 +68,14 @@ namespace HSNXT.Test
         [Test]
         public void BatchSequenceTransformingResult()
         {
-            var result = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.Batch(4, batch => batch.Sum());
+            var result = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9}.Batch(4, batch => batch.Sum());
             result.AssertSequenceEqual(10, 26, 9);
         }
 
         [Test]
         public void BatchSequenceYieldsListsOfBatches()
         {
-            var result = new[] { 1, 2, 3 }.Batch(2);
+            var result = new[] {1, 2, 3}.Batch(2);
             using (var reader = result.Read())
             {
                 Assert.That(reader.Read(), Is.InstanceOf(typeof(IList<int>)));

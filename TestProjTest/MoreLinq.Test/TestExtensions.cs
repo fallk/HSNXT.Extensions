@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 //
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,7 +28,6 @@ namespace HSNXT.Test
         /// <summary>
         /// Just to make our testing easier so we can chain the assertion call.
         /// </summary>
-
         internal static void AssertSequenceEqual<T>(this IEnumerable<T> actual, IEnumerable<T> expected) =>
             Assert.That(actual, Is.EquivalentTo(expected));
 
@@ -34,7 +35,6 @@ namespace HSNXT.Test
         /// Make testing even easier - a params array makes for readable tests :)
         /// The sequence should be evaluated exactly once.
         /// </summary>
-
         internal static void AssertSequenceEqual<T>(this IEnumerable<T> actual, params T[] expected) =>
             Assert.That(actual, Is.EquivalentTo(expected));
 
@@ -48,6 +48,7 @@ namespace HSNXT.Test
                 Assert.That(item, expectation, "Unexpected element in sequence at index " + i);
                 i++;
             }
+
             Assert.That(i, Is.EqualTo(expectations.Length), "Actual sequence has fewer items than expected.");
         }
 

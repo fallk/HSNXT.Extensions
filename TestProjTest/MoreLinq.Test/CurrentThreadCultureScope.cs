@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -21,7 +23,7 @@ namespace HSNXT.Test
 
     sealed class CurrentThreadCultureScope : Scope<CultureInfo>
     {
-        public CurrentThreadCultureScope(CultureInfo @new) : 
+        public CurrentThreadCultureScope(CultureInfo @new) :
             base(CultureInfo.CurrentCulture)
         {
             Install(@new);

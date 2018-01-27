@@ -7,10 +7,10 @@ namespace CommonLibrary.Tests
 {
     [TestFixture]
     public class IndexedLookUpTests
-    {        
+    {
         private IndexedLookUp<int, PageData> CreateLookUp(IList<PageData> items)
-        {            
-            return new IndexedLookUp<int,PageData>(items);
+        {
+            return new IndexedLookUp<int, PageData>(items);
         }
 
 
@@ -55,7 +55,6 @@ namespace CommonLibrary.Tests
             Assert.AreEqual(items[2], page);
         }
     }
-
 
 
     public class PageData : IIndexedComponent<int>

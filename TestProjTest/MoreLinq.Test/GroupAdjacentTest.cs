@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -50,9 +52,9 @@ namespace HSNXT.Test
             const string nine = "nine";
             const string ten = "ten";
 
-            var source = new[] { one, two, three, four, five, six, seven, eight, nine, ten };
+            var source = new[] {one, two, three, four, five, six, seven, eight, nine, ten};
             var groupings = source.GroupAdjacent(s => s.Length);
-            
+
             using (var reader = groupings.Read())
             {
                 AssertGrouping(reader, 3, one, two);
@@ -69,7 +71,7 @@ namespace HSNXT.Test
         [Test]
         public void GroupAdjacentSourceSequenceComparer()
         {
-            var source = new[] { "foo", "FOO", "Foo", "bar", "BAR", "Bar" };
+            var source = new[] {"foo", "FOO", "Foo", "bar", "BAR", "Bar"};
             var groupings = source.GroupAdjacent(s => s, StringComparer.OrdinalIgnoreCase);
 
             using (var reader = groupings.Read())
@@ -85,18 +87,18 @@ namespace HSNXT.Test
         {
             var source = new[]
             {
-                new { Month = 1, Value = 123 },                 
-                new { Month = 1, Value = 456 },                 
-                new { Month = 1, Value = 789 },                 
-                new { Month = 2, Value = 987 },                 
-                new { Month = 2, Value = 654 },                 
-                new { Month = 2, Value = 321 },                 
-                new { Month = 3, Value = 789 },                 
-                new { Month = 3, Value = 456 },                 
-                new { Month = 3, Value = 123 },
-                new { Month = 1, Value = 123 },
-                new { Month = 1, Value = 456 },
-                new { Month = 1, Value = 781 },
+                new {Month = 1, Value = 123},
+                new {Month = 1, Value = 456},
+                new {Month = 1, Value = 789},
+                new {Month = 2, Value = 987},
+                new {Month = 2, Value = 654},
+                new {Month = 2, Value = 321},
+                new {Month = 3, Value = 789},
+                new {Month = 3, Value = 456},
+                new {Month = 3, Value = 123},
+                new {Month = 1, Value = 123},
+                new {Month = 1, Value = 456},
+                new {Month = 1, Value = 781},
             };
 
             var groupings = source.GroupAdjacent(e => e.Month, e => e.Value * 2);
@@ -116,18 +118,18 @@ namespace HSNXT.Test
         {
             var source = new[]
             {
-                new { Month = "jan", Value = 123 },                 
-                new { Month = "Jan", Value = 456 },                 
-                new { Month = "JAN", Value = 789 },                 
-                new { Month = "feb", Value = 987 },                 
-                new { Month = "Feb", Value = 654 },                 
-                new { Month = "FEB", Value = 321 },                 
-                new { Month = "mar", Value = 789 },                 
-                new { Month = "Mar", Value = 456 },                 
-                new { Month = "MAR", Value = 123 },
-                new { Month = "jan", Value = 123 },
-                new { Month = "Jan", Value = 456 },
-                new { Month = "JAN", Value = 781 },
+                new {Month = "jan", Value = 123},
+                new {Month = "Jan", Value = 456},
+                new {Month = "JAN", Value = 789},
+                new {Month = "feb", Value = 987},
+                new {Month = "Feb", Value = 654},
+                new {Month = "FEB", Value = 321},
+                new {Month = "mar", Value = 789},
+                new {Month = "Mar", Value = 456},
+                new {Month = "MAR", Value = 123},
+                new {Month = "jan", Value = 123},
+                new {Month = "Jan", Value = 456},
+                new {Month = "JAN", Value = 781},
             };
 
             var groupings = source.GroupAdjacent(e => e.Month, e => e.Value * 2, StringComparer.OrdinalIgnoreCase);
@@ -147,23 +149,24 @@ namespace HSNXT.Test
         {
             var source = new[]
             {
-                new { Month = 1, Value = 123 },
-                new { Month = 1, Value = 456 },
-                new { Month = 1, Value = 789 },
-                new { Month = 2, Value = 987 },
-                new { Month = 2, Value = 654 },
-                new { Month = 2, Value = 321 },
-                new { Month = 3, Value = 789 },
-                new { Month = 3, Value = 456 },
-                new { Month = 3, Value = 123 },
-                new { Month = 1, Value = 123 },
-                new { Month = 1, Value = 456 },
-                new { Month = 1, Value = 781 },
+                new {Month = 1, Value = 123},
+                new {Month = 1, Value = 456},
+                new {Month = 1, Value = 789},
+                new {Month = 2, Value = 987},
+                new {Month = 2, Value = 654},
+                new {Month = 2, Value = 321},
+                new {Month = 3, Value = 789},
+                new {Month = 3, Value = 456},
+                new {Month = 3, Value = 123},
+                new {Month = 1, Value = 123},
+                new {Month = 1, Value = 456},
+                new {Month = 1, Value = 781},
             };
 
             var groupings = source.GroupAdjacent(e => e.Month, (key, group) => group.Sum(v => v.Value));
 
-            using (var reader = groupings.Read()) {
+            using (var reader = groupings.Read())
+            {
                 AssertResult(reader, 123 + 456 + 789);
                 AssertResult(reader, 987 + 654 + 321);
                 AssertResult(reader, 789 + 456 + 123);
@@ -177,23 +180,25 @@ namespace HSNXT.Test
         {
             var source = new[]
             {
-                new { Month = "jan", Value = 123 },
-                new { Month = "Jan", Value = 456 },
-                new { Month = "JAN", Value = 789 },
-                new { Month = "feb", Value = 987 },
-                new { Month = "Feb", Value = 654 },
-                new { Month = "FEB", Value = 321 },
-                new { Month = "mar", Value = 789 },
-                new { Month = "Mar", Value = 456 },
-                new { Month = "MAR", Value = 123 },
-                new { Month = "jan", Value = 123 },
-                new { Month = "Jan", Value = 456 },
-                new { Month = "JAN", Value = 781 },
+                new {Month = "jan", Value = 123},
+                new {Month = "Jan", Value = 456},
+                new {Month = "JAN", Value = 789},
+                new {Month = "feb", Value = 987},
+                new {Month = "Feb", Value = 654},
+                new {Month = "FEB", Value = 321},
+                new {Month = "mar", Value = 789},
+                new {Month = "Mar", Value = 456},
+                new {Month = "MAR", Value = 123},
+                new {Month = "jan", Value = 123},
+                new {Month = "Jan", Value = 456},
+                new {Month = "JAN", Value = 781},
             };
 
-            var groupings = source.GroupAdjacent(e => e.Month, (key, group) => group.Sum(v => v.Value), StringComparer.OrdinalIgnoreCase);
+            var groupings = source.GroupAdjacent(e => e.Month, (key, group) => group.Sum(v => v.Value),
+                StringComparer.OrdinalIgnoreCase);
 
-            using (var reader = groupings.Read()) {
+            using (var reader = groupings.Read())
+            {
                 AssertResult(reader, 123 + 456 + 789);
                 AssertResult(reader, 987 + 654 + 321);
                 AssertResult(reader, 789 + 456 + 123);
@@ -202,7 +207,7 @@ namespace HSNXT.Test
             }
         }
 
-        static void AssertGrouping<TKey, TElement>(SequenceReader<System.Linq.IGrouping<TKey, TElement>> reader, 
+        static void AssertGrouping<TKey, TElement>(SequenceReader<System.Linq.IGrouping<TKey, TElement>> reader,
             TKey key, params TElement[] elements)
         {
             var grouping = reader.Read();

@@ -25,7 +25,7 @@ namespace BCLExtensions.Tests.TestHelpers
 
         public void CopyTo(Array array, int index)
         {
-            ((ICollection)_innerCollection).CopyTo(array, index);
+            ((ICollection) _innerCollection).CopyTo(array, index);
         }
 
         public int Count
@@ -35,12 +35,12 @@ namespace BCLExtensions.Tests.TestHelpers
 
         public object SyncRoot
         {
-            get { return ((ICollection)_innerCollection).SyncRoot; }
+            get { return ((ICollection) _innerCollection).SyncRoot; }
         }
 
         public bool IsSynchronized
         {
-            get { return ((ICollection)_innerCollection).IsSynchronized; }
+            get { return ((ICollection) _innerCollection).IsSynchronized; }
         }
 
         public void Add(T item)

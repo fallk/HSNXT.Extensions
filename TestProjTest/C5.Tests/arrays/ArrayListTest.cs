@@ -36,7 +36,10 @@ namespace HSNXT.C5UnitTests.arrays.list
         [Test]
         public void TestEvents()
         {
-            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(TenEqualityComparer.Default, MemoryType); };
+            Func<CollectionOfInt> factory = delegate()
+            {
+                return new CollectionOfInt(TenEqualityComparer.Default, MemoryType);
+            };
             new C5UnitTests.Templates.Events.ListTester<CollectionOfInt>().Test(factory, MemoryType);
             new C5UnitTests.Templates.Events.QueueTester<CollectionOfInt>().Test(factory, MemoryType);
             new C5UnitTests.Templates.Events.StackTester<CollectionOfInt>().Test(factory, MemoryType);
@@ -67,7 +70,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
     static class Factory
     {
-        public static ICollection<T> New<T>(MemoryType memoryType) { return new ArrayList<T>(memoryType); }
+        public static ICollection<T> New<T>(MemoryType memoryType)
+        {
+            return new ArrayList<T>(memoryType);
+        }
     }
 
     namespace Events
@@ -84,10 +90,14 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void Init()
             {
                 list = new ArrayList<int>(TenEqualityComparer.Default, MemoryType);
-                seen = new CollectionEventList<int>(System.Collections.Generic.EqualityComparer<int>.Default, MemoryType);
+                seen = new CollectionEventList<int>(System.Collections.Generic.EqualityComparer<int>.Default,
+                    MemoryType);
             }
 
-            private void listen() { seen.Listen(list, EventTypeEnum.Added); }
+            private void listen()
+            {
+                seen.Listen(list, EventTypeEnum.Added);
+            }
 
             [Test]
             public void Listenable()
@@ -101,47 +111,56 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void SetThis()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list[1] = 45;
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(56,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(45,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-          });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void Insert()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.Insert(1, 45);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(45,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-          });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void InsertAll()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
-                list.InsertAll(1, new int[] { 666, 777, 888 });
+                list.InsertAll(1, new int[] {666, 777, 888});
                 //seen.Print(Console.Error);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(666,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(666, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(777,2), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(777, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(888,3), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(888, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-          });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(666, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(666, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(777, 2), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(777, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(888, 3), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(888, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.InsertAll(1, new int[] { });
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -149,66 +168,85 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void InsertFirstLast()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.InsertFirst(45);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(45,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-          });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(45, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.InsertLast(88);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(88,4), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(88, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-          });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(88, 4), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(88, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void Remove()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.Remove();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(8, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(8, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void RemoveFirst()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.RemoveFirst();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(4,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(4, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(4, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(4, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void RemoveLast()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.RemoveLast();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(8,2), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(8, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(8, 2), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(8, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void Reverse()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.Reverse();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.View(1, 0).Reverse();
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -217,12 +255,15 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Sort()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.Sort();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.View(1, 0).Sort();
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -230,12 +271,15 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Shuffle()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.Shuffle();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.View(1, 0).Shuffle();
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -243,25 +287,32 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void RemoveAt()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.RemoveAt(1);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(56,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void RemoveInterval()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.RemoveInterval(1, 2);
-                seen.Check(new CollectionEvent<int>[] {
-           new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(false,2,1), list),
-         new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(false, 2, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.RemoveInterval(1, 0);
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -269,14 +320,17 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Update()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.Update(53);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(53, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-          });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(53, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Update(67);
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -284,64 +338,79 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void FindOrAdd()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 var val = 53;
                 list.FindOrAdd(ref val);
                 seen.Check(new CollectionEvent<int>[] { });
                 val = 67;
                 list.FindOrAdd(ref val);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void UpdateOrAdd()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 var val = 53;
                 list.UpdateOrAdd(val);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(53, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(53, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 val = 67;
                 list.UpdateOrAdd(val);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.UpdateOrAdd(51, out val);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(53, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(51, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(53, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(51, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 val = 67;
                 list.UpdateOrAdd(81, out val);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(81, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(81, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
             public void RemoveItem()
             {
-                list.Add(4); list.Add(56); list.Add(18);
+                list.Add(4);
+                list.Add(56);
+                list.Add(18);
                 listen();
                 list.Remove(53);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Remove(11);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(18, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(18, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
@@ -351,32 +420,39 @@ namespace HSNXT.C5UnitTests.arrays.list
                 {
                     list.Add(10 * i + 5);
                 }
+
                 listen();
-                list.RemoveAll(new int[] { 32, 187, 45 });
+                list.RemoveAll(new int[] {32, 187, 45});
                 //TODO: the order depends on internals of the HashSet
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(35, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(45, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
-                list.RemoveAll(new int[] { 200, 300 });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(35, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
+                list.RemoveAll(new int[] {200, 300});
                 seen.Check(new CollectionEvent<int>[] { });
             }
 
             [Test]
             public void Clear()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.View(1, 1).Clear();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(false,1,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(false, 1, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Clear();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(true,2,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(true, 2, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Clear();
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -384,15 +460,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void ListDispose()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 listen();
                 list.View(1, 1).Dispose();
                 seen.Check(new CollectionEvent<int>[] { });
                 list.Dispose();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(true,3,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
-        });
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Cleared, new ClearedRangeEventArgs(true, 3, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Dispose();
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -405,15 +484,18 @@ namespace HSNXT.C5UnitTests.arrays.list
                 {
                     list.Add(10 * i + 5);
                 }
+
                 listen();
-                list.RetainAll(new int[] { 32, 187, 45, 62, 82, 95, 2 });
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(15, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(25, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(55, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(75, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
-                list.RetainAll(new int[] { 32, 187, 45, 62, 82, 95, 2 });
+                list.RetainAll(new int[] {32, 187, 45, 62, 82, 95, 2});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(15, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(25, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(55, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(75, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
+                list.RetainAll(new int[] {32, 187, 45, 62, 82, 95, 2});
                 seen.Check(new CollectionEvent<int>[] { });
             }
 
@@ -424,13 +506,16 @@ namespace HSNXT.C5UnitTests.arrays.list
                 {
                     list.Add(3 * i + 5);
                 }
+
                 listen();
                 list.RemoveAllCopies(14);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(11, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(14, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(17, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(11, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(14, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(17, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.RemoveAllCopies(14);
                 seen.Check(new CollectionEvent<int>[] { });
             }
@@ -441,9 +526,11 @@ namespace HSNXT.C5UnitTests.arrays.list
                 listen();
                 seen.Check(new CollectionEvent<int>[0]);
                 list.Add(23);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(23, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(23, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
@@ -453,61 +540,73 @@ namespace HSNXT.C5UnitTests.arrays.list
                 {
                     list.Add(10 * i + 5);
                 }
+
                 listen();
-                list.AddAll(new int[] { 45, 56, 67 });
-                seen.Check(new CollectionEvent<int>[] {
-                  new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
-                  new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(56, 1), list),
-                  new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
-                  new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                list.AddAll(new int[] {45, 56, 67});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(45, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(56, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
                 });
                 list.AddAll(new int[] { });
                 seen.Check(new CollectionEvent<int>[] { });
             }
 
             [TearDown]
-            public void Dispose() { list = null; seen = null; }
+            public void Dispose()
+            {
+                list = null;
+                seen = null;
+            }
 
             [Test]
             public void ViewChanged()
             {
                 var w = list.View(0, 0);
-                Assert.Throws<UnlistenableEventException>(() => w.CollectionChanged += new CollectionChangedHandler<int>(w_CollectionChanged));
+                Assert.Throws<UnlistenableEventException>(() =>
+                    w.CollectionChanged += new CollectionChangedHandler<int>(w_CollectionChanged));
             }
 
             [Test]
             public void ViewCleared()
             {
                 var w = list.View(0, 0);
-                Assert.Throws<UnlistenableEventException>(() => w.CollectionCleared += new CollectionClearedHandler<int>(w_CollectionCleared));
+                Assert.Throws<UnlistenableEventException>(() =>
+                    w.CollectionCleared += new CollectionClearedHandler<int>(w_CollectionCleared));
             }
 
             [Test]
             public void ViewAdded()
             {
                 var w = list.View(0, 0);
-                Assert.Throws<UnlistenableEventException>(() => w.ItemsAdded += new ItemsAddedHandler<int>(w_ItemAdded));
+                Assert.Throws<UnlistenableEventException>(() =>
+                    w.ItemsAdded += new ItemsAddedHandler<int>(w_ItemAdded));
             }
 
             [Test]
             public void ViewInserted()
             {
                 var w = list.View(0, 0);
-                Assert.Throws<UnlistenableEventException>(() => w.ItemInserted += new ItemInsertedHandler<int>(w_ItemInserted));
+                Assert.Throws<UnlistenableEventException>(() =>
+                    w.ItemInserted += new ItemInsertedHandler<int>(w_ItemInserted));
             }
 
             [Test]
             public void ViewRemoved()
             {
                 var w = list.View(0, 0);
-                Assert.Throws<UnlistenableEventException>(() => w.ItemsRemoved += new ItemsRemovedHandler<int>(w_ItemRemoved));
+                Assert.Throws<UnlistenableEventException>(() =>
+                    w.ItemsRemoved += new ItemsRemovedHandler<int>(w_ItemRemoved));
             }
 
             [Test]
             public void ViewRemovedAt()
             {
                 var w = list.View(0, 0);
-                Assert.Throws<UnlistenableEventException>(() => w.ItemRemovedAt += new ItemRemovedAtHandler<int>(w_ItemRemovedAt));
+                Assert.Throws<UnlistenableEventException>(() =>
+                    w.ItemRemovedAt += new ItemRemovedAtHandler<int>(w_ItemRemovedAt));
             }
 
             void w_CollectionChanged(object sender)
@@ -551,7 +650,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         [TestFixture(MemoryType.Safe)]
         public class StackQueue : BaseMemoryType
         {
-
             private ArrayList<int> list;
             CollectionEventList<int> seen;
 
@@ -559,35 +657,47 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void Init()
             {
                 list = new ArrayList<int>(TenEqualityComparer.Default, MemoryType);
-                seen = new CollectionEventList<int>(System.Collections.Generic.EqualityComparer<int>.Default, MemoryType);
+                seen = new CollectionEventList<int>(System.Collections.Generic.EqualityComparer<int>.Default,
+                    MemoryType);
             }
 
-            private void listen() { seen.Listen(list, EventTypeEnum.All); }
+            private void listen()
+            {
+                seen.Listen(list, EventTypeEnum.All);
+            }
 
             [Test]
             public void EnqueueDequeue()
             {
                 listen();
                 list.Enqueue(67);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(67,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(67, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(67, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Enqueue(2);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(2,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(2, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(2, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(2, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Dequeue();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(67,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(67, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(67, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(67, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Dequeue();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(2,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(2, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(2, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(2, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [Test]
@@ -596,29 +706,41 @@ namespace HSNXT.C5UnitTests.arrays.list
                 listen();
                 seen.Check(new CollectionEvent<int>[0]);
                 list.Push(23);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(23,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(23, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(23, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(23, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Push(-12);
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(-12,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(-12, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.Inserted, new ItemAtEventArgs<int>(-12, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Added, new ItemCountEventArgs<int>(-12, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Pop();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(-12,1), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(-12, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(-12, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(-12, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
                 list.Pop();
-                seen.Check(new CollectionEvent<int>[] {
-          new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(23,0), list),
-          new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(23, 1), list),
-          new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)});
+                seen.Check(new CollectionEvent<int>[]
+                {
+                    new CollectionEvent<int>(EventTypeEnum.RemovedAt, new ItemAtEventArgs<int>(23, 0), list),
+                    new CollectionEvent<int>(EventTypeEnum.Removed, new ItemCountEventArgs<int>(23, 1), list),
+                    new CollectionEvent<int>(EventTypeEnum.Changed, new EventArgs(), list)
+                });
             }
 
             [TearDown]
-            public void Dispose() { list = null; seen = null; }
+            public void Dispose()
+            {
+                list = null;
+                seen = null;
+            }
 
             public StackQueue(MemoryType memoryType)
                 : base(memoryType)
@@ -648,28 +770,37 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void InsertAll()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 try
                 {
                     list.InsertAll(1, new BadEnumerable<int>(new BadEnumerableException(), 9, 8, 7));
                     Assert.Fail("Should not get here");
                 }
-                catch (BadEnumerableException) { }
+                catch (BadEnumerableException)
+                {
+                }
+
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 9, 8, 7, 56, 8));
-
             }
 
             [Test]
             public void AddAll()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 try
                 {
                     list.View(0, 1).AddAll(new BadEnumerable<int>(new BadEnumerableException(), 9, 8, 7));
                     Assert.Fail("Should not get here");
                 }
-                catch (BadEnumerableException) { }
+                catch (BadEnumerableException)
+                {
+                }
+
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 9, 8, 7, 56, 8));
             }
@@ -677,13 +808,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void RemoveAll()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 try
                 {
                     list.RemoveAll(new BadEnumerable<int>(new BadEnumerableException(), 9, 8, 7));
                     Assert.Fail("Should not get here");
                 }
-                catch (BadEnumerableException) { }
+                catch (BadEnumerableException)
+                {
+                }
+
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 56, 8));
             }
@@ -691,13 +827,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void RetainAll()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 try
                 {
                     list.RetainAll(new BadEnumerable<int>(new BadEnumerableException(), 9, 8, 7));
                     Assert.Fail("Should not get here");
                 }
-                catch (BadEnumerableException) { }
+                catch (BadEnumerableException)
+                {
+                }
+
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 56, 8));
             }
@@ -706,20 +847,28 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void ContainsAll()
             {
-                list.Add(4); list.Add(56); list.Add(8);
+                list.Add(4);
+                list.Add(56);
+                list.Add(8);
                 try
                 {
                     list.ContainsAll(new BadEnumerable<int>(new BadEnumerableException(), 4, 18));
                     Assert.Fail("Should not get here");
                 }
-                catch (BadEnumerableException) { }
+                catch (BadEnumerableException)
+                {
+                }
+
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 56, 8));
             }
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public BadEnumerable(MemoryType memoryType)
                 : base(memoryType)
@@ -744,10 +893,15 @@ namespace HSNXT.C5UnitTests.arrays.list
             }
 
             [Test]
-            public void NoTests() { }
+            public void NoTests()
+            {
+            }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public BadFun(MemoryType memoryType)
                 : base(memoryType)
@@ -821,21 +975,26 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.Apply(a);
                 Assert.AreEqual(0, sum);
                 sum = 0;
-                list.Add(5); list.Add(8); list.Add(7); list.Add(5);
+                list.Add(5);
+                list.Add(8);
+                list.Add(7);
+                list.Add(5);
                 list.Apply(a);
                 Assert.AreEqual(5875, sum);
             }
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public Multiops(MemoryType memoryType)
                 : base(memoryType)
             {
             }
         }
-
 
 
         [TestFixture(MemoryType.Normal)]
@@ -920,7 +1079,7 @@ namespace HSNXT.C5UnitTests.arrays.list
 
             [Test]
             public void MultipleEnumerationRaiseMultipleEnumerationExceptionWhenMemoryModeIsStrict()
-            { 
+            {
                 list.Add(5);
                 list.Add(8);
                 list.Add(5);
@@ -928,16 +1087,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 if (MemoryType == MemoryType.Strict)
                     Assert.Throws<MultipleEnumerationException>(() =>
                     {
-
                         foreach (var item in list)
                         {
                             foreach (var item2 in list)
                             {
-
                             }
                         }
                     });
-     
             }
 
             [Test]
@@ -948,7 +1104,6 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.Add(5);
                 foreach (var item in list)
                 {
-
                 }
 
                 var j = 0;
@@ -966,6 +1121,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                             Assert.AreEqual(item2, 5);
                             break;
                     }
+
                     j++;
                 }
 
@@ -988,7 +1144,6 @@ namespace HSNXT.C5UnitTests.arrays.list
                         {
                             index++;
                         }
-
                     }
                 }
 
@@ -996,7 +1151,10 @@ namespace HSNXT.C5UnitTests.arrays.list
             }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public GetEnumerator(MemoryType memoryType)
                 : base(memoryType)
@@ -1014,15 +1172,26 @@ namespace HSNXT.C5UnitTests.arrays.list
         {
             ICollection<int> coll;
             IFormatProvider rad16;
+
             [SetUp]
-            public void Init() { coll = Factory.New<int>(MemoryType); rad16 = new RadixFormatProvider(16); }
+            public void Init()
+            {
+                coll = Factory.New<int>(MemoryType);
+                rad16 = new RadixFormatProvider(16);
+            }
+
             [TearDown]
-            public void Dispose() { coll = null; rad16 = null; }
+            public void Dispose()
+            {
+                coll = null;
+                rad16 = null;
+            }
+
             [Test]
             public void Format()
             {
                 Assert.AreEqual("[  ]", coll.ToString());
-                coll.AddAll(new int[] { -4, 28, 129, 65530 });
+                coll.AddAll(new int[] {-4, 28, 129, 65530});
                 Assert.AreEqual("[ 0:-4, 1:28, 2:129, 3:65530 ]", coll.ToString());
                 Assert.AreEqual("[ 0:-4, 1:1C, 2:81, 3:FFFA ]", coll.ToString(null, rad16));
                 Assert.AreEqual("[ 0:-4, 1:28... ]", coll.ToString("L14", null));
@@ -1044,7 +1213,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { list = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                list = new ArrayList<int>(MemoryType);
+            }
 
             [Test]
             public void Choose()
@@ -1078,7 +1250,9 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void AddAll()
             {
-                list.Add(3); list.Add(4); list.Add(5);
+                list.Add(3);
+                list.Add(4);
+                list.Add(5);
 
                 var list2 = new ArrayList<int>();
 
@@ -1090,7 +1264,10 @@ namespace HSNXT.C5UnitTests.arrays.list
             }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public CollectionOrSink(MemoryType memoryType)
                 : base(memoryType)
@@ -1114,16 +1291,19 @@ namespace HSNXT.C5UnitTests.arrays.list
             }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             [Test]
             public void Find()
             {
                 int i;
                 Assert.IsFalse(list.Find(pred, out i));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(list.Find(pred, out i));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.IsTrue(list.Find(pred, out i));
                 Assert.AreEqual(45, i);
             }
@@ -1133,9 +1313,9 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 int i;
                 Assert.IsFalse(list.FindLast(pred, out i));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(list.FindLast(pred, out i));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.IsTrue(list.FindLast(pred, out i));
                 Assert.AreEqual(675, i);
             }
@@ -1144,9 +1324,9 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void FindIndex()
             {
                 Assert.IsFalse(0 <= list.FindIndex(pred));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(0 <= list.FindIndex(pred));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.AreEqual(4, list.FindIndex(pred));
             }
 
@@ -1154,9 +1334,9 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void FindLastIndex()
             {
                 Assert.IsFalse(0 <= list.FindLastIndex(pred));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(0 <= list.FindLastIndex(pred));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.AreEqual(6, list.FindLastIndex(pred));
             }
 
@@ -1174,17 +1354,23 @@ namespace HSNXT.C5UnitTests.arrays.list
             private ArrayList<int> list;
 
             [SetUp]
-            public void Init() { list = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                list = new ArrayList<int>(MemoryType);
+            }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             [Test]
             public void Test()
             {
                 Assert.IsTrue(IC.seteq(list.UniqueItems()));
                 Assert.IsTrue(IC.seteq(list.ItemMultiplicities()));
-                list.AddAll(new int[] { 7, 9, 7 });
+                list.AddAll(new int[] {7, 9, 7});
                 Assert.IsTrue(IC.seteq(list.UniqueItems(), 7, 9));
                 Assert.IsTrue(IC.seteq(list.ItemMultiplicities(), 7, 2, 9, 1));
             }
@@ -1218,7 +1404,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
 
             private string aeq(int[] a, params int[] b)
@@ -1313,13 +1502,16 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
 
             [Test]
             public void Get()
             {
-                Assert.IsNotNull(((System.Collections.IList)list).SyncRoot);
+                Assert.IsNotNull(((System.Collections.IList) list).SyncRoot);
             }
 
             public Sync(MemoryType memoryType)
@@ -1340,7 +1532,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { list = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                list = new ArrayList<int>(MemoryType);
+            }
 
             [Test]
             public void NullEqualityComparerinConstructor1()
@@ -1396,13 +1591,17 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void RemoveAllCopies()
             {
-                list.Add(5); list.Add(7); list.Add(5);
+                list.Add(5);
+                list.Add(7);
+                list.Add(5);
                 Assert.AreEqual(2, list.ContainsCount(5));
                 Assert.AreEqual(1, list.ContainsCount(7));
                 list.RemoveAllCopies(5);
                 Assert.AreEqual(0, list.ContainsCount(5));
                 Assert.AreEqual(1, list.ContainsCount(7));
-                list.Add(5); list.Add(8); list.Add(5);
+                list.Add(5);
+                list.Add(8);
+                list.Add(5);
                 list.RemoveAllCopies(8);
                 Assert.IsTrue(IC.eq(list, 7, 5, 5));
             }
@@ -1414,8 +1613,12 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Func<int, bool> f = delegate(int i) { return i % 2 == 0; };
 
                 Assert.IsTrue(list.FindAll(f).IsEmpty);
-                list.Add(5); list.Add(8); list.Add(5); list.Add(10); list.Add(8);
-                Assert.IsTrue(((ArrayList<int>)list.FindAll(f)).Check());
+                list.Add(5);
+                list.Add(8);
+                list.Add(5);
+                list.Add(10);
+                list.Add(8);
+                Assert.IsTrue(((ArrayList<int>) list.FindAll(f)).Check());
                 Assert.IsTrue(IC.eq(list.FindAll(f), 8, 10, 8));
             }
 
@@ -1444,19 +1647,33 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 var list2 = new ArrayList<int>();
 
-                list.Add(4); list.Add(4); list.Add(5); list.Add(4); list.Add(6);
-                list2.Add(5); list2.Add(4); list2.Add(7); list2.Add(7); list2.Add(4);
+                list.Add(4);
+                list.Add(4);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
+                list2.Add(5);
+                list2.Add(4);
+                list2.Add(7);
+                list2.Add(7);
+                list2.Add(4);
                 list.RetainAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 4, 5));
-                list.Add(5); list.Add(4); list.Add(6);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
                 list2.Clear();
-                list2.Add(5); list2.Add(5); list2.Add(6);
+                list2.Add(5);
+                list2.Add(5);
+                list2.Add(6);
                 list.RetainAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 5, 5, 6));
                 list2.Clear();
-                list2.Add(7); list2.Add(8); list2.Add(9);
+                list2.Add(7);
+                list2.Add(8);
+                list2.Add(9);
                 list.RetainAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list));
@@ -1468,19 +1685,34 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 var list2 = new ArrayList<int>();
 
-                list.Add(4); list.Add(4); list.Add(5); list.Add(4); list.Add(6);
-                list2.Add(5); list2.Add(4); list2.Add(7); list2.Add(7); list2.Add(4);
+                list.Add(4);
+                list.Add(4);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
+                list2.Add(5);
+                list2.Add(4);
+                list2.Add(7);
+                list2.Add(7);
+                list2.Add(4);
                 list.RemoveAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 6));
-                list.Add(5); list.Add(4); list.Add(6);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
                 list2.Clear();
-                list2.Add(6); list2.Add(5); list2.Add(5); list2.Add(6);
+                list2.Add(6);
+                list2.Add(5);
+                list2.Add(5);
+                list2.Add(6);
                 list.RemoveAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 4));
                 list2.Clear();
-                list2.Add(7); list2.Add(8); list2.Add(9);
+                list2.Add(7);
+                list2.Add(8);
+                list2.Add(9);
                 list.RemoveAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 4));
@@ -1491,7 +1723,11 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void Remove()
             {
                 Assert.IsFalse(list.FIFO);
-                list.Add(4); list.Add(4); list.Add(5); list.Add(4); list.Add(6);
+                list.Add(4);
+                list.Add(4);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
                 Assert.IsFalse(list.Remove(2));
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(list.Remove(4));
@@ -1507,7 +1743,11 @@ namespace HSNXT.C5UnitTests.arrays.list
 
                 list.FIFO = true;
                 list.Clear();
-                list.Add(4); list.Add(4); list.Add(5); list.Add(4); list.Add(6);
+                list.Add(4);
+                list.Add(4);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
                 Assert.IsFalse(list.Remove(2));
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(list.Remove(4));
@@ -1526,14 +1766,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Clear()
             {
-                list.Add(7); list.Add(7);
+                list.Add(7);
+                list.Add(7);
                 list.Clear();
                 Assert.IsTrue(list.IsEmpty);
             }
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public Searching(MemoryType memoryType)
                 : base(memoryType)
@@ -1541,8 +1785,6 @@ namespace HSNXT.C5UnitTests.arrays.list
             }
         }
     }
-
-
 
 
     namespace Indexed
@@ -1570,7 +1812,10 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.AreEqual(~1, dit.IndexOf(6));
                 Assert.AreEqual(~1, dit.LastIndexOf(6));
                 Assert.AreEqual(0, dit.IndexOf(7));
-                dit.Add(5); dit.Add(7); dit.Add(8); dit.Add(7);
+                dit.Add(5);
+                dit.Add(7);
+                dit.Add(8);
+                dit.Add(7);
                 Assert.AreEqual(~5, dit.IndexOf(6));
                 Assert.AreEqual(0, dit.IndexOf(7));
                 Assert.AreEqual(4, dit.LastIndexOf(7));
@@ -1608,15 +1853,19 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void RemoveAt()
             {
-                dit.Add(5); dit.Add(7); dit.Add(9); dit.Add(1); dit.Add(2);
+                dit.Add(5);
+                dit.Add(7);
+                dit.Add(9);
+                dit.Add(1);
+                dit.Add(2);
                 Assert.AreEqual(7, dit.RemoveAt(1));
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 5, 9, 1, 2));
                 Assert.AreEqual(5, dit.RemoveAt(0));
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 9, 1, 2));
                 Assert.AreEqual(2, dit.RemoveAt(2));
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 9, 1));
             }
 
@@ -1646,25 +1895,35 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void RemoveInterval()
             {
                 dit.RemoveInterval(0, 0);
-                dit.Add(10); dit.Add(20); dit.Add(30); dit.Add(40); dit.Add(50); dit.Add(60);
+                dit.Add(10);
+                dit.Add(20);
+                dit.Add(30);
+                dit.Add(40);
+                dit.Add(50);
+                dit.Add(60);
                 dit.RemoveInterval(3, 0);
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 10, 20, 30, 40, 50, 60));
                 dit.RemoveInterval(3, 1);
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 10, 20, 30, 50, 60));
                 dit.RemoveInterval(1, 3);
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 10, 60));
                 dit.RemoveInterval(0, 2);
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit));
-                dit.Add(10); dit.Add(20); dit.Add(30); dit.Add(40); dit.Add(50); dit.Add(60);
+                dit.Add(10);
+                dit.Add(20);
+                dit.Add(30);
+                dit.Add(40);
+                dit.Add(50);
+                dit.Add(60);
                 dit.RemoveInterval(0, 2);
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 30, 40, 50, 60));
                 dit.RemoveInterval(2, 2);
-                Assert.IsTrue(((ArrayList<int>)dit).Check());
+                Assert.IsTrue(((ArrayList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 30, 40));
             }
 
@@ -1693,11 +1952,17 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { lst = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                lst = new ArrayList<int>(MemoryType);
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -1724,7 +1989,8 @@ namespace HSNXT.C5UnitTests.arrays.list
                 lst.Add(19);
                 Assert.AreEqual(19, lst.First);
                 Assert.AreEqual(19, lst.Last);
-                lst.Add(34); lst.InsertFirst(12);
+                lst.Add(34);
+                lst.InsertFirst(12);
                 Assert.AreEqual(12, lst.First);
                 Assert.AreEqual(34, lst.Last);
             }
@@ -1737,8 +2003,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.AreEqual(34, lst[0]);
                 lst[0] = 56;
                 Assert.AreEqual(56, lst.First);
-                lst.Add(7); lst.Add(7); lst.Add(7); lst.Add(7);
-                lst[0] = 45; lst[2] = 78; lst[4] = 101;
+                lst.Add(7);
+                lst.Add(7);
+                lst.Add(7);
+                lst.Add(7);
+                lst[0] = 45;
+                lst[2] = 78;
+                lst[4] = 101;
                 Assert.IsTrue(IC.eq(lst, 45, 7, 78, 7, 101));
             }
 
@@ -1778,10 +2049,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void ThisBadEmptySet()
             {
-                Assert.Throws<IndexOutOfRangeException>(() =>
-                {
-                    lst[0] = 4;
-                });
+                Assert.Throws<IndexOutOfRangeException>(() => { lst[0] = 4; });
             }
 
             [Test]
@@ -1789,10 +2057,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 lst.Add(7);
 
-                Assert.Throws<IndexOutOfRangeException>(() =>
-                {
-                    lst[-1] = 9;
-                });
+                Assert.Throws<IndexOutOfRangeException>(() => { lst[-1] = 9; });
             }
 
             [Test]
@@ -1800,10 +2065,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 lst.Add(6);
 
-                Assert.Throws<IndexOutOfRangeException>(() =>
-                {
-                    lst[1] = 11;
-                });
+                Assert.Throws<IndexOutOfRangeException>(() => { lst[1] = 11; });
             }
 
             public Searching(MemoryType memoryType)
@@ -1822,11 +2084,17 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { lst = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                lst = new ArrayList<int>(MemoryType);
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -1860,7 +2128,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.IsTrue(IC.eq(lst, 3));
                 lst.Insert(0, 7);
                 Assert.IsTrue(IC.eq(lst, 7, 3));
-                lst.InsertAll(1, new int[] { 1, 2, 3, 4 });
+                lst.InsertAll(1, new int[] {1, 2, 3, 4});
                 Assert.IsTrue(IC.eq(lst, 7, 1, 2, 3, 4, 3));
                 Assert.IsTrue(lst.Check());
             }
@@ -1872,7 +2140,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.IsTrue(IC.eq(lst, 3));
                 lst.Insert(0, 7);
                 Assert.IsTrue(IC.eq(lst, 7, 3));
-                lst.InsertAll(1, new int[] { 5, 6, 5, 8 });
+                lst.InsertAll(1, new int[] {5, 6, 5, 8});
                 Assert.IsTrue(lst.Check());
                 Assert.IsTrue(IC.eq(lst, 7, 5, 6, 5, 8, 3));
             }
@@ -1902,6 +2170,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 {
                     lst.Add(2 * i);
                 }
+
                 Assert.IsFalse(lst.FIFO);
                 Assert.AreEqual(12, lst.Remove());
                 Assert.AreEqual(10, lst.Remove());
@@ -1975,7 +2244,9 @@ namespace HSNXT.C5UnitTests.arrays.list
 
                 IList<int> lst2 = new ArrayList<int>();
 
-                lst2.Add(7); lst2.Add(8); lst2.Add(9);
+                lst2.Add(7);
+                lst2.Add(8);
+                lst2.Add(9);
                 lst.InsertAll(0, lst2);
                 Assert.IsTrue(lst.Check());
                 Assert.IsTrue(IC.eq(lst, 7, 8, 9, 1, 2, 3, 4));
@@ -2013,7 +2284,11 @@ namespace HSNXT.C5UnitTests.arrays.list
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate(int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.Map(m));
             }
@@ -2024,7 +2299,11 @@ namespace HSNXT.C5UnitTests.arrays.list
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate(int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.FindAll(m));
             }
@@ -2036,7 +2315,11 @@ namespace HSNXT.C5UnitTests.arrays.list
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate(int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.Map(m));
             }
@@ -2048,7 +2331,11 @@ namespace HSNXT.C5UnitTests.arrays.list
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate(int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.FindAll(m));
             }
@@ -2145,7 +2432,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -2245,17 +2535,27 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { lst = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                lst = new ArrayList<int>(MemoryType);
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
             public void Sort()
             {
-                lst.Add(5); lst.Add(6); lst.Add(5); lst.Add(7); lst.Add(3);
+                lst.Add(5);
+                lst.Add(6);
+                lst.Add(5);
+                lst.Add(7);
+                lst.Add(3);
                 Assert.IsFalse(lst.IsSorted(new IC()));
                 lst.Sort(new IC());
                 Assert.IsTrue(lst.IsSorted());
@@ -2321,17 +2621,27 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { lst = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                lst = new ArrayList<int>(MemoryType);
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
             public void Shuffle()
             {
-                lst.Add(5); lst.Add(6); lst.Add(5); lst.Add(7); lst.Add(3);
+                lst.Add(5);
+                lst.Add(6);
+                lst.Add(5);
+                lst.Add(7);
+                lst.Add(3);
                 for (var i = 0; i < 100; i++)
                 {
                     lst.Shuffle(new C5Random(i + 1));
@@ -2347,7 +2657,6 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
             }
         }
-
     }
 
 
@@ -2362,7 +2671,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { list = new ArrayList<int>(MemoryType); }
+            public void Init()
+            {
+                list = new ArrayList<int>(MemoryType);
+            }
 
 
             [Test]
@@ -2401,6 +2713,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
             }
         }
+
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -2409,7 +2722,10 @@ namespace HSNXT.C5UnitTests.arrays.list
             private IQueue<int> list;
 
             [SetUp]
-            public void Init() { list = new ArrayList<int>(); }
+            public void Init()
+            {
+                list = new ArrayList<int>();
+            }
 
             [Test]
             public void Normal()
@@ -2438,7 +2754,10 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             public Queue(MemoryType memoryType)
                 : base(memoryType)
@@ -2459,11 +2778,17 @@ namespace HSNXT.C5UnitTests.arrays.list
 
 
             [SetUp]
-            public void Init() { lst = new ArrayList<int>(); }
+            public void Init()
+            {
+                lst = new ArrayList<int>();
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -2548,8 +2873,11 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void Init()
             {
                 list = new ArrayList<int>();
-                list.Add(0); list.Add(1); list.Add(2); list.Add(3);
-                view = (ArrayList<int>)list.View(1, 2);
+                list.Add(0);
+                list.Add(1);
+                list.Add(2);
+                list.Add(3);
+                view = (ArrayList<int>) list.View(1, 2);
             }
 
 
@@ -2691,7 +3019,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 check();
                 Assert.IsTrue(IC.eq(list, 0, 8, 12, 3));
                 Assert.IsTrue(IC.eq(view, 8, 12));
-                view./*ViewOf(12)*/InsertLast(15);
+                view. /*ViewOf(12)*/InsertLast(15);
                 check();
                 Assert.IsTrue(IC.eq(list, 0, 8, 12, 15, 3));
                 Assert.IsTrue(IC.eq(view, 8, 12, 15));
@@ -2702,7 +3030,8 @@ namespace HSNXT.C5UnitTests.arrays.list
 
                 var lst2 = new ArrayList<int>();
 
-                lst2.Add(90); lst2.Add(92);
+                lst2.Add(90);
+                lst2.Add(92);
                 view.AddAll(lst2);
                 check();
                 Assert.IsTrue(IC.eq(list, 0, 8, 18, 12, 15, 90, 92, 3));
@@ -2752,7 +3081,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void CreateView()
             {
-                var view2 = (ArrayList<int>)view.View(1, 0);
+                var view2 = (ArrayList<int>) view.View(1, 0);
 
                 Assert.AreSame(list, view2.Underlying);
             }
@@ -2763,7 +3092,9 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 Assert.IsFalse(view.FIFO);
                 view.FIFO = true;
-                view.Add(23); view.Add(24); view.Add(25);
+                view.Add(23);
+                view.Add(24);
+                view.Add(25);
                 check();
                 Assert.IsTrue(IC.eq(view, 1, 2, 23, 24, 25));
                 Assert.AreEqual(1, view.Remove());
@@ -2780,14 +3111,14 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void MapEtc()
             {
-                var dbl = (ArrayList<double>)view.Map(new Func<int, double>(delegate(int i) { return i / 10.0; }));
+                var dbl = (ArrayList<double>) view.Map(new Func<int, double>(delegate(int i) { return i / 10.0; }));
 
                 Assert.IsTrue(dbl.Check());
                 Assert.AreEqual(0.1, dbl[0]);
                 Assert.AreEqual(0.2, dbl[1]);
                 for (var i = 0; i < 10; i++) view.Add(i);
 
-                list = (ArrayList<int>)view.FindAll(new Func<int, bool>(delegate(int i) { return i % 4 == 1; }));
+                list = (ArrayList<int>) view.FindAll(new Func<int, bool>(delegate(int i) { return i % 4 == 1; }));
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 1, 1, 5, 9));
             }
@@ -2810,7 +3141,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                     list.Add(i);
                 }
 
-                view = (ArrayList<int>)list.View(5, 7);
+                view = (ArrayList<int>) list.View(5, 7);
                 for (var i = 0; i < 7; i++) Assert.AreEqual(i + 5, view[i]);
 
                 for (var i = 0; i < 7; i++) Assert.AreEqual(i, view.IndexOf(i + 5));
@@ -2851,16 +3182,16 @@ namespace HSNXT.C5UnitTests.arrays.list
                 IList<int> lst = new ArrayList<int>();
                 lst.Add(2);
 
-                Assert.Throws<ArgumentOutOfRangeException>(() =>
-                {
-                    lst = lst.View(1, -1);
-                });
+                Assert.Throws<ArgumentOutOfRangeException>(() => { lst = lst.View(1, -1); });
             }
 
             [Test]
             public void Sort()
             {
-                view.Add(45); view.Add(47); view.Add(46); view.Add(48);
+                view.Add(45);
+                view.Add(47);
+                view.Add(46);
+                view.Add(48);
                 Assert.IsFalse(view.IsSorted(new IC()));
                 view.Sort(new IC());
                 check();
@@ -2872,7 +3203,12 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Remove()
             {
-                view.Add(1); view.Add(5); view.Add(3); view.Add(1); view.Add(3); view.Add(0);
+                view.Add(1);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
+                view.Add(3);
+                view.Add(0);
                 Assert.IsTrue(IC.eq(view, 1, 2, 1, 5, 3, 1, 3, 0));
                 Assert.IsTrue(view.Remove(1));
                 check();
@@ -2887,13 +3223,25 @@ namespace HSNXT.C5UnitTests.arrays.list
                 check();
                 Assert.IsTrue(IC.eq(view, 1, 2, 5));
                 Assert.IsTrue(IC.eq(list, 0, 1, 2, 5, 3));
-                view.Add(1); view.Add(5); view.Add(3); view.Add(1); view.Add(3); view.Add(0);
+                view.Add(1);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
+                view.Add(3);
+                view.Add(0);
                 Assert.IsTrue(IC.eq(view, 1, 2, 5, 1, 5, 3, 1, 3, 0));
 
                 view.FIFO = true;
-                view.Clear(); view.Add(1); view.Add(2);
+                view.Clear();
+                view.Add(1);
+                view.Add(2);
 
-                view.Add(1); view.Add(5); view.Add(3); view.Add(1); view.Add(3); view.Add(0);
+                view.Add(1);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
+                view.Add(3);
+                view.Add(0);
                 Assert.IsTrue(IC.eq(view, 1, 2, 1, 5, 3, 1, 3, 0));
                 Assert.IsTrue(view.Remove(1));
                 check();
@@ -2908,21 +3256,32 @@ namespace HSNXT.C5UnitTests.arrays.list
                 check();
                 Assert.IsTrue(IC.eq(view, 2, 5, 1));
                 Assert.IsTrue(IC.eq(list, 0, 2, 5, 1, 3));
-                view.Add(1); view.Add(5); view.Add(3); view.Add(1); view.Add(3); view.Add(0);
+                view.Add(1);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
+                view.Add(3);
+                view.Add(0);
                 Assert.IsTrue(IC.eq(view, 2, 5, 1, 1, 5, 3, 1, 3, 0));
 
                 view.FIFO = false;
 
                 var l2 = new ArrayList<int>();
 
-                l2.Add(1); l2.Add(2); l2.Add(2); l2.Add(3); l2.Add(1);
+                l2.Add(1);
+                l2.Add(2);
+                l2.Add(2);
+                l2.Add(3);
+                l2.Add(1);
                 view.RemoveAll(l2);
                 check();
                 Assert.IsTrue(IC.eq(view, 5, 5, 1, 3, 0));
                 view.RetainAll(l2);
                 check();
                 Assert.IsTrue(IC.eq(view, 1, 3));
-                view.Add(2); view.Add(4); view.Add(5);
+                view.Add(2);
+                view.Add(4);
+                view.Add(5);
                 Assert.AreEqual(1, view.RemoveAt(0));
                 Assert.AreEqual(5, view.RemoveAt(3));
                 Assert.AreEqual(2, view.RemoveAt(1));
@@ -2931,7 +3290,10 @@ namespace HSNXT.C5UnitTests.arrays.list
                 view.Add(8);
                 Assert.AreEqual(3, view.RemoveFirst());
                 Assert.AreEqual(8, view.RemoveLast());
-                view.Add(2); view.Add(5); view.Add(3); view.Add(1);
+                view.Add(2);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
                 view.RemoveInterval(1, 2);
                 check();
                 Assert.IsTrue(IC.eq(view, 4, 3, 1));
@@ -2974,14 +3336,15 @@ namespace HSNXT.C5UnitTests.arrays.list
                 view.Add(28);
                 Assert.IsTrue(IC.eq(list, 0, 28, 1, 2, 3));
             }
+
             [Test]
             public void Iterate()
             {
                 list.Clear();
                 view = null;
-                foreach (var i in new int[] { 2, 4, 8, 13, 6, 1, 2, 7 }) list.Add(i);
+                foreach (var i in new int[] {2, 4, 8, 13, 6, 1, 2, 7}) list.Add(i);
 
-                view = (ArrayList<int>)list.View(list.Count - 2, 2);
+                view = (ArrayList<int>) list.View(list.Count - 2, 2);
                 while (true)
                 {
                     if ((view.Last - view.First) % 2 == 1)
@@ -2992,6 +3355,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                     else
                         view.Slide(-1, 2);
                 }
+
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 2, 4, 8, 666, 13, 6, 1, 666, 2, 666, 7));
             }
@@ -3000,7 +3364,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void SyncRoot()
             {
-                Assert.AreSame(((System.Collections.IList)view).SyncRoot, ((System.Collections.IList)list).SyncRoot);
+                Assert.AreSame(((System.Collections.IList) view).SyncRoot, ((System.Collections.IList) list).SyncRoot);
             }
 
             public Simple(MemoryType memoryType)
@@ -3008,6 +3372,7 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
             }
         }
+
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -3015,6 +3380,7 @@ namespace HSNXT.C5UnitTests.arrays.list
         {
             IList<int> list;
             IList<int>[][] views;
+
             [SetUp]
             public void Init()
             {
@@ -3029,12 +3395,14 @@ namespace HSNXT.C5UnitTests.arrays.list
                         views[i][j] = list.View(i, j);
                 }
             }
+
             [TearDown]
             public void Dispose()
             {
                 list = null;
                 views = null;
             }
+
             [Test]
             public void Insert()
             {
@@ -3042,12 +3410,15 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.Insert(3, 777);
                 Assert.IsTrue(list.Check(), "list check after insert");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i < 3 && i + j > 3 ? j + 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 1, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i < 3 && i + j > 3 ? j + 1 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void RemoveAt()
             {
@@ -3055,11 +3426,12 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.RemoveAt(3);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i <= 3 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i <= 3 && i + j > 3 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i <= 3 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i <= 3 && i + j > 3 ? j - 1 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
@@ -3069,11 +3441,14 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.RemoveInterval(3, 2);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i <= 3 ? i : i <= 5 ? 3 : i - 2, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(j == 0 ? 0 : i <= 3 && i + j > 4 ? j - 2 : i > 4 || i + j <= 3 ? j : j - 1, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i <= 3 ? i :
+                        i <= 5 ? 3 : i - 2, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(j == 0 ? 0 :
+                        i <= 3 && i + j > 4 ? j - 2 :
+                        i > 4 || i + j <= 3 ? j : j - 1, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
 
 
@@ -3084,12 +3459,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.InsertLast(777);
                 Assert.IsTrue(list.Check(), "list check after insert");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void RemoveAtEnd()
             {
@@ -3097,12 +3473,14 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.RemoveAt(5);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i <= 5 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i <= 5 && i + j > 5 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i <= 5 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i <= 5 && i + j > 5 ? j - 1 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void InsertAtStart()
             {
@@ -3110,12 +3488,14 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.Insert(0, 777);
                 Assert.IsTrue(list.Check(), "list check after insert");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i == 0 && j == 0 ? 0 : i + 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i == 0 && j == 0 ? 0 : i + 1, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void RemoveAtStart()
             {
@@ -3123,12 +3503,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 list.RemoveAt(0);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i == 0 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i == 0 && j > 0 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i == 0 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i == 0 && j > 0 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void Clear()
             {
@@ -3136,11 +3517,12 @@ namespace HSNXT.C5UnitTests.arrays.list
                 views[2][3].Clear();
                 Assert.IsTrue(list.Check(), "list check after clear");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 2 ? i : i < 6 ? 2 : i - 3, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(s(i, j), views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 2 ? i :
+                        i < 6 ? 2 : i - 3, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(s(i, j), views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
 
             private int s(int i, int j)
@@ -3152,43 +3534,58 @@ namespace HSNXT.C5UnitTests.arrays.list
                 if (i <= 2) return k >= 4 ? j - 3 : 2 - i;
                 return -1;
             }
+
             [Test]
             public void InsertAll()
             {
                 var list2 = new ArrayList<int>();
-                for (var i = 0; i < 5; i++) { list2.Add(100 + i); }
+                for (var i = 0; i < 5; i++)
+                {
+                    list2.Add(100 + i);
+                }
+
                 Assert.IsTrue(list.Check(), "list check before insertAll");
                 list.InsertAll(3, list2);
                 Assert.IsTrue(list.Check(), "list check after insertAll");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
             public void AddAll()
             {
                 var list2 = new ArrayList<int>();
-                for (var i = 0; i < 5; i++) { list2.Add(100 + i); }
+                for (var i = 0; i < 5; i++)
+                {
+                    list2.Add(100 + i);
+                }
+
                 Assert.IsTrue(list.Check(), "list check before AddAll");
                 list.View(1, 2).AddAll(list2);
                 Assert.IsTrue(list.Check(), "list check after AddAll");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
             public void RemoveAll1()
             {
                 var list2 = new ArrayList<int>();
-                list2.Add(1); list2.Add(3); list2.Add(4);
+                list2.Add(1);
+                list2.Add(3);
+                list2.Add(4);
 
                 for (var i = 0; i < 7; i++)
                 {
@@ -3196,17 +3593,20 @@ namespace HSNXT.C5UnitTests.arrays.list
                     {
                         list = new ArrayList<int>();
                         for (var k = 0; k < 6; k++) list.Add(k);
-                        var v = (ArrayList<int>)list.View(i, j);
+                        var v = (ArrayList<int>) list.View(i, j);
                         list.RemoveAll(list2);
                         Assert.IsTrue(list.Check(), "list check after RemoveAll, i=" + i + ", j=" + j);
                     }
                 }
             }
+
             [Test]
             public void RemoveAll2()
             {
                 var list2 = new ArrayList<int>();
-                list2.Add(1); list2.Add(3); list2.Add(4);
+                list2.Add(1);
+                list2.Add(3);
+                list2.Add(4);
                 Assert.IsTrue(list.Check(), "list check before RemoveAll");
                 list.RemoveAll(list2);
 
@@ -3275,7 +3675,9 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void RetainAll()
             {
                 var list2 = new ArrayList<int>();
-                list2.Add(2); list2.Add(4); list2.Add(5);
+                list2.Add(2);
+                list2.Add(4);
+                list2.Add(5);
                 Assert.IsTrue(list.Check(), "list check before RetainAll");
                 list.RetainAll(list2);
 
@@ -3344,17 +3746,27 @@ namespace HSNXT.C5UnitTests.arrays.list
             public void RemoveAllCopies()
             {
                 var list2 = new ArrayList<int>();
-                list2.Add(0); list2.Add(2); list2.Add(2); list2.Add(2); list2.Add(5); list2.Add(2); list2.Add(1);
+                list2.Add(0);
+                list2.Add(2);
+                list2.Add(2);
+                list2.Add(2);
+                list2.Add(5);
+                list2.Add(2);
+                list2.Add(1);
                 for (var i = 0; i < 7; i++)
                 {
                     for (var j = 0; j < 7 - i; j++)
                     {
                         list = new ArrayList<int>();
                         list.AddAll(list2);
-                        var v = (ArrayList<int>)list.View(i, j);
+                        var v = (ArrayList<int>) list.View(i, j);
                         list.RemoveAllCopies(2);
-                        Assert.AreEqual((i == 0 && j > 0 ? 1 : 0) + (i <= 4 && i + j > 4 ? 1 : 0) + (i <= 6 && i + j > 6 ? 1 : 0), v.Count, "v.Count, i=" + i + ", j=" + j);
-                        Assert.AreEqual(i == 0 ? 0 : i <= 4 ? 1 : i <= 6 ? 2 : 3, v.Offset, "v.Offset, i=" + i + ", j=" + j);
+                        Assert.AreEqual(
+                            (i == 0 && j > 0 ? 1 : 0) + (i <= 4 && i + j > 4 ? 1 : 0) + (i <= 6 && i + j > 6 ? 1 : 0),
+                            v.Count, "v.Count, i=" + i + ", j=" + j);
+                        Assert.AreEqual(i == 0 ? 0 :
+                            i <= 4 ? 1 :
+                            i <= 6 ? 2 : 3, v.Offset, "v.Offset, i=" + i + ", j=" + j);
                         Assert.IsTrue(list.Check(), "list check after RemoveAllCopies, i=" + i + ", j=" + j);
                     }
                 }
@@ -3364,34 +3776,40 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
                 var k = 0;
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    if (i + j <= start || i >= start + count || (i <= start && i + j >= start + count) ||
+                        (reverse && start <= i && start + count >= i + j))
                     {
-                        if (i + j <= start || i >= start + count || (i <= start && i + j >= start + count) || (reverse && start <= i && start + count >= i + j))
+                        try
                         {
-                            try
-                            {
-                                k = views[i][j].Count;
-                            }
-                            catch (ViewDisposedException)
-                            {
-                                Assert.Fail("view[" + i + "][" + j + "] threw");
-                            }
-                            Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] size");
-                            if (reverse && ((j > 0 && start <= i && start + count >= i + j) || (j == 0 && start < i && start + count > i)))
-                                Assert.AreEqual(start + (start + count - i - j), views[i][j].Offset, "view[" + i + "][" + j + "] offset (mirrored)");
-                            else
-                                Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                            k = views[i][j].Count;
                         }
-                        else
+                        catch (ViewDisposedException)
                         {
-                            try
-                            {
-                                k = views[i][j].Count;
-                                Assert.Fail("view[" + i + "][" + j + "] no throw");
-                            }
-                            catch (ViewDisposedException) { }
+                            Assert.Fail("view[" + i + "][" + j + "] threw");
+                        }
+
+                        Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] size");
+                        if (reverse && ((j > 0 && start <= i && start + count >= i + j) ||
+                                        (j == 0 && start < i && start + count > i)))
+                            Assert.AreEqual(start + (start + count - i - j), views[i][j].Offset,
+                                "view[" + i + "][" + j + "] offset (mirrored)");
+                        else
+                            Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            k = views[i][j].Count;
+                            Assert.Fail("view[" + i + "][" + j + "] no throw");
+                        }
+                        catch (ViewDisposedException)
+                        {
                         }
                     }
+                }
             }
 
             [Test]
@@ -3404,6 +3822,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.IsTrue(list.Check(), "list check after Reverse");
                 checkDisposed(true, start, count);
             }
+
             [Test]
             public void Sort()
             {
@@ -3414,6 +3833,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.IsTrue(list.Check(), "list check after Sort");
                 checkDisposed(false, start, count);
             }
+
             [Test]
             public void Shuffle()
             {
@@ -3434,8 +3854,6 @@ namespace HSNXT.C5UnitTests.arrays.list
     }
 
 
-
-
     namespace ArrayListOfTreesORLists
     {
         [TestFixture(MemoryType.Normal)]
@@ -3454,8 +3872,10 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dit = new ArrayList<int>();
                 dat = new TreeSet<int>(SCG.Comparer<int>.Default, EqualityComparer<int>.Default);
                 dut = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new ArrayList<ICollection<int>>();
                 Dat = new ArrayList<ICollection<int>>();
@@ -3474,8 +3894,12 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dat));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dut));
             }
@@ -3495,7 +3919,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -3512,8 +3935,10 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dit = new ArrayList<int>();
                 dat = new TreeSet<int>(SCG.Comparer<int>.Default, EqualityComparer<int>.Default);
                 dut = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new ArrayList<ICollection<int>>();
                 Dat = new ArrayList<ICollection<int>>();
@@ -3532,9 +3957,15 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dit); Dut.Add(dut); Dut.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dit);
+                Dut.Add(dut);
+                Dut.Add(dat);
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
             }
@@ -3554,7 +3985,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -3572,10 +4002,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dat = new ArrayList<int>();
                 dut = new ArrayList<int>();
                 dot = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(2); dat.Add(1);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(2);
+                dat.Add(1);
                 dut.Add(3);
-                dot.Add(1); dot.Add(2);
+                dot.Add(1);
+                dot.Add(2);
                 Dit = new ArrayList<ISequenced<int>>();
                 Dat = new ArrayList<ISequenced<int>>();
                 Dut = new ArrayList<ISequenced<int>>();
@@ -3595,10 +4028,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dot); Dut.Add(dut); Dut.Add(dit);
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dot);
+                Dut.Add(dut);
+                Dut.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dut));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dat));
                 Assert.IsTrue(Dit.UnsequencedEquals(Dot));
@@ -3619,7 +4060,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -3637,10 +4077,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dat = new ArrayList<int>();
                 dut = new ArrayList<int>();
                 dot = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(2); dat.Add(1);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(2);
+                dat.Add(1);
                 dut.Add(3);
-                dot.Add(1); dot.Add(2);
+                dot.Add(1);
+                dot.Add(2);
                 Dit = new ArrayList<ISequenced<int>>();
                 Dat = new ArrayList<ISequenced<int>>();
                 Dut = new ArrayList<ISequenced<int>>();
@@ -3660,10 +4103,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dot); Dut.Add(dut); Dut.Add(dit);
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dot);
+                Dut.Add(dut);
+                Dut.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut);
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsFalse(Dit.SequencedEquals(Dot));
@@ -3683,8 +4134,6 @@ namespace HSNXT.C5UnitTests.arrays.list
             }
         }
     }
-
-
 
 
     namespace HashingAndEquals
@@ -3740,8 +4189,10 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void EqualHashButDifferent()
             {
-                dit.Add(0); dit.Add(31);
-                dat.Add(1); dat.Add(0);
+                dit.Add(0);
+                dit.Add(31);
+                dat.Add(1);
+                dat.Add(0);
                 Assert.AreEqual(dit.GetSequencedHashCode(), dat.GetSequencedHashCode());
                 Assert.IsFalse(dit.SequencedEquals(dat));
             }
@@ -3769,7 +4220,7 @@ namespace HSNXT.C5UnitTests.arrays.list
                 Assert.IsTrue(dit.SequencedEquals(dut));
                 Assert.IsTrue(dut.SequencedEquals(dit));
                 dit.Add(7);
-                ((ArrayList<int>)dut).InsertFirst(7);
+                ((ArrayList<int>) dut).InsertFirst(7);
                 Assert.IsFalse(dit.SequencedEquals(dut));
                 Assert.IsFalse(dut.SequencedEquals(dit));
             }
@@ -3799,7 +4250,6 @@ namespace HSNXT.C5UnitTests.arrays.list
             {
             }
         }
-
 
 
         [TestFixture(MemoryType.Normal)]
@@ -3854,8 +4304,10 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void EqualHashButDifferent()
             {
-                dit.Add(-1657792980); dit.Add(-1570288808);
-                dat.Add(1862883298); dat.Add(-272461342);
+                dit.Add(-1657792980);
+                dit.Add(-1570288808);
+                dat.Add(1862883298);
+                dat.Add(-272461342);
                 Assert.AreEqual(dit.GetUnsequencedHashCode(), dat.GetUnsequencedHashCode());
                 Assert.IsFalse(dit.UnsequencedEquals(dat));
             }
@@ -3915,7 +4367,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -3932,8 +4383,10 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dit = new ArrayList<int>();
                 dat = new ArrayList<int>();
                 dut = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new ArrayList<ICollection<int>>();
                 Dat = new ArrayList<ICollection<int>>();
@@ -3952,8 +4405,12 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dat));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dut));
             }
@@ -3973,7 +4430,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -3990,8 +4446,10 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dit = new ArrayList<int>();
                 dat = new ArrayList<int>();
                 dut = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new ArrayList<ICollection<int>>();
                 Dat = new ArrayList<ICollection<int>>();
@@ -4010,9 +4468,15 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dit); Dut.Add(dut); Dut.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dit);
+                Dut.Add(dut);
+                Dut.Add(dat);
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
             }
@@ -4032,7 +4496,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -4050,10 +4513,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dat = new ArrayList<int>();
                 dut = new ArrayList<int>();
                 dot = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
-                dot.Add(2); dot.Add(1);
+                dot.Add(2);
+                dot.Add(1);
                 Dit = new ArrayList<ISequenced<int>>();
                 Dat = new ArrayList<ISequenced<int>>();
                 Dut = new ArrayList<ISequenced<int>>();
@@ -4073,10 +4539,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dot); Dut.Add(dut); Dut.Add(dit);
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dot);
+                Dut.Add(dut);
+                Dut.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dut));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dat));
                 Assert.IsTrue(Dit.UnsequencedEquals(Dot));
@@ -4097,7 +4571,6 @@ namespace HSNXT.C5UnitTests.arrays.list
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -4115,10 +4588,13 @@ namespace HSNXT.C5UnitTests.arrays.list
                 dat = new ArrayList<int>();
                 dut = new ArrayList<int>();
                 dot = new ArrayList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
-                dot.Add(2); dot.Add(1);
+                dot.Add(2);
+                dot.Add(1);
                 Dit = new ArrayList<ISequenced<int>>();
                 Dat = new ArrayList<ISequenced<int>>();
                 Dut = new ArrayList<ISequenced<int>>();
@@ -4138,10 +4614,18 @@ namespace HSNXT.C5UnitTests.arrays.list
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dot); Dut.Add(dut); Dut.Add(dit);
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dot);
+                Dut.Add(dut);
+                Dut.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut);
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsFalse(Dit.SequencedEquals(Dot));

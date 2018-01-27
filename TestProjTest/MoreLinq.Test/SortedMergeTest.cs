@@ -47,7 +47,7 @@ namespace HSNXT.Test
         {
             var sequenceA = Enumerable.Range(1, 3);
             var sequenceB = Enumerable.Range(4, 3);
-            var result = sequenceA.SortedMerge(OrderByDirection.Ascending, (IComparer<int>)null, sequenceB);
+            var result = sequenceA.SortedMerge(OrderByDirection.Ascending, (IComparer<int>) null, sequenceB);
 
             Assert.IsTrue(result.SequenceEqual(sequenceA.Concat(sequenceB)));
         }
@@ -86,8 +86,8 @@ namespace HSNXT.Test
         public void TestSortedMergeFirstSequenceEmpty()
         {
             var sequenceA = Enumerable.Empty<int>();
-            var sequenceB = new[] { 1, 3, 5, 7, 9, 11 };
-            var sequenceC = new[] { 2, 4, 6, 8, 10, 12 };
+            var sequenceB = new[] {1, 3, 5, 7, 9, 11};
+            var sequenceC = new[] {2, 4, 6, 8, 10, 12};
             var expectedResult = Enumerable.Range(1, 12);
             var result = sequenceA.SortedMerge(OrderByDirection.Ascending, sequenceB, sequenceC);
 
@@ -148,11 +148,11 @@ namespace HSNXT.Test
         [Test]
         public void TestSortedMergeCustomComparer()
         {
-            var sequenceA = new[] { "a", "D", "G", "h", "i", "J", "O", "t", "z" };
-            var sequenceB = new[] { "b", "E", "k", "q", "r", "u", "V", "x", "Y" };
-            var sequenceC = new[] { "C", "F", "l", "m", "N", "P", "s", "w" };
+            var sequenceA = new[] {"a", "D", "G", "h", "i", "J", "O", "t", "z"};
+            var sequenceB = new[] {"b", "E", "k", "q", "r", "u", "V", "x", "Y"};
+            var sequenceC = new[] {"C", "F", "l", "m", "N", "P", "s", "w"};
             var expectedResult = sequenceA.Concat(sequenceB).Concat(sequenceC)
-                                          .OrderBy(a => a, StringComparer.CurrentCultureIgnoreCase);
+                .OrderBy(a => a, StringComparer.CurrentCultureIgnoreCase);
             var result = sequenceA.SortedMerge(OrderByDirection.Ascending, sequenceB, sequenceC);
 
             Assert.IsTrue(result.SequenceEqual(expectedResult));

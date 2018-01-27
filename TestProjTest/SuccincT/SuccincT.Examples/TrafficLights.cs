@@ -12,7 +12,8 @@ namespace HSNXT.SuccincT.Examples
         }
 
         public struct Lights
-        {            public LightState Red { get; }
+        {
+            public LightState Red { get; }
             public LightState Amber { get; }
             public LightState Green { get; }
 
@@ -57,6 +58,7 @@ namespace HSNXT.SuccincT.Examples
                         break;
                 }
             }
+
             // ReSharper disable once IteratorNeverReturns
         }
 

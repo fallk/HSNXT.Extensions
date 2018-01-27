@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.ActionExtensions
 {
-
     public class AsActionUsingTests
     {
         [Fact]
@@ -24,17 +24,13 @@ namespace BCLExtensions.Tests.ActionExtensions
 
         private void SampleAction(int parameter)
         {
-            
         }
 
         [Fact]
         public void InternalFunctionExecutes()
         {
             var internalFunctionWasCalled = false;
-            Action<int> action = parameter =>
-            {
-                internalFunctionWasCalled = true;
-            };
+            Action<int> action = parameter => { internalFunctionWasCalled = true; };
             var result = action.AsActionUsing(12);
             result();
 
@@ -47,10 +43,7 @@ namespace BCLExtensions.Tests.ActionExtensions
         {
             const int expectedParameter = 12;
             var passedParameter = 0;
-            Action<int> action = parameter =>
-            {
-                passedParameter = parameter;
-            };
+            Action<int> action = parameter => { passedParameter = parameter; };
 
             var result = action.AsActionUsing(expectedParameter);
             result();

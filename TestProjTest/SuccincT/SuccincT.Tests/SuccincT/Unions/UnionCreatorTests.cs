@@ -7,9 +7,15 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
     [TestFixture]
     internal class UnionCreatorTests
     {
-        private enum Reds { Red }
+        private enum Reds
+        {
+            Red
+        }
 
-        private enum Greens { Green }
+        private enum Greens
+        {
+            Green
+        }
 
         [Test]
         public void UnionCreatorT1T2_CanCreateT1AndT2Unions()

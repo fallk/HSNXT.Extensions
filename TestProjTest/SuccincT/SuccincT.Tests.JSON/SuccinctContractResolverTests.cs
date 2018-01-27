@@ -25,7 +25,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
 
             var option1 = Option<string>.Some("a");
             var option2 = Option<string>.None();
-            var list = new List<Option<string>> { option1, option2 };
+            var list = new List<Option<string>> {option1, option2};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Option<string>>>(json, settings);
 
@@ -45,7 +45,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
 
             var maybe1 = Maybe<string>.Some("a");
             var maybe2 = Maybe<string>.None();
-            var list = new List<Maybe<string>> { maybe1, maybe2 };
+            var list = new List<Maybe<string>> {maybe1, maybe2};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Maybe<string>>>(json, settings);
 
@@ -65,7 +65,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
 
             var union1 = new Union<int, string>(1);
             var union2 = new Union<int, string>("a");
-            var list = new List<Union<int, string>> { union1, union2 };
+            var list = new List<Union<int, string>> {union1, union2};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Union<int, string>>>(json, settings);
 
@@ -87,7 +87,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
             var union1 = new Union<int, double, string>(1);
             var union2 = new Union<int, double, string>(2.0);
             var union3 = new Union<int, double, string>("3");
-            var list = new List<Union<int, double, string>> { union1, union2, union3 };
+            var list = new List<Union<int, double, string>> {union1, union2, union3};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Union<int, double, string>>>(json, settings);
 
@@ -112,7 +112,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
             var union2 = new Union<int, double, string, Variant>(2.0);
             var union3 = new Union<int, double, string, Variant>("3");
             var union4 = new Union<int, double, string, Variant>(Variant.Case3);
-            var list = new List<Union<int, double, string, Variant>> { union1, union2, union3, union4 };
+            var list = new List<Union<int, double, string, Variant>> {union1, union2, union3, union4};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Union<int, double, string, Variant>>>(json, settings);
 
@@ -153,7 +153,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
 
             var either1 = new Either<int, string>(1);
             var either2 = new Either<int, string>("2");
-            var list = new List<Either<int, string>> { either1, either2 };
+            var list = new List<Either<int, string>> {either1, either2};
             var json = SerializeObject(list, settings);
             var newValue = DeserializeObject<List<Either<int, string>>>(json, settings);
 
@@ -171,7 +171,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
 
             var success = new Success<int>();
             Success<int> failure = 1;
-            var list = new List<Success<int>> { success, failure };
+            var list = new List<Success<int>> {success, failure};
             var json = SerializeObject(list, settings);
             var newValue = DeserializeObject<List<Success<int>>>(json, settings);
 

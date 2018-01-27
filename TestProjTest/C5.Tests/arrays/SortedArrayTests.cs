@@ -54,7 +54,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
     static class Factory
     {
-        public static ICollection<T> New<T>(MemoryType memoryType) { return new SortedArray<T>(memoryType); }
+        public static ICollection<T> New<T>(MemoryType memoryType)
+        {
+            return new SortedArray<T>(memoryType);
+        }
     }
 
 
@@ -65,15 +68,26 @@ namespace HSNXT.C5UnitTests.arrays.sorted
     {
         ICollection<int> coll;
         IFormatProvider rad16;
+
         [SetUp]
-        public void Init() { coll = Factory.New<int>(MemoryType); rad16 = new RadixFormatProvider(16); }
+        public void Init()
+        {
+            coll = Factory.New<int>(MemoryType);
+            rad16 = new RadixFormatProvider(16);
+        }
+
         [TearDown]
-        public void Dispose() { coll = null; rad16 = null; }
+        public void Dispose()
+        {
+            coll = null;
+            rad16 = null;
+        }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("{  }", coll.ToString());
-            coll.AddAll(new int[] { -4, 28, 129, 65530 });
+            coll.AddAll(new int[] {-4, 28, 129, 65530});
             Assert.AreEqual("{ -4, 28, 129, 65530 }", coll.ToString());
             Assert.AreEqual("{ -4, 1C, 81, FFFA }", coll.ToString(null, rad16));
             Assert.AreEqual("{ -4, 28, 129... }", coll.ToString("L14", null));
@@ -138,22 +152,22 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         [Test]
         public void Remove()
         {
-            var all = new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
+            var all = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
 
             array.RemoveRangeFrom(18);
-            Assert.IsTrue(IC.eq(array, new int[] { 2, 4, 6, 8, 10, 12, 14, 16 }));
+            Assert.IsTrue(IC.eq(array, new int[] {2, 4, 6, 8, 10, 12, 14, 16}));
             array.RemoveRangeFrom(28);
-            Assert.IsTrue(IC.eq(array, new int[] { 2, 4, 6, 8, 10, 12, 14, 16 }));
+            Assert.IsTrue(IC.eq(array, new int[] {2, 4, 6, 8, 10, 12, 14, 16}));
             array.RemoveRangeFrom(13);
-            Assert.IsTrue(IC.eq(array, new int[] { 2, 4, 6, 8, 10, 12 }));
+            Assert.IsTrue(IC.eq(array, new int[] {2, 4, 6, 8, 10, 12}));
             array.RemoveRangeFrom(2);
             Assert.IsTrue(IC.eq(array));
             foreach (var i in all) array.Add(i);
 
             array.RemoveRangeTo(10);
-            Assert.IsTrue(IC.eq(array, new int[] { 10, 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(array, new int[] {10, 12, 14, 16, 18, 20}));
             array.RemoveRangeTo(2);
-            Assert.IsTrue(IC.eq(array, new int[] { 10, 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(array, new int[] {10, 12, 14, 16, 18, 20}));
             array.RemoveRangeTo(21);
             Assert.IsTrue(IC.eq(array));
             foreach (var i in all) array.Add(i);
@@ -171,63 +185,63 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         [Test]
         public void Normal()
         {
-            var all = new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
+            var all = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
 
             Assert.IsTrue(IC.eq(array, all));
             Assert.IsTrue(IC.eq(array.RangeAll(), all));
             Assert.AreEqual(10, array.RangeAll().Count);
-            Assert.IsTrue(IC.eq(array.RangeFrom(11), new int[] { 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(array.RangeFrom(11), new int[] {12, 14, 16, 18, 20}));
             Assert.AreEqual(5, array.RangeFrom(11).Count);
-            Assert.IsTrue(IC.eq(array.RangeFrom(12), new int[] { 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(array.RangeFrom(12), new int[] {12, 14, 16, 18, 20}));
             Assert.IsTrue(IC.eq(array.RangeFrom(2), all));
             Assert.IsTrue(IC.eq(array.RangeFrom(1), all));
             Assert.IsTrue(IC.eq(array.RangeFrom(21), new int[] { }));
-            Assert.IsTrue(IC.eq(array.RangeFrom(20), new int[] { 20 }));
-            Assert.IsTrue(IC.eq(array.RangeTo(8), new int[] { 2, 4, 6 }));
-            Assert.IsTrue(IC.eq(array.RangeTo(7), new int[] { 2, 4, 6 }));
+            Assert.IsTrue(IC.eq(array.RangeFrom(20), new int[] {20}));
+            Assert.IsTrue(IC.eq(array.RangeTo(8), new int[] {2, 4, 6}));
+            Assert.IsTrue(IC.eq(array.RangeTo(7), new int[] {2, 4, 6}));
             Assert.AreEqual(3, array.RangeTo(7).Count);
             Assert.IsTrue(IC.eq(array.RangeTo(2), new int[] { }));
             Assert.IsTrue(IC.eq(array.RangeTo(1), new int[] { }));
-            Assert.IsTrue(IC.eq(array.RangeTo(3), new int[] { 2 }));
-            Assert.IsTrue(IC.eq(array.RangeTo(20), new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18 }));
+            Assert.IsTrue(IC.eq(array.RangeTo(3), new int[] {2}));
+            Assert.IsTrue(IC.eq(array.RangeTo(20), new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18}));
             Assert.IsTrue(IC.eq(array.RangeTo(21), all));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(7, 12), new int[] { 8, 10 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 11), new int[] { 6, 8, 10 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(1, 12), new int[] { 2, 4, 6, 8, 10 }));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(7, 12), new int[] {8, 10}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 11), new int[] {6, 8, 10}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(1, 12), new int[] {2, 4, 6, 8, 10}));
             Assert.AreEqual(5, array.RangeFromTo(1, 12).Count);
-            Assert.IsTrue(IC.eq(array.RangeFromTo(2, 12), new int[] { 2, 4, 6, 8, 10 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 21), new int[] { 6, 8, 10, 12, 14, 16, 18, 20 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 20), new int[] { 6, 8, 10, 12, 14, 16, 18 }));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(2, 12), new int[] {2, 4, 6, 8, 10}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 21), new int[] {6, 8, 10, 12, 14, 16, 18, 20}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 20), new int[] {6, 8, 10, 12, 14, 16, 18}));
         }
 
 
         [Test]
         public void Backwards()
         {
-            var all = new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
-            var lla = new int[] { 20, 18, 16, 14, 12, 10, 8, 6, 4, 2 };
+            var all = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+            var lla = new int[] {20, 18, 16, 14, 12, 10, 8, 6, 4, 2};
 
             Assert.IsTrue(IC.eq(array, all));
             Assert.IsTrue(IC.eq(array.RangeAll().Backwards(), lla));
-            Assert.IsTrue(IC.eq(array.RangeFrom(11).Backwards(), new int[] { 20, 18, 16, 14, 12 }));
-            Assert.IsTrue(IC.eq(array.RangeFrom(12).Backwards(), new int[] { 20, 18, 16, 14, 12 }));
+            Assert.IsTrue(IC.eq(array.RangeFrom(11).Backwards(), new int[] {20, 18, 16, 14, 12}));
+            Assert.IsTrue(IC.eq(array.RangeFrom(12).Backwards(), new int[] {20, 18, 16, 14, 12}));
             Assert.IsTrue(IC.eq(array.RangeFrom(2).Backwards(), lla));
             Assert.IsTrue(IC.eq(array.RangeFrom(1).Backwards(), lla));
             Assert.IsTrue(IC.eq(array.RangeFrom(21).Backwards(), new int[] { }));
-            Assert.IsTrue(IC.eq(array.RangeFrom(20).Backwards(), new int[] { 20 }));
-            Assert.IsTrue(IC.eq(array.RangeTo(8).Backwards(), new int[] { 6, 4, 2 }));
-            Assert.IsTrue(IC.eq(array.RangeTo(7).Backwards(), new int[] { 6, 4, 2 }));
+            Assert.IsTrue(IC.eq(array.RangeFrom(20).Backwards(), new int[] {20}));
+            Assert.IsTrue(IC.eq(array.RangeTo(8).Backwards(), new int[] {6, 4, 2}));
+            Assert.IsTrue(IC.eq(array.RangeTo(7).Backwards(), new int[] {6, 4, 2}));
             Assert.IsTrue(IC.eq(array.RangeTo(2).Backwards(), new int[] { }));
             Assert.IsTrue(IC.eq(array.RangeTo(1).Backwards(), new int[] { }));
-            Assert.IsTrue(IC.eq(array.RangeTo(3).Backwards(), new int[] { 2 }));
-            Assert.IsTrue(IC.eq(array.RangeTo(20).Backwards(), new int[] { 18, 16, 14, 12, 10, 8, 6, 4, 2 }));
+            Assert.IsTrue(IC.eq(array.RangeTo(3).Backwards(), new int[] {2}));
+            Assert.IsTrue(IC.eq(array.RangeTo(20).Backwards(), new int[] {18, 16, 14, 12, 10, 8, 6, 4, 2}));
             Assert.IsTrue(IC.eq(array.RangeTo(21).Backwards(), lla));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(7, 12).Backwards(), new int[] { 10, 8 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 11).Backwards(), new int[] { 10, 8, 6 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(1, 12).Backwards(), new int[] { 10, 8, 6, 4, 2 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(2, 12).Backwards(), new int[] { 10, 8, 6, 4, 2 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 21).Backwards(), new int[] { 20, 18, 16, 14, 12, 10, 8, 6 }));
-            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 20).Backwards(), new int[] { 18, 16, 14, 12, 10, 8, 6 }));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(7, 12).Backwards(), new int[] {10, 8}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 11).Backwards(), new int[] {10, 8, 6}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(1, 12).Backwards(), new int[] {10, 8, 6, 4, 2}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(2, 12).Backwards(), new int[] {10, 8, 6, 4, 2}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 21).Backwards(), new int[] {20, 18, 16, 14, 12, 10, 8, 6}));
+            Assert.IsTrue(IC.eq(array.RangeFromTo(6, 20).Backwards(), new int[] {18, 16, 14, 12, 10, 8, 6}));
         }
 
         [Test]
@@ -332,13 +346,15 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         [Test]
         public void NullEqualityComparerinConstructor3()
         {
-            Assert.Throws<NullReferenceException>(() => new SortedArray<int>(5, null, EqualityComparer<int>.Default, MemoryType));
+            Assert.Throws<NullReferenceException>(() =>
+                new SortedArray<int>(5, null, EqualityComparer<int>.Default, MemoryType));
         }
 
         [Test]
         public void NullEqualityComparerinConstructor4()
         {
-            Assert.Throws<NullReferenceException>(() => new SortedArray<int>(5, SCG.Comparer<int>.Default, null, MemoryType));
+            Assert.Throws<NullReferenceException>(() =>
+                new SortedArray<int>(5, SCG.Comparer<int>.Default, null, MemoryType));
         }
 
         [Test]
@@ -417,7 +433,8 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         [SetUp]
         public void Init()
         {
-            bag = new SortedArray<KeyValuePair<int, string>>(new KeyValuePairComparer<int, string>(new IC()), MemoryType);
+            bag = new SortedArray<KeyValuePair<int, string>>(new KeyValuePairComparer<int, string>(new IC()),
+                MemoryType);
         }
 
 
@@ -465,16 +482,19 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         }
 
         [TearDown]
-        public void Dispose() { list = null; }
+        public void Dispose()
+        {
+            list = null;
+        }
 
         [Test]
         public void Find()
         {
             int i;
             Assert.IsFalse(list.Find(pred, out i));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(list.Find(pred, out i));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.IsTrue(list.Find(pred, out i));
             Assert.AreEqual(45, i);
         }
@@ -484,9 +504,9 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         {
             int i;
             Assert.IsFalse(list.FindLast(pred, out i));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(list.FindLast(pred, out i));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.IsTrue(list.FindLast(pred, out i));
             Assert.AreEqual(675, i);
         }
@@ -495,9 +515,9 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         public void FindIndex()
         {
             Assert.IsFalse(0 <= list.FindIndex(pred));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(0 <= list.FindIndex(pred));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.AreEqual(3, list.FindIndex(pred));
         }
 
@@ -505,9 +525,9 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         public void FindLastIndex()
         {
             Assert.IsFalse(0 <= list.FindLastIndex(pred));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(0 <= list.FindLastIndex(pred));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.AreEqual(7, list.FindLastIndex(pred));
         }
 
@@ -525,17 +545,23 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         private SortedArray<int> list;
 
         [SetUp]
-        public void Init() { list = new SortedArray<int>(MemoryType); }
+        public void Init()
+        {
+            list = new SortedArray<int>(MemoryType);
+        }
 
         [TearDown]
-        public void Dispose() { list = null; }
+        public void Dispose()
+        {
+            list = null;
+        }
 
         [Test]
         public void Test()
         {
             Assert.IsTrue(IC.seteq(list.UniqueItems()));
             Assert.IsTrue(IC.seteq(list.ItemMultiplicities()));
-            list.AddAll(new int[] { 7, 9, 7 });
+            list.AddAll(new int[] {7, 9, 7});
             Assert.IsTrue(IC.seteq(list.UniqueItems(), 7, 9));
             Assert.IsTrue(IC.seteq(list.ItemMultiplicities(), 7, 1, 9, 1));
         }
@@ -567,7 +593,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
 
         [TearDown]
-        public void Dispose() { tree = null; }
+        public void Dispose()
+        {
+            tree = null;
+        }
 
 
         private string aeq(int[] a, params int[] b)
@@ -660,7 +689,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         }
 
         [TearDown]
-        public void Dispose() { lst = null; }
+        public void Dispose()
+        {
+            lst = null;
+        }
 
 
         [Test]
@@ -741,6 +773,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 arr.UpdateOrAdd(i + 0.1);
                 arr.Add(i + 0.2);
             }
+
             Assert.IsTrue(arr.Count == 100);
         }
 
@@ -755,6 +788,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 arr.FindOrAdd(ref iVar);
                 arr.Add(i * 0.2);
             }
+
             Assert.IsTrue(arr.Count == 100);
         }
 
@@ -963,7 +997,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         {
         }
     }
-
 
 
     [TestFixture(MemoryType.Normal)]
@@ -1205,7 +1238,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
     }
 
 
-
     [TestFixture(MemoryType.Normal)]
     [TestFixture(MemoryType.Strict)]
     [TestFixture(MemoryType.Safe)]
@@ -1223,7 +1255,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
         private void loadup()
         {
-            foreach (var i in new int[] { 1, 2, 3, 4 })
+            foreach (var i in new int[] {1, 2, 3, 4})
                 tree.Add(i);
         }
 
@@ -1284,7 +1316,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         {
         }
     }
-
 
 
     [TestFixture(MemoryType.Normal)]
@@ -1428,8 +1459,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
     }
 
 
-
-
     namespace ModificationCheck
     {
         [TestFixture(MemoryType.Normal)]
@@ -1450,6 +1479,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 {
                     tree.Add(i);
                 }
+
                 e = tree.GetEnumerator();
             }
 
@@ -1544,8 +1574,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             }
 
 
-
-
             [Test]
             public void MoveNextAfterRemove()
             {
@@ -1585,15 +1613,22 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             private int c;
 
 
-            internal CubeRoot(int c) { this.c = c; }
+            internal CubeRoot(int c)
+            {
+                this.c = c;
+            }
 
 
-            public int CompareTo(int that) { return c - that * that * that; }
+            public int CompareTo(int that)
+            {
+                return c - that * that * that;
+            }
 
-            public bool Equals(int that) { return c == that * that * that; }
-
+            public bool Equals(int that)
+            {
+                return c == that * that * that;
+            }
         }
-
 
 
         class Interval : IComparable<int>
@@ -1601,12 +1636,23 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             private int b, t;
 
 
-            internal Interval(int b, int t) { this.b = b; this.t = t; }
+            internal Interval(int b, int t)
+            {
+                this.b = b;
+                this.t = t;
+            }
 
 
-            public int CompareTo(int that) { return that < b ? 1 : that > t ? -1 : 0; }
+            public int CompareTo(int that)
+            {
+                return that < b ? 1 :
+                    that > t ? -1 : 0;
+            }
 
-            public bool Equals(int that) { return that >= b && that <= t; }
+            public bool Equals(int that)
+            {
+                return that >= b && that <= t;
+            }
         }
 
 
@@ -1628,19 +1674,34 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             }
 
 
-            private bool never(int i) { return false; }
+            private bool never(int i)
+            {
+                return false;
+            }
 
 
-            private bool always(int i) { return true; }
+            private bool always(int i)
+            {
+                return true;
+            }
 
 
-            private bool even(int i) { return i % 2 == 0; }
+            private bool even(int i)
+            {
+                return i % 2 == 0;
+            }
 
 
-            private string themap(int i) { return string.Format("AA {0,4} BB", i); }
+            private string themap(int i)
+            {
+                return string.Format("AA {0,4} BB", i);
+            }
 
 
-            private string badmap(int i) { return string.Format("AA {0} BB", i); }
+            private string badmap(int i)
+            {
+                return string.Format("AA {0} BB", i);
+            }
 
 
             private int appfield1;
@@ -1648,7 +1709,11 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             private int appfield2;
 
 
-            private void apply(int i) { appfield1++; appfield2 += i * i; }
+            private void apply(int i)
+            {
+                appfield1++;
+                appfield2 += i * i;
+            }
 
 
             [Test]
@@ -1732,7 +1797,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 Assert.AreEqual(0, array.FindAll(new Func<int, bool>(never)).Count);
                 Assert.AreEqual(10, array.FindAll(new Func<int, bool>(always)).Count);
                 Assert.AreEqual(5, array.FindAll(new Func<int, bool>(even)).Count);
-                Assert.IsTrue(((SortedArray<int>)array.FindAll(new Func<int, bool>(even))).Check());
+                Assert.IsTrue(((SortedArray<int>) array.FindAll(new Func<int, bool>(even))).Check());
             }
 
 
@@ -1745,7 +1810,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
                 var res = array.Map(new Func<int, string>(themap), new SC());
 
-                Assert.IsTrue(((SortedArray<string>)res).Check());
+                Assert.IsTrue(((SortedArray<string>) res).Check());
                 Assert.AreEqual(11, res.Count);
                 Assert.AreEqual("AA    0 BB", res[0]);
                 Assert.AreEqual("AA   27 BB", res[3]);
@@ -1762,7 +1827,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                     array.Add(i * i * i);
                 }
 
-                var exception = Assert.Throws<ArgumentException>(() => { ISorted<string> res = array.Map(new Func<int, string>(badmap), new SC()); });
+                var exception = Assert.Throws<ArgumentException>(() =>
+                {
+                    ISorted<string> res = array.Map(new Func<int, string>(badmap), new SC());
+                });
                 Assert.AreEqual("mapper not monotonic", exception.Message);
             }
 
@@ -1861,7 +1929,11 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
 
             [TearDown]
-            public void Dispose() { ic = null; array = null; }
+            public void Dispose()
+            {
+                ic = null;
+                array = null;
+            }
 
             public Simple(MemoryType memoryType)
                 : base(memoryType)
@@ -1871,8 +1943,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
     }
 
 
-
-
     namespace MultiOps
     {
         [TestFixture(MemoryType.Normal)]
@@ -1880,14 +1950,20 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         [TestFixture(MemoryType.Safe)]
         public class AddAll : BaseMemoryType
         {
-            private int sqr(int i) { return i * i; }
+            private int sqr(int i)
+            {
+                return i * i;
+            }
 
 
             SortedArray<int> array;
 
 
             [SetUp]
-            public void Init() { array = new SortedArray<int>(new IC(), MemoryType); }
+            public void Init()
+            {
+                array = new SortedArray<int>(new IC(), MemoryType);
+            }
 
 
             [Test]
@@ -1936,7 +2012,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
 
             [TearDown]
-            public void Dispose() { array = null; }
+            public void Dispose()
+            {
+                array = null;
+            }
 
             public AddAll(MemoryType memoryType)
                 : base(memoryType)
@@ -1945,23 +2024,31 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
         public class AddSorted : BaseMemoryType
         {
-            private int sqr(int i) { return i * i; }
+            private int sqr(int i)
+            {
+                return i * i;
+            }
 
 
-            private int bad(int i) { return i * (5 - i); }
+            private int bad(int i)
+            {
+                return i * (5 - i);
+            }
 
 
             SortedArray<int> array;
 
 
             [SetUp]
-            public void Init() { array = new SortedArray<int>(new IC(), MemoryType); }
+            public void Init()
+            {
+                array = new SortedArray<int>(new IC(), MemoryType);
+            }
 
 
             [Test]
@@ -1971,7 +2058,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 Assert.AreEqual(0, array.Count);
                 Assert.IsTrue(array.Check());
             }
-
 
 
             [Test]
@@ -1985,7 +2071,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             }
 
 
-
             [Test]
             public void EmptySome()
             {
@@ -1997,7 +2082,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 Assert.AreEqual(4, array[2]);
                 Assert.AreEqual(9, array[3]);
             }
-
 
 
             [Test]
@@ -2014,13 +2098,17 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             [Test]
             public void EmptyBad()
             {
-                var exception = Assert.Throws<ArgumentException>(() => array.AddSorted(new FunEnumerable(9, new Func<int, int>(bad))));
+                var exception = Assert.Throws<ArgumentException>(() =>
+                    array.AddSorted(new FunEnumerable(9, new Func<int, int>(bad))));
                 Assert.AreEqual("Argument not sorted", exception.Message);
             }
 
 
             [TearDown]
-            public void Dispose() { array = null; }
+            public void Dispose()
+            {
+                array = null;
+            }
 
             public AddSorted(MemoryType memoryType)
                 : base(memoryType)
@@ -2036,12 +2124,9 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             SortedArray<int> array, array2;
 
 
-
             public Rest(MemoryType memoryType)
                 : base(memoryType)
             {
-
-
             }
 
             [SetUp]
@@ -2185,27 +2270,38 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             [Test]
             public void GetRangeBad1()
             {
-                Assert.Throws<ArgumentOutOfRangeException>(() => { object foo = array[-3, 0]; });
+                Assert.Throws<ArgumentOutOfRangeException>(() =>
+                {
+                    object foo = array[-3, 0];
+                });
             }
 
             [Test]
             public void GetRangeBad2()
             {
-                Assert.Throws<ArgumentOutOfRangeException>(() => { object foo = array[3, -1]; });
+                Assert.Throws<ArgumentOutOfRangeException>(() =>
+                {
+                    object foo = array[3, -1];
+                });
             }
 
             [Test]
             public void GetRangeBad3()
             {
-                Assert.Throws<ArgumentOutOfRangeException>(() => { object foo = array[3, 8]; });
+                Assert.Throws<ArgumentOutOfRangeException>(() =>
+                {
+                    object foo = array[3, 8];
+                });
             }
 
             [TearDown]
-            public void Dispose() { array = null; array2 = null; }
+            public void Dispose()
+            {
+                array = null;
+                array2 = null;
+            }
         }
     }
-
-
 
 
     namespace Sync
@@ -2213,7 +2309,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
-
         public class SyncRoot : BaseMemoryType
         {
             private SortedArray<int> tree;
@@ -2221,12 +2316,9 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             int sz = 5000;
 
 
-
             public SyncRoot(MemoryType memoryType)
                 : base(memoryType)
             {
-
-
             }
 
             [Test]
@@ -2284,7 +2376,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
 
             [SetUp]
-            public void Init() { tree = new SortedArray<int>(new IC(), MemoryType); }
+            public void Init()
+            {
+                tree = new SortedArray<int>(new IC(), MemoryType);
+            }
 
 
             private void unsafe1()
@@ -2332,9 +2427,11 @@ namespace HSNXT.C5UnitTests.arrays.sorted
 
 
             [TearDown]
-            public void Dispose() { tree = null; }
+            public void Dispose()
+            {
+                tree = null;
+            }
         }
-
 
 
         [TestFixture(MemoryType.Normal)]
@@ -2345,11 +2442,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             private SortedArray<int> tree;
 
             int sz = 500000;
+
             public ConcurrentQueries(MemoryType memoryType)
                 : base(memoryType)
             {
-
-
             }
 
             [SetUp]
@@ -2363,7 +2459,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             }
 
 
-
             class A
             {
                 public int count = 0;
@@ -2371,20 +2466,27 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 SortedArray<int> t;
 
 
-                public A(SortedArray<int> t) { this.t = t; }
+                public A(SortedArray<int> t)
+                {
+                    this.t = t;
+                }
 
 
-                public void a(int i) { count++; }
+                public void a(int i)
+                {
+                    count++;
+                }
 
-				public void traverse()
-				{
-					traverse ( null );
-				}
-				/// <summary>
-				/// It calls the method a(int i) but it raises an exception if an error occur. This has been added to test
-				/// exception being thrown if multithread mode and MemoryMode.Strict is selected.
-				/// </summary>
-				/// <param name="onError">On error.</param>
+                public void traverse()
+                {
+                    traverse(null);
+                }
+
+                /// <summary>
+                /// It calls the method a(int i) but it raises an exception if an error occur. This has been added to test
+                /// exception being thrown if multithread mode and MemoryMode.Strict is selected.
+                /// </summary>
+                /// <param name="onError">On error.</param>
                 public void traverse(Action onError = null)
                 {
                     try
@@ -2398,8 +2500,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                     }
                 }
             }
-
-
 
 
             [Test]
@@ -2422,7 +2522,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                 for (var i = 0; i < 10; i++)
                 {
                     a[i] = new A(tree);
-					t[i] = new System.Threading.Thread(new System.Threading.ThreadStart(a[i].traverse));
+                    t[i] = new System.Threading.Thread(new System.Threading.ThreadStart(a[i].traverse));
                 }
 
                 for (var i = 0; i < 10; i++)
@@ -2431,11 +2531,10 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                     t[i].Join();
                 for (var i = 0; i < 10; i++)
                     Assert.AreEqual(sz, a[i].count);
-
             }
 
-			// This is a static placeholder to detect exception in a multithread context. Unfortunately
-			// exception risen in secondary threads are swallowed and not detected.
+            // This is a static placeholder to detect exception in a multithread context. Unfortunately
+            // exception risen in secondary threads are swallowed and not detected.
             private static bool ErrorOnChildThread;
 
             [Test]
@@ -2460,16 +2559,16 @@ namespace HSNXT.C5UnitTests.arrays.sorted
                     t[i].Join();
 
                 Assert.True(ErrorOnChildThread);
-
             }
 
 
             [TearDown]
-            public void Dispose() { tree = null; }
+            public void Dispose()
+            {
+                tree = null;
+            }
         }
     }
-
-
 
 
     namespace Hashing
@@ -2484,8 +2583,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             public ISequenced(MemoryType memoryType)
                 : base(memoryType)
             {
-
-
             }
 
             [SetUp]
@@ -2585,7 +2682,6 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             private ICollection<int> dit, dat, dut;
 
 
-
             [SetUp]
             public void Init()
             {
@@ -2677,9 +2773,7 @@ namespace HSNXT.C5UnitTests.arrays.sorted
             public IEditableCollection(MemoryType memoryType)
                 : base(memoryType)
             {
-
             }
         }
-
     }
 }

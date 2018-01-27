@@ -16,8 +16,8 @@ namespace HSNXT.Test
         public void TestSegmentIsLazy()
         {
             new BreakingSequence<int>().Segment(curr => false);
-            new BreakingSequence<int>().Segment((curr,i) => false);
-            new BreakingSequence<int>().Segment((curr,prev,i) => false);
+            new BreakingSequence<int>().Segment((curr, i) => false);
+            new BreakingSequence<int>().Segment((curr, prev, i) => false);
         }
 
         /// <summary>
@@ -87,10 +87,10 @@ namespace HSNXT.Test
         [Test]
         public void TestSegmentationStartsWithSecondItem()
         {
-            var sequence = new[] { 0 };
-            var resultA = sequence.Segment((Func<int, bool>)delegate { throw new Exception(); });
-            var resultB = sequence.Segment((Func<int, int, bool>)delegate { throw new Exception(); });
-            var resultC = sequence.Segment((Func<int, int, int, bool>)delegate { throw new Exception(); });
+            var sequence = new[] {0};
+            var resultA = sequence.Segment((Func<int, bool>) delegate { throw new Exception(); });
+            var resultB = sequence.Segment((Func<int, int, bool>) delegate { throw new Exception(); });
+            var resultC = sequence.Segment((Func<int, int, int, bool>) delegate { throw new Exception(); });
 
             Assert.IsTrue(resultA.Any());
             Assert.IsTrue(resultB.Any());
@@ -124,7 +124,7 @@ namespace HSNXT.Test
         {
             const int repCount = 5;
             var sequence = Enumerable.Range(1, 3)
-                                     .SelectMany(x => Enumerable.Repeat(x, repCount));
+                .SelectMany(x => Enumerable.Repeat(x, repCount));
             var result = sequence.Segment((curr, prev, i) => curr != prev);
 
             Assert.AreEqual(sequence.Distinct().Count(), result.Count());

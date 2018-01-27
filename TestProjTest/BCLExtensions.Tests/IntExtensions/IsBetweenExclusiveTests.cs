@@ -6,8 +6,8 @@ namespace BCLExtensions.Tests.IntExtensions
     public class IsBetweenExclusiveTests
     {
         [Theory]
-        [InlineData(0,-1,1)]
-        [InlineData(0,int.MinValue,int.MaxValue)]
+        [InlineData(0, -1, 1)]
+        [InlineData(0, int.MinValue, int.MaxValue)]
         [InlineData(42, 30, 60)]
         [InlineData(-30, -40, -20)]
         public void InputToIsBetweenWithLimitsReturnsTrue(int input, int lowerLimit, int upperLimit)

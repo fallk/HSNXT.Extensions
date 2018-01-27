@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -32,14 +34,15 @@ namespace HSNXT.Test
             Disposable c = null;
 
             var allocators = Futures(() => a = new Disposable(),
-                                     () => b = new Disposable(),
-                                     () => c = new Disposable());
+                () => b = new Disposable(),
+                () => c = new Disposable());
 
             var disposables = allocators.Acquire();
 
             Assert.That(disposables.Length, Is.EqualTo(3));
 
-            foreach (var disposable in disposables.ZipShortest(new[] { a, b, c }, (act, exp) => new { Actual = act, Expected = exp }))
+            foreach (var disposable in disposables.ZipShortest(new[] {a, b, c},
+                (act, exp) => new {Actual = act, Expected = exp}))
             {
                 Assert.That(disposable.Actual, Is.SameAs(disposable.Expected));
                 Assert.That(disposable.Actual.Disposed, Is.False);
@@ -54,9 +57,9 @@ namespace HSNXT.Test
             Disposable c = null;
 
             var allocators = Futures(() => a = new Disposable(),
-                                     () => b = new Disposable(),
-                                     () => throw new ApplicationException(),
-                                     () => c = new Disposable());
+                () => b = new Disposable(),
+                () => throw new ApplicationException(),
+                () => c = new Disposable());
 
             Assert.Throws<ApplicationException>(() => allocators.Acquire());
 
@@ -77,9 +80,15 @@ namespace HSNXT.Test
         class Disposable : IDisposable
         {
             public bool Disposed { get; private set; }
-            public void Dispose() { Disposed = true; }
+
+            public void Dispose()
+            {
+                Disposed = true;
+            }
         }
 
-        class ApplicationException : Exception {}
+        class ApplicationException : Exception
+        {
+        }
     }
 }

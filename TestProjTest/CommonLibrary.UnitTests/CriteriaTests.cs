@@ -5,15 +5,14 @@ using HSNXT.ComLib.Data;
 
 namespace CommonLibrary.Tests
 {
-
     [TestFixture]
-    public class CriteriaTests    
+    public class CriteriaTests
     {
         [Test]
         public void CanBuild1_Equals_ConditionWithString()
         {
             var criteria = Query<object>.New().From("users").Where("Name").Is("Kishore");
-            var sql = criteria.Builder.Build();            
+            var sql = criteria.Builder.Build();
             var conditions = criteria.Builder.BuildConditions();
             var conditionsNoWhere = criteria.Builder.BuildConditions(false);
 
@@ -21,7 +20,6 @@ namespace CommonLibrary.Tests
             Assert.AreEqual("where [Name] = 'Kishore'", conditions.Trim());
             Assert.AreEqual("[Name] = 'Kishore'", conditionsNoWhere.Trim());
         }
-
 
 
         [Test]
@@ -78,12 +76,12 @@ namespace CommonLibrary.Tests
         public void CanBuild2()
         {
             var criteria = Query<object>.New().Select("Title", "Desc")
-                                         .From("users")
-                                         .Where("Id").MoreThan(50)
-                                         .Or("Name").NotIn<string>("kishore", "reddy")
-                                         .OrderByDescending("Id")
-                                         .OrderBy("Name")
-                                         .End();
+                .From("users")
+                .Where("Id").MoreThan(50)
+                .Or("Name").NotIn<string>("kishore", "reddy")
+                .OrderByDescending("Id")
+                .OrderBy("Name")
+                .End();
             var sql = criteria.Builder.Build();
             var select = criteria.Builder.BuildSelect();
             var selectNoSel = criteria.Builder.BuildSelect(false);
@@ -92,7 +90,9 @@ namespace CommonLibrary.Tests
             var orderby = criteria.Builder.BuildOrderBy();
             var orderbyNoOrder = criteria.Builder.BuildOrderBy(false);
 
-            Assert.AreEqual("select Title, Desc from users where Id > 50 Or [Name] not in ( 'kishore', 'reddy' )  order by Id Desc, [Name] Asc", sql.Trim());
+            Assert.AreEqual(
+                "select Title, Desc from users where Id > 50 Or [Name] not in ( 'kishore', 'reddy' )  order by Id Desc, [Name] Asc",
+                sql.Trim());
             Assert.AreEqual("select Title, Desc", select.Trim());
             Assert.AreEqual("Title, Desc", selectNoSel.Trim());
             Assert.AreEqual("where Id > 50 Or [Name] not in ( 'kishore', 'reddy' )", conditions.Trim());
@@ -105,14 +105,14 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanBuild2_WithOrderBy()
         {
-            var criteria = Query<object>.New().From("users").Where("Id").MoreThan(50).Or("Name").NotIn<string>("kishore", "reddy").OrderByDescending("Id").OrderBy("Name").End();
+            var criteria = Query<object>.New().From("users").Where("Id").MoreThan(50).Or("Name")
+                .NotIn<string>("kishore", "reddy").OrderByDescending("Id").OrderBy("Name").End();
             var sql = criteria.Builder.Build();
 
-            Assert.AreEqual("select * from users where Id > 50 Or [Name] not in ( 'kishore', 'reddy' )  order by Id Desc, [Name] Asc", sql);
+            Assert.AreEqual(
+                "select * from users where Id > 50 Or [Name] not in ( 'kishore', 'reddy' )  order by Id Desc, [Name] Asc",
+                sql);
         }
-
-
-              
 
 
         class Person

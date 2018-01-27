@@ -49,4 +49,3 @@ namespace HSNXT.C5UnitTests.Templates.List
         }
     }
 }
-

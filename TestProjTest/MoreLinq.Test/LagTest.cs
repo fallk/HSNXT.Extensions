@@ -24,7 +24,7 @@ namespace HSNXT.Test
         [Test]
         public void TestLagNegativeOffsetException()
         {
-            AssertThrowsArgument.OutOfRangeException("offset",() =>
+            AssertThrowsArgument.OutOfRangeException("offset", () =>
                 Enumerable.Repeat(1, 10).Lag(-10, (val, lagVal) => val));
         }
 
@@ -93,7 +93,7 @@ namespace HSNXT.Test
         {
             const int count = 100;
             var sequence = Enumerable.Range(1, count);
-            var result = sequence.Lag(1, (a, b) => new { A = a, B = b });
+            var result = sequence.Lag(1, (a, b) => new {A = a, B = b});
 
             Assert.AreEqual(count, result.Count());
             Assert.IsTrue(result.All(x => x.B == (x.A - 1)));
@@ -108,7 +108,7 @@ namespace HSNXT.Test
         {
             const int count = 100;
             var sequence = Enumerable.Range(1, count);
-            var result = sequence.Lag(2, (a, b) => new { A = a, B = b });
+            var result = sequence.Lag(2, (a, b) => new {A = a, B = b});
 
             Assert.AreEqual(count, result.Count());
             Assert.IsTrue(result.Skip(2).All(x => x.B == (x.A - 2)));

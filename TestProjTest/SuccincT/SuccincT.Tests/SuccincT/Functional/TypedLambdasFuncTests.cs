@@ -58,7 +58,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void SevenParamFunc_CanBeTypedAndRun()
         {
             var func = Func((int t, double u, double v, int w, double x, int y, double z) =>
-                                $"{t + u + v + w + x + y + z}");
+                $"{t + u + v + w + x + y + z}");
             var result = func(1, 2, 3, 4, 5, 6, 7);
             Assert.AreEqual("28", result);
         }
@@ -67,7 +67,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void EightParamFunc_CanBeTypedAndRun()
         {
             var func = Func((double s, int t, double u, double v, int w, double x, int y, double z) =>
-                                $"{s + t + u + v + w + x + y + z}");
+                $"{s + t + u + v + w + x + y + z}");
             var result = func(1, 2, 3, 4, 5, 6, 7, 8);
             Assert.AreEqual("36", result);
         }
@@ -76,7 +76,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void NineParamFunc_CanBeTypedAndRun()
         {
             var func = Func((int r, double s, int t, double u, double v, int w, double x, int y, double z) =>
-                                $"{r + s + t + u + v + w + x + y + z}");
+                $"{r + s + t + u + v + w + x + y + z}");
             var result = func(1, 2, 3, 4, 5, 6, 7, 8, 9);
             Assert.AreEqual("45", result);
         }
@@ -86,7 +86,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         {
             var func =
                 Func((double q, int r, double s, int t, double u, double v, int w, double x, int y, double z) =>
-                         $"{q + r + s + t + u + v + w + x + y + z}");
+                    $"{q + r + s + t + u + v + w + x + y + z}");
             var result = func(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
             Assert.AreEqual("55", result);
         }

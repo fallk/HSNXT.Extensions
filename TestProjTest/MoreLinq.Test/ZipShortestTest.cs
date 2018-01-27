@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -47,7 +49,7 @@ namespace HSNXT.Test
         [Test]
         public void ZipShortestWithEqualLengthSequences()
         {
-            var zipped = new[] { 1, 2, 3 }.ZipShortest(new[] { 4, 5, 6 }, Tuple.Create);
+            var zipped = new[] {1, 2, 3}.ZipShortest(new[] {4, 5, 6}, Tuple.Create);
             Assert.That(zipped, Is.Not.Null);
             zipped.AssertSequenceEqual((1, 4), (2, 5), (3, 6));
         }
@@ -55,7 +57,7 @@ namespace HSNXT.Test
         [Test]
         public void ZipShortestWithFirstSequenceShorterThanSecond()
         {
-            var zipped = new[] { 1, 2 }.ZipShortest(new[] { 4, 5, 6 }, Tuple.Create);
+            var zipped = new[] {1, 2}.ZipShortest(new[] {4, 5, 6}, Tuple.Create);
             Assert.That(zipped, Is.Not.Null);
             zipped.AssertSequenceEqual((1, 4), (2, 5));
         }
@@ -63,7 +65,7 @@ namespace HSNXT.Test
         [Test]
         public void ZipShortestWithFirstSequnceLongerThanSecond()
         {
-            var zipped = new[] { 1, 2, 3 }.ZipShortest(new[] { 4, 5 }, Tuple.Create);
+            var zipped = new[] {1, 2, 3}.ZipShortest(new[] {4, 5}, Tuple.Create);
             Assert.That(zipped, Is.Not.Null);
             zipped.AssertSequenceEqual((1, 4), (2, 5));
         }

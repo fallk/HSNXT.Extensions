@@ -96,10 +96,8 @@ namespace HSNXT.Test
             const int subsetSize = count + 5;
             var sequence = Enumerable.Range(1, count);
 
-            AssertThrowsArgument.OutOfRangeException("subsetSize", () =>
-            {
-                sequence.RandomSubset(subsetSize).Consume();
-            });
+            AssertThrowsArgument.OutOfRangeException("subsetSize",
+                () => { sequence.RandomSubset(subsetSize).Consume(); });
         }
 
         /// <summary>
@@ -113,10 +111,8 @@ namespace HSNXT.Test
             const int subsetSize = count + 5;
             var sequence = Enumerable.Range(1, count);
 
-            AssertThrowsArgument.OutOfRangeException("subsetSize", () =>
-            {
-                sequence.RandomSubset(subsetSize, new Random(1234)).Consume();
-            });
+            AssertThrowsArgument.OutOfRangeException("subsetSize",
+                () => { sequence.RandomSubset(subsetSize, new Random(1234)).Consume(); });
         }
 
         /// <summary>
@@ -148,8 +144,8 @@ namespace HSNXT.Test
             const int count = 20;
             var sequence = Enumerable.Range(1, count);
 
-            var rsdTrials = new[] { 1000, 10000, 100000, 500000, 10000000 };
-            var rsdResults = new[] { 0.0, 0.0, 0.0, 0.0, 0.0 };
+            var rsdTrials = new[] {1000, 10000, 100000, 500000, 10000000};
+            var rsdResults = new[] {0.0, 0.0, 0.0, 0.0, 0.0};
 
             var trialIndex = 0;
             foreach (var trialSize in rsdTrials)
@@ -177,7 +173,7 @@ namespace HSNXT.Test
             // for sanity, we output the RSD% values as a cross-check, the expected result should be
             // that the RSD% rapidly decreases and eventually drops below 1.0
             Console.WriteLine("RSD% = {0:0.00000}, {1:0.00000}, {2:0.00000}, {3:0.00000}, {4:0.00000}",
-                              rsdResults[0], rsdResults[1], rsdResults[2], rsdResults[3], rsdResults[4]);
+                rsdResults[0], rsdResults[1], rsdResults[2], rsdResults[3], rsdResults[4]);
         }
 
         /// <summary>

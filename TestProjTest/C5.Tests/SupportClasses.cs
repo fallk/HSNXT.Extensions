@@ -41,9 +41,9 @@ namespace HSNXT.C5UnitTests
         }
     }
 
-	/// <summary>
-	/// Base memory type. This abstract class is necessary for every unit test that needs to test all memory types.
-	/// </summary>
+    /// <summary>
+    /// Base memory type. This abstract class is necessary for every unit test that needs to test all memory types.
+    /// </summary>
     public abstract class BaseMemoryType
     {
         protected MemoryType MemoryType;
@@ -56,24 +56,44 @@ namespace HSNXT.C5UnitTests
 
     class TenEqualityComparer : SCG.IEqualityComparer<int>, SCG.IComparer<int>
     {
-        TenEqualityComparer() { }
-        public static TenEqualityComparer Default { get { return new TenEqualityComparer(); } }
-        public int GetHashCode(int item) { return (item / 10).GetHashCode(); }
-        public bool Equals(int item1, int item2) { return item1 / 10 == item2 / 10; }
-        public int Compare(int a, int b) { return (a / 10).CompareTo(b / 10); }
+        TenEqualityComparer()
+        {
+        }
+
+        public static TenEqualityComparer Default
+        {
+            get { return new TenEqualityComparer(); }
+        }
+
+        public int GetHashCode(int item)
+        {
+            return (item / 10).GetHashCode();
+        }
+
+        public bool Equals(int item1, int item2)
+        {
+            return item1 / 10 == item2 / 10;
+        }
+
+        public int Compare(int a, int b)
+        {
+            return (a / 10).CompareTo(b / 10);
+        }
     }
 
     class IC : SCG.IComparer<int>, IComparable<int>, SCG.IComparer<IC>, IComparable<IC>
     {
         public int Compare(int a, int b)
         {
-            return a > b ? 1 : a < b ? -1 : 0;
+            return a > b ? 1 :
+                a < b ? -1 : 0;
         }
 
 
         public int Compare(IC a, IC b)
         {
-            return a._i > b._i ? 1 : a._i < b._i ? -1 : 0;
+            return a._i > b._i ? 1 :
+                a._i < b._i ? -1 : 0;
         }
 
 
@@ -87,19 +107,39 @@ namespace HSNXT.C5UnitTests
         }
 
 
-        public IC() { }
+        public IC()
+        {
+        }
 
 
-        public IC(int i) { _i = i; }
+        public IC(int i)
+        {
+            _i = i;
+        }
 
 
-        public int CompareTo(int that) { return _i > that ? 1 : _i < that ? -1 : 0; }
+        public int CompareTo(int that)
+        {
+            return _i > that ? 1 :
+                _i < that ? -1 : 0;
+        }
 
-        public bool Equals(int that) { return _i == that; }
+        public bool Equals(int that)
+        {
+            return _i == that;
+        }
 
 
-        public int CompareTo(IC that) { return _i > that._i ? 1 : _i < that._i ? -1 : 0; }
-        public bool Equals(IC that) { return _i == that._i; }
+        public int CompareTo(IC that)
+        {
+            return _i > that._i ? 1 :
+                _i < that._i ? -1 : 0;
+        }
+
+        public bool Equals(IC that)
+        {
+            return _i == that._i;
+        }
 
 
         public static bool eq(SCG.IEnumerable<int> me, params int[] that)
@@ -112,6 +152,7 @@ namespace HSNXT.C5UnitTests
 
             return i == maxind + 1;
         }
+
         public static bool seteq(ICollectionValue<int> me, params int[] that)
         {
             var me2 = me.ToArray();
@@ -126,6 +167,7 @@ namespace HSNXT.C5UnitTests
 
             return i == maxind + 1;
         }
+
         public static bool seteq(ICollectionValue<KeyValuePair<int, int>> me, params int[] that)
         {
             var first = new ArrayList<KeyValuePair<int, int>>();
@@ -135,6 +177,7 @@ namespace HSNXT.C5UnitTests
             {
                 other.Add(new KeyValuePair<int, int>(that[i], that[i + 1]));
             }
+
             return other.UnsequencedEquals(first);
         }
     }
@@ -143,7 +186,8 @@ namespace HSNXT.C5UnitTests
     {
         public int Compare(int a, int b)
         {
-            return a > b ? -1 : a < b ? 1 : 0;
+            return a > b ? -1 :
+                a < b ? 1 : 0;
         }
     }
 
@@ -154,7 +198,8 @@ namespace HSNXT.C5UnitTests
 
         public FunEnumerable(int size, Func<int, int> f)
         {
-            this.size = size; this.f = f;
+            this.size = size;
+            this.f = f;
         }
 
         public SCG.IEnumerator<int> GetEnumerator()
@@ -174,7 +219,9 @@ namespace HSNXT.C5UnitTests
         #endregion
     }
 
-    public class BadEnumerableException : Exception { }
+    public class BadEnumerableException : Exception
+    {
+    }
 
     public class BadEnumerable<T> : CollectionValueBase<T>, ICollectionValue<T>
     {
@@ -183,7 +230,7 @@ namespace HSNXT.C5UnitTests
 
         public BadEnumerable(Exception exception, params T[] contents)
         {
-            this.contents = (T[])contents.Clone();
+            this.contents = (T[]) contents.Clone();
             this.exception = exception;
         }
 
@@ -194,13 +241,25 @@ namespace HSNXT.C5UnitTests
             throw exception;
         }
 
-        public override bool IsEmpty { get { return false; } }
+        public override bool IsEmpty
+        {
+            get { return false; }
+        }
 
-        public override int Count { get { return contents.Length + 1; } }
+        public override int Count
+        {
+            get { return contents.Length + 1; }
+        }
 
-        public override Speed CountSpeed { get { return Speed.Constant; } }
+        public override Speed CountSpeed
+        {
+            get { return Speed.Constant; }
+        }
 
-        public override T Choose() { throw exception; }
+        public override T Choose()
+        {
+            throw exception;
+        }
     }
 
     public class CollectionEventList<T>
@@ -208,11 +267,13 @@ namespace HSNXT.C5UnitTests
         ArrayList<CollectionEvent<T>> happened;
         EventTypeEnum listenTo;
         SCG.IEqualityComparer<T> itemequalityComparer;
+
         public CollectionEventList(SCG.IEqualityComparer<T> itemequalityComparer, MemoryType memoryType)
         {
             happened = new ArrayList<CollectionEvent<T>>(memoryType);
             this.itemequalityComparer = itemequalityComparer;
         }
+
         public void Listen(ICollectionValue<T> list, EventTypeEnum listenTo)
         {
             this.listenTo = listenTo;
@@ -229,7 +290,12 @@ namespace HSNXT.C5UnitTests
             if ((listenTo & EventTypeEnum.RemovedAt) != 0)
                 list.ItemRemovedAt += new ItemRemovedAtHandler<T>(removedAt);
         }
-        public void Add(CollectionEvent<T> e) { happened.Add(e); }
+
+        public void Add(CollectionEvent<T> e)
+        {
+            happened.Add(e);
+        }
+
         /// <summary>
         /// Check that we have seen exactly the events in expected that match listenTo.
         /// </summary>
@@ -244,38 +310,51 @@ namespace HSNXT.C5UnitTests
                 if (i >= happened.Count)
                     Assert.Fail(string.Format("Event number {0} did not happen:\n expected {1}", i, expectedEvent));
                 if (!expectedEvent.Equals(happened[i], itemequalityComparer))
-                    Assert.Fail(string.Format("Event number {0}:\n expected {1}\n but saw {2}", i, expectedEvent, happened[i]));
+                    Assert.Fail(string.Format("Event number {0}:\n expected {1}\n but saw {2}", i, expectedEvent,
+                        happened[i]));
                 i++;
             }
+
             if (i < happened.Count)
                 Assert.Fail(string.Format("Event number {0} seen but no event expected:\n {1}", i, happened[i]));
             happened.Clear();
         }
-        public void Clear() { happened.Clear(); }
+
+        public void Clear()
+        {
+            happened.Clear();
+        }
+
         public void Print(System.IO.TextWriter writer)
         {
             happened.Apply(delegate(CollectionEvent<T> e) { writer.WriteLine(e); });
         }
+
         void changed(object sender)
         {
             happened.Add(new CollectionEvent<T>(EventTypeEnum.Changed, new EventArgs(), sender));
         }
+
         void cleared(object sender, ClearedEventArgs eventArgs)
         {
             happened.Add(new CollectionEvent<T>(EventTypeEnum.Cleared, eventArgs, sender));
         }
+
         void added(object sender, ItemCountEventArgs<T> eventArgs)
         {
             happened.Add(new CollectionEvent<T>(EventTypeEnum.Added, eventArgs, sender));
         }
+
         void removed(object sender, ItemCountEventArgs<T> eventArgs)
         {
             happened.Add(new CollectionEvent<T>(EventTypeEnum.Removed, eventArgs, sender));
         }
+
         void inserted(object sender, ItemAtEventArgs<T> eventArgs)
         {
             happened.Add(new CollectionEvent<T>(EventTypeEnum.Inserted, eventArgs, sender));
         }
+
         void removedAt(object sender, ItemAtEventArgs<T> eventArgs)
         {
             happened.Add(new CollectionEvent<T>(EventTypeEnum.RemovedAt, eventArgs, sender));
@@ -308,7 +387,8 @@ namespace HSNXT.C5UnitTests
                 case EventTypeEnum.Cleared:
                     if (Args is ClearedRangeEventArgs)
                     {
-                        ClearedRangeEventArgs a = Args as ClearedRangeEventArgs, o = otherEvent.Args as ClearedRangeEventArgs;
+                        ClearedRangeEventArgs a = Args as ClearedRangeEventArgs,
+                            o = otherEvent.Args as ClearedRangeEventArgs;
                         if (o == null)
                             return false;
                         return a.Full == o.Full && a.Start == o.Start && a.Count == o.Count;
@@ -321,26 +401,29 @@ namespace HSNXT.C5UnitTests
                         return a.Full == o.Full && a.Count == o.Count;
                     }
                 case EventTypeEnum.Added:
-                    {
-                        ItemCountEventArgs<T> a = Args as ItemCountEventArgs<T>, o = otherEvent.Args as ItemCountEventArgs<T>;
-                        return itemequalityComparer.Equals(a.Item, o.Item) && a.Count == o.Count;
-                    }
+                {
+                    ItemCountEventArgs<T> a = Args as ItemCountEventArgs<T>,
+                        o = otherEvent.Args as ItemCountEventArgs<T>;
+                    return itemequalityComparer.Equals(a.Item, o.Item) && a.Count == o.Count;
+                }
                 case EventTypeEnum.Removed:
-                    {
-                        ItemCountEventArgs<T> a = Args as ItemCountEventArgs<T>, o = otherEvent.Args as ItemCountEventArgs<T>;
-                        return itemequalityComparer.Equals(a.Item, o.Item) && a.Count == o.Count;
-                    }
+                {
+                    ItemCountEventArgs<T> a = Args as ItemCountEventArgs<T>,
+                        o = otherEvent.Args as ItemCountEventArgs<T>;
+                    return itemequalityComparer.Equals(a.Item, o.Item) && a.Count == o.Count;
+                }
                 case EventTypeEnum.Inserted:
-                    {
-                        ItemAtEventArgs<T> a = Args as ItemAtEventArgs<T>, o = otherEvent.Args as ItemAtEventArgs<T>;
-                        return a.Index == o.Index && itemequalityComparer.Equals(a.Item, o.Item);
-                    }
+                {
+                    ItemAtEventArgs<T> a = Args as ItemAtEventArgs<T>, o = otherEvent.Args as ItemAtEventArgs<T>;
+                    return a.Index == o.Index && itemequalityComparer.Equals(a.Item, o.Item);
+                }
                 case EventTypeEnum.RemovedAt:
-                    {
-                        ItemAtEventArgs<T> a = Args as ItemAtEventArgs<T>, o = otherEvent.Args as ItemAtEventArgs<T>;
-                        return a.Index == o.Index && itemequalityComparer.Equals(a.Item, o.Item);
-                    }
+                {
+                    ItemAtEventArgs<T> a = Args as ItemAtEventArgs<T>, o = otherEvent.Args as ItemAtEventArgs<T>;
+                    return a.Index == o.Index && itemequalityComparer.Equals(a.Item, o.Item);
+                }
             }
+
             throw new ApplicationException("Illegal Action: " + Act);
         }
 
@@ -348,7 +431,6 @@ namespace HSNXT.C5UnitTests
         {
             return string.Format("Action: {0}, Args : {1}, Source : {2}", Act, Args, Sender);
         }
-
     }
 
     public class CHC
@@ -358,14 +440,20 @@ namespace HSNXT.C5UnitTests
             var h = 0;
             foreach (var i in a)
             {
-                h += (int)(((uint)i * 1529784657 + 1) ^ ((uint)i * 2912831877) ^ ((uint)i * 1118771817 + 2));
+                h += (int) (((uint) i * 1529784657 + 1) ^ ((uint) i * 2912831877) ^ ((uint) i * 1118771817 + 2));
             }
+
             return h;
         }
+
         static public int sequencedhashcode(params int[] a)
         {
             var h = 0;
-            foreach (var i in a) { h = h * 31 + i; }
+            foreach (var i in a)
+            {
+                h = h * 31 + i;
+            }
+
             return h;
         }
     }
@@ -374,6 +462,7 @@ namespace HSNXT.C5UnitTests
     public class RadixFormatProvider : IFormatProvider
     {
         RadixFormatter _radixformatter;
+
         public RadixFormatProvider(int radix)
         {
             if (radix < 2 || radix > 36)
@@ -382,6 +471,7 @@ namespace HSNXT.C5UnitTests
                     radix));
             _radixformatter = new RadixFormatter(radix);
         }
+
         public object GetFormat(Type argType)
         {
             if (argType == typeof(ICustomFormatter))
@@ -395,6 +485,7 @@ namespace HSNXT.C5UnitTests
     public class RadixFormatter : ICustomFormatter
     {
         int radix;
+
         public RadixFormatter(int radix)
         {
             if (radix < 2 || radix > 36)
@@ -406,11 +497,13 @@ namespace HSNXT.C5UnitTests
 
         // The value to be formatted is returned as a signed string 
         // of digits from the rDigits array. 
-        private static char[] rDigits = {
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
-        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
-        'U', 'V', 'W', 'X', 'Y', 'Z' };
+        private static char[] rDigits =
+        {
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z'
+        };
 
         public string Format(string formatString,
             object argToBeFormatted, IFormatProvider provider)
@@ -457,16 +550,16 @@ namespace HSNXT.C5UnitTests
             int intToBeFormatted;
             try
             {
-                intToBeFormatted = (int)argToBeFormatted;
+                intToBeFormatted = (int) argToBeFormatted;
             }
             catch (Exception)
             {
                 if (argToBeFormatted is IFormattable)
-                    return ((IFormattable)argToBeFormatted).
-                        ToString(formatString, provider);
+                    return ((IFormattable) argToBeFormatted).ToString(formatString, provider);
                 else
                     return argToBeFormatted.ToString();
             }
+
             return formatInt(intToBeFormatted);
         }
 
@@ -502,5 +595,4 @@ namespace HSNXT.C5UnitTests
                 outDigits.Length - digitIndex, digitIndex);
         }
     }
-
 }

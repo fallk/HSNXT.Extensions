@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 using HSNXT.BCLExtensions2;
 

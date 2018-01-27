@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -25,7 +27,7 @@ namespace HSNXT.Test
         [Test]
         public void TakeEveryNegativeSkip()
         {
-            AssertThrowsArgument.OutOfRangeException("step",() =>
+            AssertThrowsArgument.OutOfRangeException("step", () =>
                 new object[0].TakeEvery(-1));
         }
 
@@ -45,21 +47,21 @@ namespace HSNXT.Test
         [Test]
         public void TakeEveryNonEmptySequence()
         {
-            var result = new[] { 1, 2, 3, 4, 5 }.TakeEvery(1);
+            var result = new[] {1, 2, 3, 4, 5}.TakeEvery(1);
             result.AssertSequenceEqual(1, 2, 3, 4, 5);
         }
 
         [Test]
         public void TakeEveryOtherOnNonEmptySequence()
         {
-            var result = new[] { 1, 2, 3, 4, 5 }.TakeEvery(2);
+            var result = new[] {1, 2, 3, 4, 5}.TakeEvery(2);
             result.AssertSequenceEqual(1, 3, 5);
         }
 
         [Test]
         public void TakeEveryThirdOnNonEmptySequence()
         {
-            var result = new[] { 1, 2, 3, 4, 5 }.TakeEvery(3);
+            var result = new[] {1, 2, 3, 4, 5}.TakeEvery(3);
             result.AssertSequenceEqual(1, 4);
         }
 

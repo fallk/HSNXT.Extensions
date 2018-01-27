@@ -8,8 +8,19 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
     [TestFixture]
     public class TupleExecTestsUsingAnyT1T2T3T4
     {
-        private enum Colors { Red, Green, Blue }
-        private enum Animals { Cow, Pig, Goat }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
+
+        private enum Animals
+        {
+            Cow,
+            Pig,
+            Goat
+        }
 
         [Test]
         public void Tuple_CanBeMatchedUsingAnyIntWithExec()
@@ -62,8 +73,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Green, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", Colors.Green, Animals.Goat)
-                         .Or(__, "a", Colors.Green, Animals.Cow).Do((w, x, y, z) => result = true)
-                         .Exec();
+                .Or(__, "a", Colors.Green, Animals.Cow).Do((w, x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
 
@@ -73,8 +84,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Green, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", Colors.Green, Animals.Goat)
-                         .Or(1, __, Colors.Green, Animals.Cow).Do((w, x, y, z) => result = true)
-                         .Exec();
+                .Or(1, __, Colors.Green, Animals.Cow).Do((w, x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
 
@@ -84,8 +95,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Green, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", Colors.Green, Animals.Goat)
-                         .Or(1, "a", __, Animals.Cow).Do((w, x, y, z) => result = true)
-                         .Exec();
+                .Or(1, "a", __, Animals.Cow).Do((w, x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
 
@@ -95,8 +106,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Green, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", Colors.Green, Animals.Goat)
-                         .Or(1, "a", Colors.Green, __).Do((w, x, y, z) => result = true)
-                         .Exec();
+                .Or(1, "a", Colors.Green, __).Do((w, x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
 
@@ -106,8 +117,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Green, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", Colors.Green, Animals.Goat)
-                         .Or(__, __, __, __).Do((w, x, y, z) => result = true)
-                         .Exec();
+                .Or(__, __, __, __).Do((w, x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
 
@@ -117,7 +128,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red, Animals.Cow);
             var result = false;
             tuple.Match().With(__, "a", Colors.Red, Animals.Goat).Do((w, x, y, z) => result = true)
-                         .Else((w, x, y, z) => result = false).Exec();
+                .Else((w, x, y, z) => result = false).Exec();
             Assert.IsFalse(result);
         }
 
@@ -127,7 +138,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red, Animals.Cow);
             var result = false;
             tuple.Match().With(1, __, Colors.Red, Animals.Goat).Do((w, x, y, z) => result = true)
-                         .Else((w, x, y, z) => result = false).Exec();
+                .Else((w, x, y, z) => result = false).Exec();
             Assert.IsFalse(result);
         }
 
@@ -137,7 +148,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", __, Animals.Goat).Do((w, x, y, z) => result = true)
-                         .Else((w, x, y, z) => result = false).Exec();
+                .Else((w, x, y, z) => result = false).Exec();
             Assert.IsFalse(result);
         }
 
@@ -147,7 +158,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red, Animals.Cow);
             var result = false;
             tuple.Match().With(1, "a", Colors.Blue, __).Do((w, x, y, z) => result = true)
-                         .Else((w, x, y, z) => result = false).Exec();
+                .Else((w, x, y, z) => result = false).Exec();
             Assert.IsFalse(result);
         }
 
@@ -157,10 +168,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red, Animals.Cow);
             var result = false;
             tuple.Match().With(__, "a", Colors.Red, Animals.Goat)
-                         .Or(__, "a", Colors.Red, Animals.Pig).Do((w, x, y, z) => result = false)
-                         .Where((w, x, y, z) => w == 1 && x == "a" && y == Colors.Red && z == Animals.Cow)
-                         .Do((w, x, y, z) => result = true)
-                         .Exec();
+                .Or(__, "a", Colors.Red, Animals.Pig).Do((w, x, y, z) => result = false)
+                .Where((w, x, y, z) => w == 1 && x == "a" && y == Colors.Red && z == Animals.Cow)
+                .Do((w, x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
 
@@ -170,10 +181,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red, Animals.Cow);
             var result = false;
             tuple.Match()
-                 .Where((w, x, y, z) => z == Animals.Pig).Do((w, x, y, z) => result = true)
-                 .With(1, "a", Colors.Red, Animals.Goat).Or(__, __, __, __)
-                 .Do((w, x, y, z) => result = false)
-                 .Exec();
+                .Where((w, x, y, z) => z == Animals.Pig).Do((w, x, y, z) => result = true)
+                .With(1, "a", Colors.Red, Animals.Goat).Or(__, __, __, __)
+                .Do((w, x, y, z) => result = false)
+                .Exec();
             Assert.IsFalse(result);
         }
     }

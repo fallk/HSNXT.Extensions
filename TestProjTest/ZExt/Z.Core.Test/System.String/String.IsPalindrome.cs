@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HSNXT.Z.Core.Test
@@ -14,12 +15,11 @@ namespace HSNXT.Z.Core.Test
         [TestMethod]
         public void IsPalindrome()
         {
-
             // Examples
-            var value1 = "abba".IsPalindrome();  // return true;
-            var value2 = "ab ba".IsPalindrome();  // return true;
-            var value3 = "ab'ba".IsPalindrome();   // return true;
-            var value4 = "abca".IsPalindrome();      // return false;
+            var value1 = "abba".IsPalindrome(); // return true;
+            var value2 = "ab ba".IsPalindrome(); // return true;
+            var value3 = "ab'ba".IsPalindrome(); // return true;
+            var value4 = "abca".IsPalindrome(); // return false;
             var value5 = "ab b ab".IsPalindrome(); // return false;
 
             // Unit Test

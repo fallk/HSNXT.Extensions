@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 //
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -58,7 +60,7 @@ namespace HSNXT.Test
         [Test]
         public void StartsWithReturnsFalseIfOnlyFirstIsEmpty()
         {
-            Assert.False(new int[0].StartsWith(new[] {1,2,3}));
+            Assert.False(new int[0].StartsWith(new[] {1, 2, 3}));
         }
 
         [TestCase("", "", ExpectedResult = true)]
@@ -72,7 +74,7 @@ namespace HSNXT.Test
         [Test]
         public void StartsWithDisposesBothSequenceEnumerators()
         {
-            using (var first = TestingSequence.Of(1,2,3))
+            using (var first = TestingSequence.Of(1, 2, 3))
             using (var second = TestingSequence.Of(1))
             {
                 first.StartsWith(second);
@@ -83,8 +85,8 @@ namespace HSNXT.Test
         [SuppressMessage("ReSharper", "RedundantArgumentDefaultValue")]
         public void StartsWithUsesSpecifiedEqualityComparerOrDefault()
         {
-            var first = new[] {1,2,3};
-            var second = new[] {4,5,6};
+            var first = new[] {1, 2, 3};
+            var second = new[] {4, 5, 6};
 
             Assert.False(first.StartsWith(second));
             Assert.False(first.StartsWith(second, null));

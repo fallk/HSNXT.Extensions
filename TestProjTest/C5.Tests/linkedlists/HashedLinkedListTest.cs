@@ -37,7 +37,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
         [Test]
         public void TestEvents()
         {
-            Func<CollectionOfInt> factory = delegate () { return new CollectionOfInt(TenEqualityComparer.Default); };
+            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(TenEqualityComparer.Default); };
             new C5UnitTests.Templates.Events.ListTester<CollectionOfInt>().Test(factory, MemoryType);
         }
 
@@ -49,23 +49,25 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
         //    C5UnitTests.Templates.Extensible.Serialization.Tester<CollectionOfInt>();
         //    C5UnitTests.Templates.Extensible.Serialization.ViewTester<CollectionOfInt>();
         //}
-        
+
         [Test]
         public void List()
         {
-			C5UnitTests.Templates.List.Dispose.Tester<CollectionOfInt>();
-			C5UnitTests.Templates.List.SCG_IList.Tester<CollectionOfInt>();
+            C5UnitTests.Templates.List.Dispose.Tester<CollectionOfInt>();
+            C5UnitTests.Templates.List.SCG_IList.Tester<CollectionOfInt>();
         }
 
         public GenericTesters(MemoryType memoryType) : base(memoryType)
         {
-
         }
     }
 
     static class Factory
     {
-        public static ICollection<T> New<T>() { return new HashedLinkedList<T>(); }
+        public static ICollection<T> New<T>()
+        {
+            return new HashedLinkedList<T>();
+        }
     }
 
 
@@ -85,7 +87,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list = new HashedLinkedList<int>();
                 always = delegate { return true; };
                 never = delegate { return false; };
-                even = delegate (int i) { return i % 2 == 0; };
+                even = delegate(int i) { return i % 2 == 0; };
             }
 
 
@@ -127,21 +129,26 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void Apply()
             {
                 var sum = 0;
-                Action<int> a = delegate (int i) { sum = i + 10 * sum; };
+                Action<int> a = delegate(int i) { sum = i + 10 * sum; };
 
                 list.Apply(a);
                 Assert.AreEqual(0, sum);
                 sum = 0;
-                list.Add(5); list.Add(8); list.Add(7); list.Add(5);
+                list.Add(5);
+                list.Add(8);
+                list.Add(7);
+                list.Add(5);
                 list.Apply(a);
                 Assert.AreEqual(587, sum);
             }
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
         }
-
 
 
         [TestFixture]
@@ -151,7 +158,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { list = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                list = new HashedLinkedList<int>();
+            }
 
 
             [Test]
@@ -217,7 +227,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
         }
     }
 
@@ -228,15 +241,26 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
         {
             ICollection<int> coll;
             IFormatProvider rad16;
+
             [SetUp]
-            public void Init() { coll = Factory.New<int>(); rad16 = new RadixFormatProvider(16); }
+            public void Init()
+            {
+                coll = Factory.New<int>();
+                rad16 = new RadixFormatProvider(16);
+            }
+
             [TearDown]
-            public void Dispose() { coll = null; rad16 = null; }
+            public void Dispose()
+            {
+                coll = null;
+                rad16 = null;
+            }
+
             [Test]
             public void Format()
             {
                 Assert.AreEqual("[  ]", coll.ToString());
-                coll.AddAll(new int[] { -4, 28, 129, 65530 });
+                coll.AddAll(new int[] {-4, 28, 129, 65530});
                 Assert.AreEqual("[ -4, 28, 129, 65530 ]", coll.ToString());
                 Assert.AreEqual("[ -4, 1C, 81, FFFA ]", coll.ToString(null, rad16));
                 Assert.AreEqual("[ -4, 28, 129... ]", coll.ToString("L14", null));
@@ -251,7 +275,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { list = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                list = new HashedLinkedList<int>();
+            }
 
             [Test]
             public void NullEqualityComparerinConstructor1()
@@ -292,7 +319,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void AddAll()
             {
-                list.Add(3); list.Add(4); list.Add(5);
+                list.Add(3);
+                list.Add(4);
+                list.Add(5);
 
                 var list2 = new HashedLinkedList<int>();
 
@@ -305,7 +334,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
         }
 
         [TestFixture]
@@ -318,20 +350,23 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void Init()
             {
                 list = new HashedLinkedList<int>(TenEqualityComparer.Default);
-                pred = delegate (int i) { return i % 5 == 0; };
+                pred = delegate(int i) { return i % 5 == 0; };
             }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             [Test]
             public void Find()
             {
                 int i;
                 Assert.IsFalse(list.Find(pred, out i));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(list.Find(pred, out i));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.IsTrue(list.Find(pred, out i));
                 Assert.AreEqual(45, i);
             }
@@ -341,9 +376,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             {
                 int i;
                 Assert.IsFalse(list.FindLast(pred, out i));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(list.FindLast(pred, out i));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.IsTrue(list.FindLast(pred, out i));
                 Assert.AreEqual(675, i);
             }
@@ -352,9 +387,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void FindIndex()
             {
                 Assert.IsFalse(0 <= list.FindIndex(pred));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(0 <= list.FindIndex(pred));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.AreEqual(4, list.FindIndex(pred));
             }
 
@@ -362,9 +397,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void FindLastIndex()
             {
                 Assert.IsFalse(0 <= list.FindLastIndex(pred));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(0 <= list.FindLastIndex(pred));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.AreEqual(6, list.FindLastIndex(pred));
             }
         }
@@ -375,17 +410,23 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             private HashedLinkedList<int> list;
 
             [SetUp]
-            public void Init() { list = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                list = new HashedLinkedList<int>();
+            }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             [Test]
             public void Test()
             {
                 Assert.IsTrue(IC.seteq(list.UniqueItems()));
                 Assert.IsTrue(IC.seteq(list.ItemMultiplicities()));
-                list.AddAll(new int[] { 7, 9, 7 });
+                list.AddAll(new int[] {7, 9, 7});
                 Assert.IsTrue(IC.seteq(list.UniqueItems(), 7, 9));
                 Assert.IsTrue(IC.seteq(list.ItemMultiplicities(), 7, 1, 9, 1));
             }
@@ -496,18 +537,19 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
 
             [Test]
             public void Get()
             {
-                Assert.IsNotNull(((System.Collections.IList)list).SyncRoot);
+                Assert.IsNotNull(((System.Collections.IList) list).SyncRoot);
             }
         }
     }
-
-
 
 
     namespace EditableCollection
@@ -519,7 +561,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { list = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                list = new HashedLinkedList<int>();
+            }
 
 
             [Test]
@@ -568,14 +613,16 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void RemoveAllCopies()
             {
-                list.Add(5); list.Add(7);
+                list.Add(5);
+                list.Add(7);
                 Assert.AreEqual(1, list.ContainsCount(5));
                 Assert.AreEqual(1, list.ContainsCount(7));
                 list.RemoveAllCopies(5);
                 Assert.IsTrue(list.Check());
                 Assert.AreEqual(0, list.ContainsCount(5));
                 Assert.AreEqual(1, list.ContainsCount(7));
-                list.Add(5); list.Add(8);
+                list.Add(5);
+                list.Add(8);
                 list.RemoveAllCopies(8);
                 Assert.IsTrue(IC.eq(list, 7, 5));
             }
@@ -584,11 +631,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void FindAll()
             {
-                Func<int, bool> f = delegate (int i) { return i % 2 == 0; };
+                Func<int, bool> f = delegate(int i) { return i % 2 == 0; };
 
                 Assert.IsTrue(list.FindAll(f).IsEmpty);
-                list.Add(5); list.Add(8); list.Add(10);
-                Assert.IsTrue(((HashedLinkedList<int>)list.FindAll(f)).Check());
+                list.Add(5);
+                list.Add(8);
+                list.Add(10);
+                Assert.IsTrue(((HashedLinkedList<int>) list.FindAll(f)).Check());
                 Assert.IsTrue(IC.eq(list.FindAll(f), 8, 10));
             }
 
@@ -613,19 +662,29 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             {
                 var list2 = new HashedLinkedList<int>();
 
-                list.Add(4); list.Add(5); list.Add(6);
-                list2.Add(5); list2.Add(4); list2.Add(7);
+                list.Add(4);
+                list.Add(5);
+                list.Add(6);
+                list2.Add(5);
+                list2.Add(4);
+                list2.Add(7);
                 list.RetainAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4, 5));
-                list.Add(5); list.Add(4); list.Add(6);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
                 list2.Clear();
-                list2.Add(5); list2.Add(5); list2.Add(6);
+                list2.Add(5);
+                list2.Add(5);
+                list2.Add(6);
                 list.RetainAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 5, 6));
                 list2.Clear();
-                list2.Add(7); list2.Add(8); list2.Add(9);
+                list2.Add(7);
+                list2.Add(8);
+                list2.Add(9);
                 list.RetainAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list));
@@ -637,19 +696,28 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             {
                 var list2 = new HashedLinkedList<int>();
 
-                list.Add(4); list.Add(5); list.Add(6);
-                list2.Add(5); list2.Add(4); list2.Add(7);
+                list.Add(4);
+                list.Add(5);
+                list.Add(6);
+                list2.Add(5);
+                list2.Add(4);
+                list2.Add(7);
                 list.RemoveAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 6));
-                list.Add(5); list.Add(4); list.Add(6);
+                list.Add(5);
+                list.Add(4);
+                list.Add(6);
                 list2.Clear();
-                list2.Add(6); list2.Add(5);
+                list2.Add(6);
+                list2.Add(5);
                 list.RemoveAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4));
                 list2.Clear();
-                list2.Add(7); list2.Add(8); list2.Add(9);
+                list2.Add(7);
+                list2.Add(8);
+                list2.Add(9);
                 list.RemoveAll(list2);
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 4));
@@ -659,7 +727,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Remove()
             {
-                list.Add(4); list.Add(5); list.Add(6);
+                list.Add(4);
+                list.Add(5);
+                list.Add(6);
                 Assert.IsFalse(list.Remove(2));
                 Assert.IsTrue(list.Check());
                 Assert.IsTrue(list.Remove(4));
@@ -678,18 +748,20 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Clear()
             {
-                list.Add(7); list.Add(6);
+                list.Add(7);
+                list.Add(6);
                 list.Clear();
                 Assert.IsTrue(list.IsEmpty);
             }
 
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
         }
     }
-
-
 
 
     namespace IIndexed
@@ -715,7 +787,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.AreEqual(~1, dit.IndexOf(6));
                 Assert.AreEqual(~1, dit.LastIndexOf(6));
                 Assert.AreEqual(0, dit.IndexOf(7));
-                dit.Add(5); dit.Add(7); dit.Add(8); dit.Add(7);
+                dit.Add(5);
+                dit.Add(7);
+                dit.Add(8);
+                dit.Add(7);
                 Assert.AreEqual(~3, dit.IndexOf(6));
                 Assert.AreEqual(0, dit.IndexOf(7));
                 Assert.AreEqual(0, dit.LastIndexOf(7));
@@ -744,15 +819,19 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void RemoveAt()
             {
-                dit.Add(5); dit.Add(7); dit.Add(9); dit.Add(1); dit.Add(2);
+                dit.Add(5);
+                dit.Add(7);
+                dit.Add(9);
+                dit.Add(1);
+                dit.Add(2);
                 Assert.AreEqual(7, dit.RemoveAt(1));
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 5, 9, 1, 2));
                 Assert.AreEqual(5, dit.RemoveAt(0));
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 9, 1, 2));
                 Assert.AreEqual(2, dit.RemoveAt(2));
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 9, 1));
             }
 
@@ -781,25 +860,35 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void RemoveInterval()
             {
                 dit.RemoveInterval(0, 0);
-                dit.Add(10); dit.Add(20); dit.Add(30); dit.Add(40); dit.Add(50); dit.Add(60);
+                dit.Add(10);
+                dit.Add(20);
+                dit.Add(30);
+                dit.Add(40);
+                dit.Add(50);
+                dit.Add(60);
                 dit.RemoveInterval(3, 0);
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 10, 20, 30, 40, 50, 60));
                 dit.RemoveInterval(3, 1);
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 10, 20, 30, 50, 60));
                 dit.RemoveInterval(1, 3);
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 10, 60));
                 dit.RemoveInterval(0, 2);
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit));
-                dit.Add(10); dit.Add(20); dit.Add(30); dit.Add(40); dit.Add(50); dit.Add(60);
+                dit.Add(10);
+                dit.Add(20);
+                dit.Add(30);
+                dit.Add(40);
+                dit.Add(50);
+                dit.Add(60);
                 dit.RemoveInterval(0, 2);
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 30, 40, 50, 60));
                 dit.RemoveInterval(2, 2);
-                Assert.IsTrue(((HashedLinkedList<int>)dit).Check());
+                Assert.IsTrue(((HashedLinkedList<int>) dit).Check());
                 Assert.IsTrue(IC.eq(dit, 30, 40));
             }
 
@@ -820,11 +909,17 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { lst = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                lst = new HashedLinkedList<int>();
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
             [Test]
             public void FirstBad()
@@ -850,7 +945,8 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 lst.Add(19);
                 Assert.AreEqual(19, lst.First);
                 Assert.AreEqual(19, lst.Last);
-                lst.Add(34); lst.InsertFirst(12);
+                lst.Add(34);
+                lst.InsertFirst(12);
                 Assert.AreEqual(12, lst.First);
                 Assert.AreEqual(34, lst.Last);
             }
@@ -863,15 +959,21 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.AreEqual(34, lst[0]);
                 lst[0] = 56;
                 Assert.AreEqual(56, lst.First);
-                lst.Add(7); lst.Add(77); lst.Add(777); lst.Add(7777);
-                lst[0] = 45; lst[2] = 78; lst[4] = 101;
+                lst.Add(7);
+                lst.Add(77);
+                lst.Add(777);
+                lst.Add(7777);
+                lst[0] = 45;
+                lst[2] = 78;
+                lst[4] = 101;
                 Assert.IsTrue(IC.eq(lst, 45, 7, 78, 777, 101));
             }
 
             [Test]
             public void ThisWithUpdates()
             {
-                var pairlist = new HashedLinkedList<KeyValuePair<int, int>>(new KeyValuePairEqualityComparer<int, int>());
+                var pairlist =
+                    new HashedLinkedList<KeyValuePair<int, int>>(new KeyValuePairEqualityComparer<int, int>());
                 pairlist.Add(new KeyValuePair<int, int>(10, 50));
                 pairlist.Add(new KeyValuePair<int, int>(11, 51));
                 pairlist.Add(new KeyValuePair<int, int>(12, 52));
@@ -891,7 +993,8 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void ThisWithUpdatesBad()
             {
-                var pairlist = new HashedLinkedList<KeyValuePair<int, int>>(new KeyValuePairEqualityComparer<int, int>());
+                var pairlist =
+                    new HashedLinkedList<KeyValuePair<int, int>>(new KeyValuePairEqualityComparer<int, int>());
                 pairlist.Add(new KeyValuePair<int, int>(10, 50));
                 pairlist.Add(new KeyValuePair<int, int>(11, 51));
                 pairlist.Add(new KeyValuePair<int, int>(12, 52));
@@ -1066,11 +1169,17 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { lst = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                lst = new HashedLinkedList<int>();
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -1106,11 +1215,12 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.IsTrue(IC.eq(lst, 7, 3));
                 try
                 {
-                    lst.InsertAll(1, new int[] { 1, 2, 3, 4 });
+                    lst.InsertAll(1, new int[] {1, 2, 3, 4});
                 }
                 catch (DuplicateNotAllowedException)
                 {
                 }
+
                 Assert.IsTrue(lst.Check());
                 Assert.IsTrue(IC.eq(lst, 7, 1, 2, 3));
             }
@@ -1124,11 +1234,12 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.IsTrue(IC.eq(lst, 7, 3));
                 try
                 {
-                    lst.InsertAll(1, new int[] { 5, 6, 5, 8 });
+                    lst.InsertAll(1, new int[] {5, 6, 5, 8});
                 }
                 catch (DuplicateNotAllowedException)
                 {
                 }
+
                 Assert.IsTrue(lst.Check());
                 Assert.IsTrue(IC.eq(lst, 7, 5, 6, 3));
             }
@@ -1252,7 +1363,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
                 IList<int> lst2 = new HashedLinkedList<int>();
 
-                lst2.Add(7); lst2.Add(8); lst2.Add(9);
+                lst2.Add(7);
+                lst2.Add(8);
+                lst2.Add(9);
                 lst.InsertAll(0, lst2);
                 Assert.IsTrue(lst.Check());
                 Assert.IsTrue(IC.eq(lst, 7, 8, 9, 1, 2, 3, 4));
@@ -1276,7 +1389,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
                 IList<int> lst2 = new HashedLinkedList<int>();
 
-                lst2.Add(5); lst2.Add(2); lst2.Add(9);
+                lst2.Add(5);
+                lst2.Add(2);
+                lst2.Add(9);
 
                 Assert.Throws<DuplicateNotAllowedException>(() => lst.InsertAll(0, lst2));
             }
@@ -1284,30 +1399,35 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Map()
             {
-                Func<int, string> m = delegate (int i) { return "<<" + i + ">>"; };
+                Func<int, string> m = delegate(int i) { return "<<" + i + ">>"; };
                 var r = lst.Map(m);
 
-                Assert.IsTrue(((HashedLinkedList<string>)r).Check());
+                Assert.IsTrue(((HashedLinkedList<string>) r).Check());
                 Assert.IsTrue(r.IsEmpty);
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
                 lst.Add(4);
                 r = lst.Map(m);
-                Assert.IsTrue(((HashedLinkedList<string>)r).Check());
+                Assert.IsTrue(((HashedLinkedList<string>) r).Check());
                 Assert.AreEqual(4, r.Count);
                 for (var i = 0; i < 4; i++)
                 {
                     Assert.AreEqual("<<" + (i + 1) + ">>", r[i]);
                 }
             }
+
             [Test]
             public void BadMapper()
             {
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate (int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.Map(m));
             }
@@ -1318,7 +1438,11 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate (int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.FindAll(m));
             }
@@ -1330,7 +1454,11 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate (int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.Map(m));
             }
@@ -1342,7 +1470,11 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 lst.Add(1);
                 lst.Add(2);
                 lst.Add(3);
-                Func<int, bool> m = delegate (int i) { if (i == 2) lst.Add(7); return true; };
+                Func<int, bool> m = delegate(int i)
+                {
+                    if (i == 2) lst.Add(7);
+                    return true;
+                };
 
                 Assert.Throws<CollectionModifiedException>(() => lst.FindAll(m));
             }
@@ -1438,7 +1570,11 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Sort()
             {
-                lst.Add(5); lst.Add(6); lst.Add(55); lst.Add(7); lst.Add(3);
+                lst.Add(5);
+                lst.Add(6);
+                lst.Add(55);
+                lst.Add(7);
+                lst.Add(3);
                 Assert.IsFalse(lst.IsSorted(new IC()));
                 lst.Sort(new IC());
                 Assert.IsTrue(lst.Check(), "Check ");
@@ -1455,17 +1591,27 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { lst = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                lst = new HashedLinkedList<int>();
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
             public void Shuffle()
             {
-                lst.Add(5); lst.Add(6); lst.Add(5); lst.Add(7); lst.Add(3);
+                lst.Add(5);
+                lst.Add(6);
+                lst.Add(5);
+                lst.Add(7);
+                lst.Add(3);
                 for (var i = 0; i < 100; i++)
                 {
                     lst.Shuffle(new C5Random(i + 1));
@@ -1494,6 +1640,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 {
                     test.Remove(i);
                 } // for
+
                 Assert.IsTrue(test.IsEmpty);
                 for (var count = 0; count < 520; count++)
                 {
@@ -1502,11 +1649,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                     {
                         hll.Add(i);
                     }
+
                     Assert.AreEqual(count, hll.Count);
                     for (var i = 1; i <= count; i++)
                     {
                         hll.Remove(i);
                     }
+
                     Assert.IsTrue(hll.IsEmpty);
                 }
             }
@@ -1525,6 +1674,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 {
                     test.Remove(i);
                 } // for
+
                 Assert.IsTrue(test.IsEmpty);
                 for (var count = 0; count < 520; count++)
                 {
@@ -1533,11 +1683,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                     {
                         hll.Add(i);
                     }
+
                     Assert.AreEqual(count, hll.Count);
                     for (var i = count; i >= 1; i--)
                     {
                         hll.Remove(i);
                     }
+
                     Assert.IsTrue(hll.IsEmpty);
                 }
             }
@@ -1553,11 +1705,17 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
 
             [SetUp]
-            public void Init() { lst = new HashedLinkedList<int>(); }
+            public void Init()
+            {
+                lst = new HashedLinkedList<int>();
+            }
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -1627,8 +1785,11 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void Init()
             {
                 list = new HashedLinkedList<int>();
-                list.Add(0); list.Add(1); list.Add(2); list.Add(3);
-                view = (HashedLinkedList<int>)list.View(1, 2);
+                list.Add(0);
+                list.Add(1);
+                list.Add(2);
+                list.Add(3);
+                view = (HashedLinkedList<int>) list.View(1, 2);
             }
 
             [TearDown]
@@ -1769,7 +1930,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 check();
                 Assert.IsTrue(IC.eq(list, 0, 8, 12, 3));
                 Assert.IsTrue(IC.eq(view, 8, 12));
-                view./*ViewOf(12).*/InsertLast(15);
+                view. /*ViewOf(12).*/InsertLast(15);
                 check();
                 Assert.IsTrue(IC.eq(list, 0, 8, 12, 15, 3));
                 Assert.IsTrue(IC.eq(view, 8, 12, 15));
@@ -1780,7 +1941,8 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
                 var lst2 = new HashedLinkedList<int>();
 
-                lst2.Add(90); lst2.Add(92);
+                lst2.Add(90);
+                lst2.Add(92);
                 view.AddAll(lst2);
                 check();
                 Assert.IsTrue(IC.eq(list, 0, 8, 18, 12, 15, 90, 92, 3));
@@ -1829,7 +1991,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void CreateView()
             {
-                var view2 = (HashedLinkedList<int>)view.View(1, 0);
+                var view2 = (HashedLinkedList<int>) view.View(1, 0);
 
                 Assert.AreSame(list, view2.Underlying);
             }
@@ -1839,7 +2001,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void FIFO()
             {
                 Assert.IsTrue(view.FIFO);
-                view.Add(23); view.Add(24); view.Add(25);
+                view.Add(23);
+                view.Add(24);
+                view.Add(25);
                 check();
                 Assert.IsTrue(IC.eq(view, 1, 2, 23, 24, 25));
                 Assert.AreEqual(1, view.Remove());
@@ -1856,14 +2020,18 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void MapEtc()
             {
-                var dbl = (HashedLinkedList<double>)view.Map(new Func<int, double>(delegate (int i) { return i / 10.0; }));
+                var dbl = (HashedLinkedList<double>) view.Map(
+                    new Func<int, double>(delegate(int i) { return i / 10.0; }));
 
                 Assert.IsTrue(dbl.Check());
                 Assert.AreEqual(0.1, dbl[0]);
                 Assert.AreEqual(0.2, dbl[1]);
                 for (var i = 0; i < 10; i++) view.Add(i);
 
-                var list2 = (HashedLinkedList<int>)view.FindAll(new Func<int, bool>(delegate (int i) { return i % 4 == 1; }));
+                var list2 = (HashedLinkedList<int>) view.FindAll(new Func<int, bool>(delegate(int i)
+                {
+                    return i % 4 == 1;
+                }));
 
                 Assert.IsTrue(list2.Check());
                 Assert.IsTrue(IC.eq(list2, 1, 5, 9));
@@ -1884,7 +2052,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.Clear();
                 for (var i = 0; i < 20; i++) list.Add(i);
 
-                view = (HashedLinkedList<int>)list.View(5, 7);
+                view = (HashedLinkedList<int>) list.View(5, 7);
                 for (var i = 0; i < 7; i++) Assert.AreEqual(i + 5, view[i]);
 
                 for (var i = 0; i < 7; i++) Assert.AreEqual(i, view.IndexOf(i + 5));
@@ -1904,7 +2072,8 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
 
                 IList<int> list2 = new HashedLinkedList<int>();
 
-                list2.Add(40); list2.Add(41);
+                list2.Add(40);
+                list2.Add(41);
                 view.InsertAll(3, list2);
                 Assert.IsTrue(view.Check());
                 Assert.IsTrue(IC.eq(view, 34, 35, 1, 40, 41, 2, 36));
@@ -1914,7 +2083,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Sort()
             {
-                view.Add(45); view.Add(47); view.Add(46); view.Add(48);
+                view.Add(45);
+                view.Add(47);
+                view.Add(46);
+                view.Add(48);
                 Assert.IsFalse(view.IsSorted(new IC()));
                 view.Sort(new IC());
                 check();
@@ -1926,7 +2098,12 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Remove()
             {
-                view.Add(1); view.Add(5); view.Add(3); view.Add(1); view.Add(3); view.Add(0);
+                view.Add(1);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
+                view.Add(3);
+                view.Add(0);
                 Assert.IsTrue(IC.eq(view, 1, 2, 5));
                 Assert.IsTrue(view.Remove(1));
                 check();
@@ -1941,28 +2118,44 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 check();
                 Assert.IsTrue(IC.eq(view, 2, 5));
                 Assert.IsTrue(IC.eq(list, 0, 2, 5, 3));
-                view.Add(1); view.Add(5); view.Add(3); view.Add(1); view.Add(3); view.Add(0);
+                view.Add(1);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
+                view.Add(3);
+                view.Add(0);
                 Assert.IsTrue(IC.eq(view, 2, 5, 1));
 
                 var l2 = new HashedLinkedList<int>();
 
-                l2.Add(1); l2.Add(2); l2.Add(2); l2.Add(3); l2.Add(1);
+                l2.Add(1);
+                l2.Add(2);
+                l2.Add(2);
+                l2.Add(3);
+                l2.Add(1);
                 view.RemoveAll(l2);
                 check();
                 Assert.IsTrue(IC.eq(view, 5));
                 view.RetainAll(l2);
                 check();
                 Assert.IsTrue(IC.eq(view));
-                view.Add(2); view.Add(4); view.Add(5);
+                view.Add(2);
+                view.Add(4);
+                view.Add(5);
                 Assert.AreEqual(2, view.RemoveAt(0));
                 Assert.AreEqual(5, view.RemoveAt(1));
                 Assert.AreEqual(4, view.RemoveAt(0));
                 check();
                 Assert.IsTrue(IC.eq(view));
-                view.Add(8); view.Add(6); view.Add(78);
+                view.Add(8);
+                view.Add(6);
+                view.Add(78);
                 Assert.AreEqual(8, view.RemoveFirst());
                 Assert.AreEqual(78, view.RemoveLast());
-                view.Add(2); view.Add(5); view.Add(3); view.Add(1);
+                view.Add(2);
+                view.Add(5);
+                view.Add(3);
+                view.Add(1);
                 view.RemoveInterval(1, 2);
                 check();
                 Assert.IsTrue(IC.eq(view, 6, 1));
@@ -2005,15 +2198,16 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 view.Add(28);
                 Assert.IsTrue(IC.eq(list, 0, 28, 1, 2, 3));
             }
+
             [Test]
             public void Iterate()
             {
                 list.Clear();
                 check();
                 view = null;
-                foreach (var i in new int[] { 2, 4, 8, 13, 6, 1, 10, 11 }) list.Add(i);
+                foreach (var i in new int[] {2, 4, 8, 13, 6, 1, 10, 11}) list.Add(i);
 
-                view = (HashedLinkedList<int>)list.View(list.Count - 2, 2);
+                view = (HashedLinkedList<int>) list.View(list.Count - 2, 2);
                 var j = 666;
                 while (true)
                 {
@@ -2027,6 +2221,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                     else
                         view.Slide(-1, 2);
                 }
+
                 //foreach (int cell in list) Console.Write(" " + cell);
                 //Assert.IsTrue(list.Check());
                 Assert.IsTrue(IC.eq(list, 2, 4, 8, 668, 13, 6, 1, 667, 10, 666, 11));
@@ -2036,7 +2231,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void SyncRoot()
             {
-                Assert.AreSame(((System.Collections.IList)view).SyncRoot, ((System.Collections.IList)list).SyncRoot);
+                Assert.AreSame(((System.Collections.IList) view).SyncRoot, ((System.Collections.IList) list).SyncRoot);
             }
         }
 
@@ -2045,6 +2240,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
         {
             IList<int> list;
             IList<int>[][] views;
+
             [SetUp]
             public void Init()
             {
@@ -2059,12 +2255,14 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                         views[i][j] = list.View(i, j);
                 }
             }
+
             [TearDown]
             public void Dispose()
             {
                 list = null;
                 views = null;
             }
+
             [Test]
             public void Insert()
             {
@@ -2072,12 +2270,15 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.Insert(3, 777);
                 Assert.IsTrue(list.Check(), "list check after insert");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i < 3 && i + j > 3 ? j + 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 1, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i < 3 && i + j > 3 ? j + 1 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void RemoveAt()
             {
@@ -2085,11 +2286,12 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.RemoveAt(3);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i <= 3 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i <= 3 && i + j > 3 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i <= 3 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i <= 3 && i + j > 3 ? j - 1 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
@@ -2099,11 +2301,14 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.RemoveInterval(3, 2);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i <= 3 ? i : i <= 5 ? 3 : i - 2, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(j == 0 ? 0 : i <= 3 && i + j > 4 ? j - 2 : i > 4 || i + j <= 3 ? j : j - 1, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i <= 3 ? i :
+                        i <= 5 ? 3 : i - 2, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(j == 0 ? 0 :
+                        i <= 3 && i + j > 4 ? j - 2 :
+                        i > 4 || i + j <= 3 ? j : j - 1, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
@@ -2113,12 +2318,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.InsertLast(777);
                 Assert.IsTrue(list.Check(), "list check after insert");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void RemoveAtEnd()
             {
@@ -2126,12 +2332,14 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.RemoveAt(5);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i <= 5 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i <= 5 && i + j > 5 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i <= 5 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i <= 5 && i + j > 5 ? j - 1 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void InsertAtStart()
             {
@@ -2139,12 +2347,14 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.Insert(0, 777);
                 Assert.IsTrue(list.Check(), "list check after insert");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i == 0 && j == 0 ? 0 : i + 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i == 0 && j == 0 ? 0 : i + 1, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void RemoveAtStart()
             {
@@ -2152,12 +2362,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 list.RemoveAt(0);
                 Assert.IsTrue(list.Check(), "list check after remove");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i == 0 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i == 0 && j > 0 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i == 0 ? i : i - 1, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i == 0 && j > 0 ? j - 1 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
+
             [Test]
             public void Clear()
             {
@@ -2168,11 +2379,12 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 views[2][3].Clear();
                 Assert.IsTrue(list.Check(), "list check after clear");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 2 ? i : i < 6 ? 2 : i - 3, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(s(i, j), views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 2 ? i :
+                        i < 6 ? 2 : i - 3, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(s(i, j), views[i][j].Count, "view[" + i + "][" + j + "] count");
+                }
             }
 
             private int s(int i, int j)
@@ -2184,36 +2396,49 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 if (i <= 2) return k >= 4 ? j - 3 : 2 - i;
                 return -1;
             }
+
             [Test]
             public void InsertAll()
             {
                 IList<int> list2 = new HashedLinkedList<int>();
-                for (var i = 0; i < 5; i++) { list2.Add(100 + i); }
+                for (var i = 0; i < 5; i++)
+                {
+                    list2.Add(100 + i);
+                }
+
                 Assert.IsTrue(list.Check(), "list check before insertAll");
                 list.InsertAll(3, list2);
                 Assert.IsTrue(list.Check(), "list check after insertAll");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
             public void AddAll()
             {
                 IList<int> list2 = new HashedLinkedList<int>();
-                for (var i = 0; i < 5; i++) { list2.Add(100 + i); }
+                for (var i = 0; i < 5; i++)
+                {
+                    list2.Add(100 + i);
+                }
+
                 Assert.IsTrue(list.Check(), "list check before AddAll");
                 list.View(1, 2).AddAll(list2);
                 Assert.IsTrue(list.Check(), "list check after AddAll");
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
-                    {
-                        Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
-                        Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count, "view[" + i + "][" + j + "] count");
-                    }
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    Assert.AreEqual(i < 3 || (i == 3 && j == 0) ? i : i + 5, views[i][j].Offset,
+                        "view[" + i + "][" + j + "] offset");
+                    Assert.AreEqual(i < 3 && i + j > 3 ? j + 5 : j, views[i][j].Count,
+                        "view[" + i + "][" + j + "] count");
+                }
             }
 
             [Test]
@@ -2225,17 +2450,20 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                     {
                         list = new HashedLinkedList<int>();
                         for (var k = 0; k < 6; k++) list.Add(k);
-                        var v = (HashedLinkedList<int>)list.View(i, j);
+                        var v = (HashedLinkedList<int>) list.View(i, j);
                         list.Remove(3);
                         Assert.IsTrue(list.Check(), "list check after Remove, i=" + i + ", j=" + j);
                     }
                 }
             }
+
             [Test]
             public void RemoveAll1()
             {
                 IList<int> list2 = new HashedLinkedList<int>();
-                list2.Add(1); list2.Add(3); list2.Add(4);
+                list2.Add(1);
+                list2.Add(3);
+                list2.Add(4);
 
                 for (var i = 0; i < 7; i++)
                 {
@@ -2243,17 +2471,20 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                     {
                         list = new HashedLinkedList<int>();
                         for (var k = 0; k < 6; k++) list.Add(k);
-                        var v = (HashedLinkedList<int>)list.View(i, j);
+                        var v = (HashedLinkedList<int>) list.View(i, j);
                         list.RemoveAll(list2);
                         Assert.IsTrue(list.Check(), "list check after RemoveAll, i=" + i + ", j=" + j);
                     }
                 }
             }
+
             [Test]
             public void RemoveAll2()
             {
                 IList<int> list2 = new HashedLinkedList<int>();
-                list2.Add(1); list2.Add(3); list2.Add(4);
+                list2.Add(1);
+                list2.Add(3);
+                list2.Add(4);
                 Assert.IsTrue(list.Check(), "list check before RemoveAll");
                 list.RemoveAll(list2);
 
@@ -2322,7 +2553,9 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void RetainAll()
             {
                 IList<int> list2 = new HashedLinkedList<int>();
-                list2.Add(2); list2.Add(4); list2.Add(5);
+                list2.Add(2);
+                list2.Add(4);
+                list2.Add(5);
                 Assert.IsTrue(list.Check(), "list check before RetainAll");
                 list.RetainAll(list2);
                 Assert.AreEqual(0, views[0][0].Offset, "view [0][0] offset");
@@ -2391,14 +2624,20 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             public void RemoveAllCopies()
             {
                 IList<int> list2 = new HashedLinkedList<int>();
-                list2.Add(0); list2.Add(2); list2.Add(82); list2.Add(92); list2.Add(5); list2.Add(2); list2.Add(1);
+                list2.Add(0);
+                list2.Add(2);
+                list2.Add(82);
+                list2.Add(92);
+                list2.Add(5);
+                list2.Add(2);
+                list2.Add(1);
                 for (var i = 0; i < 7; i++)
                 {
                     for (var j = 0; j < 7 - i; j++)
                     {
                         list = new HashedLinkedList<int>();
                         list.AddAll(list2);
-                        var v = (HashedLinkedList<int>)list.View(i, j);
+                        var v = (HashedLinkedList<int>) list.View(i, j);
                         list.RemoveAllCopies(2);
                         Assert.IsTrue(list.Check(), "list check after RemoveAllCopies, i=" + i + ", j=" + j);
                     }
@@ -2409,34 +2648,40 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             {
                 var k = 0;
                 for (var i = 0; i < 7; i++)
-                    for (var j = 0; j < 7 - i; j++)
+                for (var j = 0; j < 7 - i; j++)
+                {
+                    if (i + j <= start || i >= start + count || (i <= start && i + j >= start + count) ||
+                        (reverse && start <= i && start + count >= i + j))
                     {
-                        if (i + j <= start || i >= start + count || (i <= start && i + j >= start + count) || (reverse && start <= i && start + count >= i + j))
+                        try
                         {
-                            try
-                            {
-                                k = views[i][j].Count;
-                            }
-                            catch (ViewDisposedException)
-                            {
-                                Assert.Fail("view[" + i + "][" + j + "] threw");
-                            }
-                            Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] size");
-                            if (reverse && ((j > 0 && start <= i && start + count >= i + j) || (j == 0 && start < i && start + count > i)))
-                                Assert.AreEqual(start + (start + count - i - j), views[i][j].Offset, "view[" + i + "][" + j + "] offset (mirrored)");
-                            else
-                                Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                            k = views[i][j].Count;
                         }
-                        else
+                        catch (ViewDisposedException)
                         {
-                            try
-                            {
-                                k = views[i][j].Count;
-                                Assert.Fail("view[" + i + "][" + j + "] no throw");
-                            }
-                            catch (ViewDisposedException) { }
+                            Assert.Fail("view[" + i + "][" + j + "] threw");
+                        }
+
+                        Assert.AreEqual(j, views[i][j].Count, "view[" + i + "][" + j + "] size");
+                        if (reverse && ((j > 0 && start <= i && start + count >= i + j) ||
+                                        (j == 0 && start < i && start + count > i)))
+                            Assert.AreEqual(start + (start + count - i - j), views[i][j].Offset,
+                                "view[" + i + "][" + j + "] offset (mirrored)");
+                        else
+                            Assert.AreEqual(i, views[i][j].Offset, "view[" + i + "][" + j + "] offset");
+                    }
+                    else
+                    {
+                        try
+                        {
+                            k = views[i][j].Count;
+                            Assert.Fail("view[" + i + "][" + j + "] no throw");
+                        }
+                        catch (ViewDisposedException)
+                        {
                         }
                     }
+                }
             }
 
             [Test]
@@ -2460,6 +2705,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.IsTrue(list.Check(), "list check after Sort");
                 checkDisposed(false, start, count);
             }
+
             [Test]
             public void Shuffle()
             {
@@ -2470,10 +2716,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.IsTrue(list.Check(), "list check after Shuffle");
                 checkDisposed(false, start, count);
             }
-
-
         }
-
     }
 
     namespace HashingAndEquals
@@ -2527,8 +2770,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void EqualHashButDifferent()
             {
-                dit.Add(0); dit.Add(31);
-                dat.Add(1); dat.Add(0);
+                dit.Add(0);
+                dit.Add(31);
+                dat.Add(1);
+                dat.Add(0);
                 Assert.AreEqual(dit.GetSequencedHashCode(), dat.GetSequencedHashCode());
                 Assert.IsFalse(dit.SequencedEquals(dat));
             }
@@ -2556,7 +2801,7 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Assert.IsTrue(dit.SequencedEquals(dut));
                 Assert.IsTrue(dut.SequencedEquals(dit));
                 dit.Add(7);
-                ((HashedLinkedList<int>)dut).InsertFirst(7);
+                ((HashedLinkedList<int>) dut).InsertFirst(7);
                 Assert.IsFalse(dit.SequencedEquals(dut));
                 Assert.IsFalse(dut.SequencedEquals(dit));
             }
@@ -2581,7 +2826,6 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 dut = null;
             }
         }
-
 
 
         [TestFixture]
@@ -2634,8 +2878,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void EqualHashButDifferent()
             {
-                dit.Add(-1657792980); dit.Add(-1570288808);
-                dat.Add(1862883298); dat.Add(-272461342);
+                dit.Add(-1657792980);
+                dit.Add(-1570288808);
+                dat.Add(1862883298);
+                dat.Add(-272461342);
                 Assert.AreEqual(dit.GetUnsequencedHashCode(), dat.GetUnsequencedHashCode());
                 Assert.IsFalse(dit.UnsequencedEquals(dat));
             }
@@ -2690,7 +2936,6 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
         }
 
 
-
         [TestFixture]
         public class MultiLevelUnorderedOfUnOrdered
         {
@@ -2705,8 +2950,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 dit = new HashedLinkedList<int>();
                 dat = new HashedLinkedList<int>();
                 dut = new HashedLinkedList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new HashedLinkedList<ICollection<int>>();
                 Dat = new HashedLinkedList<ICollection<int>>();
@@ -2725,8 +2972,12 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dat));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dut));
             }
@@ -2739,7 +2990,6 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Dit = Dat = Dut = null;
             }
         }
-
 
 
         [TestFixture]
@@ -2756,8 +3006,10 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 dit = new HashedLinkedList<int>();
                 dat = new HashedLinkedList<int>();
                 dut = new HashedLinkedList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new HashedLinkedList<ICollection<int>>();
                 Dat = new HashedLinkedList<ICollection<int>>();
@@ -2776,9 +3028,15 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dit); Dut.Add(dut); Dut.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dit);
+                Dut.Add(dut);
+                Dut.Add(dat);
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
             }
@@ -2791,7 +3049,6 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Dit = Dat = Dut = null;
             }
         }
-
 
 
         [TestFixture]
@@ -2809,10 +3066,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 dat = new HashedLinkedList<int>();
                 dut = new HashedLinkedList<int>();
                 dot = new HashedLinkedList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
-                dot.Add(2); dot.Add(1);
+                dot.Add(2);
+                dot.Add(1);
                 Dit = new HashedLinkedList<ISequenced<int>>();
                 Dat = new HashedLinkedList<ISequenced<int>>();
                 Dut = new HashedLinkedList<ISequenced<int>>();
@@ -2832,10 +3092,18 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dot); Dut.Add(dut); Dut.Add(dit);
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dot);
+                Dut.Add(dut);
+                Dut.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dut));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dat));
                 Assert.IsTrue(Dit.UnsequencedEquals(Dot));
@@ -2849,7 +3117,6 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 Dit = Dat = Dut = Dot = null;
             }
         }
-
 
 
         [TestFixture]
@@ -2867,10 +3134,13 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
                 dat = new HashedLinkedList<int>();
                 dut = new HashedLinkedList<int>();
                 dot = new HashedLinkedList<int>();
-                dit.Add(2); dit.Add(1); //{2,1}
-                dat.Add(1); dat.Add(2); //{1,2}
-                dut.Add(3);            //{3}
-                dot.Add(2); dot.Add(1); //{2,1}
+                dit.Add(2);
+                dit.Add(1); //{2,1}
+                dat.Add(1);
+                dat.Add(2); //{1,2}
+                dut.Add(3); //{3}
+                dot.Add(2);
+                dot.Add(1); //{2,1}
                 Dit = new HashedLinkedList<ISequenced<int>>();
                 Dat = new HashedLinkedList<ISequenced<int>>();
                 Dut = new HashedLinkedList<ISequenced<int>>();
@@ -2890,10 +3160,18 @@ namespace HSNXT.C5UnitTests.linkedlists.hashed
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit); // {{2,1},{3}}
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat); // {{3},{2,1},{1,2}}
-                Dut.Add(dot); Dut.Add(dut); Dut.Add(dit); // {{2,1},{3}}
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut); // {{2,1},{3}}
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit); // {{2,1},{3}}
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat); // {{3},{2,1},{1,2}}
+                Dut.Add(dot);
+                Dut.Add(dut);
+                Dut.Add(dit); // {{2,1},{3}}
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut); // {{2,1},{3}}
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsTrue(Dit.SequencedEquals(Dot));

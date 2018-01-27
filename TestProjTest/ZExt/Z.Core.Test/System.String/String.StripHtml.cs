@@ -18,7 +18,9 @@ namespace HSNXT.Z.Core.Test
             // Exemples
             var result1 = "FizzBuzz".StripHtml(); // return "FizzBuzz";
             var result2 = "Fizz<span>Buzz</span>".StripHtml(); // return "FizzBuzz";
-            var result3 = "Fizz<span id='toto>' onclick=\"<test></test>\" escapeSingleQuote='\\\'>' escapeDoubleQuote=\"\\\">\">Buzz</span>".StripHtml(); // return "FizzBuzz";
+            var result3 =
+                "Fizz<span id='toto>' onclick=\"<test></test>\" escapeSingleQuote='\\\'>' escapeDoubleQuote=\"\\\">\">Buzz</span>"
+                    .StripHtml(); // return "FizzBuzz";
 
             // Unit Test
             Assert.AreEqual("FizzBuzz", result1);

@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.ActionExtensions
 {
-
     public class AsActionUsingWithSixteenParametersTests
     {
         private const byte ByteValue = byte.MaxValue - 8;
@@ -11,15 +11,18 @@ namespace BCLExtensions.Tests.ActionExtensions
         [Fact]
         public void SampleActionIsValid()
         {
-            SampleAction(42, "Test", true, 3.14m, byte.MaxValue, 98765, "Sample", false, 1.2345m, ByteValue, 9000, "Foo", true,1.23m, byte.MaxValue, new object());
+            SampleAction(42, "Test", true, 3.14m, byte.MaxValue, 98765, "Sample", false, 1.2345m, ByteValue, 9000,
+                "Foo", true, 1.23m, byte.MaxValue, new object());
         }
 
         [Fact]
         public void ResultNotNull()
         {
-            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal?, byte?, object> action = SampleAction;
+            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal?,
+                byte?, object> action = SampleAction;
 
-            var result = action.AsActionUsing(12, "12", false, 3.14m, byte.MaxValue, 666, "Class", true, 123.45m, ByteValue, 12000, "Bar", true, 912.5m, ByteValue, new object());
+            var result = action.AsActionUsing(12, "12", false, 3.14m, byte.MaxValue, 666, "Class", true, 123.45m,
+                ByteValue, 12000, "Bar", true, 912.5m, ByteValue, new object());
 
             Assert.NotNull(result);
         }
@@ -28,11 +31,13 @@ namespace BCLExtensions.Tests.ActionExtensions
         public void InternalActionExecutes()
         {
             var internalActionWasCalled = false;
-            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal?, byte?, object> action = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16) =>
+            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal?,
+                byte?, object> action = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16) =>
             {
                 internalActionWasCalled = true;
             };
-            var result = action.AsActionUsing(12, "24", false, 3.14m, byte.MaxValue, 12345, "Fish", true, 1234.5m, ByteValue, 1600, "Fizz", false, 543.21m, Byte.MaxValue, new object());
+            var result = action.AsActionUsing(12, "24", false, 3.14m, byte.MaxValue, 12345, "Fish", true, 1234.5m,
+                ByteValue, 1600, "Fizz", false, 543.21m, Byte.MaxValue, new object());
             result();
 
             Assert.True(internalActionWasCalled);
@@ -73,7 +78,8 @@ namespace BCLExtensions.Tests.ActionExtensions
             decimal? passedParameter14 = 0.0m;
             byte? passedParameter15 = 0;
             object passedParameter16 = null;
-            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal?, byte?, object> action = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16) =>
+            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal?,
+                byte?, object> action = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;
@@ -93,7 +99,10 @@ namespace BCLExtensions.Tests.ActionExtensions
                 passedParameter16 = p16;
             };
 
-            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7, expectedParameter8, expectedParameter9, expectedParameter10, expectedParameter11, expectedParameter12, expectedParameter13, expectedParameter14, expectedParameter15, expectedParameter16);
+            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7, expectedParameter8,
+                expectedParameter9, expectedParameter10, expectedParameter11, expectedParameter12, expectedParameter13,
+                expectedParameter14, expectedParameter15, expectedParameter16);
             result();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -114,7 +123,10 @@ namespace BCLExtensions.Tests.ActionExtensions
             Assert.Equal(expectedParameter16, passedParameter16);
         }
 
-        private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4, byte parameter5, int parameter6, string parameter7, bool parameter8, decimal parameter9, byte parameter10, int? parameter11, string parameter12, bool? paramater13, decimal? parameter14, byte? parameter15, object parameter16)
+        private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4,
+            byte parameter5, int parameter6, string parameter7, bool parameter8, decimal parameter9, byte parameter10,
+            int? parameter11, string parameter12, bool? paramater13, decimal? parameter14, byte? parameter15,
+            object parameter16)
         {
         }
     }

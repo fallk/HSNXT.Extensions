@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HSNXT.Z.Core.Test
@@ -18,7 +19,7 @@ namespace HSNXT.Z.Core.Test
             var stringObject = (object) "FizzBuzz";
 
             // Exemples
-            var result1 = stringObject.IsAssignableFrom(typeof (string)); // return true;
+            var result1 = stringObject.IsAssignableFrom(typeof(string)); // return true;
             var result2 = stringObject.IsAssignableFrom<string>(); // return true;
             var result3 = stringObject.IsAssignableFrom<object>(); // return false;
             var result4 = stringObject.IsAssignableFrom<int>(); // return false;

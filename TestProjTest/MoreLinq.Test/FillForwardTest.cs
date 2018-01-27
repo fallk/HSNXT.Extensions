@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 //
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -33,9 +35,9 @@ namespace HSNXT.Test
         public void FillForward()
         {
             int? na = null;
-            var input = new[] { na, na, 1, 2, na, na, na, 3, 4, na, na };
+            var input = new[] {na, na, 1, 2, na, na, na, 3, 4, na, na};
             var result = input.FillForward();
-            Assert.That(result, Is.EquivalentTo(new[] { na, na, 1, 2, 2, 2, 2, 3, 4, 4, 4 }));
+            Assert.That(result, Is.EquivalentTo(new[] {na, na, 1, 2, 2, 2, 2, 3, 4, 4, 4}));
         }
 
         [Test]
@@ -55,31 +57,32 @@ namespace HSNXT.Test
 
             var data =
                 from line in table.Split('\n')
-                select line.Trim() into line
+                select line.Trim()
+                into line
                 where !string.IsNullOrEmpty(line)
                 select Regex.Split(line, "\x20+").Fold((cont, ctry, city, val) => new
                 {
                     Continent = cont,
-                    Country   = ctry,
-                    City      = city,
-                    Value     = int.Parse(val),
+                    Country = ctry,
+                    City = city,
+                    Value = int.Parse(val),
                 });
 
-            data = data.FillForward(e => e.Continent == "-", (e, f) => new { f.Continent, e.Country, e.City, e.Value })
-                        .FillForward(e => e.Country   == "-", (e, f) => new { e.Continent, f.Country, e.City, e.Value });
+            data = data.FillForward(e => e.Continent == "-", (e, f) => new {f.Continent, e.Country, e.City, e.Value})
+                .FillForward(e => e.Country == "-", (e, f) => new {e.Continent, f.Country, e.City, e.Value});
 
 
             Assert.That(data, Is.EquivalentTo(new[]
             {
-                new { Continent = "Europe", Country = "UK",      City = "London",     Value = 123 },
-                new { Continent = "Europe", Country = "UK",      City = "Manchester", Value = 234 },
-                new { Continent = "Europe", Country = "UK",      City = "Glasgow",    Value = 345 },
-                new { Continent = "Europe", Country = "Germany", City = "Munich",     Value = 456 },
-                new { Continent = "Europe", Country = "Germany", City = "Frankfurt",  Value = 567 },
-                new { Continent = "Europe", Country = "Germany", City = "Stuttgart",  Value = 678 },
-                new { Continent = "Africa", Country = "Egypt",   City = "Cairo",      Value = 789 },
-                new { Continent = "Africa", Country = "Egypt",   City = "Alexandria", Value = 890 },
-                new { Continent = "Africa", Country = "Kenya",   City = "Nairobi",    Value = 901 },
+                new {Continent = "Europe", Country = "UK", City = "London", Value = 123},
+                new {Continent = "Europe", Country = "UK", City = "Manchester", Value = 234},
+                new {Continent = "Europe", Country = "UK", City = "Glasgow", Value = 345},
+                new {Continent = "Europe", Country = "Germany", City = "Munich", Value = 456},
+                new {Continent = "Europe", Country = "Germany", City = "Frankfurt", Value = 567},
+                new {Continent = "Europe", Country = "Germany", City = "Stuttgart", Value = 678},
+                new {Continent = "Africa", Country = "Egypt", City = "Cairo", Value = 789},
+                new {Continent = "Africa", Country = "Egypt", City = "Alexandria", Value = 890},
+                new {Continent = "Africa", Country = "Kenya", City = "Nairobi", Value = 901},
             }));
         }
     }

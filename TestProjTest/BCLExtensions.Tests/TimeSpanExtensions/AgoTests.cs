@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.TimeSpanExtensions
@@ -17,6 +18,5 @@ namespace BCLExtensions.Tests.TimeSpanExtensions
             var resultAboveLowerBound = result >= (now - duration) - errorMargin;
             Assert.True(resultBelowUpperBound && resultAboveLowerBound);
         }
-
     }
 }

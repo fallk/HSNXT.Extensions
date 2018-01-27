@@ -22,6 +22,7 @@
 using System;
 using HSNXT.C5;
 using NUnit.Framework;
+
 namespace HSNXT.C5UnitTests.hashtable.bag
 {
     using CollectionOfInt = HashBag<int>;
@@ -33,9 +34,9 @@ namespace HSNXT.C5UnitTests.hashtable.bag
     {
         [Test]
         public void TestEvents()
-        { 
-            Func<CollectionOfInt> factory = delegate () { return new CollectionOfInt(TenEqualityComparer.Default); };
-            new C5UnitTests.Templates.Events.CollectionTester<CollectionOfInt>().Test(factory, MemoryType); 
+        {
+            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(TenEqualityComparer.Default); };
+            new C5UnitTests.Templates.Events.CollectionTester<CollectionOfInt>().Test(factory, MemoryType);
         }
 
         //[Test]
@@ -51,7 +52,10 @@ namespace HSNXT.C5UnitTests.hashtable.bag
 
     static class Factory
     {
-        public static ICollection<T> New<T>() { return new HashBag<T>(); }
+        public static ICollection<T> New<T>()
+        {
+            return new HashBag<T>();
+        }
     }
 
 
@@ -60,23 +64,28 @@ namespace HSNXT.C5UnitTests.hashtable.bag
     {
         ICollection<int> coll;
         IFormatProvider rad16;
+
         [SetUp]
         public void Init()
         {
             Debug.UseDeterministicHashing = true;
-            coll = Factory.New<int>(); rad16 = new RadixFormatProvider(16);
+            coll = Factory.New<int>();
+            rad16 = new RadixFormatProvider(16);
         }
+
         [TearDown]
         public void Dispose()
         {
             Debug.UseDeterministicHashing = false;
-            coll = null; rad16 = null;
+            coll = null;
+            rad16 = null;
         }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("{{  }}", coll.ToString());
-            coll.AddAll(new int[] { -4, 28, 129, 65530, -4, 28 });
+            coll.AddAll(new int[] {-4, 28, 129, 65530, -4, 28});
             Assert.AreEqual("{{ 65530(*1), -4(*2), 28(*2), 129(*1) }}", coll.ToString());
             Assert.AreEqual("{{ FFFA(*1), -4(*2), 1C(*2), 81(*1) }}", coll.ToString(null, rad16));
             Assert.AreEqual("{{ 65530(*1), -4(*2)... }}", coll.ToString("L18", null));
@@ -100,7 +109,10 @@ namespace HSNXT.C5UnitTests.hashtable.bag
 
 
         [TearDown]
-        public void Dispose() { lst = null; }
+        public void Dispose()
+        {
+            lst = null;
+        }
 
 
         [Test]
@@ -197,7 +209,6 @@ namespace HSNXT.C5UnitTests.hashtable.bag
     }
 
 
-
     [TestFixture]
     public class CollectionOrSink
     {
@@ -269,7 +280,11 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         [Test]
         public void AddAll()
         {
-            hashbag.Add(3); hashbag.Add(4); hashbag.Add(4); hashbag.Add(5); hashbag.Add(4);
+            hashbag.Add(3);
+            hashbag.Add(4);
+            hashbag.Add(4);
+            hashbag.Add(5);
+            hashbag.Add(4);
 
             var hashbag2 = new HashBag<int>();
 
@@ -303,13 +318,17 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         [Test]
         public void RemoveAllCopies()
         {
-            hashbag.Add(5); hashbag.Add(7); hashbag.Add(5);
+            hashbag.Add(5);
+            hashbag.Add(7);
+            hashbag.Add(5);
             Assert.AreEqual(2, hashbag.ContainsCount(5));
             Assert.AreEqual(1, hashbag.ContainsCount(7));
             hashbag.RemoveAllCopies(5);
             Assert.AreEqual(0, hashbag.ContainsCount(5));
             Assert.AreEqual(1, hashbag.ContainsCount(7));
-            hashbag.Add(5); hashbag.Add(8); hashbag.Add(5);
+            hashbag.Add(5);
+            hashbag.Add(8);
+            hashbag.Add(5);
             hashbag.RemoveAllCopies(8);
             Assert.IsTrue(IC.eq(hashbag, 7, 5, 5));
         }
@@ -343,13 +362,22 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         {
             var list2 = new HashBag<int>();
 
-            hashbag.Add(4); hashbag.Add(5); hashbag.Add(4); hashbag.Add(6); hashbag.Add(4);
-            list2.Add(5); list2.Add(4); list2.Add(7); list2.Add(4);
+            hashbag.Add(4);
+            hashbag.Add(5);
+            hashbag.Add(4);
+            hashbag.Add(6);
+            hashbag.Add(4);
+            list2.Add(5);
+            list2.Add(4);
+            list2.Add(7);
+            list2.Add(4);
             hashbag.RetainAll(list2);
             Assert.IsTrue(IC.seteq(hashbag, 4, 4, 5));
             hashbag.Add(6);
             list2.Clear();
-            list2.Add(7); list2.Add(8); list2.Add(9);
+            list2.Add(7);
+            list2.Add(8);
+            list2.Add(9);
             hashbag.RetainAll(list2);
             Assert.IsTrue(IC.eq(hashbag));
         }
@@ -360,17 +388,28 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         {
             var list2 = new HashBag<int>();
 
-            hashbag.Add(4); hashbag.Add(5); hashbag.Add(6); hashbag.Add(4); hashbag.Add(5);
-            list2.Add(5); list2.Add(4); list2.Add(7); list2.Add(4);
+            hashbag.Add(4);
+            hashbag.Add(5);
+            hashbag.Add(6);
+            hashbag.Add(4);
+            hashbag.Add(5);
+            list2.Add(5);
+            list2.Add(4);
+            list2.Add(7);
+            list2.Add(4);
             hashbag.RemoveAll(list2);
             Assert.IsTrue(IC.seteq(hashbag, 5, 6));
-            hashbag.Add(5); hashbag.Add(4);
+            hashbag.Add(5);
+            hashbag.Add(4);
             list2.Clear();
-            list2.Add(6); list2.Add(5);
+            list2.Add(6);
+            list2.Add(5);
             hashbag.RemoveAll(list2);
             Assert.IsTrue(IC.seteq(hashbag, 4, 5));
             list2.Clear();
-            list2.Add(7); list2.Add(8); list2.Add(9);
+            list2.Add(7);
+            list2.Add(8);
+            list2.Add(9);
             hashbag.RemoveAll(list2);
             Assert.IsTrue(IC.seteq(hashbag, 4, 5));
         }
@@ -379,12 +418,21 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         [Test]
         public void Remove()
         {
-            hashbag.Add(4); hashbag.Add(4); hashbag.Add(5); hashbag.Add(4); hashbag.Add(6);
+            hashbag.Add(4);
+            hashbag.Add(4);
+            hashbag.Add(5);
+            hashbag.Add(4);
+            hashbag.Add(6);
             Assert.IsFalse(hashbag.Remove(2));
             Assert.IsTrue(hashbag.Remove(4));
             Assert.IsTrue(IC.seteq(hashbag, 4, 4, 5, 6));
             hashbag.Add(7);
-            hashbag.Add(21); hashbag.Add(37); hashbag.Add(53); hashbag.Add(69); hashbag.Add(53); hashbag.Add(85);
+            hashbag.Add(21);
+            hashbag.Add(37);
+            hashbag.Add(53);
+            hashbag.Add(69);
+            hashbag.Add(53);
+            hashbag.Add(85);
             Assert.IsTrue(hashbag.Remove(5));
             Assert.IsTrue(IC.seteq(hashbag, 4, 4, 6, 7, 21, 37, 53, 53, 69, 85));
             Assert.IsFalse(hashbag.Remove(165));
@@ -418,7 +466,7 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         {
             Debug.UseDeterministicHashing = true;
             list = new HashBag<int>(TenEqualityComparer.Default);
-            pred = delegate (int i) { return i % 5 == 0; };
+            pred = delegate(int i) { return i % 5 == 0; };
         }
 
         [TearDown]
@@ -433,13 +481,12 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         {
             int i;
             Assert.IsFalse(list.Find(pred, out i));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(list.Find(pred, out i));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.IsTrue(list.Find(pred, out i));
             Assert.AreEqual(45, i);
         }
-
     }
 
     [TestFixture]
@@ -448,17 +495,23 @@ namespace HSNXT.C5UnitTests.hashtable.bag
         private HashBag<int> list;
 
         [SetUp]
-        public void Init() { list = new HashBag<int>(); }
+        public void Init()
+        {
+            list = new HashBag<int>();
+        }
 
         [TearDown]
-        public void Dispose() { list = null; }
+        public void Dispose()
+        {
+            list = null;
+        }
 
         [Test]
         public void Test()
         {
             Assert.IsTrue(IC.seteq(list.UniqueItems()));
             Assert.IsTrue(IC.seteq(list.ItemMultiplicities()));
-            list.AddAll(new int[] { 7, 9, 7 });
+            list.AddAll(new int[] {7, 9, 7});
             Assert.IsTrue(IC.seteq(list.UniqueItems(), 7, 9));
             Assert.IsTrue(IC.seteq(list.ItemMultiplicities(), 7, 2, 9, 1));
         }

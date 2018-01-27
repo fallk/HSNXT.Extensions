@@ -5,7 +5,6 @@ using HSNXT.ComLib.Macros;
 
 namespace CommonLibrary.Tests.MacroTests
 {
-
     [Macro(Name = "hello", DisplayName = "Widget", Description = "Renders a hello world macro", IsReusable = true)]
     public class HelloWorldMacro : IMacro
     {
@@ -16,37 +15,37 @@ namespace CommonLibrary.Tests.MacroTests
         /// <returns></returns>
         public string Process(Tag tag)
         {
-            if(tag.Attributes.Contains("name"))
+            if (tag.Attributes.Contains("name"))
                 return "hello name: " + tag.Attributes["name"].ToString() + ", message: " + tag.InnerContent;
             return "hello name: " + tag.InnerContent;
         }
     }
 
-    
+
     [TestFixture]
     public class MacroServiceTests
     {
-
         [Test]
         public void CanProcessViaAPI()
         {
             var service = new MacroService('$', '[', ']');
             // 1. verbose api
-            service.Register(new MacroAttribute() { Name = "helloworld1" },
-                            new MacroParameterAttribute[] { new MacroParameterAttribute() { Name = "language" } },
-                           (tag) => "hello world 1 : " + tag.Name + ", " + tag.InnerContent);
+            service.Register(new MacroAttribute() {Name = "helloworld1"},
+                new MacroParameterAttribute[] {new MacroParameterAttribute() {Name = "language"}},
+                (tag) => "hello world 1 : " + tag.Name + ", " + tag.InnerContent);
 
 
             // 2. quick api
-            service.Register("helloworld2", "", "Simple hello world macro", (tag) => "hello world 2 : " + tag.InnerContent);
+            service.Register("helloworld2", "", "Simple hello world macro",
+                (tag) => "hello world 2 : " + tag.InnerContent);
 
             var result1 = service.BuildContent(@"testing $[helloworld1 name=""kishore""]commonlibrary.net.cms[/hello]");
             var result2 = service.BuildContent(@"testing $[helloworld2 name=""kishore""]commonlibrary.net.cms[/hello]");
             Assert.AreEqual(result1, "testing hello world 1 : helloworld1, commonlibrary.net.cms");
             Assert.AreEqual(result2, "testing hello world 2 : commonlibrary.net.cms");
         }
-        
-        
+
+
         [Test]
         public void CanProcessViaAPI_EmptyTag_No_Attributes_DifferentLocations()
         {
@@ -106,8 +105,9 @@ namespace CommonLibrary.Tests.MacroTests
         {
             var service = new MacroService('$', '[', ']');
             // 1. quick api
-            service.Register("helloworld1", "", "", (tag) => "hello world 1 " 
-                + tag.Attributes.Get<string>("saying") + ", " + tag.InnerContent);
+            service.Register("helloworld1", "", "", (tag) => "hello world 1 "
+                                                             + tag.Attributes.Get<string>("saying") + ", " +
+                                                             tag.InnerContent);
 
             // Case 1 - no external content
             var result = service.BuildContent("$[helloworld1 saying=\"hi\"]inner[/helloworld1]");
@@ -133,27 +133,35 @@ namespace CommonLibrary.Tests.MacroTests
             var service = new MacroService('$', '[', ']');
             // 1. quick api
             service.Register("helloworld1", "", "", (tag) => "hello world 1 "
-                + tag.Attributes.Get<string>("saying") + ", " + tag.InnerContent);
-            
+                                                             + tag.Attributes.Get<string>("saying") + ", " +
+                                                             tag.InnerContent);
+
             // 2. quick api
             service.Register("helloworld2", "", "", (tag) => "hello world 2 "
-                + tag.Attributes.Get<string>("saying") + ", " + tag.InnerContent);
+                                                             + tag.Attributes.Get<string>("saying") + ", " +
+                                                             tag.InnerContent);
 
             // Case 1 - no external content
-            var result = service.BuildContent("$[helloworld1 saying=\"hi\"]inner[/helloworld1] $[helloworld2 saying=\"hi\"]inner[/helloworld2]");
+            var result =
+                service.BuildContent(
+                    "$[helloworld1 saying=\"hi\"]inner[/helloworld1] $[helloworld2 saying=\"hi\"]inner[/helloworld2]");
             Assert.AreEqual(result, "hello world 1 hi, inner hello world 2 hi, inner");
 
             // Case 2 - content after
-            result = service.BuildContent("$[helloworld1 saying=\"hi\"]inner[/helloworld1] after 1 $[helloworld2 saying=\"hi\"]inner[/helloworld2] after 2");
+            result = service.BuildContent(
+                "$[helloworld1 saying=\"hi\"]inner[/helloworld1] after 1 $[helloworld2 saying=\"hi\"]inner[/helloworld2] after 2");
             Assert.AreEqual(result, "hello world 1 hi, inner after 1 hello world 2 hi, inner after 2");
 
             // Case 3 - content before
-            result = service.BuildContent("before 1 $[helloworld1 saying=\"hi\"]inner[/helloworld1] before 2 $[helloworld2 saying=\"hi\"]inner[/helloworld2]");
+            result = service.BuildContent(
+                "before 1 $[helloworld1 saying=\"hi\"]inner[/helloworld1] before 2 $[helloworld2 saying=\"hi\"]inner[/helloworld2]");
             Assert.AreEqual(result, "before 1 hello world 1 hi, inner before 2 hello world 2 hi, inner");
 
             // Case 4 - content before and after
-            result = service.BuildContent("before 1 $[helloworld1 saying=\"hi\"]inner[/helloworld1] after 1 before 2 $[helloworld2 saying=\"hi\"]inner[/helloworld2] after 2");
-            Assert.AreEqual(result, "before 1 hello world 1 hi, inner after 1 before 2 hello world 2 hi, inner after 2");
+            result = service.BuildContent(
+                "before 1 $[helloworld1 saying=\"hi\"]inner[/helloworld1] after 1 before 2 $[helloworld2 saying=\"hi\"]inner[/helloworld2] after 2");
+            Assert.AreEqual(result,
+                "before 1 hello world 1 hi, inner after 1 before 2 hello world 2 hi, inner after 2");
         }
     }
 }

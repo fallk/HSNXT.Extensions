@@ -16,7 +16,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
         {
             var settings = new JsonSerializerSettings();
             settings.Converters.Add(new UnionOf3Converter());
-            var union = new Union<int, List<int>, string>(new List<int> { 1, 2 });
+            var union = new Union<int, List<int>, string>(new List<int> {1, 2});
             var json = SerializeObject(union, settings);
             var newUnion = DeserializeObject<Union<int, List<int>, string>>(json, settings);
 
@@ -34,7 +34,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
             var union1 = new Union<int, string, Variant>(1);
             var union2 = new Union<int, string, Variant>("a");
             var union3 = new Union<int, string, Variant>(Variant.Case4);
-            var list = new List<Union<int, string, Variant>> { union1, union2, union3 };
+            var list = new List<Union<int, string, Variant>> {union1, union2, union3};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Union<int, string, Variant>>>(json, settings);
 
@@ -50,7 +50,8 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
         [Test]
         public void ConvertingJsonToUnion_FailsCleanlyIfSuccinctConverterNotUsed()
         {
-            Throws<JsonSerializationException>(() => DeserializeObject<Union<int, string, Variant>>("{\"case\":0,\"value\":1}"));
+            Throws<JsonSerializationException>(() =>
+                DeserializeObject<Union<int, string, Variant>>("{\"case\":0,\"value\":1}"));
         }
     }
 }

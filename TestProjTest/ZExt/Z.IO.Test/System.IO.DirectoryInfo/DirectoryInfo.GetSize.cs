@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,7 +18,8 @@ namespace HSNXT.Z.IO.Test
         public void GetSize()
         {
             // Type
-            var root = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "System_IO_DirectoryInfo_GetSize"));
+            var root = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                "System_IO_DirectoryInfo_GetSize"));
             Directory.CreateDirectory(root.FullName);
 
             var file1 = new FileInfo(Path.Combine(root.FullName, "test.txt"));

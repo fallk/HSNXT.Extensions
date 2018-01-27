@@ -24,9 +24,9 @@ namespace BCLExtensions.Tests.StringExtensions
         public void NullInputReturnsEmptyString(int length)
         {
             string input = null;
-            
+
             var formattedString = input.SafeLeft(length);
-            
+
             Assert.Equal(string.Empty, formattedString);
         }
     }

@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2017 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -38,10 +40,10 @@ namespace HSNXT.Test
             new BreakingSequence<int>().PadStart(0);
         }
 
-        [TestCase(new[] { 123, 456, 789 }, 2, new[] {           123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 3, new[] {           123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 4, new[] {        0, 123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 5, new[] {   0,   0, 123, 456, 789 })]
+        [TestCase(new[] {123, 456, 789}, 2, new[] {123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 3, new[] {123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 4, new[] {0, 123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 5, new[] {0, 0, 123, 456, 789})]
         public void PadStart(ICollection<int> source, int width, IEnumerable<int> expected)
         {
             AssertEqual(source, x => x.PadStart(width), expected);
@@ -61,10 +63,10 @@ namespace HSNXT.Test
             new BreakingSequence<int>().PadStart(0, -1);
         }
 
-        [TestCase(new[] { 123, 456, 789 }, 2, new[] {           123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 3, new[] {           123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 4, new[] {       -1, 123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 5, new[] {  -1,  -1, 123, 456, 789 })]
+        [TestCase(new[] {123, 456, 789}, 2, new[] {123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 3, new[] {123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 4, new[] {-1, 123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 5, new[] {-1, -1, 123, 456, 789})]
         public void PadStartWithPadding(ICollection<int> source, int width, IEnumerable<int> expected)
         {
             AssertEqual(source, x => x.PadStart(width, -1), expected);
@@ -84,18 +86,19 @@ namespace HSNXT.Test
             new BreakingSequence<int>().PadStart(0, x => x);
         }
 
-        [TestCase(new[] { 123, 456, 789 }, 2, new[] {                    123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 3, new[] {                    123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 4, new[] {                 0, 123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 5, new[] {            0,  -1, 123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 6, new[] {        0, -1,  -4, 123, 456, 789 })]
-        [TestCase(new[] { 123, 456, 789 }, 7, new[] {   0,  -1, -4,  -9, 123, 456, 789 })]
+        [TestCase(new[] {123, 456, 789}, 2, new[] {123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 3, new[] {123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 4, new[] {0, 123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 5, new[] {0, -1, 123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 6, new[] {0, -1, -4, 123, 456, 789})]
+        [TestCase(new[] {123, 456, 789}, 7, new[] {0, -1, -4, -9, 123, 456, 789})]
         public void PadStartWithSelector(ICollection<int> source, int width, IEnumerable<int> expected)
         {
             AssertEqual(source, x => x.PadStart(width, y => y * -y), expected);
         }
 
-        static void AssertEqual<T>(ICollection<T> input, Func<IEnumerable<T>, IEnumerable<T>> op, IEnumerable<T> expected)
+        static void AssertEqual<T>(ICollection<T> input, Func<IEnumerable<T>, IEnumerable<T>> op,
+            IEnumerable<T> expected)
         {
             // Test that the behaviour does not change whether a collection
             // or a sequence is used as the source.

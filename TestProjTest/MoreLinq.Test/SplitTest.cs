@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 //
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -39,7 +41,7 @@ namespace HSNXT.Test
         [Test]
         public void SplitWithSeparatorSelector()
         {
-            var result = new int?[] { 1, 2, null, 3, null, 4, 5, 6 }.Split(n => n == null);
+            var result = new int?[] {1, 2, null, 3, null, 4, 5, 6}.Split(n => n == null);
             using (var reader = result.Read())
             {
                 reader.Read().AssertSequenceEqual(1, 2);
@@ -52,7 +54,7 @@ namespace HSNXT.Test
         [Test]
         public void SplitWithSeparatorSelectorUptoMaxCount()
         {
-            var result = new int?[] { 1, 2, null, 3, null, 4, 5, 6 }.Split(n => n == null, 1);
+            var result = new int?[] {1, 2, null, 3, null, 4, 5, 6}.Split(n => n == null, 1);
             using (var reader = result.Read())
             {
                 reader.Read().AssertSequenceEqual(1, 2);

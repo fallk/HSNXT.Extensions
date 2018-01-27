@@ -1,16 +1,16 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.GenericExtensions
 {
     public class WhenActionTests
     {
-
         [Fact]
         public void ValidateInputCanBeNull()
         {
             string input = null;
-            
+
             Action<string> doNothing = DoNothing;
             var result = input.When(i => i != null, doNothing);
 
@@ -64,10 +64,7 @@ namespace BCLExtensions.Tests.GenericExtensions
             var executed = false;
             var input = "Hello World";
 
-            input.When(predicate, s =>
-            {
-                executed = true;
-            });
+            input.When(predicate, s => { executed = true; });
             return executed;
         }
 

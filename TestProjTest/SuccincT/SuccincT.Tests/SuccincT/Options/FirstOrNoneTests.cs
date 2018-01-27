@@ -35,7 +35,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void TryFirstWithList_ReturnsFirstElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.AreEqual(1, collection.TryFirst().Value);
         }
 
@@ -48,21 +48,21 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void TryFirstWithCollectionAndFunc_ReturnsCorrectElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.AreEqual(2, collection.TryFirst(x => x == 2).Value);
         }
 
         [Test]
         public void TryFirstWithNullFunc_ThrowsException()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.Throws<ArgumentNullException>(() => collection.TryFirst(null));
         }
 
         [Test]
         public void TryFirst_CanBeAssignedToMaybe()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Maybe<int> maybe = collection.TryFirst(x => x == 2);
             Assert.AreEqual(2, maybe.Value);
         }

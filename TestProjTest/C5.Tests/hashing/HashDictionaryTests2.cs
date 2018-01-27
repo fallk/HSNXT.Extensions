@@ -22,7 +22,8 @@ namespace HSNXT.C5.Tests.hashing
         [TestCase(MemoryType.Strict, 5, 50, Description = "Five Times")]
         public void Values_works_multiple_times(MemoryType memoryType, int numberOfIterations, int expectedResult)
         {
-            var dictionary = new HashDictionary<string, int>(memoryType) { { "One", 1 }, { "Two", 2 }, { "Three", 3 }, { "Four", 4 } };
+            var dictionary =
+                new HashDictionary<string, int>(memoryType) {{"One", 1}, {"Two", 2}, {"Three", 3}, {"Four", 4}};
 
             var sum = 0;
             for (var i = 0; i < numberOfIterations; i++)
@@ -53,7 +54,8 @@ namespace HSNXT.C5.Tests.hashing
         [TestCase(MemoryType.Strict, 5, 50, Description = "Five Times")]
         public void Keys_works_multiple_times(MemoryType memoryType, int numberOfIterations, int expectedResult)
         {
-            var dictionary = new HashDictionary<int, string>(memoryType) { { 1, "One" }, { 2, "Two" }, { 3, "Three" }, { 4, "Four" } };
+            var dictionary =
+                new HashDictionary<int, string>(memoryType) {{1, "One"}, {2, "Two"}, {3, "Three"}, {4, "Four"}};
 
             var sum = 0;
             for (var i = 0; i < numberOfIterations; i++)
@@ -82,9 +84,10 @@ namespace HSNXT.C5.Tests.hashing
         [TestCase(MemoryType.Strict, 3, 30, Description = "Thrice")]
         [TestCase(MemoryType.Strict, 4, 40, Description = "Four Times")]
         [TestCase(MemoryType.Strict, 5, 50, Description = "Five Times")]
-        public void KeyValuePairs_works_multiple_times(MemoryType memoryType, int numberOfIterations, int expectedResult)
+        public void KeyValuePairs_works_multiple_times(MemoryType memoryType, int numberOfIterations,
+            int expectedResult)
         {
-            var dictionary = new HashDictionary<int, int>(memoryType) { { 1, -1 }, { 2, -2 }, { 3, -3 }, { 4, -4 } };
+            var dictionary = new HashDictionary<int, int>(memoryType) {{1, -1}, {2, -2}, {3, -3}, {4, -4}};
 
             var keys = 0;
             var values = 0;

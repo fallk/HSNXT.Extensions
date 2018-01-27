@@ -26,7 +26,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(7));
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(9));
 
-                AreEqual(ExpectedBuilder(new[] { "1", "3", "5", "7", "9" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"1", "3", "5", "7", "9"}), sw.ToString());
             }
         }
 
@@ -41,7 +41,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(4));
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(6));
 
-                AreEqual(ExpectedBuilder(new[] { "2 isn't odd", "4 isn't odd", "6 isn't odd" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"2 isn't odd", "4 isn't odd", "6 isn't odd"}), sw.ToString());
             }
         }
 
@@ -52,7 +52,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(0));
-                AreEqual(ExpectedBuilder(new[] { "0 isn't positive or negative" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"0 isn't positive or negative"}), sw.ToString());
             }
         }
 
@@ -63,7 +63,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(10));
-                AreEqual(ExpectedBuilder(new[] { "10 isn't 1 digit" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"10 isn't 1 digit"}), sw.ToString());
             }
         }
 
@@ -74,7 +74,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.Some(-20));
-                AreEqual(ExpectedBuilder(new[] { "-20 isn't positive" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"-20 isn't positive"}), sw.ToString());
             }
         }
 
@@ -85,7 +85,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
             {
                 Console.SetOut(sw);
                 OptionMatcherExamples.SinglePositiveOddDigitPrinter(Option<int>.None());
-                AreEqual(ExpectedBuilder(new[] { "There was no value" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"There was no value"}), sw.ToString());
             }
         }
 

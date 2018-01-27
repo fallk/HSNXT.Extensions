@@ -45,7 +45,7 @@ namespace HSNXT.Test
         public void TestNegativeRepeatCount()
         {
             AssertThrowsArgument.OutOfRangeException("count", () =>
-                 Enumerable.Range(1, 10).Repeat(-3));
+                Enumerable.Range(1, 10).Repeat(-3));
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace HSNXT.Test
         {
             var value = 3;
 
-            var result = new[] { value }.Repeat();
+            var result = new[] {value}.Repeat();
 
             Assert.IsTrue(result.Take(100).All(x => x == value));
         }

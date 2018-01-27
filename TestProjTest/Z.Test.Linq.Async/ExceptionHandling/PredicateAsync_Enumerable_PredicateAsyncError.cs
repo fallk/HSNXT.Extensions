@@ -19,14 +19,16 @@ namespace Z.Test.Linq.Async
 
             try
             {
-                await enumerable.WhereAsync(x => predicate.Predicate(x)).Where(x => predicateError.Predicate(x)).ToList();
+                await enumerable.WhereAsync(x => predicate.Predicate(x)).Where(x => predicateError.Predicate(x))
+                    .ToList();
 
                 throw new Exception("Oops!");
             }
             catch (AggregateException ex)
             {
                 // MUST throw an error
-                Assert.AreEqual("TestPredicateAsync;ErrorPredicateAsync;Value=3", ex.Flatten().InnerExceptions[0].Message);
+                Assert.AreEqual("TestPredicateAsync;ErrorPredicateAsync;Value=3",
+                    ex.Flatten().InnerExceptions[0].Message);
 
                 // MUST have 1 exception
                 Assert.AreEqual(1, ex.Flatten().InnerExceptions.Count);

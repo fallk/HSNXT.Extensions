@@ -39,7 +39,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((double x, int y, double z) =>
-                         result = x + y + z);
+                    result = x + y + z);
             func(3, 5, 8);
             Assert.AreEqual(16, result);
         }
@@ -50,7 +50,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((int w, double x, int y, double z) =>
-                         result = w + x + y + z);
+                    result = w + x + y + z);
             func(3, 5, 6, 8);
             Assert.AreEqual(22, result);
         }
@@ -61,7 +61,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((double v, int w, double x, int y, double z) =>
-                         result = v + w + x + y + z);
+                    result = v + w + x + y + z);
             func(3, 4, 5, 6, 8);
             Assert.AreEqual(26, result);
         }
@@ -72,7 +72,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((double u, double v, int w, double x, int y, double z) =>
-                         result = u + v + w + x + y + z);
+                    result = u + v + w + x + y + z);
             func(1, 3, 4, 5, 6, 8);
             Assert.AreEqual(27, result);
         }
@@ -83,7 +83,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((int t, double u, double v, int w, double x, int y, double z) =>
-                         result = t + u + v + w + x + y + z);
+                    result = t + u + v + w + x + y + z);
             func(1, 3, 4, 5, 6, 8, 9);
             Assert.AreEqual(36, result);
         }
@@ -94,7 +94,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((double s, int t, double u, double v, int w, double x, int y, double z) =>
-                         result = s + t + u + v + w + x + y + z);
+                    result = s + t + u + v + w + x + y + z);
             func(1, 3, 4, 5, 6, 7, 8, 9);
             Assert.AreEqual(43, result);
         }
@@ -105,7 +105,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((int r, double s, int t, double u, double v, int w, double x, int y, double z) =>
-                         result = r + s + t + u + v + w + x + y + z);
+                    result = r + s + t + u + v + w + x + y + z);
             func(1, 2, 3, 4, 5, 6, 7, 8, 9);
             Assert.AreEqual(45, result);
         }
@@ -116,7 +116,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             double result = -1;
             var func =
                 Action((double q, int r, double s, int t, double u, double v, int w, double x, int y, double z) =>
-                         result = q + r + s + t + u + v + w + x + y + z);
+                    result = q + r + s + t + u + v + w + x + y + z);
             func(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
             Assert.AreEqual(55, result);
         }

@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.FuncExtensions
@@ -25,12 +26,12 @@ namespace BCLExtensions.Tests.FuncExtensions
         public void InternalFunctionExecutes()
         {
             var internalFunctionWasCalled = false;
-            Func<int, string, bool, decimal, byte, int, decimal> function = (p1,p2,p3,p4,p5,p6) =>
+            Func<int, string, bool, decimal, byte, int, decimal> function = (p1, p2, p3, p4, p5, p6) =>
             {
                 internalFunctionWasCalled = true;
                 return 42m;
             };
-            var action = function.AsActionUsing(12,"24",true, 3.14m, byte.MaxValue, 16);
+            var action = function.AsActionUsing(12, "24", true, 3.14m, byte.MaxValue, 16);
             action();
 
             Assert.True(internalFunctionWasCalled);
@@ -51,7 +52,7 @@ namespace BCLExtensions.Tests.FuncExtensions
             var passedParameter4 = 0.0m;
             byte passedParameter5 = 0;
             var passedParameter6 = 0;
-            Func<int, string, bool, decimal, byte, int, decimal> function = (p1,p2,p3,p4,p5,p6) =>
+            Func<int, string, bool, decimal, byte, int, decimal> function = (p1, p2, p3, p4, p5, p6) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;
@@ -62,7 +63,8 @@ namespace BCLExtensions.Tests.FuncExtensions
                 return 42;
             };
 
-            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4, expectedParameter5, expectedParameter6);
+            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4, expectedParameter5, expectedParameter6);
             action();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -73,7 +75,8 @@ namespace BCLExtensions.Tests.FuncExtensions
             Assert.Equal(expectedParameter6, passedParameter6);
         }
 
-        private decimal SampleFunction(int parameter1, string parameter2, bool parameter3, decimal parameter4, byte parameter5, int parameter6)
+        private decimal SampleFunction(int parameter1, string parameter2, bool parameter3, decimal parameter4,
+            byte parameter5, int parameter6)
         {
             return 42m;
         }

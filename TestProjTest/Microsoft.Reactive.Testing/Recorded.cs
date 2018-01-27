@@ -25,12 +25,18 @@ namespace Microsoft.Reactive.Testing
         /// <summary>
         /// Gets the virtual time the value was produced on.
         /// </summary>
-        public long Time { get { return _time; } }
+        public long Time
+        {
+            get { return _time; }
+        }
 
         /// <summary>
         /// Gets the recorded value.
         /// </summary>
-        public T Value { get { return _value; } }
+        public T Value
+        {
+            get { return _value; }
+        }
 
         /// <summary>
         /// Creates a new object recording the production of the specified value at the given virtual time.
@@ -83,7 +89,7 @@ namespace Microsoft.Reactive.Testing
         public override bool Equals(object obj)
         {
             if (obj is Recorded<T>)
-                return Equals((Recorded<T>)obj);
+                return Equals((Recorded<T>) obj);
             return false;
         }
 

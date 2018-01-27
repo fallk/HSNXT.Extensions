@@ -19,7 +19,8 @@ namespace Z.Test.Linq.Async
 
             try
             {
-                await enumerable.WhereAsync(x => predicate.Predicate(x)).ToList().Where(x => predicateError.Predicate(x)).ToList();
+                await enumerable.WhereAsync(x => predicate.Predicate(x)).ToList()
+                    .Where(x => predicateError.Predicate(x)).ToList();
 
                 throw new Exception("Oops!");
             }

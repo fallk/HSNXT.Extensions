@@ -38,11 +38,14 @@ namespace HSNXT.Test
         [Test]
         public void TestRunLengthEncodeCustomComparer()
         {
-            var sequence = new[] { "a", "A", "a", "b", "b", "B", "B" };
+            var sequence = new[] {"a", "A", "a", "b", "b", "B", "B"};
             var result = sequence.RunLengthEncode(StringComparer.CurrentCultureIgnoreCase)
-                                 .Select(kvp => new KeyValuePair<string, int>(kvp.Key.ToLower(), kvp.Value));
-            var expectedResult = new[] {new KeyValuePair<string, int>("a", 3), 
-                                         new KeyValuePair<string, int>("b", 4)};
+                .Select(kvp => new KeyValuePair<string, int>(kvp.Key.ToLower(), kvp.Value));
+            var expectedResult = new[]
+            {
+                new KeyValuePair<string, int>("a", 3),
+                new KeyValuePair<string, int>("b", 4)
+            };
 
             Assert.IsTrue(result.SequenceEqual(expectedResult));
         }
@@ -53,7 +56,7 @@ namespace HSNXT.Test
         [Test]
         public void TestRunLengthEncodeResults()
         {
-            var sequence = new[] { 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6 };
+            var sequence = new[] {1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6};
             var expectedResult = Enumerable.Range(1, 6).Select(x => new KeyValuePair<int, int>(x, x));
             var result = sequence.RunLengthEncode();
 
@@ -84,7 +87,7 @@ namespace HSNXT.Test
             const int repeatCount = 10;
             var sequence = Enumerable.Repeat(value, repeatCount);
             var result = sequence.RunLengthEncode();
-            var expectedResult = new[] { new KeyValuePair<char, int>(value, repeatCount) };
+            var expectedResult = new[] {new KeyValuePair<char, int>(value, repeatCount)};
 
             Assert.IsTrue(result.SequenceEqual(expectedResult));
         }

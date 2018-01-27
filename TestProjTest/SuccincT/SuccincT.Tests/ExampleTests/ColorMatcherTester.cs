@@ -25,7 +25,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 PrintColorName(Color.Red);
                 PrintColorName(Color.Green);
                 PrintColorName(Color.Blue);
-                
+
                 // https://github.com/nunit/nunit/issues/52
                 var s = sw.ToString();
                 var s2 = $"Red{Environment.NewLine}Green{Environment.NewLine}Blue{Environment.NewLine}";
@@ -44,7 +44,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 PrintColorName(Color.Green);
                 PrintColorName(Color.Blue);
                 PrintColorName(Color.Red);
-                
+
                 // https://github.com/nunit/nunit/issues/52
                 var s = sw.ToString();
                 var s2 = $"Green{Environment.NewLine}Blue{Environment.NewLine}Red{Environment.NewLine}";

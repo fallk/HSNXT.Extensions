@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -27,25 +29,25 @@ namespace HSNXT.Test
         [Test]
         public void TakeLast()
         {
-            AssertTakeLast(new[] { 12, 34, 56, 78, 910, 1112 },
-                           3,
-                           result => result.AssertSequenceEqual(78, 910, 1112));
+            AssertTakeLast(new[] {12, 34, 56, 78, 910, 1112},
+                3,
+                result => result.AssertSequenceEqual(78, 910, 1112));
         }
 
         [Test]
         public void TakeLastOnSequenceShortOfCount()
         {
-            AssertTakeLast(new[] { 12, 34, 56 },
-                           5,
-                           result => result.AssertSequenceEqual(12, 34, 56));
+            AssertTakeLast(new[] {12, 34, 56},
+                5,
+                result => result.AssertSequenceEqual(12, 34, 56));
         }
 
         [Test]
         public void TakeLastWithNegativeCount()
         {
-            AssertTakeLast(new[] { 12, 34, 56 },
-                           -2,
-                           result => Assert.IsFalse(result.GetEnumerator().MoveNext()));
+            AssertTakeLast(new[] {12, 34, 56},
+                -2,
+                result => Assert.IsFalse(result.GetEnumerator().MoveNext()));
         }
 
         [Test]
@@ -57,7 +59,7 @@ namespace HSNXT.Test
         [Test]
         public void TakeLastDisposesSequenceEnumerator()
         {
-            using (var seq = TestingSequence.Of(1,2,3))
+            using (var seq = TestingSequence.Of(1, 2, 3))
             {
                 seq.TakeLast(1).Consume();
             }
@@ -66,7 +68,7 @@ namespace HSNXT.Test
         [Test]
         public void TakeLastOptimizedForCollections()
         {
-            var sequence = new UnenumerableList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var sequence = new UnenumerableList<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
             sequence.TakeLast(3).AssertSequenceEqual(8, 9, 10);
         }

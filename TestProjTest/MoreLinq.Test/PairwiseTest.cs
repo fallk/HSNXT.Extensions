@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -31,9 +33,9 @@ namespace HSNXT.Test
         [Test]
         public void PairwiseWideSourceSequence()
         {
-            var result = new[] { 123, 456, 789 }.Pairwise((a, b) => new { A = a, B = b, });
-            result.AssertSequenceEqual(new { A = 123, B = 456, },
-                                       new { A = 456, B = 789, });
+            var result = new[] {123, 456, 789}.Pairwise((a, b) => new {A = a, B = b,});
+            result.AssertSequenceEqual(new {A = 123, B = 456,},
+                new {A = 456, B = 789,});
         }
     }
 }

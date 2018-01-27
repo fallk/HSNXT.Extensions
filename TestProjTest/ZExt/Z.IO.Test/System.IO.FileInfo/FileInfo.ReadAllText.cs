@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.IO;
 using System.Text;
@@ -18,7 +19,8 @@ namespace HSNXT.Z.IO.Test
         public void ReadAllText()
         {
             // Type
-            var @this = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Examples_System_IO_FileInfo_ReadAllText.txt"));
+            var @this = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                "Examples_System_IO_FileInfo_ReadAllText.txt"));
 
             // Intialization
             using (var stream = @this.Create())

@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,7 +20,8 @@ namespace HSNXT.Z.Core.Test
             var @this = Environment.SpecialFolder.Desktop;
 
             // Exemples
-            var result1 = @this.In(Environment.SpecialFolder.Desktop, Environment.SpecialFolder.DesktopDirectory); // return true;
+            var result1 =
+                @this.In(Environment.SpecialFolder.Desktop, Environment.SpecialFolder.DesktopDirectory); // return true;
             var result2 = @this.In(Environment.SpecialFolder.DesktopDirectory); // return false;
 
             // Unit Test

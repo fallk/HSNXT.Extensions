@@ -7,16 +7,21 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
 {
     public sealed class UnionT1T2T3BasicMatchTests
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
         [Test]
         public void UnionWithT1_MatchesBasicCase1Correctly()
         {
             var union = new Union<int, string, Colors>(2);
             var result = union.Match<int>()
-                              .Case1().Do(x => 0)
-                              .Case2().Do(x => 1)
-                              .Case3().Do(x => 2).Result();
+                .Case1().Do(x => 0)
+                .Case2().Do(x => 1)
+                .Case3().Do(x => 2).Result();
             AreEqual(0, result);
         }
 
@@ -25,9 +30,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors>("la la");
             var result = union.Match<int>()
-                              .Case1().Do(x => 1)
-                              .Case2().Do(x => 2)
-                              .Case3().Do(x => 3).Result();
+                .Case1().Do(x => 1)
+                .Case2().Do(x => 2)
+                .Case3().Do(x => 3).Result();
             AreEqual(2, result);
         }
 
@@ -36,9 +41,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string, Colors>(Colors.Green);
             var result = union.Match<int>()
-                              .Case1().Do(x => 1)
-                              .Case2().Do(x => 2)
-                              .Case3().Do(x => 3).Result();
+                .Case1().Do(x => 1)
+                .Case2().Do(x => 2)
+                .Case3().Do(x => 3).Result();
             AreEqual(3, result);
         }
 

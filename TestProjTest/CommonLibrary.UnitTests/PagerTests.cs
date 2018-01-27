@@ -1,5 +1,4 @@
 using NUnit.Framework;
-
 using HSNXT.ComLib.Paging;
 
 
@@ -44,7 +43,7 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanMoveToNextPage_ManyRanges()
         {
-            var pager = new Pager(1, 18, new PagerSettings() { NumberPagesToDisplay = 5 });
+            var pager = new Pager(1, 18, new PagerSettings() {NumberPagesToDisplay = 5});
             CheckPages(pager, 1, 1, 1, 5, 2);
             CheckNavigation(pager, false, false, true, true);
 
@@ -57,7 +56,7 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanMoveToNextRange_2Ranges()
         {
-            var pager = new Pager(1, 10, new PagerSettings() { NumberPagesToDisplay = 5 });
+            var pager = new Pager(1, 10, new PagerSettings() {NumberPagesToDisplay = 5});
             CheckPages(pager, 1, 1, 1, 5, 2);
             CheckNavigation(pager, false, false, true, true);
 
@@ -77,7 +76,7 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanMoveTo2ndRange_3Ranges()
         {
-            var pager = new Pager(1, 15, new PagerSettings() { NumberPagesToDisplay = 5 });
+            var pager = new Pager(1, 15, new PagerSettings() {NumberPagesToDisplay = 5});
             CheckPages(pager, 1, 1, 1, 5, 2);
             CheckNavigation(pager, false, false, true, true);
 
@@ -97,7 +96,7 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanMoveTo3rdRange_3Ranges()
         {
-            var pager = new Pager(1, 13, new PagerSettings() { NumberPagesToDisplay = 5 });
+            var pager = new Pager(1, 13, new PagerSettings() {NumberPagesToDisplay = 5});
             CheckPages(pager, 1, 1, 1, 5, 2);
             CheckNavigation(pager, false, false, true, true);
 
@@ -125,7 +124,6 @@ namespace CommonLibrary.Tests
             pager.MovePrevious();
             CheckPages(pager, 10, 9, 6, 10, 11);
             CheckNavigation(pager, true, true, true, true);
-
         }
 
 

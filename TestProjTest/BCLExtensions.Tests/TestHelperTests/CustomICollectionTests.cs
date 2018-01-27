@@ -42,7 +42,7 @@ namespace BCLExtensions.Tests.TestHelperTests
             A.CallTo(() => fakeCollection.GetEnumerator()).Returns(expectedEnumerator);
 
             var customCollection = new CustomICollection<int>(fakeCollection);
-            var actualEnumerator = ((IEnumerable)customCollection).GetEnumerator();
+            var actualEnumerator = ((IEnumerable) customCollection).GetEnumerator();
 
             Assert.Equal(expectedEnumerator, actualEnumerator);
         }
@@ -55,7 +55,7 @@ namespace BCLExtensions.Tests.TestHelperTests
             var fakeCollection = A.Fake<ICollection>(x => x.Implements(typeof(ICollection<int>)));
             A.CallTo(() => fakeCollection.IsSynchronized).Returns(expectedState);
 
-            var customCollection = new CustomICollection<int>((ICollection<int>)fakeCollection);
+            var customCollection = new CustomICollection<int>((ICollection<int>) fakeCollection);
             var actualIsSynchronized = customCollection.IsSynchronized;
 
             Assert.Equal(expectedState, actualIsSynchronized);
@@ -68,7 +68,7 @@ namespace BCLExtensions.Tests.TestHelperTests
             var fakeCollection = A.Fake<ICollection>(x => x.Implements(typeof(ICollection<int>)));
             A.CallTo(() => fakeCollection.SyncRoot).Returns(expectedSyncRoot);
 
-            var customCollection = new CustomICollection<int>((ICollection<int>)fakeCollection);
+            var customCollection = new CustomICollection<int>((ICollection<int>) fakeCollection);
             var actualSyncRoot = customCollection.SyncRoot;
 
             Assert.Equal(expectedSyncRoot, actualSyncRoot);
@@ -78,7 +78,7 @@ namespace BCLExtensions.Tests.TestHelperTests
         public void AddCallPassedThrough()
         {
             var fakeCollection = A.Fake<ICollection<int>>();
-            
+
             var customCollection = new CustomICollection<int>(fakeCollection);
             customCollection.Add(42);
 
@@ -90,10 +90,10 @@ namespace BCLExtensions.Tests.TestHelperTests
         {
             var fakeCollection = A.Fake<ICollection>(x => x.Implements(typeof(ICollection<int>)));
 
-            var customCollection = new CustomICollection<int>((ICollection<int>)fakeCollection);
+            var customCollection = new CustomICollection<int>((ICollection<int>) fakeCollection);
             customCollection.CopyTo(new int[5], 3);
 
-            A.CallTo(() => fakeCollection.CopyTo(A<int[]>._,A<int>._)).MustHaveHappened();
+            A.CallTo(() => fakeCollection.CopyTo(A<int[]>._, A<int>._)).MustHaveHappened();
         }
     }
 }

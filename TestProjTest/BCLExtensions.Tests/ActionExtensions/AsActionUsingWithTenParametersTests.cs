@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.ActionExtensions
 {
-
     public class AsActionUsingWithTenParametersTests
     {
         private const byte ByteValue = byte.MaxValue - 8;
@@ -19,7 +19,8 @@ namespace BCLExtensions.Tests.ActionExtensions
         {
             Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte> action = SampleAction;
 
-            var result = action.AsActionUsing(12, "12", false, 3.14m, byte.MaxValue, 666, "Class", true, 123.45m, ByteValue);
+            var result = action.AsActionUsing(12, "12", false, 3.14m, byte.MaxValue, 666, "Class", true, 123.45m,
+                ByteValue);
 
             Assert.NotNull(result);
         }
@@ -28,11 +29,10 @@ namespace BCLExtensions.Tests.ActionExtensions
         public void InternalActionExecutes()
         {
             var internalActionWasCalled = false;
-            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte> action = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) =>
-            {
-                internalActionWasCalled = true;
-            };
-            var result = action.AsActionUsing(12, "24", false, 3.14m, byte.MaxValue, 12345, "Fish", true, 1234.5m, ByteValue);
+            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte> action =
+                (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) => { internalActionWasCalled = true; };
+            var result = action.AsActionUsing(12, "24", false, 3.14m, byte.MaxValue, 12345, "Fish", true, 1234.5m,
+                ByteValue);
             result();
 
             Assert.True(internalActionWasCalled);
@@ -61,21 +61,24 @@ namespace BCLExtensions.Tests.ActionExtensions
             var passedParameter8 = true;
             var passedParameter9 = 0.0m;
             byte passedParameter10 = 0;
-            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte> action = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) =>
-            {
-                passedParameter1 = p1;
-                passedParameter2 = p2;
-                passedParameter3 = p3;
-                passedParameter4 = p4;
-                passedParameter5 = p5;
-                passedParameter6 = p6;
-                passedParameter7 = p7;
-                passedParameter8 = p8;
-                passedParameter9 = p9;
-                passedParameter10 = p10;
-            };
+            Action<int, string, bool, decimal, byte, int, string, bool, decimal, byte> action =
+                (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) =>
+                {
+                    passedParameter1 = p1;
+                    passedParameter2 = p2;
+                    passedParameter3 = p3;
+                    passedParameter4 = p4;
+                    passedParameter5 = p5;
+                    passedParameter6 = p6;
+                    passedParameter7 = p7;
+                    passedParameter8 = p8;
+                    passedParameter9 = p9;
+                    passedParameter10 = p10;
+                };
 
-            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7, expectedParameter8, expectedParameter9, expectedParameter10);
+            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7, expectedParameter8,
+                expectedParameter9, expectedParameter10);
             result();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -90,9 +93,9 @@ namespace BCLExtensions.Tests.ActionExtensions
             Assert.Equal(expectedParameter10, passedParameter10);
         }
 
-        private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4, byte parameter5, int parameter6, string parameter7, bool parameter8, decimal parameter9, byte parameter10)
+        private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4,
+            byte parameter5, int parameter6, string parameter7, bool parameter8, decimal parameter9, byte parameter10)
         {
         }
-
     }
 }

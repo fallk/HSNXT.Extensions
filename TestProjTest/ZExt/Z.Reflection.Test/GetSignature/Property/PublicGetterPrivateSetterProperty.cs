@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -16,7 +17,8 @@ namespace HSNXT.Z.Reflection.Test
         public void GetSignature()
         {
             // Type
-            var @this = typeof(PropertyModel<int>).GetProperty("PublicGetterPrivateSetterProperty", BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var @this = typeof(PropertyModel<int>).GetProperty("PublicGetterPrivateSetterProperty",
+                BindingFlags.Static | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
             // Exemples
             var result = @this.GetSignature();

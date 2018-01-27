@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -33,7 +35,7 @@ namespace HSNXT.Test
         public void ScanSum()
         {
             var result = Enumerable.Range(1, 10).Scan(SampleData.Plus);
-            var gold = new[] { 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 };
+            var gold = new[] {1, 3, 6, 10, 15, 21, 28, 36, 45, 55};
             result.AssertSequenceEqual(gold);
         }
 
@@ -53,14 +55,15 @@ namespace HSNXT.Test
         public void SeededScanSum()
         {
             var result = Enumerable.Range(1, 10).Scan(0, SampleData.Plus);
-            var gold = new[] { 0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 };
+            var gold = new[] {0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55};
             result.AssertSequenceEqual(gold);
         }
 
         [Test]
         public void SeededScanIsLazy()
         {
-            new BreakingSequence<object>().Scan<object, object>(null, delegate { throw new NotImplementedException(); });
+            new BreakingSequence<object>().Scan<object, object>(null,
+                delegate { throw new NotImplementedException(); });
         }
     }
 }

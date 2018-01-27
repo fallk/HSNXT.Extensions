@@ -3,7 +3,8 @@
 // Forum: https://github.com/zzzprojects/Z.ExtensionMethods/issues
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+// Copyright Â© ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -20,7 +21,8 @@ namespace HSNXT.Z.Collections.Test
 
             // Examples
             @this.AddIfNotContains("Fizz"); // Add "Fizz" value
-            @this.AddIfNotContains("FizzExisting"); // Doesn't add "FizzExisting" value, the Collection already contains it.
+            @this.AddIfNotContains(
+                "FizzExisting"); // Doesn't add "FizzExisting" value, the Collection already contains it.
 
             // Unit Test
             Assert.AreEqual(2, @this.Count);

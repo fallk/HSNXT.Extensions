@@ -65,6 +65,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         }
 
         private int _twoParamMethodWithOptionalBoolResult;
+
         private void TwoParamMethodWithOptionalBool(int p1, bool p2 = false) =>
             _twoParamMethodWithOptionalBoolResult = p1 * (p2 ? 1 : 0);
 
@@ -83,6 +84,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         }
 
         private int _threeParamMethodWithOptionalBoolResult;
+
         private void ThreeParamMethodWithOptionalBool(int p1, int p2, bool p3 = false) =>
             _threeParamMethodWithOptionalBoolResult = (p1 + p2) * (p3 ? 1 : 0);
 
@@ -101,6 +103,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         }
 
         private int _fourParamMethodWithOptionalBoolResult;
+
         private void FourParamMethodWithOptionalBool(int p1, int p2, int p3, bool p4 = false) =>
             _threeParamMethodWithOptionalBoolResult = (p1 + p2 + p3) * (p4 ? 1 : 0);
 

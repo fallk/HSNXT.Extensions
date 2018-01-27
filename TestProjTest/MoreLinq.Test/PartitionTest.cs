@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 //
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -29,10 +31,10 @@ namespace HSNXT.Test
         {
             var (evens, odds) =
                 Enumerable.Range(0, 10)
-                          .Partition(x => x % 2 == 0);
+                    .Partition(x => x % 2 == 0);
 
-            Assert.That(evens, Is.EquivalentTo(new[] { 0, 2, 4, 6, 8 }));
-            Assert.That(odds,  Is.EquivalentTo(new[] { 1, 3, 5, 7, 9 }));
+            Assert.That(evens, Is.EquivalentTo(new[] {0, 2, 4, 6, 8}));
+            Assert.That(odds, Is.EquivalentTo(new[] {1, 3, 5, 7, 9}));
         }
 
         [Test]
@@ -40,10 +42,10 @@ namespace HSNXT.Test
         {
             var (evens, odds) =
                 Enumerable.Empty<int>()
-                          .Partition(x => x % 2 == 0);
+                    .Partition(x => x % 2 == 0);
 
             Assert.That(evens, Is.Empty);
-            Assert.That(odds,  Is.Empty);
+            Assert.That(odds, Is.Empty);
         }
 
         [Test]
@@ -51,10 +53,10 @@ namespace HSNXT.Test
         {
             var (evens, odds) =
                 Enumerable.Range(0, 10)
-                          .Partition(x => x % 2 == 0, Tuple.Create);
+                    .Partition(x => x % 2 == 0, Tuple.Create);
 
-            Assert.That(evens, Is.EquivalentTo(new[] { 0, 2, 4, 6, 8 }));
-            Assert.That(odds,  Is.EquivalentTo(new[] { 1, 3, 5, 7, 9 }));
+            Assert.That(evens, Is.EquivalentTo(new[] {0, 2, 4, 6, 8}));
+            Assert.That(odds, Is.EquivalentTo(new[] {1, 3, 5, 7, 9}));
         }
 
         [Test]
@@ -62,25 +64,25 @@ namespace HSNXT.Test
         {
             var (evens, odds) =
                 Enumerable.Range(0, 10)
-                          .GroupBy(x => x % 2 == 0)
-                          .Partition((t, f) => Tuple.Create(t, f));
+                    .GroupBy(x => x % 2 == 0)
+                    .Partition((t, f) => Tuple.Create(t, f));
 
-            Assert.That(evens, Is.EquivalentTo(new[] { 0, 2, 4, 6, 8 }));
-            Assert.That(odds,  Is.EquivalentTo(new[] { 1, 3, 5, 7, 9 }));
+            Assert.That(evens, Is.EquivalentTo(new[] {0, 2, 4, 6, 8}));
+            Assert.That(odds, Is.EquivalentTo(new[] {1, 3, 5, 7, 9}));
         }
 
         [Test]
         public void PartitionNullableBooleanGrouping()
         {
-            var xs = new int?[] { 1, 2, 3, null, 5, 6, 7, null, 9, 10 };
+            var xs = new int?[] {1, 2, 3, null, 5, 6, 7, null, 9, 10};
 
             var (lt5, gte5, nils) =
                 xs.GroupBy(x => x != null ? x < 5 : (bool?) null)
-                  .Partition((t, f, n) => Tuple.Create(t, f, n));
+                    .Partition((t, f, n) => Tuple.Create(t, f, n));
 
-            Assert.That(lt5,  Is.EquivalentTo(new[] { 1, 2, 3 }));
-            Assert.That(gte5, Is.EquivalentTo(new[] { 5, 6, 7, 9, 10 }));
-            Assert.That(nils, Is.EquivalentTo(new int?[] { null, null }));
+            Assert.That(lt5, Is.EquivalentTo(new[] {1, 2, 3}));
+            Assert.That(gte5, Is.EquivalentTo(new[] {5, 6, 7, 9, 10}));
+            Assert.That(nils, Is.EquivalentTo(new int?[] {null, null}));
         }
 
         [Test]
@@ -88,20 +90,20 @@ namespace HSNXT.Test
         {
             var (m3, etc) =
                 Enumerable.Range(0, 10)
-                          .GroupBy(x => x % 3)
-                          .Partition(0, Tuple.Create);
+                    .GroupBy(x => x % 3)
+                    .Partition(0, Tuple.Create);
 
-            Assert.That(m3, Is.EquivalentTo(new[] { 0, 3, 6, 9 }));
+            Assert.That(m3, Is.EquivalentTo(new[] {0, 3, 6, 9}));
 
             using (var r = etc.Read())
             {
                 var r1 = r.Read();
                 Assert.That(r1.Key, Is.EqualTo(1));
-                Assert.That(r1, Is.EquivalentTo(new[] { 1, 4, 7 }));
+                Assert.That(r1, Is.EquivalentTo(new[] {1, 4, 7}));
 
                 var r2 = r.Read();
                 Assert.That(r2.Key, Is.EqualTo(2));
-                Assert.That(r2, Is.EquivalentTo(new[] { 2, 5, 8 }));
+                Assert.That(r2, Is.EquivalentTo(new[] {2, 5, 8}));
 
                 r.ReadEnd();
             }
@@ -112,17 +114,17 @@ namespace HSNXT.Test
         {
             var (ms, r1, etc) =
                 Enumerable.Range(0, 10)
-                          .GroupBy(x => x % 3)
-                          .Partition(0, 1, Tuple.Create);
+                    .GroupBy(x => x % 3)
+                    .Partition(0, 1, Tuple.Create);
 
-            Assert.That(ms, Is.EquivalentTo(new[] { 0, 3, 6, 9 }));
-            Assert.That(r1, Is.EquivalentTo(new[] { 1, 4, 7 }));
+            Assert.That(ms, Is.EquivalentTo(new[] {0, 3, 6, 9}));
+            Assert.That(r1, Is.EquivalentTo(new[] {1, 4, 7}));
 
             using (var r = etc.Read())
             {
                 var r2 = r.Read();
                 Assert.That(r2.Key, Is.EqualTo(2));
-                Assert.That(r2, Is.EquivalentTo(new[] { 2, 5, 8 }));
+                Assert.That(r2, Is.EquivalentTo(new[] {2, 5, 8}));
                 r.ReadEnd();
             }
         }
@@ -135,9 +137,9 @@ namespace HSNXT.Test
                     .GroupBy(x => x % 3)
                     .Partition(0, 1, 2, Tuple.Create);
 
-            Assert.That(ms, Is.EquivalentTo(new[] { 0, 3, 6, 9 }));
-            Assert.That(r1, Is.EquivalentTo(new[] { 1, 4, 7 }));
-            Assert.That(r2, Is.EquivalentTo(new[] { 2, 5, 8 }));
+            Assert.That(ms, Is.EquivalentTo(new[] {0, 3, 6, 9}));
+            Assert.That(r1, Is.EquivalentTo(new[] {1, 4, 7}));
+            Assert.That(r2, Is.EquivalentTo(new[] {2, 5, 8}));
             Assert.That(etc, Is.Empty);
         }
 
@@ -145,18 +147,18 @@ namespace HSNXT.Test
         public void PartitionBooleanGroupingWithSingleKeyWithComparer()
         {
             var words =
-                new[] { "foo", "bar", "FOO", "Bar" };
+                new[] {"foo", "bar", "FOO", "Bar"};
 
             var (foo, etc) =
                 words.GroupBy(s => s, StringComparer.OrdinalIgnoreCase)
                     .Partition("foo", StringComparer.OrdinalIgnoreCase, Tuple.Create);
 
-            Assert.That(foo, Is.EquivalentTo(new[] { "foo", "FOO" }));
+            Assert.That(foo, Is.EquivalentTo(new[] {"foo", "FOO"}));
 
             using (var r = etc.Read())
             {
                 var bar = r.Read();
-                Assert.That(bar, Is.EquivalentTo(new[] { "bar", "Bar" }));
+                Assert.That(bar, Is.EquivalentTo(new[] {"bar", "Bar"}));
                 r.ReadEnd();
             }
         }
@@ -165,24 +167,24 @@ namespace HSNXT.Test
         public void PartitionBooleanGroupingWithTwoKeysWithComparer()
         {
             var words =
-                new[] { "foo", "bar", "FOO", "Bar", "baz", "QUx", "bAz", "QuX" };
+                new[] {"foo", "bar", "FOO", "Bar", "baz", "QUx", "bAz", "QuX"};
 
             var (foos, bar, etc) =
                 words.GroupBy(s => s, StringComparer.OrdinalIgnoreCase)
-                     .Partition("foo", "bar", StringComparer.OrdinalIgnoreCase, Tuple.Create);
+                    .Partition("foo", "bar", StringComparer.OrdinalIgnoreCase, Tuple.Create);
 
-            Assert.That(foos, Is.EquivalentTo(new[] { "foo", "FOO" }));
-            Assert.That(bar, Is.EquivalentTo(new[] { "bar", "Bar" }));
+            Assert.That(foos, Is.EquivalentTo(new[] {"foo", "FOO"}));
+            Assert.That(bar, Is.EquivalentTo(new[] {"bar", "Bar"}));
 
             using (var r = etc.Read())
             {
                 var baz = r.Read();
                 Assert.That(baz.Key, Is.EqualTo("baz"));
-                Assert.That(baz, Is.EquivalentTo(new[] { "baz", "bAz" }));
+                Assert.That(baz, Is.EquivalentTo(new[] {"baz", "bAz"}));
 
                 var qux = r.Read();
                 Assert.That(qux.Key, Is.EqualTo("QUx"));
-                Assert.That(qux, Is.EquivalentTo(new[] { "QUx", "QuX" }));
+                Assert.That(qux, Is.EquivalentTo(new[] {"QUx", "QuX"}));
 
                 r.ReadEnd();
             }
@@ -192,21 +194,21 @@ namespace HSNXT.Test
         public void PartitionBooleanGroupingWithThreeKeysWithComparer()
         {
             var words =
-                new[] { "foo", "bar", "FOO", "Bar", "baz", "QUx", "bAz", "QuX" };
+                new[] {"foo", "bar", "FOO", "Bar", "baz", "QUx", "bAz", "QuX"};
 
             var (foos, bar, baz, etc) =
                 words.GroupBy(s => s, StringComparer.OrdinalIgnoreCase)
                     .Partition("foo", "bar", "baz", StringComparer.OrdinalIgnoreCase, Tuple.Create);
 
-            Assert.That(foos, Is.EquivalentTo(new[] { "foo", "FOO" }));
-            Assert.That(bar, Is.EquivalentTo(new[] { "bar", "Bar" }));
-            Assert.That(baz, Is.EquivalentTo(new[] { "baz", "bAz" }));
+            Assert.That(foos, Is.EquivalentTo(new[] {"foo", "FOO"}));
+            Assert.That(bar, Is.EquivalentTo(new[] {"bar", "Bar"}));
+            Assert.That(baz, Is.EquivalentTo(new[] {"baz", "bAz"}));
 
             using (var r = etc.Read())
             {
                 var qux = r.Read();
                 Assert.That(qux.Key, Is.EqualTo("QUx"));
-                Assert.That(qux, Is.EquivalentTo(new[] { "QUx", "QuX" }));
+                Assert.That(qux, Is.EquivalentTo(new[] {"QUx", "QuX"}));
                 r.ReadEnd();
             }
         }

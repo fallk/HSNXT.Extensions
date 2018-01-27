@@ -10,7 +10,8 @@ namespace XunitShould
         /// </summary>
         /// <param name="object">The object to be inspected</param>
         /// <exception cref="NullException">Thrown when the object reference is not null</exception>
-        public static void ShouldBeNull(this object @object) {
+        public static void ShouldBeNull(this object @object)
+        {
             Assert.Null(@object);
         }
 
@@ -20,7 +21,8 @@ namespace XunitShould
         /// <param name="actual">The actual object instance</param>
         /// <param name="expected">The expected object instance</param>
         /// <exception cref="SameException">Thrown when the objects are not the same instance</exception>
-        public static void ShouldBeSameAs(this object actual, object expected) {
+        public static void ShouldBeSameAs(this object actual, object expected)
+        {
             Assert.Same(expected, actual);
         }
 
@@ -29,7 +31,8 @@ namespace XunitShould
         /// </summary>
         /// <param name="object">The object to be validated</param>
         /// <exception cref="NotNullException">Thrown when the object is not null</exception>
-        public static void ShouldNotBeNull(this object @object) {
+        public static void ShouldNotBeNull(this object @object)
+        {
             Assert.NotNull(@object);
         }
 
@@ -39,7 +42,8 @@ namespace XunitShould
         /// <param name="actual">The actual object instance</param>
         /// <param name="expected">The expected object instance</param>
         /// <exception cref="NotSameException">Thrown when the objects are the same instance</exception>
-        public static void ShouldNotBeSameAs(this object actual, object expected) {
+        public static void ShouldNotBeSameAs(this object actual, object expected)
+        {
             Assert.NotSame(expected, actual);
         }
     }

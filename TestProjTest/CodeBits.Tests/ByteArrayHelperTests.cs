@@ -1,6 +1,5 @@
 ﻿using System;
 using Shouldly;
-
 using Xunit;
 
 namespace HSNXT.Tests
@@ -9,7 +8,7 @@ namespace HSNXT.Tests
     {
         private readonly byte[] _nullArray = null;
         private readonly byte[] _emptyArray = new byte[0];
-        private readonly byte[] _zeroedArray = { 0, 0, 0, 0 };
+        private readonly byte[] _zeroedArray = {0, 0, 0, 0};
 
         [Fact]
         public void Fill_tests()
@@ -43,11 +42,11 @@ namespace HSNXT.Tests
         [Fact]
         public void Value_tests()
         {
-            Assert.False(new byte[] { 1, 2, 3, 4 }.IsEqualTo(4, 3, 2, 1));
-            Assert.True(new byte[] { 1, 2, 3, 4 }.IsEqualTo(1, 2, 3, 4));
+            Assert.False(new byte[] {1, 2, 3, 4}.IsEqualTo(4, 3, 2, 1));
+            Assert.True(new byte[] {1, 2, 3, 4}.IsEqualTo(1, 2, 3, 4));
 
-            Assert.False(new byte[] { 1, 2, 3, 4 }.IsEqualTo(1, 2, 3));
-            Assert.False(new byte[] { 1, 2, 3, 4 }.IsEqualTo(1, 2, 3, 4, 5));
+            Assert.False(new byte[] {1, 2, 3, 4}.IsEqualTo(1, 2, 3));
+            Assert.False(new byte[] {1, 2, 3, 4}.IsEqualTo(1, 2, 3, 4, 5));
         }
 
         [Fact]
@@ -55,9 +54,9 @@ namespace HSNXT.Tests
         {
             Assert.True(_nullArray.IsNullOrEmpty());
             Assert.True(_emptyArray.IsNullOrEmpty());
-            Assert.False(new byte[] { 0 }.IsNullOrEmpty());
-            Assert.False(new byte[] { 0, 0, 0, 0 }.IsNullOrEmpty());
-            Assert.False(new byte[] { 1, 2, 3, 4 }.IsNullOrEmpty());
+            Assert.False(new byte[] {0}.IsNullOrEmpty());
+            Assert.False(new byte[] {0, 0, 0, 0}.IsNullOrEmpty());
+            Assert.False(new byte[] {1, 2, 3, 4}.IsNullOrEmpty());
         }
 
         [Fact]
@@ -65,9 +64,9 @@ namespace HSNXT.Tests
         {
             Assert.True(_nullArray.IsNullOrZeroed());
             Assert.True(_emptyArray.IsNullOrZeroed());
-            Assert.True(new byte[] { 0 }.IsNullOrZeroed());
-            Assert.True(new byte[] { 0, 0, 0, 0 }.IsNullOrZeroed());
-            Assert.False(new byte[] { 1, 2, 3, 4 }.IsNullOrZeroed());
+            Assert.True(new byte[] {0}.IsNullOrZeroed());
+            Assert.True(new byte[] {0, 0, 0, 0}.IsNullOrZeroed());
+            Assert.False(new byte[] {1, 2, 3, 4}.IsNullOrZeroed());
         }
 
         [Fact]
@@ -80,7 +79,7 @@ namespace HSNXT.Tests
             Assert.Equal("0000", _zeroedArray.ToString(string.Empty));
             Assert.Equal("0, 0, 0, 0", _zeroedArray.ToString(", "));
 
-            var bytes = new byte[] { 255, 255, 255, 255 };
+            var bytes = new byte[] {255, 255, 255, 255};
             Assert.Equal("255255255255", bytes.ToString(string.Empty));
             Assert.Equal("255 | 255 | 255 | 255", bytes.ToString(" | "));
         }
@@ -88,6 +87,5 @@ namespace HSNXT.Tests
 
     public sealed class ByteArrayHelperSequenceTests
     {
-
     }
 }

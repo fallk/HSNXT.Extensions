@@ -1,4 +1,5 @@
-﻿using Xunit; using HSNXT;
+﻿using Xunit;
+using HSNXT;
 
 namespace BCLExtensions.Tests.StringExtensions
 {
@@ -16,7 +17,7 @@ namespace BCLExtensions.Tests.StringExtensions
         public void WhenInputNullThenReturnsTrue()
         {
             string input = null;
-            var result= input.IsNullOrWhitespace();
+            var result = input.IsNullOrWhitespace();
             Assert.True(result);
         }
 

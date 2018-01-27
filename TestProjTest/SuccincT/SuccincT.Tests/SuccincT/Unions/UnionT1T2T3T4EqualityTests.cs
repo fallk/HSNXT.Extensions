@@ -7,9 +7,19 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
     [TestFixture]
     public class UnionT1T2T3T4EqualityTests
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
-        private enum Animals { Cat, Dog, Cow }
+        private enum Animals
+        {
+            Cat,
+            Dog,
+            Cow
+        }
 
         [Test]
         public void SameT1Values_AreEqualAndHaveSameHashCode()
@@ -210,6 +220,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var a = new Union<int, string, Colors, Animals>(Animals.Cow);
             AreEqual(a.GetHashCode(), Animals.Cow.GetHashCode());
         }
+
         [Test]
         public void UnionCanBeCorrectlyCreatedFromT1Type()
         {

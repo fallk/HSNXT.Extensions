@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,7 +28,7 @@ namespace HSNXT.Test
         public void AtLeastWithNegativeCount()
         {
             AssertThrowsArgument.OutOfRangeException("count", () =>
-                new[] { 1 }.AtLeast(-1));
+                new[] {1}.AtLeast(-1));
         }
 
         [Test]
@@ -50,37 +52,37 @@ namespace HSNXT.Test
         [Test]
         public void AtLeastWithSingleElementHasAtLeastZeroElements()
         {
-            Assert.IsTrue(new[] { 1 }.AtLeast(0));
+            Assert.IsTrue(new[] {1}.AtLeast(0));
         }
 
         [Test]
         public void AtLeastWithSingleElementHasAtLeastOneElement()
         {
-            Assert.IsTrue(new[] { 1 }.AtLeast(1));
+            Assert.IsTrue(new[] {1}.AtLeast(1));
         }
 
         [Test]
         public void AtLeastWithSingleElementHasAtLeastManyElements()
         {
-            Assert.IsFalse(new[] { 1 }.AtLeast(2));
+            Assert.IsFalse(new[] {1}.AtLeast(2));
         }
 
         [Test]
         public void AtLeastWithManyElementsHasAtLeastZeroElements()
         {
-            Assert.IsTrue(new[] { 1, 2, 3 }.AtLeast(0));
+            Assert.IsTrue(new[] {1, 2, 3}.AtLeast(0));
         }
 
         [Test]
         public void AtLeastWithManyElementsHasAtLeastOneElement()
         {
-            Assert.IsTrue(new[] { 1, 2, 3 }.AtLeast(1));
+            Assert.IsTrue(new[] {1, 2, 3}.AtLeast(1));
         }
 
         [Test]
         public void AtLeastWithManyElementsHasAtLeastManyElements()
         {
-            Assert.IsTrue(new[] { 1, 2, 3 }.AtLeast(2));
+            Assert.IsTrue(new[] {1, 2, 3}.AtLeast(2));
         }
 
         //ICollection<T> Optimization Tests
@@ -105,37 +107,37 @@ namespace HSNXT.Test
         [Test]
         public void AtLeastWithSingleElementHasAtLeastZeroElementsForCollections()
         {
-            Assert.IsTrue(new[] { 1 }.AtLeast(0));
+            Assert.IsTrue(new[] {1}.AtLeast(0));
         }
 
         [Test]
         public void AtLeastWithSingleElementHasAtLeastOneElementForCollections()
         {
-            Assert.IsTrue(new[] { 1 }.AtLeast(1));
+            Assert.IsTrue(new[] {1}.AtLeast(1));
         }
 
         [Test]
         public void AtLeastWithSingleElementHasAtLeastManyElementsForCollections()
         {
-            Assert.IsFalse(new[] { 1 }.AtLeast(2));
+            Assert.IsFalse(new[] {1}.AtLeast(2));
         }
 
         [Test]
         public void AtLeastWithManyElementsHasAtLeastZeroElementsForCollections()
         {
-            Assert.IsTrue(new[] { 1, 2, 3 }.AtLeast(0));
+            Assert.IsTrue(new[] {1, 2, 3}.AtLeast(0));
         }
 
         [Test]
         public void AtLeastWithManyElementsHasAtLeastOneElementForCollections()
         {
-            Assert.IsTrue(new[] { 1, 2, 3 }.AtLeast(1));
+            Assert.IsTrue(new[] {1, 2, 3}.AtLeast(1));
         }
 
         [Test]
         public void AtLeastWithManyElementsHasAtLeastManyElementsForCollections()
         {
-            Assert.IsTrue(new[] { 1, 2, 3 }.AtLeast(2));
+            Assert.IsTrue(new[] {1, 2, 3}.AtLeast(2));
         }
 
         [Test]

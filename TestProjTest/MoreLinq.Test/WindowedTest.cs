@@ -25,7 +25,7 @@ namespace HSNXT.Test
         {
             var sequence = Enumerable.Repeat(1, 10);
 
-            AssertThrowsArgument.OutOfRangeException("size",() =>
+            AssertThrowsArgument.OutOfRangeException("size", () =>
                 sequence.Windowed(-5));
         }
 

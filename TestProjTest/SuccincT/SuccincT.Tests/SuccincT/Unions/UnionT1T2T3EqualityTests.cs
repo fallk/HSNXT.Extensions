@@ -7,7 +7,12 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
     [TestFixture]
     public class UnionT1T2T3EqualityTests
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
         [Test]
         public void SameT1Values_AreEqualAndHaveSameHashCode()

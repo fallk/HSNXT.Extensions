@@ -15,7 +15,6 @@ namespace BCLExtensions.Tests.StringExtensions
                 var formattedString = _myString.FormatWith();
                 Assert.Equal(string.Empty, formattedString);
             }
-
         }
 
         public class WithInputStringContainingNoParameters
@@ -28,7 +27,6 @@ namespace BCLExtensions.Tests.StringExtensions
                 var formattedString = _myString.FormatWith();
                 Assert.Equal(_myString, formattedString);
             }
-
         }
 
         public class WithInputStringContainingOneParameter

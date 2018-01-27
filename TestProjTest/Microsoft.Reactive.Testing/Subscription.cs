@@ -28,12 +28,18 @@ namespace Microsoft.Reactive.Testing
         /// <summary>
         /// Gets the subscription virtual time.
         /// </summary>
-        public long Subscribe { get { return _subscribe; } }
+        public long Subscribe
+        {
+            get { return _subscribe; }
+        }
 
         /// <summary>
         /// Gets the unsubscription virtual time.
         /// </summary>
-        public long Unsubscribe { get { return _unsubscribe; } }
+        public long Unsubscribe
+        {
+            get { return _unsubscribe; }
+        }
 
         /// <summary>
         /// Creates a new subscription object with the given virtual subscription time.
@@ -72,7 +78,7 @@ namespace Microsoft.Reactive.Testing
         /// <param name="left">The first Subscription value to compare.</param>
         /// <param name="right">The second Subscription value to compare.</param>
         /// <returns>true if the first Subscription value has the same Subscribe and Unsubscribe as the second Subscription value; otherwise, false.</returns>
-        public static bool operator==(Subscription left, Subscription right)
+        public static bool operator ==(Subscription left, Subscription right)
         {
             return left.Equals(right);
         }
@@ -96,7 +102,7 @@ namespace Microsoft.Reactive.Testing
         public override bool Equals(object obj)
         {
             if (obj is Subscription)
-                return Equals((Subscription)obj);
+                return Equals((Subscription) obj);
             return false;
         }
 

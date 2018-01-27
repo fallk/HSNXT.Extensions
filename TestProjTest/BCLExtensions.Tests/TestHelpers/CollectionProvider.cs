@@ -19,7 +19,7 @@ namespace BCLExtensions.Tests.TestHelpers
 
         public IEnumerable<T> GetEnumerableWithOneNonNullItem()
         {
-            return new Collection<T> { _provider.CreateItem() };
+            return new Collection<T> {_provider.CreateItem()};
         }
 
         public object GetPlaceholder()

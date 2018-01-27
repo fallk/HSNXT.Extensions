@@ -22,14 +22,14 @@ namespace ComLib.Test
         public void DistinctByTest()
         {
             var test = new List<TestClass>();
-            test.Add(new TestClass() { TestInt = 1 });
-            test.Add(new TestClass() { TestInt = 1 });
-            test.Add(new TestClass() { TestInt = 2 });
-            test.Add(new TestClass() { TestInt = 2 });
-            test.Add(new TestClass() { TestInt = 3 });
-            test.Add(new TestClass() { TestInt = 3 });
-            test.Add(new TestClass() { TestInt = 4 });
-            test.Add(new TestClass() { TestInt = 4 });
+            test.Add(new TestClass() {TestInt = 1});
+            test.Add(new TestClass() {TestInt = 1});
+            test.Add(new TestClass() {TestInt = 2});
+            test.Add(new TestClass() {TestInt = 2});
+            test.Add(new TestClass() {TestInt = 3});
+            test.Add(new TestClass() {TestInt = 3});
+            test.Add(new TestClass() {TestInt = 4});
+            test.Add(new TestClass() {TestInt = 4});
 
             var distinct = test.DistinctBy(i => i.TestInt).OrderBy(i => i.TestInt).ToList();
             var count = distinct.Count();

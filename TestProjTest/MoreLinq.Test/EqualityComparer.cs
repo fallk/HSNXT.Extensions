@@ -9,7 +9,6 @@ namespace HSNXT.Test
         /// Creates an <see cref="IEqualityComparer{T}"/> given a
         /// <see cref="Func{T,T,Boolean}"/>.
         /// </summary>
-
         public static IEqualityComparer<T> Create<T>(Func<T, T, bool> comparer) =>
             new DelegatingComparer<T>(comparer);
 
@@ -19,7 +18,9 @@ namespace HSNXT.Test
             readonly Func<T, int> _hasher;
 
             public DelegatingComparer(Func<T, T, bool> comparer)
-                : this(comparer, x => x == null ? 0 : x.GetHashCode()) {}
+                : this(comparer, x => x == null ? 0 : x.GetHashCode())
+            {
+            }
 
             DelegatingComparer(Func<T, T, bool> comparer, Func<T, int> hasher)
             {

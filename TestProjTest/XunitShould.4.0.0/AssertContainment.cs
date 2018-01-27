@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using Xunit;
 using Xunit.Sdk;
 
@@ -15,7 +14,8 @@ namespace XunitShould
         /// <param name="series">The series to be inspected</param>
         /// <param name="expected">The object expected to be in the series</param>
         /// <exception cref="ContainsException">Thrown when the object is not present in the series</exception>
-        public static void ShouldContain<T>(this IEnumerable<T> series, T expected) {
+        public static void ShouldContain<T>(this IEnumerable<T> series, T expected)
+        {
             Assert.Contains(expected, series);
         }
 
@@ -27,7 +27,8 @@ namespace XunitShould
         /// <param name="expected">The object expected to be in the series</param>
         /// <param name="comparer">The comparer used to equate objects in the series with the expected object</param>
         /// <exception cref="ContainsException">Thrown when the object is not present in the series</exception>
-        public static void ShouldContain<T>(this IEnumerable<T> series, T expected, IEqualityComparer<T> comparer) {
+        public static void ShouldContain<T>(this IEnumerable<T> series, T expected, IEqualityComparer<T> comparer)
+        {
             Assert.Contains(expected, series, comparer);
         }
 
@@ -40,8 +41,9 @@ namespace XunitShould
         /// <exception cref="ContainsException">Thrown when the sub-string is not present inside the string</exception>
         /// <remarks></remarks>
         public static void ShouldContain(this string actual,
-                                         string fragment,
-                                         StringComparison comparisonType = StringComparison.CurrentCulture) {
+            string fragment,
+            StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
             Assert.Contains(fragment, actual, comparisonType);
         }
 
@@ -53,16 +55,20 @@ namespace XunitShould
         /// <param name="stringComparison">The string comparison.</param>
         /// <remarks></remarks>
         public static void ShouldEndWith(this string actual,
-                                         string ending,
-                                         StringComparison stringComparison = StringComparison.CurrentCulture) {
-            if (actual.Length < ending.Length) {
+            string ending,
+            StringComparison stringComparison = StringComparison.CurrentCulture)
+        {
+            if (actual.Length < ending.Length)
+            {
                 throw new EqualException(ending, actual);
             }
+
             var temp = actual.Substring(actual.Length - ending.Length);
             Assert.Equal(ending, temp, stringComparison.GetComparer());
         }
 
-        public static T ShouldHaveSingle<T>(this IEnumerable<T> actual, Predicate<T> filter) {
+        public static T ShouldHaveSingle<T>(this IEnumerable<T> actual, Predicate<T> filter)
+        {
             return Assert.Single(actual, filter);
         }
 
@@ -73,7 +79,8 @@ namespace XunitShould
         /// <param name="expected">The object that is expected not to be in the series</param>
         /// <param name="series">The series to be inspected</param>
         /// <exception cref="DoesNotContainException">Thrown when the object is present inside the series</exception>
-        public static void ShouldNotContain<T>(this IEnumerable<T> series, T expected) {
+        public static void ShouldNotContain<T>(this IEnumerable<T> series, T expected)
+        {
             Assert.DoesNotContain(expected, series);
         }
 
@@ -85,7 +92,8 @@ namespace XunitShould
         /// <param name="series">The series to be inspected</param>
         /// <param name="comparer">The comparer used to equate objects in the series with the expected object</param>
         /// <exception cref="DoesNotContainException">Thrown when the object is present inside the series</exception>
-        public static void ShouldNotContain<T>(this IEnumerable<T> series, T expected, IEqualityComparer<T> comparer) {
+        public static void ShouldNotContain<T>(this IEnumerable<T> series, T expected, IEqualityComparer<T> comparer)
+        {
             Assert.DoesNotContain(expected, series, comparer);
         }
 
@@ -97,27 +105,34 @@ namespace XunitShould
         /// <param name="comparisonType">The type of string comparison to perform</param>
         /// <exception cref="DoesNotContainException">Thrown when the sub-string is present inside the given string</exception>
         public static void ShouldNotContain(this string actual,
-                                            string fragment,
-                                            StringComparison comparisonType = StringComparison.CurrentCulture) {
+            string fragment,
+            StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
             Assert.DoesNotContain(fragment, actual, comparisonType);
         }
 
         public static void ShouldNotEndWith(this string actual,
-                                            string ending,
-                                            StringComparison comparisonType = StringComparison.CurrentCulture) {
-            if (actual.Length < ending.Length) {
+            string ending,
+            StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
+            if (actual.Length < ending.Length)
+            {
                 return;
             }
+
             var temp = actual.Substring(actual.Length - ending.Length);
             Assert.NotEqual(ending, temp, comparisonType.GetComparer());
         }
 
         public static void ShouldNotStartWith(this string actual,
-                                              string begining,
-                                              StringComparison comparisonType = StringComparison.CurrentCulture) {
-            if (actual.Length < begining.Length) {
+            string begining,
+            StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
+            if (actual.Length < begining.Length)
+            {
                 return;
             }
+
             var temp = actual.Substring(0, begining.Length);
             Assert.NotEqual(begining, temp, comparisonType.GetComparer());
         }
@@ -130,11 +145,14 @@ namespace XunitShould
         /// <param name="comparisonType">The string comparison.</param>
         /// <remarks></remarks>
         public static void ShouldStartWith(this string actual,
-                                           string begining,
-                                           StringComparison comparisonType = StringComparison.CurrentCulture) {
-            if (actual.Length < begining.Length) {
+            string begining,
+            StringComparison comparisonType = StringComparison.CurrentCulture)
+        {
+            if (actual.Length < begining.Length)
+            {
                 throw new EqualException(begining, actual);
             }
+
             var temp = actual.Substring(0, begining.Length);
             Assert.Equal(begining, temp, comparisonType.GetComparer());
         }

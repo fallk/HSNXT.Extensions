@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xunit;
 
 namespace HSNXT.Tests
@@ -26,8 +25,8 @@ namespace HSNXT.Tests
         [Fact]
         public void Verify_non_default_ctors()
         {
-            Assert.Throws<ArgumentNullException>(() => new OrderedCollection<string>((IComparer<string>)null, null));
-            Assert.Throws<ArgumentNullException>(() => new OrderedCollection<string>((Comparison<string>)null, null));
+            Assert.Throws<ArgumentNullException>(() => new OrderedCollection<string>((IComparer<string>) null, null));
+            Assert.Throws<ArgumentNullException>(() => new OrderedCollection<string>((Comparison<string>) null, null));
         }
 
         [Theory]
@@ -58,7 +57,8 @@ namespace HSNXT.Tests
             }
         }
 
-        private static void AssertCollection(OrderedCollection<string> collection, Func<string, string, bool> compareLogic)
+        private static void AssertCollection(OrderedCollection<string> collection,
+            Func<string, string, bool> compareLogic)
         {
             for (var i = 0; i < collection.Count - 1; i++)
                 Assert.True(compareLogic(collection[i], collection[i + 1]));
@@ -69,13 +69,17 @@ namespace HSNXT.Tests
             get
             {
                 yield return
-                    new object[] {
-                        new[] {
-                            "Thor", "Hulk", "Captain America", "Ironman", "Black Window", "Hawkeye", "Black Panther", "Quake", "Protector",
+                    new object[]
+                    {
+                        new[]
+                        {
+                            "Thor", "Hulk", "Captain America", "Ironman", "Black Window", "Hawkeye", "Black Panther",
+                            "Quake", "Protector",
                             "Vision", "Red Hulk", "Spider-Woman", "Ant-Man", "Wasp"
                         }
                     };
-                yield return new object[] { new[] { "Flash", "Superman", "Batman", "Wonder Woman", "Aquaman", "Hawkgirl" } };
+                yield return new object[]
+                    {new[] {"Flash", "Superman", "Batman", "Wonder Woman", "Aquaman", "Hawkgirl"}};
             }
         }
     }

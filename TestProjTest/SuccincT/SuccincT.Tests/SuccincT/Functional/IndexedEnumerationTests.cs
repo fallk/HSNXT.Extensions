@@ -20,7 +20,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void ForList_IndexedEnumerationReturned()
         {
-            var list = new List<int> { 1, 2, 3 };
+            var list = new List<int> {1, 2, 3};
             var indexedList = list.Indexed();
             foreach (var (index, item) in indexedList)
             {

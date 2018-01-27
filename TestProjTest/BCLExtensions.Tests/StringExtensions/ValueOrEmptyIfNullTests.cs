@@ -1,4 +1,5 @@
-﻿using Xunit; using HSNXT;
+﻿using Xunit;
+using HSNXT;
 
 namespace BCLExtensions.Tests.StringExtensions
 {
@@ -11,7 +12,7 @@ namespace BCLExtensions.Tests.StringExtensions
             var result = input.ValueOrEmptyIfNull();
             Assert.Equal(string.Empty, result);
         }
-        
+
         [Fact]
         public void WithNullInputStringReturnsEmptyString()
         {

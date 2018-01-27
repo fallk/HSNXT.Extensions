@@ -23,11 +23,13 @@ namespace HSNXT.SuccincT.Examples
         public Union<Node, Tip> Right { get; }
     }
 
-    public class Tip { }
+    public class Tip
+    {
+    }
 
     public static class TreeUsingUnions
     {
-        public static int SumTree(Union<Node, Tip> node) => 
+        public static int SumTree(Union<Node, Tip> node) =>
             node.Match<int>()
                 .Case1().Do(x => x.Value + SumTree(x.Left) + SumTree(x.Right))
                 .Case2().Do(0)

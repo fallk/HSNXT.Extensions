@@ -25,7 +25,8 @@ namespace BigMath.Tests
         [TestCase("0x000001020304", "0x01020304", "0x000001020304")]
         [TestCase("0x000102030400", "0x0102030400", "0x0001020304")]
         [TestCase("0x010203040000", "0x010203040000", "0x01020304")]
-        public void Should_trim_zeros(string bytesS, string expectedTrimmedBigEndianBytesS, string expectedTrimmedLittleEndianBytesS)
+        public void Should_trim_zeros(string bytesS, string expectedTrimmedBigEndianBytesS,
+            string expectedTrimmedLittleEndianBytesS)
         {
             var bytes = bytesS.HexToBytes();
             var expectedTrimmedBigEndianBytes = expectedTrimmedBigEndianBytesS.HexToBytes();

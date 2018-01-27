@@ -17,7 +17,7 @@ namespace HSNXT.Z.Reflection.Test
         public void GetSignature()
         {
             // Type
-            var @this = typeof (GenericTypeConstructorModel<>).GetConstructors()[0];
+            var @this = typeof(GenericTypeConstructorModel<>).GetConstructors()[0];
 
             // Exemples
             var result = @this.GetSignature();

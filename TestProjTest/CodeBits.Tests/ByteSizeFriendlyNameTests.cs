@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Threading;
-
 using Shouldly;
-
 using Xunit;
 
 namespace HSNXT.Tests
@@ -44,7 +42,8 @@ namespace HSNXT.Tests
         [InlineData(1024, "1 KB")]
         public void Unit_display_mode_hide_only_for_bytes_test(int bytes, string expectedFriendlyName)
         {
-            var options = new FriendlyNameOptions {
+            var options = new FriendlyNameOptions
+            {
                 UnitDisplayMode = UnitDisplayMode.HideOnlyForBytes
             };
             var friendlyName = ByteSizeFriendlyName.Build(bytes, options);
@@ -56,7 +55,8 @@ namespace HSNXT.Tests
         [InlineData(1024 * 1023, "1,023 KB")]
         public void Unit_display_mode_group_digits_test(int bytes, string expectedFriendlyName)
         {
-            var options = new FriendlyNameOptions {
+            var options = new FriendlyNameOptions
+            {
                 GroupDigits = true
             };
             var friendlyName = ByteSizeFriendlyName.Build(bytes, options);
@@ -67,14 +67,16 @@ namespace HSNXT.Tests
         public void Megabyte_values()
         {
             const long size = 1024L * 1024 * 10;
-            
-            var friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions { DecimalPlaces = 10 });
+
+            var friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions {DecimalPlaces = 10});
             friendlyName.ShouldBe("10 MB");
 
-            friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions { UnitDisplayMode = UnitDisplayMode.AlwaysHide });
+            friendlyName = ByteSizeFriendlyName.Build(size,
+                new FriendlyNameOptions {UnitDisplayMode = UnitDisplayMode.AlwaysHide});
             friendlyName.ShouldBe("10");
 
-            friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions { UnitDisplayMode = UnitDisplayMode.HideOnlyForBytes });
+            friendlyName = ByteSizeFriendlyName.Build(size,
+                new FriendlyNameOptions {UnitDisplayMode = UnitDisplayMode.HideOnlyForBytes});
             friendlyName.ShouldBe("10 MB");
         }
 
@@ -82,14 +84,17 @@ namespace HSNXT.Tests
         public void Gigabyte_values()
         {
             const long size = 1024L * 1024 * 1024 * 10;
-            
-            var friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions { DecimalPlaces = 10 });;
+
+            var friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions {DecimalPlaces = 10});
+            ;
             Assert.Equal("10 GB", friendlyName);
 
-            friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions { UnitDisplayMode = UnitDisplayMode.AlwaysHide });
+            friendlyName = ByteSizeFriendlyName.Build(size,
+                new FriendlyNameOptions {UnitDisplayMode = UnitDisplayMode.AlwaysHide});
             Assert.Equal("10", friendlyName);
 
-            friendlyName = ByteSizeFriendlyName.Build(size, new FriendlyNameOptions { UnitDisplayMode = UnitDisplayMode.HideOnlyForBytes });
+            friendlyName = ByteSizeFriendlyName.Build(size,
+                new FriendlyNameOptions {UnitDisplayMode = UnitDisplayMode.HideOnlyForBytes});
             Assert.Equal("10 GB", friendlyName);
         }
     }

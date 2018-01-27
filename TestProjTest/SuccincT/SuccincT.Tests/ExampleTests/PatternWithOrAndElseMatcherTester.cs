@@ -23,8 +23,8 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 Filter123(2);
                 Filter123(3);
 
-                AreEqual(ExpectedBuilder(new[] { "Found 1, 2, or 3!", "Found 1, 2, or 3!", "Found 1, 2, or 3!" }),
-                         sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"Found 1, 2, or 3!", "Found 1, 2, or 3!", "Found 1, 2, or 3!"}),
+                    sw.ToString());
             }
         }
 
@@ -38,8 +38,8 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 Filter123(0);
                 Filter123(4);
 
-                AreEqual(ExpectedBuilder(new[] { "0", "4" }),
-                         sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"0", "4"}),
+                    sw.ToString());
             }
         }
 

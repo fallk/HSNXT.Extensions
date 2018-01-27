@@ -20,9 +20,15 @@ namespace HSNXT.SuccincTPerformanceTests
 
         public IEnumerable<IColumnProvider> GetColumnProviders() => _defaultConfig.GetColumnProviders();
 
-        public IEnumerable<IExporter> GetExporters() { yield return AsciiDocExporter.Default; }
+        public IEnumerable<IExporter> GetExporters()
+        {
+            yield return AsciiDocExporter.Default;
+        }
 
-        public IEnumerable<ILogger> GetLoggers() { yield return new Logger(); }
+        public IEnumerable<ILogger> GetLoggers()
+        {
+            yield return new Logger();
+        }
 
         public IEnumerable<IDiagnoser> GetDiagnosers() => _defaultConfig.GetDiagnosers();
 
@@ -39,7 +45,7 @@ namespace HSNXT.SuccincTPerformanceTests
         public IOrderProvider GetOrderProvider() => _defaultConfig.GetOrderProvider();
 
         public ISummaryStyle GetSummaryStyle() => _defaultConfig.GetSummaryStyle();
-        
+
         public IEnumerable<BenchmarkLogicalGroupRule> GetLogicalGroupRules() => _defaultConfig.GetLogicalGroupRules();
 
         public ConfigUnionRule UnionRule => _defaultConfig.UnionRule;
@@ -52,21 +58,22 @@ namespace HSNXT.SuccincTPerformanceTests
 
             public void Write(LogKind logKind, string text) => _logger.Write(logKind, $"{logKind.ToString()} - {text}");
             public void WriteLine() => _logger.WriteLine();
-            public void WriteLine(LogKind logKind, string text) => _logger.WriteLine(logKind, 
-                                                                                     $"{logKind.ToString()} - {text}");
+
+            public void WriteLine(LogKind logKind, string text) => _logger.WriteLine(logKind,
+                $"{logKind.ToString()} - {text}");
         }
 
         private static Dictionary<LogKind, ConsoleColor> CreateColorScheme() =>
             new Dictionary<LogKind, ConsoleColor>
             {
-                { LogKind.Default, ConsoleColor.Cyan },
-                { LogKind.Help, ConsoleColor.Cyan },
-                { LogKind.Header, ConsoleColor.Cyan },
-                { LogKind.Result, ConsoleColor.Cyan },
-                { LogKind.Statistic, ConsoleColor.Cyan },
-                { LogKind.Info, ConsoleColor.Cyan },
-                { LogKind.Error, ConsoleColor.Cyan },
-                { LogKind.Hint, ConsoleColor.Cyan }
+                {LogKind.Default, ConsoleColor.Cyan},
+                {LogKind.Help, ConsoleColor.Cyan},
+                {LogKind.Header, ConsoleColor.Cyan},
+                {LogKind.Result, ConsoleColor.Cyan},
+                {LogKind.Statistic, ConsoleColor.Cyan},
+                {LogKind.Info, ConsoleColor.Cyan},
+                {LogKind.Error, ConsoleColor.Cyan},
+                {LogKind.Hint, ConsoleColor.Cyan}
             };
     }
 }

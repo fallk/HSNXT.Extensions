@@ -1,7 +1,5 @@
 ﻿using System.Data;
 using System.Data.Common;
-
-
 using NUnit.Framework;
 using HSNXT.ComLib.Data;
 
@@ -36,7 +34,9 @@ namespace CommonLibrary.Tests
         {
             var db = new Database(ConnectionInfo.Default);
             var maxId = db.ExecuteScalar("select max(id) from wk_adminqueries", System.Data.CommandType.Text);
-            var rowsAffected = db.ExecuteNonQuery("update wk_adminqueries set description = 'unit test update' where id = " + maxId, CommandType.Text);
+            var rowsAffected =
+                db.ExecuteNonQuery("update wk_adminqueries set description = 'unit test update' where id = " + maxId,
+                    CommandType.Text);
 
             Assert.AreEqual(1, rowsAffected);
         }
@@ -52,7 +52,6 @@ namespace CommonLibrary.Tests
             var table = db.ExecuteDataTable("Kd_PageContent_Retrieve", CommandType.StoredProcedure, dbparams);
             var content = table.Rows[0]["Description"].ToString();
             Assert.IsNotNull(content);
-         
         }
     }
 }

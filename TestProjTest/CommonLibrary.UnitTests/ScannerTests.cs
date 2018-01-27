@@ -5,7 +5,6 @@ using HSNXT.ComLib;
 
 namespace CommonLibrary.Tests
 {
-
     [TestFixture]
     public class ScannerTests
     {
@@ -55,30 +54,30 @@ namespace CommonLibrary.Tests
         {
             var tokens = new List<Tuple<int, string, string, string>>()
             {
-                new Tuple<int, string, string, string>(3, " ",   "123",    "123"      ),  
-                new Tuple<int, string, string, string>(3, " ",   "123",    "123 "     ),
-                new Tuple<int, string, string, string>(4, " ",  "+123",    "+123"     ),  
-                new Tuple<int, string, string, string>(4, " ",  "+123",    "+123 "    ),
-                new Tuple<int, string, string, string>(4, " ",  "-123",    "-123"     ),  
-                new Tuple<int, string, string, string>(4, " ",  "-123",    "-123 "    ),
-                new Tuple<int, string, string, string>(3, "<",   "123",    "123<"     ),
-                new Tuple<int, string, string, string>(3, "<",   "123",    "123< "    ),
-                new Tuple<int, string, string, string>(4, "<",  "+123",    "+123<"    ),
-                new Tuple<int, string, string, string>(4, "<",  "+123",    "+123< "   ),
-                new Tuple<int, string, string, string>(4, "<",  "-123",    "-123<"    ),
-                new Tuple<int, string, string, string>(4, "<",  "-123",    "-123< "   ),
-                new Tuple<int, string, string, string>(6, " ",   "123.45", "123.45"   ),  
-                new Tuple<int, string, string, string>(6, " ",   "123.45", "123.45 "  ),
-                new Tuple<int, string, string, string>(7, " ",  "+123.45", "+123.45"  ),  
-                new Tuple<int, string, string, string>(7, " ",  "+123.45", "+123.45 " ),
-                new Tuple<int, string, string, string>(7, " ",  "-123.45", "-123.45"  ),  
-                new Tuple<int, string, string, string>(7, " ",  "-123.45", "-123.45 " ),
-                new Tuple<int, string, string, string>(6, "<",   "123.45", "123.45<"  ),  
-                new Tuple<int, string, string, string>(6, "<",   "123.45", "123.45< " ),
-                new Tuple<int, string, string, string>(7, "<",  "+123.45", "+123.45<" ),  
-                new Tuple<int, string, string, string>(7, "<",  "+123.45", "+123.45< "),
-                new Tuple<int, string, string, string>(7, "<",  "-123.45", "-123.45<" ), 
-                new Tuple<int, string, string, string>(7, "<",  "-123.45", "-123.45< ")
+                new Tuple<int, string, string, string>(3, " ", "123", "123"),
+                new Tuple<int, string, string, string>(3, " ", "123", "123 "),
+                new Tuple<int, string, string, string>(4, " ", "+123", "+123"),
+                new Tuple<int, string, string, string>(4, " ", "+123", "+123 "),
+                new Tuple<int, string, string, string>(4, " ", "-123", "-123"),
+                new Tuple<int, string, string, string>(4, " ", "-123", "-123 "),
+                new Tuple<int, string, string, string>(3, "<", "123", "123<"),
+                new Tuple<int, string, string, string>(3, "<", "123", "123< "),
+                new Tuple<int, string, string, string>(4, "<", "+123", "+123<"),
+                new Tuple<int, string, string, string>(4, "<", "+123", "+123< "),
+                new Tuple<int, string, string, string>(4, "<", "-123", "-123<"),
+                new Tuple<int, string, string, string>(4, "<", "-123", "-123< "),
+                new Tuple<int, string, string, string>(6, " ", "123.45", "123.45"),
+                new Tuple<int, string, string, string>(6, " ", "123.45", "123.45 "),
+                new Tuple<int, string, string, string>(7, " ", "+123.45", "+123.45"),
+                new Tuple<int, string, string, string>(7, " ", "+123.45", "+123.45 "),
+                new Tuple<int, string, string, string>(7, " ", "-123.45", "-123.45"),
+                new Tuple<int, string, string, string>(7, " ", "-123.45", "-123.45 "),
+                new Tuple<int, string, string, string>(6, "<", "123.45", "123.45<"),
+                new Tuple<int, string, string, string>(6, "<", "123.45", "123.45< "),
+                new Tuple<int, string, string, string>(7, "<", "+123.45", "+123.45<"),
+                new Tuple<int, string, string, string>(7, "<", "+123.45", "+123.45< "),
+                new Tuple<int, string, string, string>(7, "<", "-123.45", "-123.45<"),
+                new Tuple<int, string, string, string>(7, "<", "-123.45", "-123.45< ")
             };
             CheckTokens(tokens, (scanner, text) => scanner.ReadNumber(false));
             CheckTokens(tokens, (scanner, text) => scanner.ReadNumber(false, false), true);
@@ -90,31 +89,31 @@ namespace CommonLibrary.Tests
         {
             var tokens = new List<Tuple<int, string, string, string>>()
             {
-                new Tuple<int, string, string, string>(6 , " ", "common",     "common"),     
-                new Tuple<int, string, string, string>(6 , " ", "common",     "common "),
-                new Tuple<int, string, string, string>(6 , ">", "common",     "common>"),
-                new Tuple<int, string, string, string>(9 , " ", "common123",  "common123"),
-                new Tuple<int, string, string, string>(9,  " ", "common123",  "common123 "),
-                new Tuple<int, string, string, string>(9,  ">", "common123",  "common123>"),
-                new Tuple<int, string, string, string>(10, " ", "_common123", "_common123"), 
-                new Tuple<int, string, string, string>(10, " ", "_common123", "_common123 "), 
+                new Tuple<int, string, string, string>(6, " ", "common", "common"),
+                new Tuple<int, string, string, string>(6, " ", "common", "common "),
+                new Tuple<int, string, string, string>(6, ">", "common", "common>"),
+                new Tuple<int, string, string, string>(9, " ", "common123", "common123"),
+                new Tuple<int, string, string, string>(9, " ", "common123", "common123 "),
+                new Tuple<int, string, string, string>(9, ">", "common123", "common123>"),
+                new Tuple<int, string, string, string>(10, " ", "_common123", "_common123"),
+                new Tuple<int, string, string, string>(10, " ", "_common123", "_common123 "),
                 new Tuple<int, string, string, string>(10, ">", "_common123", "_common123>"),
-                new Tuple<int, string, string, string>(10, " ", "$common123", "$common123"), 
-                new Tuple<int, string, string, string>(10, " ", "$common123", "$common123 "), 
+                new Tuple<int, string, string, string>(10, " ", "$common123", "$common123"),
+                new Tuple<int, string, string, string>(10, " ", "$common123", "$common123 "),
                 new Tuple<int, string, string, string>(10, ">", "$common123", "$common123>"),
-                new Tuple<int, string, string, string>(8 , " ", "_$123com",   "_$123com"), 
-                new Tuple<int, string, string, string>(8 , " ", "_$123com",   "_$123com "), 
-                new Tuple<int, string, string, string>(8 , ">", "_$123com",   "_$123com>"),
-                new Tuple<int, string, string, string>(3 , ".", "com",        "com.mon"),  
-                new Tuple<int, string, string, string>(3 , ".", "com",        "com.mon "),  
-                new Tuple<int, string, string, string>(3 , ".", "com",        "com.mon>"),
-                new Tuple<int, string, string, string>(4 , ".", "_com",       "_com.mon"), 
-                new Tuple<int, string, string, string>(4 , ".", "_com",       "_com.mon "), 
-                new Tuple<int, string, string, string>(4 , ".", "_com",       "_com.mon>" ),
-                new Tuple<int, string, string, string>(4 , ".", "$com",       "$com.mon"), 
-                new Tuple<int, string, string, string>(4 , ".", "$com",       "$com.mon "), 
-                new Tuple<int, string, string, string>(4 , ".", "$com",       "$com.mon>" ),
-                new Tuple<int, string, string, string>(4 , ".", "$com",       "$com.mon(>" )
+                new Tuple<int, string, string, string>(8, " ", "_$123com", "_$123com"),
+                new Tuple<int, string, string, string>(8, " ", "_$123com", "_$123com "),
+                new Tuple<int, string, string, string>(8, ">", "_$123com", "_$123com>"),
+                new Tuple<int, string, string, string>(3, ".", "com", "com.mon"),
+                new Tuple<int, string, string, string>(3, ".", "com", "com.mon "),
+                new Tuple<int, string, string, string>(3, ".", "com", "com.mon>"),
+                new Tuple<int, string, string, string>(4, ".", "_com", "_com.mon"),
+                new Tuple<int, string, string, string>(4, ".", "_com", "_com.mon "),
+                new Tuple<int, string, string, string>(4, ".", "_com", "_com.mon>"),
+                new Tuple<int, string, string, string>(4, ".", "$com", "$com.mon"),
+                new Tuple<int, string, string, string>(4, ".", "$com", "$com.mon "),
+                new Tuple<int, string, string, string>(4, ".", "$com", "$com.mon>"),
+                new Tuple<int, string, string, string>(4, ".", "$com", "$com.mon(>")
             };
             CheckTokens(tokens, (scanner, text) => scanner.ReadId(false));
             CheckTokens(tokens, (scanner, text) => scanner.ReadId(false, false), true);
@@ -126,14 +125,14 @@ namespace CommonLibrary.Tests
         {
             var tokens = new List<Tuple<int, string, string, string>>()
             {
-                new Tuple<int, string, string, string>(6 , " ", "test",     "'test'"),
-                new Tuple<int, string, string, string>(6 , " ", "test",     "'test' "),
-                new Tuple<int, string, string, string>(6 , ";", "test",     "'test';"),
-                new Tuple<int, string, string, string>(8 , ";", "te'st",     "'te\\'st';"),
-                new Tuple<int, string, string, string>(6 , " ", "test",     "\"test\""),
-                new Tuple<int, string, string, string>(6 , " ", "test",     "\"test\" "),
-                new Tuple<int, string, string, string>(6 , ";", "test",     "\"test\";"),
-                new Tuple<int, string, string, string>(8 , ";", "te\"st",     "\"te\\\"st\";")
+                new Tuple<int, string, string, string>(6, " ", "test", "'test'"),
+                new Tuple<int, string, string, string>(6, " ", "test", "'test' "),
+                new Tuple<int, string, string, string>(6, ";", "test", "'test';"),
+                new Tuple<int, string, string, string>(8, ";", "te'st", "'te\\'st';"),
+                new Tuple<int, string, string, string>(6, " ", "test", "\"test\""),
+                new Tuple<int, string, string, string>(6, " ", "test", "\"test\" "),
+                new Tuple<int, string, string, string>(6, ";", "test", "\"test\";"),
+                new Tuple<int, string, string, string>(8, ";", "te\"st", "\"te\\\"st\";")
             };
             CheckTokens(tokens, (scanner, text) => scanner.ReadString(text[0]));
             CheckTokens(tokens, (scanner, text) => scanner.ReadString(text[0], setPosAfterToken: false), true);
@@ -145,11 +144,18 @@ namespace CommonLibrary.Tests
         {
             var tokens = new List<Tuple<int, string, string, string>>()
             {
-                new Tuple<int, string, string, string>(72, " ", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/"),
-                new Tuple<int, string, string, string>(72, " ", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/  "),
-                new Tuple<int, string, string, string>(72, "v", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/var"),
-                new Tuple<int, string, string, string>(72, "n", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/name")
-
+                new Tuple<int, string, string, string>(72, " ",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/"),
+                new Tuple<int, string, string, string>(72, " ",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/  "),
+                new Tuple<int, string, string, string>(72, "v",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/var"),
+                new Tuple<int, string, string, string>(72, "n",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "/*abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?*/name")
             };
             CheckTokens(tokens, (scanner, text) =>
             {
@@ -162,7 +168,7 @@ namespace CommonLibrary.Tests
                 scanner.ReadChar();
                 scanner.ReadChar();
                 return scanner.ReadUntilChars(false, '*', '/', false);
-            }, true, 3);  
+            }, true, 3);
         }
 
 
@@ -171,11 +177,18 @@ namespace CommonLibrary.Tests
         {
             var tokens = new List<Tuple<int, string, string, string>>()
             {
-                new Tuple<int, string, string, string>(72, " ", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\n"),
-                new Tuple<int, string, string, string>(72, " ", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\n  "),
-                new Tuple<int, string, string, string>(72, "v", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\nvar"),
-                new Tuple<int, string, string, string>(72, "n", "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?", "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\nname")
-
+                new Tuple<int, string, string, string>(72, " ",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\n"),
+                new Tuple<int, string, string, string>(72, " ",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\n  "),
+                new Tuple<int, string, string, string>(72, "v",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\nvar"),
+                new Tuple<int, string, string, string>(72, "n",
+                    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?",
+                    "//abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?\r\nname")
             };
             CheckTokens(tokens, (scanner, text) =>
             {
@@ -197,15 +210,15 @@ namespace CommonLibrary.Tests
         {
             var tokens = new List<Tuple<int, string, string, string>>()
             {
-                new Tuple<int, string, string, string>(1 , "v",  string.Empty,    " var"),
-                new Tuple<int, string, string, string>(2 , "v",  string.Empty,    "  var"),
-                new Tuple<int, string, string, string>(3 , "v",  string.Empty,    "   var"),
-                new Tuple<int, string, string, string>(1 , "$",  string.Empty,    " $"),
-                new Tuple<int, string, string, string>(2 , "$",  string.Empty,    "  $"),
-                new Tuple<int, string, string, string>(3 , "$",  string.Empty,    "   $")
+                new Tuple<int, string, string, string>(1, "v", string.Empty, " var"),
+                new Tuple<int, string, string, string>(2, "v", string.Empty, "  var"),
+                new Tuple<int, string, string, string>(3, "v", string.Empty, "   var"),
+                new Tuple<int, string, string, string>(1, "$", string.Empty, " $"),
+                new Tuple<int, string, string, string>(2, "$", string.Empty, "  $"),
+                new Tuple<int, string, string, string>(3, "$", string.Empty, "   $")
             };
-            CheckTokens(tokens, (scanner, text) => 
-            { 
+            CheckTokens(tokens, (scanner, text) =>
+            {
                 scanner.ConsumeWhiteSpace(false);
                 return new ScanTokenResult(true, string.Empty);
             });
@@ -217,7 +230,9 @@ namespace CommonLibrary.Tests
         }
 
 
-        private void CheckTokens(List<Tuple<int, string, string, string>> tokens, Func<Scanner, string, ScanTokenResult> scanCall, bool subtractFromExpectedPosition = false, int subtractCount = 1)
+        private void CheckTokens(List<Tuple<int, string, string, string>> tokens,
+            Func<Scanner, string, ScanTokenResult> scanCall, bool subtractFromExpectedPosition = false,
+            int subtractCount = 1)
         {
             foreach (var pair in tokens)
             {

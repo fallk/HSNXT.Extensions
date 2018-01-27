@@ -6,25 +6,21 @@
 ///
 ///----------------------------------------------------------------------------
 ///
+
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HSNXT;
 
 namespace ExtensionOverflow.Tests
 {
-	public class DummyClass
-	{
-		public DummyClass()
-		{
+    public class DummyClass
+    {
+        public DummyClass()
+        {
+        }
 
-		}
-
-		public string Name
-		{
-			get;
-			set;
-		}
-	}
+        public string Name { get; set; }
+    }
 
     /// <summary>
     /// Dummy class for testing purposes with circular references thrown into the mix.
@@ -54,45 +50,45 @@ namespace ExtensionOverflow.Tests
     /// <summary>
     /// Tests System.Object extension methods.
     /// </summary>
-	[TestClass]
-	public class ClassExtensionTests
-	{
+    [TestClass]
+    public class ClassExtensionTests
+    {
         /// <summary>
         /// Provide information about current testing context.
         /// Required by MSTests.
         /// </summary>
         public TestContext TestContext { get; set; }
 
-		[TestMethod, ExpectedException(typeof(ArgumentNullException))]
-		public void ThrowIfArgumentIsNullOnDummyClass()
-		{
-			DummyClass sut = null;
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ThrowIfArgumentIsNullOnDummyClass()
+        {
+            DummyClass sut = null;
 
-			sut.ThrowIfArgumentIsNull("DummyClass");			
-		}
+            sut.ThrowIfArgumentIsNull("DummyClass");
+        }
 
-		[TestMethod]
-		public void ThrowIfArgumentIsNotNullOnDummyClass()
-		{
-			var sut = new DummyClass();
+        [TestMethod]
+        public void ThrowIfArgumentIsNotNullOnDummyClass()
+        {
+            var sut = new DummyClass();
 
-			sut.ThrowIfArgumentIsNull("DummyClass");
-		}
+            sut.ThrowIfArgumentIsNull("DummyClass");
+        }
 
-		[TestMethod, ExpectedException(typeof(ArgumentNullException))]
-		public void ThrowIfArgumentIsNullOnString()
-		{
-			string sut = null;
+        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        public void ThrowIfArgumentIsNullOnString()
+        {
+            string sut = null;
 
-			sut.ThrowIfArgumentIsNull("string");
-		}
+            sut.ThrowIfArgumentIsNull("string");
+        }
 
-		[TestMethod]
-		public void ThrowIfArgumentIsNotNullOnString()
-		{
-			var sut = "not null";
+        [TestMethod]
+        public void ThrowIfArgumentIsNotNullOnString()
+        {
+            var sut = "not null";
 
-			sut.ThrowIfArgumentIsNull("string");
-		}
-	}
+            sut.ThrowIfArgumentIsNull("string");
+        }
+    }
 }

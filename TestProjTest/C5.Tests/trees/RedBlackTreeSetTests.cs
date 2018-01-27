@@ -33,8 +33,8 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
     {
         [Test]
         public void TestEvents()
-        { 
-            Func<CollectionOfInt> factory = delegate () { return new CollectionOfInt(TenEqualityComparer.Default); };
+        {
+            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(TenEqualityComparer.Default); };
             new C5UnitTests.Templates.Events.SortedIndexedTester<CollectionOfInt>().Test(factory, MemoryType.Normal);
         }
 
@@ -48,7 +48,10 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
     static class Factory
     {
-        public static ICollection<T> New<T>() { return new TreeSet<T>(); }
+        public static ICollection<T> New<T>()
+        {
+            return new TreeSet<T>();
+        }
     }
 
 
@@ -57,15 +60,26 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
     {
         ICollection<int> coll;
         IFormatProvider rad16;
+
         [SetUp]
-        public void Init() { coll = Factory.New<int>(); rad16 = new RadixFormatProvider(16); }
+        public void Init()
+        {
+            coll = Factory.New<int>();
+            rad16 = new RadixFormatProvider(16);
+        }
+
         [TearDown]
-        public void Dispose() { coll = null; rad16 = null; }
+        public void Dispose()
+        {
+            coll = null;
+            rad16 = null;
+        }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("{  }", coll.ToString());
-            coll.AddAll(new int[] { -4, 28, 129, 65530 });
+            coll.AddAll(new int[] {-4, 28, 129, 65530});
             Assert.AreEqual("{ -4, 28, 129, 65530 }", coll.ToString());
             Assert.AreEqual("{ -4, 1C, 81, FFFA }", coll.ToString(null, rad16));
             Assert.AreEqual("{ -4, 28, 129... }", coll.ToString("L14", null));
@@ -89,7 +103,10 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
 
         [TearDown]
-        public void Dispose() { lst = null; }
+        public void Dispose()
+        {
+            lst = null;
+        }
 
 
         [Test]
@@ -215,7 +232,10 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         public void Enumerator2()
         {
             var e = tree.RangeFromTo(5, 17).GetEnumerator();
-            Assert.Throws<InvalidOperationException>(() => { var i = e.Current; });
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                var i = e.Current;
+            });
         }
 
 
@@ -226,27 +246,30 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
             while (e.MoveNext()) ;
 
-            Assert.Throws<InvalidOperationException>(() => { var i = e.Current; });
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                var i = e.Current;
+            });
         }
 
 
         [Test]
         public void Remove()
         {
-            var all = new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
+            var all = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
 
             tree.RemoveRangeFrom(18);
-            Assert.IsTrue(IC.eq(tree, new int[] { 2, 4, 6, 8, 10, 12, 14, 16 }));
+            Assert.IsTrue(IC.eq(tree, new int[] {2, 4, 6, 8, 10, 12, 14, 16}));
             tree.RemoveRangeFrom(28);
-            Assert.IsTrue(IC.eq(tree, new int[] { 2, 4, 6, 8, 10, 12, 14, 16 }));
+            Assert.IsTrue(IC.eq(tree, new int[] {2, 4, 6, 8, 10, 12, 14, 16}));
             tree.RemoveRangeFrom(2);
             Assert.IsTrue(IC.eq(tree));
             foreach (var i in all) tree.Add(i);
 
             tree.RemoveRangeTo(10);
-            Assert.IsTrue(IC.eq(tree, new int[] { 10, 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(tree, new int[] {10, 12, 14, 16, 18, 20}));
             tree.RemoveRangeTo(2);
-            Assert.IsTrue(IC.eq(tree, new int[] { 10, 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(tree, new int[] {10, 12, 14, 16, 18, 20}));
             tree.RemoveRangeTo(21);
             Assert.IsTrue(IC.eq(tree));
             foreach (var i in all) tree.Add(i);
@@ -264,63 +287,63 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         [Test]
         public void Normal()
         {
-            var all = new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
+            var all = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
 
             Assert.IsTrue(IC.eq(tree, all));
             Assert.IsTrue(IC.eq(tree.RangeAll(), all));
             Assert.AreEqual(10, tree.RangeAll().Count);
-            Assert.IsTrue(IC.eq(tree.RangeFrom(11), new int[] { 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(tree.RangeFrom(11), new int[] {12, 14, 16, 18, 20}));
             Assert.AreEqual(5, tree.RangeFrom(11).Count);
-            Assert.IsTrue(IC.eq(tree.RangeFrom(12), new int[] { 12, 14, 16, 18, 20 }));
+            Assert.IsTrue(IC.eq(tree.RangeFrom(12), new int[] {12, 14, 16, 18, 20}));
             Assert.IsTrue(IC.eq(tree.RangeFrom(2), all));
             Assert.IsTrue(IC.eq(tree.RangeFrom(1), all));
             Assert.IsTrue(IC.eq(tree.RangeFrom(21), new int[] { }));
-            Assert.IsTrue(IC.eq(tree.RangeFrom(20), new int[] { 20 }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(8), new int[] { 2, 4, 6 }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(7), new int[] { 2, 4, 6 }));
+            Assert.IsTrue(IC.eq(tree.RangeFrom(20), new int[] {20}));
+            Assert.IsTrue(IC.eq(tree.RangeTo(8), new int[] {2, 4, 6}));
+            Assert.IsTrue(IC.eq(tree.RangeTo(7), new int[] {2, 4, 6}));
             Assert.AreEqual(3, tree.RangeTo(7).Count);
             Assert.IsTrue(IC.eq(tree.RangeTo(2), new int[] { }));
             Assert.IsTrue(IC.eq(tree.RangeTo(1), new int[] { }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(3), new int[] { 2 }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(20), new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18 }));
+            Assert.IsTrue(IC.eq(tree.RangeTo(3), new int[] {2}));
+            Assert.IsTrue(IC.eq(tree.RangeTo(20), new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18}));
             Assert.IsTrue(IC.eq(tree.RangeTo(21), all));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(7, 12), new int[] { 8, 10 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 11), new int[] { 6, 8, 10 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(1, 12), new int[] { 2, 4, 6, 8, 10 }));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(7, 12), new int[] {8, 10}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 11), new int[] {6, 8, 10}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(1, 12), new int[] {2, 4, 6, 8, 10}));
             Assert.AreEqual(5, tree.RangeFromTo(1, 12).Count);
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(2, 12), new int[] { 2, 4, 6, 8, 10 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 21), new int[] { 6, 8, 10, 12, 14, 16, 18, 20 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 20), new int[] { 6, 8, 10, 12, 14, 16, 18 }));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(2, 12), new int[] {2, 4, 6, 8, 10}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 21), new int[] {6, 8, 10, 12, 14, 16, 18, 20}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 20), new int[] {6, 8, 10, 12, 14, 16, 18}));
         }
 
 
         [Test]
         public void Backwards()
         {
-            var all = new int[] { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
-            var lla = new int[] { 20, 18, 16, 14, 12, 10, 8, 6, 4, 2 };
+            var all = new int[] {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+            var lla = new int[] {20, 18, 16, 14, 12, 10, 8, 6, 4, 2};
 
             Assert.IsTrue(IC.eq(tree, all));
             Assert.IsTrue(IC.eq(tree.RangeAll().Backwards(), lla));
-            Assert.IsTrue(IC.eq(tree.RangeFrom(11).Backwards(), new int[] { 20, 18, 16, 14, 12 }));
-            Assert.IsTrue(IC.eq(tree.RangeFrom(12).Backwards(), new int[] { 20, 18, 16, 14, 12 }));
+            Assert.IsTrue(IC.eq(tree.RangeFrom(11).Backwards(), new int[] {20, 18, 16, 14, 12}));
+            Assert.IsTrue(IC.eq(tree.RangeFrom(12).Backwards(), new int[] {20, 18, 16, 14, 12}));
             Assert.IsTrue(IC.eq(tree.RangeFrom(2).Backwards(), lla));
             Assert.IsTrue(IC.eq(tree.RangeFrom(1).Backwards(), lla));
             Assert.IsTrue(IC.eq(tree.RangeFrom(21).Backwards(), new int[] { }));
-            Assert.IsTrue(IC.eq(tree.RangeFrom(20).Backwards(), new int[] { 20 }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(8).Backwards(), new int[] { 6, 4, 2 }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(7).Backwards(), new int[] { 6, 4, 2 }));
+            Assert.IsTrue(IC.eq(tree.RangeFrom(20).Backwards(), new int[] {20}));
+            Assert.IsTrue(IC.eq(tree.RangeTo(8).Backwards(), new int[] {6, 4, 2}));
+            Assert.IsTrue(IC.eq(tree.RangeTo(7).Backwards(), new int[] {6, 4, 2}));
             Assert.IsTrue(IC.eq(tree.RangeTo(2).Backwards(), new int[] { }));
             Assert.IsTrue(IC.eq(tree.RangeTo(1).Backwards(), new int[] { }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(3).Backwards(), new int[] { 2 }));
-            Assert.IsTrue(IC.eq(tree.RangeTo(20).Backwards(), new int[] { 18, 16, 14, 12, 10, 8, 6, 4, 2 }));
+            Assert.IsTrue(IC.eq(tree.RangeTo(3).Backwards(), new int[] {2}));
+            Assert.IsTrue(IC.eq(tree.RangeTo(20).Backwards(), new int[] {18, 16, 14, 12, 10, 8, 6, 4, 2}));
             Assert.IsTrue(IC.eq(tree.RangeTo(21).Backwards(), lla));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(7, 12).Backwards(), new int[] { 10, 8 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 11).Backwards(), new int[] { 10, 8, 6 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(1, 12).Backwards(), new int[] { 10, 8, 6, 4, 2 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(2, 12).Backwards(), new int[] { 10, 8, 6, 4, 2 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 21).Backwards(), new int[] { 20, 18, 16, 14, 12, 10, 8, 6 }));
-            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 20).Backwards(), new int[] { 18, 16, 14, 12, 10, 8, 6 }));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(7, 12).Backwards(), new int[] {10, 8}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 11).Backwards(), new int[] {10, 8, 6}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(1, 12).Backwards(), new int[] {10, 8, 6, 4, 2}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(2, 12).Backwards(), new int[] {10, 8, 6, 4, 2}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 21).Backwards(), new int[] {20, 18, 16, 14, 12, 10, 8, 6}));
+            Assert.IsTrue(IC.eq(tree.RangeFromTo(6, 20).Backwards(), new int[] {18, 16, 14, 12, 10, 8, 6}));
         }
 
         [Test]
@@ -516,20 +539,23 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         public void Init()
         {
             list = new TreeSet<int>(TenEqualityComparer.Default);
-            pred = delegate (int i) { return i % 5 == 0; };
+            pred = delegate(int i) { return i % 5 == 0; };
         }
 
         [TearDown]
-        public void Dispose() { list = null; }
+        public void Dispose()
+        {
+            list = null;
+        }
 
         [Test]
         public void Find()
         {
             int i;
             Assert.IsFalse(list.Find(pred, out i));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(list.Find(pred, out i));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.IsTrue(list.Find(pred, out i));
             Assert.AreEqual(45, i);
         }
@@ -539,9 +565,9 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         {
             int i;
             Assert.IsFalse(list.FindLast(pred, out i));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(list.FindLast(pred, out i));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.IsTrue(list.FindLast(pred, out i));
             Assert.AreEqual(675, i);
         }
@@ -550,9 +576,9 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         public void FindIndex()
         {
             Assert.IsFalse(0 <= list.FindIndex(pred));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(0 <= list.FindIndex(pred));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.AreEqual(3, list.FindIndex(pred));
         }
 
@@ -560,9 +586,9 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         public void FindLastIndex()
         {
             Assert.IsFalse(0 <= list.FindLastIndex(pred));
-            list.AddAll(new int[] { 4, 22, 67, 37 });
+            list.AddAll(new int[] {4, 22, 67, 37});
             Assert.IsFalse(0 <= list.FindLastIndex(pred));
-            list.AddAll(new int[] { 45, 122, 675, 137 });
+            list.AddAll(new int[] {45, 122, 675, 137});
             Assert.AreEqual(7, list.FindLastIndex(pred));
         }
     }
@@ -573,17 +599,23 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         private TreeSet<int> list;
 
         [SetUp]
-        public void Init() { list = new TreeSet<int>(); }
+        public void Init()
+        {
+            list = new TreeSet<int>();
+        }
 
         [TearDown]
-        public void Dispose() { list = null; }
+        public void Dispose()
+        {
+            list = null;
+        }
 
         [Test]
         public void Test()
         {
             Assert.IsTrue(IC.seteq(list.UniqueItems()));
             Assert.IsTrue(IC.seteq(list.ItemMultiplicities()));
-            list.AddAll(new int[] { 7, 9, 7 });
+            list.AddAll(new int[] {7, 9, 7});
             Assert.IsTrue(IC.seteq(list.UniqueItems(), 7, 9));
             Assert.IsTrue(IC.seteq(list.ItemMultiplicities(), 7, 1, 9, 1));
         }
@@ -608,7 +640,10 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
 
         [TearDown]
-        public void Dispose() { tree = null; }
+        public void Dispose()
+        {
+            tree = null;
+        }
 
 
         private string aeq(int[] a, params int[] b)
@@ -625,6 +660,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                     return string.Format("{0}'th elements differ: {1} != {2}", i, a[i], b[i]);
                 }
             }
+
             return "Alles klar";
         }
 
@@ -854,7 +890,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             tree = null;
         }
     }
-
 
 
     [TestFixture]
@@ -1102,7 +1137,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
         private void loadup()
         {
-            foreach (var i in new int[] { 1, 2, 3, 4 })
+            foreach (var i in new int[] {1, 2, 3, 4})
                 tree.Add(i);
         }
 
@@ -1423,7 +1458,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 for (var i = 0; i <= 20; i++)
                     tree.Add(2 * i + 1);
 
-                snap = (TreeSet<int>)tree.Snapshot();
+                snap = (TreeSet<int>) tree.Snapshot();
                 for (var i = 0; i <= 10; i++)
                     tree.Remove(4 * i + 1);
             }
@@ -1442,7 +1477,9 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             }
 
 
-            public void MoreCut() { }
+            public void MoreCut()
+            {
+            }
 
             [Test]
             public void Cut()
@@ -1657,9 +1694,9 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             [Test]
             public void EnumerationWithAdd()
             {
-                var orig = new int[] { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+                var orig = new int[] {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
                 var i = 0;
-                var snap = (TreeSet<int>)tree.Snapshot();
+                var snap = (TreeSet<int>) tree.Snapshot();
 
                 foreach (var j in snap)
                 {
@@ -1675,8 +1712,8 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             [Test]
             public void Remove()
             {
-                var orig = new int[] { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                var snap = (TreeSet<int>)tree.Snapshot();
+                var orig = new int[] {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+                var snap = (TreeSet<int>) tree.Snapshot();
 
                 Assert.IsTrue(snap.Check("Snap"), "Bad snap!");
                 Assert.IsTrue(IC.eq(snap, orig), "Snap was changed!");
@@ -1697,8 +1734,8 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                     tree.Add(i + 10);
                 }
 
-                var orig = new int[] { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
-                var snap = (TreeSet<int>)tree.Snapshot();
+                var orig = new int[] {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29};
+                var snap = (TreeSet<int>) tree.Snapshot();
 
                 Assert.IsFalse(tree.Remove(-20));
                 Assert.IsTrue(snap.Check("Snap"), "Bad snap!");
@@ -1795,8 +1832,8 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             [Test]
             public void Add()
             {
-                var orig = new int[] { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                var snap = (TreeSet<int>)tree.Snapshot();
+                var orig = new int[] {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+                var snap = (TreeSet<int>) tree.Snapshot();
 
                 Assert.IsTrue(snap.Check("M"), "Bad snap!");
                 Assert.IsTrue(IC.eq(snap, orig), "Snap was changed!");
@@ -1833,8 +1870,8 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             [Test]
             public void Clear()
             {
-                var orig = new int[] { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-                var snap = (TreeSet<int>)tree.Snapshot();
+                var orig = new int[] {1, 3, 5, 7, 9, 11, 13, 15, 17, 19};
+                var snap = (TreeSet<int>) tree.Snapshot();
 
                 tree.Clear();
                 Assert.IsTrue(snap.Check("Snap"), "Bad snap!");
@@ -1847,7 +1884,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             [Test]
             public void SnapSnap()
             {
-                var snap = (TreeSet<int>)tree.Snapshot();
+                var snap = (TreeSet<int>) tree.Snapshot();
 
                 var exception = Assert.Throws<InvalidOperationException>(() => snap.Snapshot());
                 Assert.AreEqual("Cannot snapshot a snapshot", exception.Message);
@@ -1895,7 +1932,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
                 for (var i = 0; i < 10; i++)
                 {
-                    snaps[i] = (TreeSet<int>)(tree.Snapshot());
+                    snaps[i] = (TreeSet<int>) (tree.Snapshot());
                     tree.Add(2 * i);
                 }
 
@@ -1910,9 +1947,9 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 snaps[8].Dispose();
                 tree.Remove(14);
 
-                var res = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19 };
-                var snap7 = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19 };
-                var snap3 = new int[] { 0, 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 17, 19 };
+                var res = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19};
+                var snap7 = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19};
+                var snap3 = new int[] {0, 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 17, 19};
 
                 Assert.IsTrue(IC.eq(snaps[3], snap3), "Snap 3 was changed!");
                 Assert.IsTrue(IC.eq(snaps[7], snap7), "Snap 7 was changed!");
@@ -1930,7 +1967,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
                 for (var i = 0; i < 10; i++)
                 {
-                    snaps[i] = (TreeSet<int>)(tree.Snapshot());
+                    snaps[i] = (TreeSet<int>) (tree.Snapshot());
                     tree.Add(2 * i);
                 }
 
@@ -1946,8 +1983,8 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 GC.Collect();
                 snaps[8].Dispose();
 
-                var snap7 = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19 };
-                var snap3 = new int[] { 0, 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 17, 19 };
+                var snap7 = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 19};
+                var snap3 = new int[] {0, 1, 2, 3, 4, 5, 7, 9, 11, 13, 15, 17, 19};
 
                 Assert.IsTrue(IC.eq(snaps[3], snap3), "Snap 3 was changed!");
                 Assert.IsTrue(IC.eq(snaps[7], snap7), "Snap 7 was changed!");
@@ -1966,8 +2003,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
     }
 
 
-
-
     namespace HigherOrder
     {
         internal class CubeRoot : IComparable<int>
@@ -1975,13 +2010,22 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             private int c;
 
 
-            internal CubeRoot(int c) { this.c = c; }
+            internal CubeRoot(int c)
+            {
+                this.c = c;
+            }
 
 
-            public int CompareTo(int that) { return c - that * that * that; }
-            public bool Equals(int that) { return c == that * that * that; }
+            public int CompareTo(int that)
+            {
+                return c - that * that * that;
+            }
+
+            public bool Equals(int that)
+            {
+                return c == that * that * that;
+            }
         }
-
 
 
         class Interval : IComparable<int>
@@ -1989,13 +2033,24 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             private int b, t;
 
 
-            internal Interval(int b, int t) { this.b = b; this.t = t; }
+            internal Interval(int b, int t)
+            {
+                this.b = b;
+                this.t = t;
+            }
 
 
-            public int CompareTo(int that) { return that < b ? 1 : that > t ? -1 : 0; }
-            public bool Equals(int that) { return that >= b && that <= t; }
+            public int CompareTo(int that)
+            {
+                return that < b ? 1 :
+                    that > t ? -1 : 0;
+            }
+
+            public bool Equals(int that)
+            {
+                return that >= b && that <= t;
+            }
         }
-
 
 
         [TestFixture]
@@ -2014,19 +2069,34 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             }
 
 
-            private bool never(int i) { return false; }
+            private bool never(int i)
+            {
+                return false;
+            }
 
 
-            private bool always(int i) { return true; }
+            private bool always(int i)
+            {
+                return true;
+            }
 
 
-            private bool even(int i) { return i % 2 == 0; }
+            private bool even(int i)
+            {
+                return i % 2 == 0;
+            }
 
 
-            private string themap(int i) { return string.Format("AA {0,4} BB", i); }
+            private string themap(int i)
+            {
+                return string.Format("AA {0,4} BB", i);
+            }
 
 
-            private string badmap(int i) { return string.Format("AA {0} BB", i); }
+            private string badmap(int i)
+            {
+                return string.Format("AA {0} BB", i);
+            }
 
 
             private int appfield1;
@@ -2034,7 +2104,11 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             private int appfield2;
 
 
-            private void apply(int i) { appfield1++; appfield2 += i * i; }
+            private void apply(int i)
+            {
+                appfield1++;
+                appfield2 += i * i;
+            }
 
 
             [Test]
@@ -2118,7 +2192,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 Assert.AreEqual(0, tree.FindAll(new Func<int, bool>(never)).Count);
                 Assert.AreEqual(10, tree.FindAll(new Func<int, bool>(always)).Count);
                 Assert.AreEqual(5, tree.FindAll(new Func<int, bool>(even)).Count);
-                Assert.IsTrue(((TreeSet<int>)tree.FindAll(new Func<int, bool>(even))).Check("R"));
+                Assert.IsTrue(((TreeSet<int>) tree.FindAll(new Func<int, bool>(even))).Check("R"));
             }
 
 
@@ -2131,7 +2205,7 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
                 var res = tree.Map(new Func<int, string>(themap), new SC());
 
-                Assert.IsTrue(((TreeSet<string>)res).Check("R"));
+                Assert.IsTrue(((TreeSet<string>) res).Check("R"));
                 Assert.AreEqual(11, res.Count);
                 Assert.AreEqual("AA    0 BB", res[0]);
                 Assert.AreEqual("AA   27 BB", res[3]);
@@ -2250,11 +2324,13 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
 
             [TearDown]
-            public void Dispose() { ic = null; tree = null; }
+            public void Dispose()
+            {
+                ic = null;
+                tree = null;
+            }
         }
     }
-
-
 
 
     namespace MultiOps
@@ -2262,14 +2338,20 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         [TestFixture]
         public class AddAll
         {
-            private int sqr(int i) { return i * i; }
+            private int sqr(int i)
+            {
+                return i * i;
+            }
 
 
             TreeSet<int> tree;
 
 
             [SetUp]
-            public void Init() { tree = new TreeSet<int>(new IC()); }
+            public void Init()
+            {
+                tree = new TreeSet<int>(new IC());
+            }
 
 
             [Test]
@@ -2318,25 +2400,36 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
 
             [TearDown]
-            public void Dispose() { tree = null; }
+            public void Dispose()
+            {
+                tree = null;
+            }
         }
-
 
 
         [TestFixture]
         public class AddSorted
         {
-            private int sqr(int i) { return i * i; }
+            private int sqr(int i)
+            {
+                return i * i;
+            }
 
 
-            private int bad(int i) { return i * (5 - i); }
+            private int bad(int i)
+            {
+                return i * (5 - i);
+            }
 
 
             TreeSet<int> tree;
 
 
             [SetUp]
-            public void Init() { tree = new TreeSet<int>(new IC()); }
+            public void Init()
+            {
+                tree = new TreeSet<int>(new IC());
+            }
 
 
             [Test]
@@ -2346,7 +2439,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 Assert.AreEqual(0, tree.Count);
                 Assert.IsTrue(tree.Check());
             }
-
 
 
             [Test]
@@ -2360,7 +2452,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             }
 
 
-
             [Test]
             public void EmptySome()
             {
@@ -2372,7 +2463,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 Assert.AreEqual(4, tree[2]);
                 Assert.AreEqual(9, tree[3]);
             }
-
 
 
             [Test]
@@ -2389,13 +2479,18 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             [Test]
             public void EmptyBad()
             {
-                var exception = Assert.Throws<ArgumentException>(() => tree.AddSorted(new FunEnumerable(9, new Func<int, int>(bad))));
+                var exception =
+                    Assert.Throws<ArgumentException>(
+                        () => tree.AddSorted(new FunEnumerable(9, new Func<int, int>(bad))));
                 Assert.AreEqual("Argument not sorted", exception.Message);
             }
 
 
             [TearDown]
-            public void Dispose() { tree = null; }
+            public void Dispose()
+            {
+                tree = null;
+            }
         }
 
         [TestFixture]
@@ -2569,11 +2664,13 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             }
 
             [TearDown]
-            public void Dispose() { tree = null; tree2 = null; }
+            public void Dispose()
+            {
+                tree = null;
+                tree2 = null;
+            }
         }
     }
-
-
 
 
     namespace Sync
@@ -2641,7 +2738,10 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
 
             [SetUp]
-            public void Init() { tree = new TreeSet<int>(new IC()); }
+            public void Init()
+            {
+                tree = new TreeSet<int>(new IC());
+            }
 
 
             private void unsafe1()
@@ -2689,9 +2789,11 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
 
 
             [TearDown]
-            public void Dispose() { tree = null; }
+            public void Dispose()
+            {
+                tree = null;
+            }
         }
-
 
 
         //[TestFixture]
@@ -2713,7 +2815,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
             }
 
 
-
             class A
             {
                 public int count = 0;
@@ -2721,16 +2822,23 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 TreeSet<int> t;
 
 
-                public A(TreeSet<int> t) { this.t = t; }
+                public A(TreeSet<int> t)
+                {
+                    this.t = t;
+                }
 
 
-                public void a(int i) { count++; }
+                public void a(int i)
+                {
+                    count++;
+                }
 
 
-                public void traverse() { t.Apply(new Action<int>(a)); }
+                public void traverse()
+                {
+                    t.Apply(new Action<int>(a));
+                }
             }
-
-
 
 
             [Test]
@@ -2760,16 +2868,16 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                     t[i].Join();
                 for (var i = 0; i < 10; i++)
                     Assert.AreEqual(sz, a[i].count);
-
             }
 
 
             [TearDown]
-            public void Dispose() { tree = null; }
+            public void Dispose()
+            {
+                tree = null;
+            }
         }
     }
-
-
 
 
     namespace Hashing
@@ -2869,7 +2977,6 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
         }
 
 
-
         [TestFixture]
         public class IEditableCollection
         {
@@ -2964,6 +3071,5 @@ namespace HSNXT.C5UnitTests.trees.TreeSet
                 dut = null;
             }
         }
-
     }
 }

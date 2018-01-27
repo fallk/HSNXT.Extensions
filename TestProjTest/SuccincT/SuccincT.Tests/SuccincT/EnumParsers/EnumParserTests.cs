@@ -44,12 +44,16 @@ namespace HSNXT.SuccincTTests.SuccincT.EnumParsers
         }
 
         [Test]
-        public void ParsingNonEnum_ResultsInException() => Throws< ArgumentException>(() => "2".TryParseEnum<int>());
+        public void ParsingNonEnum_ResultsInException() => Throws<ArgumentException>(() => "2".TryParseEnum<int>());
 
         [Test]
         public void ParsingWithCaseIgnoreNonEnum_ResultsInException() =>
             Throws<ArgumentException>(() => "1".TryParseEnumIgnoringCase<int>());
 
-        private enum TestEnum { Value1, Value2 }
+        private enum TestEnum
+        {
+            Value1,
+            Value2
+        }
     }
 }

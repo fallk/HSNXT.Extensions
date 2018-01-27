@@ -30,9 +30,9 @@ namespace BigMath.Tests
             return str.HexToBytes();
         }
 
-        [TestCase(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 0, 3, ExpectedResult = "010203")]
-        [TestCase(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 2, 3, ExpectedResult = "030405")]
-        [TestCase(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 6, 3, ExpectedResult = "070809")]
+        [TestCase(new byte[] {1, 2, 3, 4, 5, 6, 7, 8, 9}, 0, 3, ExpectedResult = "010203")]
+        [TestCase(new byte[] {1, 2, 3, 4, 5, 6, 7, 8, 9}, 2, 3, ExpectedResult = "030405")]
+        [TestCase(new byte[] {1, 2, 3, 4, 5, 6, 7, 8, 9}, 6, 3, ExpectedResult = "070809")]
         public string Shoudl_convert_bytes_array_segment_to_hex_string(byte[] bytes, int offset, int count)
         {
             return new ArraySegment<byte>(bytes, offset, count).ToHexString();
@@ -40,12 +40,20 @@ namespace BigMath.Tests
 
         private static IEnumerable HexStringToByteArrayTestCases
         {
-            get { return GetHexStringToByteArrayTestCasesData.Select(hexBytes => new TestCaseData(hexBytes.Hex).SetCategory(hexBytes.Hex).Returns(hexBytes.Bytes)); }
+            get
+            {
+                return GetHexStringToByteArrayTestCasesData.Select(hexBytes =>
+                    new TestCaseData(hexBytes.Hex).SetCategory(hexBytes.Hex).Returns(hexBytes.Bytes));
+            }
         }
 
         private static IEnumerable ByteArrayToHexStringTestCases
         {
-            get { return GetByteArrayToHexStringTestCasesData.Select(hexBytes => new TestCaseData(hexBytes).Returns(hexBytes.Hex)); }
+            get
+            {
+                return GetByteArrayToHexStringTestCasesData.Select(hexBytes =>
+                    new TestCaseData(hexBytes).Returns(hexBytes.Hex));
+            }
         }
 
         private static IEnumerable<HexBytes> GetByteArrayToHexStringTestCasesData
@@ -65,9 +73,12 @@ namespace BigMath.Tests
                 yield return new HexBytes("0000DAF2F", new byte[] {0x0D, 0xAF, 0x2F}, min: 9, trimZeros: true);
                 yield return new HexBytes("DAF2F", new byte[] {0x0D, 0xAF, 0x2F}, min: 1, trimZeros: true);
                 yield return
-                    new HexBytes("000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F", Enumerable.Range(1, 31).Select(i => (byte) i).ToArray(), true, 64);
-                yield return new HexBytes("000102030405060708090A0B0C0D0E0F", Enumerable.Range(1, 15).Select(i => (byte) i).ToArray(), true, 32);
-                yield return new HexBytes("00 01 02 03 04 05 06 07 08 09", Enumerable.Range(1, 9).Select(i => (byte) i).ToArray(), true, 20, true);
+                    new HexBytes("000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
+                        Enumerable.Range(1, 31).Select(i => (byte) i).ToArray(), true, 64);
+                yield return new HexBytes("000102030405060708090A0B0C0D0E0F",
+                    Enumerable.Range(1, 15).Select(i => (byte) i).ToArray(), true, 32);
+                yield return new HexBytes("00 01 02 03 04 05 06 07 08 09",
+                    Enumerable.Range(1, 9).Select(i => (byte) i).ToArray(), true, 20, true);
             }
         }
 
@@ -82,10 +93,14 @@ namespace BigMath.Tests
                 yield return new HexBytes("0x0000", new byte[] {0, 0});
                 yield return new HexBytes("0x00000", new byte[] {0, 0, 0});
                 yield return new HexBytes("0x000000", new byte[] {0, 0, 0});
-                yield return new HexBytes("0x010203040506070809", Enumerable.Range(1, 9).Select(i => (byte) i).ToArray());
-                yield return new HexBytes("0x0102030405060708090A0B0C0D0E0F", Enumerable.Range(1, 15).Select(i => (byte) i).ToArray());
-                yield return new HexBytes("0x0102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F", Enumerable.Range(1, 31).Select(i => (byte) i).ToArray());
-                yield return new HexBytes("0x102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F", Enumerable.Range(1, 31).Select(i => (byte) i).ToArray());
+                yield return new HexBytes("0x010203040506070809",
+                    Enumerable.Range(1, 9).Select(i => (byte) i).ToArray());
+                yield return new HexBytes("0x0102030405060708090A0B0C0D0E0F",
+                    Enumerable.Range(1, 15).Select(i => (byte) i).ToArray());
+                yield return new HexBytes("0x0102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
+                    Enumerable.Range(1, 31).Select(i => (byte) i).ToArray());
+                yield return new HexBytes("0x102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F",
+                    Enumerable.Range(1, 31).Select(i => (byte) i).ToArray());
                 yield return new HexBytes("0xc6aeda78b0", new byte[] {0xC6, 0xAE, 0xDA, 0x78, 0xB0});
                 yield return new HexBytes("c6aeda78b0", new byte[] {0xC6, 0xAE, 0xDA, 0x78, 0xB0});
                 yield return new HexBytes("0xc6aeda78b", new byte[] {0x0c, 0x6A, 0xED, 0xA7, 0x8B});
@@ -103,7 +118,8 @@ namespace BigMath.Tests
 
         public class HexBytes
         {
-            public HexBytes(string hex, byte[] bytes, bool caps = true, int min = 0, bool spaceEveryByte = false, bool trimZeros = false)
+            public HexBytes(string hex, byte[] bytes, bool caps = true, int min = 0, bool spaceEveryByte = false,
+                bool trimZeros = false)
             {
                 Hex = hex;
                 Bytes = bytes;

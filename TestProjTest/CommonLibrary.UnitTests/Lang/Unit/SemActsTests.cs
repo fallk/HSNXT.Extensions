@@ -10,7 +10,6 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
     [TestFixture]
     public class SemActs_Tests
     {
-
         [Test]
         public void Can_Validate_Division_By_Zero()
         {
@@ -22,7 +21,7 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
             var a = new VariableExpr("a");
             a.Ref = new ScriptRef("", 1, 1);
             a.SymScope = symScope.Current;
-            
+
             var zero = new ConstantExpr(0);
             zero.Ref = new ScriptRef("", 1, 5);
             zero.SymScope = symScope.Current;
@@ -48,12 +47,12 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
         {
             var symScope = new Symbols();
             symScope.DefineVariable("result");
-            
+
             var semacts = new SemActs();
             var a = new VariableExpr("a");
             a.Ref = new ScriptRef("", 1, 1);
             a.SymScope = symScope.Current;
-            
+
             var zero = new ConstantExpr(2);
             zero.Ref = new ScriptRef("", 1, 5);
             zero.SymScope = symScope.Current;

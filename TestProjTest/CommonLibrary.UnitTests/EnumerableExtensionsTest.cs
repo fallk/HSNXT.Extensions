@@ -18,7 +18,7 @@ namespace CommonLibrary.Tests
             var empty = new List<int>();
             Assert.IsTrue(empty.IsEmpty(), "Empty list should be empty");
             // List is not empty
-            var notEmpty = new List<int> { 12, 1, 5 };
+            var notEmpty = new List<int> {12, 1, 5};
             Assert.IsFalse(notEmpty.IsEmpty(), "Not empty list should not be empty");
         }
 
@@ -34,7 +34,7 @@ namespace CommonLibrary.Tests
             Assert.IsTrue(empty.IsNullOrEmpty(), "Empty list should be empty");
 
             // List is not empty
-            var notEmpty = new List<int> { 12, 1, 5 };
+            var notEmpty = new List<int> {12, 1, 5};
             Assert.IsFalse(notEmpty.IsNullOrEmpty(), "Not empty list should not be empty");
 
             // List is null

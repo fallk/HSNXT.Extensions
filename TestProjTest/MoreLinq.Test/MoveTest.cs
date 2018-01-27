@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2017 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 using System.Linq;
@@ -29,21 +31,21 @@ namespace HSNXT.Test
         public void MoveWithNegativeFromIndex()
         {
             AssertThrowsArgument.OutOfRangeException("fromIndex", () =>
-                new[] { 1 }.Move(-1, 0, 0));
+                new[] {1}.Move(-1, 0, 0));
         }
 
         [Test]
         public void MoveWithNegativeCount()
         {
             AssertThrowsArgument.OutOfRangeException("count", () =>
-                new[] { 1 }.Move(0, -1, 0));
+                new[] {1}.Move(0, -1, 0));
         }
 
         [Test]
         public void MoveWithNegativeToIndex()
         {
             AssertThrowsArgument.OutOfRangeException("toIndex", () =>
-                new[] { 1 }.Move(0, 0, -1));
+                new[] {1}.Move(0, 0, -1));
         }
 
         [Test]
@@ -73,8 +75,8 @@ namespace HSNXT.Test
             const int length = 10;
 
             return from index in Enumerable.Range(0, length)
-                   from count in Enumerable.Range(0, length + 1)
-                   select new TestCaseData(length, index, count, index);
+                from count in Enumerable.Range(0, length + 1)
+                select new TestCaseData(length, index, count, index);
         }
 
         [TestCaseSource(nameof(MoveWithSequenceShorterThanToIndexSource))]
@@ -96,7 +98,7 @@ namespace HSNXT.Test
             const int length = 10;
 
             return Enumerable.Range(length, length + 5)
-                             .Select(toIndex => new TestCaseData(length, 5, 2, toIndex));
+                .Select(toIndex => new TestCaseData(length, 5, 2, toIndex));
         }
 
         [Test]
@@ -104,7 +106,7 @@ namespace HSNXT.Test
         {
             var source = Enumerable.Range(0, 10);
             var result = source.Move(5, 999, 5);
-            
+
             Assert.That(source, Is.SameAs(result));
         }
 
@@ -113,7 +115,7 @@ namespace HSNXT.Test
         {
             var source = Enumerable.Range(0, 10);
             var result = source.Move(5, 0, 999);
-            
+
             Assert.That(source, Is.SameAs(result));
         }
     }

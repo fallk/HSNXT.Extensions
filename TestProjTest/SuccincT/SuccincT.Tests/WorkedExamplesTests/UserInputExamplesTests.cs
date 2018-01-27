@@ -12,8 +12,8 @@ namespace HSNXT.SuccincTTests.WorkedExamplesTests
     internal class UserInputExamplesTests
     {
         private static readonly Func<Action, Action, Func<string>, Option<int>> GetNumberBetween0And10Max2Times =
-           Func<Action, Action, Func<string>, int, int, int, Option<int>>(UserInputExamples.GetNumberFromUser)
-            .TailApply(2).TailApply(10).TailApply(0);
+            Func<Action, Action, Func<string>, int, int, int, Option<int>>(UserInputExamples.GetNumberFromUser)
+                .TailApply(2).TailApply(10).TailApply(0);
 
         [Test]
         public void ProvidingValidValue1stTime_CallsAskAndGetValueAndReturnsValue()
@@ -21,8 +21,8 @@ namespace HSNXT.SuccincTTests.WorkedExamplesTests
             var askedCalled = false;
             var reAskCalled = false;
             var result = GetNumberBetween0And10Max2Times(() => askedCalled = true,
-                                                         () => reAskCalled = true,
-                                                         () => "10");
+                () => reAskCalled = true,
+                () => "10");
             IsTrue(askedCalled);
             IsFalse(reAskCalled);
             AreEqual(10, result.Value);
@@ -33,11 +33,11 @@ namespace HSNXT.SuccincTTests.WorkedExamplesTests
         {
             var askedCalled = false;
             var reAskCalled = false;
-            var responses = new[] { "-1", "9" };
+            var responses = new[] {"-1", "9"};
             var index = 0;
             var result = GetNumberBetween0And10Max2Times(() => askedCalled = true,
-                                                () => reAskCalled = true,
-                                                () => responses[index++]);
+                () => reAskCalled = true,
+                () => responses[index++]);
             IsTrue(askedCalled);
             IsTrue(reAskCalled);
             AreEqual(9, result.Value);
@@ -48,11 +48,11 @@ namespace HSNXT.SuccincTTests.WorkedExamplesTests
         {
             var askedCalled = false;
             var reAskCalled = false;
-            var responses = new[] { "-1", "11", "5" };
+            var responses = new[] {"-1", "11", "5"};
             var index = 0;
             var result = GetNumberBetween0And10Max2Times(() => askedCalled = true,
-                                                () => reAskCalled = true,
-                                                () => responses[index++]);
+                () => reAskCalled = true,
+                () => responses[index++]);
             IsTrue(askedCalled);
             IsTrue(reAskCalled);
             IsFalse(result.HasValue);

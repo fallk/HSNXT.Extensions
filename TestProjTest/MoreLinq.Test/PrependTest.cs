@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 using System.Linq;
@@ -28,7 +30,7 @@ namespace HSNXT.Test
         [Test]
         public void PrependWithNonEmptyTailSequence()
         {
-            string[] tail = { "second", "third" };
+            string[] tail = {"second", "third"};
             var head = "first";
             var whole = tail.Prepend(head);
             whole.AssertSequenceEqual("first", "second", "third");
@@ -66,15 +68,15 @@ namespace HSNXT.Test
             }
             into e
             select new TestCaseData(e.Head,
-                                    e.Tail).SetName("Head = [" + string.Join(", ", e.Head) + "], " +
-                                                    "Tail = [" + string.Join(", ", e.Tail) + "]");
+                e.Tail).SetName("Head = [" + string.Join(", ", e.Head) + "], " +
+                                "Tail = [" + string.Join(", ", e.Tail) + "]");
 
         [Test]
         public void PrependWithSharedSource()
         {
-            var first  = new [] { 1 }.Prepend(2);
+            var first = new[] {1}.Prepend(2);
             var second = first.Prepend(3).Prepend(4);
-            var third  = first.Prepend(4).Prepend(8);
+            var third = first.Prepend(4).Prepend(8);
 
             second.AssertSequenceEqual(4, 3, 2, 1);
             third.AssertSequenceEqual(8, 4, 2, 1);

@@ -5,11 +5,13 @@ namespace XunitShould.Sdk
 {
     internal class ExceptionComparer : IEqualityComparer<Exception>
     {
-        public bool Equals(Exception x, Exception y) {
+        public bool Equals(Exception x, Exception y)
+        {
             return (x.GetType() == y.GetType()) && (x.Message == y.Message);
         }
 
-        public int GetHashCode(Exception obj) {
+        public int GetHashCode(Exception obj)
+        {
             return obj.GetHashCode();
         }
 

@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.FuncExtensions
 {
-
     public class AsActionTests
     {
         [Fact]
@@ -42,6 +42,5 @@ namespace BCLExtensions.Tests.FuncExtensions
         {
             return 42;
         }
-
     }
 }

@@ -171,7 +171,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void TenParamActionLambda_CanBeTypedAndRun()
         {
             var result = -1;
-            var func = Lambda<int>((q, r, s, t, u, v, w, x, y, z) => { result = q + r + s + t + u + v + w + x + y + z; });
+            var func = Lambda<int>(
+                (q, r, s, t, u, v, w, x, y, z) => { result = q + r + s + t + u + v + w + x + y + z; });
             func(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
             Assert.AreEqual(55, result);
         }

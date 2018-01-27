@@ -22,7 +22,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void WhenObjectIsNull_ToOptionReturnsNone()
         {
-            var opt = ((object)null).ToOption();
+            var opt = ((object) null).ToOption();
             Assert.IsNotNull(opt);
             Assert.IsFalse(opt.HasValue);
         }

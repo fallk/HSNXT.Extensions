@@ -98,6 +98,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
             Success<int> failure = 1;
             AreEqual(1, failure.Failure);
         }
+
         [Test]
         public void WhenFailure_DecomposeReturnsFalseAndError()
         {
@@ -147,10 +148,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
             var success = Success.CreateFailure(2);
             var result = 0;
             success.Match()
-                   .Error().Of(1).Do(x => result = 1)
-                   .Success().Do(() => result = 0)
-                   .Else(f => result = f.Failure)
-                   .Exec();
+                .Error().Of(1).Do(x => result = 1)
+                .Success().Do(() => result = 0)
+                .Else(f => result = f.Failure)
+                .Exec();
             AreEqual(2, result);
         }
 
@@ -168,10 +169,10 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var success = Success.CreateFailure(2);
             var result = success.Match<int>()
-                                .Error().Of(1).Do(x => 1)
-                                .Success().Do(() => 0)
-                                .Else(o => o.Failure)
-                                .Result();
+                .Error().Of(1).Do(x => 1)
+                .Success().Do(() => 0)
+                .Else(o => o.Failure)
+                .Result();
             AreEqual(2, result);
         }
 

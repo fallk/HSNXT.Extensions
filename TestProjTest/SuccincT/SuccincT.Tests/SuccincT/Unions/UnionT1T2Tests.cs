@@ -208,7 +208,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         {
             var union = new Union<int, string>("2");
             var result = union.Match<int>()
-                              .Case1().Do(0).Case2().Where(x => x == "2").Do(2).Case2().Of("1").Do(1).Result();
+                .Case1().Do(0).Case2().Where(x => x == "2").Do(2).Case2().Of("1").Do(1).Result();
             AreEqual(2, result);
         }
     }

@@ -14,18 +14,22 @@ namespace HSNXT.Test
         /// Called when the the enumerator is about to be disposed.
         /// </summary>
         IVerifiableEnumerable<T> WhenDisposed(Action<IEnumerable<T>> action);
+
         /// <summary>
         /// Called when GetEnumerator() is called on the sequence.
         /// </summary>
         IVerifiableEnumerable<T> WhenEnumerated(Action<IEnumerable<T>> action);
+
         /// <summary>
         /// Called when MoveNext() is called on any enumerator for this sequence.
         /// </summary>
         IVerifiableEnumerable<T> WhenMoveNext(Action<IEnumerable<T>> action);
+
         /// <summary>
         /// Called when Reset() is called on any enumerator for this sequence.
         /// </summary>
         IVerifiableEnumerable<T> WhenReset(Action<IEnumerable<T>> action);
+
         /// <summary>
         /// Called when the Current property is accessed on any enumerator for this sequence.
         /// </summary>

@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,9 @@ namespace HSNXT.Z.Xml.Linq.Test
         {
             // Variables
             XDocument xDocument = null;
-            using (var ms = new MemoryStream(Encoding.Default.GetBytes("<z:test xmlns:z=\"http://www.w3.org/TR/html4/\"><z:test2 /></z:test>")))
+            using (var ms =
+                new MemoryStream(
+                    Encoding.Default.GetBytes("<z:test xmlns:z=\"http://www.w3.org/TR/html4/\"><z:test2 /></z:test>")))
             {
                 xDocument = XDocument.Load(ms);
             }

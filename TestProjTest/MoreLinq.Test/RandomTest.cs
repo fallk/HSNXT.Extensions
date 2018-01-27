@@ -21,7 +21,7 @@ namespace HSNXT.Test
             const int maxValue = -10;
             Assert.Less(maxValue, 0);
 
-            AssertThrowsArgument.OutOfRangeException("maxValue",() =>
+            AssertThrowsArgument.OutOfRangeException("maxValue", () =>
                 Extensions.Random(maxValue));
         }
 
@@ -37,7 +37,7 @@ namespace HSNXT.Test
 
             Assert.Greater(minValue, maxValue);
 
-            AssertThrowsArgument.OutOfRangeException("minValue",() =>
+            AssertThrowsArgument.OutOfRangeException("minValue", () =>
                 Extensions.Random(minValue, maxValue));
         }
 

@@ -54,22 +54,64 @@ namespace HSNXT.ComLib.Lang.Tests.Common
 
 
         // Props
-        public static double   KProp1 { get { return _kprop1; } set { _kprop1 = value; } }
-        public static string   KProp2 { get { return _kprop2; } set { _kprop2 = value; } }
-        public static bool     KProp3 { get { return _kprop3; } set { _kprop3 = value; } }
-        public static DateTime KProp4 { get { return _kprop4; } set { _kprop4 = value; } }
-        public static TimeSpan KProp5 { get { return _kprop5; } set { _kprop5 = value; } }
+        public static double KProp1
+        {
+            get { return _kprop1; }
+            set { _kprop1 = value; }
+        }
+
+        public static string KProp2
+        {
+            get { return _kprop2; }
+            set { _kprop2 = value; }
+        }
+
+        public static bool KProp3
+        {
+            get { return _kprop3; }
+            set { _kprop3 = value; }
+        }
+
+        public static DateTime KProp4
+        {
+            get { return _kprop4; }
+            set { _kprop4 = value; }
+        }
+
+        public static TimeSpan KProp5
+        {
+            get { return _kprop5; }
+            set { _kprop5 = value; }
+        }
 
 
         // Methods
-        public static double   KMethod1(double a, string b, bool c, DateTime d) { return a; }
-        public static string   KMethod2(double a, string b, bool c, DateTime d) { return b; }
-        public static bool     KMethod3(double a, string b, bool c, DateTime d) { return c; }
-        public static DateTime KMethod4(double a, string b, bool c, DateTime d) { return d; }
-        public static TimeSpan KMethod5(double a, string b, bool c, DateTime d, TimeSpan e) { return e; }
+        public static double KMethod1(double a, string b, bool c, DateTime d)
+        {
+            return a;
+        }
+
+        public static string KMethod2(double a, string b, bool c, DateTime d)
+        {
+            return b;
+        }
+
+        public static bool KMethod3(double a, string b, bool c, DateTime d)
+        {
+            return c;
+        }
+
+        public static DateTime KMethod4(double a, string b, bool c, DateTime d)
+        {
+            return d;
+        }
+
+        public static TimeSpan KMethod5(double a, string b, bool c, DateTime d, TimeSpan e)
+        {
+            return e;
+        }
         // END STATIC 
         // ----------------------------------------------------------------------------------
-
 
 
         // START INSTANCE
@@ -82,19 +124,62 @@ namespace HSNXT.ComLib.Lang.Tests.Common
 
 
         // Props
-        public double   Prop1 { get { return _prop1; } set { _prop1 = value; } }
-        public string   Prop2 { get { return _prop2; } set { _prop2 = value; } }
-        public bool     Prop3 { get { return _prop3; } set { _prop3 = value; } }
-        public DateTime Prop4 { get { return _prop4; } set { _prop4 = value; } }
-        public TimeSpan Prop5 { get { return _prop5; } set { _prop5 = value; } }
+        public double Prop1
+        {
+            get { return _prop1; }
+            set { _prop1 = value; }
+        }
+
+        public string Prop2
+        {
+            get { return _prop2; }
+            set { _prop2 = value; }
+        }
+
+        public bool Prop3
+        {
+            get { return _prop3; }
+            set { _prop3 = value; }
+        }
+
+        public DateTime Prop4
+        {
+            get { return _prop4; }
+            set { _prop4 = value; }
+        }
+
+        public TimeSpan Prop5
+        {
+            get { return _prop5; }
+            set { _prop5 = value; }
+        }
 
 
         // Methods
-        public double   Method1(double a, string b, bool c, DateTime d) { return a; }
-        public string   Method2(double a, string b, bool c, DateTime d) { return b; }
-        public bool     Method3(double a, string b, bool c, DateTime d) { return c; }
-        public DateTime Method4(double a, string b, bool c, DateTime d) { return d; }
-        public TimeSpan Method5(double a, string b, bool c, DateTime d, TimeSpan e) { return e; }
+        public double Method1(double a, string b, bool c, DateTime d)
+        {
+            return a;
+        }
+
+        public string Method2(double a, string b, bool c, DateTime d)
+        {
+            return b;
+        }
+
+        public bool Method3(double a, string b, bool c, DateTime d)
+        {
+            return c;
+        }
+
+        public DateTime Method4(double a, string b, bool c, DateTime d)
+        {
+            return d;
+        }
+
+        public TimeSpan Method5(double a, string b, bool c, DateTime d, TimeSpan e)
+        {
+            return e;
+        }
 
         // END INSTANCE 
         // ----------------------------------------------------------------------------------		

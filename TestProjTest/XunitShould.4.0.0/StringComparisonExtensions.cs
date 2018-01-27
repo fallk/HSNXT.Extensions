@@ -4,8 +4,10 @@ namespace XunitShould
 {
     internal static class StringComparisonExtensions
     {
-        public static StringComparer GetComparer(this StringComparison comparisonType) {
-            switch (comparisonType) {
+        public static StringComparer GetComparer(this StringComparison comparisonType)
+        {
+            switch (comparisonType)
+            {
                 case StringComparison.CurrentCulture:
                     return StringComparer.CurrentCulture;
 

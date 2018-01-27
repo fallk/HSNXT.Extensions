@@ -20,6 +20,5 @@ namespace BCLExtensions.Tests.ObjectExtensions
             var instance = new object();
             instance.EnsureIsNotNull(instanceArgumentName);
         }
-
     }
 }

@@ -54,7 +54,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
         public void LeftAndRightEithersWithSameValue_AreNotEqual()
         {
             var either1 = new Either<int, string>("2");
-            var either2 = new Either<string,int>("2");
+            var either2 = new Either<string, int>("2");
             Assert.AreNotEqual(either1, either2);
         }
 

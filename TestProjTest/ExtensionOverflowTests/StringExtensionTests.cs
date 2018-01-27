@@ -18,9 +18,9 @@ namespace ExtensionOverflow.Tests
         /// </summary>
         public TestContext TestContext { get; set; }
 
-		#region FormatWith
+        #region FormatWith
 
-		[TestMethod]
+        [TestMethod]
         public void FormatWithStringOneArgument()
         {
             var s = "{0} ought to be enough for everybody.";
@@ -32,17 +32,17 @@ namespace ExtensionOverflow.Tests
                 "1-argument string.FormatWith is not formatting string properly.");
         }
 
-		[TestMethod]
-		public void FormatWithStringOneNullArgument()
-		{
-			var s = "{0} ought to be enough for everybody.";
-			string param0 = null;
+        [TestMethod]
+        public void FormatWithStringOneNullArgument()
+        {
+            var s = "{0} ought to be enough for everybody.";
+            string param0 = null;
 
-			var expected = " ought to be enough for everybody.";
+            var expected = " ought to be enough for everybody.";
 
-			Assert.AreEqual(expected, s.FormatWith(param0),
-				"1-argument string.FormatWith is not formatting string properly.");
-		}
+            Assert.AreEqual(expected, s.FormatWith(param0),
+                "1-argument string.FormatWith is not formatting string properly.");
+        }
 
         [TestMethod]
         public void FormatWithStringTwoArguments()
@@ -57,18 +57,18 @@ namespace ExtensionOverflow.Tests
                 "2-arguments string.FormatWith is not formatting string properly.");
         }
 
-		[TestMethod]
-		public void FormatWithStringTwoNullArguments()
-		{
-			var s = "{0} ought to be enough for {1}.";
-			string param0 = null;
-			string param1 = null;
+        [TestMethod]
+        public void FormatWithStringTwoNullArguments()
+        {
+            var s = "{0} ought to be enough for {1}.";
+            string param0 = null;
+            string param1 = null;
 
-			var expected = " ought to be enough for .";
+            var expected = " ought to be enough for .";
 
-			Assert.AreEqual(expected, s.FormatWith(param0, param1),
-				"2-arguments string.FormatWith is not formatting string properly.");
-		}
+            Assert.AreEqual(expected, s.FormatWith(param0, param1),
+                "2-arguments string.FormatWith is not formatting string properly.");
+        }
 
         [TestMethod]
         public void FormatWithStringThreeArguments()
@@ -84,19 +84,19 @@ namespace ExtensionOverflow.Tests
                 "3-arguments string.FormatWith is not formatting string properly.");
         }
 
-		[TestMethod]
-		public void FormatWithStringThreeNullArguments()
-		{
-			var s = "{0} ought to be {1} for {2}.";
-			string param0 = null;
-			string param1 = null;
-			string param2 = null;
+        [TestMethod]
+        public void FormatWithStringThreeNullArguments()
+        {
+            var s = "{0} ought to be {1} for {2}.";
+            string param0 = null;
+            string param1 = null;
+            string param2 = null;
 
-			var expected = " ought to be  for .";
+            var expected = " ought to be  for .";
 
-			Assert.AreEqual(expected, s.FormatWith(param0, param1, param2),
-				"3-arguments string.FormatWith is not formatting string properly.");
-		}
+            Assert.AreEqual(expected, s.FormatWith(param0, param1, param2),
+                "3-arguments string.FormatWith is not formatting string properly.");
+        }
 
         [TestMethod]
         public void FormatWithStringMultipleArguments()
@@ -113,20 +113,20 @@ namespace ExtensionOverflow.Tests
                 "4-arguments string.FormatWith is not formatting string properly.");
         }
 
-		[TestMethod]
-		public void FormatWithStringMultipleNullArguments()
-		{
-			var s = "{0} {1} to be {2} for {3}.";
-			string param0 = null;
-			string param1 = null;
-			string param2 = null;
-			string param3 = null;
+        [TestMethod]
+        public void FormatWithStringMultipleNullArguments()
+        {
+            var s = "{0} {1} to be {2} for {3}.";
+            string param0 = null;
+            string param1 = null;
+            string param2 = null;
+            string param3 = null;
 
-			var expected = "  to be  for .";
+            var expected = "  to be  for .";
 
-			Assert.AreEqual(expected, s.FormatWith(param0, param1, param2, param3),
-				"4-arguments string.FormatWith is not formatting string properly.");
-		}
+            Assert.AreEqual(expected, s.FormatWith(param0, param1, param2, param3),
+                "4-arguments string.FormatWith is not formatting string properly.");
+        }
 
         [TestMethod]
         public void FormatWithStringObeyThreadCulture()
@@ -141,19 +141,19 @@ namespace ExtensionOverflow.Tests
             var currentCulture = Thread.CurrentThread.CurrentCulture;
             Thread.CurrentThread.CurrentCulture = new CultureInfo("fr-FR");
 
-			Assert.AreEqual(expected, s.FormatWith(Thread.CurrentThread.CurrentCulture, param0, param1),
+            Assert.AreEqual(expected, s.FormatWith(Thread.CurrentThread.CurrentCulture, param0, param1),
                 "2-arguments string.FormatWith does not obey the current thread culture.");
 
             // restore culture
             Thread.CurrentThread.CurrentCulture = currentCulture;
         }
 
-		#endregion
+        #endregion
 
         #region Conversions
 
         private enum DummyEnum
-        { 
+        {
             one,
             two,
             three
@@ -175,8 +175,8 @@ namespace ExtensionOverflow.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException),"Type provided must be an Enum.")]
-        public void StringToNonEnumType() 
+        [ExpectedException(typeof(ArgumentException), "Type provided must be an Enum.")]
+        public void StringToNonEnumType()
         {
             "dummystring".ToEnum<DummyClass>();
         }
@@ -204,7 +204,7 @@ namespace ExtensionOverflow.Tests
         {
             Assert.AreEqual(22, "22".ToInteger(), "Could not convert 22 to 22");
         }
-        
+
         [TestMethod]
         public void ABCStringToInt()
         {
@@ -214,7 +214,8 @@ namespace ExtensionOverflow.Tests
         [TestMethod]
         public void DoubleStringToDouble()
         {
-            Assert.AreEqual(88.45, (88.45).ToString().ToDouble(), "Could not convert " + (88.45).ToString() + " to 88.45");
+            Assert.AreEqual(88.45, (88.45).ToString().ToDouble(),
+                "Could not convert " + (88.45).ToString() + " to 88.45");
         }
 
         [TestMethod]
@@ -226,7 +227,7 @@ namespace ExtensionOverflow.Tests
         [TestMethod]
         public void DateTimeStringToDateTime()
         {
-            var date = new DateTime(2000,1,1,13,12,11);
+            var date = new DateTime(2000, 1, 1, 13, 12, 11);
             Assert.AreEqual(date, date.ToString().ToDateTime());
         }
 
@@ -284,21 +285,25 @@ namespace ExtensionOverflow.Tests
         {
             Assert.AreEqual(null, "ABC".ToBoolean());
         }
+
         #endregion
 
         #region ValueOrDefault
+
         [TestMethod]
         public void NullStringToDefault()
         {
             string value = null;
             Assert.AreEqual("Test", value.GetValueOrDefault("Test"));
         }
+
         [TestMethod]
         public void NullStringToEmpty()
         {
             string value = null;
             Assert.AreEqual("", value.GetValueOrEmpty());
         }
+
         #endregion
     }
 }

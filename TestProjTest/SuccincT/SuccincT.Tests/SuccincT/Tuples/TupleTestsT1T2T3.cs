@@ -7,7 +7,12 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
     [TestFixture]
     internal class TupleTestsT1T2T3
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
         [Test]
         public void Tuple_CanBeMatched()
@@ -22,7 +27,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = (1, "a", Colors.Red);
             var result = tuple.Match().To<bool>().With(1, "a", Colors.Blue).Or(1, "a", Colors.Red).Do((x, y, z) => true)
-                                      .Result();
+                .Result();
             Assert.IsTrue(result);
         }
 
@@ -32,7 +37,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red);
             Assert.Throws<NoMatchException>(
                 () => tuple.Match().To<int>()
-                           .With(2, "a", Colors.Green).Or(1, "b", Colors.Blue).Do((x, y, z) => x).Result());
+                    .With(2, "a", Colors.Green).Or(1, "b", Colors.Blue).Do((x, y, z) => x).Result());
         }
 
         [Test]
@@ -48,7 +53,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create(1, "a", Colors.Red);
             var result = tuple.Match().To<bool>().Where((x, y, z) => x == 1 && y == "a" && z == Colors.Red).Do(true)
-                                                 .Else((x, y, z) => false).Result();
+                .Else((x, y, z) => false).Result();
             Assert.IsTrue(result);
         }
 
@@ -57,7 +62,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = (1, "a", Colors.Red);
             var result = tuple.Match().To<bool>().Where((x, y, z) => z == Colors.Green).Do((x, y, z) => true)
-                                                 .Else((x, y, z) => false).Result();
+                .Else((x, y, z) => false).Result();
             Assert.IsFalse(result);
         }
 
@@ -66,7 +71,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create(1, "a", Colors.Red);
             var result = tuple.Match().To<bool>().Where((x, y, z) => x == 2).Do((x, y, z) => true)
-                                                 .Else(false).Result();
+                .Else(false).Result();
             Assert.IsFalse(result);
         }
 
@@ -76,7 +81,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = (1, "a", Colors.Red);
             var result =
                 tuple.Match().To<bool>().With(1, "b", Colors.Blue).Or(2, "a", Colors.Green).Do((x, y, z) => false)
-                     .Where((x, y, z) => x == 1).Do(true).Result();
+                    .Where((x, y, z) => x == 1).Do(true).Result();
             Assert.IsTrue(result);
         }
 
@@ -85,7 +90,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create(1, "a", Colors.Red);
             var result = tuple.Match().To<bool>().With(1, "a", Colors.Red).Or(1, "a", Colors.Blue).Do(false)
-                                                 .Where((x, y, z) => x == 5).Do(true).Result();
+                .Where((x, y, z) => x == 5).Do(true).Result();
             Assert.IsFalse(result);
         }
     }

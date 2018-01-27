@@ -3,7 +3,6 @@
 
 namespace CommonLibrary.Tests
 {
-
     [TestFixture]
     public class MapperTests
     {

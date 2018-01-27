@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -21,8 +22,8 @@ namespace HSNXT.Z.Data.Test
             var @this = new DataTable();
 
             // Variables
-            @this.Columns.Add("IntColumn", typeof (int));
-            @this.Columns.Add("StringColumn", typeof (string));
+            @this.Columns.Add("IntColumn", typeof(int));
+            @this.Columns.Add("StringColumn", typeof(string));
             @this.Rows.Add(1, "Fizz");
             @this.Rows.Add(2, "Buzz");
 

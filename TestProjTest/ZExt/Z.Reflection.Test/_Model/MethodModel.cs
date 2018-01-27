@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -13,8 +14,8 @@ namespace HSNXT.Z.Reflection.Test
     {
         public class Toto<T2>
         {
-            
         }
+
         #region Modifier
 
         public static int StaticMethod()

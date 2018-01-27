@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-
 using HSNXT.ComLib.EmailSupport;
 using HSNXT.ComLib.Notifications;
 
@@ -25,7 +24,7 @@ namespace CommonLibrary.Tests
 
         [Test]
         public void CanSendWelcomeEmail()
-        {            
+        {
             IDictionary<string, string> values = new Dictionary<string, string>();
             values["firstname"] = "kishore";
             values["username"] = "kuser1";

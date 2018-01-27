@@ -79,10 +79,10 @@ namespace HSNXT.Test
             const int count = 100;
             const int leadDefault = -1;
             var sequence = Enumerable.Range(1, count);
-            var result = sequence.Lead(count + 1, leadDefault, (val, leadVal) => new { A = val, B = leadVal });
+            var result = sequence.Lead(count + 1, leadDefault, (val, leadVal) => new {A = val, B = leadVal});
 
             Assert.AreEqual(count, result.Count());
-            Assert.IsTrue(result.SequenceEqual(sequence.Select(x => new { A = x, B = leadDefault })));
+            Assert.IsTrue(result.SequenceEqual(sequence.Select(x => new {A = x, B = leadDefault})));
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace HSNXT.Test
         {
             const int count = 100;
             var sequence = Enumerable.Range(1, count);
-            var result = sequence.Lead(1, count + 1, (val, leadVal) => new { A = val, B = leadVal });
+            var result = sequence.Lead(1, count + 1, (val, leadVal) => new {A = val, B = leadVal});
 
             Assert.AreEqual(count, result.Count());
             Assert.IsTrue(result.All(x => x.B == (x.A + 1)));
@@ -110,7 +110,7 @@ namespace HSNXT.Test
             const int count = 100;
             const int leadDefault = count + 1;
             var sequence = Enumerable.Range(1, count);
-            var result = sequence.Lead(2, leadDefault, (val, leadVal) => new { A = val, B = leadVal });
+            var result = sequence.Lead(2, leadDefault, (val, leadVal) => new {A = val, B = leadVal});
 
             Assert.AreEqual(count, result.Count());
             Assert.IsTrue(result.Take(count - 2).All(x => x.B == (x.A + 2)));

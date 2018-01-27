@@ -31,7 +31,10 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
 
     static class Factory
     {
-        public static IDictionary<K, V> New<K, V>() { return new TreeDictionary<K, V>(); }
+        public static IDictionary<K, V> New<K, V>()
+        {
+            return new TreeDictionary<K, V>();
+        }
     }
 
     //[TestFixture]
@@ -50,15 +53,27 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
     {
         IDictionary<int, int> coll;
         IFormatProvider rad16;
+
         [SetUp]
-        public void Init() { coll = Factory.New<int, int>(); rad16 = new RadixFormatProvider(16); }
+        public void Init()
+        {
+            coll = Factory.New<int, int>();
+            rad16 = new RadixFormatProvider(16);
+        }
+
         [TearDown]
-        public void Dispose() { coll = null; rad16 = null; }
+        public void Dispose()
+        {
+            coll = null;
+            rad16 = null;
+        }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("[  ]", coll.ToString());
-            coll.Add(23, 67); coll.Add(45, 89);
+            coll.Add(23, 67);
+            coll.Add(45, 89);
             Assert.AreEqual("[ 23 => 67, 45 => 89 ]", coll.ToString());
             Assert.AreEqual("[ 17 => 43, 2D => 59 ]", coll.ToString(null, rad16));
             Assert.AreEqual("[ 23 => 67, ... ]", coll.ToString("L14", null));
@@ -73,11 +88,17 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
 
 
         [SetUp]
-        public void Init() { dict = new TreeDictionary<string, string>(new SC()); }
+        public void Init()
+        {
+            dict = new TreeDictionary<string, string>(new SC());
+        }
 
 
         [TearDown]
-        public void Dispose() { dict = null; }
+        public void Dispose()
+        {
+            dict = null;
+        }
 
         [Test]
         public void NullEqualityComparerinConstructor1()
@@ -181,6 +202,7 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
             dict.Clear();
             Assert.AreEqual(dict.Count, 0, "dict should be empty");
         }
+
         [Test]
         public void Contains()
         {
@@ -237,7 +259,10 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
         }
 
         [TearDown]
-        public void Dispose() { dict = null; }
+        public void Dispose()
+        {
+            dict = null;
+        }
 
         [Test]
         public void Pred1()
@@ -317,8 +342,8 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
         {
             Assert.Throws<ReadOnlyCollectionException>(() => dict.Clear());
         }
-        [Test]
 
+        [Test]
         public void IllegalSet()
         {
             Assert.Throws<ReadOnlyCollectionException>(() => dict["A"] = "8");
@@ -387,13 +412,13 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
             Assert.AreEqual(3, keys.Count);
             // This doesn't hold, maybe because the dict uses a special key comparer?
             // Assert.IsTrue(keys.SequencedEquals(new WrappedArray<string>(new string[] { "R", "S", "T" })));
-            Assert.IsTrue(keys.UniqueItems().All(delegate (String s) { return s == "R" || s == "S" || s == "T"; }));
-            Assert.IsTrue(keys.All(delegate (String s) { return s == "R" || s == "S" || s == "T"; }));
-            Assert.IsFalse(keys.Exists(delegate (String s) { return s != "R" && s != "S" && s != "T"; }));
+            Assert.IsTrue(keys.UniqueItems().All(delegate(String s) { return s == "R" || s == "S" || s == "T"; }));
+            Assert.IsTrue(keys.All(delegate(String s) { return s == "R" || s == "S" || s == "T"; }));
+            Assert.IsFalse(keys.Exists(delegate(String s) { return s != "R" && s != "S" && s != "T"; }));
             String res;
-            Assert.IsTrue(keys.Find(delegate (String s) { return s == "R"; }, out res));
+            Assert.IsTrue(keys.Find(delegate(String s) { return s == "R"; }, out res));
             Assert.AreEqual("R", res);
-            Assert.IsFalse(keys.Find(delegate (String s) { return s == "Q"; }, out res));
+            Assert.IsFalse(keys.Find(delegate(String s) { return s == "Q"; }, out res));
             Assert.AreEqual(null, res);
         }
 
@@ -478,7 +503,7 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
                 dict["T"] = "B";
                 dict["R"] = "C";
                 dict["V"] = "G";
-                snap = (TreeDictionary<string, string>)dict.Snapshot();
+                snap = (TreeDictionary<string, string>) dict.Snapshot();
             }
 
 
@@ -496,7 +521,7 @@ namespace HSNXT.C5UnitTests.trees.RBDictionary
                 Assert.IsFalse(dict.IsReadOnly);
                 Assert.IsTrue(snap.IsReadOnly);
                 //Finally, update of root node:
-                var snap2 = (TreeDictionary<string, string>)dict.Snapshot();
+                var snap2 = (TreeDictionary<string, string>) dict.Snapshot();
                 dict["S"] = "abe";
                 Assert.AreEqual("abe", dict["S"]);
             }

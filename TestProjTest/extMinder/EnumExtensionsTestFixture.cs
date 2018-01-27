@@ -20,6 +20,5 @@ namespace HSNXT.Tests
             var x = str.ToEnum<TestEnum>();
             x.ShouldEqual(TestEnum.FirstValue);
         }
-
     }
 }

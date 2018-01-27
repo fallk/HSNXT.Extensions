@@ -24,7 +24,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         }
 
         [Test]
-        public void IntValue_ExceptionIfNoMatchWithExec() => 
+        public void IntValue_ExceptionIfNoMatchWithExec() =>
             Assert.Throws<NoMatchException>(() => 3.Match().With(2).Or(1).Do(x => { }).Exec());
 
         [Test]
@@ -60,7 +60,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             var result = false;
             5.Match().With(1).Or(2).Do(x => result = false)
-                     .Where(x => x == 5).Do(x => result = true).Exec();
+                .Where(x => x == 5).Do(x => result = true).Exec();
             Assert.IsTrue(result);
         }
 
@@ -69,7 +69,7 @@ namespace HSNXT.SuccincTTests.SuccincT.PatternMatchers
         {
             var result = false;
             2.Match().With(1).Or(2).Do(x => result = false)
-                     .Where(x => x == 5).Do(x => result = true).Exec();
+                .Where(x => x == 5).Do(x => result = true).Exec();
             Assert.IsFalse(result);
         }
 

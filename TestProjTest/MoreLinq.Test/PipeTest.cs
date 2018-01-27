@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -28,7 +30,7 @@ namespace HSNXT.Test
         public void PipeWithSequence()
         {
             var results = new List<int>();
-            var returned = new[] { 1, 2, 3 }.Pipe(results.Add);
+            var returned = new[] {1, 2, 3}.Pipe(results.Add);
             // Lazy - nothing has executed yet
             Assert.That(results, Is.Empty);
             returned.AssertSequenceEqual(1, 2, 3);
@@ -45,12 +47,12 @@ namespace HSNXT.Test
         [Test]
         public void PipeActionOccursBeforeYield()
         {
-            var source = new[] { new StringBuilder(), new StringBuilder() };
+            var source = new[] {new StringBuilder(), new StringBuilder()};
             // The action will occur "in" the pipe, so by the time Where gets it, the
             // sequence will be empty.
             Assert.That(source.Pipe(sb => sb.Append("x"))
-                              .Where(x => x.Length == 0),
-                        Is.Empty);
+                    .Where(x => x.Length == 0),
+                Is.Empty);
         }
     }
 }

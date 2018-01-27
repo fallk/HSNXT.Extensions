@@ -14,13 +14,13 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         public static void Compare(object actual, object expected)
         {
             if (actual is LObject && actual != LObjects.Null)
-                actual = ((LObject)actual).GetValue();
+                actual = ((LObject) actual).GetValue();
 
             if (actual is DateTime d1)
             {
-                var d2 = (DateTime)expected;
+                var d2 = (DateTime) expected;
                 if ((d1.Hour > 0 || d1.Minute > 0 || d1.Second > 0 || d1.Millisecond > 0)
-                     && (d2.Hour > 0 || d2.Minute > 0 || d2.Second > 0 || d2.Millisecond > 0))
+                    && (d2.Hour > 0 || d2.Minute > 0 || d2.Second > 0 || d2.Millisecond > 0))
                     Assert.AreEqual(d1, d2);
                 else
                     Assert.AreEqual(d1.Date, d2);
@@ -46,11 +46,11 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         }
 
 
-        public static void Parse(List<Tuple<string, Type, object, string>> statements, bool execute = true, Action<Interpreter> initializer = null)
+        public static void Parse(List<Tuple<string, Type, object, string>> statements, bool execute = true,
+            Action<Interpreter> initializer = null)
         {
             foreach (var stmt in statements)
             {
-
                 var i = new Interpreter();
                 if (initializer != null)
                     initializer(i);
@@ -79,7 +79,7 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         {
             ctx.Memory = memory;
             foreach (var exp in expressions)
-            {   
+            {
                 exp.Item3.Ctx = ctx;
                 var result = exp.Item3.Evaluate();
                 Assert.AreEqual(result, exp.Item2);

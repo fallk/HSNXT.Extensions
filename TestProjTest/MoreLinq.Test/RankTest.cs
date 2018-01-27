@@ -114,16 +114,16 @@ namespace HSNXT.Test
         public void TestRankByKeySelector()
         {
             var sequence = new[]
-                               {
-                                   new { Name = "Bob", Age = 24, ExpectedRank = 5 },
-                                   new { Name = "Sam", Age = 51, ExpectedRank = 2 },
-                                   new { Name = "Kim", Age = 18, ExpectedRank = 7 },
-                                   new { Name = "Tim", Age = 23, ExpectedRank = 6 },
-                                   new { Name = "Joe", Age = 31, ExpectedRank = 3 },
-                                   new { Name = "Mel", Age = 28, ExpectedRank = 4 },
-                                   new { Name = "Jim", Age = 74, ExpectedRank = 1 },
-                                   new { Name = "Jes", Age = 11, ExpectedRank = 8 },
-                               };
+            {
+                new {Name = "Bob", Age = 24, ExpectedRank = 5},
+                new {Name = "Sam", Age = 51, ExpectedRank = 2},
+                new {Name = "Kim", Age = 18, ExpectedRank = 7},
+                new {Name = "Tim", Age = 23, ExpectedRank = 6},
+                new {Name = "Joe", Age = 31, ExpectedRank = 3},
+                new {Name = "Mel", Age = 28, ExpectedRank = 4},
+                new {Name = "Jim", Age = 74, ExpectedRank = 1},
+                new {Name = "Jes", Age = 11, ExpectedRank = 8},
+            };
             var result = sequence.AsTestingSequence().RankBy(x => x.Age).ToArray();
 
             Assert.AreEqual(sequence.Length, result.Length);
@@ -138,10 +138,11 @@ namespace HSNXT.Test
         {
             const int count = 10;
             var ordinals = Enumerable.Range(1, count);
-            var sequence = ordinals.Select( x => new DateTime(2010,x,20-x) );
+            var sequence = ordinals.Select(x => new DateTime(2010, x, 20 - x));
             // invert the CompareTo operation to Rank in reverse order (ascening to descending)
             var resultA = sequence.AsTestingSequence().Rank(Comparer.Create<DateTime>((a, b) => -a.CompareTo(b)));
-            var resultB = sequence.AsTestingSequence().RankBy(x => x.Day, Comparer.Create<int>((a, b) => -a.CompareTo(b)));
+            var resultB = sequence.AsTestingSequence()
+                .RankBy(x => x.Day, Comparer.Create<int>((a, b) => -a.CompareTo(b)));
 
             Assert.IsTrue(resultA.SequenceEqual(ordinals));
             Assert.IsTrue(resultB.SequenceEqual(ordinals.Reverse()));

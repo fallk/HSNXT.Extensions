@@ -19,13 +19,19 @@ namespace CommonLibrary.Tests
 
     public class Contractor : Person, IWorker
     {
-        public override string About() { return "contractor : " + Name; }
+        public override string About()
+        {
+            return "contractor : " + Name;
+        }
     }
 
 
-    public class Employee: Person, IWorker
+    public class Employee : Person, IWorker
     {
-        public override string About() { return "fulltime : " + Name; }
+        public override string About()
+        {
+            return "fulltime : " + Name;
+        }
     }
 
 
@@ -35,10 +41,10 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanCreateFactory()
         {
-            Factory<string, IWorker>.Register("c1",  new Contractor() { Name = "c1" });
-            Factory<string, IWorker>.Register("c2", new Contractor() { Name = "c2" });
-            Factory<string, IWorker>.Register("e1",  new Employee() { Name = "e1" });
-            Factory<string, IWorker>.Register("e2", new Employee() { Name = "e2" });
+            Factory<string, IWorker>.Register("c1", new Contractor() {Name = "c1"});
+            Factory<string, IWorker>.Register("c2", new Contractor() {Name = "c2"});
+            Factory<string, IWorker>.Register("e1", new Employee() {Name = "e1"});
+            Factory<string, IWorker>.Register("e2", new Employee() {Name = "e2"});
             Assert.AreEqual(Factory<string, IWorker>.Create("c1").Name, "c1");
             Assert.AreEqual(Factory<string, IWorker>.Create("c2").Name, "c2");
             Assert.AreEqual(Factory<string, IWorker>.Create("e1").Name, "e1");

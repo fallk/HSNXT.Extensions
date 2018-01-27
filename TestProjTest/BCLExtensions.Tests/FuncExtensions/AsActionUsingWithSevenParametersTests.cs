@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.FuncExtensions
@@ -25,12 +26,12 @@ namespace BCLExtensions.Tests.FuncExtensions
         public void InternalFunctionExecutes()
         {
             var internalFunctionWasCalled = false;
-            Func<int, string, bool, decimal, byte, int, string, decimal> function = (p1,p2,p3,p4,p5,p6,p7) =>
+            Func<int, string, bool, decimal, byte, int, string, decimal> function = (p1, p2, p3, p4, p5, p6, p7) =>
             {
                 internalFunctionWasCalled = true;
                 return 42m;
             };
-            var action = function.AsActionUsing(12,"24",true, 3.14m, byte.MaxValue, 16, "Fizz");
+            var action = function.AsActionUsing(12, "24", true, 3.14m, byte.MaxValue, 16, "Fizz");
             action();
 
             Assert.True(internalFunctionWasCalled);
@@ -53,7 +54,7 @@ namespace BCLExtensions.Tests.FuncExtensions
             byte passedParameter5 = 0;
             var passedParameter6 = 0;
             string passedParameter7 = null;
-            Func<int, string, bool, decimal, byte, int, string, decimal> function = (p1,p2,p3,p4,p5,p6,p7) =>
+            Func<int, string, bool, decimal, byte, int, string, decimal> function = (p1, p2, p3, p4, p5, p6, p7) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;
@@ -65,7 +66,8 @@ namespace BCLExtensions.Tests.FuncExtensions
                 return 42;
             };
 
-            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7);
+            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7);
             action();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -77,7 +79,8 @@ namespace BCLExtensions.Tests.FuncExtensions
             Assert.Equal(expectedParameter7, passedParameter7);
         }
 
-        private decimal SampleFunction(int parameter1, string parameter2, bool parameter3, decimal parameter4, byte parameter5, int parameter6, string parameter7)
+        private decimal SampleFunction(int parameter1, string parameter2, bool parameter3, decimal parameter4,
+            byte parameter5, int parameter6, string parameter7)
         {
             return 42m;
         }

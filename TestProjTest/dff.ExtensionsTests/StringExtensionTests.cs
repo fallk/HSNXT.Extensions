@@ -113,7 +113,8 @@ namespace dff.ExtensionsTests
         [Test]
         public void RemoveTextBetweenDelimiters()
         {
-            var x = "Hallo Welt! <start>Hier der Gruß!!!</start>Hier der Rest.".RemoveTextBetween("<start>", "</start>");
+            var x = "Hallo Welt! <start>Hier der Gruß!!!</start>Hier der Rest."
+                .RemoveTextBetween("<start>", "</start>");
             Assert.AreEqual("Hallo Welt! Hier der Rest.", x);
         }
     }

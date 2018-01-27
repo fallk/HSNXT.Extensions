@@ -9,9 +9,20 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
     [TestFixture]
     public sealed class UnionT1T2T3T4Tests
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
-        private enum Animals { Cat, Dog, Cow, Sheep }
+        private enum Animals
+        {
+            Cat,
+            Dog,
+            Cow,
+            Sheep
+        }
 
         [Test]
         public void UnionWithT1_HasVariantCase1()

@@ -23,7 +23,8 @@ namespace Microsoft.Reactive.Testing
         /// <param name="dueTime">Absolute virtual time at which to execute the action.</param>
         /// <returns>Disposable object used to cancel the scheduled action (best effort).</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public override IDisposable ScheduleAbsolute<TState>(TState state, long dueTime, Func<IScheduler, TState, IDisposable> action)
+        public override IDisposable ScheduleAbsolute<TState>(TState state, long dueTime,
+            Func<IScheduler, TState, IDisposable> action)
         {
             if (dueTime <= Clock)
                 dueTime = Clock + 1;
@@ -81,9 +82,21 @@ namespace Microsoft.Reactive.Testing
             var subscription = default(IDisposable);
             var observer = CreateObserver<T>();
 
-            ScheduleAbsolute(default(object), created, (scheduler, state) => { source = create(); return Disposable.Empty; });
-            ScheduleAbsolute(default(object), subscribed, (scheduler, state) => { subscription = source.Subscribe(observer); return Disposable.Empty; });
-            ScheduleAbsolute(default(object), disposed, (scheduler, state) => { subscription.Dispose(); return Disposable.Empty; });
+            ScheduleAbsolute(default(object), created, (scheduler, state) =>
+            {
+                source = create();
+                return Disposable.Empty;
+            });
+            ScheduleAbsolute(default(object), subscribed, (scheduler, state) =>
+            {
+                subscription = source.Subscribe(observer);
+                return Disposable.Empty;
+            });
+            ScheduleAbsolute(default(object), disposed, (scheduler, state) =>
+            {
+                subscription.Dispose();
+                return Disposable.Empty;
+            });
 
             Start();
 

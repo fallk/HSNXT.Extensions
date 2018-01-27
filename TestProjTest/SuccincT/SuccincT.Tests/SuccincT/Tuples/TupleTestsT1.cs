@@ -43,7 +43,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create(1);
             var result = tuple.Match().To<bool>().Where(x => x == 1).Do(true)
-                                                 .Else(_ => false).Result();
+                .Else(_ => false).Result();
             Assert.IsTrue(result);
         }
 
@@ -52,7 +52,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create("a");
             var result = tuple.Match().To<bool>().Where(x => x == "b").Do(_ => true)
-                                                 .Else(_ => false).Result();
+                .Else(_ => false).Result();
             Assert.IsFalse(result);
         }
 
@@ -61,7 +61,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create(1);
             var result = tuple.Match().To<bool>().Where(x => x == 2).Do(_ => true)
-                                                 .Else(false).Result();
+                .Else(false).Result();
             Assert.IsFalse(result);
         }
 
@@ -70,7 +70,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create("a");
             var result = tuple.Match().To<bool>().With("b").Or("c").Do(_ => false)
-                                                 .Where(x => x == "a").Do(true).Result();
+                .Where(x => x == "a").Do(true).Result();
             Assert.IsTrue(result);
         }
 
@@ -79,7 +79,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
         {
             var tuple = Tuple.Create("a");
             var result = tuple.Match().To<bool>().With("a").Or("b").Do(false)
-                                                 .Where(x => x == "c").Do(true).Result();
+                .Where(x => x == "c").Do(true).Result();
             Assert.IsFalse(result);
         }
     }

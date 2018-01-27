@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 namespace HSNXT.Z.Reflection.Test
 {
     public class PropertyModel<T> : AbstractPropertyModel
@@ -25,7 +26,7 @@ namespace HSNXT.Z.Reflection.Test
         public int PublicProperty { get; set; }
 
         public int PublicGetterPrivateSetterProperty { get; private set; }
-        public int PrivateGetterPublicSetterProperty { private get;  set; }
+        public int PrivateGetterPublicSetterProperty { private get; set; }
 
         #endregion
 
@@ -71,6 +72,6 @@ namespace HSNXT.Z.Reflection.Test
     public abstract class AbstractPropertyModel
     {
         public abstract int AbstractProperty { get; set; }
-        public  virtual int OverrideProperty { get; set; }
+        public virtual int OverrideProperty { get; set; }
     }
 }

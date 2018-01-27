@@ -3,14 +3,11 @@ using NUnit.Framework;
 using HSNXT.ComLib.Web.ScriptsSupport;
 
 
-
 namespace CommonLibrary.Tests.ScriptsSupportTests
 {
-       
     [TestFixture]
     public class ScriptsServiceTests
     {
-
         [Test]
         public void CanRegisterDefault()
         {
@@ -20,8 +17,10 @@ namespace CommonLibrary.Tests.ScriptsSupportTests
             Scripts.AddCss("app.css", "/styles/app.css");
             var head = Scripts.ToHtml();
 
-            var expected = "<script src=\"/scripts/jquery.1.4.2.js\" type=\"text/javascript\"></script>" + Environment.NewLine
-                         + "<link href=\"/styles/app.css\" rel=\"stylesheet\" type=\"text/css\" />" + Environment.NewLine;
+            var expected =
+                "<script src=\"/scripts/jquery.1.4.2.js\" type=\"text/javascript\"></script>" + Environment.NewLine
+                                                                                              + "<link href=\"/styles/app.css\" rel=\"stylesheet\" type=\"text/css\" />" +
+                                                                                              Environment.NewLine;
 
             Assert.AreEqual(head, expected);
         }
@@ -32,7 +31,7 @@ namespace CommonLibrary.Tests.ScriptsSupportTests
         {
             Scripts.AddLocation("head", false);
             Scripts.AddLocation("foot", false);
-            Scripts.AddJavascript("jquery.latest", "/scripts/jquery.1.4.2.js", "head");            
+            Scripts.AddJavascript("jquery.latest", "/scripts/jquery.1.4.2.js", "head");
             Scripts.AddCss("app.css", "/styles/app.css", "head");
 
             // Add to foot section.
@@ -41,8 +40,10 @@ namespace CommonLibrary.Tests.ScriptsSupportTests
             // Only get the html for the head section.
             var head = Scripts.ToHtml("head");
 
-            var expected = "<script src=\"/scripts/jquery.1.4.2.js\" type=\"text/javascript\"></script>" + Environment.NewLine
-                         + "<link href=\"/styles/app.css\" rel=\"stylesheet\" type=\"text/css\" />" + Environment.NewLine;
+            var expected =
+                "<script src=\"/scripts/jquery.1.4.2.js\" type=\"text/javascript\"></script>" + Environment.NewLine
+                                                                                              + "<link href=\"/styles/app.css\" rel=\"stylesheet\" type=\"text/css\" />" +
+                                                                                              Environment.NewLine;
 
             Assert.AreEqual(head, expected);
         }

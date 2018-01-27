@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HSNXT.Z.Reflection.Test
@@ -18,10 +19,10 @@ namespace HSNXT.Z.Reflection.Test
             var @this = new C();
 
             // Exemples
-            var result1 = @this.IsTypeOrInheritsOf(typeof (C)); // return true;
-            var result2 = @this.IsTypeOrInheritsOf(typeof (B)); // return true;
-            var result3 = @this.IsTypeOrInheritsOf(typeof (A)); // return true;
-            var result4 = @this.IsTypeOrInheritsOf(typeof (string)); // return false;
+            var result1 = @this.IsTypeOrInheritsOf(typeof(C)); // return true;
+            var result2 = @this.IsTypeOrInheritsOf(typeof(B)); // return true;
+            var result3 = @this.IsTypeOrInheritsOf(typeof(A)); // return true;
+            var result4 = @this.IsTypeOrInheritsOf(typeof(string)); // return false;
 
             // Unit Test
             Assert.IsTrue(result1);

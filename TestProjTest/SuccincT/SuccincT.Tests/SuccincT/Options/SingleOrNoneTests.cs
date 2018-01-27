@@ -35,14 +35,14 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void TrySingleWithSingleItemList_ReturnsElement()
         {
-            var collection = new List<int> { 1 };
+            var collection = new List<int> {1};
             Assert.AreEqual(1, collection.TryLast().Value);
         }
 
         [Test]
         public void TrySingleWithMultipleItemList_ReturnsNone()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.IsFalse(collection.TrySingle().HasValue);
         }
 
@@ -61,21 +61,21 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void TrySingleWithCollectionAndMatchOneElementFunc_ReturnsElement()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.AreEqual(2, collection.TrySingle(x => x == 2).Value);
         }
 
         [Test]
         public void TrySingleWithCollectionAndMatchManyElementFunc_ReturnsNone()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.IsFalse(collection.TrySingle(x => true).HasValue);
         }
 
         [Test]
         public void TrySingleWithNullFunc_ThrowsExcpetion()
         {
-            var collection = new List<int> { 1, 2, 3 };
+            var collection = new List<int> {1, 2, 3};
             Assert.Throws<ArgumentNullException>(() => collection.TrySingle(null));
         }
 

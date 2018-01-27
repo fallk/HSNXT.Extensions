@@ -36,6 +36,7 @@ namespace Microsoft.Reactive.Testing
                     {
                         notification.Accept(_observers[j]);
                     }
+
                     return Disposable.Empty;
                 });
             }

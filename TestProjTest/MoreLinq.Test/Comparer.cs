@@ -9,7 +9,6 @@ namespace HSNXT.Test
         /// Creates an <see cref="IComparer{T}"/> given a
         /// <see cref="Func{T,T,Int32}"/>.
         /// </summary>
-
         public static IComparer<T> Create<T>(Func<T, T, int> compare) =>
             new DelegatingComparer<T>(compare);
 

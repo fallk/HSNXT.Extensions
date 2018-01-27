@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2016 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,27 +28,27 @@ namespace HSNXT.Test
         public void CountBetweenWithNegativeMin()
         {
             AssertThrowsArgument.OutOfRangeException("min", () =>
-                new[] { 1 }.CountBetween(-1, 0));
+                new[] {1}.CountBetween(-1, 0));
         }
 
         [Test]
         public void CountBetweenWithNegativeMax()
         {
             AssertThrowsArgument.OutOfRangeException("max", () =>
-               new[] { 1 }.CountBetween(0, -1));
+                new[] {1}.CountBetween(0, -1));
         }
 
         [Test]
         public void CountBetweenWithMaxLesserThanMin()
         {
             AssertThrowsArgument.OutOfRangeException("max", () =>
-                new[] { 1 }.CountBetween(1, 0));
+                new[] {1}.CountBetween(1, 0));
         }
 
         [Test]
         public void CountBetweenWithMaxEqualsMin()
         {
-            Assert.IsTrue(new[] { 1 }.CountBetween(1, 1));
+            Assert.IsTrue(new[] {1}.CountBetween(1, 1));
         }
 
         [TestCase(1, 1, 2, 4, false)]

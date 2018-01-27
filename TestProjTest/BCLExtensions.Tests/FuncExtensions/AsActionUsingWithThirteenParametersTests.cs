@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.FuncExtensions
@@ -10,15 +11,18 @@ namespace BCLExtensions.Tests.FuncExtensions
         [Fact]
         public void SampleFunctionIsValid()
         {
-            SampleFunction(42, "Test", true, 9.876m, byte.MaxValue, 12, "Foo", false, 3.33333m, ByteValue, 9000, "Test", true);
+            SampleFunction(42, "Test", true, 9.876m, byte.MaxValue, 12, "Foo", false, 3.33333m, ByteValue, 9000, "Test",
+                true);
         }
 
         [Fact]
         public void ResultNotNull()
         {
-            Func<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal> function = SampleFunction;
+            Func<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal>
+                function = SampleFunction;
 
-            var action = function.AsActionUsing(12, "12", false, 5.4321m, byte.MaxValue, 42, "Bar", true, 66666.3m, ByteValue, 1600, "Class", false);
+            var action = function.AsActionUsing(12, "12", false, 5.4321m, byte.MaxValue, 42, "Bar", true, 66666.3m,
+                ByteValue, 1600, "Class", false);
 
             Assert.NotNull(action);
         }
@@ -27,12 +31,14 @@ namespace BCLExtensions.Tests.FuncExtensions
         public void InternalFunctionExecutes()
         {
             var internalFunctionWasCalled = false;
-            Func<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal> function = (p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13) =>
-            {
-                internalFunctionWasCalled = true;
-                return 42m;
-            };
-            var action = function.AsActionUsing(12,"24",true, 3.14m, byte.MaxValue, 16, "Fizz", false, 452.6m, ByteValue, 65536, "Malloc", true);
+            Func<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal>
+                function = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13) =>
+                {
+                    internalFunctionWasCalled = true;
+                    return 42m;
+                };
+            var action = function.AsActionUsing(12, "24", true, 3.14m, byte.MaxValue, 16, "Fizz", false, 452.6m,
+                ByteValue, 65536, "Malloc", true);
             action();
 
             Assert.True(internalFunctionWasCalled);
@@ -67,25 +73,28 @@ namespace BCLExtensions.Tests.FuncExtensions
             int? passedParameter11 = null;
             string passedParameter12 = null;
             bool? passedParameter13 = false;
-            Func<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal> function = (p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13) =>
-            {
-                passedParameter1 = p1;
-                passedParameter2 = p2;
-                passedParameter3 = p3;
-                passedParameter4 = p4;
-                passedParameter5 = p5;
-                passedParameter6 = p6;
-                passedParameter7 = p7;
-                passedParameter8 = p8;
-                passedParameter9 = p9;
-                passedParameter10 = p10;
-                passedParameter11 = p11;
-                passedParameter12 = p12;
-                passedParameter13 = p13;
-                return 42;
-            };
+            Func<int, string, bool, decimal, byte, int, string, bool, decimal, byte, int?, string, bool?, decimal>
+                function = (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13) =>
+                {
+                    passedParameter1 = p1;
+                    passedParameter2 = p2;
+                    passedParameter3 = p3;
+                    passedParameter4 = p4;
+                    passedParameter5 = p5;
+                    passedParameter6 = p6;
+                    passedParameter7 = p7;
+                    passedParameter8 = p8;
+                    passedParameter9 = p9;
+                    passedParameter10 = p10;
+                    passedParameter11 = p11;
+                    passedParameter12 = p12;
+                    passedParameter13 = p13;
+                    return 42;
+                };
 
-            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7, expectedParameter8, expectedParameter9, expectedParameter10, expectedParameter11, expectedParameter12, expectedParameter13);
+            var action = function.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7, expectedParameter8,
+                expectedParameter9, expectedParameter10, expectedParameter11, expectedParameter12, expectedParameter13);
             action();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -103,7 +112,9 @@ namespace BCLExtensions.Tests.FuncExtensions
             Assert.Equal(expectedParameter13, passedParameter13);
         }
 
-        private decimal SampleFunction(int parameter1, string parameter2, bool parameter3, decimal parameter4, byte parameter5, int parameter6, string parameter7, bool parameter8, decimal parameter9, byte parameter10, int? parameter11, string parameter12, bool? parameter13)
+        private decimal SampleFunction(int parameter1, string parameter2, bool parameter3, decimal parameter4,
+            byte parameter5, int parameter6, string parameter7, bool parameter8, decimal parameter9, byte parameter10,
+            int? parameter11, string parameter12, bool? parameter13)
         {
             return 42m;
         }

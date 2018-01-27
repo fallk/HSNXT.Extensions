@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2017 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,10 +28,10 @@ namespace HSNXT.Test
         public void UnfoldInfiniteSequence()
         {
             var result = Extensions.Unfold(1, x => (Result: x, State: x + 1),
-                                                  _ => true,
-                                                  e => e.State,
-                                                  e => e.Result)
-                                       .Take(100);
+                    _ => true,
+                    e => e.State,
+                    e => e.Result)
+                .Take(100);
 
             var expectations = Extensions.Generate(1, x => x + 1).Take(100);
 
@@ -40,9 +42,9 @@ namespace HSNXT.Test
         public void UnfoldFiniteSequence()
         {
             var result = Extensions.Unfold(1, x => (Result: x, State: x + 1),
-                                                  e => e.Result <= 100,
-                                                  e => e.State,
-                                                  e => e.Result);
+                e => e.Result <= 100,
+                e => e.State,
+                e => e.Result);
 
             var expectations = Extensions.Generate(1, x => x + 1).Take(100);
 
@@ -53,9 +55,9 @@ namespace HSNXT.Test
         public void UnfoldIsLazy()
         {
             Extensions.Unfold(0, BreakingFunc.Of<int, (int, int)>(),
-                                     BreakingFunc.Of<(int, int), bool>(),
-                                     BreakingFunc.Of<(int, int), int>(),
-                                     BreakingFunc.Of<(int, int), int>());
+                BreakingFunc.Of<(int, int), bool>(),
+                BreakingFunc.Of<(int, int), int>(),
+                BreakingFunc.Of<(int, int), int>());
         }
 
 
@@ -63,11 +65,11 @@ namespace HSNXT.Test
         public void UnfoldSingleElementSequence()
         {
             var result = Extensions.Unfold(0, x => (Result: x, State: x + 1),
-                                                  x => x.Result == 0,
-                                                  e => e.State,
-                                                  e => e.Result);
+                x => x.Result == 0,
+                e => e.State,
+                e => e.Result);
 
-            var expectations = new[] { 0 };
+            var expectations = new[] {0};
 
             Assert.That(result, Is.EqualTo(expectations));
         }
@@ -76,9 +78,9 @@ namespace HSNXT.Test
         public void UnfoldEmptySequence()
         {
             var result = Extensions.Unfold(0, x => (Result: x, State: x + 1),
-                                                  x => x.Result < 0,
-                                                  e => e.State,
-                                                  e => e.Result);
+                x => x.Result < 0,
+                e => e.State,
+                e => e.Result);
 
             var expectations = new int[] { };
 

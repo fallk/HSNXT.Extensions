@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.ActionExtensions
 {
-
     public class AsActionUsingWithFourParametersTests
     {
         [Fact]
@@ -26,10 +26,7 @@ namespace BCLExtensions.Tests.ActionExtensions
         public void InternalActionExecutes()
         {
             var internalActionWasCalled = false;
-            Action<int, string, bool, decimal> action = (p1,p2,p3,p4) =>
-            {
-                internalActionWasCalled = true;
-            };
+            Action<int, string, bool, decimal> action = (p1, p2, p3, p4) => { internalActionWasCalled = true; };
             var result = action.AsActionUsing(12, "24", false, 3.14m);
             result();
 
@@ -47,7 +44,7 @@ namespace BCLExtensions.Tests.ActionExtensions
             string passedParameter2 = null;
             var passedParameter3 = false;
             var passedParameter4 = 0.0m;
-            Action<int, string, bool, decimal> action = (p1, p2, p3,p4) =>
+            Action<int, string, bool, decimal> action = (p1, p2, p3, p4) =>
             {
                 passedParameter1 = p1;
                 passedParameter2 = p2;
@@ -55,7 +52,8 @@ namespace BCLExtensions.Tests.ActionExtensions
                 passedParameter4 = p4;
             };
 
-            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4);
+            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4);
             result();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -67,6 +65,5 @@ namespace BCLExtensions.Tests.ActionExtensions
         private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4)
         {
         }
-
     }
 }

@@ -26,6 +26,9 @@ namespace HSNXT.ComLib.Lang.Tests.Common
         /// <summary>
         /// Get the tests.
         /// </summary>
-        public List<Tuple<string, Type, object, string>> Tests { get { return _testcases;  } }
+        public List<Tuple<string, Type, object, string>> Tests
+        {
+            get { return _testcases; }
+        }
     }
 }

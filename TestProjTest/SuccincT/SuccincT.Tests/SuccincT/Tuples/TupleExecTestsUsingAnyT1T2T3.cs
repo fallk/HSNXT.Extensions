@@ -8,7 +8,12 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
     [TestFixture]
     public class TupleExecTestsUsingAnyT1T2T3
     {
-        private enum Colors { Red, Green, Blue }
+        private enum Colors
+        {
+            Red,
+            Green,
+            Blue
+        }
 
         [Test]
         public void Tuple_CanBeMatchedUsingAnyIntWithExec()
@@ -142,8 +147,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Tuples
             var tuple = Tuple.Create(1, "a", Colors.Red);
             var result = false;
             tuple.Match().With(__, "a", Colors.Blue).Or(__, "a", Colors.Green).Do((x, y, z) => result = false)
-                         .Where((x, y, z) => x == 1 && y == "a" && z == Colors.Red).Do((x, y, z) => result = true)
-                         .Exec();
+                .Where((x, y, z) => x == 1 && y == "a" && z == Colors.Red).Do((x, y, z) => result = true)
+                .Exec();
             Assert.IsTrue(result);
         }
     }

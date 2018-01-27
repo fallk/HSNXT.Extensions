@@ -4,7 +4,6 @@ namespace HSNXT.Tests
 {
     public sealed class IniFileTests
     {
-
         private const string ValidIni = @"[Game State]
 ; These are the players
 Player1=Jeevan
@@ -43,22 +42,24 @@ Weapons=Star, Fists";
         {
             var ini = new IniFile();
 
-            var section = new IniFile.Section("Test") {
-                { "Player1", "Jeevan" },
-                { "Player2", "Merina" }
+            var section = new IniFile.Section("Test")
+            {
+                {"Player1", "Jeevan"},
+                {"Player2", "Merina"}
             };
             ini.Add(section);
 
-            ini.Add(new IniFile.Section("Jeevan") {
-                { "Powers", "Superspeed,Super strength" },
-                { "Costume", "Scarlet" }
+            ini.Add(new IniFile.Section("Jeevan")
+            {
+                {"Powers", "Superspeed,Super strength"},
+                {"Costume", "Scarlet"}
             });
 
-            ini.Add(new IniFile.Section("Merina") {
-                { "Powers", "Stretchability, Invisibility" },
-                { "Costume", "Blue" }
+            ini.Add(new IniFile.Section("Merina")
+            {
+                {"Powers", "Stretchability, Invisibility"},
+                {"Costume", "Blue"}
             });
-
         }
     }
 }

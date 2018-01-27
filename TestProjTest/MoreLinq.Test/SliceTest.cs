@@ -119,7 +119,7 @@ namespace HSNXT.Test
         {
             const int sliceStart = 4;
             const int sliceCount = 3;
-            var sequence = new UnenumerableList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var sequence = new UnenumerableList<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
             var result = sequence.Slice(sliceStart, sliceCount);
 
             Assert.AreEqual(sliceCount, result.Count());

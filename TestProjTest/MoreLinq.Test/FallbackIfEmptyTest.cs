@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -39,7 +41,7 @@ namespace HSNXT.Test
         [Test]
         public void FallbackIfEmptyPreservesSourceCollectionIfPossible()
         {
-            var source = new[] { 1 };
+            var source = new[] {1};
             // ReSharper disable PossibleMultipleEnumeration
             Assert.AreSame(source.FallbackIfEmpty(12), source);
             Assert.AreSame(source.FallbackIfEmpty(12, 23), source);
@@ -54,7 +56,7 @@ namespace HSNXT.Test
         public void FallbackIfEmptyPreservesFallbackCollectionIfPossible()
         {
             var source = new int[0];
-            var fallback = new[] { 1 };
+            var fallback = new[] {1};
             Assert.AreSame(source.FallbackIfEmpty(fallback), fallback);
             Assert.AreSame(source.FallbackIfEmpty(fallback.AsEnumerable()), fallback);
         }

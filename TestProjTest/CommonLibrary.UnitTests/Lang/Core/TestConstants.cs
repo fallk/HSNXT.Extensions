@@ -9,11 +9,10 @@ namespace HSNXT.ComLib.Lang.Tests.Common
     {
         public static Type Double = typeof(double);
         public static Type String = typeof(string);
-        public static Type Bool   = typeof(bool);
-        public static Type Date   = typeof(DateTime);
-        public static Type Time   = typeof(TimeSpan);
+        public static Type Bool = typeof(bool);
+        public static Type Date = typeof(DateTime);
+        public static Type Time = typeof(TimeSpan);
         public static Type Object = typeof(object);
-        public static Type Null =   typeof(Nullable);
-
+        public static Type Null = typeof(Nullable);
     }
 }

@@ -7,7 +7,6 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
     [TestFixture]
     public class Symbols_Global_Tests
     {
-
         [Test]
         public void Can_Define_Variable()
         {
@@ -18,7 +17,6 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
         }
 
 
-
         [Test]
         public void Can_Get_Var_Symbol()
         {
@@ -27,7 +25,7 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
             var sym = syms.GetSymbol("a");
 
             Assert.AreEqual(sym.Name, "a");
-            Assert.AreEqual(sym.DataType, LTypes.Object);            
+            Assert.AreEqual(sym.DataType, LTypes.Object);
             Assert.AreEqual(sym.Category, "var");
         }
     }

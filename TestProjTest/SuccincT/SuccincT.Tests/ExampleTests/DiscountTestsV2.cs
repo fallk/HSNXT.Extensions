@@ -9,7 +9,15 @@ namespace HSNXT.SuccincTTests.ExampleTests
     [TestFixture]
     public class DiscountTestsV2
     {
-        public enum CustomerType { Unregistered, Simple, Valuable, MostValuable }        private class Customer
+        public enum CustomerType
+        {
+            Unregistered,
+            Simple,
+            Valuable,
+            MostValuable
+        }
+
+        private class Customer
         {
             public CustomerType CustomerType { get; }
             public int Years { get; }
@@ -32,19 +40,22 @@ namespace HSNXT.SuccincTTests.ExampleTests
 
         private static int YearsDiscount(int years) =>
             years.Match().To<int>()
-                 .Where(y => y > 5).Do(5)
-                 .Else(y => y).Result();
+                .Where(y => y > 5).Do(5)
+                .Else(y => y).Result();
 
         private static (int typeDiscount, int yearsDiscount) AccountDiscount(Customer customer) =>
             customer.Match().To<(int, int)>()
-                    .Where(c => c.CustomerType == Unregistered).Do((0, 0))
-                    .Else(c => (CustomerDiscountMap[c.CustomerType], YearsDiscount(c.Years)))
-                    .Result();
+                .Where(c => c.CustomerType == Unregistered).Do((0, 0))
+                .Else(c => (CustomerDiscountMap[c.CustomerType], YearsDiscount(c.Years)))
+                .Result();
 
         private static decimal ApplyDiscount(decimal price, decimal discount) =>
             price - price * discount / 100.0m;
 
-        private static decimal ReducePriceBy((int type, int years) discount, decimal price) =>            ApplyDiscount(ApplyDiscount(price, discount.type), discount.years);        private static decimal CalculateDiscountPrice(Customer account, decimal price) =>
+        private static decimal ReducePriceBy((int type, int years) discount, decimal price) =>
+            ApplyDiscount(ApplyDiscount(price, discount.type), discount.years);
+
+        private static decimal CalculateDiscountPrice(Customer account, decimal price) =>
             ReducePriceBy(AccountDiscount(account), price);
 
         [Test]

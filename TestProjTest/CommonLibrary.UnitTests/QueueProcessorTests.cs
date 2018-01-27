@@ -6,13 +6,9 @@ using HSNXT.ComLib.Queue;
 
 namespace CommonLibrary.Tests
 {
-   
-
-
     [TestFixture]
     public class QueueProcessorTests
     {
-
         [Test]
         public void CanProcessByType()
         {
@@ -20,7 +16,7 @@ namespace CommonLibrary.Tests
             // Defaults to 5 items per dequeue.
             Queues.AddProcessorFor<string>(items => ProcessString(items, true, null));
             Queues.Enqueue<string>("kdog");
-            Queues.Enqueue<string>(new List<string>() { "kishore", "reddy" });
+            Queues.Enqueue<string>(new List<string>() {"kishore", "reddy"});
             Queues.Process<string>();
 
             Assert.IsTrue(Queues.IsIdle<string>());
@@ -31,9 +27,10 @@ namespace CommonLibrary.Tests
         public void CanProcessByAddingProcessor()
         {
             // Add the named processor "my_handler", w/ the ProcessString lamda, and handle 5 items per dequeue.
-            Queues.AddProcessor("my_handler", new QueueProcessor<string>(5, items => ProcessString(items, false, "my_handler")));
+            Queues.AddProcessor("my_handler",
+                new QueueProcessor<string>(5, items => ProcessString(items, false, "my_handler")));
             Queues.Enqueue<string>("my_handler", "kdog");
-            Queues.Enqueue<string>("my_handler", new List<string>() { "kishore", "reddy" });
+            Queues.Enqueue<string>("my_handler", new List<string>() {"kishore", "reddy"});
             Queues.Process("my_handler");
 
             Assert.IsTrue(Queues.IsIdle("my_handler"));
@@ -46,8 +43,8 @@ namespace CommonLibrary.Tests
             // Easiest way to add named processor for a specific type.
             // Defaults to 5 items per dequeue.
             Queues.AddProcessorFor<string>(items => ProcessString(items, true, null));
-            Queues.Enqueue<string>(new List<string>() { "kishore", "reddy", "kdog", "kishore", "reddy", "kdog" });
-            Queues.Enqueue<string>(new List<string>() { "kdog", "reddy", "kishore", "kdog", "reddy", "kishore" });
+            Queues.Enqueue<string>(new List<string>() {"kishore", "reddy", "kdog", "kishore", "reddy", "kdog"});
+            Queues.Enqueue<string>(new List<string>() {"kdog", "reddy", "kishore", "kdog", "reddy", "kishore"});
 
             // Need to process multiple times since there are more than 5 entries which is the default 
             // number of items that get processed by each call to Process().
@@ -68,11 +65,12 @@ namespace CommonLibrary.Tests
             // Easiest way to add named processor for a specific type.
             // Defaults to 5 items per dequeue.
             Queues.AddProcessorFor<string>(items => ProcessString(items, true, null));
-            Queues.AddProcessor("tags_queue", new QueueProcessor<string>(2, items => items.ForEach( item => Console.WriteLine(item))));
-            
-            Queues.Enqueue<string>("tags_queue", new List<string>() { "python", "ruby", "erlang", "closure", "scala" });
-            Queues.Enqueue<string>(new List<string>() { "kishore", "reddy"  });
-            
+            Queues.AddProcessor("tags_queue",
+                new QueueProcessor<string>(2, items => items.ForEach(item => Console.WriteLine(item))));
+
+            Queues.Enqueue<string>("tags_queue", new List<string>() {"python", "ruby", "erlang", "closure", "scala"});
+            Queues.Enqueue<string>(new List<string>() {"kishore", "reddy"});
+
             Queues.Process<string>();
             Queues.Process("tags_queue");
             Queues.Process("tags_queue");
@@ -101,7 +99,7 @@ namespace CommonLibrary.Tests
             validValues["kishore"] = true;
             validValues["reddy"] = true;
 
-            if(names == null || names.Count == 0)
+            if (names == null || names.Count == 0)
                 return;
 
             if (isGenericsApplicable)
@@ -116,6 +114,6 @@ namespace CommonLibrary.Tests
 
             foreach (var name in names)
                 Assert.IsTrue(validValues.ContainsKey(name));
-        }        
+        }
     }
 }

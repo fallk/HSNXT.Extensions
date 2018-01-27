@@ -22,6 +22,7 @@
 using System;
 using HSNXT.C5;
 using NUnit.Framework;
+
 namespace HSNXT.C5UnitTests.arrays.circularqueue
 {
     using CollectionOfInt = CircularQueue<int>;
@@ -32,7 +33,7 @@ namespace HSNXT.C5UnitTests.arrays.circularqueue
         [Test]
         public void TestEvents()
         {
-            Func<CollectionOfInt> factory = delegate () { return new CollectionOfInt(); };
+            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(); };
             new C5UnitTests.Templates.Events.QueueTester<CollectionOfInt>().Test(factory);
             new C5UnitTests.Templates.Events.StackTester<CollectionOfInt>().Test(factory);
         }
@@ -63,8 +64,10 @@ namespace HSNXT.C5UnitTests.arrays.circularqueue
         }
 
         [TearDown]
-        public void Dispose() { queue = null; }
-
+        public void Dispose()
+        {
+            queue = null;
+        }
     }
 
     [TestFixture]
@@ -72,15 +75,26 @@ namespace HSNXT.C5UnitTests.arrays.circularqueue
     {
         CircularQueue<int> coll;
         IFormatProvider rad16;
+
         [SetUp]
-        public void Init() { coll = new CircularQueue<int>(); rad16 = new RadixFormatProvider(16); }
+        public void Init()
+        {
+            coll = new CircularQueue<int>();
+            rad16 = new RadixFormatProvider(16);
+        }
+
         [TearDown]
-        public void Dispose() { coll = null; rad16 = null; }
+        public void Dispose()
+        {
+            coll = null;
+            rad16 = null;
+        }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("{  }", coll.ToString());
-            foreach (var i in new int[] { -4, 28, 129, 65530 })
+            foreach (var i in new int[] {-4, 28, 129, 65530})
                 coll.Enqueue(i);
             Assert.AreEqual("{ -4, 28, 129, 65530 }", coll.ToString());
             Assert.AreEqual("{ -4, 1C, 81, FFFA }", coll.ToString(null, rad16));
@@ -128,6 +142,7 @@ namespace HSNXT.C5UnitTests.arrays.circularqueue
                 queue.Enqueue(i);
                 Assert.IsTrue(queue.Check());
             }
+
             for (var i = 0; i < 14; i++)
             {
                 Assert.IsTrue(queue.Check());
@@ -213,6 +228,7 @@ namespace HSNXT.C5UnitTests.arrays.circularqueue
             {
                 list.Enqueue(count);
             }
+
             var end = list.Count;
             for (var index = 0; index < end; index++)
             {
@@ -222,7 +238,9 @@ namespace HSNXT.C5UnitTests.arrays.circularqueue
         }
 
         [TearDown]
-        public void Dispose() { queue = null; }
-
+        public void Dispose()
+        {
+            queue = null;
+        }
     }
 }

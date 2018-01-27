@@ -23,7 +23,6 @@ namespace CommonLibrary.Tests
     }
 
 
-
     [TestFixture]
     public class StringHelperTests
     {
@@ -94,20 +93,24 @@ namespace CommonLibrary.Tests
             var starting = "Expected text " + StringHelper.DosLineSeparator +
                            "Line 2 " + StringHelper.DosLineSeparator +
                            "Line 3";
-            Assert.AreEqual(expected, 
+            Assert.AreEqual(expected,
                 StringHelper.ConvertLineSeparators(starting,
                     StringHelper.UnixLineSeparator),
-                    "Dud not correctly convert line breaks from DOS to UNIX format");
+                "Dud not correctly convert line breaks from DOS to UNIX format");
         }
 
 
         [Test]
         public void CanSubstituteValues()
         {
-            Assert.AreEqual("@month_@year_@day", StringHelper.Substitute("${month}_${year}_${day}", (name) => "@" + name));
-            Assert.AreEqual("_@month_@year_@day_", StringHelper.Substitute("_${month}_${year}_${day}_", (name) => "@" + name));
-            Assert.AreEqual("abc_@month_@year_@day_123", StringHelper.Substitute("abc_${month}_${year}_${day}_123", (name) => "@" + name));
-            Assert.AreEqual("123_@month_a_@year_b_@day_cd", StringHelper.Substitute("123_${month}_a_${year}_b_${day}_cd", (name) => "@" + name));
+            Assert.AreEqual("@month_@year_@day",
+                StringHelper.Substitute("${month}_${year}_${day}", (name) => "@" + name));
+            Assert.AreEqual("_@month_@year_@day_",
+                StringHelper.Substitute("_${month}_${year}_${day}_", (name) => "@" + name));
+            Assert.AreEqual("abc_@month_@year_@day_123",
+                StringHelper.Substitute("abc_${month}_${year}_${day}_123", (name) => "@" + name));
+            Assert.AreEqual("123_@month_a_@year_b_@day_cd",
+                StringHelper.Substitute("123_${month}_a_${year}_b_${day}_cd", (name) => "@" + name));
         }
     }
 
@@ -139,7 +142,6 @@ namespace CommonLibrary.Tests
             longWord = string.Empty;
             splitWord = TextSplitter.SplitWord(longWord, 15, " ");
             Assert.AreEqual(string.Empty, splitWord);
-
         }
 
 
@@ -167,9 +169,11 @@ namespace CommonLibrary.Tests
         public void CanCheckMultiLineWithOutSplitting()
         {
             var text = "Famed archaeologist/adventurer Dr. Henry \"Indiana\" Jones" + Environment.NewLine
-                        + "is called back into action when he becomes entangled in a " + Environment.NewLine
-                        + "Soviet plot to uncover the secret behind mysterious artifacts" + Environment.NewLine
-                        + "known as the Crystal Skulls";
+                                                                                    + "is called back into action when he becomes entangled in a " +
+                                                                                    Environment.NewLine
+                                                                                    + "Soviet plot to uncover the secret behind mysterious artifacts" +
+                                                                                    Environment.NewLine
+                                                                                    + "known as the Crystal Skulls";
 
 
             var splitText = TextSplitter.CheckAndSplitText(text, 25);
@@ -182,16 +186,20 @@ namespace CommonLibrary.Tests
         public void CanCheckMultipleWithSplitting()
         {
             var text = "Famed archaeologist/adventurer123 Dr. Henry \"Indiana\" Jones" + Environment.NewLine
-                        + "is called back into action when he becomes entangled in a " + Environment.NewLine
-                        + "Soviet plot to uncoverTheSecretBehindMysteriousArtifacts" + Environment.NewLine
-                        + "known as the Crystal Skulls";
+                                                                                       + "is called back into action when he becomes entangled in a " +
+                                                                                       Environment.NewLine
+                                                                                       + "Soviet plot to uncoverTheSecretBehindMysteriousArtifacts" +
+                                                                                       Environment.NewLine
+                                                                                       + "known as the Crystal Skulls";
 
             var splitText = TextSplitter.CheckAndSplitText(text, 25);
             var expected = "Famed archaeologist/adventurer1 23 Dr. Henry \"Indiana\" Jones" + Environment.NewLine
-                        + "is called back into action when he becomes entangled in a " + Environment.NewLine
-                        + "Soviet plot to uncoverTheSecretBehindMys teriousArtifacts" + Environment.NewLine
-                        + "known as the Crystal Skulls";
+                                                                                            + "is called back into action when he becomes entangled in a " +
+                                                                                            Environment.NewLine
+                                                                                            + "Soviet plot to uncoverTheSecretBehindMys teriousArtifacts" +
+                                                                                            Environment.NewLine
+                                                                                            + "known as the Crystal Skulls";
             Assert.AreEqual(expected, splitText);
         }
-    }    
+    }
 }

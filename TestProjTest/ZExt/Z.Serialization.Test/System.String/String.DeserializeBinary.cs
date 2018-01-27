@@ -4,6 +4,7 @@
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,7 +22,9 @@ namespace HSNXT.Z.Serialization.Test
             var s = @this.SerializeBinary();
 
             // Examples
-            var value = s.DeserializeBinary<Dictionary<string, string>>(); // return new Dictionary<string, string> {{"Fizz", "Buzz"}};
+            var value = s
+                .DeserializeBinary<Dictionary<string, string>
+                >(); // return new Dictionary<string, string> {{"Fizz", "Buzz"}};
 
             // Unit Test
             Assert.AreEqual("Buzz", value["Fizz"]);

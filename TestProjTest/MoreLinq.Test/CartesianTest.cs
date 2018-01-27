@@ -14,7 +14,7 @@ namespace HSNXT.Test
         [Test]
         public void TestCartesianIsLazy()
         {
-            new BreakingSequence<int>().Cartesian(new BreakingSequence<int>(), (a, b) => new { A = a, B = b });
+            new BreakingSequence<int>().Cartesian(new BreakingSequence<int>(), (a, b) => new {A = a, B = b});
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace HSNXT.Test
         public void TestCartesianOfEmptyAndNonEmpty()
         {
             var sequenceA = Enumerable.Empty<int>();
-            var sequenceB = Enumerable.Repeat(1,10);
+            var sequenceB = Enumerable.Repeat(1, 10);
             var resultA = sequenceA.Cartesian(sequenceB, (a, b) => a + b);
             var resultB = sequenceB.Cartesian(sequenceA, (a, b) => a + b);
 
@@ -53,14 +53,14 @@ namespace HSNXT.Test
         {
             const int countA = 100;
             const int countB = 75;
-            const int expectedCount = countA*countB;
+            const int expectedCount = countA * countB;
             var sequenceA = Enumerable.Range(1, countA);
             var sequenceB = Enumerable.Range(1, countB);
             var result = sequenceA.Cartesian(sequenceB, (a, b) => a + b);
 
-            Assert.AreEqual( expectedCount, result.Count() );
+            Assert.AreEqual(expectedCount, result.Count());
         }
-        
+
         /// <summary>
         /// Verify that each combination is produced in the Cartesian product
         /// </summary>
@@ -70,15 +70,15 @@ namespace HSNXT.Test
             var sequenceA = Enumerable.Range(0, 5);
             var sequenceB = Enumerable.Range(0, 5);
             var expectedSet = new[]
-                                  {
-                                      Enumerable.Repeat(false, 5).ToArray(),
-                                      Enumerable.Repeat(false, 5).ToArray(),
-                                      Enumerable.Repeat(false, 5).ToArray(),
-                                      Enumerable.Repeat(false, 5).ToArray(),
-                                      Enumerable.Repeat(false, 5).ToArray()
-                                  };
+            {
+                Enumerable.Repeat(false, 5).ToArray(),
+                Enumerable.Repeat(false, 5).ToArray(),
+                Enumerable.Repeat(false, 5).ToArray(),
+                Enumerable.Repeat(false, 5).ToArray(),
+                Enumerable.Repeat(false, 5).ToArray()
+            };
 
-            var result = sequenceA.Cartesian(sequenceB, (a, b) => new { A = a, B = b });
+            var result = sequenceA.Cartesian(sequenceB, (a, b) => new {A = a, B = b});
 
             // verify that the expected number of results is correct
             Assert.AreEqual(sequenceA.Count() * sequenceB.Count(), result.Count());
@@ -98,9 +98,9 @@ namespace HSNXT.Test
         {
             var sequence = Enumerable.Range(0, 5);
 
-            var resultA = sequence.Cartesian(Enumerable.Empty<int>(), (a, b) => new { A = a, B = b });
-            var resultB = Enumerable.Empty<int>().Cartesian(sequence, (a, b) => new { A = a, B = b });
-            var resultC = Enumerable.Empty<int>().Cartesian(Enumerable.Empty<int>(), (a, b) => new { A = a, B = b });
+            var resultA = sequence.Cartesian(Enumerable.Empty<int>(), (a, b) => new {A = a, B = b});
+            var resultB = Enumerable.Empty<int>().Cartesian(sequence, (a, b) => new {A = a, B = b});
+            var resultC = Enumerable.Empty<int>().Cartesian(Enumerable.Empty<int>(), (a, b) => new {A = a, B = b});
 
             Assert.AreEqual(0, resultA.Count());
             Assert.AreEqual(0, resultB.Count());

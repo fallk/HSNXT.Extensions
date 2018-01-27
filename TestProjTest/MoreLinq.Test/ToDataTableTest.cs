@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -59,8 +61,8 @@ namespace HSNXT.Test
         public ToDataTableTest()
         {
             _testObjects = Enumerable.Range(0, 3)
-                                     .Select(i => new TestObject(i))
-                                     .ToArray();
+                .Select(i => new TestObject(i))
+                .ToArray();
         }
 
         [Test]
@@ -68,7 +70,7 @@ namespace HSNXT.Test
         {
             Expression<Func<TestObject, object>> expression = null;
 
-            AssertThrowsArgument.Exception("expressions",() =>
+            AssertThrowsArgument.Exception("expressions", () =>
                 _testObjects.ToDataTable<TestObject>(expression));
         }
 
@@ -78,7 +80,7 @@ namespace HSNXT.Test
             var dt = new DataTable();
             dt.Columns.Add("Test");
 
-            AssertThrowsArgument.Exception("table",() =>
+            AssertThrowsArgument.Exception("table", () =>
                 _testObjects.ToDataTable(dt));
         }
 
@@ -88,8 +90,8 @@ namespace HSNXT.Test
             var dt = new DataTable();
             dt.Columns.Add("AString", typeof(int));
 
-            AssertThrowsArgument.Exception("table",() =>
-                _testObjects.ToDataTable(dt, t=>t.AString));
+            AssertThrowsArgument.Exception("table", () =>
+                _testObjects.ToDataTable(dt, t => t.AString));
         }
 
         [Test]
@@ -110,7 +112,7 @@ namespace HSNXT.Test
         [Test]
         public void ToDataTableMemberExpressionIndexer()
         {
-            AssertThrowsArgument.Exception("lambda",() =>
+            AssertThrowsArgument.Exception("lambda", () =>
                 _testObjects.ToDataTable(t => t[0]));
         }
 
@@ -136,10 +138,10 @@ namespace HSNXT.Test
             columns.Add("Name", typeof(string));
 
             var vars = Environment.GetEnvironmentVariables()
-                                  .Cast<DictionaryEntry>()
-                                  .ToArray();
+                .Cast<DictionaryEntry>()
+                .ToArray();
 
-            vars.Select(e => new { Name = e.Key.ToString(), Value = e.Value.ToString() })
+            vars.Select(e => new {Name = e.Key.ToString(), Value = e.Value.ToString()})
                 .ToDataTable(dt, e => e.Name, e => e.Value);
 
             var rows = dt.Rows.Cast<DataRow>().ToArray();
@@ -154,13 +156,18 @@ namespace HSNXT.Test
             public bool IsEmpty => X == 0 && Y == 0;
             public int X { get; }
             public int Y { get; }
-            public Point(int x, int y) : this() { X = x; Y = y; }
+
+            public Point(int x, int y) : this()
+            {
+                X = x;
+                Y = y;
+            }
         }
 
         [Test]
         public void ToDataTableIgnoresStaticMembers()
         {
-            var points = new[] { new Point(12, 34) }.ToDataTable();
+            var points = new[] {new Point(12, 34)}.ToDataTable();
 
             Assert.AreEqual(3, points.Columns.Count);
             DataColumn x, y, empty;

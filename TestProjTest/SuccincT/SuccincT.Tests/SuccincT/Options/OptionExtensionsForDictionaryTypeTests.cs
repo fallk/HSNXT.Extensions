@@ -10,7 +10,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void WhenKeyExists_TryGetValueReturnsValue()
         {
-            var dict = new Dictionary<int, int> { [1] = 1 };
+            var dict = new Dictionary<int, int> {[1] = 1};
             var value = dict.TryGetValue(1);
             Assert.IsTrue(value.HasValue);
             Assert.AreEqual(1, value.Value);
@@ -19,7 +19,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         [Test]
         public void WhenKeyDoesntExists_TryGetValueReturnsNone()
         {
-            var dict = new Dictionary<int, int> { [1] = 1 };
+            var dict = new Dictionary<int, int> {[1] = 1};
             Assert.IsFalse(dict.TryGetValue(2).HasValue);
         }
     }

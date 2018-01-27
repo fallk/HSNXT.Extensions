@@ -3,7 +3,8 @@
 // Forum: https://github.com/zzzprojects/Z.ExtensionMethods/issues
 // License: https://github.com/zzzprojects/Z.ExtensionMethods/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+// Copyright Â© ZZZ Projects Inc. 2014 - 2016. All rights reserved.
+
 #if NET45_OR_GREATER
 using System;
 using System.IO;
@@ -17,9 +18,12 @@ namespace HSNXT.Z.Compression.Test
         [TestMethod]
         public void CreateZipFile()
         {
-            var dir = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory"));
-            var dir2 = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Zip"));
-            var dir3 = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Output"));
+            var dir =
+ new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory"));
+            var dir2 =
+ new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Zip"));
+            var dir3 =
+ new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Output"));
 
             if (dir.Exists)
             {
@@ -35,9 +39,12 @@ namespace HSNXT.Z.Compression.Test
             }
 
             // Type
-            var @this = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory", "Examples_System_IO_FileInfo_ExtractZipFileToDirectory.txt"));
-            var zip = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Zip", "Examples_System_IO_FileInfo_ExtractZipFileToDirectory.zip"));
-            var output = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Output"));
+            var @this =
+ new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory", "Examples_System_IO_FileInfo_ExtractZipFileToDirectory.txt"));
+            var zip =
+ new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Zip", "Examples_System_IO_FileInfo_ExtractZipFileToDirectory.zip"));
+            var output =
+ new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ExtractZipFileToDirectory_Output"));
 
             Directory.CreateDirectory(@this.Directory.FullName);
             Directory.CreateDirectory(zip.Directory.FullName);

@@ -39,7 +39,11 @@ namespace Microsoft.Reactive.Testing
             for (var i = 0; i < messages.Length; ++i)
             {
                 var notification = messages[i].Value;
-                d.Add(scheduler.ScheduleRelative(default(object), messages[i].Time, (scheduler1, state1) => { notification.Accept(observer); return Disposable.Empty; }));
+                d.Add(scheduler.ScheduleRelative(default(object), messages[i].Time, (scheduler1, state1) =>
+                {
+                    notification.Accept(observer);
+                    return Disposable.Empty;
+                }));
             }
 
             return Disposable.Create(() =>

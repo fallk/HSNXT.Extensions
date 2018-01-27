@@ -43,7 +43,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
             var enumerationEndCount = 0;
             var enumerationEndNotification = Action(() => enumerationEndCount++);
             var results = new List<string>();
-            foreach(var item in EnumerationWithNotificationOfEnd(enumerationEndNotification).Cycle())
+            foreach (var item in EnumerationWithNotificationOfEnd(enumerationEndNotification).Cycle())
             {
                 results.Add(item);
                 if (results.Count == 7) break;
@@ -91,14 +91,17 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
                 {
                     entry += "Fizz";
                 }
+
                 if (i % 5 == 0)
                 {
                     entry += "Buzz";
                 }
+
                 if (entry == "")
                 {
                     entry = i.ToString();
                 }
+
                 fizzBuzz.Add(entry);
             }
             //var fizzes = new List<string> { "", "", "Fizz" }.Cycle();

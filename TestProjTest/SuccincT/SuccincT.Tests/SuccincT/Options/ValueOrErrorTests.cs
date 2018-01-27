@@ -139,7 +139,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var valueOrError = WithValue("1");
             var result = valueOrError.Match<int>()
-                                     .Value().Where(x => x == "1").Do(0).Value().Do(2).Error().Do(3).Result();
+                .Value().Where(x => x == "1").Do(0).Value().Do(2).Error().Do(3).Result();
             AreEqual(0, result);
         }
 
@@ -156,8 +156,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var valueOrError = WithError("1");
             var result = valueOrError.Match<int>().Value().Of("1").Do(1)
-                                     .Value().Do(2)
-                                     .Error().Of("1").Do(3).Result();
+                .Value().Do(2)
+                .Error().Of("1").Do(3).Result();
             AreEqual(3, result);
         }
 
@@ -166,9 +166,9 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var valueOrError = WithError("1");
             var result = valueOrError.Match<int>()
-                                     .Value().Where(x => x == "1").Do(0)
-                                     .Value().Do(2)
-                                     .Error().Where(x => x == "1").Do(3).Result();
+                .Value().Where(x => x == "1").Do(0)
+                .Value().Do(2)
+                .Error().Where(x => x == "1").Do(3).Result();
             AreEqual(3, result);
         }
     }

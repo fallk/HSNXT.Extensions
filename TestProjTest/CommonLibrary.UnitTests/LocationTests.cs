@@ -6,7 +6,6 @@ using HSNXT.ComLib.Entities;
 
 namespace CommonLibrary.Tests.LocationTests
 {
-    
     /// <summary>
     /// This tests the location parsing using In-Memory repositories.
     /// </summary>
@@ -59,12 +58,11 @@ namespace CommonLibrary.Tests.LocationTests
             var cities = Location.Cities.GetAll();
         }
 
-        
+
         private ILocationService GetLocationService()
         {
             return Location.Service;
         }
-        
 
 
         [Test]
@@ -138,7 +136,7 @@ namespace CommonLibrary.Tests.LocationTests
             var lookupResult = locationService.Parse(" Venice , Italy ");
 
             Assert.IsTrue(lookupResult.IsLookUpByCity);
-            Assert.IsTrue(lookupResult.IsValid);            
+            Assert.IsTrue(lookupResult.IsValid);
             Assert.AreEqual(lookupResult.City, "Venice");
             Assert.AreEqual(lookupResult.CountryId, CountryId_Italy);
         }
@@ -245,5 +243,4 @@ namespace CommonLibrary.Tests.LocationTests
     public class AddressTests
     {
     }
-     
 }

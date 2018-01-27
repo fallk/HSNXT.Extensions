@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using System.Collections.Generic;
 using System.Reflection;
 using Xunit;
@@ -19,8 +20,8 @@ namespace BCLExtensions.Tests.GenericExtensions
         }
 
         [Theory]
-        [StringData(inputIsNull:true)]
-        [ListData(inputIsNull:true)]
+        [StringData(inputIsNull: true)]
+        [ListData(inputIsNull: true)]
         [ObjectData(inputIsNull: true)]
         public void WhenInputIsNullThenReturnsDefaultValue<T>(T input, T defaultValue) where T : class
         {

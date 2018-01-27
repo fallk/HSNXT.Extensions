@@ -1,4 +1,5 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.GenericExtensions
@@ -11,8 +12,8 @@ namespace BCLExtensions.Tests.GenericExtensions
         public void ValidateInputCanBeNull()
         {
             string input = null;
-            
-            Func<string,string> returnsNewValue = ReturnsNewValue;
+
+            Func<string, string> returnsNewValue = ReturnsNewValue;
             var result = input.When(i => i != null, returnsNewValue);
 
             Assert.Null(result);
@@ -50,11 +51,12 @@ namespace BCLExtensions.Tests.GenericExtensions
         {
             var input = "Hello World";
 
-            Func<string,string> function = ReturnsNewValue;
+            Func<string, string> function = ReturnsNewValue;
             var result = input.When(AlwaysFalse, function);
 
             Assert.Equal(input, result);
         }
+
         [Fact]
         public void GivenANullStringCanConditionalReplaceString()
         {
@@ -91,7 +93,7 @@ namespace BCLExtensions.Tests.GenericExtensions
             var result = value.When(v => v.Length > 3, v => v.Substring(0, 3));
             return result;
         }
-		
+
         private bool TestFunctionExecution(Func<string, bool> predicate)
         {
             var executed = false;
@@ -119,6 +121,5 @@ namespace BCLExtensions.Tests.GenericExtensions
         {
             return true;
         }
-
     }
 }

@@ -15,13 +15,12 @@ namespace HSNXT.Tests
             var list = Builder<TestObject>
                 .CreateListOfSize(3)
                 .All()
-                .With(x=>x.IntegerProperty = i+1)
+                .With(x => x.IntegerProperty = i + 1)
                 .Build();
 
             list.Each(a => a.IntegerProperty = 5);
 
-            Assert.True(list.All(a=>a.IntegerProperty==5));
-
+            Assert.True(list.All(a => a.IntegerProperty == 5));
         }
 
         [Fact]
@@ -38,7 +37,6 @@ namespace HSNXT.Tests
             var max = list.MaxBy<TestObject, int>(a => a.IntegerProperty);
 
             Assert.Equal(list.Last().IntegerProperty, max.IntegerProperty);
-
         }
 
         [Fact]
@@ -55,7 +53,6 @@ namespace HSNXT.Tests
             var max = list.MaxBy<TestObject, int>(a => a.IntegerProperty, Comparer<int>.Default);
 
             Assert.Equal(list.Last().IntegerProperty, max.IntegerProperty);
-
         }
 
         [Fact]
@@ -89,7 +86,7 @@ namespace HSNXT.Tests
                 .TheFirst(2)
                 .With(x => x.IntegerProperty = i)
                 .All()
-                .With(x=>x.IntegerProperty = i+1)
+                .With(x => x.IntegerProperty = i + 1)
                 .Build();
 
             var duplicateList = new List<TestObject>();
@@ -104,8 +101,6 @@ namespace HSNXT.Tests
             }
 
             Assert.Equal(2, duplicateList.GetDuplicates().Count());
-            
-           
         }
     }
 }

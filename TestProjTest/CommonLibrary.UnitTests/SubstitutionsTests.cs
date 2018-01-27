@@ -4,7 +4,6 @@ using NUnit.Framework;
 using HSNXT.ComLib.Subs;
 
 
-
 namespace CommonLibrary.Tests
 {
     [TestFixture]
@@ -13,7 +12,7 @@ namespace CommonLibrary.Tests
         [Test]
         public void CanSubstitute()
         {
-            var vals  = new List<string>(){ "${today}", "${yesterday}" };
+            var vals = new List<string>() {"${today}", "${yesterday}"};
 
             Substitutor.Substitute(vals);
 

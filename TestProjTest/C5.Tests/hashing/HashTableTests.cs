@@ -23,6 +23,7 @@ using System;
 using HSNXT.C5;
 using NUnit.Framework;
 using SCG = System.Collections.Generic;
+
 namespace HSNXT.C5UnitTests.hashtable.set
 {
     using CollectionOfInt = HashSet<int>;
@@ -35,8 +36,8 @@ namespace HSNXT.C5UnitTests.hashtable.set
         [Test]
         public void TestEvents()
         {
-            Func<CollectionOfInt> factory = delegate () { return new CollectionOfInt(TenEqualityComparer.Default); };
-            new C5UnitTests.Templates.Events.CollectionTester<CollectionOfInt>().Test(factory, MemoryType); 
+            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(TenEqualityComparer.Default); };
+            new C5UnitTests.Templates.Events.CollectionTester<CollectionOfInt>().Test(factory, MemoryType);
         }
 
         //[Test]
@@ -52,7 +53,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
 
     static class Factory
     {
-        public static ICollection<T> New<T>(MemoryType memoryType) { return new HashSet<T>(memoryType); }
+        public static ICollection<T> New<T>(MemoryType memoryType)
+        {
+            return new HashSet<T>(memoryType);
+        }
     }
 
 
@@ -75,7 +79,7 @@ namespace HSNXT.C5UnitTests.hashtable.set
                 list = new HashSet<int>(MemoryType);
                 always = delegate { return true; };
                 never = delegate { return false; };
-                even = delegate (int i) { return i % 2 == 0; };
+                even = delegate(int i) { return i % 2 == 0; };
             }
 
 
@@ -117,12 +121,15 @@ namespace HSNXT.C5UnitTests.hashtable.set
             public void Apply()
             {
                 var sum = 0;
-                Action<int> a = delegate (int i) { sum = i + 10 * sum; };
+                Action<int> a = delegate(int i) { sum = i + 10 * sum; };
 
                 list.Apply(a);
                 Assert.AreEqual(0, sum);
                 sum = 0;
-                list.Add(5); list.Add(8); list.Add(7); list.Add(5);
+                list.Add(5);
+                list.Add(8);
+                list.Add(7);
+                list.Add(5);
                 list.Apply(a);
                 Assert.AreEqual(758, sum);
             }
@@ -141,7 +148,6 @@ namespace HSNXT.C5UnitTests.hashtable.set
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -151,7 +157,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
 
 
             [SetUp]
-            public void Init() { hashset = new HashSet<int>(MemoryType); }
+            public void Init()
+            {
+                hashset = new HashSet<int>(MemoryType);
+            }
 
 
             [Test]
@@ -210,7 +219,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
             }
 
             [TearDown]
-            public void Dispose() { hashset = null; }
+            public void Dispose()
+            {
+                hashset = null;
+            }
 
             public GetEnumerator(MemoryType memoryType) : base(memoryType)
             {
@@ -232,7 +244,8 @@ namespace HSNXT.C5UnitTests.hashtable.set
             public void Init()
             {
                 Debug.UseDeterministicHashing = true;
-                coll = Factory.New<int>(MemoryType); rad16 = new RadixFormatProvider(16);
+                coll = Factory.New<int>(MemoryType);
+                rad16 = new RadixFormatProvider(16);
             }
 
             [TearDown]
@@ -247,7 +260,7 @@ namespace HSNXT.C5UnitTests.hashtable.set
             public void Format()
             {
                 Assert.AreEqual("{  }", coll.ToString());
-                coll.AddAll(new int[] { -4, 28, 129, 65530 });
+                coll.AddAll(new int[] {-4, 28, 129, 65530});
                 Assert.AreEqual("{ 65530, -4, 28, 129 }", coll.ToString());
                 Assert.AreEqual("{ FFFA, -4, 1C, 81 }", coll.ToString(null, rad16));
                 Assert.AreEqual("{ 65530, -4, ... }", coll.ToString("L14", null));
@@ -262,17 +275,19 @@ namespace HSNXT.C5UnitTests.hashtable.set
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
-		public class CollectionOrSink : BaseMemoryType
+        public class CollectionOrSink : BaseMemoryType
         {
             private HashSet<int> hashset;
 
-			public CollectionOrSink (MemoryType memoryType ) : base(memoryType)
-			{
-				
-			}
+            public CollectionOrSink(MemoryType memoryType) : base(memoryType)
+            {
+            }
 
             [SetUp]
-			public void Init() { hashset = new HashSet<int>(MemoryType); }
+            public void Init()
+            {
+                hashset = new HashSet<int>(MemoryType);
+            }
 
             [Test]
             public void Choose()
@@ -309,7 +324,9 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void AddAll()
             {
-                hashset.Add(3); hashset.Add(4); hashset.Add(5);
+                hashset.Add(3);
+                hashset.Add(4);
+                hashset.Add(5);
 
                 var hashset2 = new HashSet<int>();
 
@@ -323,29 +340,31 @@ namespace HSNXT.C5UnitTests.hashtable.set
 
 
             [TearDown]
-            public void Dispose() { hashset = null; }
+            public void Dispose()
+            {
+                hashset = null;
+            }
         }
 
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
-		public class FindPredicate : BaseMemoryType
+        public class FindPredicate : BaseMemoryType
         {
             private HashSet<int> list;
             Func<int, bool> pred;
 
-			public FindPredicate (MemoryType memoryType ) : base(memoryType)
-			{
-
-			}
+            public FindPredicate(MemoryType memoryType) : base(memoryType)
+            {
+            }
 
 
             [SetUp]
             public void Init()
             {
-                Debug.UseDeterministicHashing = true; 
+                Debug.UseDeterministicHashing = true;
                 list = new HashSet<int>(TenEqualityComparer.Default, MemoryType);
-                pred = delegate (int i) { return i % 5 == 0; };
+                pred = delegate(int i) { return i % 5 == 0; };
             }
 
             [TearDown]
@@ -360,9 +379,9 @@ namespace HSNXT.C5UnitTests.hashtable.set
             {
                 int i;
                 Assert.IsFalse(list.Find(pred, out i));
-                list.AddAll(new int[] { 4, 22, 67, 37 });
+                list.AddAll(new int[] {4, 22, 67, 37});
                 Assert.IsFalse(list.Find(pred, out i));
-                list.AddAll(new int[] { 45, 122, 675, 137 });
+                list.AddAll(new int[] {45, 122, 675, 137});
                 Assert.IsTrue(list.Find(pred, out i));
                 Assert.AreEqual(45, i);
             }
@@ -371,27 +390,32 @@ namespace HSNXT.C5UnitTests.hashtable.set
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
-		public class UniqueItems : BaseMemoryType
+        public class UniqueItems : BaseMemoryType
         {
             private HashSet<int> list;
 
-			public UniqueItems (MemoryType memoryType ) : base(memoryType)
-			{
-
-			}
+            public UniqueItems(MemoryType memoryType) : base(memoryType)
+            {
+            }
 
             [SetUp]
-			public void Init() { list = new HashSet<int>(MemoryType); }
+            public void Init()
+            {
+                list = new HashSet<int>(MemoryType);
+            }
 
             [TearDown]
-            public void Dispose() { list = null; }
+            public void Dispose()
+            {
+                list = null;
+            }
 
             [Test]
             public void Test()
             {
                 Assert.IsTrue(IC.seteq(list.UniqueItems()));
                 Assert.IsTrue(IC.seteq(list.ItemMultiplicities()));
-                list.AddAll(new int[] { 7, 9, 7 });
+                list.AddAll(new int[] {7, 9, 7});
                 Assert.IsTrue(IC.seteq(list.UniqueItems(), 7, 9));
                 Assert.IsTrue(IC.seteq(list.ItemMultiplicities(), 7, 1, 9, 1));
             }
@@ -400,22 +424,21 @@ namespace HSNXT.C5UnitTests.hashtable.set
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
-		public class ArrayTest : BaseMemoryType
+        public class ArrayTest : BaseMemoryType
         {
             private HashSet<int> hashset;
 
             int[] a;
 
-			public ArrayTest (MemoryType memoryType ) : base(memoryType)
-			{
-				
-			}
+            public ArrayTest(MemoryType memoryType) : base(memoryType)
+            {
+            }
 
             [SetUp]
             public void Init()
             {
                 Debug.UseDeterministicHashing = true;
-				hashset = new HashSet<int>(MemoryType);
+                hashset = new HashSet<int>(MemoryType);
                 a = new int[10];
                 for (var i = 0; i < 10; i++)
                     a[i] = 1000 + i;
@@ -564,20 +587,20 @@ namespace HSNXT.C5UnitTests.hashtable.set
 
             [Test]
             public void NullEqualityComparerinConstructor1()
-            { 
-                Assert.Throws<NullReferenceException>(() => new HashSet<int>(null, MemoryType)); 
+            {
+                Assert.Throws<NullReferenceException>(() => new HashSet<int>(null, MemoryType));
             }
 
             [Test]
             public void NullEqualityComparerinConstructor2()
-            { 
-                Assert.Throws<NullReferenceException>(() => new HashSet<int>(5, null, MemoryType)); 
+            {
+                Assert.Throws<NullReferenceException>(() => new HashSet<int>(5, null, MemoryType));
             }
 
             [Test]
             public void NullEqualityComparerinConstructor3()
-            { 
-                Assert.Throws<NullReferenceException>(() => new HashSet<int>(5, 0.5, null, MemoryType)); 
+            {
+                Assert.Throws<NullReferenceException>(() => new HashSet<int>(5, 0.5, null, MemoryType));
             }
 
             [Test]
@@ -598,7 +621,11 @@ namespace HSNXT.C5UnitTests.hashtable.set
                 Assert.IsFalse(hashset.Contains(7));
                 Assert.IsFalse(hashset.Contains(8));
                 Assert.IsTrue(hashset.Contains(10));
-                hashset.Add(0); hashset.Add(16); hashset.Add(32); hashset.Add(48); hashset.Add(64);
+                hashset.Add(0);
+                hashset.Add(16);
+                hashset.Add(32);
+                hashset.Add(48);
+                hashset.Add(64);
                 Assert.IsTrue(hashset.Contains(0));
                 Assert.IsTrue(hashset.Contains(16));
                 Assert.IsTrue(hashset.Contains(32));
@@ -665,13 +692,17 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void RemoveAllCopies()
             {
-                hashset.Add(5); hashset.Add(7); hashset.Add(5);
+                hashset.Add(5);
+                hashset.Add(7);
+                hashset.Add(5);
                 Assert.AreEqual(1, hashset.ContainsCount(5));
                 Assert.AreEqual(1, hashset.ContainsCount(7));
                 hashset.RemoveAllCopies(5);
                 Assert.AreEqual(0, hashset.ContainsCount(5));
                 Assert.AreEqual(1, hashset.ContainsCount(7));
-                hashset.Add(5); hashset.Add(8); hashset.Add(5);
+                hashset.Add(5);
+                hashset.Add(8);
+                hashset.Add(5);
                 hashset.RemoveAllCopies(8);
                 Assert.IsTrue(IC.eq(hashset, 7, 5));
             }
@@ -701,13 +732,19 @@ namespace HSNXT.C5UnitTests.hashtable.set
             {
                 var list2 = new HashSet<int>();
 
-                hashset.Add(4); hashset.Add(5); hashset.Add(6);
-                list2.Add(5); list2.Add(4); list2.Add(7);
+                hashset.Add(4);
+                hashset.Add(5);
+                hashset.Add(6);
+                list2.Add(5);
+                list2.Add(4);
+                list2.Add(7);
                 hashset.RetainAll(list2);
                 Assert.IsTrue(IC.seteq(hashset, 4, 5));
                 hashset.Add(6);
                 list2.Clear();
-                list2.Add(7); list2.Add(8); list2.Add(9);
+                list2.Add(7);
+                list2.Add(8);
+                list2.Add(9);
                 hashset.RetainAll(list2);
                 Assert.IsTrue(IC.seteq(hashset));
             }
@@ -746,17 +783,25 @@ namespace HSNXT.C5UnitTests.hashtable.set
             {
                 var list2 = new HashSet<int>();
 
-                hashset.Add(4); hashset.Add(5); hashset.Add(6);
-                list2.Add(5); list2.Add(7); list2.Add(4);
+                hashset.Add(4);
+                hashset.Add(5);
+                hashset.Add(6);
+                list2.Add(5);
+                list2.Add(7);
+                list2.Add(4);
                 hashset.RemoveAll(list2);
                 Assert.IsTrue(IC.eq(hashset, 6));
-                hashset.Add(5); hashset.Add(4);
+                hashset.Add(5);
+                hashset.Add(4);
                 list2.Clear();
-                list2.Add(6); list2.Add(5);
+                list2.Add(6);
+                list2.Add(5);
                 hashset.RemoveAll(list2);
                 Assert.IsTrue(IC.eq(hashset, 4));
                 list2.Clear();
-                list2.Add(7); list2.Add(8); list2.Add(9);
+                list2.Add(7);
+                list2.Add(8);
+                list2.Add(9);
                 hashset.RemoveAll(list2);
                 Assert.IsTrue(IC.eq(hashset, 4));
             }
@@ -765,12 +810,20 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void Remove()
             {
-                hashset.Add(4); hashset.Add(4); hashset.Add(5); hashset.Add(4); hashset.Add(6);
+                hashset.Add(4);
+                hashset.Add(4);
+                hashset.Add(5);
+                hashset.Add(4);
+                hashset.Add(6);
                 Assert.IsFalse(hashset.Remove(2));
                 Assert.IsTrue(hashset.Remove(4));
                 Assert.IsTrue(IC.seteq(hashset, 5, 6));
                 hashset.Add(7);
-                hashset.Add(21); hashset.Add(37); hashset.Add(53); hashset.Add(69); hashset.Add(85);
+                hashset.Add(21);
+                hashset.Add(37);
+                hashset.Add(53);
+                hashset.Add(69);
+                hashset.Add(85);
                 Assert.IsTrue(hashset.Remove(5));
                 Assert.IsTrue(IC.seteq(hashset, 6, 7, 21, 37, 53, 69, 85));
                 Assert.IsFalse(hashset.Remove(165));
@@ -787,7 +840,8 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void Clear()
             {
-                hashset.Add(7); hashset.Add(7);
+                hashset.Add(7);
+                hashset.Add(7);
                 hashset.Clear();
                 Assert.IsTrue(hashset.IsEmpty);
             }
@@ -823,7 +877,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
 
 
             [TearDown]
-            public void Dispose() { lst = null; }
+            public void Dispose()
+            {
+                lst = null;
+            }
 
 
             [Test]
@@ -922,11 +979,7 @@ namespace HSNXT.C5UnitTests.hashtable.set
             {
             }
         }
-
-
     }
-
-
 
 
     namespace HashingAndEquals
@@ -983,8 +1036,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void EqualHashButDifferent()
             {
-                dit.Add(-1657792980); dit.Add(-1570288808);
-                dat.Add(1862883298); dat.Add(-272461342);
+                dit.Add(-1657792980);
+                dit.Add(-1570288808);
+                dat.Add(1862883298);
+                dat.Add(-272461342);
                 Assert.AreEqual(dit.GetUnsequencedHashCode(), dat.GetUnsequencedHashCode());
                 Assert.IsFalse(dit.UnsequencedEquals(dat));
             }
@@ -1043,7 +1098,6 @@ namespace HSNXT.C5UnitTests.hashtable.set
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -1060,8 +1114,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
                 dit = new HashSet<int>();
                 dat = new HashSet<int>();
                 dut = new HashSet<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new HashSet<ICollection<int>>(MemoryType);
                 Dat = new HashSet<ICollection<int>>(MemoryType);
@@ -1080,8 +1136,12 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dat));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dut));
             }
@@ -1100,7 +1160,6 @@ namespace HSNXT.C5UnitTests.hashtable.set
         }
 
 
-
         [TestFixture(MemoryType.Normal)]
         [TestFixture(MemoryType.Strict)]
         [TestFixture(MemoryType.Safe)]
@@ -1117,8 +1176,10 @@ namespace HSNXT.C5UnitTests.hashtable.set
                 dit = new HashSet<int>(MemoryType);
                 dat = new HashSet<int>(MemoryType);
                 dut = new HashSet<int>(MemoryType);
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
                 Dit = new LinkedList<ICollection<int>>();
                 Dat = new LinkedList<ICollection<int>>();
@@ -1137,9 +1198,15 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut); Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dit); Dut.Add(dut); Dut.Add(dat);
+                Dit.Add(dit);
+                Dit.Add(dut);
+                Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dit);
+                Dut.Add(dut);
+                Dut.Add(dat);
                 Assert.IsFalse(Dit.SequencedEquals(Dat));
                 Assert.IsTrue(Dit.SequencedEquals(Dut));
             }
@@ -1156,7 +1223,6 @@ namespace HSNXT.C5UnitTests.hashtable.set
             {
             }
         }
-
 
 
         [TestFixture(MemoryType.Normal)]
@@ -1176,10 +1242,13 @@ namespace HSNXT.C5UnitTests.hashtable.set
                 dat = new LinkedList<int>();
                 dut = new LinkedList<int>();
                 dot = new LinkedList<int>();
-                dit.Add(2); dit.Add(1);
-                dat.Add(1); dat.Add(2);
+                dit.Add(2);
+                dit.Add(1);
+                dat.Add(1);
+                dat.Add(2);
                 dut.Add(3);
-                dot.Add(2); dot.Add(1);
+                dot.Add(2);
+                dot.Add(1);
                 Dit = new HashSet<ISequenced<int>>(MemoryType);
                 Dat = new HashSet<ISequenced<int>>(MemoryType);
                 Dut = new HashSet<ISequenced<int>>(MemoryType);
@@ -1199,10 +1268,16 @@ namespace HSNXT.C5UnitTests.hashtable.set
             [Test]
             public void Multi()
             {
-                Dit.Add(dit); Dit.Add(dut);//Dit.Add(dit);
-                Dat.Add(dut); Dat.Add(dit); Dat.Add(dat);
-                Dut.Add(dot); Dut.Add(dut);//Dut.Add(dit);
-                Dot.Add(dit); Dot.Add(dit); Dot.Add(dut);
+                Dit.Add(dit);
+                Dit.Add(dut); //Dit.Add(dit);
+                Dat.Add(dut);
+                Dat.Add(dit);
+                Dat.Add(dat);
+                Dut.Add(dot);
+                Dut.Add(dut); //Dut.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dit);
+                Dot.Add(dut);
                 Assert.IsTrue(Dit.UnsequencedEquals(Dit));
                 Assert.IsTrue(Dit.UnsequencedEquals(Dut));
                 Assert.IsFalse(Dit.UnsequencedEquals(Dat));

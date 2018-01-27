@@ -26,7 +26,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 PrintOption(Option<int>.Some(5));
                 PrintOption(Option<int>.Some(8));
 
-                AreEqual(ExpectedBuilder(new[] { "-1", "0", "1", "5", "8" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"-1", "0", "1", "5", "8"}), sw.ToString());
             }
         }
 
@@ -52,7 +52,7 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 OptionMatcher(Option<int>.Some(2));
                 OptionMatcher(Option<int>.Some(3));
 
-                AreEqual(ExpectedBuilder(new[] { "1", "2", "3" }), sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"1", "2", "3"}), sw.ToString());
             }
         }
 
@@ -66,8 +66,8 @@ namespace HSNXT.SuccincTTests.ExampleTests
                 OptionMatcher(Option<int>.Some(0));
                 OptionMatcher(Option<int>.Some(4));
 
-                AreEqual(ExpectedBuilder(new[] { "0 isn't 1, 2 or 3!", "4 isn't 1, 2 or 3!" }),
-                         sw.ToString());
+                AreEqual(ExpectedBuilder(new[] {"0 isn't 1, 2 or 3!", "4 isn't 1, 2 or 3!"}),
+                    sw.ToString());
             }
         }
 

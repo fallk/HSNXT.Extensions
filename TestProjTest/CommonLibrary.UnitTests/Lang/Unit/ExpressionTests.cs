@@ -10,7 +10,6 @@ using HSNXT.ComLib.Tests;
 
 namespace HSNXT.ComLib.Lang.Tests.Unit
 {
-
     [TestFixture]
     public class Expression_Tests
     {
@@ -18,19 +17,19 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
         public void Can_Do_AssignmentExpressions()
         {
             var memory = new Memory();
-            memory.SetValue("age",    new LNumber(32));
+            memory.SetValue("age", new LNumber(32));
             memory.SetValue("isMale", new LBool(true));
-            memory.SetValue("name",   new LString("kishore"));
+            memory.SetValue("name", new LString("kishore"));
 
             // Strings
             Assign(memory, "str1", "kishore1", true, "kishore1");
-            Assign(memory, "str2", "name",     false, "kishore");
+            Assign(memory, "str2", "name", false, "kishore");
 
             // Numbers
             Assign(memory, "num1", 2, true, 2);
             Assign(memory, "num3", 34.56, true, 34.56);
             Assign(memory, "num2", "age", false, 32);
-            
+
 
             // bool
             Assign(memory, "b1", true, true, true);
@@ -56,7 +55,7 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
             var memory = new Memory();
             memory.SetValue("four", new LNumber(4));
             memory.SetValue("five", new LNumber(5));
-            memory.SetValue("two",  new LNumber(2));
+            memory.SetValue("two", new LNumber(2));
             Math(memory, "five", "two", Operator.Multiply, 10);
             Math(memory, "four", "two", Operator.Divide, 2);
             Math(memory, "five", "two", Operator.Add, 7);
@@ -69,19 +68,19 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
         public void Can_Do_Unary_Operations()
         {
             var memory = new Memory();
-            memory.SetValue("one",   new LNumber(1));
-            memory.SetValue("two",   new LNumber(2));
+            memory.SetValue("one", new LNumber(1));
+            memory.SetValue("two", new LNumber(2));
             memory.SetValue("three", new LNumber(3));
-            memory.SetValue("four",  new LNumber(4));
-            memory.SetValue("five",  new LNumber(5));
-            memory.SetValue("six",   new LNumber(6));
+            memory.SetValue("four", new LNumber(4));
+            memory.SetValue("five", new LNumber(5));
+            memory.SetValue("six", new LNumber(6));
 
-            Unary(memory, "one", 0,   Operator.PlusPlus, 2);
-            Unary(memory, "two", 2,   Operator.PlusEqual, 4);
+            Unary(memory, "one", 0, Operator.PlusPlus, 2);
+            Unary(memory, "two", 2, Operator.PlusEqual, 4);
             Unary(memory, "three", 0, Operator.MinusMinus, 2);
-            Unary(memory, "four", 2,  Operator.MinusEqual, 2);
-            Unary(memory, "five", 2,  Operator.MultEqual, 10);
-            Unary(memory, "six", 2,   Operator.DivEqual, 3);
+            Unary(memory, "four", 2, Operator.MinusEqual, 2);
+            Unary(memory, "five", 2, Operator.MultEqual, 10);
+            Unary(memory, "six", 2, Operator.DivEqual, 3);
         }
 
 
@@ -91,7 +90,7 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
             var memory = new Memory();
             memory.SetValue("four", new LNumber(4));
             memory.SetValue("five", new LNumber(5));
-            memory.SetValue("two",  new LNumber(2));            
+            memory.SetValue("two", new LNumber(2));
             Math(memory, "five", 2, Operator.Multiply, 10);
             Math(memory, "four", 2, Operator.Divide, 2);
             Math(memory, "five", 2, Operator.Add, 7);
@@ -141,11 +140,12 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
         public void MemberAccessExpression()
         {
             // "result = user.Address.City";
-            var i = new Tuple<string, Type, object, string, Type, object, List<Expr>>("user", typeof(Person), new Person(), "result", typeof(string), "new york", new List<Expr>()
-            {
-                //new MemberAccessExpression("user", "Address"),
-                //new MemberAccessExpression("City"),
-            });
+            var i = new Tuple<string, Type, object, string, Type, object, List<Expr>>("user", typeof(Person),
+                new Person(), "result", typeof(string), "new york", new List<Expr>()
+                {
+                    //new MemberAccessExpression("user", "Address"),
+                    //new MemberAccessExpression("City"),
+                });
         }
 
 
@@ -160,13 +160,13 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
         private void Math(Memory memory, object left, object right, Operator op, double expected)
         {
             var expLeft = (left.GetType() == typeof(string))
-                        ? (Expr)new VariableExpr(left.ToString())
-                        : (Expr)new ConstantExpr(left);
+                ? (Expr) new VariableExpr(left.ToString())
+                : (Expr) new ConstantExpr(left);
 
             var expRight = (right.GetType() == typeof(string))
-                         ? (Expr)new VariableExpr(right.ToString())
-                         : (Expr)new ConstantExpr(right);
-            var ctx = new Context() { Memory = memory };
+                ? (Expr) new VariableExpr(right.ToString())
+                : (Expr) new ConstantExpr(right);
+            var ctx = new Context() {Memory = memory};
             expLeft.Ctx = ctx;
             expRight.Ctx = ctx;
             var exp = new BinaryExpr(expLeft, op, expRight);
@@ -189,8 +189,8 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
             var ctx = new Context();
             ctx.Memory = memory;
             var expr = isConst
-                            ? (Expr)new ConstantExpr(val)
-                            : (Expr)new VariableExpr(val.ToString());
+                ? (Expr) new ConstantExpr(val)
+                : (Expr) new VariableExpr(val.ToString());
             var exp = new AssignExpr(true, name, expr);
             expr.Ctx = ctx;
             exp.Ctx = ctx;

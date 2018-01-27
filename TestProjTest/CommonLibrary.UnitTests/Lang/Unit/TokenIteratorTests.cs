@@ -9,7 +9,8 @@ namespace HSNXT.ComLib.Lang.Tests.Unit
     {
         private string GetCode()
         {
-            return "var data = [ 'john', 100, true ]; \r\n function inc( num ) { return num + 1; } var result = inc(userinfo[1]);";
+            return
+                "var data = [ 'john', 100, true ]; \r\n function inc( num ) { return num + 1; } var result = inc(userinfo[1]);";
         }
 
 

@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -25,7 +27,7 @@ namespace HSNXT.Test
         [Test]
         public void PadNegativeWidth()
         {
-            AssertThrowsArgument.Exception("width",() =>
+            AssertThrowsArgument.Exception("width", () =>
                 new object[0].Pad(-1));
         }
 
@@ -44,28 +46,28 @@ namespace HSNXT.Test
         [Test]
         public void PadWideSourceSequence()
         {
-            var result = new[] { 123, 456, 789 }.Pad(2);
+            var result = new[] {123, 456, 789}.Pad(2);
             result.AssertSequenceEqual(123, 456, 789);
         }
 
         [Test]
         public void PadEqualSourceSequence()
         {
-            var result = new[] { 123, 456, 789 }.Pad(3);
+            var result = new[] {123, 456, 789}.Pad(3);
             result.AssertSequenceEqual(123, 456, 789);
         }
 
         [Test]
         public void PadNarrowSourceSequenceWithDefaultPadding()
         {
-            var result = new[] { 123, 456, 789 }.Pad(5);
+            var result = new[] {123, 456, 789}.Pad(5);
             result.AssertSequenceEqual(123, 456, 789, 0, 0);
         }
 
         [Test]
         public void PadNarrowSourceSequenceWithNonDefaultPadding()
         {
-            var result = new[] { 123, 456, 789 }.Pad(5, -1);
+            var result = new[] {123, 456, 789}.Pad(5, -1);
             result.AssertSequenceEqual(123, 456, 789, -1, -1);
         }
 

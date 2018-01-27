@@ -10,13 +10,17 @@ namespace HSNXT.Test
     [DebuggerStepThrough]
     static partial class Enumerable
     {
-        public static TSource Aggregate<TSource>(this IEnumerable<TSource> source, Func<TSource, TSource, TSource> func) =>
+        public static TSource Aggregate<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, TSource, TSource> func) =>
             LinqEnumerable.Aggregate(source, func);
 
-        public static TAccumulate Aggregate<TSource, TAccumulate>(this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func) =>
+        public static TAccumulate Aggregate<TSource, TAccumulate>(this IEnumerable<TSource> source, TAccumulate seed,
+            Func<TAccumulate, TSource, TAccumulate> func) =>
             LinqEnumerable.Aggregate(source, seed, func);
 
-        public static TResult Aggregate<TSource, TAccumulate, TResult>(this IEnumerable<TSource> source, TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func, Func<TAccumulate, TResult> resultSelector) =>
+        public static TResult Aggregate<TSource, TAccumulate, TResult>(this IEnumerable<TSource> source,
+            TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func,
+            Func<TAccumulate, TResult> resultSelector) =>
             LinqEnumerable.Aggregate(source, seed, func, resultSelector);
 
         public static bool All<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
@@ -97,7 +101,8 @@ namespace HSNXT.Test
         public static bool Contains<TSource>(this IEnumerable<TSource> source, TSource value) =>
             LinqEnumerable.Contains(source, value);
 
-        public static bool Contains<TSource>(this IEnumerable<TSource> source, TSource value, IEqualityComparer<TSource> comparer) =>
+        public static bool Contains<TSource>(this IEnumerable<TSource> source, TSource value,
+            IEqualityComparer<TSource> comparer) =>
             LinqEnumerable.Contains(source, value, comparer);
 
         public static int Count<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
@@ -109,13 +114,15 @@ namespace HSNXT.Test
         public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.DefaultIfEmpty(source);
 
-        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source, TSource defaultValue) =>
+        public static IEnumerable<TSource> DefaultIfEmpty<TSource>(this IEnumerable<TSource> source,
+            TSource defaultValue) =>
             LinqEnumerable.DefaultIfEmpty(source, defaultValue);
 
         public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.Distinct(source);
 
-        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer) =>
+        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source,
+            IEqualityComparer<TSource> comparer) =>
             LinqEnumerable.Distinct(source, comparer);
 
         public static TSource ElementAt<TSource>(this IEnumerable<TSource> source, int index) =>
@@ -127,10 +134,12 @@ namespace HSNXT.Test
         public static IEnumerable<TResult> Empty<TResult>() =>
             LinqEnumerable.Empty<TResult>();
 
-        public static IEnumerable<TSource> Except<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second) =>
+        public static IEnumerable<TSource>
+            Except<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second) =>
             LinqEnumerable.Except(first, second);
 
-        public static IEnumerable<TSource> Except<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer) =>
+        public static IEnumerable<TSource> Except<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second,
+            IEqualityComparer<TSource> comparer) =>
             LinqEnumerable.Except(first, second, comparer);
 
         public static TSource First<TSource>(this IEnumerable<TSource> source) =>
@@ -142,49 +151,73 @@ namespace HSNXT.Test
         public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.FirstOrDefault(source);
 
-        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
+        public static TSource
+            FirstOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
             LinqEnumerable.FirstOrDefault(source, predicate);
 
-        public static IEnumerable<TResult> GroupBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TKey, IEnumerable<TSource>, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
+        public static IEnumerable<TResult> GroupBy<TSource, TKey, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TKey, IEnumerable<TSource>, TResult> resultSelector,
+            IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.GroupBy(source, keySelector, resultSelector, comparer);
 
-        public static IEnumerable<TResult> GroupBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TKey, IEnumerable<TSource>, TResult> resultSelector) =>
+        public static IEnumerable<TResult> GroupBy<TSource, TKey, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TKey, IEnumerable<TSource>, TResult> resultSelector) =>
             LinqEnumerable.GroupBy(source, keySelector, resultSelector);
 
-        public static IEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer) =>
+        public static IEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TKey, TElement>(
+            this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector,
+            IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.GroupBy(source, keySelector, elementSelector, comparer);
 
-        public static IEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, Func<TKey, IEnumerable<TElement>, TResult> resultSelector) =>
+        public static IEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector,
+            Func<TKey, IEnumerable<TElement>, TResult> resultSelector) =>
             LinqEnumerable.GroupBy(source, keySelector, elementSelector, resultSelector);
 
-        public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) =>
+        public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.GroupBy(source, keySelector, comparer);
 
-        public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector) =>
             LinqEnumerable.GroupBy(source, keySelector);
 
-        public static IEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector) =>
+        public static IEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TKey, TElement>(
+            this IEnumerable<TSource> source, Func<TSource, TKey> keySelector,
+            Func<TSource, TElement> elementSelector) =>
             LinqEnumerable.GroupBy(source, keySelector, elementSelector);
 
-        public static IEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, Func<TKey, IEnumerable<TElement>, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
+        public static IEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector,
+            Func<TKey, IEnumerable<TElement>, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.GroupBy(source, keySelector, elementSelector, resultSelector, comparer);
 
-        public static IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer, IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector, Func<TOuter, IEnumerable<TInner>, TResult> resultSelector) =>
+        public static IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer,
+            IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector,
+            Func<TOuter, IEnumerable<TInner>, TResult> resultSelector) =>
             LinqEnumerable.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
 
-        public static IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer, IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector, Func<TOuter, IEnumerable<TInner>, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
+        public static IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer,
+            IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector,
+            Func<TOuter, IEnumerable<TInner>, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer);
 
-        public static IEnumerable<TSource> Intersect<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second) =>
+        public static IEnumerable<TSource> Intersect<TSource>(this IEnumerable<TSource> first,
+            IEnumerable<TSource> second) =>
             LinqEnumerable.Intersect(first, second);
 
-        public static IEnumerable<TSource> Intersect<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer) =>
+        public static IEnumerable<TSource> Intersect<TSource>(this IEnumerable<TSource> first,
+            IEnumerable<TSource> second, IEqualityComparer<TSource> comparer) =>
             LinqEnumerable.Intersect(first, second, comparer);
 
-        public static IEnumerable<TResult> Join<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer, IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector, Func<TOuter, TInner, TResult> resultSelector) =>
+        public static IEnumerable<TResult> Join<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer,
+            IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector,
+            Func<TOuter, TInner, TResult> resultSelector) =>
             LinqEnumerable.Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
 
-        public static IEnumerable<TResult> Join<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer, IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector, Func<TOuter, TInner, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
+        public static IEnumerable<TResult> Join<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer,
+            IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector,
+            Func<TOuter, TInner, TResult> resultSelector, IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer);
 
         public static TSource Last<TSource>(this IEnumerable<TSource> source) =>
@@ -229,7 +262,8 @@ namespace HSNXT.Test
         public static float? Max<TSource>(this IEnumerable<TSource> source, Func<TSource, float?> selector) =>
             LinqEnumerable.Max(source, selector);
 
-        public static TResult Max<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) =>
+        public static TResult
+            Max<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) =>
             LinqEnumerable.Max(source, selector);
 
         public static double? Max<TSource>(this IEnumerable<TSource> source, Func<TSource, double?> selector) =>
@@ -283,7 +317,8 @@ namespace HSNXT.Test
         public static double? Min<TSource>(this IEnumerable<TSource> source, Func<TSource, double?> selector) =>
             LinqEnumerable.Min(source, selector);
 
-        public static TResult Min<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) =>
+        public static TResult
+            Min<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) =>
             LinqEnumerable.Min(source, selector);
 
         public static long? Min<TSource>(this IEnumerable<TSource> source, Func<TSource, long?> selector) =>
@@ -340,16 +375,20 @@ namespace HSNXT.Test
         public static IEnumerable<TResult> OfType<TResult>(this IEnumerable source) =>
             LinqEnumerable.OfType<TResult>(source);
 
-        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
+        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
             LinqEnumerable.OrderBy(source, keySelector, comparer);
 
-        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector) =>
             LinqEnumerable.OrderBy(source, keySelector);
 
-        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector) =>
             LinqEnumerable.OrderByDescending(source, keySelector);
 
-        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
+        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
             LinqEnumerable.OrderByDescending(source, keySelector, comparer);
 
         public static IEnumerable<int> Range(int start, int count) =>
@@ -361,25 +400,34 @@ namespace HSNXT.Test
         public static IEnumerable<TSource> Reverse<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.Reverse(source);
 
-        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) =>
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, TResult> selector) =>
             LinqEnumerable.Select(source, selector);
 
-        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, TResult> selector) =>
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, int, TResult> selector) =>
             LinqEnumerable.Select(source, selector);
 
-        public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TCollection>> collectionSelector, Func<TSource, TCollection, TResult> resultSelector) =>
+        public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, IEnumerable<TCollection>> collectionSelector,
+            Func<TSource, TCollection, TResult> resultSelector) =>
             LinqEnumerable.SelectMany(source, collectionSelector, resultSelector);
 
-        public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TResult>> selector) =>
+        public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, IEnumerable<TResult>> selector) =>
             LinqEnumerable.SelectMany(source, selector);
 
-        public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, IEnumerable<TResult>> selector) =>
+        public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, int, IEnumerable<TResult>> selector) =>
             LinqEnumerable.SelectMany(source, selector);
 
-        public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source, Func<TSource, int, IEnumerable<TCollection>> collectionSelector, Func<TSource, TCollection, TResult> resultSelector) =>
+        public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source,
+            Func<TSource, int, IEnumerable<TCollection>> collectionSelector,
+            Func<TSource, TCollection, TResult> resultSelector) =>
             LinqEnumerable.SelectMany(source, collectionSelector, resultSelector);
 
-        public static bool SequenceEqual<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer) =>
+        public static bool SequenceEqual<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second,
+            IEqualityComparer<TSource> comparer) =>
             LinqEnumerable.SequenceEqual(first, second, comparer);
 
         public static bool SequenceEqual<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second) =>
@@ -394,16 +442,19 @@ namespace HSNXT.Test
         public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.SingleOrDefault(source);
 
-        public static TSource SingleOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
+        public static TSource
+            SingleOrDefault<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
             LinqEnumerable.SingleOrDefault(source, predicate);
 
         public static IEnumerable<TSource> Skip<TSource>(this IEnumerable<TSource> source, int count) =>
             LinqEnumerable.Skip(source, count);
 
-        public static IEnumerable<TSource> SkipWhile<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
+        public static IEnumerable<TSource> SkipWhile<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate) =>
             LinqEnumerable.SkipWhile(source, predicate);
 
-        public static IEnumerable<TSource> SkipWhile<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate) =>
+        public static IEnumerable<TSource> SkipWhile<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, int, bool> predicate) =>
             LinqEnumerable.SkipWhile(source, predicate);
 
         public static int? Sum<TSource>(this IEnumerable<TSource> source, Func<TSource, int?> selector) =>
@@ -469,67 +520,88 @@ namespace HSNXT.Test
         public static IEnumerable<TSource> Take<TSource>(this IEnumerable<TSource> source, int count) =>
             LinqEnumerable.Take(source, count);
 
-        public static IEnumerable<TSource> TakeWhile<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
+        public static IEnumerable<TSource> TakeWhile<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate) =>
             LinqEnumerable.TakeWhile(source, predicate);
 
-        public static IEnumerable<TSource> TakeWhile<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate) =>
+        public static IEnumerable<TSource> TakeWhile<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, int, bool> predicate) =>
             LinqEnumerable.TakeWhile(source, predicate);
 
-        public static IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
+        public static IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this IOrderedEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
             LinqEnumerable.ThenBy(source, keySelector, comparer);
 
-        public static IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this IOrderedEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector) =>
             LinqEnumerable.ThenBy(source, keySelector);
 
-        public static IOrderedEnumerable<TSource> ThenByDescending<TSource, TKey>(this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static IOrderedEnumerable<TSource> ThenByDescending<TSource, TKey>(
+            this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
             LinqEnumerable.ThenByDescending(source, keySelector);
 
-        public static IOrderedEnumerable<TSource> ThenByDescending<TSource, TKey>(this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
+        public static IOrderedEnumerable<TSource> ThenByDescending<TSource, TKey>(
+            this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer) =>
             LinqEnumerable.ThenByDescending(source, keySelector, comparer);
 
         public static TSource[] ToArray<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.ToArray(source);
 
-        public static Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector) =>
             LinqEnumerable.ToDictionary(source, keySelector);
 
-        public static Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) =>
+        public static Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.ToDictionary(source, keySelector, comparer);
 
-        public static Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector) =>
+        public static Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector) =>
             LinqEnumerable.ToDictionary(source, keySelector, elementSelector);
 
-        public static Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer) =>
+        public static Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector,
+            IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.ToDictionary(source, keySelector, elementSelector, comparer);
 
         public static List<TSource> ToList<TSource>(this IEnumerable<TSource> source) =>
             LinqEnumerable.ToList(source);
 
-        public static ILookup<TKey, TSource> ToLookup<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) =>
+        public static ILookup<TKey, TSource> ToLookup<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector) =>
             LinqEnumerable.ToLookup(source, keySelector);
 
-        public static ILookup<TKey, TSource> ToLookup<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) =>
+        public static ILookup<TKey, TSource> ToLookup<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.ToLookup(source, keySelector, comparer);
 
-        public static ILookup<TKey, TElement> ToLookup<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector) =>
+        public static ILookup<TKey, TElement> ToLookup<TSource, TKey, TElement>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector) =>
             LinqEnumerable.ToLookup(source, keySelector, elementSelector);
 
-        public static ILookup<TKey, TElement> ToLookup<TSource, TKey, TElement>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer) =>
+        public static ILookup<TKey, TElement> ToLookup<TSource, TKey, TElement>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector,
+            IEqualityComparer<TKey> comparer) =>
             LinqEnumerable.ToLookup(source, keySelector, elementSelector, comparer);
 
-        public static IEnumerable<TSource> Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second) =>
+        public static IEnumerable<TSource>
+            Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second) =>
             LinqEnumerable.Union(first, second);
 
-        public static IEnumerable<TSource> Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer) =>
+        public static IEnumerable<TSource> Union<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second,
+            IEqualityComparer<TSource> comparer) =>
             LinqEnumerable.Union(first, second, comparer);
 
-        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate) =>
+        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, int, bool> predicate) =>
             LinqEnumerable.Where(source, predicate);
 
-        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
+        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate) =>
             LinqEnumerable.Where(source, predicate);
 
-        public static IEnumerable<TResult> Zip<TFirst, TSecond, TResult>(this IEnumerable<TFirst> first, IEnumerable<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector) =>
+        public static IEnumerable<TResult> Zip<TFirst, TSecond, TResult>(this IEnumerable<TFirst> first,
+            IEnumerable<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector) =>
             LinqEnumerable.Zip(first, second, resultSelector);
     }
 }

@@ -1,5 +1,4 @@
 using System;
-
 using Xunit.Sdk;
 
 namespace XunitShould
@@ -11,8 +10,10 @@ namespace XunitShould
         /// </summary>
         /// <param name="condition">The condition to be inspected</param>
         /// <exception cref="TrueException">Thrown when the condition is false</exception>
-        public static void ShouldBeTrue(this bool condition) {
-            if (!condition) {
+        public static void ShouldBeTrue(this bool condition)
+        {
+            if (!condition)
+            {
                 throw new TrueException(null, false);
             }
         }
@@ -23,8 +24,10 @@ namespace XunitShould
         /// <param name="condition">The condition to be inspected</param>
         /// <param name="userMessage">The message to be shown when the condition is false</param>
         /// <exception cref="TrueException">Thrown when the condition is false</exception>
-        public static void ShouldBeTrue(this bool condition, string userMessage) {
-            if (!condition) {
+        public static void ShouldBeTrue(this bool condition, string userMessage)
+        {
+            if (!condition)
+            {
                 throw new TrueException(userMessage, false);
             }
         }
@@ -35,8 +38,10 @@ namespace XunitShould
         /// <param name="condition">The condition to be inspected</param>
         /// <param name="messageGenerator">The message to be shown when the condition is false</param>
         /// <exception cref="TrueException">Thrown when the condition is false</exception>
-        public static void ShouldBeTrue(this bool condition, Func<string> messageGenerator) {
-            if (!condition) {
+        public static void ShouldBeTrue(this bool condition, Func<string> messageGenerator)
+        {
+            if (!condition)
+            {
                 throw new TrueException(messageGenerator(), false);
             }
         }

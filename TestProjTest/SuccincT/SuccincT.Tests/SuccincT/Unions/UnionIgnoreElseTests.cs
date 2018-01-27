@@ -7,9 +7,16 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
     [TestFixture]
     internal class UnionIgnoreElseTests
     {
-        private enum Colors { Green, Blue }
+        private enum Colors
+        {
+            Green,
+            Blue
+        }
 
-        private enum Animals { Sheep }
+        private enum Animals
+        {
+            Sheep
+        }
 
         [Test]
         public void UnionOfTwoWithT1_UsesIgnoreElseIfNoCase1MatchWithExec()
@@ -62,14 +69,14 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>(1);
             var result = 0;
             union.Match()
-                 .Case2()
-                 .Do(x => result = 1)
-                 .Case3()
-                 .Do(x => result = 2)
-                 .Case4()
-                 .Do(x => result = 3)
-                 .IgnoreElse()
-                 .Exec();
+                .Case2()
+                .Do(x => result = 1)
+                .Case3()
+                .Do(x => result = 2)
+                .Case4()
+                .Do(x => result = 3)
+                .IgnoreElse()
+                .Exec();
             AreEqual(0, result);
         }
 
@@ -79,14 +86,14 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>("fred");
             var result = 0;
             union.Match()
-                 .Case1()
-                 .Do(x => result = 1)
-                 .Case3()
-                 .Do(x => result = 2)
-                 .Case4()
-                 .Do(x => result = 3)
-                 .IgnoreElse()
-                 .Exec();
+                .Case1()
+                .Do(x => result = 1)
+                .Case3()
+                .Do(x => result = 2)
+                .Case4()
+                .Do(x => result = 3)
+                .IgnoreElse()
+                .Exec();
             AreEqual(0, result);
         }
 
@@ -96,14 +103,14 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>(Colors.Green);
             var result = 0;
             union.Match()
-                 .Case1()
-                 .Do(x => result = 1)
-                 .Case2()
-                 .Do(x => result = 2)
-                 .Case4()
-                 .Do(x => result = 3)
-                 .IgnoreElse()
-                 .Exec();
+                .Case1()
+                .Do(x => result = 1)
+                .Case2()
+                .Do(x => result = 2)
+                .Case4()
+                .Do(x => result = 3)
+                .IgnoreElse()
+                .Exec();
             AreEqual(0, result);
         }
 
@@ -113,14 +120,14 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>(Animals.Sheep);
             var result = 0;
             union.Match()
-                 .Case1()
-                 .Do(x => result = 1)
-                 .Case2()
-                 .Do(x => result = 2)
-                 .Case3()
-                 .Do(x => result = 3)
-                 .IgnoreElse()
-                 .Exec();
+                .Case1()
+                .Do(x => result = 1)
+                .Case2()
+                .Do(x => result = 2)
+                .Case3()
+                .Do(x => result = 3)
+                .IgnoreElse()
+                .Exec();
             AreEqual(0, result);
         }
     }

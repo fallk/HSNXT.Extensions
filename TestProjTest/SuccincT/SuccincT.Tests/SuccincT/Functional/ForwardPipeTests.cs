@@ -21,6 +21,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
 
             Assert.AreEqual(expected, actual);
         }
+
         [Test]
         public void OneParameterPipeWithMethods_GivesSameResultAsStandardWay()
         {
@@ -35,8 +36,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void OneActionParameterPipeWithLambdas_GivesSameResultAsStandardWay()
         {
-            var list1 = new List<int> { 1, 2, 3 };
-            var list2 = new List<int> { 1, 2, 3 };
+            var list1 = new List<int> {1, 2, 3};
+            var list2 = new List<int> {1, 2, 3};
             var removeFromList1 = Action<int>(x => list1.Remove(x));
 
             2.Into(removeFromList1);
@@ -48,8 +49,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void OneActionParameterPipeWithMethods_GivesSameResultAsStandardWay()
         {
-            var list1 = new List<int> { 1, 2, 3 };
-            var list2 = new List<int> { 1, 2, 3 };
+            var list1 = new List<int> {1, 2, 3};
+            var list2 = new List<int> {1, 2, 3};
 
             2.Into(list1.Remove);
             list2.Remove(2);

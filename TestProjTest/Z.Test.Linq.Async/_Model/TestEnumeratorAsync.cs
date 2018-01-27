@@ -26,7 +26,8 @@ namespace Z.Test.Linq.Async.Model
                         throw new Exception("TestEnumerable;ErrorPredicate;Value=" + currentValue);
                     }
                 }
-                return (T) Task.Delay(100*(int) (object) currentValue);
+
+                return (T) Task.Delay(100 * (int) (object) currentValue);
             }
         }
 

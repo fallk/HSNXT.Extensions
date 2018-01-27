@@ -24,6 +24,7 @@ using System.Linq;
 using HSNXT.C5;
 using NUnit.Framework;
 using SCG = System.Collections.Generic;
+
 namespace HSNXT.C5UnitTests.hashtable.dictionary
 {
     using DictionaryIntToInt = HashDictionary<int, int>;
@@ -36,7 +37,10 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
         [Test]
         public void TestEvents()
         {
-            Func<DictionaryIntToInt> factory = delegate () { return new DictionaryIntToInt(TenEqualityComparer.Default); };
+            Func<DictionaryIntToInt> factory = delegate()
+            {
+                return new DictionaryIntToInt(TenEqualityComparer.Default);
+            };
             new C5UnitTests.Templates.Events.DictionaryTester<DictionaryIntToInt>().Test(factory, MemoryType);
         }
 
@@ -52,7 +56,10 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
 
     static class Factory
     {
-        public static IDictionary<K, V> New<K, V>(MemoryType memoryType) { return new HashDictionary<K, V>(memoryType); }
+        public static IDictionary<K, V> New<K, V>(MemoryType memoryType)
+        {
+            return new HashDictionary<K, V>(memoryType);
+        }
     }
 
     [TestFixture(MemoryType.Normal)]
@@ -62,6 +69,7 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
     {
         IDictionary<int, int> coll;
         IFormatProvider rad16;
+
         [SetUp]
         public void Init()
         {
@@ -69,6 +77,7 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
             coll = Factory.New<int, int>(MemoryType);
             rad16 = new RadixFormatProvider(16);
         }
+
         [TearDown]
         public void Dispose()
         {
@@ -76,11 +85,13 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
             coll = null;
             rad16 = null;
         }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("{  }", coll.ToString());
-            coll.Add(23, 67); coll.Add(45, 89);
+            coll.Add(23, 67);
+            coll.Add(45, 89);
             Assert.AreEqual("{ 45 => 89, 23 => 67 }", coll.ToString());
             Assert.AreEqual("{ 2D => 59, 17 => 43 }", coll.ToString(null, rad16));
             Assert.AreEqual("{ 45 => 89, ... }", coll.ToString("L14", null));
@@ -103,19 +114,19 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
         [SetUp]
         public void Init()
         {
-            dict = new HashDictionary<string, string>(MemoryType); 
+            dict = new HashDictionary<string, string>(MemoryType);
         }
 
         [Test]
         public void NullEqualityComparerinConstructor1()
-        { 
-            Assert.Throws<NullReferenceException>(() => new HashDictionary<int, int>(null, MemoryType)); 
+        {
+            Assert.Throws<NullReferenceException>(() => new HashDictionary<int, int>(null, MemoryType));
         }
 
         [Test]
         public void NullEqualityComparerinConstructor2()
-        { 
-            Assert.Throws<NullReferenceException>(() => new HashDictionary<int, int>(5, 0.5, null, MemoryType)); 
+        {
+            Assert.Throws<NullReferenceException>(() => new HashDictionary<int, int>(5, 0.5, null, MemoryType));
         }
 
         [Test]
@@ -130,7 +141,6 @@ namespace HSNXT.C5UnitTests.hashtable.dictionary
         {
             Assert.Throws<NoSuchItemException>(() => dict.Choose());
         }
-
 
 
         [TearDown]

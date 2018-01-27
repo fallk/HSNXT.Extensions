@@ -16,7 +16,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
         {
             var settings = new JsonSerializerSettings();
             settings.Converters.Add(new EitherConverter());
-            var either = new Either<List<int>, string>(new List<int> { 1, 2 });
+            var either = new Either<List<int>, string>(new List<int> {1, 2});
             var json = SerializeObject(either, settings);
             var newEither = DeserializeObject<Either<List<int>, string>>(json, settings);
 
@@ -46,7 +46,7 @@ namespace HSNXT.SuccincTTests.SuccincT.JSON
             settings.Converters.Add(new EitherConverter());
             var either1 = new Either<int, string>(1);
             var either2 = new Either<int, string>("a");
-            var list = new List<Either<int, string>> { either1, either2 };
+            var list = new List<Either<int, string>> {either1, either2};
             var json = SerializeObject(list, settings);
             var newList = DeserializeObject<List<Either<int, string>>>(json, settings);
 

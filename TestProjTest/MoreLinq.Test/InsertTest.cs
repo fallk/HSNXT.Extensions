@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2017 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 using System.Linq;
@@ -28,7 +30,7 @@ namespace HSNXT.Test
         public void InsertWithNegativeIndex()
         {
             AssertThrowsArgument.OutOfRangeException("index", () =>
-                 Enumerable.Range(1, 10).Insert(new[] { 97, 98, 99 }, -1));
+                Enumerable.Range(1, 10).Insert(new[] {97, 98, 99}, -1));
         }
 
         [TestCase(7)]
@@ -37,7 +39,7 @@ namespace HSNXT.Test
         public void InsertWithIndexGreaterThanSourceLengthMaterialized(int count)
         {
             var source = Enumerable.Range(0, count).ToList();
-            var result = source.Insert(new[] { 97, 98, 99 }, count + 1);
+            var result = source.Insert(new[] {97, 98, 99}, count + 1);
 
             AssertThrowsArgument.OutOfRangeException("index", () =>
                 result.ForEach((e, index) =>
@@ -51,9 +53,9 @@ namespace HSNXT.Test
         {
             var source = Enumerable.Range(0, count);
 
-            var result = source.Insert(new[] { 97, 98, 99 }, count + 1)
-                               .Take(count)
-                               .ToList();
+            var result = source.Insert(new[] {97, 98, 99}, count + 1)
+                .Take(count)
+                .ToList();
 
             Assert.That(source, Is.EqualTo(result));
         }
@@ -65,7 +67,7 @@ namespace HSNXT.Test
         public void Insert(int count, int index)
         {
             var first = Enumerable.Range(1, count);
-            var second = new[] { 97, 98, 99 };
+            var second = new[] {97, 98, 99};
             var result = first.Insert(second, index);
             var expectations = first.Take(index).Concat(second).Concat(first.Skip(index));
 

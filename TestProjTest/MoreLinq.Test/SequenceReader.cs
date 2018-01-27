@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2008 Jonathan Skeet. All rights reserved.
 //
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -44,16 +46,16 @@ namespace HSNXT.Test
         /// from an enumerable sequence.
         /// </summary>
         /// <param name="source">Source sequence.</param>
-
         public SequenceReader(IEnumerable<T> source) :
-            this(GetEnumerator(source)) { }
+            this(GetEnumerator(source))
+        {
+        }
 
         /// <summary>
         /// Initializes a <see cref="SequenceReader{T}" /> instance
         /// from an enumerator.
         /// </summary>
         /// <param name="enumerator">Source enumerator.</param>
-
         public SequenceReader(IEnumerator<T> enumerator) =>
             _enumerator = enumerator ?? throw new ArgumentNullException(nameof(enumerator));
 
@@ -72,7 +74,6 @@ namespace HSNXT.Test
         /// <returns>
         /// Returns true if a value was successfully read; otherwise, false.
         /// </returns>
-
         public virtual bool TryRead(out T value)
         {
             EnsureNotDisposed();
@@ -90,13 +91,11 @@ namespace HSNXT.Test
         /// <summary>
         /// Tires to read the next value otherwise return the default.
         /// </summary>
-
         public T TryRead() => TryRead(default(T));
 
         /// <summary>
         /// Tires to read the next value otherwise return a given default.
         /// </summary>
-
         public T TryRead(T defaultValue) =>
             TryRead(out var result) ? result : defaultValue;
 
@@ -107,7 +106,6 @@ namespace HSNXT.Test
         /// <returns>
         /// Returns the read value;
         /// </returns>
-
         public T Read() =>
             TryRead(out var result) ? result : throw new InvalidOperationException();
 
@@ -115,7 +113,6 @@ namespace HSNXT.Test
         /// Reads the end. If the end has not been reached then it
         /// throws <see cref="InvalidOperationException"/>.
         /// </summary>
-
         public virtual void ReadEnd()
         {
             EnsureNotDisposed();
@@ -128,7 +125,6 @@ namespace HSNXT.Test
         /// Ensures that this object has not been disposed, that
         /// <see cref="Dispose"/> has not been previously called.
         /// </summary>
-
         protected void EnsureNotDisposed()
         {
             if (_enumerator == null)
@@ -139,7 +135,6 @@ namespace HSNXT.Test
         /// Disposes this object and enumerator with which is was
         /// initialized.
         /// </summary>
-
         public virtual void Dispose()
         {
             var e = _enumerator;

@@ -1,9 +1,9 @@
-﻿using System; using HSNXT;
+﻿using System;
+using HSNXT;
 using Xunit;
 
 namespace BCLExtensions.Tests.ActionExtensions
 {
-
     public class AsActionUsingWithSevenParametersTests
     {
         [Fact]
@@ -64,7 +64,8 @@ namespace BCLExtensions.Tests.ActionExtensions
                 passedParameter7 = p7;
             };
 
-            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3, expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7);
+            var result = action.AsActionUsing(expectedParameter1, expectedParameter2, expectedParameter3,
+                expectedParameter4, expectedParameter5, expectedParameter6, expectedParameter7);
             result();
 
             Assert.Equal(expectedParameter1, passedParameter1);
@@ -76,9 +77,9 @@ namespace BCLExtensions.Tests.ActionExtensions
             Assert.Equal(expectedParameter7, passedParameter7);
         }
 
-        private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4, byte parameter5, int parameter6, string parameter7)
+        private void SampleAction(int parameter1, string parameter2, bool parameter3, decimal parameter4,
+            byte parameter5, int parameter6, string parameter7)
         {
         }
-
     }
 }

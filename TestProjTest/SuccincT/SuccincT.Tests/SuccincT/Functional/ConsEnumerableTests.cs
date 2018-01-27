@@ -13,7 +13,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void ListConvertedToCons_CanBeEnumerated()
         {
-            var list = new List<int> { 1, 2, 3 };
+            var list = new List<int> {1, 2, 3};
             var consList = list.ToConsEnumerable();
             var count = consList.Aggregate((x, y) => x + y);
             AreEqual(6, count);
@@ -44,7 +44,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void ItemAddedToList_ResultsInItAndOriginalListAllBeingEnumerated()
         {
-            var list = new List<int> { 2, 3, 4 };
+            var list = new List<int> {2, 3, 4};
             var consList = list.Cons(1);
             var count = consList.Aggregate((x, y) => x + y);
             AreEqual(10, count);
@@ -63,7 +63,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void ManyItemsAddedToList_ResultsInThemAndOriginalListAllBeingEnumerated()
         {
-            var list = new List<int> { 4, 5, 6 };
+            var list = new List<int> {4, 5, 6};
             var consList1 = list.Cons(3);
             var consList2 = consList1.Cons(2);
             var consList3 = consList2.Cons(1);
@@ -72,7 +72,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         }
 
         [Test]
-        public void EnumerationConvertedToConsAndItemsAdded_CanBeEnumeratedManyTimesWithoutReRunningOriginalEnumeration()
+        public void
+            EnumerationConvertedToConsAndItemsAdded_CanBeEnumeratedManyTimesWithoutReRunningOriginalEnumeration()
         {
             var enumRunCount = 0;
             var cons1 = EnumerationWithNotificationOfEnd(() => enumRunCount++).ToConsEnumerable();
@@ -87,11 +88,11 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void WhenListsAndItemsAddedToList_ResultsInThemAllBeingEnumerated()
         {
-            var list1 = new List<int> { 1, 2 };
-            var list2 = new List<int> { 3, 4 };
-            var consList1 = list1.Cons(new List<int> { 5, 6 });
+            var list1 = new List<int> {1, 2};
+            var list2 = new List<int> {3, 4};
+            var consList1 = list1.Cons(new List<int> {5, 6});
             var consList2 = list2.Cons(7);
-            var consList3 = consList2.Cons(new List<int> { 8, 9 });
+            var consList3 = consList2.Cons(new List<int> {8, 9});
             var consList4 = consList1.Cons(consList3);
             var count = consList4.Aggregate((x, y) => x + y);
             AreEqual(45, count);
@@ -108,7 +109,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void SplittingEnumerationAsTuple_AllowsRemainingEnumerationToBeEnumeratedAndHeadCorrectValue()
         {
-            var (head, tail) = new List<int> { 1, 2, 3, 4 };
+            var (head, tail) = new List<int> {1, 2, 3, 4};
             var count = tail.Aggregate((x, y) => x + y);
             AreEqual(1, head);
             AreEqual(9, count);
@@ -117,7 +118,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void SplittingEnumerationViaCons_AllowsRemainingEnumerationToBeEnumeratedAndHeadCorrectValue()
         {
-            var consData = new List<int> { 1, 2, 3, 4 }.ToConsEnumerable().Cons();
+            var consData = new List<int> {1, 2, 3, 4}.ToConsEnumerable().Cons();
             var count = consData.Tail.Aggregate((x, y) => x + y);
             AreEqual(1, consData.Head.Value);
             AreEqual(9, count);
@@ -126,7 +127,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void SplittingOneElementEnumerationToTuple_GivesEmptyTail()
         {
-            var (head, tail) = new List<int> { 1 };
+            var (head, tail) = new List<int> {1};
             var count = tail.Count();
             AreEqual(1, head);
             AreEqual(0, count);
@@ -135,7 +136,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void SplittingOneElementEnumerationViaCons_GivesEmptyTail()
         {
-            var consData = new List<int> { 1 }.ToConsEnumerable().Cons();
+            var consData = new List<int> {1}.ToConsEnumerable().Cons();
             var count = consData.Tail.Count();
             AreEqual(1, consData.Head.Value);
             AreEqual(0, count);
@@ -157,7 +158,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void SplittingEnumerationViaCons_AllowsAllowsOriginalEnumerationToBeEnumeratedCorrectly()
         {
-            var consList = new List<int> { 1, 2, 3, 4 }.ToConsEnumerable();
+            var consList = new List<int> {1, 2, 3, 4}.ToConsEnumerable();
             var consData = consList.Cons();
             var count1 = consData.Tail.Aggregate((x, y) => x + y);
             var count2 = consList.Aggregate((x, y) => x + y);
@@ -168,8 +169,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void MultipleEnumerationConsEnumerable_CanBeCorrectlyReadViaCons()
         {
-            var consList1 = new List<int> { 3, 4 }.ToConsEnumerable();
-            var consList2 = consList1.Cons(new[] { 1, 2 });
+            var consList1 = new List<int> {3, 4}.ToConsEnumerable();
+            var consList2 = consList1.Cons(new[] {1, 2});
             var data1 = consList2.Cons();
             var data2 = data1.Tail.Cons();
             var data3 = data2.Tail.Cons();
@@ -186,8 +187,8 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         [Test]
         public void MultipleEnumerationConsEnumerable_CanBeCorrectlyReadViaDeconstruct()
         {
-            var consList1 = new List<int> { 3, 4 }.ToConsEnumerable();
-            var consList2 = consList1.Cons(new[] { 1, 2 });
+            var consList1 = new List<int> {3, 4}.ToConsEnumerable();
+            var consList2 = consList1.Cons(new[] {1, 2});
             var (head1, (head2, (head3, (head4, tail)))) = consList2;
 
             AreEqual(1, head1);
@@ -210,7 +211,6 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
                 {
                     result += item.Substring(0, 1);
                 }
-
             }
 
             AreEqual(1, enumRunCount);

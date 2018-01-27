@@ -43,7 +43,8 @@ namespace HSNXT.Test
             var sequenceB = Enumerable.Range(1, count);
             var result = sequenceA.Interleave(sequenceB);
 
-            Assert.IsTrue(result.SequenceEqual(Enumerable.Range(1, count).Select(x => new[] { x, x }).SelectMany(z => z)));
+            Assert.IsTrue(
+                result.SequenceEqual(Enumerable.Range(1, count).Select(x => new[] {x, x}).SelectMany(z => z)));
         }
 
         /// <summary>
@@ -66,11 +67,11 @@ namespace HSNXT.Test
         [Test]
         public void TestInterleaveTwoImbalanceStrategySkip()
         {
-            var sequenceA = new[] { 0, 0, 0, 0, 0, 0 };
-            var sequenceB = new[] { 1, 1, 1, 1 };
+            var sequenceA = new[] {0, 0, 0, 0, 0, 0};
+            var sequenceB = new[] {1, 1, 1, 1};
             var result = sequenceA.Interleave(sequenceB);
 
-            var expectedResult = new[] { 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 };
+            var expectedResult = new[] {0, 1, 0, 1, 0, 1, 0, 1, 0, 0};
 
             Assert.IsTrue(result.SequenceEqual(expectedResult));
         }
@@ -98,14 +99,14 @@ namespace HSNXT.Test
         [Test]
         public void TestInterleaveManyImbalanceStrategySkip()
         {
-            var sequenceA = new[] { 1, 5, 8, 11, 14, 16, };
-            var sequenceB = new[] { 2, 6, 9, 12, };
+            var sequenceA = new[] {1, 5, 8, 11, 14, 16,};
+            var sequenceB = new[] {2, 6, 9, 12,};
             var sequenceC = new int[] { };
-            var sequenceD = new[] { 3 };
-            var sequenceE = new[] { 4, 7, 10, 13, 15, 17, };
+            var sequenceD = new[] {3};
+            var sequenceE = new[] {4, 7, 10, 13, 15, 17,};
             var result = sequenceA.Interleave(sequenceB, sequenceC, sequenceD, sequenceE);
 
-            var expectedResult = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+            var expectedResult = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
 
             Assert.IsTrue(result.SequenceEqual(expectedResult));
         }

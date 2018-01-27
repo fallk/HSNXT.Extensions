@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2015 Jonathan Skeet. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -25,7 +27,11 @@ namespace HSNXT.Test
     [TestFixture]
     public class FullGroupJoinTest
     {
-        public enum OverloadCase { CustomResult, TupleResult }
+        public enum OverloadCase
+        {
+            CustomResult,
+            TupleResult
+        }
 
         public void FullGroupIsLazy()
         {
@@ -40,8 +46,8 @@ namespace HSNXT.Test
         [TestCase(TupleResult)]
         public void FullGroupJoinsResults(OverloadCase overloadCase)
         {
-            var listA = new[] { 1, 2 };
-            var listB = new[] { 2, 3 };
+            var listA = new[] {1, 2};
+            var listB = new[] {2, 3};
 
             var result = FullGroupJoin(overloadCase, listA, listB, x => x).ToDictionary(a => a.Key);
 
@@ -62,7 +68,7 @@ namespace HSNXT.Test
         public void FullGroupJoinsEmptyLeft(OverloadCase overloadCase)
         {
             var listA = new int[] { };
-            var listB = new[] { 2, 3 };
+            var listB = new[] {2, 3};
 
             var result = FullGroupJoin(overloadCase, listA, listB, x => x).ToDictionary(a => a.Key);
 
@@ -79,7 +85,7 @@ namespace HSNXT.Test
         [TestCase(TupleResult)]
         public void FullGroupJoinsEmptyRight(OverloadCase overloadCase)
         {
-            var listA = new[] { 2, 3 };
+            var listA = new[] {2, 3};
             var listB = new int[] { };
 
             var result = FullGroupJoin(overloadCase, listA, listB, x => x).ToDictionary(a => a.Key);
@@ -130,7 +136,8 @@ namespace HSNXT.Test
             }
         }
 
-        static IEnumerable<(int Key, IEnumerable<T> First, IEnumerable<T> Second)> FullGroupJoin<T>(OverloadCase overloadCase, IEnumerable<T> listA, IEnumerable<T> listB, Func<T, int> getKey)
+        static IEnumerable<(int Key, IEnumerable<T> First, IEnumerable<T> Second)> FullGroupJoin<T>(
+            OverloadCase overloadCase, IEnumerable<T> listA, IEnumerable<T> listB, Func<T, int> getKey)
         {
             switch (overloadCase)
             {
@@ -144,4 +151,3 @@ namespace HSNXT.Test
         }
     }
 }
-

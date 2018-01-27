@@ -35,7 +35,7 @@ namespace HSNXT.C5UnitTests.heaps
         [Test]
         public void TestEvents()
         {
-            Func<CollectionOfInt> factory = delegate () { return new CollectionOfInt(TenEqualityComparer.Default); };
+            Func<CollectionOfInt> factory = delegate() { return new CollectionOfInt(TenEqualityComparer.Default); };
             new C5UnitTests.Templates.Events.PriorityQueueTester<CollectionOfInt>().Test(factory, MemoryType);
         }
 
@@ -66,7 +66,11 @@ namespace HSNXT.C5UnitTests.heaps
 
 
         [TearDown]
-        public void Dispose() { queue = null; events = null; }
+        public void Dispose()
+        {
+            queue = null;
+            events = null;
+        }
 
         [Test]
         public void Listenable()
@@ -76,7 +80,9 @@ namespace HSNXT.C5UnitTests.heaps
 
         enum Acts
         {
-            Add, Remove, Changed
+            Add,
+            Remove,
+            Changed
         }
 
         [Test]
@@ -99,17 +105,22 @@ namespace HSNXT.C5UnitTests.heaps
             queue.Add(12);
             queue.DeleteMax();
             queue.DeleteMin();
-            queue.AddAll(new int[] { 4, 5, 6, 2 });
+            queue.AddAll(new int[] {4, 5, 6, 2});
             Assert.AreEqual(17, events.Count);
-            int[] vals = { 34, 0, 56, 0, 34, 0, 12, 0, 56, 0, 12, 0, 4, 5, 6, 2, 0 };
-            Acts[] acts = { Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed,
-                Acts.Remove, Acts.Changed, Acts.Remove, Acts.Changed, Acts.Add, Acts.Add, Acts.Add, Acts.Add, Acts.Changed };
+            int[] vals = {34, 0, 56, 0, 34, 0, 12, 0, 56, 0, 12, 0, 4, 5, 6, 2, 0};
+            Acts[] acts =
+            {
+                Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed,
+                Acts.Remove, Acts.Changed, Acts.Remove, Acts.Changed, Acts.Add, Acts.Add, Acts.Add, Acts.Add,
+                Acts.Changed
+            };
             for (var i = 0; i < vals.Length; i++)
             {
                 //Console.WriteLine("{0}", events[cell]);
                 Assert.AreEqual(acts[i], events[i].Key, "Action " + i);
                 Assert.AreEqual(vals[i], events[i].Value, "Value " + i);
             }
+
             queue.CollectionChanged -= cch;
             Assert.AreEqual(EventTypeEnum.Added | EventTypeEnum.Removed, queue.ActiveEvents);
             queue.ItemsAdded -= iah;
@@ -131,11 +142,15 @@ namespace HSNXT.C5UnitTests.heaps
             queue.Add(12);
             queue.DeleteMax();
             queue.DeleteMin();
-            queue.AddAll(new int[] { 4, 5, 6, 2 });
+            queue.AddAll(new int[] {4, 5, 6, 2});
             Assert.AreEqual(17, events.Count);
-            int[] vals = { 34, 0, 56, 0, 34, 0, 12, 0, 56, 0, 12, 0, 4, 5, 6, 2, 0 };
-            Acts[] acts = { Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed,
-                Acts.Remove, Acts.Changed, Acts.Remove, Acts.Changed, Acts.Add, Acts.Add, Acts.Add, Acts.Add, Acts.Changed };
+            int[] vals = {34, 0, 56, 0, 34, 0, 12, 0, 56, 0, 12, 0, 4, 5, 6, 2, 0};
+            Acts[] acts =
+            {
+                Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed, Acts.Add, Acts.Changed,
+                Acts.Remove, Acts.Changed, Acts.Remove, Acts.Changed, Acts.Add, Acts.Add, Acts.Add, Acts.Add,
+                Acts.Changed
+            };
             for (var i = 0; i < vals.Length; i++)
             {
                 //Console.WriteLine("{0}", events[cell]);
@@ -149,10 +164,12 @@ namespace HSNXT.C5UnitTests.heaps
         {
             events.Add(new KeyValuePair<Acts, int>(Acts.Changed, 0));
         }
+
         void queue_ItemAdded(object sender, ItemCountEventArgs<int> e)
         {
             events.Add(new KeyValuePair<Acts, int>(Acts.Add, e.Item));
         }
+
         void queue_ItemRemoved(object sender, ItemCountEventArgs<int> e)
         {
             events.Add(new KeyValuePair<Acts, int>(Acts.Remove, e.Item));
@@ -164,15 +181,26 @@ namespace HSNXT.C5UnitTests.heaps
     {
         IntervalHeap<int> coll;
         IFormatProvider rad16;
+
         [SetUp]
-        public void Init() { coll = new IntervalHeap<int>(); rad16 = new RadixFormatProvider(16); }
+        public void Init()
+        {
+            coll = new IntervalHeap<int>();
+            rad16 = new RadixFormatProvider(16);
+        }
+
         [TearDown]
-        public void Dispose() { coll = null; rad16 = null; }
+        public void Dispose()
+        {
+            coll = null;
+            rad16 = null;
+        }
+
         [Test]
         public void Format()
         {
             Assert.AreEqual("{  }", coll.ToString());
-            coll.AddAll(new int[] { -4, 28, 129, 65530 });
+            coll.AddAll(new int[] {-4, 28, 129, 65530});
             Assert.AreEqual("{ -4, 65530, 28, 129 }", coll.ToString());
             Assert.AreEqual("{ -4, FFFA, 1C, 81 }", coll.ToString(null, rad16));
             Assert.AreEqual("{ -4, 65530, ... }", coll.ToString("L14", null));
@@ -188,11 +216,17 @@ namespace HSNXT.C5UnitTests.heaps
 
 
         [SetUp]
-        public void Init() { queue = new IntervalHeap<int>(); }
+        public void Init()
+        {
+            queue = new IntervalHeap<int>();
+        }
 
 
         [TearDown]
-        public void Dispose() { queue = null; }
+        public void Dispose()
+        {
+            queue = null;
+        }
 
         [Test]
         public void NullEqualityComparerinConstructor1()
@@ -333,6 +367,7 @@ namespace HSNXT.C5UnitTests.heaps
                     Assert.AreEqual(min + 1.0, q.Replace(handle1, min));
                     Assert.AreEqual(min, q.FindMin());
                 }
+
                 Assert.AreEqual(-10.0, q.DeleteMin());
                 for (var i = 1; i < size; i++)
                     Assert.AreEqual(i + 3.0, q.DeleteMin());
@@ -357,6 +392,7 @@ namespace HSNXT.C5UnitTests.heaps
                     Assert.AreEqual(max - 1.0, q.Replace(handle1, max));
                     Assert.AreEqual(max, q.FindMax());
                 }
+
                 Assert.AreEqual(10.0, q.DeleteMax());
                 for (var i = 1; i < size; i++)
                     Assert.AreEqual(-i - 3.0, q.DeleteMax());
@@ -435,7 +471,10 @@ namespace HSNXT.C5UnitTests.heaps
         {
             Assert.IsTrue(queue.AllowsDuplicates);
             Assert.AreEqual(0, queue.Count);
-            queue.Add(8); queue.Add(18); queue.Add(8); queue.Add(3);
+            queue.Add(8);
+            queue.Add(18);
+            queue.Add(8);
+            queue.Add(3);
             Assert.AreEqual(4, queue.Count);
             Assert.AreEqual(18, queue.DeleteMax());
             Assert.AreEqual(3, queue.Count);
@@ -450,7 +489,6 @@ namespace HSNXT.C5UnitTests.heaps
             Assert.IsTrue(queue.Comparer.Compare(2, 3) < 0);
             Assert.IsTrue(queue.Comparer.Compare(4, 3) > 0);
             Assert.IsTrue(queue.Comparer.Compare(3, 3) == 0);
-
         }
 
 
@@ -463,7 +501,10 @@ namespace HSNXT.C5UnitTests.heaps
                 siz++;
             Assert.AreEqual(0, siz);
 
-            queue.Add(8); queue.Add(18); queue.Add(8); queue.Add(3);
+            queue.Add(8);
+            queue.Add(18);
+            queue.Add(8);
+            queue.Add(3);
 
             foreach (var i in queue)
                 a[siz++] = i;
@@ -608,7 +649,6 @@ namespace HSNXT.C5UnitTests.heaps
                 Assert.IsTrue(queue.Check());
             }
         }
-
 
 
         [Test]
@@ -789,5 +829,4 @@ namespace HSNXT.C5UnitTests.heaps
             Assert.IsTrue(q.FindMax() == 28);
         }
     }
-
 }

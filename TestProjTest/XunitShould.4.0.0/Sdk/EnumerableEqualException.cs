@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.Serialization;
-
 using Xunit.Sdk;
 
 namespace XunitShould.Sdk
@@ -14,7 +13,8 @@ namespace XunitShould.Sdk
         private readonly string _expected;
         private readonly int _expectedCount;
 
-        public EnumerableEqualException(object expected, object actual, int atIndex, int expectedCount, int actualCount) {
+        public EnumerableEqualException(object expected, object actual, int atIndex, int expectedCount, int actualCount)
+        {
             _expected = expected == null ? "(null)" : expected.ToString();
             _actual = actual == null ? "(null)" : actual.ToString();
             _atIndex = atIndex;
@@ -24,7 +24,8 @@ namespace XunitShould.Sdk
 
         /// <inheritdoc/>
         protected EnumerableEqualException(SerializationInfo info, StreamingContext context)
-            : base(info, context) {
+            : base(info, context)
+        {
             _expectedCount = info.GetInt32("ExpectedCount");
             _actualCount = info.GetInt32("ActualCount");
             _atIndex = info.GetInt32("AtIndex");
@@ -32,28 +33,35 @@ namespace XunitShould.Sdk
             _actual = info.GetString("Actual");
         }
 
-        public string Actual {
+        public string Actual
+        {
             get { return _actual; }
         }
 
-        public int ActualCount {
+        public int ActualCount
+        {
             get { return _actualCount; }
         }
 
-        public int AtIndex {
+        public int AtIndex
+        {
             get { return _atIndex; }
         }
 
-        public string Expected {
+        public string Expected
+        {
             get { return _expected; }
         }
 
-        public int ExpectedCount {
+        public int ExpectedCount
+        {
             get { return _expectedCount; }
         }
 
-        public override string Message {
-            get {
+        public override string Message
+        {
+            get
+            {
                 return
                     string.Format(
                         "Enumerables not equal at index: {0}{5}(Expected has {1} items, Actual has {2} items){5}Expected:  {3}{5}Actual: {4}",
@@ -67,8 +75,10 @@ namespace XunitShould.Sdk
         }
 
         /// <inheritdoc/>
-        public override void GetObjectData(SerializationInfo info, StreamingContext context) {
-            if (info == null) {
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            if (info == null)
+            {
                 throw new ArgumentNullException("info");
             }
 

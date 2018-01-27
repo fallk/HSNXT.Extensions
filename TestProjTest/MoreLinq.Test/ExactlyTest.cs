@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2016 Leandro F. Vieira (leandromoh). All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -26,7 +28,7 @@ namespace HSNXT.Test
         public void ExactlyWithNegativeCount()
         {
             AssertThrowsArgument.OutOfRangeException("count", () =>
-                new[] { 1 }.Exactly(-1));
+                new[] {1}.Exactly(-1));
         }
 
         [Test]
@@ -44,13 +46,13 @@ namespace HSNXT.Test
         [Test]
         public void ExactlyWithSingleElementHasExactlyOneElements()
         {
-            Assert.IsTrue(new[] { 1 }.Exactly(1));
+            Assert.IsTrue(new[] {1}.Exactly(1));
         }
 
         [Test]
         public void ExactlyWithManyElementHasExactlyOneElement()
         {
-            Assert.IsFalse(new[] { 1, 2, 3 }.Exactly(1));
+            Assert.IsFalse(new[] {1, 2, 3}.Exactly(1));
         }
     }
 }

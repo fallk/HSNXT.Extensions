@@ -11,7 +11,6 @@ namespace HSNXT.ComLib.Tests
     }
 
 
-
     public class Person
     {
         static Person()
@@ -58,11 +57,9 @@ namespace HSNXT.ComLib.Tests
                 BirthDate = birthday;
             else
                 BirthDate = new DateTime(1980, 1, 2);
-            Address = new Address() { City = "Queens", State = "NY" };
+            Address = new Address() {City = "Queens", State = "NY"};
         }
 
-
-        
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

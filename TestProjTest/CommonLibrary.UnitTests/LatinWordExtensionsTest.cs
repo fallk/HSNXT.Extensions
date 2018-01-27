@@ -30,7 +30,8 @@ namespace CommonLibrary.Tests
         public void Wrap()
         {
             var fourty = "123456789+123456789+123456789+123456789+";
-            var text = "A collection of very reusable code and components in C# 3.5 ranging from ActiveRecord, Csv, Command Line Parsing, Configuration, Validation, Logging, Collections, Authentication, and much more.";
+            var text =
+                "A collection of very reusable code and components in C# 3.5 ranging from ActiveRecord, Csv, Command Line Parsing, Configuration, Validation, Logging, Collections, Authentication, and much more.";
 
             var expected = "A collection of very reusable code and\n" +
                            "components in C# 3.5 ranging from\n" +
@@ -42,7 +43,7 @@ namespace CommonLibrary.Tests
             var wrapped = text.Wrap(40, "\n");
 
             Assert.AreEqual(expected, wrapped, "Wrapped lines do not matched " +
-                "expected pattern");
+                                               "expected pattern");
 
             Console.WriteLine(fourty);
             Console.WriteLine(wrapped);
@@ -52,10 +53,10 @@ namespace CommonLibrary.Tests
         public void NormalizeWhitespace()
         {
             var source = "\"With\tmy tongue firmly planted in my cheek, I call " +
-                           "programmers Homo logicus:\n\n a species slightly - " +
-                           "but distinctly   different   from Homo sapiens.\" \f" +
-                           "-Alan Cooper From The Inmates \r" +
-                           "Are Running the Asylum";
+                         "programmers Homo logicus:\n\n a species slightly - " +
+                         "but distinctly   different   from Homo sapiens.\" \f" +
+                         "-Alan Cooper From The Inmates \r" +
+                         "Are Running the Asylum";
             var expected = "\"With my tongue firmly planted in my cheek, I call " +
                            "programmers Homo logicus: a species slightly - but distinctly " +
                            "different from Homo sapiens.\" -Alan Cooper From The Inmates " +

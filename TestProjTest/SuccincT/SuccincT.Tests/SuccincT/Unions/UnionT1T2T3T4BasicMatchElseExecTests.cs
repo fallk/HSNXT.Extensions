@@ -6,9 +6,17 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
 {
     public sealed class UnionT1T2T3T4BasicMatchElseExecTests
     {
-        private enum Colors { Green, Blue }
+        private enum Colors
+        {
+            Green,
+            Blue
+        }
 
-        private enum Animals { Dog, Sheep }
+        private enum Animals
+        {
+            Dog,
+            Sheep
+        }
 
         [Test]
         public void UnionWithT1_UsesElseIfNoCase1Match()
@@ -16,7 +24,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>(5);
             var result = false;
             union.Match().Case2().Do(_ => result = false).Case3().Do(_ => result = false)
-                         .Case4().Do(_ => result = false).Else(_ => result = true).Exec();
+                .Case4().Do(_ => result = false).Else(_ => result = true).Exec();
             IsTrue(result);
         }
 
@@ -26,7 +34,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>("fred");
             var result = false;
             union.Match().Case1().Do(_ => result = false).Case3().Do(_ => result = false)
-                         .Case4().Do(_ => result = false).Else(_ => result = true).Exec();
+                .Case4().Do(_ => result = false).Else(_ => result = true).Exec();
             IsTrue(result);
         }
 
@@ -36,7 +44,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>(Colors.Green);
             var result = false;
             union.Match().Case1().Do(_ => result = false).Case2().Do(_ => result = false)
-                         .Case4().Do(_ => result = false).Else(_ => result = true).Exec();
+                .Case4().Do(_ => result = false).Else(_ => result = true).Exec();
             IsTrue(result);
         }
 
@@ -46,7 +54,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Unions
             var union = new Union<int, string, Colors, Animals>(Animals.Dog);
             var result = false;
             union.Match().Case1().Do(_ => result = false).Case2().Do(_ => result = false)
-                         .Case3().Do(_ => result = false).Else(_ => result = true).Exec();
+                .Case3().Do(_ => result = false).Else(_ => result = true).Exec();
             IsTrue(result);
         }
 

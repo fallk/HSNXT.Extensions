@@ -23,7 +23,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var a = Maybe<string>.Some("1234");
             var b = Option<string>.Some("1234");
-            IsTrue(a.Equals((Maybe<string>)b));
+            IsTrue(a.Equals((Maybe<string>) b));
             IsTrue(a == b);
         }
 
@@ -32,7 +32,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Options
         {
             var a = Option<string>.Some("1234");
             var b = Maybe<string>.Some("1234");
-            IsTrue(a.Equals((Option<string>)b));
+            IsTrue(a.Equals((Option<string>) b));
             IsTrue(a == b);
         }
 

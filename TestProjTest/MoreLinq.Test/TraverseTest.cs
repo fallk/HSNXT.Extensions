@@ -1,4 +1,5 @@
 #region License and Terms
+
 // MoreLINQ - Extensions to LINQ to Objects
 // Copyright (c) 2016 Felipe Sateler. All rights reserved.
 // 
@@ -13,6 +14,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #endregion
 
 namespace HSNXT.Test
@@ -46,7 +48,8 @@ namespace HSNXT.Test
         [Test]
         public void TraverseBreadthFirstPreservesChildrenOrder()
         {
-            var res = Extensions.TraverseBreadthFirst(0, i => i == 0 ? Enumerable.Range(1, 10) : Enumerable.Empty<int>());
+            var res = Extensions.TraverseBreadthFirst(0,
+                i => i == 0 ? Enumerable.Range(1, 10) : Enumerable.Empty<int>());
             res.AssertSequenceEqual(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         }
 

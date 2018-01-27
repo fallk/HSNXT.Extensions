@@ -88,7 +88,7 @@ namespace HSNXT.SuccincTTests.SuccincT.Functional
         public void TenParamTransform_CanBeTypedAndRun()
         {
             var func = Transform<double, string>((q, r, s, t, u, v, w, x, y, z) =>
-                         $"{q + r + s + t + u + v + w + x + y + z}");
+                $"{q + r + s + t + u + v + w + x + y + z}");
             var result = func(1.1, 2.2, 3, 4, 5, 6, 7, 8, 9, 10);
             Assert.AreEqual("55.3", result);
         }
