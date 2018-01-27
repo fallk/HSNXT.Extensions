@@ -21,6 +21,17 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
+        public static Task WaitForExitAsync(this Process proc)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+
+            proc.Exited += (o, e) => tcs.SetResult(true);
+
+            proc.Start();
+            
+            return tcs.Task;
+        }
+        
         public static string OrdinalSuffix(this DateTime datetime)
         {
             var day = datetime.Day;
