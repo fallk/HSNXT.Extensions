@@ -1551,6 +1551,160 @@
           <e p="StringExtensions.cs" t="Include" />
         </e>
         <e p="EnumerationExtensions.cs" t="Include" />
+        <e p="Extend" t="Include">
+          <e p="bap.bat" t="Include" />
+          <e p="Extend.snk" t="Include" />
+          <e p="JetBrains.Annotations.cs" t="Include" />
+          <e p="Models" t="Include">
+            <e p="AttributeDefinitionProperty.cs" t="Include" />
+            <e p="AttributeDefinitionType.cs" t="Include" />
+            <e p="Definitions" t="Include">
+              <e p="IAttributeDefinitionProperty.cs" t="Include" />
+              <e p="IAttributeDefinitionType.cs" t="Include" />
+              <e p="IExecutionResult.cs" t="Include" />
+              <e p="IIndexedItem.cs" t="Include" />
+            </e>
+            <e p="ExecutionResult.cs" t="Include" />
+            <e p="IndexedItem.cs" t="Include" />
+          </e>
+          <e p="PortableExtensions.ISpecification[T].cs" t="Include" />
+          <e p="System.Action.cs" t="Include" />
+          <e p="System.Array.cs" t="Include" />
+          <e p="System.Assembly.cs" t="Include" />
+          <e p="System.Boolean.cs" t="Include" />
+          <e p="System.Char.cs" t="Include" />
+          <e p="System.Collections.Generic.ICollection[T].cs" t="Include" />
+          <e p="System.Collections.Generic.IDictionary[K, V].cs" t="Include" />
+          <e p="System.Collections.Generic.IEnumerable[string].cs" t="Include" />
+          <e p="System.Collections.Generic.IEnumerable[T].cs" t="Include" />
+          <e p="System.Collections.Generic.IEqualityComparer[T].cs" t="Include" />
+          <e p="System.DateTime.cs" t="Include" />
+          <e p="System.Decimal.cs" t="Include" />
+          <e p="System.Double.cs" t="Include" />
+          <e p="System.Enum.cs" t="Include" />
+          <e p="System.EventHandler.cs" t="Include" />
+          <e p="System.Exception.cs" t="Include" />
+          <e p="System.IComparable[T].cs" t="Include" />
+          <e p="System.Int16.cs" t="Include" />
+          <e p="System.Int32.cs" t="Include" />
+          <e p="System.Int64.cs" t="Include" />
+          <e p="System.Lazy[T].cs" t="Include" />
+          <e p="System.Linq.Expressions.Expression.cs" t="Include" />
+          <e p="System.Linq.Expressions.Expression[TDelegate].cs" t="Include" />
+          <e p="System.Object.cs" t="Include" />
+          <e p="System.Random.cs" t="Include" />
+          <e p="System.Reflection.PropertyInfo.cs" t="Include" />
+          <e p="System.String.cs" t="Include" />
+          <e p="System.Text.StringBuilder.cs" t="Include" />
+          <e p="System.TimeSpan.cs" t="Include" />
+          <e p="System.Type.cs" t="Include" />
+          <e p="Utilities" t="Include">
+            <e p="Compare" t="Include">
+              <e p="KeyEqualityComparer.cs" t="Include" />
+            </e>
+            <e p="ExpressionEvaluator" t="Include">
+              <e p="ExpressionEvaluator.cs" t="Include" />
+            </e>
+            <e p="InstanceBuilder" t="Include">
+              <e p="Creator" t="Include">
+                <e p="InstanceCreator.cs" t="Include" />
+              </e>
+              <e p="Exception" t="Include">
+                <e p="CreateInstanceException.cs" t="Include" />
+              </e>
+              <e p="Extension" t="Include">
+                <e p="MemberSelectionResultEx.cs" t="Include" />
+              </e>
+              <e p="Factory" t="Include">
+                <e p="Base" t="Include">
+                  <e p="InstanceFactoryBase.cs" t="Include" />
+                </e>
+                <e p="Definition" t="Include">
+                  <e p="IInstanceFactory.cs" t="Include" />
+                </e>
+                <e p="ExpressionInstanceFactory.cs" t="Include" />
+                <e p="Provider" t="Include">
+                  <e p="InstanceFactoryProvider.cs" t="Include" />
+                </e>
+              </e>
+              <e p="FluentInterface" t="Include">
+                <e p="CreateInstanceOptions.cs" t="Include" />
+                <e p="Definition" t="Include">
+                  <e p="ICreateInstanceOptions.cs" t="Include" />
+                  <e p="ICreateInstanceOptionsComplete.cs" t="Include" />
+                  <e p="IFactoryOptionsConstistent.cs" t="Include" />
+                  <e p="IFactoryOptionsInconsistent.cs" t="Include" />
+                  <e p="IIncludeExcludeOptions.cs" t="Include" />
+                </e>
+              </e>
+              <e p="MemberInformation" t="Include">
+                <e p="Definition" t="Include">
+                  <e p="IMemberInformation.cs" t="Include" />
+                </e>
+                <e p="MemberInformation.cs" t="Include" />
+              </e>
+              <e p="MemberSelection" t="Include">
+                <e p="Definition" t="Include">
+                  <e p="IMemberSelectionRule.cs" t="Include" />
+                  <e p="IMemberSelectionRuleInspector.cs" t="Include" />
+                </e>
+                <e p="Enum" t="Include">
+                  <e p="CompareMode.cs" t="Include" />
+                  <e p="MemberSelectionMode.cs" t="Include" />
+                  <e p="MemberSelectionResult.cs" t="Include" />
+                  <e p="MemberSelectionRuleTarget.cs" t="Include" />
+                </e>
+                <e p="Inspector" t="Include">
+                  <e p="MemberSelectionRuleInspector.cs" t="Include" />
+                </e>
+                <e p="Provider" t="Include">
+                  <e p="MemberSelectionRuleProvider.cs" t="Include" />
+                </e>
+                <e p="Rules" t="Include">
+                  <e p="AllMemberSelectionRule.cs" t="Include" />
+                  <e p="Base" t="Include">
+                    <e p="MemberSelectionRuleBase.cs" t="Include" />
+                  </e>
+                  <e p="ExpressionMemberSelectionRule.cs" t="Include" />
+                  <e p="PathMemberSelectionRule.cs" t="Include" />
+                  <e p="TypeMemberSelectionRule.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Specification" t="Include">
+              <e p="AndSpecification.cs" t="Include" />
+              <e p="ExpressionSpecification.cs" t="Include" />
+              <e p="ISpecification.cs" t="Include" />
+              <e p="OperatorSpecification.cs" t="Include" />
+              <e p="OrSpecification.cs" t="Include" />
+              <e p="Specification.cs" t="Include" />
+              <e p="XOrSpecification.cs" t="Include" />
+            </e>
+            <e p="StringTemplate" t="Include">
+              <e p="Model" t="Include">
+                <e p="FormatInformation.cs" t="Include" />
+              </e>
+              <e p="StringTemplate.cs" t="Include" />
+              <e p="ValueProvider" t="Include">
+                <e p="IValueProvider.cs" t="Include" />
+                <e p="LookuptValueProvider.cs" t="Include" />
+                <e p="ObjectValueProvider.cs" t="Include" />
+                <e p="ValueProviderBase.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Tree" t="Include">
+              <e p="Definition" t="Include">
+                <e p="ITreeNode.cs" t="Include" />
+                <e p="ITreeNodeAware.cs" t="Include" />
+                <e p="ITreeNodeCollection.cs" t="Include" />
+                <e p="TreeTraversalDirection.cs" t="Include" />
+              </e>
+              <e p="TreeNode.cs" t="Include" />
+              <e p="TreeNodeCollection.cs" t="Include" />
+            </e>
+            <e p="Utilities.RandomValueEx.cs" t="Include" />
+          </e>
+        </e>
         <e p="ExtensionMethodDotNet" t="Include">
           <e p="out1.cs" t="Include" />
           <e p="out2.cs" t="Include" />
@@ -3899,6 +4053,568 @@
         <e p="dff.ExtensionsTests" t="Include">
           <e p="StringExtensionTests.cs" t="Include" />
           <e p="TimeSpanExtensionTests.cs" t="Include" />
+        </e>
+        <e p="Extend.Testing" t="Include">
+          <e p="Models" t="Include">
+            <e p="AttributeDefinitionPropertyTest.cs" t="Include" />
+            <e p="AttributeDefinitionTypeTest.cs" t="Include" />
+            <e p="ExecutionResultTest.cs" t="Include" />
+            <e p="IndexedItemTest.cs" t="Include" />
+          </e>
+          <e p="PortableExtensions.ISpecification[T]" t="Include">
+            <e p="ISpecification.And.Test.cs" t="Include" />
+            <e p="ISpecification.Or.Test.cs" t="Include" />
+            <e p="ISpecification.XOr.Test.cs" t="Include" />
+          </e>
+          <e p="System.Action" t="Include">
+            <e p="Action.ExecuteIfAnyFalse.Test.cs" t="Include" />
+            <e p="Action.ExecuteIfAnyTrue.Test.cs" t="Include" />
+            <e p="Action.ExecuteIfFalse.Test.cs" t="Include" />
+            <e p="Action.ExecuteIfTrue.Test.cs" t="Include" />
+            <e p="Action.SafeExecute.Test.cs" t="Include" />
+            <e p="Action.SafeExecuteExcept.Test.cs" t="Include" />
+          </e>
+          <e p="System.Array" t="Include">
+            <e p="Array.Clear.Test.cs" t="Include" />
+            <e p="Array.ClearAll.Test.cs" t="Include" />
+            <e p="Array.Copy.cs" t="Include" />
+            <e p="Array.IndexOf.Test.cs" t="Include" />
+            <e p="Array.LastIndexOf.Test.cs" t="Include" />
+            <e p="Array.Reverse.Test.cs" t="Include" />
+            <e p="Array.ToList.Test.cs" t="Include" />
+            <e p="Array.WithinIndex.Test.cs" t="Include" />
+            <e p="System.Array.Generic" t="Include">
+              <e p="Array.Generic.Clear.Test.cs" t="Include" />
+              <e p="Array.Generic.ClearAll.Test.cs" t="Include" />
+              <e p="Array.Generic.IndexOf.Test.cs" t="Include" />
+              <e p="Array.Generic.LastIndexOf.Test.cs" t="Include" />
+              <e p="Array.Generic.Populate.Test.cs" t="Include" />
+              <e p="Array.Generic.Resize.Test.cs" t="Include" />
+              <e p="Array.Generic.Reverse.Test.cs" t="Include" />
+              <e p="Array.Generic.Slice.Test.cs" t="Include" />
+              <e p="Array.Generic.ToGenericList.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Assembly" t="Include">
+            <e p="Assembly.GetAttributes.Test.cs" t="Include" />
+            <e p="Assembly.GetDefinedTypes.Test.cs" t="Include" />
+            <e p="Assembly.GetTypesWithAttribute.Test.cs" t="Include" />
+          </e>
+          <e p="System.Boolean" t="Include">
+            <e p="Boolean.IfFalse.Test.cs" t="Include" />
+            <e p="Boolean.IfTrue.Test.cs" t="Include" />
+            <e p="Boolean.Select.Test.cs" t="Include" />
+          </e>
+          <e p="System.Char" t="Include">
+            <e p="Char.IsDigit.Test.cs" t="Include" />
+            <e p="Char.IsLetter.Test.cs" t="Include" />
+            <e p="Char.IsLetterOrDigit.Test.cs" t="Include" />
+            <e p="Char.IsLower.Test.cs" t="Include" />
+            <e p="Char.IsNumber.Test.cs" t="Include" />
+            <e p="Char.IsUpper.Test.cs" t="Include" />
+            <e p="Char.IsWhiteSpace.Test.cs" t="Include" />
+            <e p="Char.Repeat.Test.cs" t="Include" />
+            <e p="Char.ToLower.Test.cs" t="Include" />
+            <e p="Char.ToUpper.Test.cs" t="Include" />
+          </e>
+          <e p="System.Collections.Generic.ICollection[T]" t="Include">
+            <e p="ICollection[T].AddIf.Test.cs" t="Include" />
+            <e p="ICollection[T].AddIfNotContains.Test.cs" t="Include" />
+            <e p="ICollection[T].AddRange.Test.cs" t="Include" />
+            <e p="ICollection[T].AddRangeIf.Test.cs" t="Include" />
+            <e p="ICollection[T].AddRangeIfNotContains.Test.cs" t="Include" />
+            <e p="ICollection[T].RemoveIf.Test.cs" t="Include" />
+            <e p="ICollection[T].RemoveRange.Test.cs" t="Include" />
+            <e p="ICollection[T].RemoveRangeIf.Test.cs" t="Include" />
+          </e>
+          <e p="System.Collections.Generic.IDictionary[K, V]" t="Include">
+            <e p="IDictionary[K, V].AddIfNotContainsKey.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].AddOrUpdate.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].AddRange.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].ConcatAllToDictionary.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].ConcatAllToDictionarySafe.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].ConcatToDictionary.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].ConcatToDictionarySafe.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].ContainsAllKey.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].ContainsAnyKey.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].GetAllKeys.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].GetAllKeysAsList.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].GetOrAdd.Test.cs" t="Include" />
+            <e p="IDictionary[K, V].StringJoin.Test.cs" t="Include" />
+          </e>
+          <e p="System.Collections.Generic.IEnumerable[string]" t="Include">
+            <e p="IEnumerable[String].PathCombine.Test.cs" t="Include" />
+          </e>
+          <e p="System.Collections.Generic.IEnumerable[T]" t="Include">
+            <e p="IEnumerable[T].AnyAndNotNull.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Append.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ContainsAll.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ContainsAny.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Distinct.Test.cs" t="Include" />
+            <e p="IEnumerable[T].EnsureNotNull.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Except.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ForEach.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ForEachReverse.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ForEachReverseAsync.Test.cs" t="Include" />
+            <e p="IEnumerable[T].GetEqualItemsFromStart.cs" t="Include" />
+            <e p="IEnumerable[T].GetRandomItem.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Intersect.Test.cs" t="Include" />
+            <e p="IEnumerable[T].IsNullOrEmpty.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Many.Test.cs" t="Include" />
+            <e p="IEnumerable[T].MinimumOf.Test.cs" t="Include" />
+            <e p="IEnumerable[T].NotAny.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Partition.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Prepend.Test.cs" t="Include" />
+            <e p="IEnumerable[T].Randomize.Test.cs" t="Include" />
+            <e p="IEnumerable[T].SpecificationForItems.Test.cs" t="Include" />
+            <e p="IEnumerable[T].StringJoin.Test.cs" t="Include" />
+            <e p="IEnumerable[T].TakeUntil.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ToDictionary.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ToHashSet.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ToObservableCollection.Test.cs" t="Include" />
+            <e p="IEnumerable[T].ToTreeNodeCollection.cs" t="Include" />
+            <e p="IEnumerable[T].Where.Test.cs" t="Include" />
+            <e p="IEnumerable[T].WhereIf.Test.cs" t="Include" />
+            <e p="IEnumerable[T].WhereNot.Test.cs" t="Include" />
+            <e p="IEnumerable[T].WithIndex.Test.cs" t="Include" />
+            <e p="IEnumerable[T].WithoutIndex.Test.cs" t="Include" />
+          </e>
+          <e p="System.Collections.Generic.IEqualityComparer[T]" t="Include">
+            <e p="IEqualityComparer[T].By.Test.cs" t="Include" />
+          </e>
+          <e p="System.DateTime" t="Include">
+            <e p="DateTime.Age.Test.cs" t="Include" />
+            <e p="DateTime.Elapsed.Test.cs" t="Include" />
+            <e p="DateTime.EndOfDay.Test.cs" t="Include" />
+            <e p="DateTime.EndOfMonth.Test.cs" t="Include" />
+            <e p="DateTime.EndOfWeek.Test.cs" t="Include" />
+            <e p="DateTime.EndOfYear.Test.cs" t="Include" />
+            <e p="DateTime.FirstDayOfWeek.Test.cs" t="Include" />
+            <e p="DateTime.GetWeekOfYear.Test.cs" t="Include" />
+            <e p="DateTime.Intersects.Test.cs" t="Include" />
+            <e p="DateTime.IsAfternoon.Test.cs" t="Include" />
+            <e p="DateTime.IsFuture.Test.cs" t="Include" />
+            <e p="DateTime.IsLastDayOfMonth.Test.cs" t="Include" />
+            <e p="DateTime.IsMorning.Test.cs" t="Include" />
+            <e p="DateTime.IsPast.Test.cs" t="Include" />
+            <e p="DateTime.IsSameDay.Test.cs" t="Include" />
+            <e p="DateTime.IsSameMonthAndYear.Test.cs" t="Include" />
+            <e p="DateTime.IsTimeEquals.Test.cs" t="Include" />
+            <e p="DateTime.IsToday.Test.cs" t="Include" />
+            <e p="DateTime.IsWeekDay.Test.cs" t="Include" />
+            <e p="DateTime.IsWeekendDay.Test.cs" t="Include" />
+            <e p="DateTime.LastDayOfWeek.Test.cs" t="Include" />
+            <e p="DateTime.NextMonthStart.Test.cs" t="Include" />
+            <e p="DateTime.NextWeekDay.cs" t="Include" />
+            <e p="DateTime.StartOfDay.Test.cs" t="Include" />
+            <e p="DateTime.StartOfMonth.Test.cs" t="Include" />
+            <e p="DateTime.StartOfWeek.Test.cs" t="Include" />
+            <e p="DateTime.StartOfYear.Test.cs" t="Include" />
+            <e p="DateTime.Tomorrow.Test.cs" t="Include" />
+            <e p="DateTime.Yesterday.Test.cs" t="Include" />
+            <e p="ToDateTimeFormat" t="Include">
+              <e p="DateTime.ToFullDateTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToLongDateShortTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToLongDateString.Test.cs" t="Include" />
+              <e p="DateTime.ToLongTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToMonthDayString.Test.cs" t="Include" />
+              <e p="DateTime.ToMonthString.Test.cs" t="Include" />
+              <e p="DateTime.ToShortDateLongTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToShortDateString.Test.cs" t="Include" />
+              <e p="DateTime.ToShortDateTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToShortTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToSortableDateTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToUniversalSortableDateTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToUniversalSortableLongDateTimeString.Test.cs" t="Include" />
+              <e p="DateTime.ToYearMonthString.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Decimal" t="Include">
+            <e p="Decimal.PercentageOf.Test.cs" t="Include" />
+            <e p="Decimal.PercentOf.Test.cs" t="Include" />
+            <e p="Decimal.Sum.Test.cs" t="Include" />
+          </e>
+          <e p="System.Double" t="Include">
+            <e p="Double.IsInfinit.yTest.cs" t="Include" />
+            <e p="Double.IsNaN.Test.cs" t="Include" />
+            <e p="Double.IsNegativeInfinit.yTest.cs" t="Include" />
+            <e p="Double.IsPositiveInfinit.yTest.cs" t="Include" />
+            <e p="Double.PercentageOf.Test.cs" t="Include" />
+            <e p="Double.PercentOf.Test.cs" t="Include" />
+            <e p="Double.Sum.Test.cs" t="Include" />
+            <e p="System.TimeSpan" t="Include">
+              <e p="Double.ToDays.Test.cs" t="Include" />
+              <e p="Double.ToHours.Test.cs" t="Include" />
+              <e p="Double.ToMilliseconds.Test.cs" t="Include" />
+              <e p="Double.ToMinutes.Test.cs" t="Include" />
+              <e p="Double.ToSeconds.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Enum" t="Include">
+            <e p="Enum.GetFlags.Test.cs" t="Include" />
+            <e p="Enum.GetStringValues.Test.cs" t="Include" />
+            <e p="Enum.GetValueAndStringValue.Test.cs" t="Include" />
+            <e p="Enum.GetValues.Test.cs" t="Include" />
+            <e p="Enum.GetValuesExpect.Test.cs" t="Include" />
+          </e>
+          <e p="System.EventHandler" t="Include">
+            <e p="EventHandler.Raise.Test.cs" t="Include" />
+          </e>
+          <e p="System.Exception" t="Include">
+            <e p="Exception.FormatException.cs" t="Include" />
+          </e>
+          <e p="System.IComparable[T]" t="Include">
+            <e p="IComparable[T].Between.Test.cs" t="Include" />
+            <e p="IComparable[T].BetweenInclusive.Test.cs" t="Include" />
+            <e p="IComparable[T].Greater.Test.cs" t="Include" />
+            <e p="IComparable[T].GreaterOrEquals.Test.cs" t="Include" />
+            <e p="IComparable[T].Smaller.Test.cs" t="Include" />
+            <e p="IComparable[T].SmallerOrEquals.Test.cs" t="Include" />
+          </e>
+          <e p="System.Int16" t="Include">
+            <e p="Int16.FactorOf.Test.cs" t="Include" />
+            <e p="Int16.IsEven.Test.cs" t="Include" />
+            <e p="Int16.IsMultipleOf.Test.cs" t="Include" />
+            <e p="Int16.IsOdd.Test.cs" t="Include" />
+            <e p="Int16.PercentageOf.Test.cs" t="Include" />
+            <e p="Int16.PercentOf.Test.cs" t="Include" />
+            <e p="Int16.RangeTo.Test.cs" t="Include" />
+            <e p="System.DateTime" t="Include">
+              <e p="Int16.DaysInMonth.Test.cs" t="Include" />
+              <e p="Int16.IsLeapYear.Test.cs" t="Include" />
+              <e p="System.DateTime" t="Include">
+                <e p="Int16.April.Test.cs" t="Include" />
+                <e p="Int16.August.Test.cs" t="Include" />
+                <e p="Int16.December.Test.cs" t="Include" />
+                <e p="Int16.February.Test.cs" t="Include" />
+                <e p="Int16.January.Test.cs" t="Include" />
+                <e p="Int16.July.Test.cs" t="Include" />
+                <e p="Int16.June.Test.cs" t="Include" />
+                <e p="Int16.March.Test.cs" t="Include" />
+                <e p="Int16.May.Test.cs" t="Include" />
+                <e p="Int16.November.Test.cs" t="Include" />
+                <e p="Int16.October.Test.cs" t="Include" />
+                <e p="Int16.September.Test.cs" t="Include" />
+              </e>
+            </e>
+            <e p="System.TimeSpan" t="Include">
+              <e p="Int16.ToDays.Test.cs" t="Include" />
+              <e p="Int16.ToHours.Test.cs" t="Include" />
+              <e p="Int16.ToMilliseconds.Test.cs" t="Include" />
+              <e p="Int16.ToMinutes.Test.cs" t="Include" />
+              <e p="Int16.ToSeconds.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Int32" t="Include">
+            <e p="Int32.FactorOf.Test.cs" t="Include" />
+            <e p="Int32.IsEven.Test.cs" t="Include" />
+            <e p="Int32.IsMultipleOf.Test.cs" t="Include" />
+            <e p="Int32.IsOdd.Test.cs" t="Include" />
+            <e p="Int32.PercentageOf.Test.cs" t="Include" />
+            <e p="Int32.PercentOf.Test.cs" t="Include" />
+            <e p="Int32.RangeTo.Test.cs" t="Include" />
+            <e p="Int32.Sum.Test.cs" t="Include" />
+            <e p="System.DateTime" t="Include">
+              <e p="Int32.DaysInMonth.Test.cs" t="Include" />
+              <e p="Int32.IsLeapYear.Test.cs" t="Include" />
+              <e p="System.DateTime" t="Include">
+                <e p="Int32.April.Test.cs" t="Include" />
+                <e p="Int32.August.Test.cs" t="Include" />
+                <e p="Int32.December.Test.cs" t="Include" />
+                <e p="Int32.February.Test.cs" t="Include" />
+                <e p="Int32.January.Test.cs" t="Include" />
+                <e p="Int32.July.Test.cs" t="Include" />
+                <e p="Int32.June.Test.cs" t="Include" />
+                <e p="Int32.March.Test.cs" t="Include" />
+                <e p="Int32.May.Test.cs" t="Include" />
+                <e p="Int32.November.Test.cs" t="Include" />
+                <e p="Int32.October.Test.cs" t="Include" />
+                <e p="Int32.September.Test.cs" t="Include" />
+              </e>
+            </e>
+            <e p="System.TimeSpan" t="Include">
+              <e p="Int32.ToDays.Test.cs" t="Include" />
+              <e p="Int32.ToHours.Test.cs" t="Include" />
+              <e p="Int32.ToMilliseconds.Test.cs" t="Include" />
+              <e p="Int32.ToMinutes.Test.cs" t="Include" />
+              <e p="Int32.ToSeconds.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Int64" t="Include">
+            <e p="Int64.FactorOf.Test.cs" t="Include" />
+            <e p="Int64.IsEven.Test.cs" t="Include" />
+            <e p="Int64.IsMultipleOf.Test.cs" t="Include" />
+            <e p="Int64.IsOdd.Test.cs" t="Include" />
+            <e p="Int64.PercentageOf.Test.cs" t="Include" />
+            <e p="Int64.PercentOf.Test.cs" t="Include" />
+            <e p="Int64.RangeTo.Test.cs" t="Include" />
+            <e p="Int64.Sum.Test.cs" t="Include" />
+            <e p="System.TimeSpan" t="Include">
+              <e p="Int64.ToDays.Test.cs" t="Include" />
+              <e p="Int64.ToHours.Test.cs" t="Include" />
+              <e p="Int64.ToMilliseconds.Test.cs" t="Include" />
+              <e p="Int64.ToMinutes.Test.cs" t="Include" />
+              <e p="Int64.ToSeconds.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Lazy[T]" t="Include">
+            <e p="Layz[T].DisposeIfIsValueCreated.Test.cs" t="Include" />
+          </e>
+          <e p="System.Linq.Expressions.Expression" t="Include">
+            <e p="Expression.TryGetMemberExpression.Test.cs" t="Include" />
+          </e>
+          <e p="System.Linq.Expressions.Expression[TDelegate]" t="Include">
+            <e p="Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" t="Include" />
+            <e p="Expression[TDelegate].GetMemberPath.Test.cs" t="Include" />
+          </e>
+          <e p="System.Object" t="Include">
+            <e p="Convert" t="Include">
+              <e p="Object.ToBoolean.Test.cs" t="Include" />
+              <e p="Object.ToByte.Test.cs" t="Include" />
+              <e p="Object.ToChar.Test.cs" t="Include" />
+              <e p="Object.ToDateTime.Test.cs" t="Include" />
+              <e p="Object.ToDecimal.Test.cs" t="Include" />
+              <e p="Object.ToDouble.Test.cs" t="Include" />
+              <e p="Object.ToInt16.Test.cs" t="Include" />
+              <e p="Object.ToInt32.Test.cs" t="Include" />
+              <e p="Object.ToInt64.Test.cs" t="Include" />
+            </e>
+            <e p="Generic" t="Include">
+              <e p="Object.Generic.Chain.Test.cs" t="Include" />
+              <e p="Object.Generic.Coalesce.Test.cs" t="Include" />
+              <e p="Object.Generic.CoalesceOrDefault.Test.cs" t="Include" />
+              <e p="Object.Generic.ExecuteSafe.Test.cs" t="Include" />
+              <e p="Object.Generic.GetName.Test.cs" t="Include" />
+              <e p="Object.Generic.GetNameChain.Test.cs" t="Include" />
+              <e p="Object.Generic.IfNull.Test.cs" t="Include" />
+              <e p="Object.Generic.IsDefault.Test.cs" t="Include" />
+              <e p="Object.Generic.IsIn.Test.cs" t="Include" />
+              <e p="Object.Generic.IsNotIn.Test.cs" t="Include" />
+              <e p="Object.Generic.Maximum.Test.cs" t="Include" />
+              <e p="Object.Generic.Minimum.Test.cs" t="Include" />
+              <e p="Object.Generic.Satisfies.Test.cs" t="Include" />
+              <e p="Object.Generic.SatisfiesWithMessages.Test.cs" t="Include" />
+              <e p="Object.Generic.Specification.Test.cs" t="Include" />
+              <e p="Object.Generic.Swap.Test.cs" t="Include" />
+              <e p="Object.Generic.ThrowIfNull.Test.cs" t="Include" />
+              <e p="Object.Generic.ToSingleItemArray.Test.cs" t="Include" />
+            </e>
+            <e p="Object.As.Test.cs" t="Include" />
+            <e p="Object.IsNotNull.Test.cs" t="Include" />
+            <e p="Object.IsNull.Test.cs" t="Include" />
+            <e p="Object.ReferenceEquals.Test.cs" t="Include" />
+          </e>
+          <e p="System.Random" t="Include">
+            <e p="Random.CoinToss.Test.cs" t="Include" />
+            <e p="Random.OneOf.Test.cs" t="Include" />
+          </e>
+          <e p="System.Reflection.PropertyInfo" t="Include">
+            <e p="PropertyInfo.GetValueWithoutIndex.Test.cs" t="Include" />
+            <e p="PropertyInfo.ToMemberInformation.Test.cs" t="Include" />
+          </e>
+          <e p="System.String" t="Include">
+            <e p="Convert" t="Include">
+              <e p="String.ToBoolean.Test.cs" t="Include" />
+              <e p="String.ToByte.Test.cs" t="Include" />
+              <e p="String.ToChar.Test.cs" t="Include" />
+              <e p="String.ToDateTime.Test.cs" t="Include" />
+              <e p="String.ToDecimal.Test.cs" t="Include" />
+              <e p="String.ToDouble.Test.cs" t="Include" />
+              <e p="String.ToGuid.Test.cs" t="Include" />
+              <e p="String.ToInt16.Test.cs" t="Include" />
+              <e p="String.ToInt32.Test.cs" t="Include" />
+              <e p="String.ToInt64.Test.cs" t="Include" />
+            </e>
+            <e p="ConvertSafe" t="Include">
+              <e p="String.SafeToBoolean.Test.cs" t="Include" />
+              <e p="String.SafeToByte.Test.cs" t="Include" />
+              <e p="String.SafeToChar.Test.cs" t="Include" />
+              <e p="String.SafeToDateTime.Test.cs" t="Include" />
+              <e p="String.SafeToDecimal.Test.cs" t="Include" />
+              <e p="String.SafeToDouble.Test.cs" t="Include" />
+              <e p="String.SafeToGuid.Test.cs" t="Include" />
+              <e p="String.SafeToInt16.Test.cs" t="Include" />
+              <e p="String.SafeToInt32.Test.cs" t="Include" />
+              <e p="String.SafeToInt64.Test.cs" t="Include" />
+            </e>
+            <e p="ExtractNumbers" t="Include">
+              <e p="String.ExtractAllDecimal.Test.cs" t="Include" />
+              <e p="String.ExtractAllDouble.Test.cs" t="Include" />
+              <e p="String.ExtractAllInt16.Test.cs" t="Include" />
+              <e p="String.ExtractAllInt32.Test.cs" t="Include" />
+              <e p="String.ExtractAllInt64.Test.cs" t="Include" />
+              <e p="String.ExtractFirstDecimal.Test.cs" t="Include" />
+              <e p="String.ExtractFirstDouble.Test.cs" t="Include" />
+              <e p="String.ExtractFirstInt16.Test.cs" t="Include" />
+              <e p="String.ExtractFirstInt32.Test.cs" t="Include" />
+              <e p="String.ExtractFirstInt64.Test.cs" t="Include" />
+            </e>
+            <e p="Pars" t="Include">
+              <e p="String.TryParsBoolean.Test.cs" t="Include" />
+              <e p="String.TryParsByte.Test.cs" t="Include" />
+              <e p="String.TryParsChar.Test.cs" t="Include" />
+              <e p="String.TryParsDateTime.Test.cs" t="Include" />
+              <e p="String.TryParsDateTimeExact.Test.cs" t="Include" />
+              <e p="String.TryParsDecimal.Test.cs" t="Include" />
+              <e p="String.TryParsDouble.Test.cs" t="Include" />
+              <e p="String.TryParsGuid.Test.cs" t="Include" />
+              <e p="String.TryParsInt16.Test.cs" t="Include" />
+              <e p="String.TryParsInt32.Test.cs" t="Include" />
+              <e p="String.TryParsInt64.Test.cs" t="Include" />
+            </e>
+            <e p="String.AppendWithNewLineIfNotEmpty.Test.cs" t="Include" />
+            <e p="String.ChangeType.Test.cs" t="Include" />
+            <e p="String.CharAt.Test.cs" t="Include" />
+            <e p="String.CompareOrdinal.Test.cs" t="Include" />
+            <e p="String.CompareOrdinalIgnoreCase.Test.cs" t="Include" />
+            <e p="String.ConcatAll.Test.cs" t="Include" />
+            <e p="String.Contains.Test.cs" t="Include" />
+            <e p="String.ContainsAll.Test.cs" t="Include" />
+            <e p="String.ContainsAny.Test.cs" t="Include" />
+            <e p="String.Extract.Test.cs" t="Include" />
+            <e p="String.ExtractLetters.Test.cs" t="Include" />
+            <e p="String.ExtractNumbers.Test.cs" t="Include" />
+            <e p="String.F.Test.cs" t="Include" />
+            <e p="String.FormatFileExtension.Test.cs" t="Include" />
+            <e p="String.GetAfter.Test.cs" t="Include" />
+            <e p="String.GetBefore.Test.cs" t="Include" />
+            <e p="String.GetBetween.Test.cs" t="Include" />
+            <e p="String.GetLines.Test.cs" t="Include" />
+            <e p="String.IfNotEmpty.Test.cs" t="Include" />
+            <e p="String.IsAlpha.Test.cs" t="Include" />
+            <e p="String.IsAlphaNumeric.Test.cs" t="Include" />
+            <e p="String.IsEmpty.Test.cs" t="Include" />
+            <e p="String.IsNotEmpty.Test.cs" t="Include" />
+            <e p="String.IsNumeric.Test.cs" t="Include" />
+            <e p="String.Join.Test.cs" t="Include" />
+            <e p="String.KeepLetters.Test.cs" t="Include" />
+            <e p="String.KeepLettersAndNumbers.Test.cs" t="Include" />
+            <e p="String.KeepNumbers.Test.cs" t="Include" />
+            <e p="String.KeepWhere.Test.cs" t="Include" />
+            <e p="String.Left.Test.cs" t="Include" />
+            <e p="String.RemoveLetters.Test.cs" t="Include" />
+            <e p="String.RemoveLettersAndNumbers.Test.cs" t="Include" />
+            <e p="String.RemoveNumbers.Test.cs" t="Include" />
+            <e p="String.RemoveWhere.Test.cs" t="Include" />
+            <e p="String.Repeat.Test.cs" t="Include" />
+            <e p="String.ReplaceAt.Test.cs" t="Include" />
+            <e p="String.ReplaceByEmpty.Test.cs" t="Include" />
+            <e p="String.Reverse.Test.cs" t="Include" />
+            <e p="String.Right.Test.cs" t="Include" />
+            <e p="String.SafeToCultureInfo.Test.cs" t="Include" />
+            <e p="String.Split.Test.cs" t="Include" />
+            <e p="String.SplitLines.Test.cs" t="Include" />
+            <e p="String.SubstringLeft.Test.cs" t="Include" />
+            <e p="String.SubstringLeftSafe.Test.cs" t="Include" />
+            <e p="String.SubstringRight.Test.cs" t="Include" />
+            <e p="String.SubstringRightSafe.Test.cs" t="Include" />
+            <e p="String.TakeAndRemove.Test.cs" t="Include" />
+            <e p="String.ToCultureInfo.Test.cs" t="Include" />
+            <e p="String.ToEnum.Test.cs" t="Include" />
+            <e p="String.Truncate.Test.cs" t="Include" />
+            <e p="String.TryToEnum.Test.cs" t="Include" />
+            <e p="String.WildcardToRegex.Test.cs" t="Include" />
+            <e p="System.IO.Path" t="Include">
+              <e p="String.GetFileExtension.Test.cs" t="Include" />
+            </e>
+            <e p="System.Text.RegularExpressions.Regex" t="Include">
+              <e p="String.IsMatch.Test.cs" t="Include" />
+              <e p="String.IsNotMatch.Test.cs" t="Include" />
+              <e p="String.Match.Test.cs" t="Include" />
+              <e p="String.Matches.Test.cs" t="Include" />
+            </e>
+          </e>
+          <e p="System.Text.StringBuilder" t="Include">
+            <e p="StringBuilder.AppendLineFormat.Test.cs" t="Include" />
+          </e>
+          <e p="System.TimeSpan" t="Include">
+            <e p="TimeSpan.Future.Test.cs" t="Include" />
+            <e p="TimeSpan.Past.Test.cs" t="Include" />
+          </e>
+          <e p="System.Type" t="Include">
+            <e p="Type.GetAttributeDefinitions.Test.cs" t="Include" />
+            <e p="Type.GetDeclaringAssembly.Test.cs" t="Include" />
+            <e p="Type.GetGenericTypeArgument.Test.cs" t="Include" />
+            <e p="Type.GetGenericTypeArguments.Test.cs" t="Include" />
+            <e p="Type.GetImplementedInterfaces.Test.cs" t="Include" />
+            <e p="Type.GetNameWithNamespace.Test.cs" t="Include" />
+            <e p="Type.GetPublicProperties.Test.cs" t="Include" />
+            <e p="Type.GetPublicSettableProperties.Test.cs" t="Include" />
+            <e p="Type.GetTypeFromNullable.cs" t="Include" />
+            <e p="Type.ImplementsICollectionT.Test.cs" t="Include" />
+            <e p="Type.IsEnum.Test.cs" t="Include" />
+            <e p="Type.IsGenericType.Test.cs" t="Include" />
+            <e p="Type.IsICollectionT.Test.cs" t="Include" />
+            <e p="Type.IsIEnumerableT.Test.cs" t="Include" />
+            <e p="Type.IsIListT.Test.cs" t="Include" />
+            <e p="Type.IsMicrosoftType.Test.cs" t="Include" />
+          </e>
+          <e p="Utilities" t="Include">
+            <e p="Compare" t="Include">
+              <e p="KeyEqualityComparerTest.cs" t="Include" />
+            </e>
+            <e p="ExpressionEvaluator" t="Include">
+              <e p="ExpressionEvaluator.Test.cs" t="Include" />
+            </e>
+            <e p="InstanceBuilder" t="Include">
+              <e p="Creator" t="Include">
+                <e p="InstanceCreatorTest.cs" t="Include" />
+              </e>
+              <e p="Exception" t="Include">
+                <e p="CreateInstanceExceptionTest.cs" t="Include" />
+              </e>
+              <e p="Extension" t="Include">
+                <e p="MemberSelectionResultExTest.cs" t="Include" />
+              </e>
+              <e p="Factory" t="Include">
+                <e p="Base" t="Include">
+                  <e p="InstanceFactoryBaseTest.cs" t="Include" />
+                </e>
+                <e p="ExpressionInstanceFactoryTest.cs" t="Include" />
+              </e>
+              <e p="FluentInterface" t="Include">
+                <e p="CreateInstanceOptionsTest.cs" t="Include" />
+              </e>
+              <e p="MemberInformation" t="Include">
+                <e p="MemberInformationTest.cs" t="Include" />
+              </e>
+              <e p="MemberSelection" t="Include">
+                <e p="Inspector" t="Include">
+                  <e p="MemberSelectionRuleInspectorTest.cs" t="Include" />
+                </e>
+                <e p="Rules" t="Include">
+                  <e p="AllMemberSelectionRuleTest.cs" t="Include" />
+                  <e p="Base" t="Include">
+                    <e p="MemberSelectionRuleBaseTest.cs" t="Include" />
+                  </e>
+                  <e p="ExpressionMemberSelectionRuleTest.cs" t="Include" />
+                  <e p="PathMemberSelectionRuleTest.cs" t="Include" />
+                  <e p="TypeMemberSelectionRuleTest.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Specification" t="Include">
+              <e p="AndSpecification.Test.cs" t="Include" />
+              <e p="ExpressionSpecification.Test.cs" t="Include" />
+              <e p="OrSpecification.Test.cs" t="Include" />
+              <e p="XOrSpecification.Test.cs" t="Include" />
+            </e>
+            <e p="StringTemplate" t="Include">
+              <e p="Model" t="Include">
+                <e p="FormatInformationTest.cs" t="Include" />
+              </e>
+              <e p="StringTemplate.Test.cs" t="Include" />
+              <e p="ValueProvider" t="Include">
+                <e p="LookuptValueProviderTest.cs" t="Include" />
+                <e p="ObjectValueProviderTest.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Tree" t="Include">
+              <e p="TreeNodeCollectionTest.cs" t="Include" />
+              <e p="TreeNodeTest.cs" t="Include" />
+            </e>
+            <e p="Utilities.RandomValueEx.Test.cs" t="Include" />
+          </e>
         </e>
         <e p="ExtensionOverflowTests" t="Include">
           <e p="AuthoringTests.txt" t="Include" />
