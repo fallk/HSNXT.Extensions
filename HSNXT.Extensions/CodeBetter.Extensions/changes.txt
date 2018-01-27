@@ -1,0 +1,30 @@
+﻿0.4
+ - Renamed many string function (as suggested by mstrobel)
+     * UrlEncode/UrlDecode -> EncodeUrl/DecodeUrl
+     * HtmlEncode/HtmlDecode -> EncodeHtml/DecodeHtml
+     * ToBase64/FromBase64 -> EncodeBase64/DecodeBase64
+     * Md5 -> EncodeMd5
+     * Sha1 -> EncodeSha1
+     * Rerverse -> Reverse
+     * Sub -> FormatWith
+ - object.ToHash renamed to object.ToDictionary
+ - Fixed stackoverflow in cache extensions
+ - Added IEnumerable<T>.EachIndex
+ - Added string.EncodeJavascript with escapes single quotes ('), for use in a javascript string
+ - Added object.DefinesAttribute which returns true if the attribute is defined on the object
+
+
+
+0.3
+ - Added overload to cache to specify a callback to call when an item IS cached
+ - Added Find, FindAll, Index and Exists to IEnumerable 
+   (would love to figure out how to add Sort to it)
+ - Added string.Left and string.Right
+ - Added the ICommand interface
+ 
+0.2
+ - Added the Money class from Jason Hunt (http://noticeablydifferent.com/)
+ - Added the Strip() extension method to the StringBuilder
+ - Added String.Capitalize
+ - Added DayExtensions and TimeExtensions to DateTime thanks to Fredrik Kalseth
+   (http://iridescence.no/)

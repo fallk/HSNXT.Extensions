@@ -830,6 +830,43 @@
           <e p="WrappedArray.cs" t="Include" />
           <e p="Wrappers.cs" t="Include" />
         </e>
+        <e p="CodeBetter.Extensions" t="Include">
+          <e p="ByteExtensions.cs" t="Include" />
+          <e p="Caching" t="Include">
+            <e p="CacheExtensions.cs" t="Include" />
+            <e p="CacheFactory.cs" t="Include" />
+            <e p="ICache.cs" t="Include" />
+            <e p="InMemoryCache.cs" t="Include" />
+          </e>
+          <e p="changes.txt" t="Include" />
+          <e p="DateTime" t="Include">
+            <e p="DayExtensions.cs" t="Include" />
+            <e p="TimeExtensions.cs" t="Include" />
+          </e>
+          <e p="DirectoryInfoExtensions.cs" t="Include" />
+          <e p="HttpRequestExtensions.cs" t="Include" />
+          <e p="ICommand.cs" t="Include" />
+          <e p="IEnumerableExtensions.cs" t="Include" />
+          <e p="Ints" t="Include">
+            <e p="IntDateExtensions.cs" t="Include" />
+            <e p="IntExtensions.cs" t="Include" />
+            <e p="IntMathExtensions.cs" t="Include" />
+          </e>
+          <e p="Money.cs" t="Include" />
+          <e p="NameValueCollectionExtension.cs" t="Include" />
+          <e p="nxl.snk" t="Include" />
+          <e p="ObjectExtensions.cs" t="Include" />
+          <e p="StreamExtensions.cs" t="Include" />
+          <e p="Strings" t="Include">
+            <e p="BadWordList.txt" t="Include" />
+            <e p="StringBuilderExtensions.cs" t="Include" />
+            <e p="StringConversionExtensions.cs" t="Include" />
+            <e p="StringExtensions.cs" t="Include" />
+            <e p="StringParsersExtensions.cs" t="Include" />
+            <e p="StringValidationExtensions.cs" t="Include" />
+          </e>
+          <e p="SystemTime.cs" t="Include" />
+        </e>
         <e p="CodeBits" t="Include">
           <e p="ASCIIEncoding.cs" t="Include" />
           <e p="ByteArrayHelper.cs" t="Include" />
@@ -1578,28 +1615,6 @@
         <e p="LazyEnumeratorIndex.cs" t="Include" />
         <e p="LazySplitter.cs" t="Include" />
         <e p="LazySplitterIndex.cs" t="Include" />
-        <e p="LICENSE.BCLExtensions.txt" t="Include" />
-        <e p="LICENSE.BCLExtensions2.txt" t="Include" />
-        <e p="LICENSE.BigMath.txt" t="Include" />
-        <e p="LICENSE.C5.txt" t="Include" />
-        <e p="LICENSE.CodeBits.txt" t="Include" />
-        <e p="LICENSE.ComLib.txt" t="Include" />
-        <e p="LICENSE.CommonLibrary.NET.txt" t="Include" />
-        <e p="LICENSE.DevLibExtensionMethods.txt" t="Include" />
-        <e p="LICENSE.dff.Extensions.txt" t="Include" />
-        <e p="LICENSE.Eloquent.txt" t="Include" />
-        <e p="LICENSE.Extension-Method-Pack.txt" t="Include" />
-        <e p="LICENSE.ExtensionMinder.txt" t="Include" />
-        <e p="LICENSE.ExtensionOverflow.txt" t="Include" />
-        <e p="LICENSE.LINQ-Async.txt" t="Include" />
-        <e p="LICENSE.Linq2Charts.txt" t="Include" />
-        <e p="LICENSE.MiscUtil.txt" t="Include" />
-        <e p="LICENSE.MoreLinq.txt" t="Include" />
-        <e p="LICENSE.NBasicExtensionMethod.txt" t="Include" />
-        <e p="LICENSE.Rx.NET.txt" t="Include" />
-        <e p="LICENSE.Saiko.txt" t="Include" />
-        <e p="LICENSE.SuccincT.txt" t="Include" />
-        <e p="LICENSE.Z.ExtensionMethods.txt" t="Include" />
         <e p="LINQ2Charts" t="Include">
           <e p="Chart" t="Include">
             <e p="Chart" t="Include">
@@ -3726,6 +3741,32 @@
             <e p="RedBlackTreeSetTests.cs" t="Include" />
           </e>
           <e p="WrappersTest.cs" t="Include" />
+        </e>
+        <e p="CodeBetter.Extensions.Tests" t="Include">
+          <e p="ByteTests.cs" t="Include" />
+          <e p="DateTime" t="Include">
+            <e p="DayTests.cs" t="Include" />
+            <e p="TimeTests.cs" t="Include" />
+          </e>
+          <e p="FakeClass.cs" t="Include" />
+          <e p="IEnumerableTests.cs" t="Include" />
+          <e p="Ints" t="Include">
+            <e p="IntDateTests.cs" t="Include" />
+            <e p="IntMathTests.cs" t="Include" />
+            <e p="IntTests.cs" t="Include" />
+          </e>
+          <e p="MoneyTests.cs" t="Include" />
+          <e p="NameValueCollectionTests.cs" t="Include" />
+          <e p="ObjectTests.cs" t="Include" />
+          <e p="StreamTests.cs" t="Include" />
+          <e p="Strings" t="Include">
+            <e p="StringConversionTests.cs" t="Include" />
+            <e p="StringParserTests.cs" t="Include" />
+            <e p="StringTests.cs" t="Include" />
+            <e p="StringValidationTests.cs" t="Include" />
+          </e>
+          <e p="SystemTimeTests.cs" t="Include" />
+          <e p="TestResource.txt" t="Include" />
         </e>
         <e p="CodeBits.Tests" t="Include">
           <e p="ByteArrayHelperTests.cs" t="Include" />

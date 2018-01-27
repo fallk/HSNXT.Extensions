@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
@@ -11,6 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using HSNXT.aResources;
 using HSNXT.SuccincT.Functional;
 using Newtonsoft.Json.Converters;
@@ -19,6 +21,67 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
+        public static string OrdinalSuffix(this DateTime datetime)
+        {
+            var day = datetime.Day;
+            if (day % 100 >= 11 && day % 100 <= 13)
+                return string.Concat(day, "th");
+            switch (day % 10)
+            {
+                case 1:
+                    return string.Concat(day, "st");
+                case 2:
+                    return string.Concat(day, "nd");
+                case 3:
+                    return string.Concat(day, "rd");
+                default:
+                    return string.Concat(day, "th");
+            }
+        }
+
+        public static int Occurrence(this string instr, string search)
+        {
+            return Regex.Matches(instr, search).Count;
+        }
+        
+        public static void AddThese<T, TS>(this ICollection<T> list, params TS[] values)
+            where TS : T
+        {
+            foreach (var value in values)
+                list.Add(value);
+        }
+        
+        /// <summary>
+        /// Parses a string into an Enum
+        /// </summary>
+        /// <typeparam name="T">The type of the Enum</typeparam>
+        /// <param name="value">String value to parse</param>
+        /// <returns>The Enum corresponding to the stringExtensions</returns>
+        public static T EnumParse<T>(this string value) {
+            return EnumParse<T>(value, false);
+        }
+
+        public static T EnumParse<T>(this string value, bool ignorecase) {
+
+            if (value == null) {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            value = value.Trim();
+
+            if (value.Length == 0) {
+                throw new ArgumentException("Must specify valid information for parsing in the string.", "value");
+            }
+
+            var t = typeof(T);
+
+            if (!t.IsEnum) {
+                throw new ArgumentException("Type provided must be an Enum.", "T");
+            }
+
+            return (T)Enum.Parse(t, value, ignorecase);
+        }
+
         public static T GetHead<T>(this IConsEnumerable<T> @this)
         {
             return @this.Cons().Head.Value;
