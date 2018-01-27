@@ -1,21 +1,7 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
-   public static class IntMathExtensions
+   public static partial class Extensions
    {      
-      /// <summary>
-      /// Determines if a number is even or not
-      /// </summary>      
-      public static bool IsEven(this int number)
-      {
-         return number % 2 == 0;
-      }
-      /// <summary>
-      /// Determines if a number is odd or not
-      /// </summary>
-      public static bool IsOdd(this int number)
-      {
-         return !number.IsEven();
-      }
       /// <summary>
       /// if the number is a multiple of all supplied factors
       /// </summary>

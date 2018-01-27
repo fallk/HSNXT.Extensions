@@ -1,10 +1,10 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    #region
    using System;
    #endregion
 
-   public static class IntExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// Returns the suffic (st, nd, rd, th) for the specified number
@@ -35,21 +35,7 @@
       {
          return number + number.Suffix();
       }
-      /// <summary>
-      /// Performs the specified action a given number of times
-      /// 3.times(i => sum += i);
-      /// </summary>      
-      public static void Times(this int times, Action<int> action)
-      {
-         if (action == null)
-         {
-            throw new ArgumentNullException("action");
-         }
-         for (int i = 1; i <= times; ++i)
-         {
-            action(i);
-         }
-      }
+      
       /// <summary>
       /// Performs the speficied action from start to end
       /// 3.UpTo(5, i => sum += i)
@@ -60,7 +46,7 @@
          {
             throw new ArgumentNullException("action");
          }
-         for (int i = start; i <= end; ++i)
+         for (var i = start; i <= end; ++i)
          {
             action(i);
          }

@@ -2,95 +2,11 @@
 {
    using System;
    using NUnit.Framework;
+   using HSNXT;
 
    [TestFixture]
    public class IntDateTests
    {
-      [SetUp]
-      public void SetUp()
-      {
-         SystemTime.Now = () => new DateTime(2004, 01, 01);
-      }
-      [TearDown]
-      public void TearDown()
-      {
-         SystemTime.ResetNow();
-      }
-     
-      [Test]
-      public void YearsAgo()
-      {
-         Assert.AreEqual(SystemTime.Now().AddYears(-4), 4.YearsAgo());
-         Assert.AreEqual(SystemTime.Now().AddYears(2), (-2).YearsAgo());
-      }
-      [Test]
-      public void MonthsAgo()
-      {
-         Assert.AreEqual(SystemTime.Now().AddMonths(-4), 4.MonthsAgo());
-         Assert.AreEqual(SystemTime.Now().AddMonths(2), (-2).MonthsAgo());
-      }
-      [Test]
-      public void DaysAgo()
-      {
-         Assert.AreEqual(SystemTime.Now().AddDays(-4), 4.DaysAgo());
-         Assert.AreEqual(SystemTime.Now().AddDays(2), (-2).DaysAgo());
-      }
-      [Test]
-      public void HoursAgo()
-      {
-         Assert.AreEqual(SystemTime.Now().AddHours(-4), 4.HoursAgo());
-         Assert.AreEqual(SystemTime.Now().AddHours(2), (-2).HoursAgo());
-      }
-      [Test]
-      public void MinutesAgo()
-      {
-         Assert.AreEqual(SystemTime.Now().AddMinutes(-4), 4.MinutesAgo());
-         Assert.AreEqual(SystemTime.Now().AddMinutes(2), (-2).MinutesAgo());
-      }
-      [Test]
-      public void SecondsAgo()
-      {
-         Assert.AreEqual(SystemTime.Now().AddSeconds(-4), 4.SecondsAgo());
-         Assert.AreEqual(SystemTime.Now().AddSeconds(2), (-2).SecondsAgo());
-      }
-      
-      [Test]
-      public void YearsFromNow()
-      {
-         Assert.AreEqual(SystemTime.Now().AddYears(4), 4.YearsFromNow());
-         Assert.AreEqual(SystemTime.Now().AddYears(2), (2).YearsFromNow());
-      }
-      [Test]
-      public void MonthsFromNow()
-      {
-         Assert.AreEqual(SystemTime.Now().AddMonths(4), 4.MonthsFromNow());
-         Assert.AreEqual(SystemTime.Now().AddMonths(2), (2).MonthsFromNow());
-      }
-      [Test]
-      public void DaysFromNow()
-      {
-         Assert.AreEqual(SystemTime.Now().AddDays(4), 4.DaysFromNow());
-         Assert.AreEqual(SystemTime.Now().AddDays(2), (2).DaysFromNow());
-      }
-      [Test]
-      public void HoursFromNow()
-      {
-         Assert.AreEqual(SystemTime.Now().AddHours(4), 4.HoursFromNow());
-         Assert.AreEqual(SystemTime.Now().AddHours(2), (2).HoursFromNow());
-      }
-      [Test]
-      public void MinutesFromNow()
-      {
-         Assert.AreEqual(SystemTime.Now().AddMinutes(4), 4.MinutesFromNow());
-         Assert.AreEqual(SystemTime.Now().AddMinutes(2), (2).MinutesFromNow());
-      }
-      [Test]
-      public void SecondsFromNow()
-      {
-         Assert.AreEqual(SystemTime.Now().AddSeconds(4), 4.SecondsFromNow());
-         Assert.AreEqual(SystemTime.Now().AddSeconds(2), (2).SecondsFromNow());
-      }      
-
       [Test]
       public void IsLeapYear_ReturnsTrueForLeapYearAndFalseOtherwise()
       {

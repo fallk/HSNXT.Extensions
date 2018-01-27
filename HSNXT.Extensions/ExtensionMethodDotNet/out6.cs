@@ -4592,7 +4592,7 @@ string display = seconds.SecondsToString(); // 2 hours 11 mins
  * var cached = mySequence.Cache();
  */
 
-        public static IEnumerable<T> Cache<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> CacheContents<T>(this IEnumerable<T> source)
         {
             return CacheHelper(source.GetEnumerator());
         }

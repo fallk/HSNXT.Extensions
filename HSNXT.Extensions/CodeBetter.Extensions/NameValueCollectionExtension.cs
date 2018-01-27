@@ -1,9 +1,9 @@
 ﻿
-namespace CodeBetter.Extensions
+namespace HSNXT
 {
    using System.Collections.Specialized;
 
-   public static class NameValueCollectionExtension
+   public static partial class Extensions
    {
       /// <summary>
       /// Gets a double from the specified key
@@ -31,7 +31,7 @@ namespace CodeBetter.Extensions
       /// </summary>
       public static bool GetBoolean(this NameValueCollection collection, string key)
       {
-         return collection[key].ToBoolean();         
+         return collection[key].ToBooleanNotNull();         
       }
    }
 }

@@ -848,7 +848,6 @@
           <e p="ICommand.cs" t="Include" />
           <e p="IEnumerableExtensions.cs" t="Include" />
           <e p="Ints" t="Include">
-            <e p="IntDateExtensions.cs" t="Include" />
             <e p="IntExtensions.cs" t="Include" />
             <e p="IntMathExtensions.cs" t="Include" />
           </e>
@@ -3758,15 +3757,12 @@
           <e p="MoneyTests.cs" t="Include" />
           <e p="NameValueCollectionTests.cs" t="Include" />
           <e p="ObjectTests.cs" t="Include" />
-          <e p="StreamTests.cs" t="Include" />
           <e p="Strings" t="Include">
             <e p="StringConversionTests.cs" t="Include" />
             <e p="StringParserTests.cs" t="Include" />
             <e p="StringTests.cs" t="Include" />
             <e p="StringValidationTests.cs" t="Include" />
           </e>
-          <e p="SystemTimeTests.cs" t="Include" />
-          <e p="TestResource.txt" t="Include" />
         </e>
         <e p="CodeBits.Tests" t="Include">
           <e p="ByteArrayHelperTests.cs" t="Include" />

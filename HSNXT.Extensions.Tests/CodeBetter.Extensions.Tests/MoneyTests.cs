@@ -1,3 +1,5 @@
+using HSNXT;
+
 namespace CodeBetter.Extensions.Tests
 {
    #region
@@ -25,17 +27,6 @@ namespace CodeBetter.Extensions.Tests
       public void TearDown() {}
       #endregion
      
-      [Test, ExpectedException(typeof (InvalidOperationException), "Money type mismatch.")]        
-      public void AddingDifferentCurrenciesAddMethod()
-      {
-         Money result = Money.Add(_cad1, _usd);
-      }
-
-      [Test, ExpectedException(typeof (InvalidOperationException), "Money type mismatch.")]        
-      public void AddingDifferentCurrenciesAddOperator()
-      {
-         Money result = _cad1 + _usd;
-      }
       [Test]
       public void AddingSameCurrenciesAddMethod()
       {
@@ -70,7 +61,7 @@ namespace CodeBetter.Extensions.Tests
          Money money = new Money(53m);
          Money clone = money.Clone();
          Assert.IsFalse(money == clone);
-         Assert.AreEqual(money.ISOCurrencySymbol, clone.ISOCurrencySymbol);
+         Assert.AreEqual(money.IsoCurrencySymbol, clone.IsoCurrencySymbol);
          Assert.AreEqual(0, clone.Amount);
       }
       [Test]
@@ -79,12 +70,6 @@ namespace CodeBetter.Extensions.Tests
          Assert.AreEqual(-1, _cad2.CompareTo((object) _cad3));
          Assert.AreEqual(1, _cad3.CompareTo((object) _cad1));
          Assert.AreEqual(0, _cad1.CompareTo((object) _cad2));
-      }
-      [Test, ExpectedException(typeof (ArgumentException), "Argument must be money")]
-        
-      public void CompareToDifferentObject()
-      {
-         _cad1.CompareTo(new XmlDocument());
       }
       [Test]
       public void CompareToNull()
@@ -99,34 +84,6 @@ namespace CodeBetter.Extensions.Tests
          Assert.AreEqual(1, _cad3.CompareTo(_cad1));
          Assert.AreEqual(0, _cad1.CompareTo(_cad2));
       }
-      [Test, ExpectedException(typeof (ArgumentException))]
-        
-      public void ConstructorInvalidCultureInfoTest()
-      {
-         new Money("squirrly");
-      }
-
-      [Test, ExpectedException(typeof (ArgumentNullException))]
-        
-      public void ConstructorNullCultureInfoTest()
-      {
-         CultureInfo cultureInfo = null;
-         new Money(cultureInfo);
-      }
-      [Test, ExpectedException(typeof (ArgumentNullException))]
-        
-      public void ConstructorNullCultureNameTest()
-      {
-         string nullString = null;
-         new Money(nullString);
-      }
-      [Test, ExpectedException(typeof (ArgumentNullException))]
-        
-      public void ConstructorWithDecimalAndNullCultureInfoTest()
-      {
-         CultureInfo cultureInfo = null;
-         new Money(1m, cultureInfo);
-      }
       [Test]
       public void ConstructorWithLongAndCultureInfoTest()
       {
@@ -135,15 +92,7 @@ namespace CodeBetter.Extensions.Tests
          Assert.AreEqual(Convert.ToDecimal(value), money.Amount);
          Assert.AreEqual(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits, money.DecimalDigits);
          Assert.AreEqual(CultureInfo.CurrentCulture.Name, money.EnglishCultureName);
-         Assert.AreEqual(RegionInfo.CurrentRegion.ISOCurrencySymbol, money.ISOCurrencySymbol);
-      }
-      [Test, ExpectedException(typeof (ArgumentNullException))]
-        
-      public void ConstructorWithLongAndNullCultureInfoTest()
-      {
-         CultureInfo cultureInfo = null;
-         long value = 1;
-         new Money(value, cultureInfo);
+         Assert.AreEqual(RegionInfo.CurrentRegion.ISOCurrencySymbol, money.IsoCurrencySymbol);
       }
       [Test]
       public void CopyTest()
@@ -156,7 +105,7 @@ namespace CodeBetter.Extensions.Tests
       public void DefaultConstructor()
       {
          Money money = Money.LocalCurrency;
-         Assert.AreEqual(RegionInfo.CurrentRegion.ISOCurrencySymbol, money.ISOCurrencySymbol);
+         Assert.AreEqual(RegionInfo.CurrentRegion.ISOCurrencySymbol, money.IsoCurrencySymbol);
          Assert.AreEqual(0, money.Amount);
       }
       [Test]
@@ -227,11 +176,6 @@ namespace CodeBetter.Extensions.Tests
          Money convertedCanadianDollars = new Money(usDollars.Amount * 1.12565m, "en-CA");
          Assert.AreEqual(50 * 1.12565m, convertedCanadianDollars.Amount);
       }
-      [Test, ExpectedException(typeof (InvalidOperationException), "Money type mismatch.")]        
-      public void GreaterThanDifferentCurrencies()
-      {
-         bool greaterThan = _cad1 > _usd;
-      }
       [Test]
       public void GreaterThanOrEqualTo()
       {
@@ -253,12 +197,6 @@ namespace CodeBetter.Extensions.Tests
       public void HashCode()
       {
          Assert.AreEqual(_cad1.GetHashCode(), _cad2.GetHashCode());
-      }
-      [Test, ExpectedException(typeof (InvalidOperationException), "Money type mismatch.")]
-        
-      public void LessThanDifferentCurrencies()
-      {
-         bool lessThan = _cad1 < _usd;
       }
       [Test]
       public void LessThanOrEqualTo()
@@ -308,30 +246,6 @@ namespace CodeBetter.Extensions.Tests
          Assert.IsFalse(_cad1 != _cad2);
          Assert.IsTrue(_cad1 != _cad3);
       }
-      [Test, ExpectedException(typeof (ArgumentNullException))]
-      public void NullDivisionOperator()
-      {
-         Money nullMoney = null;
-         Money result = nullMoney / 5;
-      }
-      [Test, ExpectedException(typeof (ArgumentNullException))]
-      public void NullMultiplicationOperator()
-      {
-         Money nullMoney = null;
-         Money result = nullMoney * 5;
-      }
-      [Test, ExpectedException(typeof (InvalidOperationException), "Money type mismatch.")]
-        
-      public void SubtractingDifferentCurrenciesSubtractMethod()
-      {
-         Money result = Money.Subtract(_cad1, _usd);
-      }
-      [Test, ExpectedException(typeof (InvalidOperationException), "Money type mismatch.")]
-        
-      public void SubtractingDifferentCurrenciesSubtractOperator()
-      {
-         Money result = _cad1 - _usd;
-      }
       [Test]
       public void SubtractingSameCurrenciesSubtractMethod()
       {
@@ -360,7 +274,7 @@ namespace CodeBetter.Extensions.Tests
       {
          Assert.AreEqual("$0.00", _cad1.ToString(), "Zero CAD");
          Assert.AreEqual("$15.00", _cad3.ToString(), "15 CAD");
-         Assert.AreEqual("£2.00", new Money(2, "en-GB").ToString(), "2 BPS");
+         Assert.AreEqual("Â£2.00", new Money(2, "en-GB").ToString(), "2 BPS");
       }
    }
 }

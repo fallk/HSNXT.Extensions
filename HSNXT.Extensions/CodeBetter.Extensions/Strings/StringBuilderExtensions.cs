@@ -1,8 +1,8 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System.Text;
 
-   public static class StringBuilderExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// Removes trailling spaces from the stringbuilder + 1 character
@@ -21,7 +21,7 @@
       /// </returns>      
       public static string Strip(this StringBuilder sb)
       {
-         for (int i = sb.Length-1; i >= 0 && sb[i] == ' '; --i)
+         for (var i = sb.Length-1; i >= 0 && sb[i] == ' '; --i)
          {
             sb.Remove(sb.Length - 1, 1);
          }

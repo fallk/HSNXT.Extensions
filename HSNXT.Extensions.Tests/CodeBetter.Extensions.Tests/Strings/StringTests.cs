@@ -3,6 +3,7 @@
    #region
    using System;
    using NUnit.Framework;
+   using HSNXT;
    #endregion
 
    [TestFixture]
@@ -11,20 +12,14 @@
       [Test]
       public void CreateType_ReturnsInstanceWithNoParameters()
       {
-         FakeClass type = "CodeBetter.Extensions.Tests.FakeClass, CodeBetter.Extensions.Tests".CreateType<FakeClass>();
+         FakeClass type = "CodeBetter.Extensions.Tests.FakeClass, HSNXT.Extensions.Tests".CreateType<FakeClass>();
          Assert.AreEqual(0, type.Id);
       }
       [Test]
       public void CreateType_ReturnsInstanceWithParameters()
       {
-         FakeClass type = "CodeBetter.Extensions.Tests.FakeClass, CodeBetter.Extensions.Tests".CreateType<FakeClass>(1);
+         FakeClass type = "CodeBetter.Extensions.Tests.FakeClass, HSNXT.Extensions.Tests".CreateType<FakeClass>(1);
          Assert.AreEqual(1, type.Id);
-      }
-      [Test, ExpectedException("System.TypeLoadException")]
-      public void CreateType_ThrowsExceptionForInvalidType()
-      {
-         "unknownType".CreateType<string>();
-         Assert.Fail();
       }
       
       [Test]
@@ -107,33 +102,11 @@
       }
 
       [Test]
-      public void Left_ReturnsEmptyForEmptyStringOrZeroLength()
-      {
-         Assert.AreEqual(string.Empty, "".Left(100));
-         Assert.AreEqual(string.Empty, "abc".Left(0));
-      }
-      [Test]
-      public void Left_ReturnsStringIfLengthTooBig()
-      {
-         Assert.AreEqual("12345", "12345".Left(10));
-      }
-      [Test]
       public void Left_ReturnsLeftSubstring()
       {
          Assert.AreEqual("12", "12345".Left(2));
       }
 
-      [Test]
-      public void Right_ReturnsEmptyForEmptyStringOrZeroLength()
-      {
-         Assert.AreEqual(string.Empty, "".Right(100));
-         Assert.AreEqual(string.Empty, "abc".Right(0));
-      }
-      [Test]
-      public void Right_ReturnsStringIfLengthTooBig()
-      {
-         Assert.AreEqual("12345", "12345".Right(10));
-      }
       [Test]
       public void Right_ReturnsRightSubstring()
       {

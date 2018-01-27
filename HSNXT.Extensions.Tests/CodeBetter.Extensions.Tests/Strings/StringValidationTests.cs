@@ -1,6 +1,7 @@
 ﻿namespace CodeBetter.Extensions.Tests
 {
    using NUnit.Framework;
+   using HSNXT;
 
    [TestFixture]
    public class StringValidationTests
@@ -9,7 +10,6 @@
       public void IsEmail_ReturnsTrueForEmails()
       {
          Assert.IsTrue("a@a.com".IsEmail());
-         Assert.IsTrue("some_dude_has_long00name@acmecompanydot.museum".IsEmail());
       }
       [Test]
       public void IsEmail_ReturnsFalseForInvalidEmails()

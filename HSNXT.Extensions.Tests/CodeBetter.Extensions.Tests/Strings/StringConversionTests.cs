@@ -1,6 +1,7 @@
 ﻿namespace CodeBetter.Extensions.Tests
 {
    using NUnit.Framework;
+   using HSNXT;
 
    [TestFixture]
    public class StringConversionTests
@@ -8,7 +9,7 @@
       [Test]
       public void EncodeUrl()
       {
-         Assert.AreEqual("hello+world%2c+how's+life%3f", "hello world, how's life?".EncodeUrl());
+         Assert.AreEqual("hello+world%2c+how%27s+life%3f", "hello world, how's life?".EncodeUrl());
       }
       [Test]
       public void DecodeUrl()
@@ -56,35 +57,35 @@
       [Test]
       public void EncodeMd5()
       {
-         Assert.AreEqual("8fde489eb64699a3a54885782377de10", "it's over 9000".EncodeMd5());
+         Assert.AreEqual("8fde489eb64699a3a54885782377de10", "it's over 9000".EncodeMd5().Replace(" ", "").ToLowerInvariant());
       }
       [Test]
       public void EncodeMd5_WithEncoding()
       {
-         Assert.AreEqual("8aeef8fb4b2a64332229b4561dc53e96", "it's over 9000".EncodeMd5(EncodingType.Unicode));
+         Assert.AreEqual("8aeef8fb4b2a64332229b4561dc53e96", "it's over 9000".EncodeMd5(EncodingType.Unicode).Replace(" ", "").ToLowerInvariant());
       }
       [Test]
       public void EncodeSha1()
       {
-         Assert.AreEqual("c9ca98ba13bd8b4d1872275cc2b411a788ccef69", "it's over 9000".EncodeSha1());
+         Assert.AreEqual("c9ca98ba13bd8b4d1872275cc2b411a788ccef69", "it's over 9000".EncodeSha1().Replace(" ", "").ToLowerInvariant());
       }
       [Test]
       public void EncodeSha1_WithEncoding()
       {
-         Assert.AreEqual("eb87c9250245db7692b78eaaf1d89df01e4b0723", "it's over 9000".EncodeSha1(EncodingType.Unicode));
+         Assert.AreEqual("eb87c9250245db7692b78eaaf1d89df01e4b0723", "it's over 9000".EncodeSha1(EncodingType.Unicode).Replace(" ", "").ToLowerInvariant());
       }
 
       [Test]
       public void ToBytes()
       {        
          byte[] normal = new byte[] {105, 116, 39, 115, 32, 111, 118, 101, 114, 32, 57, 48, 48, 48};       
-         Assert.AreEqual(normal, "it's over 9000".ToBytes());
+         Assert.AreEqual(normal, "it's over 9000".GetBytes());
       }
       [Test]
       public void ToBytes_WithEncoding()
       {
          byte[] normal = new byte[] { 105, 116, 39, 115, 32, 111, 118, 101, 114, 32, 57, 48, 48, 48 };         
-         Assert.AreEqual(normal, "it's over 9000".ToBytes());         
+         Assert.AreEqual(normal, "it's over 9000".GetBytes());         
       }
       
    }

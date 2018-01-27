@@ -1,8 +1,8 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System;
 
-   public static class SystemTime
+   public static partial class Extensions
    {
       /// <summary>
       /// Returns the current DateTime.

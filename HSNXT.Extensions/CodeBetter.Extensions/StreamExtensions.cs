@@ -1,10 +1,10 @@
 ﻿
-namespace CodeBetter.Extensions
+namespace HSNXT
 {
    using System.Collections.Generic;
    using System.IO;
 
-   public static class StreamExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// Reads a stream line by line

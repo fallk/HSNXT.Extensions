@@ -1,4 +1,4 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System;   
    using System.Globalization;   
@@ -14,24 +14,14 @@
    {
       private readonly CultureInfo _cultureInfo;
       private readonly RegionInfo _regionInfo;
-      private readonly decimal _amount;
 
-      public string EnglishCultureName
-      {
-         get { return _cultureInfo.Name; }
-      }
-      public string ISOCurrencySymbol
-      {
-         get { return _regionInfo.ISOCurrencySymbol; }
-      }
-      public decimal Amount
-      {
-         get { return _amount; }
-      }
-      public int DecimalDigits
-      {
-         get { return _cultureInfo.NumberFormat.CurrencyDecimalDigits; }
-      }
+      public string EnglishCultureName => _cultureInfo.Name;
+
+      public string IsoCurrencySymbol => _regionInfo.ISOCurrencySymbol;
+
+      public decimal Amount { get; }
+
+      public int DecimalDigits => _cultureInfo.NumberFormat.CurrencyDecimalDigits;
 
       public Money() : this(0, CultureInfo.CurrentCulture) { }
       public Money(decimal amount) : this(amount, CultureInfo.CurrentCulture) { }
@@ -41,44 +31,36 @@
       public Money(CultureInfo cultureInfo) : this(0, cultureInfo) { }
       public Money(decimal amount, CultureInfo cultureInfo)
       {
-         if (cultureInfo == null)
-         {
-            throw new ArgumentNullException("cultureInfo");
-         }
-         _cultureInfo = cultureInfo;
+         _cultureInfo = cultureInfo ?? throw new ArgumentNullException("cultureInfo");
          _regionInfo = new RegionInfo(cultureInfo.LCID);
-         _amount = amount;
+         Amount = amount;
       }
       public Money(long amount, CultureInfo cultureInfo)
       {
-         if (cultureInfo == null)
-         {
-            throw new ArgumentNullException("cultureInfo");
-         }
-         _cultureInfo = cultureInfo;
+         _cultureInfo = cultureInfo ?? throw new ArgumentNullException("cultureInfo");
          _regionInfo = new RegionInfo(cultureInfo.LCID);
-         _amount = amount;
+         Amount = amount;
       }
 
       public static bool operator >(Money first, Money second)
       {
          AssertSameCurrency(first, second);
-         return first._amount > second._amount;
+         return first.Amount > second.Amount;
       }
       public static bool operator >=(Money first, Money second)
       {
          AssertSameCurrency(first, second);
-         return first._amount >= second._amount;
+         return first.Amount >= second.Amount;
       }
       public static bool operator <=(Money first, Money second)
       {
          AssertSameCurrency(first, second);
-         return first._amount <= second._amount;
+         return first.Amount <= second.Amount;
       }
       public static bool operator <(Money first, Money second)
       {
          AssertSameCurrency(first, second);
-         return first._amount < second._amount;
+         return first.Amount < second.Amount;
       }
       public static Money operator +(Money first, Money second)
       {
@@ -117,7 +99,7 @@
          {
             return false;
          }
-         return (first.ISOCurrencySymbol == second.ISOCurrencySymbol && first.Amount == second.Amount);
+         return (first.IsoCurrencySymbol == second.IsoCurrencySymbol && first.Amount == second.Amount);
       }
       public static bool operator !=(Money first, Money second)
       {
@@ -141,10 +123,7 @@
       {
          return first / value;
       }
-      public static Money LocalCurrency
-      {
-         get { return new Money(CultureInfo.CurrentCulture); }
-      }
+      public static Money LocalCurrency => new Money(CultureInfo.CurrentCulture);
 
       public Money Copy()
       {
@@ -172,11 +151,7 @@
          {
             return -1;
          }
-         if (this > other)
-         {
-            return 1;
-         }
-         return 0;
+         return this > other ? 1 : 0;
       }
       public override string ToString()
       {
@@ -188,11 +163,11 @@
       }
       public override bool Equals(object obj)
       {
-         return (obj is Money) && Equals((Money)obj);
+         return (obj is Money money) && Equals(money);
       }
       public override int GetHashCode()
       {
-         return _amount.GetHashCode() ^ _cultureInfo.GetHashCode();
+         return Amount.GetHashCode() ^ _cultureInfo.GetHashCode();
       }
       public bool Equals(Money other)
       {
@@ -200,13 +175,12 @@
          {
             return false;
          }
-         return ((ISOCurrencySymbol == other.ISOCurrencySymbol) && (_amount == other._amount));
+         return ((IsoCurrencySymbol == other.IsoCurrencySymbol) && (Amount == other.Amount));
       }
       
-
       private static void AssertSameCurrency(Money first, Money second)
       {
-         if (first.ISOCurrencySymbol != second.ISOCurrencySymbol)
+         if (first.IsoCurrencySymbol != second.IsoCurrencySymbol)
          {
             throw new InvalidOperationException("Money type mismatch.");
          }

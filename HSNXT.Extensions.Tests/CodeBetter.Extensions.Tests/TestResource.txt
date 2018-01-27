@@ -1,5 +1,0 @@
-﻿start
-line 1
-it's over 9000
-line 3
-end

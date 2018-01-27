@@ -1,9 +1,10 @@
-﻿namespace CodeBetter.Extensions
+﻿#if NetFX
+namespace HSNXT
 {
    using System;
    using System.Web.Caching;
 
-   public static class CacheExtensions
+   public static partial class Extensions
    {
       public static T Get<T>(this Cache cache, string key, params object[] keyArgs)
       {
@@ -177,3 +178,4 @@
       }
    }
 }
+#endif

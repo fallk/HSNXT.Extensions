@@ -1,4 +1,4 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    /// <summary>
    /// Use this interface for common ICommand tasks

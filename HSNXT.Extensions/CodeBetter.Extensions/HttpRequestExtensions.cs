@@ -1,8 +1,9 @@
-﻿namespace CodeBetter.Extensions
+﻿#if NetFX
+namespace HSNXT
 {
    using System.Web;
 
-   public static class HttpRequestExtensions
+   public static partial class Extensions
    {
       private static readonly string[] _ipHeaderOrder = new[] { "HTTP_X_FORWARDED_FOR", "HTTP_X_CLUSTER_CLIENT_IP", "REMOTE_ADDR" };
 
@@ -28,3 +29,4 @@
       }
    }
 }
+#endif

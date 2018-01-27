@@ -3,6 +3,7 @@ namespace CodeBetter.Extensions.Tests
 {
    using System;
    using NUnit.Framework;
+   using HSNXT;
 
    [TestFixture]
    public class TimeExtensionsTests

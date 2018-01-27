@@ -2,6 +2,7 @@
 {
    using NUnit.Framework;
    using Extensions;
+   using HSNXT;
 
    [TestFixture]
    public class IntTests
@@ -13,25 +14,12 @@
          3.Times(i => ++counter);
          Assert.AreEqual(4, counter);
       }
-      [Test, ExpectedException("System.ArgumentNullException")]
-      public void Times_ThrowsExceptionForNullAction()
-      {
-         3.Times(null);
-         Assert.Fail();
-      
-      }
       [Test]
       public void UpTo_IteratesFromAndTo()
       {
          int sum = 0;
          5.UpTo(10, x => sum+= x);
          Assert.AreEqual(45, sum);
-      }
-      [Test, ExpectedException("System.ArgumentNullException")]
-      public void UpTo_ThrowsExceptionForNullAction()
-      {
-         3.UpTo(5, null);
-         Assert.Fail();
       }
 
       [Test]

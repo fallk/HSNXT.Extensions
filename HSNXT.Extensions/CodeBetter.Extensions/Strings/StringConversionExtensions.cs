@@ -1,11 +1,11 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System;
    using System.Security.Cryptography;
    using System.Text;
    using System.Web;
 
-   public static class StringConversionExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// UrlEncodes a string
@@ -40,27 +40,11 @@
       }
 
       /// <summary>
-      /// Base64's a string with the default encoding type
-      /// </summary>
-      public static string EncodeBase64(this string @string)
-      {
-         return @string.EncodeBase64(EncodingType.Default);
-      }
-
-      /// <summary>
       /// Base64's a string with the specified encoding type
       /// </summary>      
       public static string EncodeBase64(this string @string, EncodingType encoding)
       {         
          return Convert.ToBase64String(@string.ToBytes(encoding));
-      }
-
-      /// <summary>
-      /// Decodes a base64 string using the default encoding type
-      /// </summary>
-      public static string DecodeBase64(this string base64String)
-      {
-         return base64String.DecodeBase64(EncodingType.Default);
       }
 
       /// <summary>
@@ -79,14 +63,6 @@
          return @string.Replace("'", "\\'");
       }
       
-      /// <summary>
-      /// Converts a string to bytes
-      /// </summary>      
-      public static byte[] ToBytes(this string @string)
-      {
-         return @string.ToBytes(EncodingType.Default);
-      }
-
       /// <summary>
       /// Converts a string to bytes
       /// </summary>      

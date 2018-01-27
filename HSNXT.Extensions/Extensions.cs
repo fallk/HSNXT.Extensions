@@ -161,6 +161,11 @@ namespace HSNXT
             return BitConverter.ToString(bytes, 0).Replace("-", " ");
         }
 
+        public static byte[] GetBytes(this string value)
+        {
+            return Encoding.UTF8.GetBytes(value);
+        }
+
         /// <summary>
         /// Convert a string containing 2-digit hexadecimal
         /// values separated by spaces or dashes into a byte array.

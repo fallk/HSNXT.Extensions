@@ -1,4 +1,5 @@
-﻿namespace CodeBetter.Extensions
+﻿#if NetFX
+namespace HSNXT
 {
    using System;
    using System.Web;
@@ -96,3 +97,4 @@
       }
    }
 }
+#endif

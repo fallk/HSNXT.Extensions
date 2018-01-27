@@ -2,6 +2,7 @@
 namespace CodeBetter.Extensions.Tests
 {
    using NUnit.Framework;
+   using HSNXT;
 
    [TestFixture]
    public class IntMathTests

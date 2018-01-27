@@ -265,12 +265,12 @@ namespace HSNXT
         /// <returns>A bool based on the string value</returns>
         public static bool? ToBoolean(this string value)
         {
-            if (String.Compare("T", value, StringComparison.OrdinalIgnoreCase) == 0)
+            if (value == "1" || value == "T" || value == "t" || value == "True" || value == "true")
             {
                 return true;
             }
 
-            if (String.Compare("F", value, StringComparison.OrdinalIgnoreCase) == 0)
+            if (value == "0" || value == "F" || value == "f" || value == "False" || value == "false")
             {
                 return false;
             }
@@ -281,6 +281,26 @@ namespace HSNXT
             }
 
             return null;
+        }
+        
+        /// <summary>
+        /// Converts a string value to bool value, supports "T" and "F" conversions.
+        /// </summary>
+        /// <param name="value">The string value.</param>
+        /// <returns>A bool based on the string value</returns>
+        public static bool ToBooleanNotNull(this string value)
+        {
+            if (string.Compare("T", value, StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                return true;
+            }
+
+            if (string.Compare("F", value, StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                return false;
+            }
+
+            return bool.TryParse(value, out var result) && result;
         }
 
         #endregion

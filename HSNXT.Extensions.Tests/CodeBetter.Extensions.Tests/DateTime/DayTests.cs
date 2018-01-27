@@ -2,6 +2,7 @@
 {
    using System;
    using NUnit.Framework;
+   using HSNXT;
 
    [TestFixture]
    public class DayTests

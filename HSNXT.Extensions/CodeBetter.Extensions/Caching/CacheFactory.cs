@@ -1,10 +1,9 @@
-﻿namespace CodeBetter.Extensions
+﻿#if NetFX
+namespace HSNXT
 {
-   public static class CacheFactory
+   public static partial class Extensions
    {
-      public static ICache GetInstance
-      {
-         get { return new InMemoryCache(); }
-      }
+      public static ICache GetInstance => new InMemoryCache();
    }
 }
+#endif

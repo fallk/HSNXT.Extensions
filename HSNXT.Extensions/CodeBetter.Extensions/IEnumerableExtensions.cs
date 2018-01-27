@@ -1,26 +1,11 @@
 ﻿
-namespace CodeBetter.Extensions
+namespace HSNXT
 {
    using System;
    using System.Collections.Generic;
 
-   public static class IEnumerableExtensions
-   {      
-      /// <summary>
-      /// Performs the specified action on each element of the list
-      /// </summary>
-      public static void Each<T>(this IEnumerable<T> list, Action<T> action)
-      {
-         if (action == null)
-         {
-            throw new ArgumentNullException("action");
-         }
-         var enumerator = list.GetEnumerator();
-         while (enumerator.MoveNext())
-         {
-            action(enumerator.Current);
-         }
-      }
+   public static partial class Extensions
+   {
       /// <summary>
       /// Performs the specified action on each element of the list and includes
       /// an index value (starting at 0)

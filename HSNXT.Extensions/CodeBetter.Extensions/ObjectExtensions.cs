@@ -1,11 +1,11 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System;
    using System.Collections;
    using System.Collections.Generic;
    using System.ComponentModel;
 
-   public static class ObjectExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// Takes an object and turns it into a dictionary. Each public property is

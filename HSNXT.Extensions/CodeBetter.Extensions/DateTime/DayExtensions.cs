@@ -1,4 +1,4 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System;
 
@@ -9,7 +9,7 @@
    /// For details about these extensions, visit
    /// http://iridescence.no/Posts/A-Set-of-Useful-Extension-Methods-for-DateTime.aspx
    /// </remarks>   
-   public static class DayExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// Gets a DateTime representing the first day in the current month

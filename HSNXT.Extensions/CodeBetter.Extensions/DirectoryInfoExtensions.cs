@@ -1,9 +1,9 @@
-﻿namespace CodeBetter.Extensions
+﻿namespace HSNXT
 {
    using System;
    using System.IO;
    
-   public static class DirectoryInfoExtensions
+   public static partial class Extensions
    {
       /// <summary>
       /// Copies all files from one directory to another.
