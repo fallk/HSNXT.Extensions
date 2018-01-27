@@ -4,6 +4,6 @@
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestProj47\TestProj47.csproj" />
+    <ProjectReference Include="..\HSNXT.Extensions\HSNXT.Extensions.csproj" />
   </ItemGroup>
 </Project>

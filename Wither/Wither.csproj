@@ -7,6 +7,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestProj47\TestProj47.csproj" />
+    <ProjectReference Include="..\HSNXT.Extensions\HSNXT.Extensions.csproj" />
   </ItemGroup>
 </Project>
