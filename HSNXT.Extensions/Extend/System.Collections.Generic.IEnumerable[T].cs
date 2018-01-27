@@ -38,7 +38,7 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static bool AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
             => enumerable != null
                && enumerable.Any();
 
@@ -53,52 +53,14 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
+        public static bool AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
             return enumerable != null && enumerable.Any( predicate );
         }
+        
         /// <summary>
-        ///     Appends the given item to the given sequence.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">source can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="source">The sequence to append an item to.</param>
-        /// <param name="item">The item to append.</param>
-        /// <returns>The source sequence followed by the appended item.</returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> Append<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, [CanBeNull] T item )
-        {
-            source.ThrowIfNull( nameof(source) );
-
-            source = source.Concat( new[] { item } );
-            return source;
-        }
-        /// <summary>
-        ///     s
-        ///     Checks if the IEnumerable contains all given values.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="enumerable">The IEnumerable to act on.</param>
-        /// <param name="values">The values to search for.</param>
-        /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            values.ThrowIfNull( nameof(values) );
-
-            return values.All( enumerable.Contains );
-        }
-
-        /// <summary>
-        ///     s
         ///     Checks if the IEnumerable contains all values of the given IEnumerable.
         /// </summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
@@ -109,32 +71,14 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
+        public static bool ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             values.ThrowIfNull( nameof(values) );
 
             return values.All( enumerable.Contains );
         }
-        /// <summary>
-        ///     Checks if the IEnumerable contains any of the given values.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="enumerable">The IEnumerable to act on.</param>
-        /// <param name="values">The values to search for.</param>
-        /// <returns>Returns true if the IEnumerable contains any of the given values, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean ContainsAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            values.ThrowIfNull( nameof(values) );
-
-            return values.Any( enumerable.Contains );
-        }
-
+        
         /// <summary>
         ///     Checks if the IEnumerable contains any of the values of the given IEnumerable.
         /// </summary>
@@ -149,34 +93,36 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static Boolean ContainsAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
+        public static bool ContainsAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             values.ThrowIfNull( nameof(values) );
 
             return values.Any( enumerable.Contains );
         }
+        
         /// <summary>
-        ///     Returns all unique items, based on the given predicate.
+        ///     Checks if the IEnumerable contains any of the values of the given IEnumerable.
         /// </summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
-        /// <param name="enumerable">The IEnumerable.</param>
-        /// <param name="predicate">The Predicate.</param>
+        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <typeparam name="TKey">The input type of the predicate.</typeparam>
+        /// <param name="enumerable">The IEnumerable to act on.</param>
+        /// <param name="values">The IEnumerable containing the values to search for.</param>
+        /// <returns>
+        ///     Returns true if the IEnumerable contains any of the values of the given IEnumerable,
+        ///     otherwise false.
+        /// </returns>
         [Pure]
         [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> Distinct<T, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, TKey> predicate )
+        public static bool ContainsAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
-            predicate.ThrowIfNull( nameof(predicate) );
+            values.ThrowIfNull( nameof(values) );
 
-            return enumerable.GroupBy( predicate )
-                             .Select( g => g )
-                             .Select( x => x.First() );
+            return values.Any( enumerable.Contains );
         }
+        
         /// <summary>
         ///     Ensures that the given <see cref="IEnumerable{T}" /> is not null.
         /// </summary>
@@ -223,7 +169,7 @@ namespace HSNXT
             second.ThrowIfNull( nameof(second) );
             keySelector.ThrowIfNull( nameof(keySelector) );
 
-            var internalComparer = IEqualityComparerEx.By( keySelector, comparer );
+            var internalComparer = Extensions.By( keySelector, comparer );
 
             return first.Except( second, internalComparer );
         }
@@ -356,7 +302,7 @@ namespace HSNXT
             second.ThrowIfNull( nameof(second) );
             keySelector.ThrowIfNull( nameof(keySelector) );
 
-            var internalComparer = IEqualityComparerEx.By( keySelector, comparer );
+            var internalComparer = Extensions.By( keySelector, comparer );
 
             return first.Intersect( second, internalComparer );
         }
@@ -375,7 +321,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static Boolean MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, Int32 count, [NotNull] Func<T, Boolean> predicate )
+        public static bool MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, int count, [NotNull] Func<T, bool> predicate )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             predicate.ThrowIfNull( nameof(predicate) );
@@ -393,7 +339,7 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable contains at least the specified number of items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, Int32 count )
+        public static bool MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, int count )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
 
@@ -408,7 +354,7 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static bool NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
 
@@ -426,7 +372,7 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
+        public static bool NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             predicate.ThrowIfNull( nameof(predicate) );
@@ -445,7 +391,7 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<IEnumerable<T>> Partition<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, Int32 size )
+        public static IEnumerable<IEnumerable<T>> Partition<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, int size )
         {
             source.ThrowIfNull( nameof(source) );
             if ( size < 1 )
@@ -456,39 +402,7 @@ namespace HSNXT
                 .GroupBy( x => x.Index / size )
                 .Select( x => x.WithoutIndex() );
         }
-        /// <summary>
-        ///     Prepends the given item to the given sequence.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">source can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="source">The sequence to prepend an item to.</param>
-        /// <param name="item">The item to prepend.</param>
-        /// <returns>The source sequence preceded by the prepended item.</returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> Prepend<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, [CanBeNull] T item )
-        {
-            source.ThrowIfNull( nameof(source) );
-
-            return new[] { item }.Concat( source );
-        }
-        /// <summary>
-        ///     Orders the items in the IEnumerable randomly.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <param name="enumerable">The IEnumerable.</param>
-        /// <typeparam name="T">The type of the items in the enumerable.</typeparam>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> Randomize<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-
-            var rnd = new Random();
-            return enumerable.OrderBy( x => rnd.Next() );
-        }
+        
         /// <summary>
         ///     Creates a specification with the given condition and message.
         /// </summary>
@@ -502,35 +416,12 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         public static ISpecification<T> SpecificationForItems<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
-                                                                  [NotNull] Func<T, Boolean> expression,
-                                                                  [CanBeNull] String message = null )
+                                                                  [NotNull] Func<T, bool> expression,
+                                                                  [CanBeNull] string message = null )
         {
             expression.ThrowIfNull( nameof(expression) );
 
             return new ExpressionSpecification<T>( expression, message );
-        }
-        /// <summary>
-        ///     Concatenates all the elements of a IEnumerable, using the specified separator between each element.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="enumerable">An IEnumerable that contains the elements to concatenate.</param>
-        /// <param name="separator">
-        ///     The string to use as a separator.
-        ///     The separator is included in the returned string only if the given IEnumerable has more than one item.
-        /// </param>
-        /// <returns>
-        ///     A string that consists of the elements in the IEnumerable delimited by the separator string.
-        ///     If the given IEnumerable is empty, the method returns String.Empty.
-        /// </returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static String StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, String separator = "" )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-
-            return String.Join( separator, enumerable );
         }
 
         /// <summary>
@@ -551,32 +442,14 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static String StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, String> selector, String separator = "" )
+        public static string StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, string> selector, string separator = "" )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             selector.ThrowIfNull( nameof(selector) );
 
-            return String.Join( separator, enumerable.Select( selector ) );
+            return string.Join( separator, enumerable.Select( selector ) );
         }
-        /// <summary>
-        ///     Takes items from the given IEnumerable until the first item matches the specified predicate.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
-        /// <param name="enumerable">The IEnumerable.</param>
-        /// <param name="predicate">The predicate.</param>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <returns>Returns the items from the start of the IEnumerable until the first item matching the predicate.</returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> TakeUntil<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            predicate.ThrowIfNull( nameof(predicate) );
-
-            return enumerable.TakeWhile( x => !predicate( x ) );
-        }
+        
         /// <summary>
         ///     Converts the IEnumerable containing the groupings into a Dictionary of those groupings.
         /// </summary>
@@ -597,35 +470,6 @@ namespace HSNXT
             groupings.ThrowIfNull( nameof(groupings) );
 
             return groupings.ToDictionary( x => x.Key, x => x.ToList() );
-        }
-        /// <summary>
-        ///     Converts the given sequence to a new <see cref="HashSet{T}" />.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">collection can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the collection.</typeparam>
-        /// <param name="collection">The source collection.</param>
-        /// <returns>Returns the new created <see cref="HashSet{T}" />.</returns>
-        public static HashSet<T> ToHashSet<T>( this IEnumerable<T> collection )
-        {
-            collection.ThrowIfNull( nameof(collection) );
-
-            return new HashSet<T>( collection );
-        }
-        /// <summary>
-        ///     Converts the given IEnumerable to a ObservableCollection.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <param name="enumerable">The IEnumerable.</param>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <returns>The given IEnumerable as ObservableCollection.</returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static ObservableCollection<T> ToObservableCollection<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
-        {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-
-            return new ObservableCollection<T>( enumerable );
         }
         /// <summary>
         ///     Builds a tree node collection containing the items of the given collection.
@@ -747,53 +591,7 @@ namespace HSNXT
 
             return enumerable.Where( specification.IsSatisfiedBy );
         }
-        /// <summary>
-        ///     Performs a where predicate on the IEnumerable, if the given condition is true,
-        ///     otherwise returns all items of the IEnumerable.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The source can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="source">The IEnumerable containing the items.</param>
-        /// <param name="condition">The condition determining whether the where predicate gets applied or not.</param>
-        /// <param name="predicate">The where predicate.</param>
-        /// <returns>Returns the result of the predicate if the condition is true, otherwise the source IEnumerable.</returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> WhereIf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source,
-                                                 Boolean condition,
-                                                 [NotNull] Func<T, Boolean> predicate )
-        {
-            source.ThrowIfNull( nameof(source) );
-            predicate.ThrowIfNull( nameof(predicate) );
 
-            return condition ? source.Where( predicate ) : source;
-        }
-
-        /// <summary>
-        ///     Performs a where predicate on the IEnumerable, if the given condition is true,
-        ///     otherwise returns all items of the IEnumerable.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The source can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="source">The IEnumerable containing the items.</param>
-        /// <param name="condition">The condition determining whether the where predicate gets applied or not.</param>
-        /// <param name="predicate">The where predicate.</param>
-        /// <returns>Returns the result of the predicate if the condition is true, otherwise the source IEnumerable.</returns>
-        [Pure]
-        [PublicAPI]
-        [NotNull]
-        public static IEnumerable<T> WhereIf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source,
-                                                 Boolean condition,
-                                                 [NotNull] Func<T, Int32, Boolean> predicate )
-        {
-            source.ThrowIfNull( nameof(source) );
-            predicate.ThrowIfNull( nameof(predicate) );
-
-            return condition ? source.Where( predicate ) : source;
-        }
         /// <summary>
         ///     Returns all items of the given enumerable which doesn't satisfy the given specification.
         /// </summary>

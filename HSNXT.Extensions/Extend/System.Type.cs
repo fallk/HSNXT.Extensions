@@ -123,7 +123,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetNameWithNamespace( [NotNull] this Type type )
+        public static string GetNameWithNamespace( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -150,7 +150,7 @@ namespace HSNXT
         /// <returns>Returns the assembly name without version and key.</returns>
         [NotNull]
         [Pure]
-        private static String GetAssemblyName( [NotNull] this Type type )
+        private static string GetAssemblyName( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -167,7 +167,7 @@ namespace HSNXT
         /// <returns>Returns the name and namespace of a simple type.</returns>
         [NotNull]
         [Pure]
-        private static String GetNameWithNamespaceSimpleType( [NotNull] this Type type )
+        private static string GetNameWithNamespaceSimpleType( [NotNull] this Type type )
             => $"{type.FullName}, {type.GetAssemblyName()}";
         /// <summary>
         ///     Gets the public properties of the given type.
@@ -228,7 +228,7 @@ namespace HSNXT
         /// <returns>Returns a value of true if the given type implements <see cref="ICollection{T}" />; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean ImplementsICollectionT( [NotNull] this Type type )
+        public static bool ImplementsICollectionT( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -245,7 +245,7 @@ namespace HSNXT
         /// <returns>Returns a value of true if the given type is an enumeration; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsEnum( [NotNull] this Type type )
+        public static bool IsEnum( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -270,7 +270,7 @@ namespace HSNXT
         /// <returns>Returns a value of true if the given type implements <see cref="ICollection{T}" />; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsICollectionT( [NotNull] this Type type )
+        public static bool IsICollectionT( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -284,7 +284,7 @@ namespace HSNXT
         /// <returns>Returns a value of true if the given type implements <see cref="IEnumerable{T}" />; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsIEnumerableT( [NotNull] this Type type )
+        public static bool IsIEnumerableT( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -298,7 +298,7 @@ namespace HSNXT
         /// <returns>Returns a value of true if the given type implements <see cref="IList{T}" />; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsIListT( [NotNull] this Type type )
+        public static bool IsIListT( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 
@@ -312,7 +312,7 @@ namespace HSNXT
         /// <returns>Returns a value of true if the given type is a Microsoft type; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsMicrosoftType( [NotNull] this Type type )
+        public static bool IsMicrosoftType( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof(type) );
 

@@ -30,7 +30,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        protected MemberSelectionRuleBase( String name, String description )
+        protected MemberSelectionRuleBase( string name, string description )
         {
             RuleName = name;
             RuleDescription = description;
@@ -51,13 +51,13 @@ namespace HSNXT
         ///     Gets the name of the rule.
         /// </summary>
         /// <value>The name of the rule.</value>
-        public String RuleName { get; }
+        public string RuleName { get; }
 
         /// <summary>
         ///     Gets the description of the rule.
         /// </summary>
         /// <value>The description of the rule.</value>
-        public String RuleDescription { get; }
+        public string RuleDescription { get; }
 
         #endregion
     }

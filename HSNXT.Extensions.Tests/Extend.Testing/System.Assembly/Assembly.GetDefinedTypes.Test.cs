@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Linq;
@@ -30,11 +31,11 @@ namespace Extend.Testing
         [Fact]
         public void GetDefinedTypesTest()
         {
-            var actual = typeof(ActionEx)
+            var actual = typeof(Extensions)
                 .GetDeclaringAssembly()
                 .GetDefinedTypes();
 
-            actual.Any( x => x.Name == typeof(ActionEx).Name )
+            actual.Any( x => x.Name == typeof(Extensions).Name )
                   .Should()
                   .BeTrue();
         }

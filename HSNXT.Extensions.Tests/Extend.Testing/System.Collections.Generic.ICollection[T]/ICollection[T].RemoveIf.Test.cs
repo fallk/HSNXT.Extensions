@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Extend.Testing
         public void RemoveIfTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.RemoveIf( null, "", x => true );
+            Action test = () => Extensions.RemoveIf( null, "", x => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }

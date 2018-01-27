@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => IEnumerableStringEx.PathCombine( null );
+            Action test = () => ((IEnumerable<string>)null).PathCombine();
 
             test.ShouldThrow<ArgumentNullException>();
         }

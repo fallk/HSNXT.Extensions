@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using FluentAssertions;
 using Xunit;

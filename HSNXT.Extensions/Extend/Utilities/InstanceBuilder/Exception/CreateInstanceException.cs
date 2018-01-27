@@ -29,13 +29,13 @@ namespace HSNXT
         ///     Gets information about the factories.
         /// </summary>
         /// <value>Information about the factories.</value>
-        public String FactoryInformation { get; }
+        public string FactoryInformation { get; }
 
         /// <summary>
         ///     Gets information about the selection.
         /// </summary>
         /// <value>Information about the selection rules.</value>
-        public String SelectionRuleRuleInformation { get; }
+        public string SelectionRuleRuleInformation { get; }
 
         /// <summary>
         ///     Gets information about the member.
@@ -51,7 +51,7 @@ namespace HSNXT
         ///     Initializes a new instance of the <see cref="CreateInstanceException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
-        public CreateInstanceException( String message )
+        public CreateInstanceException( string message )
             : base( message )
         {
         }
@@ -63,7 +63,7 @@ namespace HSNXT
         /// <param name="innerException">
         ///     The exception that is the cause of the current exception, or a null reference  if no inner exception is specified.
         /// </param>
-        public CreateInstanceException( String message, Exception innerException )
+        public CreateInstanceException( string message, Exception innerException )
             : base( message, innerException )
         {
         }
@@ -78,7 +78,7 @@ namespace HSNXT
         /// <param name="factoryInformation">Information about the factories.</param>
         /// <param name="selectionRuleInformation">Information about selection rules.</param>
         /// <param name="memberInformation">The current member.</param>
-        public CreateInstanceException( String message, Exception innerException, String factoryInformation, String selectionRuleInformation, IMemberInformation memberInformation )
+        public CreateInstanceException( string message, Exception innerException, string factoryInformation, string selectionRuleInformation, IMemberInformation memberInformation )
             : base( message, innerException )
         {
             FactoryInformation = factoryInformation;
@@ -94,7 +94,7 @@ namespace HSNXT
         ///     Creates and returns a string representation of the current exception.
         /// </summary>
         /// <returns>A string representation of the current exception.</returns>
-        public override String ToString()
+        public override string ToString()
             => this.FormatException( description => description.AppendFormat( "Member Information='{1}'{0}{0}", Environment.NewLine, MemberInformation ) );
 
         #endregion

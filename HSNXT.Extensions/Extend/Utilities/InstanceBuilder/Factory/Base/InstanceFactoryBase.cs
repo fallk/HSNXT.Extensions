@@ -30,7 +30,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="name">The name of the factory.</param>
         /// <param name="description">The description of the factory.</param>
-        protected InstanceFactoryBase( String name, String description )
+        protected InstanceFactoryBase( string name, string description )
         {
             FactoryName = name;
             FactoryDescription = description;
@@ -46,7 +46,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
             => $"[{FactoryName}] = ({FactoryDescription}).";
 
         #endregion
@@ -72,19 +72,19 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberInformation">Information about the member to create a value for.</param>
         /// <returns>Returns the created value.</returns>
-        public abstract Object CreateValue( IMemberInformation memberInformation );
+        public abstract object CreateValue( IMemberInformation memberInformation );
 
         /// <summary>
         ///     Gets the name of the factory.
         /// </summary>
         /// <value>The name of the factory.</value>
-        public String FactoryName { get; }
+        public string FactoryName { get; }
 
         /// <summary>
         ///     Gets the description of the factory.
         /// </summary>
         /// <value>The description of the factory.</value>
-        public String FactoryDescription { get; }
+        public string FactoryDescription { get; }
 
         /// <summary>
         ///     Gets the selection rules of the factory.

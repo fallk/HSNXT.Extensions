@@ -23,7 +23,7 @@ namespace HSNXT
             return Convert.ToDateTime(value, CultureInfo.InvariantCulture);
         }
 
-        public static int ToInt16(this string value)
+        public static short ToInt16(this string value)
         {
             return Convert.ToInt16(value, CultureInfo.InvariantCulture);
         }

@@ -17,17 +17,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        ///     A char extension method that repeats a character the specified number of times.
-        /// </summary>
-        /// <param name="this">The @this to act on.</param>
-        /// <param name="repeatCount">Number of repeats.</param>
-        /// <returns>The repeated char.</returns>
-        public static string Repeat(this char @this, int repeatCount)
-        {
-            return new string(@this, repeatCount);
-        }
-
-        /// <summary>
         ///     Enumerates from @this to toCharacter.
         /// </summary>
         /// <param name="this">The @this to act on.</param>
@@ -93,16 +82,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as a decimal digit.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is a decimal digit; otherwise, false.</returns>
-        public static bool IsDigit(this char c)
-        {
-            return char.IsDigit(c);
-        }
-
-        /// <summary>
         ///     Indicates whether the specified  object is a high surrogate.
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
@@ -115,36 +94,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as a Unicode letter.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is a letter; otherwise, false.</returns>
-        public static bool IsLetter(this char c)
-        {
-            return char.IsLetter(c);
-        }
-
-        /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as a letter or a decimal digit.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is a letter or a decimal digit; otherwise, false.</returns>
-        public static bool IsLetterOrDigit(this char c)
-        {
-            return char.IsLetterOrDigit(c);
-        }
-
-        /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as a lowercase letter.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is a lowercase letter; otherwise, false.</returns>
-        public static bool IsLower(this char c)
-        {
-            return char.IsLower(c);
-        }
-
-        /// <summary>
         ///     Indicates whether the specified  object is a low surrogate.
         /// </summary>
         /// <param name="c">The character to evaluate.</param>
@@ -154,16 +103,6 @@ namespace HSNXT
         public static bool IsLowSurrogate(this char c)
         {
             return char.IsLowSurrogate(c);
-        }
-
-        /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as a number.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is a number; otherwise, false.</returns>
-        public static bool IsNumber(this char c)
-        {
-            return char.IsNumber(c);
         }
 
         /// <summary>
@@ -221,26 +160,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as an uppercase letter.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is an uppercase letter; otherwise, false.</returns>
-        public static bool IsUpper(this char c)
-        {
-            return char.IsUpper(c);
-        }
-
-        /// <summary>
-        ///     Indicates whether the specified Unicode character is categorized as white space.
-        /// </summary>
-        /// <param name="c">The Unicode character to evaluate.</param>
-        /// <returns>true if  is white space; otherwise, false.</returns>
-        public static bool IsWhiteSpace(this char c)
-        {
-            return char.IsWhiteSpace(c);
-        }
-
-        /// <summary>
         ///     Converts the value of a specified Unicode character to its lowercase equivalent using specified culture-
         ///     specific formatting information.
         /// </summary>
@@ -253,18 +172,6 @@ namespace HSNXT
         public static char ToLower(this char c, CultureInfo culture)
         {
             return char.ToLower(c, culture);
-        }
-
-        /// <summary>
-        ///     Converts the value of a Unicode character to its lowercase equivalent.
-        /// </summary>
-        /// <param name="c">The Unicode character to convert.</param>
-        /// <returns>
-        ///     The lowercase equivalent of , or the unchanged value of , if  is already lowercase or not alphabetic.
-        /// </returns>
-        public static char ToLower(this char c)
-        {
-            return char.ToLower(c);
         }
 
         /// <summary>
@@ -304,19 +211,6 @@ namespace HSNXT
         public static char ToUpper(this char c, CultureInfo culture)
         {
             return char.ToUpper(c, culture);
-        }
-
-        /// <summary>
-        ///     Converts the value of a Unicode character to its uppercase equivalent.
-        /// </summary>
-        /// <param name="c">The Unicode character to convert.</param>
-        /// <returns>
-        ///     The uppercase equivalent of , or the unchanged value of  if  is already uppercase, has no uppercase
-        ///     equivalent, or is not alphabetic.
-        /// </returns>
-        public static char ToUpper(this char c)
-        {
-            return char.ToUpper(c);
         }
 
         /// <summary>

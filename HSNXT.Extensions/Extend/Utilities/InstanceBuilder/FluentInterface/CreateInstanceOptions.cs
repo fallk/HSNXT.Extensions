@@ -104,7 +104,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> Including( Func<IMemberInformation, Boolean> predicate )
+        public ICreateInstanceOptions<T> Including( Func<IMemberInformation, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -135,7 +135,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> Excluding( Func<IMemberInformation, Boolean> predicate )
+        public ICreateInstanceOptions<T> Excluding( Func<IMemberInformation, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -149,7 +149,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IMemberInformation, Boolean> predicate )
+        public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IMemberInformation, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -199,7 +199,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IMemberInformation, Boolean> predicate )
+        public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IMemberInformation, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -214,7 +214,7 @@ namespace HSNXT
         /// <param name="min">The minimum number of items to create.</param>
         /// <param name="max">The maximum number of items to create.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> PopulateCollectionItemCount( Int32? min, Int32? max )
+        public ICreateInstanceOptions<T> PopulateCollectionItemCount( int? min, int? max )
         {
             if ( min.HasValue && max.HasValue && min > max )
                 throw new ArgumentException( "Maximum must be greater than the minimum count.", nameof(max) );
@@ -233,7 +233,7 @@ namespace HSNXT
         ///     means use default configuration.
         /// </param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> PopulateCollectionMembers( Boolean? populateCollections )
+        public ICreateInstanceOptions<T> PopulateCollectionMembers( bool? populateCollections )
         {
             PopulateCollections = populateCollections;
 
@@ -245,7 +245,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="anonymousItemName">The name used for anonymous items, or null to use global configuration.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> SetAnonymousItemName( String anonymousItemName )
+        public ICreateInstanceOptions<T> SetAnonymousItemName( string anonymousItemName )
         {
             AnonymousItemName = anonymousItemName;
             return this;
@@ -257,7 +257,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">factory can not be null.</exception>
         /// <param name="factory">The factory to add.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsInconsistent<T> WithFactory( Func<IMemberInformation, Object> factory )
+        public IFactoryOptionsInconsistent<T> WithFactory( Func<IMemberInformation, object> factory )
         {
             factory.ThrowIfNull( nameof(factory) );
 
@@ -296,7 +296,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">expression can no the null.</exception>
         /// <param name="expression">Expression representing the member path.</param>
         /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> ByPath( Expression<Func<T, Object>> expression )
+        public IIncludeExcludeOptions<T> ByPath( Expression<Func<T, object>> expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -309,7 +309,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">path can no the null.</exception>
         /// <param name="path">The member path.</param>
         /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> ByPath( String path )
+        public IIncludeExcludeOptions<T> ByPath( string path )
         {
             path.ThrowIfNull( nameof(path) );
 
@@ -361,7 +361,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members which should get created by the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsConstistent<T> For( Func<IMemberInformation, Boolean> predicate )
+        public IFactoryOptionsConstistent<T> For( Func<IMemberInformation, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -398,7 +398,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members which should NOT get created by the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsConstistent<T> NotFor( Func<IMemberInformation, Boolean> predicate )
+        public IFactoryOptionsConstistent<T> NotFor( Func<IMemberInformation, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -435,25 +435,25 @@ namespace HSNXT
         ///     Gets a value determining whether collection members should be populated or not.
         /// </summary>
         /// <value>A value determining whether collection members should be populated or not.</value>
-        public Boolean? PopulateCollections { get; private set; }
+        public bool? PopulateCollections { get; private set; }
 
         /// <summary>
         ///     Gets the maximum number of items to create.
         /// </summary>
         /// <value>The maximum number of items to create.</value>
-        public Int32? PopulateCollectionsMaxCount { get; private set; }
+        public int? PopulateCollectionsMaxCount { get; private set; }
 
         /// <summary>
         ///     Gets the minimum number of items to create.
         /// </summary>
         /// <value>The minimum number of items to create.</value>
-        public Int32? PopulateCollectionsMinCount { get; private set; }
+        public int? PopulateCollectionsMinCount { get; private set; }
 
         /// <summary>
         ///     Gets the name to use for anonymous items.
         /// </summary>
         /// <value>The name to use for anonymous items.</value>
-        public String AnonymousItemName { get; private set; }
+        public string AnonymousItemName { get; private set; }
 
         #endregion
     }

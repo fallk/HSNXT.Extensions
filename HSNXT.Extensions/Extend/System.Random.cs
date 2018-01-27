@@ -21,20 +21,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        ///     Returns randomly true or false.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">random can not be null.</exception>
-        /// <param name="random">The random to use.</param>
-        /// <returns>Returns true or false (random value).</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean CoinToss( [NotNull] this Random random )
-        {
-            random.ThrowIfNull( nameof(random) );
-
-            return random.Next( 2 ) == 0;
-        }
-        /// <summary>
         ///     Returns randomly one of the given values.
         /// </summary>
         /// <exception cref="ArgumentNullException">The random can not be null.</exception>

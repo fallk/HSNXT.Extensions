@@ -31,7 +31,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="item">The item.</param>
-        public IndexedItem( Int32 index, T item )
+        public IndexedItem( int index, T item )
         {
             Index = index;
             Item = item;
@@ -45,7 +45,7 @@ namespace HSNXT
         ///     Gets the index of the item.
         /// </summary>
         /// <value>The index of the item.</value>
-        public Int32 Index { get; }
+        public int Index { get; }
 
         /// <summary>
         ///     Gets the item.

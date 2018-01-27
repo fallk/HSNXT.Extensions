@@ -33,8 +33,8 @@ namespace HSNXT
         [NotNull]
         [PublicAPI]
         public static ISpecification<T> And<T>( [NotNull] this ISpecification<T> specification,
-                                                [NotNull] Func<T, Boolean> expression,
-                                                [CanBeNull] String message = null )
+                                                [NotNull] Func<T, bool> expression,
+                                                [CanBeNull] string message = null )
         {
             specification.ThrowIfNull( nameof(specification) );
             expression.ThrowIfNull( nameof(expression) );
@@ -55,8 +55,8 @@ namespace HSNXT
         [NotNull]
         [PublicAPI]
         public static ISpecification<T> Or<T>( [NotNull] this ISpecification<T> specification,
-                                               [NotNull] Func<T, Boolean> expression,
-                                               [CanBeNull] String message = null )
+                                               [NotNull] Func<T, bool> expression,
+                                               [CanBeNull] string message = null )
         {
             specification.ThrowIfNull( nameof(specification) );
             expression.ThrowIfNull( nameof(expression) );
@@ -77,8 +77,8 @@ namespace HSNXT
         [NotNull]
         [PublicAPI]
         public static ISpecification<T> XOr<T>( [NotNull] this ISpecification<T> specification,
-                                                [NotNull] Func<T, Boolean> expression,
-                                                [CanBeNull] String message = null )
+                                                [NotNull] Func<T, bool> expression,
+                                                [CanBeNull] string message = null )
         {
             specification.ThrowIfNull( nameof(specification) );
             expression.ThrowIfNull( nameof(expression) );

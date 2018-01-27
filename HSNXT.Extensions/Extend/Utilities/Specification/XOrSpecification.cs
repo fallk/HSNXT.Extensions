@@ -47,7 +47,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy( T obj )
+        public override bool IsSatisfiedBy( T obj )
             => Left.IsSatisfiedBy( obj ) ^ Right.IsSatisfiedBy( obj );
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
-        public override IEnumerable<String> IsSatisfiedByWithMessages( T obj )
+        public override IEnumerable<string> IsSatisfiedByWithMessages( T obj )
         {
             var leftResult = Left.IsSatisfiedByWithMessages( obj )
                                  .ToList();
@@ -63,10 +63,10 @@ namespace HSNXT
                                    .ToList();
 
             if ( leftResult.NotAny() ^ rightResult.NotAny() )
-                return new String[0];
+                return new string[0];
 
             if ( leftResult.NotAny() && rightResult.NotAny() )
-                return new List<String> { "The given object matches both specifications." };
+                return new List<string> { "The given object matches both specifications." };
             return leftResult.Concat( rightResult );
         }
 

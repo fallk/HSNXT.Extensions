@@ -49,25 +49,25 @@ namespace HSNXT
         ///     Gets a value determining whether collection members should be populated or not.
         /// </summary>
         /// <value>A value determining whether collection members should be populated or not.</value>
-        Boolean? PopulateCollections { get; }
+        bool? PopulateCollections { get; }
 
         /// <summary>
         ///     Gets the maximum number of items to create.
         /// </summary>
         /// <value>The maximum number of items to create.</value>
-        Int32? PopulateCollectionsMaxCount { get; }
+        int? PopulateCollectionsMaxCount { get; }
 
         /// <summary>
         ///     Gets the minimum number of items to create.
         /// </summary>
         /// <value>The minimum number of items to create.</value>
-        Int32? PopulateCollectionsMinCount { get; }
+        int? PopulateCollectionsMinCount { get; }
 
         /// <summary>
         ///     Gets the name to use for anonymous items.
         /// </summary>
         /// <value>The name to use for anonymous items.</value>
-        String AnonymousItemName { get; }
+        string AnonymousItemName { get; }
 
         #endregion
     }

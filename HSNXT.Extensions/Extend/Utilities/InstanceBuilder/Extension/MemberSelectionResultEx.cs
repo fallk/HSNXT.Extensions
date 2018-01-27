@@ -28,7 +28,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberSelectionResult">The <see cref="MemberSelectionResult" /> to convert.</param>
         /// <returns>Returns the boolean value of the given <see cref="MemberSelectionResult" />.</returns>
-        public static Boolean? AsBoolean( this MemberSelectionResult memberSelectionResult )
+        public static bool? AsBoolean( this MemberSelectionResult memberSelectionResult )
         {
             switch ( memberSelectionResult )
             {

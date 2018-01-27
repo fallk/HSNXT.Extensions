@@ -30,7 +30,7 @@ namespace HSNXT
         ///     Gets the index of the item.
         /// </summary>
         /// <value>The index of the item.</value>
-        Int32 Index { get; }
+        int Index { get; }
 
         /// <summary>
         ///     Gets the item.

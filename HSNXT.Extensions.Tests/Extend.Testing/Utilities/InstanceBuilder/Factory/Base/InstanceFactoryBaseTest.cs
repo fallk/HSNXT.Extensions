@@ -1,8 +1,10 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Linq;
 using FluentAssertions;
+using HSNXT;
 using Xunit;
 
 #endregion

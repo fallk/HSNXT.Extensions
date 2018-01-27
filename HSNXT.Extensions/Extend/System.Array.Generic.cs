@@ -31,28 +31,11 @@ namespace HSNXT
         /// <returns>Returns the cleared array.</returns>
         [NotNull]
         [PublicAPI]
-        public static T[] Clear<T>( [NotNull] this T[] array, Int32 index, Int32 length )
+        public static T[] Clear<T>( [NotNull] this T[] array, int index, int length )
         {
             array.ThrowIfNull( nameof(array) );
 
             Array.Clear( array, index, length );
-            return array;
-        }
-
-        /// <summary>
-        ///     Clears the given array.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The array can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the array.</typeparam>
-        /// <param name="array">The array to clear.</param>
-        /// <returns>Returns the cleared array.</returns>
-        [NotNull]
-        [PublicAPI]
-        public static T[] ClearAll<T>( [NotNull] this T[] array )
-        {
-            array.ThrowIfNull( nameof(array) );
-
-            Array.Clear( array, 0, array.Length );
             return array;
         }
 
@@ -69,7 +52,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static Int32 IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
+        public static int IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -91,7 +74,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static Int32 IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, Int32 startIndex )
+        public static int IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -114,7 +97,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static Int32 IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, Int32 startIndex, Int32 count )
+        public static int IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -135,7 +118,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static Int32 LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
+        public static int LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -157,7 +140,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static Int32 LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, Int32 startIndex )
+        public static int LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -180,7 +163,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static Int32 LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, Int32 startIndex, Int32 count )
+        public static int LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -215,7 +198,7 @@ namespace HSNXT
         /// <param name="newSize">The new size of the array.</param>
         /// <returns>Returns the given array with the new size.</returns>
         [PublicAPI]
-        public static T[] Resize<T>( [NotNull] this T[] array, Int32 newSize )
+        public static T[] Resize<T>( [NotNull] this T[] array, int newSize )
         {
             // ReSharper disable once AccessToModifiedClosure
             array.ThrowIfNull( nameof(array) );
@@ -250,7 +233,7 @@ namespace HSNXT
         /// <param name="length">The number of elements in the section to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
         [PublicAPI]
-        public static T[] Reverse<T>( [NotNull] this T[] array, Int32 index, Int32 length )
+        public static T[] Reverse<T>( [NotNull] this T[] array, int index, int length )
         {
             array.ThrowIfNull( nameof(array) );
 
@@ -282,7 +265,7 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, Int32 startIndex, Int32 itemsToCpoy, [NotNull] T[] targetArray )
+        public static T[] Slice<T>( [NotNull] this T[] array, int startIndex, int itemsToCpoy, [NotNull] T[] targetArray )
         {
             array.ThrowIfNull( nameof(array) );
             targetArray.ThrowIfNull( nameof(targetArray) );
@@ -332,7 +315,7 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, Int32 startIndex, Int32 itemsToCpoy )
+        public static T[] Slice<T>( [NotNull] this T[] array, int startIndex, int itemsToCpoy )
         {
             var targetArray = new T[itemsToCpoy];
             return array.Slice( startIndex, itemsToCpoy, targetArray );
@@ -359,7 +342,7 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, Int32 itemsToCpoy, [NotNull] T[] targetArray )
+        public static T[] Slice<T>( [NotNull] this T[] array, int itemsToCpoy, [NotNull] T[] targetArray )
             => array.Slice( 0, itemsToCpoy, targetArray );
 
         /// <summary>
@@ -377,7 +360,7 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, Int32 itemsToCpoy )
+        public static T[] Slice<T>( [NotNull] this T[] array, int itemsToCpoy )
         {
             var targetArray = new T[itemsToCpoy];
             return array.Slice( 0, itemsToCpoy, targetArray );

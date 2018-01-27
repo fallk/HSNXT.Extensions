@@ -21,49 +21,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        ///     Executes the action specified, which the given object as parameter.
-        /// </summary>
-        /// <remarks>
-        ///     Use this method to chain method calls on the same object.
-        /// </remarks>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        /// <typeparam name="T">The type of the object.</typeparam>
-        /// <param name="obj">The object to act on.</param>
-        /// <param name="action">The action.</param>
-        /// <returns>Returns the given object.</returns>
-        [PublicAPI]
-        [Pure]
-        public static T Chain<T>( [CanBeNull] this T obj, [NotNull] Action<T> action )
-        {
-            action.ThrowIfNull( nameof(action) );
-
-            action( obj );
-            return obj;
-        }
-
-        /// <summary>
-        ///     Return the first not null value (including <paramref name="value" />).
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <exception cref="InvalidOperationException">The array only contains null value.</exception>
-        /// <typeparam name="T">The type of the values.</typeparam>
-        /// <param name="value">The first value..</param>
-        /// <param name="values">A list of values.</param>
-        /// <returns>Returns the first not null value.</returns>
-        [CanBeNull]
-        [PublicAPI]
-        [Pure]
-        public static T Coalesce<T>( [CanBeNull] this T value, [NotNull] [ItemCanBeNull] params T[] values ) where T : class
-        {
-            if ( value != null )
-                return value;
-
-            values.ThrowIfNull( nameof(values) );
-
-            return values.First( x => x != null );
-        }
-
-        /// <summary>
         ///     Return the first not null value (including <paramref name="value" />).
         /// </summary>
         /// <typeparam name="T">The type of the values.</typeparam>
@@ -103,35 +60,6 @@ namespace HSNXT
                 .ToList();
 
             return notNullValues.Any() ? notNullValues.First() : defaultValue;
-        }
-
-        /// <summary>
-        ///     Return the first not null value (including <paramref name="value" />).
-        ///     If all values are null, returns a default value.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">values can not be null.</exception>
-        /// <exception cref="ArgumentNullException">defaultValueFactory can not be null.</exception>
-        /// <typeparam name="T">The type of the values.</typeparam>
-        /// <param name="value">The first value.</param>
-        /// <param name="defaultValueFactory">The default value factory.</param>
-        /// <param name="values">A list of values.</param>
-        /// <returns>Returns the first not null value.</returns>
-        [NotNull]
-        [PublicAPI]
-        [Pure]
-        public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] Func<T> defaultValueFactory, [NotNull] [ItemCanBeNull] params T[] values )
-            where T : class
-        {
-            defaultValueFactory.ThrowIfNull( nameof(defaultValueFactory) );
-            values.ThrowIfNull( nameof(values) );
-
-            if ( value != null )
-                return value;
-
-            var notNullValues = values
-                .Where( x => x != null )
-                .ToList();
-            return notNullValues.Any() ? notNullValues.First() : defaultValueFactory();
         }
 
         /// <summary>
@@ -206,7 +134,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetName<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
+        public static string GetName<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -229,7 +157,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetName<TObject, TMember>( [CanBeNull] [NoEnumeration] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
+        public static string GetName<TObject, TMember>( [CanBeNull] [NoEnumeration] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -248,7 +176,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static String GetName( [NotNull] Expression expression )
+        private static string GetName( [NotNull] Expression expression )
         {
             if ( !expression.TryGetMemberExpression( out var memberExpression ) )
                 throw new ArgumentException( "The given expression was not valid." );
@@ -272,7 +200,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
+        public static string GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -295,7 +223,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
+        public static string GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -315,14 +243,14 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static String GetNameChain( [NotNull] this Expression expression )
+        private static string GetNameChain( [NotNull] this Expression expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
             if ( !expression.TryGetMemberExpression( out var memberExpression ) )
                 throw new ArgumentException( "The given expression is not valid." );
 
-            var memberNames = new Stack<String>();
+            var memberNames = new Stack<string>();
             do
             {
                 // Check if the 'inner' expression as a constant expression, if so, break the loop
@@ -357,17 +285,6 @@ namespace HSNXT
             => value ?? alternativeValue;
 
         /// <summary>
-        ///     Checks if the given value is the default value of it's type.
-        /// </summary>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <param name="value">The value to check.</param>
-        /// <returns>Returns true if the value is the default value of it's type.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsDefault<T>( [CanBeNull] this T value )
-            => Equals( value, default(T) );
-
-        /// <summary>
         ///     Checks if the value is present in the given array.
         /// </summary>
         /// <exception cref="ArgumentNullException">The values can not be null.</exception>
@@ -377,28 +294,11 @@ namespace HSNXT
         /// <returns>>Returns true if the value is present in the array.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
+        public static bool IsIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
             return Array.IndexOf( values, value ) != -1;
-        }
-
-        /// <summary>
-        ///     Checks if the value is present in the given IEnumerable.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="value">The value to search for.</param>
-        /// <param name="values">A IEnumerable containing the values.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>>Returns true if the value is present in the IEnumerable.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsIn<T>( [CanBeNull] this T value, [NotNull] IEnumerable<T> values )
-        {
-            values.ThrowIfNull( nameof(values) );
-
-            return values.Contains( value );
         }
 
         /// <summary>
@@ -411,20 +311,7 @@ namespace HSNXT
         /// <returns>>Returns true if the value is not present in the array.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsNotIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
-            => !IsIn( value, values );
-
-        /// <summary>
-        ///     Checks if the value is not present in the given IEnumerable.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">values can not be null.</exception>
-        /// <param name="value">The value to search for.</param>
-        /// <param name="values">A IEnumerable containing the values.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>>Returns true if the value is not present in the IEnumerable.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsNotIn<T>( [CanBeNull] this T value, [NotNull] IEnumerable<T> values )
+        public static bool IsNotIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
             => !IsIn( value, values );
 
         /// <summary>
@@ -529,7 +416,7 @@ namespace HSNXT
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean Satisfies<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
+        public static bool Satisfies<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
         {
             specification.ThrowIfNull( nameof(specification) );
 
@@ -547,7 +434,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<String> SatisfiesWithMessages<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
+        public static IEnumerable<string> SatisfiesWithMessages<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
         {
             specification.ThrowIfNull( nameof(specification) );
 
@@ -566,7 +453,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static ISpecification<T> Specification<T>( [CanBeNull] this T obj, [NotNull] Func<T, Boolean> expression, [CanBeNull] String message = null )
+        public static ISpecification<T> Specification<T>( [CanBeNull] this T obj, [NotNull] Func<T, bool> expression, [CanBeNull] string message = null )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -581,7 +468,7 @@ namespace HSNXT
         /// <param name="value0">The first value.</param>
         /// <param name="value1">The second value.</param>
         [PublicAPI]
-        public static void Swap<T>( [CanBeNull] this Object obj, ref T value0, ref T value1 )
+        public static void Swap<T>( [CanBeNull] this object obj, ref T value0, ref T value1 )
         {
             var temp = value0;
             value0 = value1;
@@ -604,8 +491,8 @@ namespace HSNXT
         [PublicAPI]
         [DebuggerStepThrough]
         public static void ThrowIfNull<TObject>( [NoEnumeration] [CanBeNull] this TObject obj,
-                                                 [NotNull] String parameterName,
-                                                 [CanBeNull] String errorMessage = null )
+                                                 [NotNull] string parameterName,
+                                                 [CanBeNull] string errorMessage = null )
         {
             if ( obj != null )
                 return;

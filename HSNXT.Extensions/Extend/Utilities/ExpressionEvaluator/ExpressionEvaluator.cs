@@ -28,22 +28,22 @@ namespace HSNXT
         /// <summary>
         ///     Gets or sets a value indicating whether caching is enabled or not.
         /// </summary>
-        private static Boolean _enableCaching = true;
+        private static bool _enableCaching = true;
 
         /// <summary>
         ///     The characters used to separate expressions.
         /// </summary>
-        private static readonly Char[] ExpressionPartSeparator = { '.' };
+        private static readonly char[] ExpressionPartSeparator = { '.' };
 
         /// <summary>
         ///     Characters used to mark the end of an index.
         /// </summary>
-        private static readonly Char[] IndexExprEndChars = { ']', ')' };
+        private static readonly char[] IndexExprEndChars = { ']', ')' };
 
         /// <summary>
         ///     Characters used to mark the start of an index.
         /// </summary>
-        private static readonly Char[] IndexExprStartChars = { '[', '(' };
+        private static readonly char[] IndexExprStartChars = { '[', '(' };
 
         /// <summary>
         ///     Gets or sets the cached property descriptors.
@@ -60,7 +60,7 @@ namespace HSNXT
         /// </summary>
         /// <value>A value determining whether property information will be cached or not.</value>
         [PublicAPI]
-        public static Boolean EnableCaching
+        public static bool EnableCaching
         {
             get => _enableCaching;
             set
@@ -83,7 +83,7 @@ namespace HSNXT
         /// <param name="expression">An expression matching a property name.</param>
         /// <param name="source">The source object.</param>
         /// <returns>Returns the value represented by the specified expression.</returns>
-        public static Object GetValue( String expression, Object source )
+        public static object GetValue( string expression, object source )
         {
             if ( source == null )
                 return null;
@@ -106,10 +106,10 @@ namespace HSNXT
         /// <param name="source">The source object.</param>
         /// <param name="expressionParts">The expression parts to evaluate.</param>
         /// <returns>Returns the value represented by the specified expression.</returns>
-        private static Object Evaluate( Object source, IList<String> expressionParts )
+        private static object Evaluate( object source, IList<string> expressionParts )
         {
-            Object value;
-            Int32 i;
+            object value;
+            int i;
 
             // Iterate through all expression parts
             for ( value = source, i = 0; i < expressionParts.Count && value != null; i++ )
@@ -133,9 +133,9 @@ namespace HSNXT
         /// <param name="source">The source object.</param>
         /// <param name="propertyName">Returns the property name.</param>
         /// <returns>Returns the value of the property with the given name.</returns>
-        private static Object GetPropertyValue( Object source, String propertyName )
+        private static object GetPropertyValue( object source, string propertyName )
         {
-            Object property;
+            object property;
 
             // Find the matching property information
             var propertyInfo = GetPropertiesFromCache( source )
@@ -157,9 +157,9 @@ namespace HSNXT
         /// <param name="source">The source object.</param>
         /// <param name="expression">The expression to evaluate.</param>
         /// <returns>Returns the value of the property represented by the given expression.</returns>
-        private static Object GetIndexedPropertyValue( Object source, String expression )
+        private static object GetIndexedPropertyValue( object source, string expression )
         {
-            Object propertyValue;
+            object propertyValue;
             var intIndex = false;
 
             // Get the index expression and validate it
@@ -173,12 +173,12 @@ namespace HSNXT
                                   .Trim();
 
             // Can be nameless if the expression only contains an index expression and no property name (valid in case source is a collection)
-            String propertyName = null;
+            string propertyName = null;
             if ( indexExpressionStart != 0 )
                 propertyName = expression.Substring( 0, indexExpressionStart );
 
             // Get the index value (the value can be a int or a string)
-            Object indexValue = null;
+            object indexValue = null;
             var parsedIndex = -1;
             if ( index.Length != 0 )
                 if ( index[0] == '"' && index[index.Length - 1] == '"' || index[0] == '\'' && index[index.Length - 1] == '\'' )
@@ -187,7 +187,7 @@ namespace HSNXT
                 else
                 {
                     // Check if is int or not
-                    if ( Char.IsDigit( index[0] ) )
+                    if ( char.IsDigit( index[0] ) )
                     {
                         // Treat it as a number
                         intIndex = index.TryParsInt32( out parsedIndex );
@@ -211,7 +211,7 @@ namespace HSNXT
             if ( collectionProperty is Array arrayProperty && intIndex )
                 propertyValue = arrayProperty.GetValue( parsedIndex );
             else if ( ( listProperty = collectionProperty as IList ) != null && intIndex )
-                propertyValue = listProperty[(Int32) indexValue];
+                propertyValue = listProperty[(int) indexValue];
             else
             {
                 // Get the Item property
@@ -236,7 +236,7 @@ namespace HSNXT
         /// </remarks>
         /// <param name="source">The object.</param>
         /// <returns>Returns the properties of the given object.</returns>
-        private static List<PropertyInfo> GetPropertiesFromCache( Object source )
+        private static List<PropertyInfo> GetPropertiesFromCache( object source )
         {
             var containerType = source.GetType();
 

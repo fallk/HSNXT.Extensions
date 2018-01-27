@@ -29,13 +29,13 @@ namespace HSNXT
         ///     Gets the name of the member.
         /// </summary>
         /// <value>The name of the member.</value>
-        String MemberName { get; }
+        string MemberName { get; }
 
         /// <summary>
         ///     Gets the member path of the member.
         /// </summary>
         /// <value>The member path of the member.</value>
-        String MemberPath { get; }
+        string MemberPath { get; }
 
         /// <summary>
         ///     Gets the type of the member.
@@ -50,7 +50,7 @@ namespace HSNXT
         ///     Not always set.
         /// </remarks>
         /// <value>A reference to the member.</value>
-        Object MemberObject { get; }
+        object MemberObject { get; }
 
         /// <summary>
         ///     Gets the property info representing the member.

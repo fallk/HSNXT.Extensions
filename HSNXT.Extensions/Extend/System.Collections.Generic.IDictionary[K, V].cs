@@ -23,32 +23,6 @@ namespace HSNXT
         /// <summary>
         ///     Adds the given key value pair to the dictionary, if it not already contains the key.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The key can not be null.</exception>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">the type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to which the item should get added.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
-        /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        [PublicAPI]
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                                 [NotNull] TKey key,
-                                                                 TValue value )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-
-            if ( dictionary.ContainsKey( key ) )
-                return false;
-
-            dictionary.Add( key, value );
-            return true;
-        }
-
-        /// <summary>
-        ///     Adds the given key value pair to the dictionary, if it not already contains the key.
-        /// </summary>
         /// <exception cref="ArgumentNullException">dictionary can not be null.</exception>
         /// <exception cref="ArgumentNullException">key can not be null.</exception>
         /// <typeparam name="TKey">The type of the key.</typeparam>
@@ -57,7 +31,7 @@ namespace HSNXT
         /// <param name="keyValuePair">The KeyValuePair to add.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+        public static bool AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                                  KeyValuePair<TKey, TValue> keyValuePair )
         {
             dictionary.ThrowIfNull( nameof(dictionary) );
@@ -68,89 +42,6 @@ namespace HSNXT
 
             dictionary.Add( keyValuePair );
             return true;
-        }
-
-        /// <summary>
-        ///     Adds the key and value returned by the given factory to the dictionary, if it not already contains the key.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The key can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The factory can not be null.</exception>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">the type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to which the item should get added.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
-        /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        [PublicAPI]
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                                 [NotNull] TKey key,
-                                                                 [NotNull] Func<TValue> valueFactory )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-            valueFactory.ThrowIfNull( nameof(valueFactory) );
-
-            if ( dictionary.ContainsKey( key ) )
-                return false;
-
-            dictionary.Add( key, valueFactory() );
-            return true;
-        }
-
-        /// <summary>
-        ///     Adds the key and value returned by the given factory to the dictionary, if it not already contains the key.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The key can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The factory can not be null.</exception>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">the type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to which the item should get added.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
-        /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        [PublicAPI]
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                                 [NotNull] TKey key,
-                                                                 [NotNull] Func<TKey, TValue> valueFactory )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-            valueFactory.ThrowIfNull( nameof(valueFactory) );
-
-            if ( dictionary.ContainsKey( key ) )
-                return false;
-
-            dictionary.Add( key, valueFactory( key ) );
-            return true;
-        }
-        /// <summary>
-        ///     Adds the given key value pair to the dictionary, if the key does not already exist,
-        ///     otherwise updates the value of the given key in the dictionary.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">key can not be null.</exception>
-        /// <typeparam name="TKey">Type of the key.</typeparam>
-        /// <typeparam name="TValue">Type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to work on.</param>
-        /// <param name="key">The key to be added or whose value should be updated.</param>
-        /// <param name="value">The value to be added or updated.</param>
-        /// <returns>The new value for the key.</returns>
-        [PublicAPI]
-        public static TValue AddOrUpdate<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                        [NotNull] TKey key,
-                                                        TValue value )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-
-            if ( dictionary.ContainsKey( key ) )
-                dictionary[key] = value;
-            else
-                dictionary.Add( key, value );
-
-            return dictionary[key];
         }
 
         /// <summary>
@@ -401,28 +292,7 @@ namespace HSNXT
         /// <returns>Returns true if the dictionary contains all keys.</returns>
         [PublicAPI]
         [Pure]
-        public static Boolean ContainsAllKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                            [NotNull] [ItemNotNull] params TKey[] keys )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keys.ThrowIfNull( nameof(keys) );
-
-            return keys.All( dictionary.ContainsKey );
-        }
-
-        /// <summary>
-        ///     Checks if the dictionary contains all given keys.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The keys can not be null.</exception>
-        /// <typeparam name="TKey">Type of the key.</typeparam>
-        /// <typeparam name="TValue">Type of the value.</typeparam>
-        /// <param name="dictionary">The Dictionary to act on.</param>
-        /// <param name="keys">A list of keys.</param>
-        /// <returns>Returns true if the dictionary contains all keys.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean ContainsAllKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+        public static bool ContainsAllKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                             [NotNull] [ItemNotNull] IEnumerable<TKey> keys )
         {
             dictionary.ThrowIfNull( nameof(dictionary) );
@@ -442,28 +312,7 @@ namespace HSNXT
         /// <returns>Returns true if the dictionary contains any of the given keys, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static Boolean ContainsAnyKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                            [NotNull] [ItemNotNull] params TKey[] keys )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keys.ThrowIfNull( nameof(keys) );
-
-            return keys.Any( dictionary.ContainsKey );
-        }
-
-        /// <summary>
-        ///     Checks if the dictionary contains any of the given keys.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The keys can not be null.</exception>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to act on.</param>
-        /// <param name="keys">A list of keys.</param>
-        /// <returns>Returns true if the dictionary contains any of the given keys, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean ContainsAnyKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+        public static bool ContainsAnyKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                             [NotNull] [ItemNotNull] IEnumerable<TKey> keys )
         {
             dictionary.ThrowIfNull( nameof(dictionary) );
@@ -506,35 +355,6 @@ namespace HSNXT
             return dictionary.Select( x => x.Key )
                              .ToList();
         }
-        /// <summary>
-        ///     Adds the given key value pair to the dictionary if the key does not already exist.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The key can not be null.</exception>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to act on.</param>
-        /// <param name="key">The key of the element to add.</param>
-        /// <param name="value">The value to be added, if the key does not already exist.</param>
-        /// <returns>
-        ///     Returns the value for the key.
-        ///     This will be either the existing value for the key if the key is already in the
-        ///     dictionary, or the new value if the key was not in the dictionary.
-        /// </returns>
-        [PublicAPI]
-        [MustUseReturnValue]
-        [CanBeNull]
-        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, TValue value )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-
-            if ( !dictionary.ContainsKey( key ) )
-                dictionary.Add( key, value );
-
-            return dictionary[key];
-        }
-
         /// <summary>
         ///     Adds the given key value pair to the dictionary if the key does not already exist.
         /// </summary>
@@ -597,37 +417,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        ///     Adds the key value pair to the dictionary, by using the specified function, if the key does not already exist.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The factory can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The key can not be null.</exception>
-        /// <typeparam name="TKey">The type of the key.</typeparam>
-        /// <typeparam name="TValue">The type of the value.</typeparam>
-        /// <param name="dictionary">The dictionary to act on.</param>
-        /// <param name="key">The key of the element to add.</param>
-        /// <param name="valueFactory">TThe function used to generate a value for the key.</param>
-        /// <returns>
-        ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
-        ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
-        /// </returns>
-        [PublicAPI]
-        [MustUseReturnValue]
-        [CanBeNull]
-        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                     [NotNull] TKey key,
-                                                     [NotNull] Func<TKey, TValue> valueFactory )
-        {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-            valueFactory.ThrowIfNull( nameof(valueFactory) );
-
-            if ( !dictionary.ContainsKey( key ) )
-                dictionary.Add( key, valueFactory( key ) );
-
-            return dictionary[key];
-        }
-        /// <summary>
         ///     Concatenates all the elements of a first  using the specified separator between each element.
         /// </summary>
         /// <exception cref="ArgumentNullException">The first can not be null.</exception>
@@ -646,9 +435,9 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         [Pure]
-        public static String StringJoin<TValue, TKey>( [NotNull] this IDictionary<TValue, TKey> dictionary,
-                                                       [CanBeNull] String keyValueSeparator = "=",
-                                                       [CanBeNull] String separator = "" )
+        public static string StringJoin<TValue, TKey>( [NotNull] this IDictionary<TValue, TKey> dictionary,
+                                                       [CanBeNull] string keyValueSeparator = "=",
+                                                       [CanBeNull] string separator = "" )
         {
             dictionary.ThrowIfNull( nameof(dictionary) );
 

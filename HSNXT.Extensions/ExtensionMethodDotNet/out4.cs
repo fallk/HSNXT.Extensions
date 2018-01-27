@@ -2117,7 +2117,7 @@ File.Move(fileToMove, newLocation.EnsureFileNameIsUnique());
 intList.Randomize(); // this will randomize the items in the list
  */
 
-        public static void Randomize<t>(this IList<t> target)
+        public static IList<t> Randomize<t>(this IList<t> target)
         {
             var RndNumberGenerator = new Random();
             var newList = new SortedList<int, t>();
@@ -2131,6 +2131,8 @@ intList.Randomize(); // this will randomize the items in the list
             {
                 target.Add(newList.Values[i]);
             }
+
+            return target;
         }
 
 

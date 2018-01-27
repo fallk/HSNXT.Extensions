@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ namespace Extend.Testing
         {
             var list = new List<String> { "test", "test1" };
 
-            Assert.True( list.ContainsAll( "test" ) );
-            Assert.True( list.ContainsAll( "test", "test1" ) );
-            Assert.False( list.ContainsAll( "test", "test1", "test2" ) );
+            Assert.True( list.ContainsAllThese( "test" ) );
+            Assert.True( list.ContainsAllThese( "test", "test1" ) );
+            Assert.False( list.ContainsAllThese( "test", "test1", "test2" ) );
         }
 
         [Fact]
@@ -37,7 +38,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => IEnumerableTEx.ContainsAll( null, new List<String>() );
+            Action test = () => Extensions.ContainsAll( null, new List<String>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -58,7 +59,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IEnumerableTEx.ContainsAll( null, new Object(), new Object() );
+            Action test = () => Extensions.ContainsAllThese( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

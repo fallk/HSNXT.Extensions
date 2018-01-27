@@ -81,10 +81,11 @@ namespace HSNXT
         }
 
         [DebuggerStepThrough]
-        public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> enumerable)
+        public static ICollection<T> AddRange<T>(this ICollection<T> collection, IEnumerable<T> enumerable)
         {
             foreach (var obj in enumerable)
                 collection.Add(obj);
+            return collection;
         }
 
         public static T PickRandom<T>(this IEnumerable<T> source)

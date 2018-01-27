@@ -18,10 +18,7 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="Expression" />.
-    /// </summary>
-    public static class ExpressionEx
+    public static partial class Extensions
     {
         /// <summary>
         ///     Tries to get a <see cref="MemberExpression" /> from the given expression.
@@ -32,7 +29,7 @@ namespace HSNXT
         /// <returns>Returns true if a <see cref="MemberExpression" /> could be extracted; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean TryGetMemberExpression( [NotNull] this Expression expression, out MemberExpression memberExpression )
+        public static bool TryGetMemberExpression( [NotNull] this Expression expression, out MemberExpression memberExpression )
         {
             expression.ThrowIfNull( nameof(expression) );
 

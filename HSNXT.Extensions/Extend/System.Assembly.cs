@@ -21,26 +21,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        ///     Gets a collection of custom attributes of a specified type that are applied to the given assembly.
-        /// </summary>
-        /// ///
-        /// <exception cref="ArgumentNullException">assembly can not be null.</exception>
-        /// <typeparam name="T">The type of attribute to search for.</typeparam>
-        /// <param name="assembly">The assembly to inspect.</param>
-        /// <returns>
-        ///     Returns a collection of the custom attributes that are applied to element and that match T, or an empty
-        ///     collection if no such attributes exist.
-        /// </returns>
-        [PublicAPI]
-        [Pure]
-        [NotNull]
-        public static IEnumerable<T> GetAttributes<T>( [NotNull] this Assembly assembly ) where T : Attribute
-        {
-            assembly.ThrowIfNull( nameof(assembly) );
-
-            return assembly.GetCustomAttributes<T>();
-        }
-        /// <summary>
         ///     Gets the types defined in the given assembly.
         /// </summary>
         /// <exception cref="ArgumentNullException">assembly can not be null.</exception>
@@ -84,7 +64,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, [NotNull] params Assembly[] assemblies ) where T : Attribute
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( bool inherit, [NotNull] params Assembly[] assemblies ) where T : Attribute
             => GetTypesWithAttribute<T>( inherit, null, assemblies );
 
         /// <summary>
@@ -103,7 +83,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, Type baseType, [NotNull] params Assembly[] assemblies )
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( bool inherit, Type baseType, [NotNull] params Assembly[] assemblies )
             where T : Attribute
         {
             assemblies.ThrowIfNull( nameof(assemblies) );

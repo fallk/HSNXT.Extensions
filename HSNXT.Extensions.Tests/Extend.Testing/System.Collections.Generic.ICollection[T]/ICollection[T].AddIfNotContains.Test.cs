@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace Extend.Testing
         public void AddIfNotContainsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddIfNotContains( null, RandomValueEx.GetRandomString() );
+            Action test = () => Extensions.AddIfNotContains( null, RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -40,7 +40,7 @@ namespace HSNXT
         /// <returns>Returns the modified options.</returns>
         [PublicAPI]
         [NotNull]
-        IIncludeExcludeOptions<T> ByPath( [NotNull] Expression<Func<T, Object>> expression );
+        IIncludeExcludeOptions<T> ByPath( [NotNull] Expression<Func<T, object>> expression );
 
         /// <summary>
         ///     Matches for members which have a matching path.
@@ -50,7 +50,7 @@ namespace HSNXT
         /// <returns>Returns the modified options.</returns>
         [PublicAPI]
         [NotNull]
-        IIncludeExcludeOptions<T> ByPath( [NotNull] String path );
+        IIncludeExcludeOptions<T> ByPath( [NotNull] string path );
 
         /// <summary>
         ///     Matches for members which are NOT of the given type.

@@ -31,14 +31,14 @@ namespace HSNXT
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public abstract Boolean IsSatisfiedBy( T obj );
+        public abstract bool IsSatisfiedBy( T obj );
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
-        public abstract IEnumerable<String> IsSatisfiedByWithMessages( T obj );
+        public abstract IEnumerable<string> IsSatisfiedByWithMessages( T obj );
 
         /// <summary>
         ///     Combines the current specification with the given specification using an AND link.

@@ -1,7 +1,9 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using FluentAssertions;
+using HSNXT;
 using Xunit;
 
 #endregion

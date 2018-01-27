@@ -48,7 +48,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> Excluding( [NotNull] Func<IMemberInformation, Boolean> predicate );
+        ICreateInstanceOptions<T> Excluding( [NotNull] Func<IMemberInformation, bool> predicate );
 
         /// <summary>
         ///     Excludes the children of all members matching the given predicate.
@@ -58,7 +58,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> ExcludingChildrenOf( [NotNull] Func<IMemberInformation, Boolean> predicate );
+        ICreateInstanceOptions<T> ExcludingChildrenOf( [NotNull] Func<IMemberInformation, bool> predicate );
 
         /// <summary>
         ///     Excludes the children of all members matching the specified options.
@@ -86,7 +86,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> Including( [NotNull] Func<IMemberInformation, Boolean> predicate );
+        ICreateInstanceOptions<T> Including( [NotNull] Func<IMemberInformation, bool> predicate );
 
         /// <summary>
         ///     Includes the children of all members matching the given predicate.
@@ -95,7 +95,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> IncludingChildrenOf( [NotNull] Func<IMemberInformation, Boolean> predicate );
+        ICreateInstanceOptions<T> IncludingChildrenOf( [NotNull] Func<IMemberInformation, bool> predicate );
 
         /// <summary>
         ///     Includes the children of all members matching the specified options.
@@ -115,7 +115,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> PopulateCollectionItemCount( Int32? min, Int32? max );
+        ICreateInstanceOptions<T> PopulateCollectionItemCount( int? min, int? max );
 
         /// <summary>
         ///     Configures the creation of collection items.
@@ -127,7 +127,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> PopulateCollectionMembers( Boolean? populateCollections );
+        ICreateInstanceOptions<T> PopulateCollectionMembers( bool? populateCollections );
 
         /// <summary>
         ///     Configures the name of anonymous items.
@@ -136,7 +136,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        ICreateInstanceOptions<T> SetAnonymousItemName( String anonymousItemName );
+        ICreateInstanceOptions<T> SetAnonymousItemName( string anonymousItemName );
 
         /// <summary>
         ///     Adds the given factory to the value providers.
@@ -146,6 +146,6 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        IFactoryOptionsInconsistent<T> WithFactory( [NotNull] Func<IMemberInformation, Object> factory );
+        IFactoryOptionsInconsistent<T> WithFactory( [NotNull] Func<IMemberInformation, object> factory );
     }
 }

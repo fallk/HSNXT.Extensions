@@ -68,7 +68,7 @@ namespace HSNXT
         /// <param name="x">The first object of type <typeparamref name="TSource" /> to compare.</param>
         /// <param name="y">The second object of type <typeparamref name="TSource" /> to compare.</param>
         [PublicAPI]
-        public Boolean Equals( TSource x, TSource y )
+        public bool Equals( TSource x, TSource y )
             => _comparer.Equals( _keySelector( x ), _keySelector( y ) );
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace HSNXT
         ///     <paramref name="obj" /> is null.
         /// </exception>
         [PublicAPI]
-        public Int32 GetHashCode( TSource obj )
+        public int GetHashCode( TSource obj )
             => _comparer.GetHashCode( _keySelector( obj ) );
 
         #endregion

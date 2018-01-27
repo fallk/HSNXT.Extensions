@@ -10,7 +10,7 @@ namespace HSNXT
         /// <typeparam name="T"></typeparam>
         /// <param name="items"></param>
         /// <param name="itemsToAdd"></param>
-        public static IList<T> AddRange<T>(this IList<T> items, IList<T> itemsToAdd)
+        public static IList<T> AddRangeList<T>(this IList<T> items, IList<T> itemsToAdd)
         {
             if (items == null || itemsToAdd == null)
                 return items;

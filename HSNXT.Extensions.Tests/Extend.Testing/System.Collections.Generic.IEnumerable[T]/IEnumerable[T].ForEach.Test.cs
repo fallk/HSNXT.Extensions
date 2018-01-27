@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Extend.Testing
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
-            var actual = IEnumerableTEx.ForEach( list, otherList.Add );
+            var actual = Extensions.ForEach( list, otherList.Add );
             Assert.Same( list, actual );
             Assert.Equal( list.Count, otherList.Count );
             Assert.True( list.All( otherList.Contains ) );
@@ -31,7 +32,7 @@ namespace Extend.Testing
             var list = RandomValueEx.GetRandomStrings( 10 );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => IEnumerableTEx.ForEach( list, x => list.Remove( x ) );
+            Action test = () => Extensions.ForEach( list, x => list.Remove( x ) );
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -64,7 +65,7 @@ namespace Extend.Testing
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
-            var actual = IEnumerableTEx.ForEach( list, otherList.Add );
+            var actual = Extensions.ForEach( list, otherList.Add );
             Assert.Same( list, actual );
             Assert.Equal( list.Count, otherList.Count );
             Assert.True( list.All( otherList.Contains ) );
@@ -98,7 +99,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IEnumerableTEx.ForEach( list, Console.WriteLine );
+            Action test = () => Extensions.ForEach( list, Console.WriteLine );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -109,7 +110,7 @@ namespace Extend.Testing
             Action<Object> action = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IEnumerableTEx.ForEach( new List<Object>(), action );
+            Action test = () => Extensions.ForEach( new List<Object>(), action );
 
             test.ShouldThrow<ArgumentNullException>();
         }

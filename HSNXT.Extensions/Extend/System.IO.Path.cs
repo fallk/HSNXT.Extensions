@@ -29,7 +29,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetFileExtension( [NotNull] this String fileName )
+        public static string GetFileExtension( [NotNull] this string fileName )
         {
             fileName.ThrowIfNull( nameof(fileName) );
 

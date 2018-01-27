@@ -21,122 +21,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        ///     Checks if the Int32 value is a factor of the specified factor number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">value is 0.</exception>
-        /// <param name="value">The Int32 value to check.</param>
-        /// <param name="factorNumer">The factor number.</param>
-        /// <returns>Returns true if the value is a factor of the specified factor number, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean FactorOf( this Int32 value, Int32 factorNumer )
-            => factorNumer % value == 0;
-        /// <summary>
-        ///     Checks if the Int32 is even.
-        /// </summary>
-        /// <param name="value">The Int32 to check.</param>
-        /// <returns>Returns true if the Int32 is even, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsEven( this Int32 value )
-            => value % 2 == 0;
-        /// <summary>
-        ///     Checks if the Int32 value is a multiple of the given factor.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">factor is 0.</exception>
-        /// <param name="value">The Int32 to check.</param>
-        /// <param name="factor">The factor.</param>
-        /// <returns>>Returns true if the Int32 value is a multiple of the given factor.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsMultipleOf( this Int32 value, Int32 factor )
-            => value != 0 && value % factor == 0;
-        /// <summary>
-        ///     Checks if the Int32 is odd.
-        /// </summary>
-        /// <param name="value">The Int32 to check.</param>
-        /// <returns>Returns true if the Int32 is odd, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsOdd( this Int32 value )
-            => value % 2 != 0;
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Double PercentageOf( this Int32 number, Int32 percent )
-            => (Double) number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentageOf( this Int32 number, Decimal percent )
-            => number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Double PercentageOf( this Int32 number, Double percent )
-            => number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Double PercentageOf( this Int32 number, Int64 percent )
-            => (Double) number * percent / 100;
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Double PercentOf( this Int32 number, Int32 total )
-        {
-            if ( number <= 0 )
-                throw new DivideByZeroException( "The number must be greater than zero." );
-
-            return total / (Double) number * 100;
-        }
-
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Double PercentOf( this Int32 number, Double total )
-        {
-            if ( number <= 0 )
-                throw new DivideByZeroException( "The number must be greater than zero." );
-
-            return total / number * 100;
-        }
-        /// <summary>
         ///     Returns a list containing all values of the given range.
         /// </summary>
         /// <exception cref="ArgumentException">The start value can not be greater than the end value.</exception>
@@ -145,12 +29,12 @@ namespace HSNXT
         /// <returns>Returns a list containing the specified range.</returns>
         [Pure]
         [PublicAPI]
-        public static List<Int32> RangeTo( this Int32 startValue, Int32 endValue )
+        public static List<int> RangeTo( this int startValue, int endValue )
         {
             if ( startValue > endValue )
                 throw new ArgumentException( "The start value can not be greater than the end value.", nameof(startValue) );
 
-            var list = new List<Int32>( endValue - startValue );
+            var list = new List<int>( endValue - startValue );
             for ( var i = startValue; i <= endValue; i++ )
                 list.Add( i );
             return list;
@@ -165,7 +49,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32 Sum( this Int32 value, [NotNull] params Int32[] values )
+        public static int Sum( this int value, [NotNull] params int[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -184,7 +68,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32? Sum( this Int32? value, [NotNull] params Int32?[] values )
+        public static int? Sum( this int? value, [NotNull] params int?[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -206,7 +90,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32 Sum<TSource>( this TSource value, [NotNull] Func<TSource, Int32> selector, [NotNull] params TSource[] values )
+        public static int Sum<TSource>( this TSource value, [NotNull] Func<TSource, int> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof(selector) );
             values.ThrowIfNull( nameof(values) );
@@ -229,7 +113,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32? Sum<TSource>( this TSource value, [NotNull] Func<TSource, Int32?> selector, [NotNull] params TSource[] values )
+        public static int? Sum<TSource>( this TSource value, [NotNull] Func<TSource, int?> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof(selector) );
             values.ThrowIfNull( nameof(values) );

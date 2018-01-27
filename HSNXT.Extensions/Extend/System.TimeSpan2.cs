@@ -27,7 +27,7 @@ namespace HSNXT
         /// <returns>Returns the given Double value as days.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToDays( this Double value )
+        public static TimeSpan ToDays( this double value )
             => TimeSpan.FromDays( value );
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace HSNXT
         /// <returns>Returns the given Double value as hours.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToHours( this Double value )
+        public static TimeSpan ToHours( this double value )
             => TimeSpan.FromHours( value );
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace HSNXT
         /// <returns>Returns the given Double value as milliseconds.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMilliseconds( this Double value )
+        public static TimeSpan ToMilliseconds( this double value )
             => TimeSpan.FromMilliseconds( value );
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace HSNXT
         /// <returns>Returns the given Double value as minutes.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMinutes( this Double value )
+        public static TimeSpan ToMinutes( this double value )
             => TimeSpan.FromMinutes( value );
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace HSNXT
         /// <returns>Returns the given Double value as seconds.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToSeconds( this Double value )
+        public static TimeSpan ToSeconds( this double value )
             => TimeSpan.FromSeconds( value );
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToDays( this Int16 value )
+        public static TimeSpan ToDays( this short value )
             => TimeSpan.FromDays( value );
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToHours( this Int16 value )
+        public static TimeSpan ToHours( this short value )
             => TimeSpan.FromHours( value );
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMilliseconds( this Int16 value )
+        public static TimeSpan ToMilliseconds( this short value )
             => TimeSpan.FromMilliseconds( value );
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMinutes( this Int16 value )
+        public static TimeSpan ToMinutes( this short value )
             => TimeSpan.FromMinutes( value );
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToSeconds( this Int16 value )
+        public static TimeSpan ToSeconds( this short value )
             => TimeSpan.FromSeconds( value );
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToDays( this Int32 value )
+        public static TimeSpan ToDays( this int value )
             => TimeSpan.FromDays( value );
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToHours( this Int32 value )
+        public static TimeSpan ToHours( this int value )
             => TimeSpan.FromHours( value );
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMilliseconds( this Int32 value )
+        public static TimeSpan ToMilliseconds( this int value )
             => TimeSpan.FromMilliseconds( value );
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMinutes( this Int32 value )
+        public static TimeSpan ToMinutes( this int value )
             => TimeSpan.FromMinutes( value );
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToSeconds( this Int32 value )
+        public static TimeSpan ToSeconds( this int value )
             => TimeSpan.FromSeconds( value );
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToDays( this Int64 value )
+        public static TimeSpan ToDays( this long value )
             => TimeSpan.FromDays( value );
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToHours( this Int64 value )
+        public static TimeSpan ToHours( this long value )
             => TimeSpan.FromHours( value );
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMilliseconds( this Int64 value )
+        public static TimeSpan ToMilliseconds( this long value )
             => TimeSpan.FromMilliseconds( value );
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToMinutes( this Int64 value )
+        public static TimeSpan ToMinutes( this long value )
             => TimeSpan.FromMinutes( value );
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace HSNXT
         /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
-        public static TimeSpan ToSeconds( this Int64 value )
+        public static TimeSpan ToSeconds( this long value )
             => TimeSpan.FromSeconds( value );
     }
 }

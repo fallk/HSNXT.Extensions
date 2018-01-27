@@ -28,7 +28,7 @@ namespace HSNXT
         /// <summary>
         ///     Gets the member path used to find matching members.
         /// </summary>
-        private readonly String _memberPath;
+        private readonly string _memberPath;
 
         /// <summary>
         ///     Gets the selection mode.
@@ -46,7 +46,7 @@ namespace HSNXT
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public PathMemberSelectionRule( [NotNull] String memberPath, MemberSelectionMode selectionMode, String name = null, String description = null )
+        public PathMemberSelectionRule( [NotNull] string memberPath, MemberSelectionMode selectionMode, string name = null, string description = null )
             : base( name, description )
         {
             memberPath.ThrowIfNull( nameof(memberPath) );
@@ -85,7 +85,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
             => $"[{RuleName}] = ({_selectionMode} members at {_memberPath}) ({RuleDescription}).";
 
         #endregion

@@ -28,7 +28,7 @@ namespace HSNXT.Internal
         /// <summary>
         ///     The values.
         /// </summary>
-        private readonly IDictionary<String, Object> _values;
+        private readonly IDictionary<string, object> _values;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace HSNXT.Internal
         /// </summary>
         /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="values">The value to use.</param>
-        public LookuptValueProvider( [NotNull] IDictionary<String, Object> values )
+        public LookuptValueProvider( [NotNull] IDictionary<string, object> values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -55,7 +55,7 @@ namespace HSNXT.Internal
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        public override String GetValue( String expression )
+        public override string GetValue( string expression )
         {
             try
             {

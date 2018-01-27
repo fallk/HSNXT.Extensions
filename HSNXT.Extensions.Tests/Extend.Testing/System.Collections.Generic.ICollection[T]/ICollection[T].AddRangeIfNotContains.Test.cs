@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Extend.Testing
         public void AddRangeIfNotContains1TestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddRangeIfNotContains( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => Extensions.AddRangeIfNotContains( null, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,7 +61,7 @@ namespace Extend.Testing
         public void AddRangeIfNotContainsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddRangeIfNotContains( null, "test0", "test1", "test2" );
+            Action test = () => Extensions.AddRangeIfNotContains( null, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

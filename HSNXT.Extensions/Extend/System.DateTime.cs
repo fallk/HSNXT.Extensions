@@ -32,7 +32,7 @@ namespace HSNXT
         /// <returns>The difference between the year of the current and the given date time.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32 Age( this DateTime dateTime, [CanBeNull] DateTime? now = null )
+        public static int Age( this DateTime dateTime, [CanBeNull] DateTime? now = null )
         {
             var currentDate = now ?? DateTime.Now;
             if ( dateTime.Year == currentDate.Year )
@@ -60,7 +60,7 @@ namespace HSNXT
         /// <returns>Returns true if the given date-time values are the same day, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsSameDay( this DateTime dateTime, DateTime otherDateTime )
+        public static bool IsSameDay( this DateTime dateTime, DateTime otherDateTime )
             => dateTime.Date == otherDateTime.Date;
         /// <summary>
         ///     Gets whether the given date-time values are the same month and year.
@@ -70,7 +70,7 @@ namespace HSNXT
         /// <returns>Returns true if the given date-time values are the same month and year, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsSameMonthAndYear( this DateTime dateTime, DateTime otherDateTime )
+        public static bool IsSameMonthAndYear( this DateTime dateTime, DateTime otherDateTime )
             => dateTime.Year == otherDateTime.Year && dateTime.Month == otherDateTime.Month;
         /// <summary>
         ///     Checks if the time is equals to the given time.
@@ -80,7 +80,7 @@ namespace HSNXT
         /// <returns>Returns true if the time is equals, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsTimeEquals( this DateTime time, DateTime timeToCompare )
+        public static bool IsTimeEquals( this DateTime time, DateTime timeToCompare )
             => time.TimeOfDay == timeToCompare.TimeOfDay;
     }
 }
@@ -99,7 +99,7 @@ namespace HSNXT
         /// <returns>Returns true if the day is a week day, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsWeekdDay( this DateTime day )
+        public static bool IsWeekdDay( this DateTime day )
             => day.DayOfWeek != DayOfWeek.Saturday
                && day.DayOfWeek != DayOfWeek.Sunday;
     }

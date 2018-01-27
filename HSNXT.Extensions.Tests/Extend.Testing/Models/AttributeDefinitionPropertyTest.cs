@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 // ReSharper disable once RedundantUsingDirective
 using System;

@@ -31,7 +31,7 @@ namespace HSNXT
         {
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomInt16(), "Int16 Factory", "Factory for Int16 values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(Int16),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(short),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "Int16 Selector",
@@ -39,7 +39,7 @@ namespace HSNXT
 
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomInt32(), "Int32 Factory", "Factory for Int32 values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(Int32),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(int),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "Int32 Selector",
@@ -47,7 +47,7 @@ namespace HSNXT
 
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomInt64(), "Int64 Factory", "Factory for Int64 values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(Int64),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(long),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "Int64 Selector",
@@ -55,7 +55,7 @@ namespace HSNXT
 
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomDouble(), "Double Factory", "Factory for Double values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(Double),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(double),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "Double Selector",
@@ -63,7 +63,7 @@ namespace HSNXT
 
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomChar(), "Char Factory", "Factory for Char values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(Char),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(char),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "Char Selector",
@@ -71,7 +71,7 @@ namespace HSNXT
 
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomString(), "String Factory", "Factory for String values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(String),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(string),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "String Selector",
@@ -79,7 +79,7 @@ namespace HSNXT
 
             yield return
                 new ExpressionInstanceFactory( x => RandomValueEx.GetRandomBoolean(), "Boolean Factory", "Factory for Boolean values." )
-                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(Boolean),
+                    .AddSelectionRule( new TypeMemberSelectionRule( typeof(bool),
                                                                     MemberSelectionMode.Include,
                                                                     CompareMode.Is,
                                                                     "Boolean Selector",

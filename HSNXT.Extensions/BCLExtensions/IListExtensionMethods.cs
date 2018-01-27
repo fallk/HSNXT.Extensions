@@ -91,7 +91,7 @@ namespace HSNXT
         /// <typeparam name="T">type of the element in the list</typeparam>
         /// <param name="container">The container.</param>
         /// <param name="rangeToAdd">The range to add.</param>
-        public static void AddRange<T>(this IList<T> container, IEnumerable<T> rangeToAdd)
+        public static void AddRangeList<T>(this IList<T> container, IEnumerable<T> rangeToAdd)
         {
             if (container == null || rangeToAdd == null)
             {

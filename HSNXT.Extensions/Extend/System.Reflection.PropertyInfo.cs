@@ -34,7 +34,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static Object GetValueWithoutIndex( [NotNull] this PropertyInfo propertyInfo, [NotNull] Object source )
+        public static object GetValueWithoutIndex( [NotNull] this PropertyInfo propertyInfo, [NotNull] object source )
         {
             propertyInfo.ThrowIfNull( nameof(propertyInfo) );
             source.ThrowIfNull( nameof(source) );

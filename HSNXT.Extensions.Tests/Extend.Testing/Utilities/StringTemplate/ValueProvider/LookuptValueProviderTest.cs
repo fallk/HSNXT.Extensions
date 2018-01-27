@@ -1,8 +1,9 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
-using Extend.Internal;
+using HSNXT.Internal;
 using FluentAssertions;
 using Xunit;
 

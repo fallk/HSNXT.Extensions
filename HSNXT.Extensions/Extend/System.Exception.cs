@@ -18,10 +18,7 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="Exception" />.
-    /// </summary>
-    public static class ExceptionEx
+    public static partial class Extensions
     {
         /// <summary>
         ///     Formates the given exception.
@@ -33,7 +30,7 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         [Pure]
-        public static String FormatException( this Exception ex, [CanBeNull] Action<StringBuilder> action = null )
+        public static string FormatException( this Exception ex, [CanBeNull] Action<StringBuilder> action = null )
         {
             ex.ThrowIfNull( nameof(ex) );
 

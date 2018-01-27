@@ -41,7 +41,7 @@ namespace HSNXT
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public AllMemberSelectionRule( MemberSelectionMode selectionMode, String name = null, String description = null )
+        public AllMemberSelectionRule( MemberSelectionMode selectionMode, string name = null, string description = null )
             : base( name, description ) => _selectionMode = selectionMode;
 
         #endregion
@@ -68,7 +68,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
             => $"[{RuleName}] = ({_selectionMode} all members) ({RuleDescription}).";
 
         #endregion

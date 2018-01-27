@@ -29,13 +29,13 @@ namespace HSNXT.Internal
         ///     Gets or sets the format.
         /// </summary>
         /// <value>The format.</value>
-        public String Format { get; }
+        public string Format { get; }
 
         /// <summary>
         ///     Gets or sets the name of the value/property.
         /// </summary>
         /// <value>The name of the value/property.</value>
-        public String ValueName { get; }
+        public string ValueName { get; }
 
         #endregion
 
@@ -47,7 +47,7 @@ namespace HSNXT.Internal
         /// <exception cref="ArgumentNullException">valueName can not be null.</exception>
         /// <param name="valueName">The name of the value.</param>
         /// <param name="format">The format.</param>
-        public FormatInformation( [NotNull] String valueName, [CanBeNull] String format )
+        public FormatInformation( [NotNull] string valueName, [CanBeNull] string format )
         {
             valueName.ThrowIfNull( nameof(valueName) );
 

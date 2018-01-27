@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IEnumerableTEx.ContainsAny( null, new List<Object>() );
+            Action test = () => Extensions.ContainsAny( null, new List<Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,7 +61,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IEnumerableTEx.ContainsAny( null, new Object(), new Object() );
+            Action test = () => Extensions.ContainsAny( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

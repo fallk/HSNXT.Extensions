@@ -1574,14 +1574,12 @@
           <e p="Pars.cs" t="Include" />
           <e p="PortableExtensions.ISpecification[T].cs" t="Include" />
           <e p="System.Action.cs" t="Include" />
-          <e p="System.Array.cs" t="Include" />
           <e p="System.Array.Generic.cs" t="Include" />
           <e p="System.Assembly.cs" t="Include" />
           <e p="System.Boolean.cs" t="Include" />
           <e p="System.Char.cs" t="Include" />
           <e p="System.Collections.Generic.ICollection[T].cs" t="Include" />
           <e p="System.Collections.Generic.IDictionary[K, V].cs" t="Include" />
-          <e p="System.Collections.Generic.IEnumerable[string].cs" t="Include" />
           <e p="System.Collections.Generic.IEnumerable[T].cs" t="Include" />
           <e p="System.Collections.Generic.IEqualityComparer[T].cs" t="Include" />
           <e p="System.DateTime.cs" t="Include" />
@@ -1589,7 +1587,6 @@
           <e p="System.Decimal.cs" t="Include" />
           <e p="System.Double.cs" t="Include" />
           <e p="System.Enum.cs" t="Include" />
-          <e p="System.EventHandler.cs" t="Include" />
           <e p="System.Exception.cs" t="Include" />
           <e p="System.IComparable[T].cs" t="Include" />
           <e p="System.Int16.cs" t="Include" />
@@ -1604,7 +1601,6 @@
           <e p="System.Reflection.PropertyInfo.cs" t="Include" />
           <e p="System.String.cs" t="Include" />
           <e p="System.Text.RegularExpressions.Regex.cs" t="Include" />
-          <e p="System.Text.StringBuilder.cs" t="Include" />
           <e p="System.TimeSpan.cs" t="Include" />
           <e p="System.TimeSpan2.cs" t="Include" />
           <e p="System.Type.cs" t="Include" />

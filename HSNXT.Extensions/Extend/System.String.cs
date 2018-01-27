@@ -30,7 +30,7 @@ namespace HSNXT
         /// <returns>Returns the concatenated string.</returns>
         [Pure]
         [PublicAPI]
-        public static String AppendWithNewLineIfNotEmpty( [CanBeNull] this String target, [CanBeNull] String append, String newLine = null )
+        public static string AppendWithNewLineIfNotEmpty( [CanBeNull] this string target, [CanBeNull] string append, string newLine = null )
         {
             newLine = newLine ?? Environment.NewLine;
 
@@ -59,7 +59,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static Object ChangeType( [CanBeNull] this String value, [NotNull] Type type )
+        public static object ChangeType( [CanBeNull] this string value, [NotNull] Type type )
             => value.ChangeType( type, CultureInfo.InvariantCulture );
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static Object ChangeType( [CanBeNull] this String value, [NotNull] Type type, [NotNull] IFormatProvider formatProvider )
+        public static object ChangeType( [CanBeNull] this string value, [NotNull] Type type, [NotNull] IFormatProvider formatProvider )
         {
             type.ThrowIfNull( nameof(type) );
             formatProvider.ThrowIfNull( nameof(formatProvider) );
@@ -111,7 +111,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static T ChangeType<T>( [CanBeNull] this String value )
+        public static T ChangeType<T>( [CanBeNull] this string value )
             => (T) Convert.ChangeType( value, typeof(T) );
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static T ChangeType<T>( [CanBeNull] this String value, [NotNull] IFormatProvider formatProvider )
+        public static T ChangeType<T>( [CanBeNull] this string value, [NotNull] IFormatProvider formatProvider )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 
@@ -152,7 +152,7 @@ namespace HSNXT
         /// <returns>Returns the character at the specified position.</returns>
         [Pure]
         [PublicAPI]
-        public static Char CharAt( [NotNull] this String value, Int32 index )
+        public static char CharAt( [NotNull] this string value, int index )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -162,16 +162,6 @@ namespace HSNXT
             return value[index];
         }
         /// <summary>
-        ///     Compares the given strings using <see cref="StringComparison.Ordinal" />.
-        /// </summary>
-        /// <param name="value">The first string to compare.</param>
-        /// <param name="compareValue">The second string to compare.</param>
-        /// <returns>Returns true if the given strings are equals, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean CompareOrdinal( this String value, String compareValue )
-            => String.Compare( value, compareValue, StringComparison.Ordinal ) == 0;
-        /// <summary>
         ///     Compares the given strings using <see cref="StringComparison.OrdinalIgnoreCase" />.
         /// </summary>
         /// <param name="value">The first string to compare.</param>
@@ -179,8 +169,8 @@ namespace HSNXT
         /// <returns>Returns true if the given strings are equals, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean CompareOrdinalIgnoreCase( [CanBeNull] this String value, [CanBeNull] String compareValue )
-            => String.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
+        public static bool CompareOrdinalIgnoreCase( [CanBeNull] this string value, [CanBeNull] string compareValue )
+            => string.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
         /// <summary>
         ///     Concatenates all given strings.
         /// </summary>
@@ -191,11 +181,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String ConcatAll( this String str, [NotNull] params String[] strings )
+        public static string ConcatAll( this string str, [NotNull] params string[] strings )
         {
             strings.ThrowIfNull( nameof(strings) );
 
-            return String.Concat( str, String.Concat( strings ) );
+            return string.Concat( str, string.Concat( strings ) );
         }
 
         /// <summary>
@@ -207,11 +197,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String ConcatAll( [NotNull] this String[] strings )
+        public static string ConcatAll( [NotNull] this string[] strings )
         {
             strings.ThrowIfNull( nameof(strings) );
 
-            return String.Concat( strings );
+            return string.Concat( strings );
         }
 
         /// <summary>
@@ -224,11 +214,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String ConcatAll( this String str, [NotNull] params Object[] values )
+        public static string ConcatAll( this string str, [NotNull] params object[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
-            return String.Concat( str, String.Concat( values ) );
+            return string.Concat( str, string.Concat( values ) );
         }
 
         /// <summary>
@@ -240,121 +230,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String ConcatAll( [NotNull] this Object[] values )
+        public static string ConcatAll( [NotNull] this object[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
-            return String.Concat( values );
-        }
-        /// <summary>
-        ///     Checks whether a specified substring occurs within the given string, or not.
-        /// </summary>
-        /// <exception cref="ArgumentException"> comparisonType is not a valid <see cref="System.StringComparison" /> value.</exception>
-        /// <exception cref="ArgumentNullException">s can not be null.</exception>
-        /// <exception cref="ArgumentNullException">value can not be null.</exception>
-        /// <param name="s">The string to search in.</param>
-        /// <param name="value">The string to seek.</param>
-        /// <param name="stringComparison">One of the enumeration values that specifies the rules for the search.</param>
-        /// <returns>Returns true if the value parameter occurs within the given string; otherwise, false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean Contains( [NotNull] this String s, [NotNull] String value, StringComparison stringComparison )
-        {
-            s.ThrowIfNull( nameof(s) );
-            value.ThrowIfNull( nameof(value) );
-
-            return s.IndexOf( value, stringComparison ) >= 0;
-        }
-        /// <summary>
-        ///     Checks if the string contains all values given.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="s">The string to check.</param>
-        /// <param name="values">A list of string values.</param>
-        /// <returns>Returns true if the string contains all values, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean ContainsAll( [NotNull] this String s, [NotNull] params String[] values )
-        {
-            s.ThrowIfNull( nameof(s) );
-            values.ThrowIfNull( nameof(values) );
-
-            return values.NotAny( x => !s.Contains( x ) );
-        }
-
-        /// <summary>
-        ///     Checks if the string contains all values given.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="s">The string to check.</param>
-        /// <param name="comparisonType">Type of the comparison.</param>
-        /// <param name="values">A list of string values.</param>
-        /// <returns>Returns true if the string contains all values, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean ContainsAll( [NotNull] this String s, StringComparison comparisonType, [NotNull] params String[] values )
-        {
-            s.ThrowIfNull( nameof(s) );
-            values.ThrowIfNull( nameof(values) );
-
-            return values.NotAny( x => s.IndexOf( x, comparisonType ) == -1 );
-        }
-        /// <summary>
-        ///     Checks if the string contains any of the values given.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="str">The string to check.</param>
-        /// <param name="values">The values to search for.</param>
-        /// <returns>Returns true if the string contains any of the values given, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean ContainsAny( [NotNull] this String str, [NotNull] params String[] values )
-        {
-            str.ThrowIfNull( nameof(str) );
-            values.ThrowIfNull( nameof(values) );
-
-            return values.Any( str.Contains );
-        }
-
-        /// <summary>
-        ///     Checks if the string contains any of the values given.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="str">The string to check.</param>
-        /// <param name="values">The values to search for.</param>
-        /// <param name="comparisonType">The string comparison type.</param>
-        /// <returns>Returns true if the string contains any of the values given, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean ContainsAny( [NotNull] this String str, StringComparison comparisonType, [NotNull] params String[] values )
-        {
-            str.ThrowIfNull( nameof(str) );
-            values.ThrowIfNull( nameof(values) );
-
-            return values.Any( x => str.IndexOf( x, comparisonType ) != -1 );
-        }
-        /// <summary>
-        ///     Extracts parts of the input string, based on the predicate given.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
-        /// <param name="str">The string to extract.</param>
-        /// <param name="predicate">The predicate.</param>
-        /// <returns>The extracted parts of the input string.</returns>
-        [Pure]
-        [PublicAPI]
-        public static String Extract( [NotNull] this String str, [NotNull] Func<Char, Boolean> predicate )
-        {
-            str.ThrowIfNull( nameof(str) );
-            predicate.ThrowIfNull( nameof(predicate) );
-
-            return new String( str.ToCharArray()
-                                  .Where( predicate )
-                                  .ToArray() );
+            return string.Concat( values );
         }
     }
 }
@@ -375,11 +255,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String ExtractNumbers( [NotNull] this String str )
+        public static string ExtractNumbers( [NotNull] this string str )
         {
             str.ThrowIfNull( nameof(str) );
 
-            return new String( str.ToCharArray()
+            return new string( str.ToCharArray()
                                   .Where( x => x.IsNumber() )
                                   .ToArray() );
         }
@@ -403,12 +283,12 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String F( [NotNull] this String format, [NotNull] params Object[] args )
+        public static string F( [NotNull] this string format, [NotNull] params object[] args )
         {
             format.ThrowIfNull( nameof(format) );
             args.ThrowIfNull( nameof(args) );
 
-            return String.Format( format, args );
+            return string.Format( format, args );
         }
 
         /// <summary>
@@ -432,13 +312,13 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static String F( [NotNull] this String format, [NotNull] IFormatProvider formatProvider, [NotNull] params Object[] args )
+        public static string F( [NotNull] this string format, [NotNull] IFormatProvider formatProvider, [NotNull] params object[] args )
         {
             format.ThrowIfNull( nameof(format) );
             formatProvider.ThrowIfNull( nameof(formatProvider) );
             args.ThrowIfNull( nameof(args) );
 
-            return String.Format( formatProvider, format, args );
+            return string.Format( formatProvider, format, args );
         }
         /// <summary>
         ///     Formats the given file extension.
@@ -453,7 +333,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String FormatFileExtension( [NotNull] this String fileExtension )
+        public static string FormatFileExtension( [NotNull] this string fileExtension )
         {
             fileExtension.ThrowIfNull( nameof(fileExtension) );
 
@@ -477,7 +357,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetAfter( [NotNull] this String s, [NotNull] String value, Int32 startIndex = 0 )
+        public static string GetAfter( [NotNull] this string s, [NotNull] string value, int startIndex = 0 )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -499,7 +379,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetAfter( [NotNull] this String s, [NotNull] String value, Int32 startIndex, Int32 length )
+        public static string GetAfter( [NotNull] this string s, [NotNull] string value, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
             value.ThrowIfNull( nameof(value) );
@@ -509,7 +389,7 @@ namespace HSNXT
 
             s = s.Substring( startIndex, length );
             return !s.Contains( value )
-                ? String.Empty
+                ? string.Empty
                 : s.Substring( s.IndexOf( value, StringComparison.Ordinal ) + value.Length );
         }
 
@@ -525,7 +405,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetAfter( [NotNull] this String s, Char value, Int32 startIndex = 0 )
+        public static string GetAfter( [NotNull] this string s, char value, int startIndex = 0 )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -546,7 +426,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetAfter( [NotNull] this String s, Char value, Int32 startIndex, Int32 length )
+        public static string GetAfter( [NotNull] this string s, char value, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -556,7 +436,7 @@ namespace HSNXT
             s = s.Substring( startIndex, length );
             var valueIndex = s.IndexOf( value );
             return valueIndex < 0
-                ? String.Empty
+                ? string.Empty
                 : s.Substring( valueIndex + 1 );
         }
         /// <summary>
@@ -575,7 +455,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBefore( [NotNull] this String s, String value, Int32 startIndex = 0 )
+        public static string GetBefore( [NotNull] this string s, string value, int startIndex = 0 )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -600,7 +480,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBefore( [NotNull] this String s, [NotNull] String value, Int32 startIndex, Int32 length )
+        public static string GetBefore( [NotNull] this string s, [NotNull] string value, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
             value.ThrowIfNull( nameof(value) );
@@ -610,7 +490,7 @@ namespace HSNXT
 
             s = s.Substring( startIndex, length );
             return !s.Contains( value )
-                ? String.Empty
+                ? string.Empty
                 : s.Substring( 0, s.IndexOf( value, StringComparison.Ordinal ) );
         }
 
@@ -629,7 +509,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBefore( [NotNull] this String s, Char value, Int32 startIndex = 0 )
+        public static string GetBefore( [NotNull] this string s, char value, int startIndex = 0 )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -653,7 +533,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBefore( [NotNull] this String s, Char value, Int32 startIndex, Int32 length )
+        public static string GetBefore( [NotNull] this string s, char value, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -663,7 +543,7 @@ namespace HSNXT
             s = s.Substring( startIndex, length );
             var valueIndex = s.IndexOf( value );
             return valueIndex < 0
-                ? String.Empty
+                ? string.Empty
                 : s.Substring( 0, valueIndex );
         }
         /// <summary>
@@ -680,7 +560,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBetween( [NotNull] this String s, [NotNull] String before, [NotNull] String after, Int32 startIndex = 0 )
+        public static string GetBetween( [NotNull] this string s, [NotNull] string before, [NotNull] string after, int startIndex = 0 )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -703,7 +583,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBetween( [NotNull] this String s, [NotNull] String before, [NotNull] String after, Int32 startIndex, Int32 length )
+        public static string GetBetween( [NotNull] this string s, [NotNull] string before, [NotNull] string after, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
             before.ThrowIfNull( nameof(before) );
@@ -716,11 +596,11 @@ namespace HSNXT
 
             var beforeIndex = s.IndexOf( before, StringComparison.Ordinal );
             if ( beforeIndex < 0 )
-                return String.Empty;
+                return string.Empty;
 
             var actualStartIndex = beforeIndex + before.Length;
             var afterIndex = s.IndexOf( after, actualStartIndex, StringComparison.Ordinal );
-            return afterIndex < 0 ? String.Empty : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
+            return afterIndex < 0 ? string.Empty : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
         }
 
         /// <summary>
@@ -737,7 +617,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBetween( [NotNull] this String s, Char before, Char after, Int32 startIndex = 0 )
+        public static string GetBetween( [NotNull] this string s, char before, char after, int startIndex = 0 )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -760,7 +640,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetBetween( [NotNull] this String s, Char before, Char after, Int32 startIndex, Int32 length )
+        public static string GetBetween( [NotNull] this string s, char before, char after, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -771,12 +651,12 @@ namespace HSNXT
 
             var beforeIndex = s.IndexOf( before );
             if ( beforeIndex < 0 )
-                return String.Empty;
+                return string.Empty;
 
             var actualStartIndex = beforeIndex + 1;
             var afterIndex = s.IndexOf( after, actualStartIndex );
             return afterIndex < 0
-                ? String.Empty
+                ? string.Empty
                 : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
         }
         /// <summary>
@@ -788,13 +668,13 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<String> GetLines( [NotNull] this String value )
+        public static IEnumerable<string> GetLines( [NotNull] this string value )
         {
             value.ThrowIfNull( nameof(value) );
 
             using ( var reader = new StringReader( value ) )
             {
-                String line;
+                string line;
                 while ( ( line = reader.ReadLine() ) != null )
                     yield return line;
             }
@@ -808,169 +688,9 @@ namespace HSNXT
         [CanBeNull]
         [Pure]
         [PublicAPI]
-        public static String IfNotEmpty( [CanBeNull] this String value, [CanBeNull] String alternativeValue )
+        public static string IfNotEmpty( [CanBeNull] this string value, [CanBeNull] string alternativeValue )
             => !value.IsEmpty() ? value : alternativeValue;
-        /// <summary>
-        ///     Checks if the string is alpha.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to check.</param>
-        /// <returns>Returns true if the string is alpha only, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsAlpha( [NotNull] this String str )
-        {
-            str.ThrowIfNull( nameof(str) );
-
-            return str.ToCharArray()
-                      .All( x => x.IsLetter() );
-        }
-        /// <summary>
-        ///     Checks if the string is alpha numeric.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to check.</param>
-        /// <returns>Returns true if the string is alpha numeric, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsAlphaNumeric( [NotNull] this String str )
-        {
-            str.ThrowIfNull( nameof(str) );
-
-            return str.ToCharArray()
-                      .All( x => x.IsLetter() || x.IsNumber() );
-        }
-        /// <summary>
-        ///     Gets whether the given <see cref="String" /> is empty or not.
-        /// </summary>
-        /// <param name="str">The <see cref="String" /> to check.</param>
-        /// <returns>A value of true if the given <see cref="String" /> is empty, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsEmpty( [CanBeNull] this String str )
-            => String.IsNullOrEmpty( str ) || String.IsNullOrWhiteSpace( str );
-        /// <summary>
-        ///     Gets whether the given <see cref="String" /> is empty or not.
-        /// </summary>
-        /// <param name="input">The <see cref="String" /> to check.</param>
-        /// <returns>A value of true if the given <see cref="String" /> is not empty, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsNotEmpty( [CanBeNull] this String input )
-            => !IsEmpty( input );
-        /// <summary>
-        ///     Checks if the string is numeric.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to check.</param>
-        /// <returns>Returns true if the string is numeric only, otherwise false.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Boolean IsNumeric( [NotNull] this String str )
-        {
-            str.ThrowIfNull( nameof(str) );
-
-            return str.ToCharArray()
-                      .All( x => x.IsNumber() );
-        }
-        /// <summary>
-        ///     Concatenates all the elements of a string array, using the specified separator between each element.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="separator">
-        ///     The string to use as a separator.
-        ///     Is included in the returned string only if it has more than one element.
-        /// </param>
-        /// <param name="values">An array that contains the elements to concatenate.</param>
-        /// <returns>
-        ///     A string that consists of the elements in  delimited by the  string.
-        ///     If is an empty array, the method returns String.Empty.
-        /// </returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Join( [NotNull] this String separator, [NotNull] String[] values )
-        {
-            separator.ThrowIfNull( nameof(separator) );
-            values.ThrowIfNull( nameof(values) );
-
-            return String.Join( separator, values );
-        }
-
-        /// <summary>
-        ///     Concatenates all the elements of a object array, using the specified separator between each element.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="separator">
-        ///     The string to use as a separator.
-        ///     Is included in the returned string only if it has more than one element.
-        /// </param>
-        /// <param name="values">An array that contains the elements to concatenate.</param>
-        /// <returns>
-        ///     A string that consists of the elements in  delimited by the  string.
-        ///     If is an empty array, the method returns String.Empty.
-        /// </returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Join( [NotNull] this String separator, [NotNull] Object[] values )
-        {
-            separator.ThrowIfNull( nameof(separator) );
-            values.ThrowIfNull( nameof(values) );
-
-            return String.Join( separator, values );
-        }
-
-        /// <summary>
-        ///     Concatenates all the elements of a IEnumerable, using the specified separator between each element.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
-        /// <param name="separator">
-        ///     The string to use as a separator.
-        ///     Is included in the returned string only if it has more than one element.
-        /// </param>
-        /// <param name="values">An IEnumerable that contains the elements to concatenate.</param>
-        /// <returns>
-        ///     A string that consists of the elements in  delimited by the string.
-        ///     If is an empty IEnumerable, the method returns String.Empty.
-        /// </returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Join<T>( [NotNull] this String separator, [NotNull] IEnumerable<T> values )
-        {
-            separator.ThrowIfNull( nameof(separator) );
-            values.ThrowIfNull( nameof(values) );
-
-            return String.Join( separator, values );
-        }
-
-        /// <summary>
-        ///     Concatenates all the elements of a string array, using the specified separator between each element.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="separator">
-        ///     The string to use as a separator.
-        ///     Is included in the returned string only if it has more than one element.
-        /// </param>
-        /// <param name="values">An array that contains the elements to concatenate.</param>
-        /// <param name="startIndex">The first element in to use.</param>
-        /// <param name="count">The number of elements of to use.</param>
-        /// <returns>
-        ///     A string that consists of the elements in  delimited by the  string.
-        ///     If is an empty array, the method returns String.Empty.
-        /// </returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Join( [NotNull] this String separator, [NotNull] String[] values, Int32 startIndex, Int32 count )
-        {
-            separator.ThrowIfNull( nameof(separator) );
-            values.ThrowIfNull( nameof(values) );
-
-            return String.Join( separator, values, startIndex, count );
-        }
+        
         /// <summary>
         ///     Removes all characters which aren't letters.
         /// </summary>
@@ -980,11 +700,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String KeepLetters( [NotNull] this String str )
+        public static string KeepLetters( [NotNull] this string str )
         {
             str.ThrowIfNull( nameof(str) );
 
-            return new String( str.ToCharArray()
+            return new string( str.ToCharArray()
                                   .Where( x => x.IsLetter() )
                                   .ToArray() );
         }
@@ -997,11 +717,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String KeepLettersAndNumbers( [NotNull] this String str )
+        public static string KeepLettersAndNumbers( [NotNull] this string str )
         {
             str.ThrowIfNull( nameof(str) );
 
-            return new String( str.ToCharArray()
+            return new string( str.ToCharArray()
                                   .Where( x => x.IsNumber() || x.IsLetter() )
                                   .ToArray() );
         }
@@ -1014,11 +734,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String KeepNumbers( [NotNull] this String str )
+        public static string KeepNumbers( [NotNull] this string str )
         {
             str.ThrowIfNull( nameof(str) );
 
-            return new String( str.ToCharArray()
+            return new string( str.ToCharArray()
                                   .Where( x => x.IsNumber() )
                                   .ToArray() );
         }
@@ -1033,34 +753,14 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String KeepWhere( [NotNull] this String str, [NotNull] Func<Char, Boolean> predicate )
+        public static string KeepWhere( [NotNull] this string str, [NotNull] Func<char, bool> predicate )
         {
             str.ThrowIfNull( nameof(str) );
             predicate.ThrowIfNull( nameof(predicate) );
 
-            return new String( str.ToCharArray()
+            return new string( str.ToCharArray()
                                   .Where( predicate )
                                   .ToArray() );
-        }
-        /// <summary>
-        ///     Returns a string containing a specified number of characters from the left side of a string.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">value can not be null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">count is less than 0 or greater than the length of the given string.</exception>
-        /// <param name="value">The string from which the leftmost characters are returned.</param>
-        /// <param name="count">The number of characters to return.</param>
-        /// <returns>Returns a string containing a specified number of characters from the left side of the given string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Left( [NotNull] this String value, Int32 count )
-        {
-            value.ThrowIfNull( nameof(value) );
-
-            if ( count < 0 || value.Length < count )
-                throw new ArgumentOutOfRangeException( nameof(count), count, "The specified amount of characters is out of range." );
-
-            return value.Substring( 0, count );
         }
         /// <summary>
         ///     Removes all letters from the given string.
@@ -1071,11 +771,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String RemoveLetters( [NotNull] this String str )
+        public static string RemoveLetters( [NotNull] this string str )
         {
             str.ThrowIfNull( nameof(str) );
 
-            return new String( str.ToCharArray()
+            return new string( str.ToCharArray()
                                   .Where( x => !x.IsLetter() )
                                   .ToArray() );
         }
@@ -1088,11 +788,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String RemoveLettersAndNumbers( [NotNull] this String s )
+        public static string RemoveLettersAndNumbers( [NotNull] this string s )
         {
             s.ThrowIfNull( nameof(s) );
 
-            return new String( s.ToCharArray()
+            return new string( s.ToCharArray()
                                 .Where( x => !x.IsNumber() && !x.IsLetter() )
                                 .ToArray() );
         }
@@ -1105,56 +805,13 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String RemoveNumbers( [NotNull] this String s )
+        public static string RemoveNumbers( [NotNull] this string s )
         {
             s.ThrowIfNull( nameof(s) );
 
-            return new String( s.ToCharArray()
+            return new string( s.ToCharArray()
                                 .Where( x => !x.IsNumber() )
                                 .ToArray() );
-        }
-        /// <summary>
-        ///     Removes some characters from the given string, based on the predicate specified.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">s can not be null.</exception>
-        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
-        /// <param name="s">The input string.</param>
-        /// <param name="predicate">The predicate.</param>
-        /// <returns>Returns the input string without any of the removed characters.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String RemoveWhere( [NotNull] this String s, [NotNull] Func<Char, Boolean> predicate )
-        {
-            s.ThrowIfNull( nameof(s) );
-            predicate.ThrowIfNull( nameof(predicate) );
-
-            return new String( s.ToCharArray()
-                                .Where( x => !predicate( x ) )
-                                .ToArray() );
-        }
-        /// <summary>
-        ///     Repeats the given string a specified number of times.
-        /// </summary>
-        /// <param name="s">The input string.</param>
-        /// <param name="repeatCount">The number of repeats.</param>
-        /// <returns>Returns the repeated string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Repeat( this String s, Int32 repeatCount )
-        {
-            if ( s.IsEmpty() )
-                return String.Empty;
-
-            if ( s.Length == 1 )
-                return new String( s[0], repeatCount );
-
-            var sb = new StringBuilder( repeatCount * s.Length );
-            while ( repeatCount-- > 0 )
-                sb.Append( s );
-
-            return sb.ToString();
         }
         /// <summary>
         ///     Replaces a single character at the specified position with the specified replacement character.
@@ -1168,7 +825,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String ReplaceAt( [NotNull] this String value, Int32 index, Char replace )
+        public static string ReplaceAt( [NotNull] this string value, int index, char replace )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -1178,64 +835,7 @@ namespace HSNXT
             var chars = value.ToCharArray();
             chars[index] = replace;
 
-            return new String( chars );
-        }
-        /// <summary>
-        ///     Replace all given values by an empty string.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">s can not be null.</exception>
-        /// <exception cref="ArgumentNullException">values can not be null.</exception>
-        /// <param name="s">The input string.</param>
-        /// <param name="values">A list of all values to replace.</param>
-        /// <returns>Returns a string with all specified values replaced by an empty string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String ReplaceByEmpty( [NotNull] this String s, [NotNull] params String[] values )
-        {
-            s.ThrowIfNull( nameof(s) );
-            values.ThrowIfNull( nameof(values) );
-
-            values.ForEach( x => s = s.Replace( x, String.Empty ) );
-            return s;
-        }
-        /// <summary>
-        ///     Reverses the given string.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="s">The string to reverse.</param>
-        /// <returns>Returns the reversed string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Reverse( [NotNull] this String s )
-        {
-            s.ThrowIfNull( nameof(s) );
-
-            return s.Length <= 1
-                ? s
-                : new String( s.ToCharArray()
-                               .Reverse() );
-        }
-        /// <summary>
-        ///     Returns a string containing a specified number of characters from the right side of a string.
-        /// </summary>
-        /// <param name="count">The number of characters to return.</param>
-        /// <exception cref="ArgumentNullException">value can not be null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">count is less than 0 or greater than the length of the string.</exception>
-        /// <param name="value">The string from which the rightmost characters are returned.</param>
-        /// <returns>Returns a string containing a specified number of characters from the right side of a string.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String Right( [NotNull] this String value, Int32 count )
-        {
-            value.ThrowIfNull( nameof(value) );
-
-            if ( count < 0 || value.Length < count )
-                throw new ArgumentOutOfRangeException( nameof(count), count, "The specified amount of characters is out of range." );
-
-            return value.Substring( value.Length - count, count );
+            return new string( chars );
         }
         /// <summary>
         ///     Tries to create a new <see cref="CultureInfo" /> with the given name.
@@ -1244,7 +844,7 @@ namespace HSNXT
         /// <returns>Returns the <see cref="CultureInfo" /> with the given name, or null if the culture is not supported.</returns>
         [Pure]
         [PublicAPI]
-        public static CultureInfo SafeToCultureInfo( [NotNull] this String name )
+        public static CultureInfo SafeToCultureInfo( [NotNull] this string name )
         {
             try
             {
@@ -1265,7 +865,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static CultureInfo SafeToCultureInfo( [NotNull] this String name, CultureInfo fallbackCulture )
+        public static CultureInfo SafeToCultureInfo( [NotNull] this string name, CultureInfo fallbackCulture )
         {
             try
             {
@@ -1276,40 +876,6 @@ namespace HSNXT
                 return fallbackCulture;
             }
         }
-        /// <summary>
-        ///     Returns a string array that contains the substrings in this string that are
-        ///     delimited by the given separator. A parameter specifies
-        ///     whether to return empty array elements.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The separator can not be null.</exception>
-        /// <param name="value">The string to split.</param>
-        /// <param name="separator">A string that delimit the substrings in this string.</param>
-        /// <param name="stringSplitOption">
-        ///     <see cref="System.StringSplitOptions.RemoveEmptyEntries" /> to omit empty array elements
-        ///     from the array returned; or System.StringSplitOptions.None to include empty
-        ///     array elements in the array returned.
-        /// </param>
-        /// <returns>
-        ///     Returns an array whose elements contain the substrings in this string that are delimited by the separator.
-        /// </returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static String[] Split( [NotNull] this String value,
-                                      [NotNull] String separator,
-                                      StringSplitOptions stringSplitOption = StringSplitOptions.None )
-        {
-            value.ThrowIfNull( nameof(value) );
-            separator.ThrowIfNull( nameof(separator) );
-
-            return value.Split( new[]
-                                {
-                                    separator
-                                },
-                                stringSplitOption );
-        }
-
         /// <summary>
         ///     Returns a string array that contains the substrings in this string that are
         ///     delimited by elements of a specified string array. A parameter specifies
@@ -1334,9 +900,9 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String[] Split( [NotNull] this String value,
+        public static string[] Split( [NotNull] this string value,
                                       StringSplitOptions stringSplitOption,
-                                      [NotNull] params String[] separators )
+                                      [NotNull] params string[] separators )
         {
             value.ThrowIfNull( nameof(value) );
             separators.ThrowIfNull( nameof(separators) );
@@ -1360,7 +926,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String[] SplitLines( [NotNull] this String value, StringSplitOptions stringSplitOptions )
+        public static string[] SplitLines( [NotNull] this string value, StringSplitOptions stringSplitOptions )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -1383,7 +949,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String[] SplitLines( [NotNull] this String value )
+        public static string[] SplitLines( [NotNull] this string value )
             => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
     }
 }
@@ -1406,7 +972,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String SubstringLeftSafe( [NotNull] this String s, Int32 length )
+        public static string SubstringLeftSafe( [NotNull] this string s, int length )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -1425,7 +991,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String SubstringLeftSafe( [NotNull] this String s, Int32 startIndex, Int32 length )
+        public static string SubstringLeftSafe( [NotNull] this string s, int startIndex, int length )
         {
             s.ThrowIfNull( nameof(s) );
 
@@ -1453,7 +1019,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String SubstringRightSafe( [NotNull] this String str, Int32 length )
+        public static string SubstringRightSafe( [NotNull] this string str, int length )
         {
             str.ThrowIfNull( nameof(str) );
 
@@ -1473,7 +1039,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String TakeAndRemove( this Int32 count, [NotNull] ref String value )
+        public static string TakeAndRemove( this int count, [NotNull] ref string value )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -1481,7 +1047,7 @@ namespace HSNXT
                 throw new ArgumentOutOfRangeException( nameof(count),
                                                        "Count must be smaller than the length of the given value." );
 
-            var returnValue = new String( value.ToCharArray()
+            var returnValue = new string( value.ToCharArray()
                                                .Take( count )
                                                .ToArray() );
             value = value.Remove( 0, count );
@@ -1497,27 +1063,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static CultureInfo ToCultureInfo( [NotNull] this String name )
+        public static CultureInfo ToCultureInfo( [NotNull] this string name )
         {
             name.ThrowIfNull( nameof(name) );
 
             return new CultureInfo( name );
-        }
-        /// <summary>
-        ///     Converts a string to an enumeration.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
-        /// <typeparam name="T">The type of the enumeration.</typeparam>
-        /// <param name="value">The String value to convert.</param>
-        /// <param name="ignoreCase">Determines whether or not to ignore the casing of the string.</param>
-        /// <returns>Returns the converted enumeration value.</returns>
-        [Pure]
-        [PublicAPI]
-        public static T ToEnum<T>( [NotNull] this String value, Boolean ignoreCase = true ) where T : struct
-        {
-            value.ThrowIfNull( nameof(value) );
-
-            return (T) Enum.Parse( typeof(T), value, ignoreCase );
         }
         /// <summary>
         ///     Truncates the given string to the specified maximum length and adds the specified
@@ -1530,7 +1080,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String Truncate( [CanBeNull] this String str, Int32 maxLength, String suffix = "..." )
+        public static string Truncate2( [CanBeNull] this string str, int maxLength, string suffix = "..." )
         {
             // ReSharper disable once PossibleNullReferenceException
             if ( str.IsEmpty() || str.Length <= maxLength )
@@ -1551,7 +1101,7 @@ namespace HSNXT
         /// <returns>Returns the converted enum value.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean TryToEnum<T>( [CanBeNull] String value, out T outValue, Boolean ignoreCase = true ) where T : struct
+        public static bool TryToEnum<T>( [CanBeNull] string value, out T outValue, bool ignoreCase = true ) where T : struct
             => Enum.TryParse( value, ignoreCase, out outValue );
         /// <summary>
         ///     Converts the given wild-card pattern to a RegEx.
@@ -1560,7 +1110,7 @@ namespace HSNXT
         /// <returns>Returns the equivalent RegEx.</returns>
         [Pure]
         [NotNull]
-        public static String WildcardToRegex( [NotNull] this String pattern )
+        public static string WildcardToRegex( [NotNull] this string pattern )
         {
             pattern.ThrowIfNull( nameof(pattern) );
 

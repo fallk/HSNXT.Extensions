@@ -110,7 +110,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String FormatParameterName { get; private set; }
+        public string FormatParameterName { get; private set; }
 
         #endregion
 
@@ -119,7 +119,7 @@ namespace JetBrains.Annotations
         /// <param name="formatParameterName">
         ///     Specifies which parameter of an annotated method should be treated as format-string
         /// </param>
-        public StringFormatMethodAttribute( String formatParameterName )
+        public StringFormatMethodAttribute( string formatParameterName )
             => FormatParameterName = formatParameterName;
 
         #endregion
@@ -135,13 +135,13 @@ namespace JetBrains.Annotations
         #region Properties
 
         [NotNull]
-        public String Name { get; private set; }
+        public string Name { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public ValueProviderAttribute( String name ) => Name = name;
+        public ValueProviderAttribute( string name ) => Name = name;
 
         #endregion
     }
@@ -226,7 +226,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String ParameterName { get; private set; }
+        public string ParameterName { get; private set; }
 
         #endregion
 
@@ -236,7 +236,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public NotifyPropertyChangedInvocatorAttribute( String parameterName ) => ParameterName = parameterName;
+        public NotifyPropertyChangedInvocatorAttribute( string parameterName ) => ParameterName = parameterName;
 
         #endregion
     }
@@ -301,19 +301,19 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Contract { get; private set; }
-        public Boolean ForceFullStates { get; private set; }
+        public string Contract { get; private set; }
+        public bool ForceFullStates { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public ContractAnnotationAttribute( [NotNull] String contract )
+        public ContractAnnotationAttribute( [NotNull] string contract )
             : this( contract, false )
         {
         }
 
-        public ContractAnnotationAttribute( [NotNull] String contract, Boolean forceFullStates )
+        public ContractAnnotationAttribute( [NotNull] string contract, bool forceFullStates )
         {
             Contract = contract;
             ForceFullStates = forceFullStates;
@@ -338,7 +338,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public Boolean Required { get; private set; }
+        public bool Required { get; private set; }
 
         #endregion
 
@@ -349,7 +349,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public LocalizationRequiredAttribute( Boolean required ) => Required = required;
+        public LocalizationRequiredAttribute( bool required ) => Required = required;
 
         #endregion
     }
@@ -542,7 +542,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Comment { get; private set; }
+        public string Comment { get; private set; }
 
         #endregion
 
@@ -552,7 +552,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public PublicAPIAttribute( [NotNull] String comment ) => Comment = comment;
+        public PublicAPIAttribute( [NotNull] string comment ) => Comment = comment;
 
         #endregion
     }
@@ -593,7 +593,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Justification { get; private set; }
+        public string Justification { get; private set; }
 
         #endregion
 
@@ -603,7 +603,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public MustUseReturnValueAttribute( [NotNull] String justification ) => Justification = justification;
+        public MustUseReturnValueAttribute( [NotNull] string justification ) => Justification = justification;
 
         #endregion
     }
@@ -641,7 +641,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String BasePath { get; private set; }
+        public string BasePath { get; private set; }
 
         #endregion
 
@@ -651,7 +651,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public PathReferenceAttribute( [PathReference] String basePath ) => BasePath = basePath;
+        public PathReferenceAttribute( [PathReference] string basePath ) => BasePath = basePath;
 
         #endregion
     }
@@ -721,7 +721,7 @@ namespace JetBrains.Annotations
         ///     Allows specifying a macro that will be executed for a <see cref="SourceTemplateAttribute">source template</see>
         ///     parameter when the template is expanded.
         /// </summary>
-        public String Expression { get; set; }
+        public string Expression { get; set; }
 
         /// <summary>
         ///     Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
@@ -732,13 +732,13 @@ namespace JetBrains.Annotations
         ///     use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
         /// </remarks>
         /// >
-        public Int32 Editable { get; set; }
+        public int Editable { get; set; }
 
         /// <summary>
         ///     Identifies the target parameter of a <see cref="SourceTemplateAttribute">source template</see> if the
         ///     <see cref="MacroAttribute" /> is applied on a template method.
         /// </summary>
-        public String Target { get; set; }
+        public string Target { get; set; }
 
         #endregion
     }
@@ -748,13 +748,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Format { get; private set; }
+        public string Format { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspMvcAreaMasterLocationFormatAttribute( String format ) => Format = format;
+        public AspMvcAreaMasterLocationFormatAttribute( string format ) => Format = format;
 
         #endregion
     }
@@ -764,13 +764,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Format { get; private set; }
+        public string Format { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspMvcAreaPartialViewLocationFormatAttribute( String format ) => Format = format;
+        public AspMvcAreaPartialViewLocationFormatAttribute( string format ) => Format = format;
 
         #endregion
     }
@@ -780,13 +780,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Format { get; private set; }
+        public string Format { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspMvcAreaViewLocationFormatAttribute( String format ) => Format = format;
+        public AspMvcAreaViewLocationFormatAttribute( string format ) => Format = format;
 
         #endregion
     }
@@ -796,13 +796,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Format { get; private set; }
+        public string Format { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspMvcMasterLocationFormatAttribute( String format ) => Format = format;
+        public AspMvcMasterLocationFormatAttribute( string format ) => Format = format;
 
         #endregion
     }
@@ -812,13 +812,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Format { get; private set; }
+        public string Format { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspMvcPartialViewLocationFormatAttribute( String format ) => Format = format;
+        public AspMvcPartialViewLocationFormatAttribute( string format ) => Format = format;
 
         #endregion
     }
@@ -828,13 +828,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Format { get; private set; }
+        public string Format { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspMvcViewLocationFormatAttribute( String format ) => Format = format;
+        public AspMvcViewLocationFormatAttribute( string format ) => Format = format;
 
         #endregion
     }
@@ -850,7 +850,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String AnonymousProperty { get; private set; }
+        public string AnonymousProperty { get; private set; }
 
         #endregion
 
@@ -860,7 +860,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public AspMvcActionAttribute( String anonymousProperty ) => AnonymousProperty = anonymousProperty;
+        public AspMvcActionAttribute( string anonymousProperty ) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -875,7 +875,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String AnonymousProperty { get; private set; }
+        public string AnonymousProperty { get; private set; }
 
         #endregion
 
@@ -885,7 +885,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public AspMvcAreaAttribute( String anonymousProperty ) => AnonymousProperty = anonymousProperty;
+        public AspMvcAreaAttribute( string anonymousProperty ) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -901,7 +901,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String AnonymousProperty { get; private set; }
+        public string AnonymousProperty { get; private set; }
 
         #endregion
 
@@ -911,7 +911,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public AspMvcControllerAttribute( String anonymousProperty ) => AnonymousProperty = anonymousProperty;
+        public AspMvcControllerAttribute( string anonymousProperty ) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -1035,7 +1035,7 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Name { get; private set; }
+        public string Name { get; private set; }
 
         #endregion
 
@@ -1045,7 +1045,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public HtmlElementAttributesAttribute( String name ) => Name = name;
+        public HtmlElementAttributesAttribute( string name ) => Name = name;
 
         #endregion
     }
@@ -1056,13 +1056,13 @@ namespace JetBrains.Annotations
         #region Properties
 
         [NotNull]
-        public String Name { get; private set; }
+        public string Name { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public HtmlAttributeValueAttribute( [NotNull] String name ) => Name = name;
+        public HtmlAttributeValueAttribute( [NotNull] string name ) => Name = name;
 
         #endregion
     }
@@ -1227,14 +1227,14 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String TagName { get; private set; }
+        public string TagName { get; private set; }
         public Type ControlType { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspChildControlTypeAttribute( String tagName, Type controlType )
+        public AspChildControlTypeAttribute( string tagName, Type controlType )
         {
             TagName = tagName;
             ControlType = controlType;
@@ -1263,13 +1263,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Attribute { get; private set; }
+        public string Attribute { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspRequiredAttributeAttribute( [NotNull] String attribute ) => Attribute = attribute;
+        public AspRequiredAttributeAttribute( [NotNull] string attribute ) => Attribute = attribute;
 
         #endregion
     }
@@ -1279,13 +1279,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public Boolean CreateConstructorReferences { get; private set; }
+        public bool CreateConstructorReferences { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public AspTypePropertyAttribute( Boolean createConstructorReferences ) => CreateConstructorReferences = createConstructorReferences;
+        public AspTypePropertyAttribute( bool createConstructorReferences ) => CreateConstructorReferences = createConstructorReferences;
 
         #endregion
     }
@@ -1295,13 +1295,13 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Name { get; private set; }
+        public string Name { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public RazorImportNamespaceAttribute( String name ) => Name = name;
+        public RazorImportNamespaceAttribute( string name ) => Name = name;
 
         #endregion
     }
@@ -1311,14 +1311,14 @@ namespace JetBrains.Annotations
     {
         #region Properties
 
-        public String Type { get; private set; }
-        public String FieldName { get; private set; }
+        public string Type { get; private set; }
+        public string FieldName { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public RazorInjectionAttribute( String type, String fieldName )
+        public RazorInjectionAttribute( string type, string fieldName )
         {
             Type = type;
             FieldName = fieldName;

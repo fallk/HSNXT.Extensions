@@ -29,7 +29,7 @@ namespace HSNXT
         ///     Gets the member selection predicate.
         /// </summary>
         /// <value>The member selection predicate.</value>
-        private readonly Func<IMemberInformation, Boolean> _predicate;
+        private readonly Func<IMemberInformation, bool> _predicate;
 
         /// <summary>
         ///     Gets the selection mode.
@@ -49,10 +49,10 @@ namespace HSNXT
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public ExpressionMemberSelectionRule( [NotNull] Func<IMemberInformation, Boolean> predicate,
+        public ExpressionMemberSelectionRule( [NotNull] Func<IMemberInformation, bool> predicate,
                                               MemberSelectionMode selectionMode,
-                                              String name = null,
-                                              String description = null )
+                                              string name = null,
+                                              string description = null )
             : base( name, description )
         {
             predicate.ThrowIfNull( nameof(predicate) );
@@ -91,7 +91,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
             => $"[{RuleName}] = ({_selectionMode} members matching predicate) ({RuleDescription}).";
 
         #endregion

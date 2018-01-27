@@ -28,7 +28,7 @@ namespace HSNXT.Internal
         /// <summary>
         ///     Character used to separate property name and format.
         /// </summary>
-        private const Char FormatSeperator = ':';
+        private const char FormatSeperator = ':';
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace HSNXT.Internal
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        public abstract String GetValue( String expression );
+        public abstract string GetValue( string expression );
 
         #endregion
 
@@ -48,7 +48,7 @@ namespace HSNXT.Internal
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the format information.</returns>
-        protected static FormatInformation ParsExpression( String expression )
+        protected static FormatInformation ParsExpression( string expression )
         {
             var colonIndex = expression.IndexOf( FormatSeperator );
 

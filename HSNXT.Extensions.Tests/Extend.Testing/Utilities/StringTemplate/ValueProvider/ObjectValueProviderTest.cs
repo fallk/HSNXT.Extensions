@@ -1,10 +1,11 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Extend.Internal;
+using HSNXT.Internal;
 using FluentAssertions;
 using Xunit;
 

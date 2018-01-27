@@ -21,88 +21,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentageOf( this Decimal number, Int32 percent )
-            => number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentageOf( this Decimal number, Decimal percent )
-            => number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentageOf( this Decimal number, Int64 percent )
-            => number * percent / 100;
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentOf( this Decimal number, Int32 total )
-        {
-            if ( number <= 0 )
-                throw new DivideByZeroException( "The number must be greater than zero." );
-
-            return total / number * 100;
-        }
-
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentOf( this Decimal number, Decimal total )
-        {
-            if ( number <= 0 )
-                throw new DivideByZeroException( "The number must be greater than zero." );
-
-            return total / number * 100;
-        }
-
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [Pure]
-        [PublicAPI]
-        public static Decimal PercentOf( this Decimal number, Int64 total )
-        {
-            if ( number <= 0 )
-                throw new DivideByZeroException( "The number must be greater than zero." );
-
-            return total / number * 100;
-        }
-        /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>
         /// <exception cref="OverflowException">The sum is larger than <see cref="Decimal.MaxValue" /></exception>
@@ -112,7 +30,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [PublicAPI]
         [Pure]
-        public static Decimal Sum( this Decimal value, [NotNull] params Decimal[] values )
+        public static decimal Sum( this decimal value, [NotNull] params decimal[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -132,7 +50,7 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static Decimal? Sum( [CanBeNull] this Decimal? value, [NotNull] params Decimal?[] values )
+        public static decimal? Sum( [CanBeNull] this decimal? value, [NotNull] params decimal?[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -154,7 +72,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [PublicAPI]
         [Pure]
-        public static Decimal Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Decimal> selector, [NotNull] params TSource[] values )
+        public static decimal Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, decimal> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof(selector) );
             values.ThrowIfNull( nameof(values) );
@@ -178,8 +96,8 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static Decimal? Sum<TSource>( [CanBeNull] this TSource value,
-                                             [NotNull] Func<TSource, Decimal?> selector,
+        public static decimal? Sum<TSource>( [CanBeNull] this TSource value,
+                                             [NotNull] Func<TSource, decimal?> selector,
                                              [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof(selector) );

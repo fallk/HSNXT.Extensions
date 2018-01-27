@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Extend.Testing
             Action test = () =>
             {
                 // ReSharper disable once AssignNullToNotNullAttribute
-                var result = IEnumerableTEx.GetEqualItemsFromStart( null, Enumerable.Empty<Int32>() );
+                var result = Extensions.GetEqualItemsFromStart( null, Enumerable.Empty<Int32>() );
                 result.Should()
                       .BeNull( "Should have thrown exception" );
             };

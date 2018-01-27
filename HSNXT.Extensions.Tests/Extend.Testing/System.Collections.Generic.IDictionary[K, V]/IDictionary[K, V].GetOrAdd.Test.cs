@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once MustUseReturnValue
-            Action test = () => IDictionaryEx.GetOrAdd( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
+            Action test = () => Extensions.GetOrAdd( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -36,7 +37,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once MustUseReturnValue
-            Action test = () => IDictionaryEx.GetOrAdd( null, new Object(), () => new Object() );
+            Action test = () => Extensions.GetOrAdd( null, new Object(), () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -67,7 +68,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once MustUseReturnValue
-            Action test = () => IDictionaryEx.GetOrAdd( null, new Object(), x => new Object() );
+            Action test = () => Extensions.GetOrAdd( null, new Object(), x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -98,7 +99,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once MustUseReturnValue
-            Action test = () => IDictionaryEx.GetOrAdd( null, new Object(), new Object() );
+            Action test = () => Extensions.GetOrAdd( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

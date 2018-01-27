@@ -55,7 +55,7 @@ namespace HSNXT
         ///     collection or not.
         /// </param>
         [PublicAPI]
-        void Add( [NotNull] ITreeNode<T> item, Boolean setParent );
+        void Add( [NotNull] ITreeNode<T> item, bool setParent );
 
         /// <summary>
         ///     Removes the given item form the list and sets it's parent to null.
@@ -68,7 +68,7 @@ namespace HSNXT
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
         [PublicAPI]
-        Boolean Remove( [NotNull] ITreeNode<T> item, Boolean setParent );
+        bool Remove( [NotNull] ITreeNode<T> item, bool setParent );
 
         /// <summary>
         ///     Detaches the collection and all it's items form it's current parent.

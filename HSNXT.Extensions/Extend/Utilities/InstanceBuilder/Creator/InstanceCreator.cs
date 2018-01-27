@@ -47,19 +47,19 @@ namespace HSNXT
         ///     Gets or sets a value determining whether collections should get populated or not.
         /// </summary>
         /// <value>A value determining whether collections should get populated or not.</value>
-        public static Boolean PopulateCollections { get; set; } = true;
+        public static bool PopulateCollections { get; set; } = true;
 
         /// <summary>
         ///     Gets or sets the minimum number of items to generate for a collection.
         /// </summary>
         /// <value>The minimum number of items to generate for a collection.</value>
-        public static Int32 PopulateCollectionsMinCount { get; set; } = 2;
+        public static int PopulateCollectionsMinCount { get; set; } = 2;
 
         /// <summary>
         ///     Gets or sets the maximum number of items to generate for a collection.
         /// </summary>
         /// <value>The maximum number of items to generate for a collection.</value>
-        public static Int32 PopulateCollectionsMaxCount { get; set; } = 10;
+        public static int PopulateCollectionsMaxCount { get; set; } = 10;
 
         /// <summary>
         ///     Gets or sets the name used for anonymous items.
@@ -68,7 +68,7 @@ namespace HSNXT
         ///     Targets collection items.
         /// </remarks>
         /// <value>The name used for anonymous items.</value>
-        public static String AnonymousItemName { get; set; } = "[AnonymousItem]";
+        public static string AnonymousItemName { get; set; } = "[AnonymousItem]";
 
         /// <summary>
         ///     Gets or sets the <see cref="IMemberSelectionRuleInspector" /> used to inspect member selection rules.
@@ -133,8 +133,8 @@ namespace HSNXT
             var rootMemberInformation = new MemberInformation
             {
                 MemberType = typeof(T),
-                MemberPath = String.Empty,
-                MemberName = String.Empty
+                MemberPath = string.Empty,
+                MemberName = string.Empty
             };
             var instance = CreateRootMember( options, rootMemberInformation );
             rootMemberInformation.MemberObject = instance;
@@ -172,7 +172,7 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
-        private static Boolean IncludeMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
+        private static bool IncludeMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
             => ShouldMemberBeIncluded( memberInformation, options.MemberSelectionRules, DefaultMemberSelectionRules );
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns a value of true if the children should be included; otherwise, false.</returns>
-        private static Boolean IncludeChildMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
+        private static bool IncludeChildMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
             => ShouldMemberBeIncluded( memberInformation, options.MemberChildrenSelectionRules, DefaultMemberChildreSelectionRules );
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace HSNXT
         ///     Note: collections must be in correct order.
         /// </param>
         /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
-        private static Boolean ShouldMemberBeIncluded( IMemberInformation memberInformation, params IEnumerable<IMemberSelectionRule>[] selectionRuleSets )
+        private static bool ShouldMemberBeIncluded( IMemberInformation memberInformation, params IEnumerable<IMemberSelectionRule>[] selectionRuleSets )
         {
             // Try to find selection result (starting at the first item in selectionRuleSets)
             foreach ( var inspectionResult in selectionRuleSets
@@ -224,7 +224,7 @@ namespace HSNXT
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the number of items to create.</returns>
-        private static Int32 GetCollectionItemCount<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        private static int GetCollectionItemCount<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
         {
             //Return count of 0 if collection should net get populated
             if ( !PopulateCollection( options ) )
@@ -242,7 +242,7 @@ namespace HSNXT
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns a value of true if collections should get populated or not.</returns>
-        private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        private static bool PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
             => options.PopulateCollections ?? PopulateCollections;
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace HSNXT
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the name to use.</returns>
-        private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        private static string GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
             => options.AnonymousItemName ?? AnonymousItemName;
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value.</returns>
-        private static Object GetValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static object GetValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
             // Try get value from factory
             var factory = GetFactory( options, memberInformation );
@@ -333,7 +333,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
-        private static Object TryCreateCollectionValue( IMemberInformation memberInformation )
+        private static object TryCreateCollectionValue( IMemberInformation memberInformation )
         {
             // Check if member implements IEnumerable{T} or IList{T} or ICollection{T}
             if ( !memberInformation.MemberType.IsIEnumerableT() && !memberInformation.MemberType.IsIListT() && !memberInformation.MemberType.IsICollectionT() )
@@ -359,7 +359,7 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type.</returns>
-        private static Object TryCreateArrayValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static object TryCreateArrayValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
             // Check if member is an array type
             if ( !memberInformation.MemberType.IsArray )
@@ -396,7 +396,7 @@ namespace HSNXT
         /// <exception cref="CreateInstanceException">Creation throw an exception.</exception>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value.</returns>
-        private static Object CreateValueUsingAcrivator( IMemberInformation memberInformation )
+        private static object CreateValueUsingAcrivator( IMemberInformation memberInformation )
         {
             try
             {
@@ -493,7 +493,7 @@ namespace HSNXT
         /// <param name="memberInformation">The member to check.</param>
         /// <param name="collectionInstance">The instance to populate.</param>
         /// <returns>Returns the populated or unmodified instance.</returns>
-        private static Object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, Object collectionInstance ) where T : class
+        private static object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, object collectionInstance ) where T : class
         {
             // Check if collection should get populated or not
             if ( !PopulateCollection( options ) || collectionInstance == null )
@@ -519,7 +519,7 @@ namespace HSNXT
             var collectionCount = GetCollectionItemCount( options );
             for ( var i = 0; i < collectionCount; i++ )
             {
-                var addParameters = new List<Object>();
+                var addParameters = new List<object>();
                 genericArgumentTypes
                     .ForEach( x =>
                     {

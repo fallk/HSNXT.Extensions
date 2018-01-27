@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Extend.Testing
         public void AddIfNotContainsKey1TestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
+            Action test = () => Extensions.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -80,7 +81,7 @@ namespace Extend.Testing
         public void AddIfNotContainsKeyTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), () => new Object() );
+            Action test = () => Extensions.AddIfNotContainsKey( null, new Object(), () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -123,7 +124,7 @@ namespace Extend.Testing
         public void AddIfNotContainsKeyTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), x => new Object() );
+            Action test = () => Extensions.AddIfNotContainsKey( null, new Object(), x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -151,7 +152,7 @@ namespace Extend.Testing
         public void AddIfNotContainsKeyTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
+            Action test = () => Extensions.AddIfNotContainsKey( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

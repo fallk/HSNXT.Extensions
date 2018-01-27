@@ -18,11 +18,8 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some extension methods for <see cref="IEqualityComparer{T}" />.
-    /// </summary>
     // ReSharper disable once InconsistentNaming
-    public static class IEqualityComparerEx
+    public static partial class Extensions
     {
         /// <summary>
         ///     Creates an equality comparer based on the specified comparison key and key comparer.

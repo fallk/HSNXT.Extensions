@@ -20,109 +20,7 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-        /// <summary>
-        ///     Returns whether the specified number evaluates to negative or positive infinity.
-        /// </summary>
-        /// <param name="value">The double to check.</param>
-        /// <returns>Returns true if the given double is infinity, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsInfinity( this Double value )
-            => Double.IsInfinity( value );
-        /// <summary>
-        ///     Returns whether the specified value is not a number.
-        /// </summary>
-        /// <param name="value">The double to check.</param>
-        /// <returns>Returns true if the value is not a number, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsNaN( this Double value )
-            => Double.IsNaN( value );
-        /// <summary>
-        ///     Returns whether the specified number evaluates to negative infinity.
-        /// </summary>
-        /// <param name="value">The double to check.</param>
-        /// <returns>Returns true if the given double is negative infinity, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsNegativeInfinity( this Double value )
-            => Double.IsNegativeInfinity( value );
-        /// <summary>
-        ///     Returns whether the specified number evaluates to positive infinity.
-        /// </summary>
-        /// <param name="value">The double to check.</param>
-        /// <returns>Returns true if the given double is positive infinity, otherwise false.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Boolean IsPositiveInfinity( this Double value )
-            => Double.IsPositiveInfinity( value );
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [PublicAPI]
-        [Pure]
-        public static Double PercentageOf( this Double number, Int32 percent )
-            => number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [PublicAPI]
-        [Pure]
-        public static Double PercentageOf( this Double number, Double percent )
-            => number * percent / 100;
-
-        /// <summary>
-        ///     Gets the specified percentage of the number.
-        /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
-        [PublicAPI]
-        [Pure]
-        public static Double PercentageOf( this Double number, Int64 percent )
-            => number * percent / 100;
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Double PercentOf( this Double number, Int32 total )
-            => total / number * 100;
-
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Double PercentOf( this Double number, Double total )
-            => total / number * 100;
-
-        /// <summary>
-        ///     Gets the percentage of the number.
-        /// </summary>
-        /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
-        /// <param name="number">The number.</param>
-        /// <param name="total">The total value.</param>
-        /// <returns>Returns the percentage of the number.</returns>
-        [PublicAPI]
-        [Pure]
-        public static Double PercentOf( this Double number, Int64 total )
-            => total / number * 100;
+        
         /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>
@@ -133,7 +31,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [PublicAPI]
         [Pure]
-        public static Double Sum( this Double value, [NotNull] params Double[] values )
+        public static double Sum( this double value, [NotNull] params double[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -153,7 +51,7 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static Double? Sum( [CanBeNull] this Double? value, [NotNull] params Double?[] values )
+        public static double? Sum( [CanBeNull] this double? value, [NotNull] params double?[] values )
         {
             values.ThrowIfNull( nameof(values) );
 
@@ -175,7 +73,7 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [PublicAPI]
         [Pure]
-        public static Double Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Double> selector, [NotNull] params TSource[] values )
+        public static double Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, double> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof(selector) );
             values.ThrowIfNull( nameof(values) );
@@ -199,7 +97,7 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static Double? Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Double?> selector, [NotNull] params TSource[] values )
+        public static double? Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, double?> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof(selector) );
             values.ThrowIfNull( nameof(values) );

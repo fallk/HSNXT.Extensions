@@ -30,7 +30,7 @@ namespace HSNXT
         /// <param name="trueAction">The action to execute if all of the given value is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse( [NotNull] this Action falseAction, [CanBeNull] Action trueAction = null, [NotNull] params Boolean[] values )
+        public static void ExecuteIfAnyFalse( [NotNull] this Action falseAction, [CanBeNull] Action trueAction = null, [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -56,7 +56,7 @@ namespace HSNXT
         public static void ExecuteIfAnyFalse<T>( [NotNull] this Action<T> falseAction,
                                                  [CanBeNull] T parameter,
                                                  [CanBeNull] Action<T> trueAction = null,
-                                                 [NotNull] params Boolean[] values )
+                                                 [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -85,7 +85,7 @@ namespace HSNXT
                                                       [CanBeNull] T1 parameter1,
                                                       [CanBeNull] T2 parameter2,
                                                       [CanBeNull] Action<T1, T2> trueAction = null,
-                                                      [NotNull] params Boolean[] values )
+                                                      [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -117,7 +117,7 @@ namespace HSNXT
                                                           [CanBeNull] T2 parameter2,
                                                           [CanBeNull] T3 parameter3,
                                                           [CanBeNull] Action<T1, T2, T3> trueAction = null,
-                                                          [NotNull] params Boolean[] values )
+                                                          [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -152,7 +152,7 @@ namespace HSNXT
                                                               [CanBeNull] T3 parameter3,
                                                               [CanBeNull] T4 parameter4,
                                                               [CanBeNull] Action<T1, T2, T3, T4> trueAction = null,
-                                                              [NotNull] params Boolean[] values )
+                                                              [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -171,7 +171,7 @@ namespace HSNXT
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse( [NotNull] this Action falseAction, [NotNull] params Boolean[] values )
+        public static void ExecuteIfAnyFalse( [NotNull] this Action falseAction, [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -194,7 +194,7 @@ namespace HSNXT
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T>( [NotNull] this Action<T> falseAction,
                                                  [CanBeNull] T parameter,
-                                                 [NotNull] params Boolean[] values )
+                                                 [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -220,7 +220,7 @@ namespace HSNXT
         public static void ExecuteIfAnyFalse<T1, T2>( [NotNull] this Action<T1, T2> falseAction,
                                                       [CanBeNull] T1 parameter1,
                                                       [CanBeNull] T2 parameter2,
-                                                      [NotNull] params Boolean[] values )
+                                                      [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -249,7 +249,7 @@ namespace HSNXT
                                                           [CanBeNull] T1 parameter1,
                                                           [CanBeNull] T2 parameter2,
                                                           [CanBeNull] T3 parameter3,
-                                                          [NotNull] params Boolean[] values )
+                                                          [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -281,7 +281,7 @@ namespace HSNXT
                                                               [CanBeNull] T2 parameter2,
                                                               [CanBeNull] T3 parameter3,
                                                               [CanBeNull] T4 parameter4,
-                                                              [NotNull] params Boolean[] values )
+                                                              [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -303,7 +303,7 @@ namespace HSNXT
         [PublicAPI]
         public static void ExecuteIfAnyTrue( [NotNull] this Action trueAction,
                                              [CanBeNull] Action falseAction = null,
-                                             [NotNull] params Boolean[] values )
+                                             [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -328,7 +328,7 @@ namespace HSNXT
         public static void ExecuteIfAnyTrue<T>( [NotNull] this Action<T> trueAction,
                                                 [CanBeNull] T parameter,
                                                 [CanBeNull] Action<T> falseAction = null,
-                                                [NotNull] params Boolean[] values )
+                                                [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -356,7 +356,7 @@ namespace HSNXT
                                                      [CanBeNull] T1 parameter1,
                                                      [CanBeNull] T2 parameter2,
                                                      [CanBeNull] Action<T1, T2> falseAction = null,
-                                                     [NotNull] params Boolean[] values )
+                                                     [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -387,7 +387,7 @@ namespace HSNXT
                                                          [CanBeNull] T2 parameter2,
                                                          [CanBeNull] T3 parameter3,
                                                          [CanBeNull] Action<T1, T2, T3> falseAction = null,
-                                                         [NotNull] params Boolean[] values )
+                                                         [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -421,7 +421,7 @@ namespace HSNXT
                                                              [CanBeNull] T3 parameter3,
                                                              [CanBeNull] T4 parameter4,
                                                              [CanBeNull] Action<T1, T2, T3, T4> falseAction = null,
-                                                             [NotNull] params Boolean[] values )
+                                                             [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -439,7 +439,7 @@ namespace HSNXT
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyTrue( [NotNull] this Action trueAction, [NotNull] params Boolean[] values )
+        public static void ExecuteIfAnyTrue( [NotNull] this Action trueAction, [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -461,7 +461,7 @@ namespace HSNXT
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T>( [NotNull] this Action<T> trueAction,
                                                 [CanBeNull] T parameter,
-                                                [NotNull] params Boolean[] values )
+                                                [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -486,7 +486,7 @@ namespace HSNXT
         public static void ExecuteIfAnyTrue<T1, T2>( [NotNull] this Action<T1, T2> trueAction,
                                                      [CanBeNull] T1 parameter1,
                                                      [CanBeNull] T2 parameter2,
-                                                     [NotNull] params Boolean[] values )
+                                                     [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -514,7 +514,7 @@ namespace HSNXT
                                                          [CanBeNull] T1 parameter1,
                                                          [CanBeNull] T2 parameter2,
                                                          [CanBeNull] T3 parameter3,
-                                                         [NotNull] params Boolean[] values )
+                                                         [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -545,7 +545,7 @@ namespace HSNXT
                                                              [CanBeNull] T2 parameter2,
                                                              [CanBeNull] T3 parameter3,
                                                              [CanBeNull] T4 parameter4,
-                                                             [NotNull] params Boolean[] values )
+                                                             [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -565,7 +565,7 @@ namespace HSNXT
         /// <param name="falseAction">The action to execute if the given values are false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse( [NotNull] this Action falseAction, [CanBeNull] Action trueAction = null, [NotNull] params Boolean[] values )
+        public static void ExecuteIfFalse( [NotNull] this Action falseAction, [CanBeNull] Action trueAction = null, [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -591,7 +591,7 @@ namespace HSNXT
         public static void ExecuteIfFalse<T>( [NotNull] this Action<T> falseAction,
                                               [CanBeNull] T parameter,
                                               [CanBeNull] Action<T> trueAction = null,
-                                              [NotNull] params Boolean[] values )
+                                              [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -620,7 +620,7 @@ namespace HSNXT
                                                    [CanBeNull] T1 parameter1,
                                                    [CanBeNull] T2 parameter2,
                                                    [CanBeNull] Action<T1, T2> trueAction = null,
-                                                   [NotNull] params Boolean[] values )
+                                                   [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -652,7 +652,7 @@ namespace HSNXT
                                                        [CanBeNull] T2 parameter2,
                                                        [CanBeNull] T3 parameter3,
                                                        [CanBeNull] Action<T1, T2, T3> trueAction = null,
-                                                       [NotNull] params Boolean[] values )
+                                                       [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -687,7 +687,7 @@ namespace HSNXT
                                                            [CanBeNull] T3 parameter3,
                                                            [CanBeNull] T4 parameter4,
                                                            [CanBeNull] Action<T1, T2, T3, T4> trueAction = null,
-                                                           [NotNull] params Boolean[] values )
+                                                           [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -706,7 +706,7 @@ namespace HSNXT
         /// <param name="falseAction">The action to execute if the given values are false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse( [NotNull] this Action falseAction, [NotNull] params Boolean[] values )
+        public static void ExecuteIfFalse( [NotNull] this Action falseAction, [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -729,7 +729,7 @@ namespace HSNXT
         [PublicAPI]
         public static void ExecuteIfFalse<T>( [NotNull] this Action<T> falseAction,
                                               [CanBeNull] T parameter,
-                                              [NotNull] params Boolean[] values )
+                                              [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -755,7 +755,7 @@ namespace HSNXT
         public static void ExecuteIfFalse<T1, T2>( [NotNull] this Action<T1, T2> falseAction,
                                                    [CanBeNull] T1 parameter1,
                                                    [CanBeNull] T2 parameter2,
-                                                   [NotNull] params Boolean[] values )
+                                                   [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -784,7 +784,7 @@ namespace HSNXT
                                                        [CanBeNull] T1 parameter1,
                                                        [CanBeNull] T2 parameter2,
                                                        [CanBeNull] T3 parameter3,
-                                                       [NotNull] params Boolean[] values )
+                                                       [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -816,7 +816,7 @@ namespace HSNXT
                                                            [CanBeNull] T2 parameter2,
                                                            [CanBeNull] T3 parameter3,
                                                            [CanBeNull] T4 parameter4,
-                                                           [NotNull] params Boolean[] values )
+                                                           [NotNull] params bool[] values )
         {
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
@@ -836,7 +836,7 @@ namespace HSNXT
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue( [NotNull] this Action trueAction, [CanBeNull] Action falseAction, [NotNull] params Boolean[] values )
+        public static void ExecuteIfTrue( [NotNull] this Action trueAction, [CanBeNull] Action falseAction, [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -862,7 +862,7 @@ namespace HSNXT
         public static void ExecuteIfTrue<T>( [NotNull] this Action<T> trueAction,
                                              [CanBeNull] T parameter,
                                              [CanBeNull] Action<T> falseAction,
-                                             [NotNull] params Boolean[] values )
+                                             [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -891,7 +891,7 @@ namespace HSNXT
                                                   [CanBeNull] T1 parameter1,
                                                   [CanBeNull] T2 parameter2,
                                                   [CanBeNull] Action<T1, T2> falseAction,
-                                                  [NotNull] params Boolean[] values )
+                                                  [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -923,7 +923,7 @@ namespace HSNXT
                                                       [CanBeNull] T2 parameter2,
                                                       [CanBeNull] T3 parameter3,
                                                       [CanBeNull] Action<T1, T2, T3> falseAction,
-                                                      [NotNull] params Boolean[] values )
+                                                      [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -958,7 +958,7 @@ namespace HSNXT
                                                           [CanBeNull] T3 parameter3,
                                                           [CanBeNull] T4 parameter4,
                                                           [CanBeNull] Action<T1, T2, T3, T4> falseAction,
-                                                          [NotNull] params Boolean[] values )
+                                                          [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -977,7 +977,7 @@ namespace HSNXT
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue( [NotNull] this Action trueAction, [NotNull] params Boolean[] values )
+        public static void ExecuteIfTrue( [NotNull] this Action trueAction, [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -1000,7 +1000,7 @@ namespace HSNXT
         [PublicAPI]
         public static void ExecuteIfTrue<T>( [NotNull] this Action<T> trueAction,
                                              [CanBeNull] T parameter,
-                                             [NotNull] params Boolean[] values )
+                                             [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -1026,7 +1026,7 @@ namespace HSNXT
         public static void ExecuteIfTrue<T1, T2>( [NotNull] this Action<T1, T2> trueAction,
                                                   [CanBeNull] T1 parameter1,
                                                   [CanBeNull] T2 parameter2,
-                                                  [NotNull] params Boolean[] values )
+                                                  [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -1055,7 +1055,7 @@ namespace HSNXT
                                                       [CanBeNull] T1 parameter1,
                                                       [CanBeNull] T2 parameter2,
                                                       [CanBeNull] T3 parameter3,
-                                                      [NotNull] params Boolean[] values )
+                                                      [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -1087,7 +1087,7 @@ namespace HSNXT
                                                           [CanBeNull] T2 parameter2,
                                                           [CanBeNull] T3 parameter3,
                                                           [CanBeNull] T4 parameter4,
-                                                          [NotNull] params Boolean[] values )
+                                                          [NotNull] params bool[] values )
         {
             trueAction.ThrowIfNull( nameof(trueAction) );
             values.ThrowIfNull( nameof(values) );
@@ -1104,7 +1104,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecute( [NotNull] this Action action )
+        public static bool SafeExecute( [NotNull] this Action action )
         {
             action.ThrowIfNull( nameof(action) );
 
@@ -1128,7 +1128,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecute<TException>( [NotNull] this Action action ) where TException : Exception
+        public static bool SafeExecute<TException>( [NotNull] this Action action ) where TException : Exception
             => action.SafeExecute( typeof(TException) );
 
         /// <summary>
@@ -1140,7 +1140,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecute<TException1, TException2>( [NotNull] this Action action )
+        public static bool SafeExecute<TException1, TException2>( [NotNull] this Action action )
             where TException1 : Exception
             where TException2 : Exception
             => action.SafeExecute( typeof(TException1), typeof(TException2) );
@@ -1155,7 +1155,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecute<TException1, TException2, TException3>( [NotNull] this Action action )
+        public static bool SafeExecute<TException1, TException2, TException3>( [NotNull] this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -1172,7 +1172,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecute<TException1, TException2, TException3, TException4>( [NotNull] this Action action )
+        public static bool SafeExecute<TException1, TException2, TException3, TException4>( [NotNull] this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -1189,7 +1189,7 @@ namespace HSNXT
         /// <param name="exceptionsToCatch">A list of exception types to catch.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecute( [NotNull] this Action action, [NotNull] params Type[] exceptionsToCatch )
+        public static bool SafeExecute( [NotNull] this Action action, [NotNull] params Type[] exceptionsToCatch )
         {
             action.ThrowIfNull( nameof(action) );
             exceptionsToCatch.ThrowIfNull( nameof(exceptionsToCatch) );
@@ -1214,7 +1214,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static Boolean SafeExecuteExcept<TException>( this Action action )
+        public static bool SafeExecuteExcept<TException>( this Action action )
             where TException : Exception => action.SafeExecuteExcept( typeof(TException) );
 
         /// <summary>
@@ -1225,7 +1225,7 @@ namespace HSNXT
         /// <typeparam name="TException2">The second exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2>( this Action action )
+        public static bool SafeExecuteExcept<TException1, TException2>( this Action action )
             where TException1 : Exception
             where TException2 : Exception => action.SafeExecuteExcept( typeof(TException1), typeof(TException2) );
 
@@ -1238,7 +1238,7 @@ namespace HSNXT
         /// <typeparam name="TException3">The third exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2, TException3>( this Action action )
+        public static bool SafeExecuteExcept<TException1, TException2, TException3>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception => action.SafeExecuteExcept( typeof(TException1), typeof(TException2), typeof(TException3) );
@@ -1253,7 +1253,7 @@ namespace HSNXT
         /// <typeparam name="TException4">The fourth exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2, TException3, TException4>( this Action action )
+        public static bool SafeExecuteExcept<TException1, TException2, TException3, TException4>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -1267,7 +1267,7 @@ namespace HSNXT
         /// <param name="action">The action to execute.</param>
         /// <param name="exceptionsToThrow">The exceptions to throw.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept( this Action action, params Type[] exceptionsToThrow )
+        public static bool SafeExecuteExcept( this Action action, params Type[] exceptionsToThrow )
         {
             action.ThrowIfNull( nameof(action) );
             exceptionsToThrow.ThrowIfNull( nameof(exceptionsToThrow) );

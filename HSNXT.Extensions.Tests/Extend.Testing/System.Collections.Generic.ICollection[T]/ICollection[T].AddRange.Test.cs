@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Extend.Testing
         {
             var c = new List<String>();
 
-            var result = CollectionTEx.AddRange( c, new List<String> { "test0", "test1", "test2" } );
+            var result = Extensions.AddRange( c, new List<String> { "test0", "test1", "test2" } );
             Assert.Equal( 3, c.Count );
             Assert.Same( c, result );
         }
@@ -35,7 +36,7 @@ namespace Extend.Testing
         public void AddRangeTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddRange( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => Extensions.AddRange( null, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -45,7 +46,7 @@ namespace Extend.Testing
         {
             List<String> array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddRange( new List<String>(), array );
+            Action test = () => Extensions.AddRange( new List<String>(), array );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -54,7 +55,7 @@ namespace Extend.Testing
         public void AddRangeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddRange( null, "test0", "test1", "test2" );
+            Action test = () => Extensions.AddRange( null, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -63,7 +64,7 @@ namespace Extend.Testing
         public void AddRangeTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => CollectionTEx.AddRange( new List<String>(), null );
+            Action test = () => Extensions.AddRange( new List<String>(), null );
 
             test.ShouldThrow<ArgumentException>();
         }

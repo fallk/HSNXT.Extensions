@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => AssemblyEx.GetTypesWithAttribute<FooAttribute>( null );
+            Action test = () => Extensions.GetTypesWithAttribute<FooAttribute>( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -24,7 +25,7 @@ namespace Extend.Testing
         [Fact]
         public void GetTypesWithAttributeBaseTypeTest()
         {
-            var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
+            var actual = Extensions.GetTypesWithAttribute<FooAttribute>( true,
                                                                          typeof(BaseTestClass),
                                                                          GetType()
                                                                              .GetDeclaringAssembly() )
@@ -68,7 +69,7 @@ namespace Extend.Testing
         [Fact]
         public void GetTypesWithAttributeInheriteTest()
         {
-            var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
+            var actual = Extensions.GetTypesWithAttribute<FooAttribute>( true,
                                                                          GetType()
                                                                              .GetDeclaringAssembly() )
                                    .ToList();
@@ -128,7 +129,7 @@ namespace Extend.Testing
         [Fact]
         public void GetTypesWithAttributeTest()
         {
-            var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( GetType()
+            var actual = Extensions.GetTypesWithAttribute<FooAttribute>( GetType()
                                                                              .GetDeclaringAssembly() )
                                    .ToList();
 

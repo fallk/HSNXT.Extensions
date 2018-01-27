@@ -29,12 +29,12 @@ namespace HSNXT
         /// <summary>
         ///     The predicate used to validate the given objects.
         /// </summary>
-        private readonly Func<T, Boolean> _expression;
+        private readonly Func<T, bool> _expression;
 
         /// <summary>
         ///     The error message.
         /// </summary>
-        private readonly String _message;
+        private readonly string _message;
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">expression can not be null.</exception>
         /// <param name="expression">The validation expression.</param>
         /// <param name="message">The validation error message.</param>
-        public ExpressionSpecification( [NotNull] Func<T, Boolean> expression, [CanBeNull] String message = null )
+        public ExpressionSpecification( [NotNull] Func<T, bool> expression, [CanBeNull] string message = null )
         {
             expression.ThrowIfNull( nameof(expression) );
 
@@ -64,7 +64,7 @@ namespace HSNXT
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
         [PublicAPI]
-        public override Boolean IsSatisfiedBy( T obj )
+        public override bool IsSatisfiedBy( T obj )
             => _expression( obj );
 
         /// <summary>
@@ -73,13 +73,13 @@ namespace HSNXT
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
         [PublicAPI]
-        public override IEnumerable<String> IsSatisfiedByWithMessages( T obj )
+        public override IEnumerable<string> IsSatisfiedByWithMessages( T obj )
         {
             var result = _expression( obj );
             if ( result )
-                return new String[0];
+                return new string[0];
 
-            return new List<String> { _message };
+            return new List<string> { _message };
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using FluentAssertions;
@@ -16,7 +17,7 @@ namespace Extend.Testing
             // Case 1
             var trueActionExecuted = false;
             var falseActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 null,
                 false,
@@ -28,7 +29,7 @@ namespace Extend.Testing
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 () => falseActionExecuted = true,
                 false,
@@ -40,7 +41,7 @@ namespace Extend.Testing
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 () => falseActionExecuted = true,
                 false,
@@ -52,7 +53,7 @@ namespace Extend.Testing
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 null,
                 false,
@@ -64,7 +65,7 @@ namespace Extend.Testing
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 null,
                 false,
@@ -82,7 +83,7 @@ namespace Extend.Testing
             // Case 1
             var trueActionExecuted = false;
             var falseActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 null,
@@ -95,7 +96,7 @@ namespace Extend.Testing
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 p1 => falseActionExecuted = p1 == parameter,
@@ -108,7 +109,7 @@ namespace Extend.Testing
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 p1 => falseActionExecuted = p1 == parameter,
@@ -121,7 +122,7 @@ namespace Extend.Testing
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 null,
@@ -134,7 +135,7 @@ namespace Extend.Testing
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 null,
@@ -149,7 +150,7 @@ namespace Extend.Testing
         public void ExecuteIfAnyTrueTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ActionEx.ExecuteIfAnyTrue( null, RandomValueEx.GetRandomString(), null, false, true );
+            Action test = () => Extensions.ExecuteIfAnyTrue( null, RandomValueEx.GetRandomString(), null, false, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -163,7 +164,7 @@ namespace Extend.Testing
             // Case 1
             var trueActionExecuted = false;
             var falseActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -177,7 +178,7 @@ namespace Extend.Testing
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -191,7 +192,7 @@ namespace Extend.Testing
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -205,7 +206,7 @@ namespace Extend.Testing
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -219,7 +220,7 @@ namespace Extend.Testing
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -235,7 +236,7 @@ namespace Extend.Testing
         public void ExecuteIfAnyTrueTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ActionEx.ExecuteIfAnyTrue( null,
+            Action test = () => Extensions.ExecuteIfAnyTrue( null,
                                                            RandomValueEx.GetRandomString(),
                                                            RandomValueEx.GetRandomString(),
                                                            null,
@@ -255,7 +256,7 @@ namespace Extend.Testing
             // Case 1
             var trueActionExecuted = false;
             var falseActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -270,7 +271,7 @@ namespace Extend.Testing
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -285,7 +286,7 @@ namespace Extend.Testing
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -300,7 +301,7 @@ namespace Extend.Testing
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -315,7 +316,7 @@ namespace Extend.Testing
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -332,7 +333,7 @@ namespace Extend.Testing
         public void ExecuteIfAnyTrueTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ActionEx.ExecuteIfAnyTrue( null,
+            Action test = () => Extensions.ExecuteIfAnyTrue( null,
                                                            RandomValueEx.GetRandomString(),
                                                            RandomValueEx.GetRandomString(),
                                                            RandomValueEx.GetRandomString(),
@@ -354,7 +355,7 @@ namespace Extend.Testing
             // Case 1
             var trueActionExecuted = false;
             var falseActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -371,7 +372,7 @@ namespace Extend.Testing
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -389,7 +390,7 @@ namespace Extend.Testing
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -407,7 +408,7 @@ namespace Extend.Testing
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
@@ -423,7 +424,7 @@ namespace Extend.Testing
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
@@ -441,7 +442,7 @@ namespace Extend.Testing
         public void ExecuteIfAnyTrueTest4NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ActionEx.ExecuteIfAnyTrue( null,
+            Action test = () => Extensions.ExecuteIfAnyTrue( null,
                                                            RandomValueEx.GetRandomString(),
                                                            RandomValueEx.GetRandomString(),
                                                            RandomValueEx.GetRandomString(),
@@ -458,7 +459,7 @@ namespace Extend.Testing
         {
             // Case 1
             var trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 false,
                 true );
@@ -467,7 +468,7 @@ namespace Extend.Testing
 
             // Case 2
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 false,
                 true );
@@ -476,7 +477,7 @@ namespace Extend.Testing
 
             // Case 3
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 false,
                 false );
@@ -485,7 +486,7 @@ namespace Extend.Testing
 
             // Case 4
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 () => trueActionExecuted = true,
                 false,
                 false );
@@ -517,7 +518,7 @@ namespace Extend.Testing
 
             // Case 1
             var trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false,
@@ -527,7 +528,7 @@ namespace Extend.Testing
 
             // Case 2
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false,
@@ -537,7 +538,7 @@ namespace Extend.Testing
 
             // Case 3
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false,
@@ -547,7 +548,7 @@ namespace Extend.Testing
 
             // Case 4
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false,
@@ -581,7 +582,7 @@ namespace Extend.Testing
 
             // Case 1
             var trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -592,7 +593,7 @@ namespace Extend.Testing
 
             // Case 2
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -603,7 +604,7 @@ namespace Extend.Testing
 
             // Case 3
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -614,7 +615,7 @@ namespace Extend.Testing
 
             // Case 4
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
@@ -650,7 +651,7 @@ namespace Extend.Testing
 
             // Case 1
             var trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -662,7 +663,7 @@ namespace Extend.Testing
 
             // Case 2
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -674,7 +675,7 @@ namespace Extend.Testing
 
             // Case 3
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -686,7 +687,7 @@ namespace Extend.Testing
 
             // Case 4
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
@@ -728,7 +729,7 @@ namespace Extend.Testing
 
             // Case 1
             var trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -742,7 +743,7 @@ namespace Extend.Testing
 
             // Case 2
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -756,7 +757,7 @@ namespace Extend.Testing
 
             // Case 3
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -770,7 +771,7 @@ namespace Extend.Testing
 
             // Case 4
             trueActionExecuted = false;
-            ActionEx.ExecuteIfAnyTrue(
+            Extensions.ExecuteIfAnyTrue(
                 ( p1, p2, p3, p4 ) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
@@ -809,7 +810,7 @@ namespace Extend.Testing
         public void ExecuteIfAnyTrueTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ActionEx.ExecuteIfAnyTrue( null, null, false, true );
+            Action test = () => Extensions.ExecuteIfAnyTrue( null, null, false, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }

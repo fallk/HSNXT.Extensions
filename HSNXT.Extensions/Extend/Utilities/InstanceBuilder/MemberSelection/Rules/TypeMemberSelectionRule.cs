@@ -55,7 +55,7 @@ namespace HSNXT
         /// <param name="compareMode">The compare mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public TypeMemberSelectionRule( [NotNull] Type type, MemberSelectionMode selectionMode, CompareMode compareMode, String name = null, String description = null )
+        public TypeMemberSelectionRule( [NotNull] Type type, MemberSelectionMode selectionMode, CompareMode compareMode, string name = null, string description = null )
             : base( name, description )
         {
             type.ThrowIfNull( nameof(type) );
@@ -99,7 +99,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
             => $"[{RuleName}] = ({_selectionMode} where type {_compareMode} {_type.Name}) ({RuleDescription}).";
 
         #endregion

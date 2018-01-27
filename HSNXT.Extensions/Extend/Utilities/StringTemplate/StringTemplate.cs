@@ -28,12 +28,12 @@ namespace HSNXT
         /// <summary>
         ///     Char representing a close bracket.
         /// </summary>
-        private const Char BracketClose = '}';
+        private const char BracketClose = '}';
 
         /// <summary>
         ///     Char representing a open bracket.
         /// </summary>
-        private const Char BracketOpen = '{';
+        private const char BracketOpen = '{';
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace HSNXT
         /// <param name="format">The format.</param>
         /// <param name="reader">The reader used to consume the format.</param>
         /// <returns>Returns the error message.</returns>
-        private static String BuildErrorMessageCloseNotEscaped( String format, TextReader reader )
+        private static string BuildErrorMessageCloseNotEscaped( string format, TextReader reader )
         {
             try
             {
@@ -126,7 +126,7 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>  representation
         ///     of the corresponding objects from the value provider.
         /// </returns>
-        private static String FormatWithValueProvider( this String format, IValueProvider valueProvider )
+        private static string FormatWithValueProvider( this string format, IValueProvider valueProvider )
         {
             format.ThrowIfNull( nameof(format) );
 
@@ -134,7 +134,7 @@ namespace HSNXT
             using ( var reader = new StringReader( format ) )
             {
                 var expression = new StringBuilder();
-                Int32 currentChar;
+                int currentChar;
                 var currentState = StringFormatState.OutsideExpression;
 
                 do
@@ -160,7 +160,7 @@ namespace HSNXT
                                     break;
                                 default:
                                     // Normal string content
-                                    result.Append( (Char) currentChar );
+                                    result.Append( (char) currentChar );
                                     break;
                             }
                             break;
@@ -179,7 +179,7 @@ namespace HSNXT
                                     break;
                                 default:
                                     // Part of expression
-                                    expression.Append( (Char) currentChar );
+                                    expression.Append( (char) currentChar );
                                     currentState = StringFormatState.InsideExpression;
                                     break;
                             }
@@ -200,7 +200,7 @@ namespace HSNXT
                                     break;
                                 default:
                                     // Part of expression
-                                    expression.Append( (Char) currentChar );
+                                    expression.Append( (char) currentChar );
                                     break;
                             }
                             break;
@@ -241,7 +241,7 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>  representation
         ///     of the corresponding objects from the object.
         /// </returns>
-        public static String FormatWithObject( this String format, Object source )
+        public static string FormatWithObject( this string format, object source )
             => format.FormatWithValueProvider( new ObjectValueProvider( source ) );
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>  representation
         ///     of the corresponding objects from the dictionary.
         /// </returns>
-        public static String FormatWithValues( this String format, IDictionary<String, Object> values )
+        public static string FormatWithValues( this string format, IDictionary<string, object> values )
             => format.FormatWithValueProvider( new LookuptValueProvider( values ) );
 
         #endregion

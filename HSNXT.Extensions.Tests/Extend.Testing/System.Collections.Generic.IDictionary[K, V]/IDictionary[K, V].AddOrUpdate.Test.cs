@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace Extend.Testing
         public void AddOrUpdateTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
+            Action test = () => Extensions.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -85,7 +86,7 @@ namespace Extend.Testing
         public void AddOrUpdateTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
+            Action test = () => Extensions.AddOrUpdate( null, new Object(), () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -131,7 +132,7 @@ namespace Extend.Testing
         public void AddOrUpdateTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
+            Action test = () => Extensions.AddOrUpdate( null, new Object(), x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -149,7 +150,7 @@ namespace Extend.Testing
         public void AddOrUpdateTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
+            Action test = () => Extensions.AddOrUpdate( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -29,13 +29,13 @@ namespace HSNXT
         ///     Gets the name of the rule.
         /// </summary>
         /// <value>The name of the rule.</value>
-        String RuleName { get; }
+        string RuleName { get; }
 
         /// <summary>
         ///     Gets the description of the rule.
         /// </summary>
         /// <value>The description of the rule.</value>
-        String RuleDescription { get; }
+        string RuleDescription { get; }
 
         #endregion
 

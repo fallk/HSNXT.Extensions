@@ -43,7 +43,7 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<String> GetStringValues<T>() where T : struct => GetValues<T>()
+        public static IEnumerable<string> GetStringValues<T>() where T : struct => GetValues<T>()
             .Select( x => x.ToString() );
         /// <summary>
         ///     Gets a dictionary containing the string value for each value of the enumeration of the given type.
@@ -54,7 +54,7 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IDictionary<T, String> GetValueAndStringValue<T>() where T : struct
+        public static IDictionary<T, string> GetValueAndStringValue<T>() where T : struct
         {
             var values = GetValues<T>();
             return values.ToDictionary( x => x, x => x.ToString() );
@@ -137,10 +137,10 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable GetValuesExpect( [NotNull] Type type, [CanBeNull] params Object[] exceptions )
+        public static IEnumerable GetValuesExpect( [NotNull] Type type, [CanBeNull] params object[] exceptions )
         {
             var values = GetValues( type )
-                .OfType<Object>()
+                .OfType<object>()
                 .ToList();
 
             return exceptions == null ? values : values.RemoveRange( exceptions );

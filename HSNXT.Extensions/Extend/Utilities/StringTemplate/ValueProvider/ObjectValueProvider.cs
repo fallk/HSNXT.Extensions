@@ -28,7 +28,7 @@ namespace HSNXT.Internal
         /// <summary>
         ///     The source object.
         /// </summary>
-        private readonly Object _source;
+        private readonly object _source;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace HSNXT.Internal
         /// </summary>
         /// <exception cref="ArgumentNullException">source can not be null.</exception>
         /// <param name="source">The source object.</param>
-        public ObjectValueProvider( Object source )
+        public ObjectValueProvider( object source )
         {
             source.ThrowIfNull( nameof(source) );
 
@@ -55,7 +55,7 @@ namespace HSNXT.Internal
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        public override String GetValue( String expression )
+        public override string GetValue( string expression )
         {
             try
             {

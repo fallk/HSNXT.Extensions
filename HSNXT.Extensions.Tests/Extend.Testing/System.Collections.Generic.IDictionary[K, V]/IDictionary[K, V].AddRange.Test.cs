@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace Extend.Testing
         public void AddRangeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
+            Action test = () => Extensions.AddRange( null, new Dictionary<Object, Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

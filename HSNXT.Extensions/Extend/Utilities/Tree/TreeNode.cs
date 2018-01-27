@@ -153,7 +153,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
         {
             var stringValue = $"{' '.Repeat( Depth * 4 )}[Depth: {Depth} - Value: '{Value?.ToString() ?? "[NULL]"}', Children: {Children.Count}]";
             if ( !HasChildren )
@@ -310,19 +310,19 @@ namespace HSNXT
         ///     Gets the depth of the node.
         /// </summary>
         /// <value>The depth of the node.</value>
-        public Int32 Depth => ( Parent?.Depth ?? -1 ) + 1;
+        public int Depth => ( Parent?.Depth ?? -1 ) + 1;
 
         /// <summary>
         ///     Gets a value indicating whether the node has any children or not.
         /// </summary>
         /// <value>A value indicating whether the node has any children or not.</value>
-        public Boolean HasChildren => Children != null && Children.Any();
+        public bool HasChildren => Children != null && Children.Any();
 
         /// <summary>
         ///     Gets a value indicating whether the node has a parent or not.
         /// </summary>
         /// <value>A value indicating whether the node has a parent or not.</value>
-        public Boolean HasParent => Parent != null;
+        public bool HasParent => Parent != null;
 
         /// <summary>
         ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
@@ -344,7 +344,7 @@ namespace HSNXT
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the values which matches the given predicate.</returns>
-        public virtual IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
+        public virtual IEnumerable<T> FindValue( Func<ITreeNode<T>, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -384,7 +384,7 @@ namespace HSNXT
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        public virtual IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
+        public virtual IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, bool> predicate )
         {
             predicate.ThrowIfNull( nameof(predicate) );
 
@@ -488,8 +488,8 @@ namespace HSNXT
         /// </param>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
         public void SetParent( ITreeNode<T> parent,
-                               Boolean attacheToNewParent = true,
-                               Boolean detachFromOldParent = true )
+                               bool attacheToNewParent = true,
+                               bool detachFromOldParent = true )
         {
             if ( _parent == parent )
                 return;
@@ -648,7 +648,7 @@ namespace HSNXT
         ///     Releases the managed and unmanaged resource hold by the node.
         /// </summary>
         /// <param name="disposing">A value of true to release managed resources, false to release unmanaged resources.</param>
-        protected virtual void Dispose( Boolean disposing )
+        protected virtual void Dispose( bool disposing )
         {
             if ( !disposing )
                 return;

@@ -31,8 +31,8 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static List<Decimal> ExtractAllDecimal( [NotNull] this String value, Int32 startIndex = 0 )
-            => new List<Decimal>( ExtractAllFloatingNumbers( value, startIndex )
+        public static List<decimal> ExtractAllDecimal( [NotNull] this string value, int startIndex = 0 )
+            => new List<decimal>( ExtractAllFloatingNumbers( value, startIndex )
                                       .Select( x => x.ToDecimal() ) );
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static List<Double> ExtractAllDouble( [NotNull] this String value, Int32 startIndex = 0 )
-            => new List<Double>( ExtractAllFloatingNumbers( value, startIndex )
+        public static List<double> ExtractAllDouble( [NotNull] this string value, int startIndex = 0 )
+            => new List<double>( ExtractAllFloatingNumbers( value, startIndex )
                                      .Select( x => x.ToDouble() ) );
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static List<Int16> ExtractAllInt16( [NotNull] this String value, Int32 startIndex = 0 )
-            => new List<Int16>( ExtractAllNumbers( value, startIndex )
+        public static List<short> ExtractAllInt16( [NotNull] this string value, int startIndex = 0 )
+            => new List<short>( ExtractAllNumbers( value, startIndex )
                                     .Select( x => x.ToInt16() ) );
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static List<Int32> ExtractAllInt32( [NotNull] this String value, Int32 startIndex = 0 )
-            => new List<Int32>( ExtractAllNumbers( value, startIndex )
+        public static List<int> ExtractAllInt32( [NotNull] this string value, int startIndex = 0 )
+            => new List<int>( ExtractAllNumbers( value, startIndex )
                                     .Select( x => x.ToInt32() ) );
 
         /// <summary>
@@ -91,8 +91,8 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static List<Int64> ExtractAllInt64( [NotNull] this String value, Int32 startIndex = 0 )
-            => new List<Int64>( ExtractAllNumbers( value, startIndex )
+        public static List<long> ExtractAllInt64( [NotNull] this string value, int startIndex = 0 )
+            => new List<long>( ExtractAllNumbers( value, startIndex )
                                     .Select( x => x.ToInt64() ) );
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace HSNXT
         /// <returns>The extracted decimal.</returns>
         [Pure]
         [PublicAPI]
-        public static Decimal ExtractFirstDecimal( [NotNull] this String value, Int32 startIndex = 0 )
+        public static decimal ExtractFirstDecimal( [NotNull] this string value, int startIndex = 0 )
             => ExtractFloatingNumber( value, startIndex )
                 .ToDecimal();
 
@@ -119,7 +119,7 @@ namespace HSNXT
         /// <returns>The extracted double.</returns>
         [Pure]
         [PublicAPI]
-        public static Double ExtractFirstDouble( [NotNull] this String value, Int32 startIndex = 0 )
+        public static double ExtractFirstDouble( [NotNull] this string value, int startIndex = 0 )
             => ExtractFloatingNumber( value, startIndex )
                 .ToDouble();
 
@@ -133,7 +133,7 @@ namespace HSNXT
         /// <returns>The extracted Int16.</returns>
         [Pure]
         [PublicAPI]
-        public static Int16 ExtractFirstInt16( [NotNull] this String value, Int32 startIndex = 0 )
+        public static short ExtractFirstInt16( [NotNull] this string value, int startIndex = 0 )
             => ExtractNumber( value, startIndex )
                 .ToInt16();
 
@@ -147,7 +147,7 @@ namespace HSNXT
         /// <returns>The extracted Int32.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32 ExtractFirstInt32( [NotNull] this String value, Int32 startIndex = 0 )
+        public static int ExtractFirstInt32( [NotNull] this string value, int startIndex = 0 )
             => ExtractNumber( value, startIndex )
                 .ToInt32();
 
@@ -161,7 +161,7 @@ namespace HSNXT
         /// <returns>The extracted Int64.</returns>
         [Pure]
         [PublicAPI]
-        public static Int64 ExtractFirstInt64( [NotNull] this String value, Int32 startIndex = 0 )
+        public static long ExtractFirstInt64( [NotNull] this string value, int startIndex = 0 )
             => ExtractNumber( value, startIndex )
                 .ToInt64();
 
@@ -177,7 +177,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static List<String> ExtractAllFloatingNumbers( [NotNull] this String value, Int32 startIndex = 0 )
+        private static List<string> ExtractAllFloatingNumbers( [NotNull] this string value, int startIndex = 0 )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -186,7 +186,7 @@ namespace HSNXT
 
             var chars = value.Substring( startIndex )
                              .ToCharArray();
-            var decimals = new List<String>();
+            var decimals = new List<string>();
 
             var sb = new StringBuilder();
             for ( var i = 0; i < chars.Length; i++ )
@@ -222,7 +222,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static List<String> ExtractAllNumbers( [NotNull] this String value, Int32 startIndex = 0 )
+        private static List<string> ExtractAllNumbers( [NotNull] this string value, int startIndex = 0 )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -231,7 +231,7 @@ namespace HSNXT
 
             var chars = value.Substring( startIndex )
                              .ToCharArray();
-            var numbers = new List<String>();
+            var numbers = new List<string>();
 
             var sb = new StringBuilder();
             for ( var i = 0; i < chars.Length; i++ )
@@ -264,7 +264,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static String ExtractFloatingNumber( [NotNull] this String value, Int32 startIndex = 0 )
+        private static string ExtractFloatingNumber( [NotNull] this string value, int startIndex = 0 )
         {
             value.ThrowIfNull( nameof(value) );
 
@@ -303,7 +303,7 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static String ExtractNumber( [NotNull] this String value, Int32 startIndex = 0 )
+        private static string ExtractNumber( [NotNull] this string value, int startIndex = 0 )
         {
             value.ThrowIfNull( nameof(value) );
 

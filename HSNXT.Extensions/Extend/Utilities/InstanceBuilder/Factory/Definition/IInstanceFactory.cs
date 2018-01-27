@@ -29,13 +29,13 @@ namespace HSNXT
         ///     Gets the name of the factory.
         /// </summary>
         /// <value>The name of the factory.</value>
-        String FactoryName { get; }
+        string FactoryName { get; }
 
         /// <summary>
         ///     Gets the description of the factory.
         /// </summary>
         /// <value>The description of the factory.</value>
-        String FactoryDescription { get; }
+        string FactoryDescription { get; }
 
         /// <summary>
         ///     Gets the selection rules of the factory.
@@ -63,6 +63,6 @@ namespace HSNXT
         /// <returns>Returns the created value.</returns>
         [PublicAPI]
         [CanBeNull]
-        Object CreateValue( [NotNull] IMemberInformation memberInformation );
+        object CreateValue( [NotNull] IMemberInformation memberInformation );
     }
 }

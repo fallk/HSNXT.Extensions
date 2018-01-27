@@ -51,7 +51,7 @@ namespace HSNXT
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
+        public override string ToString()
             => Parent?.ToString() ?? $"[Items Count: {Count}]";
 
         #endregion
@@ -120,7 +120,7 @@ namespace HSNXT
         ///     A value indicating weather the parent of the given item should be set to the parent of the
         ///     collection or not.
         /// </param>
-        public void Add( ITreeNode<T> item, Boolean setParent )
+        public void Add( ITreeNode<T> item, bool setParent )
         {
             item.ThrowIfNull( nameof(item) );
 
@@ -142,7 +142,7 @@ namespace HSNXT
         ///     true if item is successfully removed; otherwise, false. This method also
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
-        public Boolean Remove( ITreeNode<T> item, Boolean setParent )
+        public bool Remove( ITreeNode<T> item, bool setParent )
         {
             item.ThrowIfNull( nameof(item) );
 
@@ -175,7 +175,7 @@ namespace HSNXT
         ///     true if item is successfully removed; otherwise, false. This method also
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
-        public new Boolean Remove( ITreeNode<T> item ) => Remove( item, true );
+        public new bool Remove( ITreeNode<T> item ) => Remove( item, true );
 
         #endregion
     }

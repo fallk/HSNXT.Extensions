@@ -64,12 +64,14 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static void AddRange<T>(this ICollection<T> @this, params T[] values)
+        public static ICollection<T> AddRange<T>(this ICollection<T> @this, params T[] values)
         {
             foreach (var value in values)
             {
                 @this.Add(value);
             }
+
+            return @this;
         }
 
         /// <summary>
@@ -80,7 +82,7 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="predicate">The predicate.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static void AddRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate, params T[] values)
+        public static ICollection<T> AddRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate, params T[] values)
         {
             foreach (var value in values)
             {
@@ -89,6 +91,8 @@ namespace HSNXT
                     @this.Add(value);
                 }
             }
+
+            return @this;
         }
 
         /// <summary>
@@ -97,7 +101,7 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static void AddRangeIfNotContains<T>(this ICollection<T> @this, params T[] values)
+        public static ICollection<T> AddRangeIfNotContains<T>(this ICollection<T> @this, params T[] values)
         {
             foreach (var value in values)
             {
@@ -106,6 +110,8 @@ namespace HSNXT
                     @this.Add(value);
                 }
             }
+            
+            return @this;
         }
 
         /// <summary>
@@ -115,7 +121,7 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
         /// <returns>true if it succeeds, false if it fails.</returns>
-        public static bool ContainsAll<T>(this ICollection<T> @this, params T[] values)
+        public static bool CollectionContainsAll<T>(this ICollection<T> @this, params T[] values)
         {
             foreach (var value in values)
             {
@@ -135,7 +141,7 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
         /// <returns>true if it succeeds, false if it fails.</returns>
-        public static bool ContainsAny<T>(this ICollection<T> @this, params T[] values)
+        public static bool CollectionContainsAny<T>(this ICollection<T> @this, params T[] values)
         {
             foreach (var value in values)
             {
@@ -199,12 +205,14 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="value">The value.</param>
         /// <param name="predicate">The predicate.</param>
-        public static void RemoveIf<T>(this ICollection<T> @this, T value, Func<T, bool> predicate)
+        public static ICollection<T> RemoveIf<T>(this ICollection<T> @this, T value, Func<T, bool> predicate)
         {
             if (predicate(value))
             {
                 @this.Remove(value);
             }
+
+            return @this;
         }
 
         /// <summary>
@@ -227,12 +235,14 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static void RemoveRange<T>(this ICollection<T> @this, params T[] values)
+        public static ICollection<T> RemoveRange<T>(this ICollection<T> @this, params T[] values)
         {
             foreach (var value in values)
             {
                 @this.Remove(value);
             }
+
+            return @this;
         }
 
         /// <summary>
@@ -242,7 +252,7 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="predicate">The predicate.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static void RemoveRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate, params T[] values)
+        public static ICollection<T> RemoveRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate, params T[] values)
         {
             foreach (var value in values)
             {
@@ -251,6 +261,8 @@ namespace HSNXT
                     @this.Remove(value);
                 }
             }
+
+            return @this;
         }
 
         /// <summary>
@@ -259,7 +271,7 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static void RemoveRangeIfContains<T>(this ICollection<T> @this, params T[] values)
+        public static ICollection<T> RemoveRangeIfContains<T>(this ICollection<T> @this, params T[] values)
         {
             foreach (var value in values)
             {
@@ -268,6 +280,8 @@ namespace HSNXT
                     @this.Remove(value);
                 }
             }
+            
+            return @this;
         }
 
         /// <summary>
@@ -276,13 +290,15 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <param name="predicate">The predicate.</param>
-        public static void RemoveWhere<T>(this ICollection<T> @this, Func<T, bool> predicate)
+        public static ICollection<T> RemoveWhere<T>(this ICollection<T> @this, Func<T, bool> predicate)
         {
             var list = @this.Where(predicate).ToList();
             foreach (var item in list)
             {
                 @this.Remove(item);
             }
+            
+            return @this;
         }
 
         /// <summary>
@@ -665,18 +681,9 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
         /// <returns>true if it succeeds, false if it fails.</returns>
-        public static bool ContainsAll<T>(this IEnumerable<T> @this, params T[] values)
+        public static bool ContainsAllThese<T>(this IEnumerable<T> @this, params T[] values)
         {
-            var list = @this.ToArray();
-            foreach (var value in values)
-            {
-                if (!list.Contains(value))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return values.All(@this.Contains);
         }
 
         /// <summary>
@@ -686,18 +693,9 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
         /// <returns>true if it succeeds, false if it fails.</returns>
-        public static bool ContainsAny<T>(this IEnumerable<T> @this, params T[] values)
+        public static bool ContainsAnyThese<T>(this IEnumerable<T> @this, params T[] values)
         {
-            var list = @this.ToArray();
-            foreach (var value in values)
-            {
-                if (list.Contains(value))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return values.Any(@this.Contains);
         }
 
         /// <summary>

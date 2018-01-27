@@ -43,7 +43,7 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        IFactoryOptionsConstistent<T> For( [NotNull] Func<IMemberInformation, Boolean> predicate );
+        IFactoryOptionsConstistent<T> For( [NotNull] Func<IMemberInformation, bool> predicate );
 
         /// <summary>
         ///     Factory will NOT be used to create values for members matching the specified options.
@@ -61,6 +61,6 @@ namespace HSNXT
         /// <returns>Returns the modified create instance options.</returns>
         [PublicAPI]
         [NotNull]
-        IFactoryOptionsConstistent<T> NotFor( [NotNull] Func<IMemberInformation, Boolean> predicate );
+        IFactoryOptionsConstistent<T> NotFor( [NotNull] Func<IMemberInformation, bool> predicate );
     }
 }

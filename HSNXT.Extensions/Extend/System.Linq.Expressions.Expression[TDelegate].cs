@@ -51,11 +51,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String GetMemberPath<TDeclaringType, TMember>( [NotNull] this Expression<Func<TDeclaringType, TMember>> expression )
+        public static string GetMemberPath<TDeclaringType, TMember>( [NotNull] this Expression<Func<TDeclaringType, TMember>> expression )
         {
             expression.ThrowIfNull( nameof(expression) );
 
-            var result = new List<String>();
+            var result = new List<string>();
             Expression node = expression;
 
             while ( node != null )

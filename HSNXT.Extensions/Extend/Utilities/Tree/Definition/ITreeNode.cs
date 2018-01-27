@@ -84,19 +84,19 @@ namespace HSNXT
         ///     Gets the depth of the node.
         /// </summary>
         /// <value>The depth of the node.</value>
-        Int32 Depth { get; }
+        int Depth { get; }
 
         /// <summary>
         ///     Gets a value indicating whether the node has any children or not.
         /// </summary>
         /// <value>A value indicating whether the node has any children or not.</value>
-        Boolean HasChildren { get; }
+        bool HasChildren { get; }
 
         /// <summary>
         ///     Gets a value indicating whether the node has a parent or not.
         /// </summary>
         /// <value>A value indicating whether the node has a parent or not.</value>
-        Boolean HasParent { get; }
+        bool HasParent { get; }
 
         /// <summary>
         ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
@@ -120,7 +120,7 @@ namespace HSNXT
         /// <returns>Returns the values which matches the given predicate.</returns>
         [NotNull]
         [PublicAPI]
-        IEnumerable<T> FindValue( [NotNull] Func<ITreeNode<T>, Boolean> predicate );
+        IEnumerable<T> FindValue( [NotNull] Func<ITreeNode<T>, bool> predicate );
 
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
@@ -134,7 +134,7 @@ namespace HSNXT
         /// <returns>Returns the nodes which matches the given predicate.</returns>
         [PublicAPI]
         [NotNull]
-        IEnumerable<ITreeNode<T>> FindNode( [NotNull] Func<ITreeNode<T>, Boolean> predicate );
+        IEnumerable<ITreeNode<T>> FindNode( [NotNull] Func<ITreeNode<T>, bool> predicate );
 
         /// <summary>
         ///     Gets the nodes with the given value.
@@ -176,7 +176,7 @@ namespace HSNXT
         /// </remarks>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
         [PublicAPI]
-        void SetParent( [CanBeNull] ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true );
+        void SetParent( [CanBeNull] ITreeNode<T> parent, bool attacheToNewParent = true, bool detachFromOldParent = true );
 
         /// <summary>
         ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,

@@ -18,10 +18,7 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing extension methods for <see cref="Lazy{T}" />.
-    /// </summary>
-    public static class LayzEx
+    public static partial class Extensions
     {
         /// <summary>
         ///     Disposes the value of the given lazy, if the value was created.

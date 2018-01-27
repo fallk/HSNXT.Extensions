@@ -20,7 +20,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="this">The @this to act on.</param>
         /// <param name="columns">A variable-length parameters list containing columns.</param>
-        public static void AddRange(this DataColumnCollection @this, params string[] columns)
+        public static void AddDataRange(this DataColumnCollection @this, params string[] columns)
         {
             foreach (var column in columns)
             {

@@ -1,6 +1,7 @@
 ﻿#region Usings
+using HSNXT;
 
-using Extend.Internal;
+using HSNXT.Internal;
 using FluentAssertions;
 using Xunit;
 

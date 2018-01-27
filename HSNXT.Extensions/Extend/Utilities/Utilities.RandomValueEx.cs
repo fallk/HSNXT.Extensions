@@ -28,7 +28,7 @@ namespace HSNXT
         /// <summary>
         ///     Array of characters used to "generate" random characters.
         /// </summary>
-        private static readonly Char[] Chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNMöäüéàè.;:()/&%ç*?`!".ToCharArray();
+        private static readonly char[] Chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNMöäüéàè.;:()/&%ç*?`!".ToCharArray();
 
         /// <summary>
         ///     The object used to generate random values.
@@ -38,7 +38,7 @@ namespace HSNXT
         /// <summary>
         ///     The object used to synchronize accesses to <see cref="Rnd" /> across different threads.
         /// </summary>
-        private static readonly Object SyncLock = new Object();
+        private static readonly object SyncLock = new object();
 
         #endregion
 
@@ -67,7 +67,7 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static String GetRandomString()
+        public static string GetRandomString()
             => Guid.NewGuid()
                    .ToString();
 
@@ -77,7 +77,7 @@ namespace HSNXT
         /// <returns>A random char.</returns>
         [PublicAPI]
         [Pure]
-        public static Char GetRandomChar()
+        public static char GetRandomChar()
             => Chars[GetRandomInt32( 0, Chars.Length )];
 
         /// <summary>
@@ -88,9 +88,9 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static List<String> GetRandomStrings( Int32? numberOfItems = null )
+        public static List<string> GetRandomStrings( int? numberOfItems = null )
         {
-            var list = new List<String>();
+            var list = new List<string>();
             numberOfItems = numberOfItems ?? GetRandomInt32( 1, 1000 );
             for ( var i = 0; i < numberOfItems; i++ )
                 list.Add( GetRandomString() );
@@ -112,7 +112,7 @@ namespace HSNXT
         /// <returns>A random integer value.</returns>
         [PublicAPI]
         [Pure]
-        public static Int32 GetRandomInt32( Int32 min = Int32.MinValue, Int32 max = Int32.MaxValue )
+        public static int GetRandomInt32( int min = int.MinValue, int max = int.MaxValue )
         {
             if ( max < min )
                 throw new ArgumentOutOfRangeException( nameof(max), "max must be greater than min" );
@@ -135,12 +135,12 @@ namespace HSNXT
         /// <returns>A random integer value.</returns>
         [PublicAPI]
         [Pure]
-        public static Int16 GetRandomInt16( Int16 min = Int16.MinValue, Int16 max = Int16.MaxValue )
+        public static short GetRandomInt16( short min = short.MinValue, short max = short.MaxValue )
         {
             if ( max < min )
                 throw new ArgumentOutOfRangeException( nameof(max), max, $"{nameof(max)} must be greater than {nameof(min)}" );
 
-            return (Int16) Rnd.Next( min, max );
+            return (short) Rnd.Next( min, max );
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace HSNXT
         /// <returns>A random Boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static Boolean GetRandomBoolean()
+        public static bool GetRandomBoolean()
             => GetRandomInt32() % 2 == 0;
 
         /// <summary>
@@ -170,11 +170,11 @@ namespace HSNXT
             max = max ?? new DateTime( 9999, 12, 31 );
 
             var range = max.Value - min.Value;
-            var randomUpperBound = (Int32) range.TotalSeconds;
+            var randomUpperBound = (int) range.TotalSeconds;
             if ( randomUpperBound <= 0 )
-                randomUpperBound = Rnd.Next( 1, Int32.MaxValue );
+                randomUpperBound = Rnd.Next( 1, int.MaxValue );
 
-            var randTimeSpan = TimeSpan.FromSeconds( (Int64) ( range.TotalSeconds - Rnd.Next( 0, randomUpperBound ) ) );
+            var randTimeSpan = TimeSpan.FromSeconds( (long) ( range.TotalSeconds - Rnd.Next( 0, randomUpperBound ) ) );
 
             return min.Value.Add( randTimeSpan );
         }
@@ -208,22 +208,22 @@ namespace HSNXT
         ///     <value>Int64.MaxValue</value>
         /// </param>
         /// <returns>A random long value.</returns>
-        public static Int64 GetRandomInt64( Int64 min = Int64.MinValue, Int64 max = Int64.MaxValue )
+        public static long GetRandomInt64( long min = long.MinValue, long max = long.MaxValue )
         {
             if ( max < min )
                 throw new ArgumentOutOfRangeException( nameof(max), "max must be greater than min" );
 
-            var uRange = (UInt64) ( max - min );
+            var uRange = (ulong) ( max - min );
 
-            UInt64 ulongRand;
+            ulong ulongRand;
             do
             {
-                var buffer = new Byte[8];
+                var buffer = new byte[8];
                 Rnd.NextBytes( buffer );
-                ulongRand = (UInt64) BitConverter.ToInt64( buffer, 0 );
-            } while ( ulongRand > UInt64.MaxValue - ( UInt64.MaxValue % uRange + 1 ) % uRange );
+                ulongRand = (ulong) BitConverter.ToInt64( buffer, 0 );
+            } while ( ulongRand > ulong.MaxValue - ( ulong.MaxValue % uRange + 1 ) % uRange );
 
-            return (Int64) ( ulongRand % uRange ) + min;
+            return (long) ( ulongRand % uRange ) + min;
         }
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace HSNXT
         /// <returns>A random <see cref="Byte" /> value.</returns>
         [PublicAPI]
         [Pure]
-        public static Byte GetRandomByte()
-            => (Byte) GetRandomInt32();
+        public static byte GetRandomByte()
+            => (byte) GetRandomInt32();
 
         /// <summary>
         ///     Gets a random <see cref="Double" /> value which is in the specified range.
@@ -250,12 +250,12 @@ namespace HSNXT
         /// <returns>A random <see cref="Double" /> value.</returns>
         [PublicAPI]
         [Pure]
-        public static Double GetRandomDouble( Double min = Double.MinValue, Double max = Double.MaxValue )
+        public static double GetRandomDouble( double min = double.MinValue, double max = double.MaxValue )
         {
             if ( max < min )
                 throw new ArgumentOutOfRangeException( nameof(max), max, $"{nameof(max)} must be greater than {nameof(min)}" );
 
-            var part = Math.Min( Double.MaxValue, max - min );
+            var part = Math.Min( double.MaxValue, max - min );
             return min + Rnd.NextDouble() * part;
         }
 

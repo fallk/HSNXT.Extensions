@@ -1,4 +1,5 @@
 ﻿#region Usings
+using HSNXT;
 
 using System;
 using FluentAssertions;
@@ -28,7 +29,7 @@ namespace Extend.Testing
         public void GenericClearTest1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ArrayEx.Clear<String>( null, 0, 2 );
+            Action test = () => Extensions.Clear<String>( null, 0, 2 );
             test.ShouldThrow<ArgumentNullException>();
         }
     }
