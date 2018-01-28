@@ -39,7 +39,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Join( null,
+            Action test = () => Extensions.Join( null,
                                                new Object[]
                                                {
                                                } );
@@ -70,7 +70,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Join( null,
+            Action test = () => Extensions.Join( null,
                                                new Object[]
                                                {
                                                } );
@@ -101,7 +101,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Join( null,
+            Action test = () => Extensions.Join( null,
                                                new Object[]
                                                {
                                                } );
@@ -169,7 +169,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Join( null,
+            Action test = () => Extensions.Join( null,
                                                new String[]
                                                {
                                                } );

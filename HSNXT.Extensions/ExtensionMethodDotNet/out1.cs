@@ -1574,40 +1574,6 @@ list = list.OrderBy(emp => emp.Salary).ToObservableCollection();
             return c;
         }
 
-
-/*
- * toSlug
- * Generate slugs for friendly urls.
- * 
- * Author: Lucas
- * Submitted on: 11/30/2009 6:13:11 PM
- * 
- * Example: 
- * Console.WriteLine(@"I'm a cute Post Title/""\/".toSlug());
-// => i_m_a_cute_post_title
- */
-
-        public static string ToSlug(this string text)
-        {
-            var value = text.Normalize(NormalizationForm.FormD).Trim();
-            var builder = new StringBuilder();
-
-            foreach (var c in text.ToCharArray())
-                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
-                    builder.Append(c);
-
-            value = builder.ToString();
-
-            var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(text);
-
-            value = Regex.Replace(
-                Regex.Replace(Encoding.ASCII.GetString(bytes), @"\s{2,}|[^\w]", " ", RegexOptions.ECMAScript).Trim(),
-                @"\s+", "_");
-
-            return value.ToLowerInvariant();
-        }
-
-
 /*
  * Async
  * Starts execution of IQueryable on a ThreadPool thread and returns immediately with a "end" method to call once the result is needed.

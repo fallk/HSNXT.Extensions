@@ -21,8 +21,8 @@ namespace HSNXT.Z.Collections.Test
             var @this = new List<string> {"zA", "zB", "C"}.AsEnumerable();
 
             // Exemples
-            var value1 = @this.ContainsAny("1", "zA", "3"); // return true;
-            var value2 = @this.ContainsAny("1", "2", "3"); // return false;
+            var value1 = @this.ContainAny("1", "zA", "3"); // return true;
+            var value2 = @this.ContainAny("1", "2", "3"); // return false;
 
             // Unit Test
             Assert.IsTrue(value1);

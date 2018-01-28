@@ -71,7 +71,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => IComparableTEx.BetweenInclusive( null, "", "" );
+            Action test = () => Extensions.BetweenInclusive( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

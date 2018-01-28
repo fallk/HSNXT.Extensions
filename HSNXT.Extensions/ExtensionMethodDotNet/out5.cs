@@ -373,8 +373,6 @@ sb.Clear();
 
         myList.GetRandomItem();
  */
-        private static readonly Random Rand = new Random();
-
         /// <summary>
         /// Sorteia randomicamente um item de um IList e o retorna
         /// </summary>
@@ -387,7 +385,7 @@ sb.Clear();
                 if (input.Count == 1)
                     return input[0];
 
-                var n = _rand.Next(input.Count + 1);
+                var n = Rand.Next(input.Count + 1);
 
                 return input[n];
             }
@@ -1578,26 +1576,6 @@ using(var stream = new MemoryStream())
         #region Public methods
 
         /// <summary>
-        ///   Serialize object to xml string by <see cref = "XmlSerializer" />
-        /// </summary>
-        /// <typeparam name = "T"></typeparam>
-        /// <param name = "value"></param>
-        /// <returns></returns>
-        public static string ToXml<T>(this T value)
-            where T : new()
-        {
-            var serializer = GetValue(typeof(T));
-            using (var stream = new MemoryStream())
-            {
-                using (var writer = new XmlTextWriter(stream, new UTF8Encoding()))
-                {
-                    serializer.Serialize(writer, value);
-                    return Encoding.UTF8.GetString(stream.ToArray());
-                }
-            }
-        }
-
-        /// <summary>
         ///   Serialize object to stream by <see cref = "XmlSerializer" />
         /// </summary>
         /// <typeparam name = "T"></typeparam>
@@ -1682,22 +1660,16 @@ Console.WriteLine(19.Days().From(new DateTime(2007,1,1)));
 
         public abstract class TimeSelector
         {
-            protected TimeSpan MyTimeSpan;
+            protected TimeSpan myTimeSpan;
 
             internal int ReferenceValue
             {
-                set { myTimeSpan = MyTimeSpan(value); }
+                set => myTimeSpan = MyTimeSpan(value);
             }
 
-            public DateTime Ago
-            {
-                get { return DateTime.Now - myTimeSpan; }
-            }
+            public DateTime Ago => DateTime.Now - myTimeSpan;
 
-            public DateTime FromNow
-            {
-                get { return DateTime.Now + myTimeSpan; }
-            }
+            public DateTime FromNow => DateTime.Now + myTimeSpan;
 
             public DateTime AgoSince(DateTime dt)
             {

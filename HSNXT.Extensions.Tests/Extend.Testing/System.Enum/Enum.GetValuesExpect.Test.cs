@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void GetValuesExpectTest()
         {
-            var actual = EnumEx.GetValuesExpect( DayOfWeek.Sunday, DayOfWeek.Thursday )
+            var actual = Extensions.GetValuesExpect( DayOfWeek.Sunday, DayOfWeek.Thursday )
                                .ToList();
 
             Assert.Equal( 5, actual.Count );
@@ -29,7 +29,7 @@ namespace Extend.Testing
         [Fact]
         public void GetValuesExpectTest1()
         {
-            var actual = EnumEx.GetValuesExpect<DayOfWeek>( null )
+            var actual = Extensions.GetValuesExpect<DayOfWeek>( null )
                                .ToList();
 
             Assert.Equal( 7, actual.Count );
@@ -46,7 +46,7 @@ namespace Extend.Testing
         public void GetValuesExpectTest2()
         {
             var type = typeof(DayOfWeek);
-            var actual = EnumEx.GetValuesExpect( type, DayOfWeek.Sunday, DayOfWeek.Thursday );
+            var actual = Extensions.GetValuesExpect( type, DayOfWeek.Sunday, DayOfWeek.Thursday );
 
             var casted = actual.Cast<Object>();
             var list = casted.Select( x => Convert.ChangeType( x, type ) )
@@ -65,7 +65,7 @@ namespace Extend.Testing
         {
             var type = typeof(DayOfWeek);
             var param = new Object[0];
-            var actual = EnumEx.GetValuesExpect( type, param );
+            var actual = Extensions.GetValuesExpect( type, param );
 
             var casted = actual.Cast<Object>();
             var list = casted.Select( x => Convert.ChangeType( x, type ) )
@@ -84,7 +84,7 @@ namespace Extend.Testing
         [Fact]
         public void GetValuesExpectTestArgumentExceptionCheck()
         {
-            Action test = () => EnumEx.GetValuesExpect( 0, 4, 5 )
+            Action test = () => Extensions.GetValuesExpect( 0, 4, 5 )
                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                       .ToList();
 
@@ -95,7 +95,7 @@ namespace Extend.Testing
         public void GetValuesExpectTestArgumentExceptionCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => EnumEx.GetValuesExpect( typeof(Int32), 2, 3, 4, 5 );
+            Action test = () => Extensions.GetValuesExpect( typeof(Int32), 2, 3, 4, 5 );
 
             test.ShouldThrow<ArgumentException>();
         }

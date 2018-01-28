@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void FactorOfDivideByZeroTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Int64Ex.FactorOf( 0, 100 );
+            Action test = () => Extensions.FactorOf( 0, 100 );
             test.ShouldThrow<DivideByZeroException>();
         }
 
@@ -26,22 +26,22 @@ namespace Extend.Testing
             var factorNumer = RandomValueEx.GetRandomInt32();
 
             var expected = factorNumer % value == 0;
-            var actual = Int64Ex.FactorOf( value, factorNumer );
+            var actual = Extensions.FactorOf( value, factorNumer );
             actual
                 .Should()
                 .Be( expected );
 
-            actual = Int64Ex.FactorOf( 10, 100 );
+            actual = Extensions.FactorOf( 10, 100 );
             actual
                 .Should()
                 .Be( true );
 
-            actual = Int64Ex.FactorOf( 100, 10 );
+            actual = Extensions.FactorOf( 100, 10 );
             actual
                 .Should()
                 .Be( false );
 
-            actual = Int64Ex.FactorOf( 11, 100 );
+            actual = Extensions.FactorOf( 11, 100 );
             actual
                 .Should()
                 .Be( false );

@@ -4,6 +4,7 @@ using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
+using FluentAssertions.Execution;
 using Xunit;
 
 #endregion
@@ -247,9 +248,9 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 2, actaul.Count );
-            Assert.Equal( 1, actaul.Count( x => x == "msgLeft" ) );
-            Assert.Equal( 1, actaul.Count( x => x == "msgRight" ) );
+            if (2 != actaul.Count ) throw new AssertionFailedException("1");
+            if (1 != actaul.Count( x => x == "msgLeft" ) ) throw new AssertionFailedException("left");
+            if (1 != actaul.Count( x => x == "msgRight" ) ) throw new AssertionFailedException("right");
         }
 
         [Fact]

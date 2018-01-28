@@ -19,7 +19,7 @@ namespace Extend.Testing
             Func<String, String> keySelector = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => IEqualityComparerEx.By( keySelector, new StringLengthComparer() );
+            Action test = () => Extensions.By( keySelector, new StringLengthComparer() );
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -27,7 +27,7 @@ namespace Extend.Testing
         public void ByTest()
         {
             // ReSharper disable once RedundantArgumentDefaultValue
-            var actual = IEqualityComparerEx.By<String, Int32>( x => x.Length, null );
+            var actual = Extensions.By<String, Int32>( x => x.Length, null );
             var equals = actual.Equals( "test", "1234" );
             equals.Should()
                   .BeTrue();
@@ -36,7 +36,7 @@ namespace Extend.Testing
         [Fact]
         public void ByTest1()
         {
-            var actual = IEqualityComparerEx.By<String, String>( x => x, new StringLengthComparer() );
+            var actual = Extensions.By<String, String>( x => x, new StringLengthComparer() );
             var equals = actual.Equals( "test", "1234" );
             equals.Should()
                   .BeTrue();

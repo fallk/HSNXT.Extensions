@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void GetValuesTest()
         {
-            var actual = EnumEx.GetValues<DayOfWeek>()
+            var actual = Extensions.GetValues<DayOfWeek>()
                                .ToList();
             Assert.Equal( 7, actual.Count );
             Assert.Equal( DayOfWeek.Sunday, actual[0] );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         public void GetValuesTest1()
         {
             var type = typeof(DayOfWeek);
-            var actual = EnumEx.GetValues( type );
+            var actual = Extensions.GetValues( type );
 
             var casted = actual.Cast<Object>();
             var list = casted.Select( x => Convert.ChangeType( x, type ) )
@@ -51,7 +51,7 @@ namespace Extend.Testing
         public void GetValuesTestArgumentExceptionCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => EnumEx.GetValues<Int32>();
+            Action test = () => Extensions.GetValues<Int32>();
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
         public void GetValuesTestArgumentExceptionCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => EnumEx.GetValues( typeof(Int32) );
+            Action test = () => Extensions.GetValues( typeof(Int32) );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -71,7 +71,7 @@ namespace Extend.Testing
             Type t = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => EnumEx.GetValues( t );
+            Action test = () => Extensions.GetValues( t );
 
             test.ShouldThrow<ArgumentNullException>();
         }

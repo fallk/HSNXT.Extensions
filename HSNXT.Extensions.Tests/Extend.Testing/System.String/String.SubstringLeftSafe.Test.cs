@@ -48,7 +48,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.SubstringLeftSafe( null, 1, 5 );
+            Action test = () => Extensions.SubstringLeftSafe( null, 1, 5 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.SubstringLeftSafe( null, 5 );
+            Action test = () => Extensions.SubstringLeftSafe( null, 5 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -47,7 +47,7 @@ namespace Extend.Testing
         public void AppendLineFormatTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringBuilderEx.AppendLineFormat( null, "", "" );
+            Action test = () => Extensions.AppendLineFormat( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -81,7 +81,7 @@ namespace Extend.Testing
         public void AppendLineFormatTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "" );
+            Action test = () => Extensions.AppendLineFormat( null, "", "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -116,7 +116,7 @@ namespace Extend.Testing
         public void AppendLineFormatTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "", "" );
+            Action test = () => Extensions.AppendLineFormat( null, "", "", "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -134,7 +134,7 @@ namespace Extend.Testing
         public void AppendLineFormatTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringBuilderEx.AppendLineFormat( null,
+            Action test = () => Extensions.AppendLineFormat( null,
                                                                   "",
                                                                   "" );
 
@@ -146,15 +146,6 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new StringBuilder().AppendLineFormat( null, "" );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Fact]
-        public void AppendLineFormatTestNullCheck2()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new StringBuilder().AppendLineFormat( "", null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

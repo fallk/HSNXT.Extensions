@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ReplaceByEmpty( null, "a", "c" );
+            Action test = () => Extensions.ReplaceByEmpty( null, "a", "c" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

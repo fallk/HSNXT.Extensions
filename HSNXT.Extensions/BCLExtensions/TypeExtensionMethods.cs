@@ -153,7 +153,7 @@ namespace HSNXT
         /// <param name="type"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        private static Type GetGenericArgument(this Type type, int index)
+        public static Type GetGenericArgument(this Type type, int index)
         {
 #if (NETSTANDARD1_6)
 			return type.GetTypeInfo().GetGenericArguments()[index];
@@ -168,7 +168,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        private static bool IsValueType(this Type type)
+        public static bool IsValueType(this Type type)
         {
 #if (NETSTANDARD1_6)
 			return type.GetTypeInfo().IsValueType;
@@ -182,7 +182,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        private static bool IsGenericType(this Type type)
+        public static bool IsGenericType(this Type type)
         {
 #if (NETSTANDARD1_6)
 			return type.GetTypeInfo().IsGenericType;
@@ -196,7 +196,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        private static Assembly GetAssembly(this Type type)
+        public static Assembly GetAssembly(this Type type)
         {
 #if (NETSTANDARD1_6)
 			return type.GetTypeInfo().Assembly;

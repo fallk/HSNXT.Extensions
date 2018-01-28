@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ToDateTime( null );
+            Action test = () => Extensions.ToDateTime( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -68,7 +68,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ToDateTime( null, CultureInfo.CurrentCulture );
+            Action test = () => Extensions.ToDateTime( null, CultureInfo.CurrentCulture );
 
             test.ShouldThrow<ArgumentNullException>();
         }

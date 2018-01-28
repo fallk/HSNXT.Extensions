@@ -35,7 +35,7 @@ namespace Extend.Testing
         public void PercentOfTest1DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Int16Ex.PercentOf( 0, (Double) 100 );
+            Action test = () => Extensions.PercentOf( 0, (Double) 100 );
 
             test.ShouldThrow<DivideByZeroException>();
         }
@@ -54,7 +54,7 @@ namespace Extend.Testing
         public void PercentOfTest2DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Int16Ex.PercentOf( 0, (Int64) 100 );
+            Action test = () => Extensions.PercentOf( 0, (Int64) 100 );
 
             test.ShouldThrow<DivideByZeroException>();
         }
@@ -63,7 +63,7 @@ namespace Extend.Testing
         public void PercentOfTestDivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Int16Ex.PercentOf( 0, 100 );
+            Action test = () => Extensions.PercentOf( 0, 100 );
 
             test.ShouldThrow<DivideByZeroException>();
         }

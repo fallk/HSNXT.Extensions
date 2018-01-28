@@ -4472,7 +4472,6 @@
             <e p="String.AppendWithNewLineIfNotEmpty.Test.cs" t="Include" />
             <e p="String.ChangeType.Test.cs" t="Include" />
             <e p="String.CharAt.Test.cs" t="Include" />
-            <e p="String.CompareOrdinal.Test.cs" t="Include" />
             <e p="String.CompareOrdinalIgnoreCase.Test.cs" t="Include" />
             <e p="String.ConcatAll.Test.cs" t="Include" />
             <e p="String.Contains.Test.cs" t="Include" />

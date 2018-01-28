@@ -21,9 +21,9 @@ namespace HSNXT.Z.Core.Test
             var arrayObject = (object) new[] {"Fizz", "Buzz"};
 
             // Exemples
-            var intValue = intObject.As<int>(); // return 13;
-            var stringValue = stringObject.As<string>(); // return "FizzBuzz";
-            var arrayCount = arrayObject.As<string[]>().Length; // return 2;
+            var intValue = intObject.CastAs<int>(); // return 13;
+            var stringValue = stringObject.CastAs<string>(); // return "FizzBuzz";
+            var arrayCount = arrayObject.CastAs<string[]>().Length; // return 2;
 
             // Unit Test
             Assert.AreEqual(13, intValue);

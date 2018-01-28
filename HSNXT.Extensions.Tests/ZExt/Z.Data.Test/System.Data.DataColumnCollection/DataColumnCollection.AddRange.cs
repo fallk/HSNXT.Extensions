@@ -20,7 +20,7 @@ namespace HSNXT.Z.Data.Test
             var @this = new DataTable();
 
             // Exemples
-            @this.Columns.AddRange("Column1", "Column2",
+            @this.Columns.AddDataRange("Column1", "Column2",
                 "Column3"); // Add "Column1", "Column2", "Column3" to the collection
 
             // Unit Test

@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void GetValueAndStringValueTest()
         {
-            var actual = EnumEx.GetValueAndStringValue<DayOfWeek>()
+            var actual = Extensions.GetValueAndStringValue<DayOfWeek>()
                                .ToList();
             Assert.Equal( 7, actual.Count );
 
@@ -72,7 +72,7 @@ namespace Extend.Testing
         [Fact]
         public void GetValueAndStringValueTestArgumentExceptionCheck()
         {
-            Action test = () => EnumEx.GetValueAndStringValue<Int32>()
+            Action test = () => Extensions.GetValueAndStringValue<Int32>()
                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                       .ToList();
 

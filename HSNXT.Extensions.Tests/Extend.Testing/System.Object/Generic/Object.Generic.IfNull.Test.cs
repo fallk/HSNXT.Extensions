@@ -14,10 +14,10 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomString();
 
-            var actual = ObjectEx.IfNull( null, expected );
+            var actual = Extensions.IfNull( null, expected );
             Assert.Equal( expected, actual );
 
-            actual = expected.IfNull( null );
+            actual = expected.IfNull( (string) null );
             Assert.Equal( expected, actual );
         }
     }

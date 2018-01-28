@@ -38,7 +38,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => RandomEx.RandomOne( null, "", "" );
+            Action test = () => Extensions.RandomOne( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -59,7 +59,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => RandomEx.RandomOne( null, "", "" );
+            Action test = () => Extensions.RandomOne( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

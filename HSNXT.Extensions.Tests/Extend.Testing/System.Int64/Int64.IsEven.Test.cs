@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Fact]
         public void IsEvenOTest()
         {
-            var actual = Int64Ex.IsEven( 0 );
+            var actual = Extensions.IsEven( 0 );
             actual.Should()
                   .Be( true );
         }
@@ -24,7 +24,7 @@ namespace Extend.Testing
             var value = RandomValueEx.GetRandomInt32();
 
             var expected = value % 2 == 0;
-            var actual = Int64Ex.IsEven( value );
+            var actual = Extensions.IsEven( value );
             actual.Should()
                   .Be( expected );
         }

@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.RemoveLettersAndNumbers( null );
+            Action test = () => Extensions.RemoveLettersAndNumbers( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

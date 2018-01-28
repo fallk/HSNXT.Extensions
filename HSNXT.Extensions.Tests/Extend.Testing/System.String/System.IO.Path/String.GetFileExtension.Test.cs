@@ -27,7 +27,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetFileExtension( null );
+            Action test = () => Extensions.GetFileExtension( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

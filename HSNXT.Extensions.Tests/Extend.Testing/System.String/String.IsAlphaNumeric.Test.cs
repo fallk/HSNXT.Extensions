@@ -29,7 +29,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.IsAlphaNumeric( null );
+            Action test = () => Extensions.IsAlphaNumeric( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void AsTest()
         {
             Object value = 10;
-            var actual = value.As<Int32>();
+            var actual = value.CastAs<Int32>();
 
             Assert.Equal( value, actual );
         }
@@ -23,7 +23,7 @@ namespace Extend.Testing
         [Fact]
         public void AsTestNullValue()
         {
-            var res = ObjectEx.As<String>( null );
+            var res = Extensions.CastAs<String>( null );
             res.Should()
                .BeNull();
         }

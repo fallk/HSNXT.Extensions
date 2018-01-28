@@ -60,7 +60,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.ToChar( value );
+            Action test = () => Extensions.ToChar( value );
             test.ShouldThrow<FormatException>();
         }
 
@@ -95,7 +95,7 @@ namespace Extend.Testing
         {
             const Char expected = 'a';
             var value = expected.ToString();
-            var actual = ObjectEx.ToChar( value );
+            var actual = Extensions.ToChar( value );
 
             actual
                 .Should()

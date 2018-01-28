@@ -24,7 +24,7 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter. The specified type.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <returns>The object as the specified type.</returns>
-        public static T As<T>(this object @this)
+        public static T CastAs<T>(this object @this)
         {
             return (T) @this;
         }

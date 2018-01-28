@@ -28,7 +28,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ToEnum<DayOfWeek>( null );
+            Action test = () => Extensions.ToEnum<DayOfWeek>( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

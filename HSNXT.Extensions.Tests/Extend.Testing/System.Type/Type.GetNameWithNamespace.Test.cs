@@ -183,7 +183,7 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespaceSimpleTest()
         {
-            var actual = typeof(ActionEx).GetNameWithNamespace();
+            var actual = typeof(Extensions).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "Extend.ActionEx, Extend" );
@@ -196,7 +196,7 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespaceSimpleTest1()
         {
-            var actual = typeof(ArrayEx).GetNameWithNamespace();
+            var actual = typeof(Extensions).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "Extend.ArrayEx, Extend" );

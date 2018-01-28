@@ -12,7 +12,7 @@ namespace Extend.Testing
         [Fact]
         public void IfEmptyTest()
         {
-            var actual = StringEx.IfNotEmpty( null, "test" );
+            var actual = Extensions.IfNotEmpty( null, "test" );
             Assert.Equal( "test", actual );
 
             actual = "".IfNotEmpty( "test" );

@@ -37,7 +37,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Reverse( null );
+            Action test = () => Extensions.Reverse( (string) null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

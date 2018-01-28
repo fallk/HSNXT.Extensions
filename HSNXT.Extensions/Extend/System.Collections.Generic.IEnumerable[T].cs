@@ -21,6 +21,30 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
+        ///     Concatenates all the elements of a IEnumerable, using the specified separator between each element.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
+        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
+        /// <param name="enumerable">An IEnumerable that contains the elements to concatenate.</param>
+        /// <param name="separator">
+        ///     The string to use as a separator.
+        ///     The separator is included in the returned string only if the given IEnumerable has more than one item.
+        /// </param>
+        /// <returns>
+        ///     A string that consists of the elements in the IEnumerable delimited by the separator string.
+        ///     If the given IEnumerable is empty, the method returns String.Empty.
+        /// </returns>
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static string StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
+        {
+            enumerable.ThrowIfNull( nameof(enumerable) );
+
+            return string.Join( "", enumerable );
+        }
+
+        /// <summary>
         ///     Checks if the given IEnumerable is not null and contains some items.
         /// </summary>
         /// <example>
@@ -71,7 +95,26 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
+        public static bool ContainAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
+        {
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            values.ThrowIfNull( nameof(values) );
+
+            return values.All( enumerable.Contains );
+        }
+        
+        /// <summary>
+        ///     Checks if the IEnumerable contains all values of the given IEnumerable.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
+        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
+        /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
+        /// <param name="enumerable">The IEnumerable to act on.</param>
+        /// <param name="values">The IEnumerable containing the values to search for.</param>
+        /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
+        [Pure]
+        [PublicAPI]
+        public static bool ContainAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             values.ThrowIfNull( nameof(values) );
@@ -93,7 +136,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainsAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
+        public static bool ContainAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             values.ThrowIfNull( nameof(values) );
@@ -115,7 +158,7 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainsAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
+        public static bool ContainAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
         {
             enumerable.ThrowIfNull( nameof(enumerable) );
             values.ThrowIfNull( nameof(values) );

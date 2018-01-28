@@ -126,7 +126,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBefore( null, 't', 1, 1 );
+            Action test = () => Extensions.GetBefore( null, 't', 1, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -143,7 +143,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBefore( null, 't' );
+            Action test = () => Extensions.GetBefore( null, 't' );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -173,7 +173,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         {
-            Action test = () => StringEx.GetBefore( null, "", 1, 1 );
+            Action test = () => Extensions.GetBefore( null, "", 1, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -200,7 +200,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBefore( null, "" );
+            Action test = () => Extensions.GetBefore( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

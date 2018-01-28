@@ -38,7 +38,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => IComparableTEx.Greater( null, "" );
+            Action test = () => Extensions.Greater( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

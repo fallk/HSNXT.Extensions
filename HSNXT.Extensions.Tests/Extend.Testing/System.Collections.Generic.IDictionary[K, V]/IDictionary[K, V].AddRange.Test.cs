@@ -35,7 +35,7 @@ namespace Extend.Testing
                 .Should()
                 .BeSameAs( dictionary );
             Assert.Equal( 4, dictionary.Count );
-            Assert.True( dictionary.ContainsAll( otherDictionary ) );
+            Assert.True( dictionary.ContainAll( otherDictionary ) );
         }
 
         [Fact]

@@ -59,7 +59,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.F( null, new Object(), new Object() );
+            Action test = () => Extensions.F( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -80,7 +80,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.F( null, new Object(), new Object(), new Object() );
+            Action test = () => Extensions.F( null, new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -101,7 +101,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
+            Action test = () => Extensions.F( null, new Object(), new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -131,7 +131,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
+            Action test = () => Extensions.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -141,7 +141,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.F( null, new Object() );
+            Action test = () => Extensions.F( null, new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

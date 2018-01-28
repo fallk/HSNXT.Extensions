@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => RandomEx.CoinToss( null );
+            Action test = () => Extensions.CoinToss( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

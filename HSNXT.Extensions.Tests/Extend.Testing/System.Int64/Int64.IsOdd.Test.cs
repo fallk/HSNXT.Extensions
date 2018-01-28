@@ -27,7 +27,7 @@ namespace Extend.Testing
             var value = RandomValueEx.GetRandomInt32();
 
             var expected = value % 2 != 0;
-            var actual = Int64Ex.IsOdd( value );
+            var actual = Extensions.IsOdd( value );
             Assert.Equal( expected, actual );
         }
     }

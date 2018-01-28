@@ -25,8 +25,8 @@ namespace Extend.Testing
         [Fact]
         public void GetDeclaringAssemblyTest()
         {
-            var actual = typeof(ActionEx).GetDeclaringAssembly();
-            var expectedVersion = typeof(ActionEx).GetDeclaringAssembly()
+            var actual = typeof(Extensions).GetDeclaringAssembly();
+            var expectedVersion = typeof(Extensions).GetDeclaringAssembly()
                                                   .GetName()
                                                   .Version.ToString();
             actual.FullName.Should()

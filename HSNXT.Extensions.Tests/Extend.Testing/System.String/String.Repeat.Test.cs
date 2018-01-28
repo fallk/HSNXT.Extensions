@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Fact]
         public void RepeatTest()
         {
-            var actual = StringEx.Repeat( null, 10 );
+            var actual = Extensions.Repeat( null, 10 );
             Assert.Equal( String.Empty, actual );
         }
 

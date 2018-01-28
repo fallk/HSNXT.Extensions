@@ -36,7 +36,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ExtractAllDecimal( null );
+            Action test = () => Extensions.ExtractAllDecimal( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -46,7 +46,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ExtractAllDecimal( null, 10 );
+            Action test = () => Extensions.ExtractAllDecimal( null, 10 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

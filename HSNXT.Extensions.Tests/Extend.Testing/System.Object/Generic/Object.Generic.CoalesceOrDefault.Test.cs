@@ -64,7 +64,7 @@ namespace Extend.Testing
             String s = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => ObjectEx.CoalesceOrDefault( null, s, null, null, expected, "Test2" );
+            Action test = () => Extensions.CoalesceOrDefault( null, s, null, null, expected, "Test2" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -75,11 +75,11 @@ namespace Extend.Testing
             var expected = RandomValueEx.GetRandomString();
             String s = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = ObjectEx.CoalesceOrDefault( null, () => s, null, null, expected, "Test2" );
+            var actual = Extensions.CoalesceOrDefault( null, () => s, null, null, expected, "Test2" );
 
             Assert.Equal( expected, actual );
 
-            actual = ObjectEx.CoalesceOrDefault( null, () => expected, null, null );
+            actual = Extensions.CoalesceOrDefault( null, () => expected, null, null );
             Assert.Equal( expected, actual );
         }
 

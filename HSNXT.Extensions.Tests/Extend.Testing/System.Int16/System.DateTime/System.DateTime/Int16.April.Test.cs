@@ -14,7 +14,7 @@ namespace Extend.Testing
         public void AprilTest()
         {
             var expected = new DateTime( 2000, 4, 10 );
-            var actual = Int16Ex.April( 10, 2000 );
+            var actual = Extensions.April( 10, 2000 );
             Assert.Equal( expected, actual );
         }
     }

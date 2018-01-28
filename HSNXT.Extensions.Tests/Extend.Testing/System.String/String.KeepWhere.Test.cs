@@ -16,7 +16,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.KeepWhere( null, x => false );
+            Action test = () => Extensions.KeepWhere( null, x => false );
 
             test.ShouldThrow<ArgumentNullException>();
         }

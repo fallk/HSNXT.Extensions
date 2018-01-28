@@ -17,7 +17,7 @@ namespace Extend.Testing
         {
             const Byte expected = 1;
             var value = expected.ToString();
-            var actual = ObjectEx.ToByte( value, null );
+            var actual = Extensions.ToByte( value, null );
 
             actual
                 .Should()
@@ -29,7 +29,7 @@ namespace Extend.Testing
         {
             const Byte expected = 1;
             var value = expected.ToString();
-            var actual = ObjectEx.ToByte( value, CultureInfo.InvariantCulture );
+            var actual = Extensions.ToByte( value, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -62,7 +62,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.ToByte( value, CultureInfo.CurrentCulture );
+            Action test = () => Extensions.ToByte( value, CultureInfo.CurrentCulture );
             test.ShouldThrow<FormatException>();
         }
 
@@ -72,7 +72,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.ToByte( value );
+            Action test = () => Extensions.ToByte( value );
             test.ShouldThrow<FormatException>();
         }
 
@@ -105,7 +105,7 @@ namespace Extend.Testing
         {
             const Byte expected = 1;
             var value = expected.ToString();
-            var actual = ObjectEx.ToByte( value );
+            var actual = Extensions.ToByte( value );
 
             actual
                 .Should()

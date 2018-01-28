@@ -57,7 +57,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.ToBoolean( value );
+            Action test = () => Extensions.ToBoolean( value );
             test.ShouldThrow<FormatException>();
         }
 
@@ -65,13 +65,13 @@ namespace Extend.Testing
         public void ToBooleanTest()
         {
             var value = "false";
-            var actual = ObjectEx.ToBoolean( value );
+            var actual = Extensions.ToBoolean( value );
             actual
                 .Should()
                 .BeFalse();
 
             value = "true";
-            actual = ObjectEx.ToBoolean( value );
+            actual = Extensions.ToBoolean( value );
             actual
                 .Should()
                 .BeTrue();
@@ -96,7 +96,7 @@ namespace Extend.Testing
         [Fact]
         public void ToBooleanValueNullTest()
         {
-            var actual = ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );
+            var actual = Extensions.ToBoolean( null, CultureInfo.InvariantCulture );
             actual
                 .Should()
                 .Be( false );

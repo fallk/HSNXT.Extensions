@@ -37,7 +37,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
+            Action test = () => Extensions.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -57,7 +57,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Split( null, "" );
+            Action test = () => Extensions.Split( (string)null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -67,7 +67,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Split( "", null );
+            Action test = () => Extensions.Split( "", null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -20,7 +20,7 @@ namespace HSNXT.Z.Data.Test
             var @this = new DataTable();
 
             // Variables
-            @this.Columns.AddRange("IntColumn", "StringColumn");
+            @this.Columns.AddDataRange("IntColumn", "StringColumn");
             @this.Rows.Add(1, "Fizz");
 
             // Exemples

@@ -30,7 +30,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.RefEquals( null, "" );
+            Action test = () => Extensions.RefEquals( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -45,7 +45,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Match( null, "", RegexOptions.Compiled );
+            Action test = () => Extensions.Match( null, "", RegexOptions.Compiled );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -79,7 +79,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => Extensions.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -99,7 +99,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Match( null, "" );
+            Action test = () => Extensions.Match( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

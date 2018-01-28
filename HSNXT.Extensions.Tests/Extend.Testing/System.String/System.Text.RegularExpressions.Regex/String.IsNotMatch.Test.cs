@@ -45,7 +45,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant );
+            Action test = () => Extensions.IsNotMatch( null, "", RegexOptions.CultureInvariant );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -79,7 +79,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
+            Action test = () => Extensions.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -112,7 +112,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.IsNotMatch( null, "" );
+            Action test = () => Extensions.IsNotMatch( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

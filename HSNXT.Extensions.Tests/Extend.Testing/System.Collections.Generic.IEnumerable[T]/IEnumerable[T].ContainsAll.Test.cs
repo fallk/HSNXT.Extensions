@@ -28,9 +28,9 @@ namespace Extend.Testing
         {
             var list = new List<String> { "test", "test1" };
 
-            Assert.True( list.ContainsAll( new List<String> { "test" } ) );
-            Assert.True( list.ContainsAll( list ) );
-            Assert.False( list.ContainsAll( new List<String> { "test", "test1", "test2" } ) );
+            Assert.True( list.ContainAll( new List<String> { "test" } ) );
+            Assert.True( list.ContainAll( list ) );
+            Assert.False( list.ContainAll( new List<String> { "test", "test1", "test2" } ) );
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ContainsAll( null, new List<String>() );
+            Action test = () => Extensions.ContainAll( null, new List<String>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -49,7 +49,7 @@ namespace Extend.Testing
             IEnumerable<Object> enumerable = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().ContainsAll( enumerable );
+            Action test = () => new List<Object>().ContainAll( enumerable );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -70,7 +70,7 @@ namespace Extend.Testing
             Object[] array = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().ContainsAll( array );
+            Action test = () => new List<Object>().ContainAll( array );
 
             test.ShouldThrow<ArgumentNullException>();
         }

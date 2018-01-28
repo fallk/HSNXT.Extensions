@@ -126,7 +126,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBetween( null, 't', 't' );
+            Action test = () => Extensions.GetBetween( null, 't', 't' );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -150,7 +150,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBetween( null, 't', 't' );
+            Action test = () => Extensions.GetBetween( null, 't', 't' );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -180,7 +180,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBetween( null, "", "" );
+            Action test = () => Extensions.GetBetween( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -224,7 +224,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.GetBetween( null, "", "" );
+            Action test = () => Extensions.GetBetween( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

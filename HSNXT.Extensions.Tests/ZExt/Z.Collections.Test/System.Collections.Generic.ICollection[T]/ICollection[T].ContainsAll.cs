@@ -20,8 +20,8 @@ namespace HSNXT.Z.Collections.Test
             var @this = new List<string> {"zA", "zB", "C"};
 
             // Exemples
-            var value1 = @this.ContainsAll("zA", "zB"); // return true;
-            var value2 = @this.ContainsAll("zA", "2"); // return false;
+            var value1 = @this.ContainAll("zA", "zB"); // return true;
+            var value2 = @this.ContainAll("zA", "2"); // return false;
 
             // Unit Test
             Assert.IsTrue(value1);

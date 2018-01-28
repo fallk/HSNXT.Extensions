@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void CoalesceTest()
         {
             var expected = RandomValueEx.GetRandomString();
-            var actual = ObjectEx.Coalesce( null, null, null, null, expected, "Test2" );
+            var actual = Extensions.Coalesce( null, null, null, null, expected, "Test2" );
 
             Assert.Equal( expected, actual );
         }
@@ -24,7 +24,7 @@ namespace Extend.Testing
         public void CoalesceTest1()
         {
             var expected = RandomValueEx.GetRandomString();
-            var actual = ObjectEx.Coalesce( null, null, null, null, expected, "Test2" );
+            var actual = Extensions.Coalesce( null, null, null, null, expected, "Test2" );
 
             Assert.Equal( expected, actual );
         }
@@ -75,7 +75,7 @@ namespace Extend.Testing
             Object[] array = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => ObjectEx.Coalesce( null, array, null );
+            Action test = () => Extensions.Coalesce( null, array, null );
 
             test.ShouldThrow<InvalidOperationException>();
         }

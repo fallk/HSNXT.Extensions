@@ -62,7 +62,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.ToInt64( value, CultureInfo.CurrentCulture );
+            Action test = () => Extensions.ToInt64( value, CultureInfo.CurrentCulture );
             test.ShouldThrow<FormatException>();
         }
 
@@ -72,7 +72,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ObjectEx.ToInt64( value );
+            Action test = () => Extensions.ToInt64( value );
             test.ShouldThrow<FormatException>();
         }
 
