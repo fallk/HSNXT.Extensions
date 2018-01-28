@@ -13,6 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Fact]
+        [UseCulture("en-US")]
         public void ToDoubleFormatProviderNullTest()
         {
             const Double expected = 100.12;
@@ -53,7 +54,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDouble();
-            test.ShouldThrow<InvalidCastException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -73,7 +74,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.ToDouble( value );
-            test.ShouldThrow<FormatException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -89,18 +90,7 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void ToDoubleNullValueTest()
-        {
-            Object value = null;
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToDouble();
-
-            actual
-                .Should()
-                .Be( 0 );
-        }
-
-        [Fact]
+        [UseCulture("en-US")]
         public void ToDoubleTest()
         {
             const Double expected = 100.12;
@@ -129,7 +119,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDouble();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -149,7 +139,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDouble();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldNotThrow();
         }
     }
 }

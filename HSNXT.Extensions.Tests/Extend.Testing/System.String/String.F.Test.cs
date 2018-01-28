@@ -65,6 +65,7 @@ namespace Extend.Testing
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void FTest2()
         {
             const String format = "Test: {0}, {1}, {2}";

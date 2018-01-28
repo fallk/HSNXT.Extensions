@@ -13,6 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
+        [UseCulture("en-US")]
         public void ExtractFirstDoubleTest()
         {
             const Double value0 = 100.2;
@@ -33,6 +34,7 @@ namespace Extend.Testing
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void ExtractFirstDoubleTest1()
         {
             const String sValue = "asdf-100.1234asdf";

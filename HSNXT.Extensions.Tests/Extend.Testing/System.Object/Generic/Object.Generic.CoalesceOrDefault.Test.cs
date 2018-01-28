@@ -93,7 +93,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.CoalesceOrDefault( func, null, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]

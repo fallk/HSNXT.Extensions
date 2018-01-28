@@ -16,7 +16,7 @@ namespace Extend.Testing
         {
             var dateTime = new DateTime( 2014, 12, 29 );
 
-            var actual = dateTime.GetWeekOfYear();
+            var actual = dateTime.GetWeekOfYearInvariant();
             actual.Should()
                   .Be( 1 );
         }
@@ -46,7 +46,7 @@ namespace Extend.Testing
         {
             var dateTime = new DateTime( 2015, 12, 27 );
 
-            var actual = dateTime.GetWeekOfYear();
+            var actual = dateTime.GetWeekOfYearInvariant();
             actual.Should()
                   .Be( 52 );
         }

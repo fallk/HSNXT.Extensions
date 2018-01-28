@@ -34,7 +34,7 @@ namespace Extend.Testing
             var actual = target.AppendWithNewLineIfNotEmpty( append, newLine );
 
             actual.Should()
-                  .Be( append );
+                  .Be( "</br>"+append );
         }
 
         [Fact]

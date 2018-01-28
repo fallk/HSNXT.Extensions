@@ -6394,7 +6394,7 @@ namespace HSNXT
         /// <returns>true if default, false if not.</returns>
         public static bool IsDefault<T>(this T source)
         {
-            return source.Equals(default(T));
+            return Equals(source, default);
         }
 
         /// <summary>

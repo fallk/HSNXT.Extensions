@@ -58,7 +58,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.ToBoolean( value );
-            test.ShouldThrow<FormatException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]

@@ -12,6 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
+        [UseCulture("en-US")]
         public void ExtractAllDecimalTest()
         {
             var value0 = new Decimal( 100.2 );

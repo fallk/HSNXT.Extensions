@@ -71,5 +71,34 @@ namespace HSNXT
                 }
             }
         }
+        
+        /// <summary>
+        /// Returns items from the input sequence until the given predicate returns true
+        /// when applied to the current source item; does not return the last item.
+        /// </summary>
+        /// <typeparam name="TSource">Type of the source sequence</typeparam>
+        /// <param name="source">Source sequence</param>
+        /// <param name="predicate">Predicate used to determine when to stop yielding results from the source.</param>
+        /// <returns>Items from the source sequence, until the predicate returns true when applied to the item.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source"/> or <paramref name="predicate"/> is null</exception>
+        public static IEnumerable<TSource> TakeUntilExclusive<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+
+            return _();
+
+            IEnumerable<TSource> _()
+            {
+                foreach (var item in source)
+                {
+                    if (!predicate(item))
+                        yield return item;
+                    else
+                        yield break;
+                }
+            }
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.Between( null, "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".Between( null, "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".Between( "", null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
     }
 }

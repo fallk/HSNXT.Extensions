@@ -38,7 +38,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.AddRange( null, new List<String> { "test0", "test1", "test2" } );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.AddRange( new List<String>(), array );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.AddRange( null, "test0", "test1", "test2" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.AddRange( new List<String>(), null );
 
-            test.ShouldThrow<ArgumentException>();
+            test.ShouldThrow<NullReferenceException>();
         }
     }
 }

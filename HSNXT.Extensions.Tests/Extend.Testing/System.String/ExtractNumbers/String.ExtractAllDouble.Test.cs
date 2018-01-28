@@ -12,6 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
+        [UseCulture("en-US")]
         public void ExtractAllDoubleTest()
         {
             const Double value0 = 100.2d;

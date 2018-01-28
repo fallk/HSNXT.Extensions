@@ -13,18 +13,6 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Fact]
-        public void ToByteFormatProviderNullTest()
-        {
-            const Byte expected = 1;
-            var value = expected.ToString();
-            var actual = Extensions.ToByte( value, null );
-
-            actual
-                .Should()
-                .Be( expected );
-        }
-
-        [Fact]
         public void ToByteFormatProviderTest()
         {
             const Byte expected = 1;

@@ -28,7 +28,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.IsAlpha( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
     }
 }

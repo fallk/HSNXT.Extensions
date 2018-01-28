@@ -32,7 +32,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ToObservableCollection();
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
     }
 }

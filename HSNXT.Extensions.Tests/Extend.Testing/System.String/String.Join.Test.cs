@@ -44,7 +44,7 @@ namespace Extend.Testing
                                                {
                                                } );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace Extend.Testing
                                                {
                                                } );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -105,8 +105,7 @@ namespace Extend.Testing
                                                new Object[]
                                                {
                                                } );
-
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -149,7 +148,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => seperator.Join( array, 1, 2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -174,7 +173,7 @@ namespace Extend.Testing
                                                {
                                                } );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]

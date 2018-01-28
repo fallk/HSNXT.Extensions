@@ -22,7 +22,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Append( "d" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]

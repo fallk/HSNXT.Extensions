@@ -70,7 +70,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => Extensions.GetOrAdd( null, new Object(), x => new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -101,7 +101,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => Extensions.GetOrAdd( null, new Object(), new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]

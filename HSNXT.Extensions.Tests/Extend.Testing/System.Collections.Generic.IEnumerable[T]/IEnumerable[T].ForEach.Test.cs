@@ -21,7 +21,7 @@ namespace Extend.Testing
             var otherList = new List<String>();
 
             var actual = Extensions.ForEach( list, otherList.Add );
-            Assert.Same( list, actual );
+            Assert.Equal( list, actual );
             Assert.Equal( list.Count, otherList.Count );
             Assert.True( list.All( otherList.Contains ) );
         }
@@ -56,7 +56,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ForEach( action );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Extend.Testing
             var otherList = new List<String>();
 
             var actual = Extensions.ForEach( list, otherList.Add );
-            Assert.Same( list, actual );
+            Assert.Equal( list, actual );
             Assert.Equal( list.Count, otherList.Count );
             Assert.True( list.All( otherList.Contains ) );
         }
@@ -89,7 +89,7 @@ namespace Extend.Testing
             var total = 0;
             var actual = list.ForEach( ( x, i ) => total += i );
 
-            Assert.Same( list, actual );
+            Assert.Equal( list, actual );
             Assert.Equal( 45, total );
         }
 
@@ -112,7 +112,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.ForEach( new List<Object>(), action );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
     }
 }

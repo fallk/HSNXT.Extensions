@@ -111,6 +111,7 @@ namespace Extend.Testing
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void SafeToDoubleTest()
         {
             const Double expected = 100.1d;
@@ -123,6 +124,7 @@ namespace Extend.Testing
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void SafeToDoubleWithDefaultTest()
         {
             const Double expected = 100.1d;

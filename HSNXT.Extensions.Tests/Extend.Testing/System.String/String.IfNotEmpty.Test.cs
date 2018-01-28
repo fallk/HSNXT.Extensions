@@ -13,13 +13,13 @@ namespace Extend.Testing
         public void IfEmptyTest()
         {
             var actual = Extensions.IfNotEmpty( null, "test" );
-            Assert.Equal( "test", actual );
+            Assert.Equal( null, actual );
 
             actual = "".IfNotEmpty( "test" );
             Assert.Equal( "test", actual );
 
             actual = "   ".IfNotEmpty( "test" );
-            Assert.Equal( "test", actual );
+            Assert.Equal( "   ", actual );
 
             actual = "abc".IfNotEmpty( "test" );
             Assert.Equal( "abc", actual );

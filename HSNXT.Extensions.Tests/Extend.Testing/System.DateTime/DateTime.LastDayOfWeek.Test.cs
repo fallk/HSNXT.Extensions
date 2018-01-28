@@ -14,12 +14,12 @@ namespace Extend.Testing
         public void LastDayOfWeekTest()
         {
             var dateTime = new DateTime( 2014, 3, 30 );
-            var actual = dateTime.LastDayOfWeek();
+            var actual = dateTime.LastDayOfWeek2();
 
             Assert.Equal( dateTime, actual );
 
             dateTime = new DateTime( 2014, 3, 28 );
-            actual = dateTime.LastDayOfWeek();
+            actual = dateTime.LastDayOfWeek2();
 
             Assert.Equal( new DateTime( 2014, 3, 30 ), actual );
         }

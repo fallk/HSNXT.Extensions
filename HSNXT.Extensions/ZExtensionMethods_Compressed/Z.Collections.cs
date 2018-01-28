@@ -707,13 +707,14 @@ namespace HSNXT
         /// <returns>An enumerator that allows foreach to be used to process for each in this collection.</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> @this, Action<T> action)
         {
-            var array = @this.ToArray();
-            foreach (var t in array)
+            // ReSharper disable once PossibleMultipleEnumeration
+            foreach (var t in @this)
             {
                 action(t);
             }
 
-            return array;
+            // ReSharper disable once PossibleMultipleEnumeration
+            return @this;
         }
 
         /// <summary>Enumerates for each in this collection.</summary>
@@ -723,14 +724,16 @@ namespace HSNXT
         /// <returns>An enumerator that allows foreach to be used to process for each in this collection.</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> @this, Action<T, int> action)
         {
-            var array = @this.ToArray();
-
-            for (var i = 0; i < array.Length; i++)
+            var i = 0;
+            // ReSharper disable once PossibleMultipleEnumeration
+            foreach (var t in @this)
             {
-                action(array[i], i);
+                action(t, i);
+                i++;
             }
 
-            return array;
+            // ReSharper disable once PossibleMultipleEnumeration
+            return @this;
         }
 
         /// <summary>

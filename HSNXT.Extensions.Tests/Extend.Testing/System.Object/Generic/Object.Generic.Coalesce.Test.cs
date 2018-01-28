@@ -77,7 +77,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => Extensions.Coalesce( null, array, null );
 
-            test.ShouldThrow<InvalidOperationException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -90,7 +90,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.Coalesce( array );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
     }
 }

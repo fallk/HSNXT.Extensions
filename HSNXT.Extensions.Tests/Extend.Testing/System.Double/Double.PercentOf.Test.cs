@@ -14,7 +14,7 @@ namespace Extend.Testing
         public void PercentOfTest()
         {
             const Double number = 1000;
-            const Int32 expected = 50;
+            const Int32 expected = 200;
             var actual = number.PercentOf( 500 );
 
             Assert.Equal( expected, actual );
@@ -24,7 +24,7 @@ namespace Extend.Testing
         public void PercentOfTest1()
         {
             const Double number = 1000;
-            const Int32 expected = 50;
+            const Int32 expected = 200;
             var actual = number.PercentOf( (Double) 500 );
 
             Assert.Equal( expected, actual );
@@ -34,7 +34,7 @@ namespace Extend.Testing
         public void PercentOfTest2()
         {
             const Double number = 1000;
-            const Int32 expected = 50;
+            const Int32 expected = 200;
             var actual = number.PercentOf( (Int64) 500 );
 
             Assert.Equal( expected, actual );

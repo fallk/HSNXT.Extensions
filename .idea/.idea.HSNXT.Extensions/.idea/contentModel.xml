@@ -11,10 +11,10 @@
     <e p="C:\Users\Rafael\.nuget\packages\nunit3testadapter\3.9.0\build\net35\nunit.engine.api.dll" t="Include" />
     <e p="C:\Users\Rafael\.nuget\packages\nunit3testadapter\3.9.0\build\net35\nunit.engine.dll" t="Include" />
     <e p="C:\Users\Rafael\.nuget\packages\nunit3testadapter\3.9.0\build\net35\NUnit3.TestAdapter.dll" t="Include" />
-    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.2.0\build\_common\xunit.abstractions.dll" t="Include" />
-    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.2.0\build\_common\xunit.runner.reporters.net452.dll" t="Include" />
-    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.2.0\build\_common\xunit.runner.utility.net35.dll" t="Include" />
-    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.2.0\build\_common\xunit.runner.visualstudio.testadapter.dll" t="Include" />
+    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\_common\xunit.abstractions.dll" t="Include" />
+    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\_common\xunit.runner.reporters.net452.dll" t="Include" />
+    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\_common\xunit.runner.utility.net452.dll" t="Include" />
+    <e p="C:\Users\Rafael\.nuget\packages\xunit.runner.visualstudio\2.3.1\build\_common\xunit.runner.visualstudio.testadapter.dll" t="Include" />
     <e p="C:\Users\Rafael\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_HSNXT.Extensions.887429427.00" t="ExcludeRecursive" />
     <e p="C:\Users\Rafael\Documents\GitHub\HSNXT.Extensions" t="IncludeFlat">
       <e p="ExtensionMethodApplier" t="IncludeRecursive">
@@ -1571,6 +1571,7 @@
             <e p="ExecutionResult.cs" t="Include" />
             <e p="IndexedItem.cs" t="Include" />
           </e>
+          <e p="New folder" t="Include" />
           <e p="Pars.cs" t="Include" />
           <e p="PortableExtensions.ISpecification[T].cs" t="Include" />
           <e p="System.Action.cs" t="Include" />
@@ -4937,6 +4938,7 @@
           </e>
         </e>
         <e p="UnitTest1.cs" t="Include" />
+        <e p="UseCultureAttribute.cs" t="Include" />
         <e p="XunitShould.4.0.0" t="Include">
           <e p="AssertContainment.cs" t="Include" />
           <e p="AssertEmpty.cs" t="Include" />

@@ -26,7 +26,7 @@ namespace Extend.Testing
             Assert.Equal( list.Count, result.Count() );
 
             var counter = 0;
-            var resultList = list.TakeUntil( x =>
+            var resultList = list.TakeUntilExclusive( x =>
                                  {
                                      counter++;
                                      return counter > 5;

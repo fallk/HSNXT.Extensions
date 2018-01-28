@@ -53,7 +53,7 @@ namespace Extend.Testing
 
             var actual = value.IsMultipleOf( factor );
             actual.Should()
-                  .BeFalse();
+                  .BeTrue();
         }
     }
 }

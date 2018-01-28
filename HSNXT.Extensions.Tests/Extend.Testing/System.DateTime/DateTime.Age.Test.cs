@@ -157,7 +157,7 @@ namespace Extend.Testing
             var dateTime = DateTime.Now.AddDays( 1 );
             const Int32 expected = 0;
 
-            var actual = dateTime.Age();
+            var actual = dateTime.Age2();
             Assert.Equal( expected, actual );
         }
 
@@ -177,7 +177,7 @@ namespace Extend.Testing
             var dateTime = DateTime.Now.AddMonths( 1 );
             const Int32 expected = 0;
 
-            var actual = dateTime.Age();
+            var actual = dateTime.Age2();
             Assert.Equal( expected, actual );
         }
 
@@ -198,7 +198,7 @@ namespace Extend.Testing
                                    .AddMonths( 1 );
             const Int32 expected = -1;
 
-            var actual = dateTime.Age();
+            var actual = dateTime.Age2();
             Assert.Equal( expected, actual );
         }
 
@@ -209,7 +209,7 @@ namespace Extend.Testing
                                    .AddDays( 1 );
             const Int32 expected = -1;
 
-            var actual = dateTime.Age();
+            var actual = dateTime.Age2();
             Assert.Equal( expected, actual );
         }
 

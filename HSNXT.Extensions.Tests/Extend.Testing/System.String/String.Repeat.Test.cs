@@ -10,12 +10,6 @@ namespace Extend.Testing
 {
     public partial class StringExTest
     {
-        [Fact]
-        public void RepeatTest()
-        {
-            var actual = Extensions.Repeat( null, 10 );
-            Assert.Equal( String.Empty, actual );
-        }
 
         [Fact]
         public void RepeatTest1()

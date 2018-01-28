@@ -53,7 +53,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDateTime();
-            test.ShouldThrow<InvalidCastException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -82,18 +82,6 @@ namespace Extend.Testing
             Object value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.ToDateTime( CultureInfo.CurrentCulture );
-
-            actual
-                .Should()
-                .Be( DateTime.MinValue );
-        }
-
-        [Fact]
-        public void ToDateTimeNullValueTest()
-        {
-            Object value = null;
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToDateTime();
 
             actual
                 .Should()

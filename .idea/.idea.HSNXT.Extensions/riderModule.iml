@@ -11,10 +11,10 @@
     <content url="file://$USER_HOME$/.nuget/packages/nunit3testadapter/3.9.0/build/net35/NUnit3.TestAdapter.dll" />
     <content url="file://$USER_HOME$/.nuget/packages/nunit3testadapter/3.9.0/build/net35/nunit.engine.api.dll" />
     <content url="file://$USER_HOME$/.nuget/packages/nunit3testadapter/3.9.0/build/net35/nunit.engine.dll" />
-    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/_common/xunit.abstractions.dll" />
-    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/_common/xunit.runner.reporters.net452.dll" />
-    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/_common/xunit.runner.utility.net35.dll" />
-    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.2.0/build/_common/xunit.runner.visualstudio.testadapter.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/_common/xunit.abstractions.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/_common/xunit.runner.reporters.net452.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/_common/xunit.runner.utility.net452.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/_common/xunit.runner.visualstudio.testadapter.dll" />
     <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

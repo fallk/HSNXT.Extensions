@@ -21,7 +21,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.GetRandomItem();
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]

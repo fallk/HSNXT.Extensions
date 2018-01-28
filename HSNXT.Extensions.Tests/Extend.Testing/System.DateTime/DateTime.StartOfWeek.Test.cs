@@ -15,12 +15,12 @@ namespace Extend.Testing
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 24 );
-            var actual = dateTime.StartOfWeek();
+            var actual = dateTime.StartOfWeek2();
 
             Assert.Equal( expected, actual );
 
             expected = new DateTime( 2014, 3, 26 );
-            actual = dateTime.StartOfWeek( DayOfWeek.Wednesday );
+            actual = dateTime.StartOfWeek2( DayOfWeek.Wednesday );
 
             Assert.Equal( expected, actual );
         }

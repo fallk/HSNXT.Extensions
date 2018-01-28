@@ -28,7 +28,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().AddRangeIfNotContains( list );
 
-            test.ShouldThrow<NullReferenceException>();
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Fact]

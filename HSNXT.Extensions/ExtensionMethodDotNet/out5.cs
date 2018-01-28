@@ -380,17 +380,14 @@ sb.Clear();
         /// <param name="input">A lista a ser avaliada</param>
         public static T GetRandomItem<T>(this IList<T> input)
         {
-            if (input != null)
-            {
-                if (input.Count == 1)
-                    return input[0];
+            if (input == null) return default;
+            
+            if (input.Count == 1)
+                return input[0];
 
-                var n = Rand.Next(input.Count + 1);
+            var n = Rand.Next(input.Count + 1);
 
-                return input[n];
-            }
-
-            return default;
+            return input[n];
         }
 
 

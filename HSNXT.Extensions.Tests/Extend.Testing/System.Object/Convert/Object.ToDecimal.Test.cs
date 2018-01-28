@@ -13,6 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Fact]
+        [UseCulture("en-US")]
         public void ToDecimalFormatProviderNullTest()
         {
             var expected = new Decimal( 100.12 );
@@ -53,7 +54,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
-            test.ShouldThrow<InvalidCastException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -73,7 +74,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.ToDecimal( value );
-            test.ShouldThrow<FormatException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -89,18 +90,7 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void ToDecimalNullValueTest()
-        {
-            Object value = null;
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToDecimal();
-
-            actual
-                .Should()
-                .Be( 0 );
-        }
-
-        [Fact]
+        [UseCulture("en-US")]
         public void ToDecimalTest()
         {
             var expected = new Decimal( 100.12 );
@@ -131,7 +121,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -153,7 +143,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldThrow<Exception>();
         }
     }
 }

@@ -138,6 +138,7 @@ namespace Extend.Testing
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void SafeToDecimalWithDefaultTest()
         {
             var expected = new Decimal( Extensions.GetRandomInt32() + 0.123 );

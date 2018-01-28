@@ -16,7 +16,7 @@ namespace Extend.Testing
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 30 ).AddDays( 1 )
                                                       .Subtract( 1.ToMilliseconds() );
-            var actual = dateTime.EndOfWeek();
+            var actual = dateTime.EndOfWeek2();
             Assert.Equal( expected, actual );
         }
 
@@ -26,7 +26,7 @@ namespace Extend.Testing
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 31 ).AddDays( 1 )
                                                       .Subtract( 1.ToMilliseconds() );
-            var actual = dateTime.EndOfWeek( DayOfWeek.Monday );
+            var actual = dateTime.EndOfWeek2( DayOfWeek.Monday );
             Assert.Equal( expected, actual );
         }
     }

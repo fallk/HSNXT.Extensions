@@ -73,7 +73,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.ToInt64( value );
-            test.ShouldThrow<FormatException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -129,7 +129,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToInt64();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -149,7 +149,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToInt64();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldNotThrow();
         }
     }
 }

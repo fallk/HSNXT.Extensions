@@ -35,7 +35,7 @@ namespace Extend.Testing
             actual.MemberObject.Should()
                   .BeNull();
             actual.MemberPath.Should()
-                  .Be( "MyString" );
+                  .Be( ".MyString" );
             actual.MemberType.Should()
                   .Be( typeof(String) );
             actual.PropertyInfo.Should()

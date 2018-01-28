@@ -35,7 +35,7 @@ namespace Extend.Testing
         {
             var dateTime = new DateTime( 9999, 12, 31 );
             var expected = new DateTime( 9999, 12, 31, 23, 59, 59, 999 );
-            var actual = dateTime.EndOfYear();
+            var actual = dateTime.EndOfYear2();
             Assert.Equal( expected, actual );
         }
     }

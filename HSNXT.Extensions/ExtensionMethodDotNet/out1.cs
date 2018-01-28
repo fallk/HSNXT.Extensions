@@ -2667,34 +2667,6 @@ IEnumerable<Control> children = Container.GetChildren();
             }
         }
 
-
-/*
- * Randomize
- * OrderBy() is nice when you want a consistent & predictable ordering. This method is NOT THAT! Randomize() - Use this extension method when you want a different or random order every time! Useful when ordering a list of things for display to give each a fair chance of landing at the top or bottom on each hit. {customers, support techs, or even use as a randomizer for your lottery ;) }
- * 
- * Author: Phil Campbell
- * Submitted on: 11/2/2009 6:41:32 AM
- * 
- * Example: 
- * // use this on any collection that implements IEnumerable!
-// List, Array, HashSet, Collection, etc
-
-List<string> myList = new List<string> { "hello", "random", "world", "foo", "bar", "bat", "baz" };
-
-foreach (string s in myList.Randomize())
-{
-    Console.WriteLine(s);
-}
- */
-
-        public static IEnumerable<TT> Randomize<TT>(this IEnumerable<TT> target)
-        {
-            var r = new Random();
-
-            return target.OrderBy(x => (r.Next()));
-        }
-
-
 /*
  * Select
  * It returns reader lines which can be retrieved from lamba statement

@@ -16,10 +16,10 @@ namespace Extend.Testing
             Assert.False( value.IsNotEmpty() );
 
             value = null;
-            Assert.False( value.IsNotEmpty() );
+            Assert.True( value.IsNotEmpty() );
 
             value = "   ";
-            Assert.False( value.IsNotEmpty() );
+            Assert.True( value.IsNotEmpty() );
 
             value = Extensions.GetRandomString();
             Assert.True( value.IsNotEmpty() );

@@ -311,6 +311,23 @@ namespace HSNXT
             var index = Extensions.GetRandomInt32( 0, list.Count );
             return list.ElementAt( index );
         }
+        
+        /// <summary>
+        ///     Orders the items in the IEnumerable randomly.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
+        /// <param name="enumerable">The IEnumerable.</param>
+        /// <typeparam name="T">The type of the items in the enumerable.</typeparam>
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> Randomize<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        {
+            enumerable.ThrowIfNull( nameof(enumerable) );
+
+            var rnd = new Random();
+            return enumerable.OrderBy( x => rnd.Next() );
+        }
         /// <summary>
         ///     Produces the set intersection of two sequences.
         /// </summary>
