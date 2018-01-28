@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using JetBrains.Annotations;
+using HSNXT.JetBrains.Annotations;
 using System.Linq;
 using System.IO;
 using System.Diagnostics;
@@ -24,7 +24,7 @@ using HSNXT.Internal;
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace JetBrains.Annotations
+namespace HSNXT.JetBrains.Annotations
 {
     /// <summary>
     ///     Indicates that the value of the marked element could be <c>null</c> sometimes,
