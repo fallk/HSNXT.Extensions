@@ -385,7 +385,7 @@ sb.Clear();
             if (input.Count == 1)
                 return input[0];
 
-            var n = Rand.Next(input.Count + 1);
+            var n = Rand.Next(input.Count);
 
             return input[n];
         }
