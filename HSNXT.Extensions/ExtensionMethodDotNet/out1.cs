@@ -357,22 +357,22 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
         ///     "second" (abbr. "ss", "s"), 
         ///     "millisecond" (abbr. "ms").
         /// </summary>
-        /// <param name="DatePart"></param>
-        /// <param name="EndDate"></param>
+        /// <param name="datePart"></param>
+        /// <param name="endDate"></param>
         /// <returns></returns>
-        public static long DateDiff(this DateTime StartDate, string DatePart, DateTime EndDate)
+        public static long DateDiff(this DateTime startDate, string datePart, DateTime endDate)
         {
-            long DateDiffVal = 0;
+            long dateDiffVal = 0;
             var cal = Thread.CurrentThread.CurrentCulture.Calendar;
-            var ts = new TimeSpan(EndDate.Ticks - StartDate.Ticks);
-            switch (DatePart.ToLower().Trim())
+            var ts = new TimeSpan(endDate.Ticks - startDate.Ticks);
+            switch (datePart.ToLower().Trim())
             {
                 #region year
 
                 case "year":
                 case "yy":
                 case "yyyy":
-                    DateDiffVal = cal.GetYear(EndDate) - cal.GetYear(StartDate);
+                    dateDiffVal = cal.GetYear(endDate) - cal.GetYear(startDate);
                     break;
 
                 #endregion
@@ -382,10 +382,10 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
                 case "quarter":
                 case "qq":
                 case "q":
-                    DateDiffVal = (((cal.GetYear(EndDate)
-                                     - cal.GetYear(StartDate)) * 4)
-                                   + ((cal.GetMonth(EndDate) - 1) / 3))
-                                  - ((cal.GetMonth(StartDate) - 1) / 3);
+                    dateDiffVal = (((cal.GetYear(endDate)
+                                     - cal.GetYear(startDate)) * 4)
+                                   + ((cal.GetMonth(endDate) - 1) / 3))
+                                  - ((cal.GetMonth(startDate) - 1) / 3);
                     break;
 
                 #endregion
@@ -395,10 +395,10 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
                 case "month":
                 case "mm":
                 case "m":
-                    DateDiffVal = ((cal.GetYear(EndDate)
-                                    - cal.GetYear(StartDate)) * 12
-                                   + cal.GetMonth(EndDate))
-                                  - cal.GetMonth(StartDate);
+                    dateDiffVal = ((cal.GetYear(endDate)
+                                    - cal.GetYear(startDate)) * 12
+                                   + cal.GetMonth(endDate))
+                                  - cal.GetMonth(startDate);
                     break;
 
                 #endregion
@@ -408,7 +408,7 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
                 case "day":
                 case "d":
                 case "dd":
-                    DateDiffVal = (long) ts.TotalDays;
+                    dateDiffVal = (long) ts.TotalDays;
                     break;
 
                 #endregion
@@ -418,7 +418,7 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
                 case "week":
                 case "wk":
                 case "ww":
-                    DateDiffVal = (long) (ts.TotalDays / 7);
+                    dateDiffVal = (long) (ts.TotalDays / 7);
                     break;
 
                 #endregion
@@ -427,7 +427,7 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
 
                 case "hour":
                 case "hh":
-                    DateDiffVal = (long) ts.TotalHours;
+                    dateDiffVal = (long) ts.TotalHours;
                     break;
 
                 #endregion
@@ -437,7 +437,7 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
                 case "minute":
                 case "mi":
                 case "n":
-                    DateDiffVal = (long) ts.TotalMinutes;
+                    dateDiffVal = (long) ts.TotalMinutes;
                     break;
 
                 #endregion
@@ -447,7 +447,7 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
                 case "second":
                 case "ss":
                 case "s":
-                    DateDiffVal = (long) ts.TotalSeconds;
+                    dateDiffVal = (long) ts.TotalSeconds;
                     break;
 
                 #endregion
@@ -456,16 +456,16 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
 
                 case "millisecond":
                 case "ms":
-                    DateDiffVal = (long) ts.TotalMilliseconds;
+                    dateDiffVal = (long) ts.TotalMilliseconds;
                     break;
 
                 #endregion
 
                 default:
-                    throw new Exception($"DatePart \"{DatePart}\" is unknown");
+                    throw new Exception($"DatePart \"{datePart}\" is unknown");
             }
 
-            return DateDiffVal;
+            return dateDiffVal;
         }
 
 
@@ -617,14 +617,14 @@ bool isString = type.IsBoolean();
 }
  */
 
-        private static readonly Regex domainRegex =
+        private static readonly Regex DomainRegex =
             new Regex(
                 @"(((?<scheme>http(s)?):\/\/)?([\w-]+?\.\w+)+([a-zA-Z0-9\~\!\@\#\$\%\^\&amp;\*\(\)_\-\=\+\\\/\?\.\:\;\,]*)?)",
                 RegexOptions.Compiled | RegexOptions.Multiline);
 
         public static string Linkify(this string text, string target = "_self")
         {
-            return domainRegex.Replace(
+            return DomainRegex.Replace(
                 text,
                 match =>
                 {
@@ -695,7 +695,7 @@ internal class Program
 }
  */
 
-        public static string ToXML<T>(this T o)
+        public static string ToXml<T>(this T o)
             where T : new()
         {
             string retVal;
@@ -1092,7 +1092,7 @@ string s = "192.168.1.254";
 bool b = s.IsValidIPAddress();
  */
 
-        public static bool IsValidIPAddress(this string s)
+        public static bool IsValidIpAddress(this string s)
         {
             return Regex.IsMatch(s,
                 @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
@@ -1587,7 +1587,7 @@ list = list.OrderBy(emp => emp.Salary).ToObservableCollection();
 // => i_m_a_cute_post_title
  */
 
-        public static string toSlug(this string text)
+        public static string ToSlug(this string text)
         {
             var value = text.Normalize(NormalizationForm.FormD).Trim();
             var builder = new StringBuilder();
@@ -1749,22 +1749,22 @@ Debug.WriteLine("Inject more values and event build in types {0:integer} {1} wit
 
         private class ObjectWrapper : IFormattable
         {
-            private readonly object wrapped;
+            private readonly object _wrapped;
             private static readonly Dictionary<string, FormatInfo> Cache = new Dictionary<string, FormatInfo>();
 
             public ObjectWrapper(object wrapped)
             {
-                this.wrapped = wrapped;
+                this._wrapped = wrapped;
             }
 
             public string ToString(string format, IFormatProvider formatProvider)
             {
                 if (string.IsNullOrEmpty(format))
                 {
-                    return this.wrapped.ToString();
+                    return this._wrapped.ToString();
                 }
 
-                var type = this.wrapped.GetType();
+                var type = this._wrapped.GetType();
                 var key = type.FullName + ":" + format;
 
                 FormatInfo wrapperCache;
@@ -1780,7 +1780,7 @@ Debug.WriteLine("Inject more values and event build in types {0:integer} {1} wit
                 var propertyInfo = wrapperCache.PropertyInfo;
                 var outputFormat = wrapperCache.OutputFormat;
 
-                var value = propertyInfo != null ? propertyInfo.GetValue(this.wrapped) : this.wrapped;
+                var value = propertyInfo != null ? propertyInfo.GetValue(this._wrapped) : this._wrapped;
 
                 return string.Format(formatProvider, outputFormat, value);
             }
@@ -1858,7 +1858,7 @@ IEnumerable<int> seq = Enumerable.Range(1, 5);
 Console.WriteLine(seq.SelectRandom());
  */
 
-        private static Random random = new Random();
+        private static Random _random = new Random();
 
         public static T SelectRandom<T>(this IEnumerable<T> sequence)
         {
@@ -1876,7 +1876,7 @@ Console.WriteLine(seq.SelectRandom());
             if (sequence is ICollection<T>)
             {
                 var col = (ICollection<T>) sequence;
-                return col.ElementAt(random.Next(col.Count));
+                return col.ElementAt(_random.Next(col.Count));
             }
 
             var count = 1;
@@ -1884,7 +1884,7 @@ Console.WriteLine(seq.SelectRandom());
 
             foreach (var element in sequence)
             {
-                if (random.Next(count++) == 0)
+                if (_random.Next(count++) == 0)
                 {
                     //Select the current element with 1/count probability
                     selected = element;
@@ -1973,7 +1973,7 @@ var 1tb = 1.TB();
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static int KB(this int value)
+        public static int Kb(this int value)
         {
             return value * 1024;
         }
@@ -1983,9 +1983,9 @@ var 1tb = 1.TB();
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static int MB(this int value)
+        public static int Mb(this int value)
         {
-            return value.KB() * 1024;
+            return value.Kb() * 1024;
         }
 
         /// <summary>
@@ -1993,9 +1993,9 @@ var 1tb = 1.TB();
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static int GB(this int value)
+        public static int Gb(this int value)
         {
-            return value.MB() * 1024;
+            return value.Mb() * 1024;
         }
 
         /// <summary>
@@ -2003,9 +2003,9 @@ var 1tb = 1.TB();
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static long TB(this int value)
+        public static long Tb(this int value)
         {
-            return value.GB() * (long) 1024;
+            return value.Gb() * (long) 1024;
         }
 
 
@@ -2258,41 +2258,41 @@ list.AddElement("line 1")
         /// <summary>
         /// "SELECT DISTINCT" over a DataTable
         /// </summary>
-        /// <param name="SourceTable">Input DataTable</param>
-        /// <param name="FieldName">Fields to select (distinct)</param>
+        /// <param name="sourceTable">Input DataTable</param>
+        /// <param name="fieldName">Fields to select (distinct)</param>
         /// <returns></returns>
-        public static DataTable SelectDistinct(this DataTable SourceTable, string FieldName)
+        public static DataTable SelectDistinct(this DataTable sourceTable, string fieldName)
         {
-            return SelectDistinct(SourceTable, FieldName, string.Empty);
+            return SelectDistinct(sourceTable, fieldName, string.Empty);
         }
 
         /// <summary>
         ///"SELECT DISTINCT" over a DataTable
         /// </summary>
-        /// <param name="SourceTable">Input DataTable</param>
-        /// <param name="FieldNames">Fields to select (distinct)</param>
-        /// <param name="Filter">Optional filter to be applied to the selection</param>
+        /// <param name="sourceTable">Input DataTable</param>
+        /// <param name="fieldNames">Fields to select (distinct)</param>
+        /// <param name="filter">Optional filter to be applied to the selection</param>
         /// <returns></returns>
-        public static DataTable SelectDistinct(this DataTable SourceTable, string FieldNames, string Filter)
+        public static DataTable SelectDistinct(this DataTable sourceTable, string fieldNames, string filter)
         {
             var dt = new DataTable();
-            var arrFieldNames = FieldNames.Replace(" ", "").Split(',');
+            var arrFieldNames = fieldNames.Replace(" ", "").Split(',');
             foreach (var s in arrFieldNames)
             {
-                if (SourceTable.Columns.Contains(s))
-                    dt.Columns.Add(s, SourceTable.Columns[s].DataType);
+                if (sourceTable.Columns.Contains(s))
+                    dt.Columns.Add(s, sourceTable.Columns[s].DataType);
                 else
                     throw new Exception($"The column {s} does not exist.");
             }
 
-            object[] LastValues = null;
-            foreach (var dr in SourceTable.Select(Filter, FieldNames))
+            object[] lastValues = null;
+            foreach (var dr in sourceTable.Select(filter, fieldNames))
             {
-                var NewValues = GetRowFields(dr, arrFieldNames);
-                if (LastValues == null || !(ObjectComparison(LastValues, NewValues)))
+                var newValues = GetRowFields(dr, arrFieldNames);
+                if (lastValues == null || !(ObjectComparison(lastValues, newValues)))
                 {
-                    LastValues = NewValues;
-                    dt.Rows.Add(LastValues);
+                    lastValues = newValues;
+                    dt.Rows.Add(lastValues);
                 }
             }
 
@@ -2434,9 +2434,9 @@ MessageBox.Show(txtLastName.FixPersianChars());
         /// <summary>
         /// متدی برای حل مشکل وارد کردن ي و ك عربی توسط کاربر و تبدیل به ی و ک فارسی. توسط محمد کمائی
         /// </summary>
-        public static string FixPersianChars(this string Value)
+        public static string FixPersianChars(this string value)
         {
-            return Value.Replace('ي', 'ی').Replace("ك", "ک");
+            return value.Replace('ي', 'ی').Replace("ك", "ک");
         }
 
 
@@ -2485,7 +2485,7 @@ Console.WriteLine(value.ToMd5Hash());
 dataTableExportToCSV.ToCSV (",",false);
  */
 
-        public static void ToCSV(this DataTable table, string delimiter, bool includeHeader)
+        public static void ToCsv(this DataTable table, string delimiter, bool includeHeader)
         {
             var result = new StringBuilder();
 
@@ -2663,7 +2663,7 @@ IEnumerable<Control> children = Container.GetChildren();
 }
  */
 
-        public static void AddCSS(this Page page, string url)
+        public static void AddCss(this Page page, string url)
         {
             var link = new HtmlLink();
             link.Href = url;
@@ -2721,7 +2721,7 @@ foreach (string s in myList.Randomize())
 }
  */
 
-        public static IEnumerable<t> Randomize<t>(this IEnumerable<t> target)
+        public static IEnumerable<TT> Randomize<TT>(this IEnumerable<TT> target)
         {
             var r = new Random();
 
@@ -2851,16 +2851,16 @@ Output:
 double ipNumber = ipAddress.inet_aton();
  */
 
-        public static double inet_aton(this IPAddress IPaddress)
+        public static double inet_aton(this IPAddress paddress)
         {
             int i;
             double num = 0;
-            if (IPaddress.ToString() == "")
+            if (paddress.ToString() == "")
             {
                 return 0;
             }
 
-            var arrDec = IPaddress.ToString().Split('.');
+            var arrDec = paddress.ToString().Split('.');
             for (i = arrDec.Length - 1; i >= 0; i--)
             {
                 num += ((int.Parse(arrDec[i]) % 256) * Math.Pow(256, (3 - i)));

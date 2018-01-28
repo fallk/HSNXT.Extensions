@@ -547,7 +547,7 @@ public void ToCSV_Should_Return_Correct_Comma_Separated_Values_Using_Specified_S
 }
  */
 
-        public static string ToCSV<T>(this IEnumerable<T> instance, char separator)
+        public static string ToCsv<T>(this IEnumerable<T> instance, char separator)
         {
             StringBuilder csv;
             if (instance != null)
@@ -560,7 +560,7 @@ public void ToCSV_Should_Return_Correct_Comma_Separated_Values_Using_Specified_S
             return null;
         }
 
-        public static string ToCSV<T>(this IEnumerable<T> instance)
+        public static string ToCsv<T>(this IEnumerable<T> instance)
         {
             StringBuilder csv;
             if (instance != null)
@@ -1041,7 +1041,7 @@ Console.WriteLine(ir.Length()); //will write 5
  * Example: 
  * .
  */
-        public static string CleanBRTags(this string theString)
+        public static string CleanBrTags(this string theString)
         {
             return theString.Replace(@"<br \>", "");
         }
@@ -1822,9 +1822,9 @@ t.SetSocketKeepAliveValues(300000, 1000);
         /// Using IOControl code to configue socket KeepAliveValues for line disconnection detection(because default is toooo slow) 
         /// </summary>
         /// <param name="tcpc">TcpClient</param>
-        /// <param name="KeepAliveTime">The keep alive time. (ms)</param>
-        /// <param name="KeepAliveInterval">The keep alive interval. (ms)</param>
-        public static void SetSocketKeepAliveValues(this TcpClient tcpc, int KeepAliveTime, int KeepAliveInterval)
+        /// <param name="keepAliveTime">The keep alive time. (ms)</param>
+        /// <param name="keepAliveInterval">The keep alive interval. (ms)</param>
+        public static void SetSocketKeepAliveValues(this TcpClient tcpc, int keepAliveTime, int keepAliveInterval)
         {
             //KeepAliveTime: default value is 2hr
             //KeepAliveInterval: default value is 1s and Detect 5 times
@@ -1832,11 +1832,11 @@ t.SetSocketKeepAliveValues(300000, 1000);
             uint dummy = 0; //lenth = 4
             var inOptionValues =
                 new byte[System.Runtime.InteropServices.Marshal.SizeOf(dummy) * 3]; //size = lenth * 3 = 12
-            var OnOff = true;
+            var onOff = true;
 
-            BitConverter.GetBytes((uint) (OnOff ? 1 : 0)).CopyTo(inOptionValues, 0);
-            BitConverter.GetBytes((uint) KeepAliveTime).CopyTo(inOptionValues, Marshal.SizeOf(dummy));
-            BitConverter.GetBytes((uint) KeepAliveInterval).CopyTo(inOptionValues, Marshal.SizeOf(dummy) * 2);
+            BitConverter.GetBytes((uint) (onOff ? 1 : 0)).CopyTo(inOptionValues, 0);
+            BitConverter.GetBytes((uint) keepAliveTime).CopyTo(inOptionValues, Marshal.SizeOf(dummy));
+            BitConverter.GetBytes((uint) keepAliveInterval).CopyTo(inOptionValues, Marshal.SizeOf(dummy) * 2);
             // of course there are other ways to marshal up this byte array, this is just one way
             // call WSAIoctl via IOControl
 
@@ -1949,10 +1949,10 @@ void Test()
         /// </summary>
         /// <param name="_list">List.</param>
         /// <param name="_index">Index of the element to be removed.</param>
-        public static void RemoveAtFast<T>(this IList<T> _list, int _index)
+        public static void RemoveAtFast<T>(this IList<T> list, int index)
         {
-            _list[_index] = _list[_list.Count - 1];
-            _list.RemoveAt(_list.Count - 1);
+            list[index] = list[list.Count - 1];
+            list.RemoveAt(list.Count - 1);
         }
 
 
@@ -1998,9 +1998,9 @@ q.EnqueueWithCapacity(2, 3); // {0, 1, 2}
 q.EnqueueWithCapacity(3, 3); // {1, 2, 3}
  */
 
-        public static void EnqueueWithCapacity<T>(this Queue<T> q, T item, int MaxSize)
+        public static void EnqueueWithCapacity<T>(this Queue<T> q, T item, int maxSize)
         {
-            if (q.Count >= MaxSize) q.Dequeue();
+            if (q.Count >= maxSize) q.Dequeue();
             q.Enqueue(item);
         }
 
@@ -2117,13 +2117,13 @@ File.Move(fileToMove, newLocation.EnsureFileNameIsUnique());
 intList.Randomize(); // this will randomize the items in the list
  */
 
-        public static IList<t> Randomize<t>(this IList<t> target)
+        public static IList<T> Randomize<T>(this IList<T> target)
         {
-            var RndNumberGenerator = new Random();
-            var newList = new SortedList<int, t>();
+            var rndNumberGenerator = new Random();
+            var newList = new SortedList<int, T>();
             foreach (var item in target)
             {
-                newList.Add(RndNumberGenerator.Next(), item);
+                newList.Add(rndNumberGenerator.Next(), item);
             }
 
             target.Clear();
@@ -2214,7 +2214,7 @@ Console.WriteLine("Size of {0} is {1}", path, size);
 //// https://www.nuget.org/packages/Newtonsoft.Json/
 //// Install-Package Newtonsoft.Json
 
-        public static string ToXML(this string json)
+        public static string ToXml(this string json)
         {
             // To convert JSON text contained in string json into an XML node
             var doc = JsonConvert.DeserializeXmlNode(json);

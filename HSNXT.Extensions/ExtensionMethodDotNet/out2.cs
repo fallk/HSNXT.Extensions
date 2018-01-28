@@ -273,7 +273,7 @@ numbers.Remove(x => x > 5);
         /// <param name="stringToHash">String that must be hashed.</param>
         /// <returns>The hashed string or null if hashing failed.</returns>
         /// <exception cref="ArgumentException">Occurs when stringToHash or key is null or empty.</exception>
-        public static string GetSHA1Hash(this string stringToHash)
+        public static string GetSha1Hash(this string stringToHash)
         {
             if (string.IsNullOrEmpty(stringToHash))
             {
@@ -333,24 +333,24 @@ string strShamsiDate3 = DateTime.Now.ToShamsiDateString();
         /// <summary>
         /// Convert DateTime to Shamsi Date (YYYY/MM/DD)
         /// </summary>
-        public static string ToShamsiDateYMD(this DateTime date)
+        public static string ToShamsiDateYmd(this DateTime date)
         {
-            var PC = new System.Globalization.PersianCalendar();
-            var intYear = PC.GetYear(date);
-            var intMonth = PC.GetMonth(date);
-            var intDay = PC.GetDayOfMonth(date);
+            var pc = new System.Globalization.PersianCalendar();
+            var intYear = pc.GetYear(date);
+            var intMonth = pc.GetMonth(date);
+            var intDay = pc.GetDayOfMonth(date);
             return (intYear.ToString() + "/" + intMonth.ToString() + "/" + intDay.ToString());
         }
 
         /// <summary>
         /// Convert DateTime to Shamsi Date (DD/MM/YYYY)
         /// </summary>
-        public static string ToShamsiDateDMY(this DateTime date)
+        public static string ToShamsiDateDmy(this DateTime date)
         {
-            var PC = new System.Globalization.PersianCalendar();
-            var intYear = PC.GetYear(date);
-            var intMonth = PC.GetMonth(date);
-            var intDay = PC.GetDayOfMonth(date);
+            var pc = new System.Globalization.PersianCalendar();
+            var intYear = pc.GetYear(date);
+            var intMonth = pc.GetMonth(date);
+            var intDay = pc.GetDayOfMonth(date);
             return (intDay.ToString() + "/" + intMonth.ToString() + "/" + intYear.ToString());
         }
 
@@ -359,11 +359,11 @@ string strShamsiDate3 = DateTime.Now.ToShamsiDateString();
         /// </summary>
         public static string ToShamsiDateString(this DateTime date)
         {
-            var PC = new System.Globalization.PersianCalendar();
-            var intYear = PC.GetYear(date);
-            var intMonth = PC.GetMonth(date);
-            var intDayOfMonth = PC.GetDayOfMonth(date);
-            var enDayOfWeek = PC.GetDayOfWeek(date);
+            var pc = new System.Globalization.PersianCalendar();
+            var intYear = pc.GetYear(date);
+            var intMonth = pc.GetMonth(date);
+            var intDayOfMonth = pc.GetDayOfMonth(date);
+            var enDayOfWeek = pc.GetDayOfWeek(date);
             string strMonthName, strDayName;
             switch (intMonth)
             {
@@ -905,51 +905,51 @@ public class Example1
     }
  */
 
-        private enum CSVSplitState
+        private enum CsvSplitState
         {
             Normal,
             InQuotes,
             InQuotesFoundQuote
         }
 
-        public static IEnumerable<string> CSVSplit(this string s)
+        public static IEnumerable<string> CsvSplit(this string s)
         {
-            var state = CSVSplitState.Normal;
+            var state = CsvSplitState.Normal;
             var token = new StringBuilder();
             foreach (var c in s)
             {
                 switch (state)
                 {
-                    case CSVSplitState.Normal:
+                    case CsvSplitState.Normal:
                         if (c == ',')
                         {
                             yield return token.ToString();
                             token = new StringBuilder();
                         }
                         else if (c == '"')
-                            state = CSVSplitState.InQuotes;
+                            state = CsvSplitState.InQuotes;
                         else
                             token.Append(c);
 
                         break;
 
-                    case CSVSplitState.InQuotes:
+                    case CsvSplitState.InQuotes:
                         if (c == '"')
-                            state = CSVSplitState.InQuotesFoundQuote;
+                            state = CsvSplitState.InQuotesFoundQuote;
                         else
                             token.Append(c);
                         break;
 
-                    case CSVSplitState.InQuotesFoundQuote:
+                    case CsvSplitState.InQuotesFoundQuote:
                         if (c == '"')
                         {
                             token.Append(c);
-                            state = CSVSplitState.InQuotes;
+                            state = CsvSplitState.InQuotes;
                         }
                         else
                         {
-                            state = CSVSplitState.Normal;
-                            goto case CSVSplitState.Normal;
+                            state = CsvSplitState.Normal;
+                            goto case CsvSplitState.Normal;
                         }
 
                         break;
@@ -1010,16 +1010,16 @@ or
 tbl1 = tbl1.Dedup("ColName");
  */
 
-        public static DataTable Dedup(this DataTable tblIn, string KeyColName)
+        public static DataTable Dedup(this DataTable tblIn, string keyColName)
         {
             var tblOut = tblIn.Clone();
             foreach (DataRow row in tblIn.Rows)
             {
                 var found = false;
-                var caseIDToTest = row[KeyColName].ToString();
+                var caseIdToTest = row[keyColName].ToString();
                 foreach (DataRow row2 in tblOut.Rows)
                 {
-                    if (row2[KeyColName].ToString() == caseIDToTest)
+                    if (row2[keyColName].ToString() == caseIdToTest)
                     {
                         found = true;
                         break;
@@ -1310,7 +1310,7 @@ double d = "10+10*4".Calculate();
         /// <returns></returns>
         public static string Evaluate(this string e)
         {
-            Func<string, bool> VerifyAllowed = e1 =>
+            Func<string, bool> verifyAllowed = e1 =>
             {
                 var allowed = "0123456789+-*/()%.,";
                 for (var i = 0; i < e1.Length; i++)
@@ -1329,7 +1329,7 @@ double d = "10+10*4".Calculate();
                 return string.Empty;
             }
 
-            if (!VerifyAllowed(e))
+            if (!verifyAllowed(e))
             {
                 return "String contains illegal characters";
             }
@@ -1541,30 +1541,30 @@ DateTime dt = new DateTime(2008, 2, 10, 8, 48, 20);
 Console.WriteLine(dt.ToFriendlyDateString());
  */
 
-        public static string ToFriendlyDateString(this DateTime Date)
+        public static string ToFriendlyDateString(this DateTime date)
         {
-            var FormattedDate = "";
-            if (Date.Date == DateTime.Today)
+            var formattedDate = "";
+            if (date.Date == DateTime.Today)
             {
-                FormattedDate = "Today";
+                formattedDate = "Today";
             }
-            else if (Date.Date == DateTime.Today.AddDays(-1))
+            else if (date.Date == DateTime.Today.AddDays(-1))
             {
-                FormattedDate = "Yesterday";
+                formattedDate = "Yesterday";
             }
-            else if (Date.Date > DateTime.Today.AddDays(-6))
+            else if (date.Date > DateTime.Today.AddDays(-6))
             {
                 // *** Show the Day of the week
-                FormattedDate = Date.ToString("dddd").ToString();
+                formattedDate = date.ToString("dddd").ToString();
             }
             else
             {
-                FormattedDate = Date.ToString("MMMM dd, yyyy");
+                formattedDate = date.ToString("MMMM dd, yyyy");
             }
 
             //append the time portion to the output
-            FormattedDate += " @ " + Date.ToString("t").ToLower();
-            return FormattedDate;
+            formattedDate += " @ " + date.ToString("t").ToLower();
+            return formattedDate;
         }
 
 
@@ -1651,15 +1651,15 @@ bool isString = type.IsDateTime();
 employees = employees.RemoveDuplicates(x => x.EmpId);
  */
 
-        public static IEnumerable<T> RemoveDuplicates<T>(this ICollection<T> list, Func<T, int> Predicate)
+        public static IEnumerable<T> RemoveDuplicates<T>(this ICollection<T> list, Func<T, int> predicate)
         {
             var dict = new Dictionary<int, T>();
 
             foreach (var item in list)
             {
-                if (!dict.ContainsKey(Predicate(item)))
+                if (!dict.ContainsKey(predicate(item)))
                 {
-                    dict.Add(Predicate(item), item);
+                    dict.Add(predicate(item), item);
                 }
             }
 
@@ -1693,22 +1693,22 @@ action1.Call("This will run");
                 action(t1, t2, t3);
         }
 
-        public static R Call<R>(this Func<R> func, R r = default(R))
+        public static TR Call<TR>(this Func<TR> func, TR r = default(TR))
         {
             return (func != null) ? func() : r;
         }
 
-        public static R Call<T, R>(this Func<T, R> func, T t, R r = default(R))
+        public static TR Call<T, TR>(this Func<T, TR> func, T t, TR r = default(TR))
         {
             return (func != null) ? func(t) : r;
         }
 
-        public static R Call<T1, T2, R>(this Func<T1, T2, R> func, T1 t1, T2 t2, R r = default(R))
+        public static TR Call<T1, T2, TR>(this Func<T1, T2, TR> func, T1 t1, T2 t2, TR r = default(TR))
         {
             return (func != null) ? func(t1, t2) : r;
         }
 
-        public static R Call<T1, T2, T3, R>(this Func<T1, T2, T3, R> func, T1 t1, T2 t2, T3 t3, R r = default(R))
+        public static TR Call<T1, T2, T3, TR>(this Func<T1, T2, T3, TR> func, T1 t1, T2 t2, T3 t3, TR r = default(TR))
         {
             return (func != null) ? func(t1, t2, t3) : r;
         }
@@ -1800,7 +1800,7 @@ var urlName = name.ToUrlSlug(); // returns serdar-buyuktemiz-csguio
                 base.OnLoad(e);
                 for (var i = 0; i < _dataGridView.Columns.Count; i++)
                 {
-                    lstColumns.Items.Add(_dataGridView.Columns[i].HeaderText, _dataGridView.Columns[i].Visible);
+                    _lstColumns.Items.Add(_dataGridView.Columns[i].HeaderText, _dataGridView.Columns[i].Visible);
                 }
             }
 
@@ -1809,26 +1809,26 @@ var urlName = name.ToUrlSlug(); // returns serdar-buyuktemiz-csguio
                 _dataGridView.Columns[e.Index].Visible = e.NewValue == CheckState.Checked;
             }
 
-            private System.Windows.Forms.CheckedListBox lstColumns;
+            private System.Windows.Forms.CheckedListBox _lstColumns;
             private System.ComponentModel.IContainer components = null;
 
             private void InitializeComponent()
             {
-                this.lstColumns = new System.Windows.Forms.CheckedListBox();
+                this._lstColumns = new System.Windows.Forms.CheckedListBox();
                 this.SuspendLayout();
-                this.lstColumns.Dock = System.Windows.Forms.DockStyle.Fill;
-                this.lstColumns.FormattingEnabled = true;
-                this.lstColumns.Location = new SD.Point(0, 0);
-                this.lstColumns.Name = "lstColumns";
-                this.lstColumns.Size = new SD.Size(258, 214);
-                this.lstColumns.TabIndex = 0;
-                this.lstColumns.CheckOnClick = true;
-                this.lstColumns.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lstColumns_ItemCheck);
+                this._lstColumns.Dock = System.Windows.Forms.DockStyle.Fill;
+                this._lstColumns.FormattingEnabled = true;
+                this._lstColumns.Location = new SD.Point(0, 0);
+                this._lstColumns.Name = "_lstColumns";
+                this._lstColumns.Size = new SD.Size(258, 214);
+                this._lstColumns.TabIndex = 0;
+                this._lstColumns.CheckOnClick = true;
+                this._lstColumns.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lstColumns_ItemCheck);
 
                 this.AutoScaleDimensions = new SD.SizeF(6F, 13F);
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.ClientSize = new SD.Size(258, 214);
-                this.Controls.Add(this.lstColumns);
+                this.Controls.Add(this._lstColumns);
                 this.Name = "FrmColumnsConfig";
                 this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
                 this.Text = "Columns configuration";
@@ -1861,12 +1861,12 @@ var urlName = name.ToUrlSlug(); // returns serdar-buyuktemiz-csguio
 }
  */
 
-        private static Regex UpperCamelCaseRegex =
+        private static Regex _upperCamelCaseRegex =
             new Regex(@"(?<!^)((?<!\d)\d|(?=(?<=[A-Z])[A-Z](?=[a-z])|[A-Z]))", RegexOptions.Compiled);
 
         public static string AsUpperCamelCaseName(this Enum e)
         {
-            return UpperCamelCaseRegex.Replace(e.ToString(), " $1");
+            return _upperCamelCaseRegex.Replace(e.ToString(), " $1");
         }
 
 
@@ -1930,7 +1930,7 @@ Amount.Text = amount.ToUIString();
         /// Converts a regular DateTime to a RFC822 date string.
         /// </summary>
         /// <returns>The specified date formatted as a RFC822 date string.</returns>
-        public static string ToRFC822DateString(this DateTime date)
+        public static string ToRfc822DateString(this DateTime date)
         {
 #if NetFX
             var offset = TimeZone.CurrentTimeZone.GetUtcOffset(DateTime.Now).Hours;
@@ -2214,12 +2214,12 @@ LayoutRoot.Background = new SolidColorBrush(c);
         /// Checks if a column exists in the DataReader
         /// </summary>
         /// <param name="dr">DataReader</param>
-        /// <param name="ColumnName">Name of the column to find</param>
+        /// <param name="columnName">Name of the column to find</param>
         /// <returns>Returns true if the column exists in the DataReader, else returns false</returns>
-        public static bool ColumnExists(this IDataReader dr, string ColumnName)
+        public static bool ColumnExists(this IDataReader dr, string columnName)
         {
             for (var i = 0; i < dr.FieldCount; i++)
-                if (dr.GetName(i).Equals(ColumnName, StringComparison.OrdinalIgnoreCase))
+                if (dr.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase))
                     return true;
 
             return false;
@@ -2669,7 +2669,7 @@ MessageBox.Show(hash);
         /// <summary>
         /// Supported hash algorithms
         /// </summary>
-        public enum eHashType
+        public enum EHashType
         {
             HMAC,
             HMACMD5,
@@ -2688,50 +2688,50 @@ MessageBox.Show(hash);
 #endif
         }
 
-        private static byte[] GetHash(string input, eHashType hash)
+        private static byte[] GetHash(string input, EHashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);
 
             switch (hash)
             {
-                case eHashType.HMAC:
+                case EHashType.HMAC:
                     return HMAC.Create().ComputeHash(inputBytes);
 
-                case eHashType.HMACMD5:
+                case EHashType.HMACMD5:
                     return HMACMD5.Create().ComputeHash(inputBytes);
 
-                case eHashType.HMACSHA1:
+                case EHashType.HMACSHA1:
                     return HMACSHA1.Create().ComputeHash(inputBytes);
 
-                case eHashType.HMACSHA256:
+                case EHashType.HMACSHA256:
                     return HMACSHA256.Create().ComputeHash(inputBytes);
 
-                case eHashType.HMACSHA384:
+                case EHashType.HMACSHA384:
                     return HMACSHA384.Create().ComputeHash(inputBytes);
 
-                case eHashType.HMACSHA512:
+                case EHashType.HMACSHA512:
                     return HMACSHA512.Create().ComputeHash(inputBytes);
 
-                case eHashType.MD5:
+                case EHashType.MD5:
                     return MD5.Create().ComputeHash(inputBytes);
 
-                case eHashType.SHA1:
+                case EHashType.SHA1:
                     return SHA1.Create().ComputeHash(inputBytes);
 
-                case eHashType.SHA256:
+                case EHashType.SHA256:
                     return SHA256.Create().ComputeHash(inputBytes);
 
-                case eHashType.SHA384:
+                case EHashType.SHA384:
                     return SHA384.Create().ComputeHash(inputBytes);
 
-                case eHashType.SHA512:
+                case EHashType.SHA512:
                     return SHA512.Create().ComputeHash(inputBytes);
 
 #if NetFX
-                case eHashType.MACTripleDES:
+                case EHashType.MACTripleDES:
                     return MACTripleDES.Create().ComputeHash(inputBytes);
 
-                case eHashType.RIPEMD160:
+                case EHashType.RIPEMD160:
                     return RIPEMD160.Create().ComputeHash(inputBytes);
 #endif
 
@@ -2746,7 +2746,7 @@ MessageBox.Show(hash);
         /// <param name="input">The string to hash</param>
         /// <param name="hashType">The hash algorithm to use</param>
         /// <returns>The resulting hash or an empty string on error</returns>
-        public static string ComputeHash(this string input, eHashType hashType)
+        public static string ComputeHash(this string input, EHashType hashType)
         {
             try
             {
@@ -2977,20 +2977,20 @@ Console.WriteLine("Total Words: {0}", word.WordCount());
  lit_Msg.Text = "You are not logged in . please log in at first & click " + Tag_A + " to show Authentication Form";
  */
 
-        public static string SPUtilGenerateAuthenticationHyperLink(this Page p, string title, string InnerText)
+        public static string SpUtilGenerateAuthenticationHyperLink(this Page p, string title, string innerText)
         {
             try
             {
                 var url = p.Request.Url.Scheme + "://" + p.Request.Url.Authority +
                           "/_layouts/Authenticate.aspx?Source=" + p.Request.Url.LocalPath;
-                var Tag_A = "<a href=\"" + url + "\" title=\"" + title + "\">" + InnerText + "</a>";
-                return Tag_A;
+                var tagA = "<a href=\"" + url + "\" title=\"" + title + "\">" + innerText + "</a>";
+                return tagA;
             }
             catch
             {
-                var Tag_A = "<a href=\"#ERROR\" title=\"" + title + "\">" + InnerText + "</a>";
+                var tagA = "<a href=\"#ERROR\" title=\"" + title + "\">" + innerText + "</a>";
 
-                return Tag_A;
+                return tagA;
             }
         }
 #endif
@@ -3091,7 +3091,7 @@ Console.ReadLine();
 bool b = obj.IsNullOrDBNull();
  */
 
-        public static bool IsNullOrDBNull(this object obj)
+        public static bool IsNullOrDbNull(this object obj)
         {
             if (obj == null || obj.GetType() == typeof(DBNull))
                 return true;

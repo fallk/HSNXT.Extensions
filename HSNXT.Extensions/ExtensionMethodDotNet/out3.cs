@@ -286,21 +286,21 @@ NameValueCollection nv = a.ToNameValueCollection(';', '=');
         ///             key[1] is "param2" and value[1] is "value2"
         /// </summary>
         /// <param name="str">String to process</param>
-        /// <param name="OuterSeparator">Separator for each "NameValue"</param>
-        /// <param name="NameValueSeparator">Separator for Name/Value splitting</param>
+        /// <param name="outerSeparator">Separator for each "NameValue"</param>
+        /// <param name="nameValueSeparator">Separator for Name/Value splitting</param>
         /// <returns></returns>
-        public static NameValueCollection ToNameValueCollection(this string str, char OuterSeparator,
-            char NameValueSeparator)
+        public static NameValueCollection ToNameValueCollection(this string str, char outerSeparator,
+            char nameValueSeparator)
         {
             NameValueCollection nvText = null;
-            str = str.TrimEnd(OuterSeparator);
+            str = str.TrimEnd(outerSeparator);
             if (!string.IsNullOrEmpty(str))
             {
-                var arrStrings = str.TrimEnd(OuterSeparator).Split(OuterSeparator);
+                var arrStrings = str.TrimEnd(outerSeparator).Split(outerSeparator);
 
                 foreach (var s in arrStrings)
                 {
-                    var posSep = s.IndexOf(NameValueSeparator);
+                    var posSep = s.IndexOf(nameValueSeparator);
                     var name = s.Substring(0, posSep);
                     var value = s.Substring(posSep + 1);
                     if (nvText == null)
@@ -461,7 +461,7 @@ Decryp2:123
         {
             var strEncrKey = "?pws#m";
             byte[] byKey;
-            byte[] IV = {18, 52, 86, 120, 144, 171, 205, 239};
+            byte[] iv = {18, 52, 86, 120, 144, 171, 205, 239};
 
             try
             {
@@ -469,7 +469,7 @@ Decryp2:123
                 var des = new DESCryptoServiceProvider();
                 var inputByteArray = Encoding.UTF8.GetBytes(str);
                 var ms = new MemoryStream();
-                var cs = new CryptoStream(ms, des.CreateEncryptor(byKey, IV), CryptoStreamMode.Write);
+                var cs = new CryptoStream(ms, des.CreateEncryptor(byKey, iv), CryptoStreamMode.Write);
                 cs.Write(inputByteArray, 0, inputByteArray.Length);
                 cs.FlushFinalBlock();
                 return System.Convert.ToBase64String(ms.ToArray());
@@ -489,7 +489,7 @@ Decryp2:123
         {
             var sDecrKey = "?pws#m";
             byte[] byKey;
-            byte[] IV = {18, 52, 86, 120, 144, 171, 205, 239};
+            byte[] iv = {18, 52, 86, 120, 144, 171, 205, 239};
 
             byte[] inputByteArray;
             // inputByteArray.Length = strText.Length;
@@ -500,7 +500,7 @@ Decryp2:123
                 var des = new DESCryptoServiceProvider();
                 inputByteArray = System.Convert.FromBase64String(str);
                 var ms = new MemoryStream();
-                var cs = new CryptoStream(ms, des.CreateDecryptor(byKey, IV), CryptoStreamMode.Write);
+                var cs = new CryptoStream(ms, des.CreateDecryptor(byKey, iv), CryptoStreamMode.Write);
                 cs.Write(inputByteArray, 0, inputByteArray.Length);
                 cs.FlushFinalBlock();
                 var encoding = System.Text.Encoding.UTF8;
@@ -532,13 +532,13 @@ Exception ex2 = ex.GetMostInner();
         /// <returns></returns>
         public static Exception GetMostInner(this Exception ex)
         {
-            var ActualInnerEx = ex;
+            var actualInnerEx = ex;
 
-            while (ActualInnerEx != null)
+            while (actualInnerEx != null)
             {
-                ActualInnerEx = ActualInnerEx.InnerException;
-                if (ActualInnerEx != null)
-                    ex = ActualInnerEx;
+                actualInnerEx = actualInnerEx.InnerException;
+                if (actualInnerEx != null)
+                    ex = actualInnerEx;
             }
 
             return ex;
@@ -1211,17 +1211,17 @@ public void PrintNumbers() {
             /// <summary>
             /// The results from enumeration of the live object that have been collected thus far.
             /// </summary>
-            private List<T> cache;
+            private List<T> _cache;
 
             /// <summary>
             /// The original generator method or other enumerable object whose contents should only be enumerated once.
             /// </summary>
-            private IEnumerable<T> generator;
+            private IEnumerable<T> _generator;
 
             /// <summary>
             /// The enumerator we're using over the generator method's results.
             /// </summary>
-            private IEnumerator<T> generatorEnumerator;
+            private IEnumerator<T> _generatorEnumerator;
 
             /// <summary>
             /// The sync object our caching enumerators use when adding a new live generator method result to the cache.
@@ -1230,7 +1230,7 @@ public void PrintNumbers() {
             /// Although individual enumerators are not thread-safe, this <see cref="IEnumerable&lt;T&gt;"/> should be
             /// thread safe so that multiple enumerators can be created from it and used from different threads.
             /// </remarks>
-            private object generatorLock = new object();
+            private object _generatorLock = new object();
 
             /// <summary>
             /// Initializes a new instance of the EnumerableCache class.
@@ -1243,7 +1243,7 @@ public void PrintNumbers() {
                     throw new ArgumentNullException("generator");
                 }
 
-                this.generator = generator;
+                this._generator = generator;
             }
 
             #region IEnumerable<T> Members
@@ -1256,10 +1256,10 @@ public void PrintNumbers() {
             /// </returns>
             public IEnumerator<T> GetEnumerator()
             {
-                if (this.generatorEnumerator == null)
+                if (this._generatorEnumerator == null)
                 {
-                    this.cache = new List<T>();
-                    this.generatorEnumerator = this.generator.GetEnumerator();
+                    this._cache = new List<T>();
+                    this._generatorEnumerator = this._generator.GetEnumerator();
                 }
 
                 return new EnumeratorCache(this);
@@ -1291,12 +1291,12 @@ public void PrintNumbers() {
                 /// <summary>
                 /// The parent enumeration wrapper class that stores the cached results.
                 /// </summary>
-                private EnumerableCache<T> parent;
+                private EnumerableCache<T> _parent;
 
                 /// <summary>
                 /// The position of this enumerator in the cached list.
                 /// </summary>
-                private int cachePosition = -1;
+                private int _cachePosition = -1;
 
                 /// <summary>
                 /// Initializes a new instance of the <see cref="EnumerableCache&lt;T&gt;.EnumeratorCache"/> class.
@@ -1309,7 +1309,7 @@ public void PrintNumbers() {
                         throw new ArgumentNullException("parent");
                     }
 
-                    this.parent = parent;
+                    this._parent = parent;
                 }
 
                 #region IEnumerator<T> Members
@@ -1324,12 +1324,12 @@ public void PrintNumbers() {
                 {
                     get
                     {
-                        if (this.cachePosition < 0 || this.cachePosition >= this.parent.cache.Count)
+                        if (this._cachePosition < 0 || this._cachePosition >= this._parent._cache.Count)
                         {
                             throw new InvalidOperationException();
                         }
 
-                        return this.parent.cache[this.cachePosition];
+                        return this._parent._cache[this._cachePosition];
                     }
                 }
 
@@ -1376,16 +1376,16 @@ public void PrintNumbers() {
                 /// </exception>
                 public bool MoveNext()
                 {
-                    this.cachePosition++;
-                    if (this.cachePosition >= this.parent.cache.Count)
+                    this._cachePosition++;
+                    if (this._cachePosition >= this._parent._cache.Count)
                     {
-                        lock (this.parent.generatorLock)
+                        lock (this._parent._generatorLock)
                         {
-                            if (this.cachePosition >= this.parent.cache.Count)
+                            if (this._cachePosition >= this._parent._cache.Count)
                             {
-                                if (this.parent.generatorEnumerator.MoveNext())
+                                if (this._parent._generatorEnumerator.MoveNext())
                                 {
-                                    this.parent.cache.Add(this.parent.generatorEnumerator.Current);
+                                    this._parent._cache.Add(this._parent._generatorEnumerator.Current);
                                 }
                                 else
                                 {
@@ -1406,7 +1406,7 @@ public void PrintNumbers() {
                 /// </exception>
                 public void Reset()
                 {
-                    this.cachePosition = -1;
+                    this._cachePosition = -1;
                 }
 
                 #endregion
@@ -2027,18 +2027,18 @@ parms.SpinThread(action => {
         /// </summary>
         /// <param name="values">Array of int values</param>
         /// <returns>The Lease Common Multiplier for values provided</returns>
-        public static int LCM(this int[] values)
+        public static int Lcm(this int[] values)
         {
             var retval = values[0];
             for (var i = 1; i < values.Length; i++)
             {
-                retval = GCD(retval, values[i]);
+                retval = Gcd(retval, values[i]);
             }
 
             return retval;
         }
 
-        private static int GCD(int val1, int val2)
+        private static int Gcd(int val1, int val2)
         {
             while (val1 != 0 && val2 != 0)
             {
@@ -2113,7 +2113,7 @@ a.Shuffle();
 }) %>
  */
 
-        public static R Pipe<T, R>(this T o, Func<T, R> func)
+        public static TR Pipe<T, TR>(this T o, Func<T, TR> func)
         {
             if (func == null) throw new ArgumentNullException("func", "'func' can not be null.");
             var buffer = o;
@@ -2140,7 +2140,7 @@ a.Shuffle();
  * List<string> fruits = new List() { "Apple", "Banana", "Citron" }; fruits.join(", "); //=> "Apple, Banana, Citron"
  */
 
-        public static string join<T>(this IEnumerable<T> list, string separator)
+        public static string Join<T>(this IEnumerable<T> list, string separator)
         {
             var s = "";
             foreach (object x in list)
@@ -2185,7 +2185,7 @@ a.Shuffle();
 "3".Apply(System.Int32.Parse);                   // = 3 (Int32)
  */
 
-        public static B Apply<A, B>(this A a, System.Func<A, B> f)
+        public static TB Apply<TA, TB>(this TA a, System.Func<TA, TB> f)
         {
             return f(a);
         }
@@ -2924,7 +2924,7 @@ var jsonResult = xmlString.ToJSON();
 //// https://www.nuget.org/packages/Newtonsoft.Json/
 //// Install-Package Newtonsoft.Json
 
-        public static string ToJSON(this string xml)
+        public static string ToJson(this string xml)
         {
             // To convert an XML node contained in string xml into a JSON string
             var doc = new XmlDocument();

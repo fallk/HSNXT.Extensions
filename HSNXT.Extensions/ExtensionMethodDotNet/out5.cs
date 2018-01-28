@@ -373,7 +373,7 @@ sb.Clear();
 
         myList.GetRandomItem();
  */
-        private static readonly Random _rand = new Random();
+        private static readonly Random Rand = new Random();
 
         /// <summary>
         /// Sorteia randomicamente um item de um IList e o retorna
@@ -592,7 +592,7 @@ var teams =
 " goodbye! ".CSVQuoted() ==> "\" goodbye! \""
  */
 
-        public static string CSVQuoted(this string s)
+        public static string CsvQuoted(this string s)
         {
             if (s.IndexOfAny(" ,\n".ToCharArray()) < 0 && s.Trim() == s)
                 return s;
@@ -631,14 +631,14 @@ var teams =
         /// <param name="number">Count Repeat </param>
         /// <param name="splitChar">caracter for Split Repeat </param>
         /// <returns></returns>
-        public static string Repeat(this string input, int number, string RepeatChar)
+        public static string Repeat(this string input, int number, string repeatChar)
         {
             if (!string.IsNullOrEmpty(input))
             {
                 var sb = new StringBuilder();
                 for (var i = 1; i <= number; i++)
                 {
-                    sb.AppendFormat("{0}{1}", input, RepeatChar);
+                    sb.AppendFormat("{0}{1}", input, repeatChar);
                 }
 
                 return sb.Remove(sb.Length - 1, 1).ToString();
@@ -782,7 +782,7 @@ Console.WriteLine(result);
         /// </summary>
         /// <param name="tblIn">DataTable with XML Schema that you want to write</param>
         /// <param name="outputName">Name of xsd you want back.</param>
-        public static void WriteXMLForReport(this DataTable tblIn, string outputName)
+        public static void WriteXmlForReport(this DataTable tblIn, string outputName)
         {
             //Set table name in case it is not set
             tblIn.TableName = outputName;
@@ -807,7 +807,7 @@ int[] a = "Some primes: 2, 5, 11, and 17".ExtractInts();
 // a == { 2, 5, 11, 17 }
  */
 
-        public static T[] REExtract<T>(this string s, string regex)
+        public static T[] ReExtract<T>(this string s, string regex)
         {
             var tc = TypeDescriptor.GetConverter(typeof(T));
             if (!tc.CanConvertFrom(typeof(string)))
@@ -847,13 +847,13 @@ var saveFileAs = "yourFile.jpg";
 Response.ForceDownload(yourFilePath, saveFileAs);
  */
 
-        public static void ForceDownload(this HttpResponse Response, string fullPathToFile, string outputFileName)
+        public static void ForceDownload(this HttpResponse response, string fullPathToFile, string outputFileName)
         {
-            Response.Clear();
-            Response.AddHeader("content-disposition", "attachment; filename=" + outputFileName);
-            Response.WriteFile(fullPathToFile);
-            Response.ContentType = "";
-            Response.End();
+            response.Clear();
+            response.AddHeader("content-disposition", "attachment; filename=" + outputFileName);
+            response.WriteFile(fullPathToFile);
+            response.ContentType = "";
+            response.End();
         }
 
 /*
@@ -1043,7 +1043,7 @@ using (SqlDataReader dataReader = command.ExecuteReader())
     }
  */
 
-        public static List<string> ToCSV(this IDataReader dataReader, bool includeHeaderAsFirstRow, string separator)
+        public static List<string> ToCsv(this IDataReader dataReader, bool includeHeaderAsFirstRow, string separator)
         {
             var csvRows = new List<string>();
             StringBuilder sb = null;
@@ -1570,7 +1570,7 @@ using(var stream = new MemoryStream())
 
         #region Private fields
 
-        private static readonly Dictionary<RuntimeTypeHandle, XmlSerializer> ms_serializers =
+        private static readonly Dictionary<RuntimeTypeHandle, XmlSerializer> MsSerializers =
             new Dictionary<RuntimeTypeHandle, XmlSerializer>();
 
         #endregion
@@ -1586,13 +1586,13 @@ using(var stream = new MemoryStream())
         public static string ToXml<T>(this T value)
             where T : new()
         {
-            var _serializer = GetValue(typeof(T));
-            using (var _stream = new MemoryStream())
+            var serializer = GetValue(typeof(T));
+            using (var stream = new MemoryStream())
             {
-                using (var _writer = new XmlTextWriter(_stream, new UTF8Encoding()))
+                using (var writer = new XmlTextWriter(stream, new UTF8Encoding()))
                 {
-                    _serializer.Serialize(_writer, value);
-                    return Encoding.UTF8.GetString(_stream.ToArray());
+                    serializer.Serialize(writer, value);
+                    return Encoding.UTF8.GetString(stream.ToArray());
                 }
             }
         }
@@ -1606,8 +1606,8 @@ using(var stream = new MemoryStream())
         public static void ToXml<T>(this T value, Stream stream)
             where T : new()
         {
-            var _serializer = GetValue(typeof(T));
-            _serializer.Serialize(stream, value);
+            var serializer = GetValue(typeof(T));
+            serializer.Serialize(stream, value);
         }
 
         /// <summary>
@@ -1619,12 +1619,12 @@ using(var stream = new MemoryStream())
         public static T FromXml<T>(this string srcString)
             where T : new()
         {
-            var _serializer = GetValue(typeof(T));
-            using (var _stringReader = new StringReader(srcString))
+            var serializer = GetValue(typeof(T));
+            using (var stringReader = new StringReader(srcString))
             {
-                using (XmlReader _reader = new XmlTextReader(_stringReader))
+                using (XmlReader reader = new XmlTextReader(stringReader))
                 {
-                    return (T) _serializer.Deserialize(_reader);
+                    return (T) serializer.Deserialize(reader);
                 }
             }
         }
@@ -1638,8 +1638,8 @@ using(var stream = new MemoryStream())
         public static T FromXml<T>(this Stream source)
             where T : new()
         {
-            var _serializer = GetValue(typeof(T));
-            return (T) _serializer.Deserialize(source);
+            var serializer = GetValue(typeof(T));
+            return (T) serializer.Deserialize(source);
         }
 
         #endregion
@@ -1648,20 +1648,20 @@ using(var stream = new MemoryStream())
 
         private static XmlSerializer GetValue(Type type)
         {
-            XmlSerializer _serializer;
-            if (!ms_serializers.TryGetValue(type.TypeHandle, out _serializer))
+            XmlSerializer serializer;
+            if (!MsSerializers.TryGetValue(type.TypeHandle, out serializer))
             {
-                lock (ms_serializers)
+                lock (MsSerializers)
                 {
-                    if (!ms_serializers.TryGetValue(type.TypeHandle, out _serializer))
+                    if (!MsSerializers.TryGetValue(type.TypeHandle, out serializer))
                     {
-                        _serializer = new XmlSerializer(type);
-                        ms_serializers.Add(type.TypeHandle, _serializer);
+                        serializer = new XmlSerializer(type);
+                        MsSerializers.Add(type.TypeHandle, serializer);
                     }
                 }
             }
 
-            return _serializer;
+            return serializer;
         }
 
         #endregion
@@ -1682,7 +1682,7 @@ Console.WriteLine(19.Days().From(new DateTime(2007,1,1)));
 
         public abstract class TimeSelector
         {
-            protected TimeSpan myTimeSpan;
+            protected TimeSpan MyTimeSpan;
 
             internal int ReferenceValue
             {
@@ -2127,13 +2127,13 @@ DataList parentDataList = tb.FindImmediateParentOfType<DataList>();
 MyObject objectIWant = myList.MaxObject(item => item.ID);
  */
 
-        public static T MaxObject<T, U>(this List<T> source, Func<T, U> selector)
-            where U : IComparable<U>
+        public static T MaxObject<T, TU>(this List<T> source, Func<T, TU> selector)
+            where TU : IComparable<TU>
         {
             if (source == null) throw new ArgumentNullException("source");
             var first = true;
             var maxObj = default(T);
-            var maxKey = default(U);
+            var maxKey = default(TU);
             foreach (var item in source)
             {
                 if (first)
@@ -2280,11 +2280,11 @@ Console.WriteLine (s.TakeFrom("d"));   // "de"
 
         public static void AddItemsToDropdownRadioEtc<T>(ref T control, DataTable data)
         {
-            dynamic ControlToAdd = (T) System.Convert.ChangeType((object) control, typeof(T));
-            ControlToAdd.DataSource = data;
-            ControlToAdd.DataValueField = "MajorID";
-            ControlToAdd.DataTextField = "MajorName";
-            ControlToAdd.DataBind();
+            dynamic controlToAdd = (T) System.Convert.ChangeType((object) control, typeof(T));
+            controlToAdd.DataSource = data;
+            controlToAdd.DataValueField = "MajorID";
+            controlToAdd.DataTextField = "MajorName";
+            controlToAdd.DataBind();
         }
 
 

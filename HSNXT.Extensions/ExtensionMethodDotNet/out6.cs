@@ -337,14 +337,14 @@ MessageBox.Show(result_string);
             NumberList = NumberList.InsertFirst(-1);
  */
 
-        public static List<T> InsertFirst<T>(this List<T> lst, T Obj)
+        public static List<T> InsertFirst<T>(this List<T> lst, T obj)
         {
-            var NewList = new List<T>();
+            var newList = new List<T>();
 
-            NewList.Add(Obj);
-            NewList.AddRange(lst);
+            newList.Add(obj);
+            newList.AddRange(lst);
 
-            return NewList;
+            return newList;
         }
 
 
@@ -389,23 +389,23 @@ MessageBox.Show(result_string);
 }
  */
 
-        public static void RequireOrPermanentRedirect<T>(this System.Web.UI.Page page, string QueryStringKey,
-            string RedirectUrl)
+        public static void RequireOrPermanentRedirect<T>(this System.Web.UI.Page page, string queryStringKey,
+            string redirectUrl)
         {
-            var QueryStringValue = page.Request.QueryString[QueryStringKey];
+            var queryStringValue = page.Request.QueryString[queryStringKey];
 
-            if (string.IsNullOrEmpty(QueryStringValue))
+            if (string.IsNullOrEmpty(queryStringValue))
             {
-                page.Response.Redirect(page.ResolveUrl(RedirectUrl));
+                page.Response.Redirect(page.ResolveUrl(redirectUrl));
             }
 
             try
             {
-                var value = (T) System.Convert.ChangeType(QueryStringValue, typeof(T));
+                var value = (T) System.Convert.ChangeType(queryStringValue, typeof(T));
             }
             catch
             {
-                page.Response.Redirect(page.ResolveUrl(RedirectUrl));
+                page.Response.Redirect(page.ResolveUrl(redirectUrl));
             }
         }
 #endif
@@ -479,7 +479,7 @@ Populate your Table here
 string htmlTable = dt.ConvertDataTableToHTML();
  */
 
-        public static string ConvertDataTableToHTML(this DataTable dt)
+        public static string ConvertDataTableToHtml(this DataTable dt)
         {
             var html = "<table>";
 
@@ -711,7 +711,7 @@ will return "POTATOE"
 variavel = variavel.toggle(); // false
  */
 
-        public static bool toggle(this bool value)
+        public static bool Toggle(this bool value)
         {
             return !value;
         }
@@ -784,12 +784,12 @@ var query = "select * from {TableName} where id >= {Id};".WithVar(new {TableName
 bool isSaved = str.Save("D:\myfile.txt");
  */
 
-        public static bool Save(this string text, string pathWithTXTFullfilename)
+        public static bool Save(this string text, string pathWithTxtFullfilename)
         {
             try
             {
                 //write string to file
-                System.IO.File.WriteAllText(pathWithTXTFullfilename, text);
+                System.IO.File.WriteAllText(pathWithTxtFullfilename, text);
                 return true;
             }
             catch (Exception)
@@ -1370,19 +1370,19 @@ Some examples:
 12:45 to 12.75
  */
 
-        public static decimal timeToDecimal(this string time)
+        public static decimal TimeToDecimal(this string time)
         {
-            var Hours = time.Split(':')[0].ToInt();
-            decimal Minutes = time.Split(':')[1].ToInt();
-            while (Minutes >= 60)
+            var hours = time.Split(':')[0].ToInt();
+            decimal minutes = time.Split(':')[1].ToInt();
+            while (minutes >= 60)
             {
-                Minutes = Minutes % 60;
-                Hours++;
+                minutes = minutes % 60;
+                hours++;
             }
 
             //Minutes = Minutes/60;
-            var test = System.Convert.ToInt64((Minutes / 60) / 10);
-            return Hours + Minutes / 60;
+            var test = System.Convert.ToInt64((minutes / 60) / 10);
+            return hours + minutes / 60;
         }
 
 
@@ -1448,11 +1448,11 @@ Examples:
 12.75 to 12:45
  */
 
-        public static string decimalToTime(this decimal time)
+        public static string DecimalToTime(this decimal time)
         {
-            var Hours = Math.Truncate(time).ToString();
-            var Minuten = Math.Round((time - Math.Truncate(time)) * 60).ToString();
-            return Hours + ":" + Minuten;
+            var hours = Math.Truncate(time).ToString();
+            var minuten = Math.Round((time - Math.Truncate(time)) * 60).ToString();
+            return hours + ":" + minuten;
         }
 
 
@@ -1738,7 +1738,7 @@ s.ValidateArithmeticExpression();
  */
 
 
-        static Regex ArithmeticExpression = new Regex(@"(?x)
+        static Regex _arithmeticExpression = new Regex(@"(?x)
                 ^
                 (?> (?<p> \( )* (?>-?\d+(?:\.\d+)?) (?<-p> \) )* )
                 (?>(?:
@@ -1753,7 +1753,7 @@ s.ValidateArithmeticExpression();
         {
             if (string.IsNullOrEmpty(expression))
                 return false;
-            return ArithmeticExpression.IsMatch(expression);
+            return _arithmeticExpression.IsMatch(expression);
         }
 
 
@@ -1987,16 +1987,16 @@ int? nullsAreSafe = thisWillNotThrowException.ToNullable<int>();
         /// <typeparam name="T"></typeparam>
         /// <param name="p_self"></param>
         /// <returns></returns>
-        public static T? ToNullable<T>(this string p_self) where T : struct
+        public static T? ToNullable<T>(this string pSelf) where T : struct
         {
-            if (!string.IsNullOrEmpty(p_self))
+            if (!string.IsNullOrEmpty(pSelf))
             {
                 var converter = System.ComponentModel.TypeDescriptor.GetConverter(typeof(T));
-                if (converter.IsValid(p_self)) return (T) converter.ConvertFromString(p_self);
+                if (converter.IsValid(pSelf)) return (T) converter.ConvertFromString(pSelf);
                 if (typeof(T).IsEnum)
                 {
                     T t;
-                    if (Enum.TryParse<T>(p_self, out t)) return t;
+                    if (Enum.TryParse<T>(pSelf, out t)) return t;
                 }
             }
 
@@ -2702,7 +2702,7 @@ static void Main()
             return new Func<HttpListenerRequest, AuthenticationSchemes>(@delegate.Invoke);
         }
 
-        public static BindIPEndPoint ToBindIPEndPoint(
+        public static BindIPEndPoint ToBindIpEndPoint(
             this Func<ServicePoint, IPEndPoint, int, IPEndPoint> func)
         {
             return func.Invoke;
@@ -4370,7 +4370,7 @@ var query = myEntities.MyEntity
         /// </summary>
         /// <param name="source">https://visualstudiomagazine.com/blogs/tool-tracker/2011/11/seeing-the-sql.aspx</param>
         /// <returns>Returns a SQL Query in a string datatype</returns>
-        public static string ToSQLQuery<T>(this IQueryable<T> source)
+        public static string ToSqlQuery<T>(this IQueryable<T> source)
         {
             var x = IsNullOrEmpty(System.Convert.ToString(source)) ? "" : source.ToString().Replace("[Extent", "[D");
             return x;
@@ -4417,11 +4417,11 @@ double dblCorrelation = tblWeather.PearsonCorrelation("WindSpeed" , "Temperature
             double tmpY = 0;
 
             // These will be used in the Pearson correalation formula
-            double X = 0; // Sum of X
-            double Y = 0; // Sum of Y
-            double XX = 0; // Sum of X * X
-            double YY = 0; // Sum of Y * Y
-            double XY = 0; // Sum of X * Y
+            double x = 0; // Sum of X
+            double y = 0; // Sum of Y
+            double xx = 0; // Sum of X * X
+            double yy = 0; // Sum of Y * Y
+            double xy = 0; // Sum of X * Y
 
             var iRowCount = aSourceTable.Rows.Count;
 
@@ -4430,15 +4430,15 @@ double dblCorrelation = tblWeather.PearsonCorrelation("WindSpeed" , "Temperature
                 tmpX = System.Convert.ToDouble(row[aColumn1]);
                 tmpY = System.Convert.ToDouble(row[aColumn2]);
 
-                X += tmpX;
-                Y += tmpY;
+                x += tmpX;
+                y += tmpY;
 
-                XX += tmpX * tmpX;
-                YY += tmpY * tmpY;
-                XY += tmpX * tmpY;
+                xx += tmpX * tmpX;
+                yy += tmpY * tmpY;
+                xy += tmpX * tmpY;
             }
 
-            dblResult = (iRowCount * XY - X * Y) / Math.Sqrt((iRowCount * XX - X * X) * (iRowCount * YY - Y * Y));
+            dblResult = (iRowCount * xy - x * y) / Math.Sqrt((iRowCount * xx - x * x) * (iRowCount * yy - y * y));
 
             return dblResult;
         }
@@ -4633,7 +4633,7 @@ string display = seconds.SecondsToString(); // 2 hours 11 mins
 "my message {yes} {no}".Extract("", "{");     // return my message
  */
 
-        public static string Extract(this string value, string begin_text, string end_text, int occur = 1)
+        public static string Extract(this string value, string beginText, string endText, int occur = 1)
         {
             if (string.IsNullOrEmpty(value) == false)
             {
@@ -4641,17 +4641,17 @@ string display = seconds.SecondsToString(); // 2 hours 11 mins
                 var start = -1;
                 // search with number of occurs
                 for (var i = 1; i <= occur; i++)
-                    start = value.IndexOf(begin_text, start + 1);
+                    start = value.IndexOf(beginText, start + 1);
 
                 if (start < 0)
                     return value;
-                start += begin_text.Length;
+                start += beginText.Length;
 
 
                 // Search End
-                if (string.IsNullOrEmpty(end_text))
+                if (string.IsNullOrEmpty(endText))
                     return value.Substring(start);
-                var end = value.IndexOf(end_text, start);
+                var end = value.IndexOf(endText, start);
                 if (end < 0)
                     return value.Substring(start);
 
@@ -4725,8 +4725,8 @@ dynamicObject.Print();
         }
  */
 
-        public static IEnumerable<TSource> Replace<TSource, Tkey>(this IList<TSource> source, TSource replacement,
-            Func<TSource, Tkey> selector)
+        public static IEnumerable<TSource> Replace<TSource, TKey>(this IList<TSource> source, TSource replacement,
+            Func<TSource, TKey> selector)
         {
             foreach (var item in source)
             {
@@ -4762,12 +4762,12 @@ else {
 }
  */
 
-        private static RandomNumberGenerator rand = System.Security.Cryptography.RandomNumberGenerator.Create();
+        private static RandomNumberGenerator _rand = System.Security.Cryptography.RandomNumberGenerator.Create();
 
-        public static bool isRandomSecure(this int source)
+        public static bool IsRandomSecure(this int source)
         {
             var data = new byte[4];
-            rand.GetBytes(data);
+            _rand.GetBytes(data);
 
             return source == ((data[0] << 24) | (data[1] << 16) | (data[2] << 8) | data[3]);
         }
@@ -4828,20 +4828,20 @@ else {
  * XElement parentXElement = childXElement.FindParent("nodename");
  */
 
-        public static XElement FindParent(this XElement e, string Name)
+        public static XElement FindParent(this XElement e, string name)
         {
             XElement r = null;
 
             if (e == null)
                 return r;
 
-            if (e.Parent != null && e.Parent.Name == Name)
+            if (e.Parent != null && e.Parent.Name == name)
             {
                 r = e.Parent;
             }
             else
             {
-                r = e.Parent.FindParent(Name);
+                r = e.Parent.FindParent(name);
             }
 
             return r;
@@ -4933,7 +4933,7 @@ var ordinal = number.AddOrdinal(); // 1st
             state.WhenFalse(d);
  */
 
-        public delegate void delExecuteMethod();
+        public delegate void DelExecuteMethod();
 
         /// <summary>
         /// 
@@ -4941,7 +4941,7 @@ var ordinal = number.AddOrdinal(); // 1st
         /// <param name="value">Current value of Boolean</param>
         /// <param name="executeWhen">Value of Boolean when to execute delegate.</param>
         /// <param name="executeMethod">Delegate method to execute.</param>
-        public static void When(this bool value, bool executeWhen, delExecuteMethod executeMethod)
+        public static void When(this bool value, bool executeWhen, DelExecuteMethod executeMethod)
         {
             if (value == executeWhen)
                 executeMethod.Invoke();
@@ -4952,7 +4952,7 @@ var ordinal = number.AddOrdinal(); // 1st
         /// </summary>
         /// <param name="value">Current value of the boolean.</param>
         /// <param name="executeMothod">Delegate method to execute.</param>
-        public static void WhenTrue(this bool value, delExecuteMethod executeMothod)
+        public static void WhenTrue(this bool value, DelExecuteMethod executeMothod)
         {
             if (value)
                 executeMothod.Invoke();
@@ -4963,7 +4963,7 @@ var ordinal = number.AddOrdinal(); // 1st
         /// </summary>
         /// <param name="value">Current value of the boolean.</param>
         /// <param name="executeMothod">Delegate method to execute.</param>
-        public static void WhenFalse(this bool value, delExecuteMethod executeMothod)
+        public static void WhenFalse(this bool value, DelExecuteMethod executeMothod)
         {
             if (!value)
                 executeMothod.Invoke();
