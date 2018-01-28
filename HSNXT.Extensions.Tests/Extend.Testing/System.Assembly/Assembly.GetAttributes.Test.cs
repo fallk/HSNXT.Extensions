@@ -28,17 +28,5 @@ namespace Extend.Testing
                   .Company.Should()
                   .Be( "Microsoft Corporation" );
         }
-
-        [Fact]
-        public void GetAttributesNullValueTest()
-        {
-            Assembly assembly = null;
-
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => assembly.GetAttributes<AssemblyCompanyAttribute>();
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
     }
 }
