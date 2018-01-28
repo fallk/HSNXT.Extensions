@@ -12,7 +12,7 @@ namespace Extend.Testing
         [Fact]
         public void ToSingleItemArrayTest()
         {
-            var item = RandomValueEx.GetRandomString();
+            var item = Extensions.GetRandomString();
 
             var actual = item.ToSingleItemArray();
 

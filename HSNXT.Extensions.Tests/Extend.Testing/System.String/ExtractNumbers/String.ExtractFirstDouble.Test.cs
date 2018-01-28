@@ -44,7 +44,7 @@ namespace Extend.Testing
         [Fact]
         public void ExtractFirstDoubleTest1ArgumentOutOfRangeException()
         {
-            var sValue = RandomValueEx.GetRandomString();
+            var sValue = Extensions.GetRandomString();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDouble( sValue.Length );
 
@@ -54,7 +54,7 @@ namespace Extend.Testing
         [Fact]
         public void ExtractFirstDoubleTest2ArgumentOutOfRangeException()
         {
-            var sValue = RandomValueEx.GetRandomString();
+            var sValue = Extensions.GetRandomString();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDouble( -1 );
 

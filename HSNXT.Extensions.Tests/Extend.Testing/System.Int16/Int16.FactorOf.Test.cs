@@ -12,8 +12,8 @@ namespace Extend.Testing
         [Fact]
         public void FactorOfTest()
         {
-            var value = RandomValueEx.GetRandomInt16();
-            var factorNumer = RandomValueEx.GetRandomInt16();
+            var value = Extensions.GetRandomInt16();
+            var factorNumer = Extensions.GetRandomInt16();
 
             var expected = factorNumer % value == 0;
             var actual = value.FactorOf( factorNumer );

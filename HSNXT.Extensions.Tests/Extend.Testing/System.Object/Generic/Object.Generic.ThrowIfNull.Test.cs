@@ -21,7 +21,7 @@ namespace Extend.Testing
         [Fact]
         public void ThrowIfNullTest2()
         {
-            var varName = RandomValueEx.GetRandomString();
+            var varName = Extensions.GetRandomString();
             varName.ThrowIfNull( "varName" );
 
             varName = null;
@@ -42,11 +42,11 @@ namespace Extend.Testing
         [Fact]
         public void ThrowIfNullTest3()
         {
-            var varName = RandomValueEx.GetRandomString();
+            var varName = Extensions.GetRandomString();
             varName.ThrowIfNull( "varName" );
 
             varName = null;
-            var expectedErrorMessage = RandomValueEx.GetRandomString();
+            var expectedErrorMessage = Extensions.GetRandomString();
             var errorMessage = String.Empty;
             try
             {

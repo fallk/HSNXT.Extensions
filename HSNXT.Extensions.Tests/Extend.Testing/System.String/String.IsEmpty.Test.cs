@@ -21,7 +21,7 @@ namespace Extend.Testing
             value = "   ";
             Assert.True( value.IsEmpty() );
 
-            value = RandomValueEx.GetRandomString();
+            value = Extensions.GetRandomString();
             Assert.False( value.IsEmpty() );
         }
     }

@@ -17,7 +17,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachReverseTest()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -29,7 +29,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachReverseTest1()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( x => list.Remove( x ) );

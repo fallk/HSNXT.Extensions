@@ -28,7 +28,7 @@ namespace Extend.Testing
             actual = list.WhereIf( false, x => true );
             Assert.Empty( actual );
 
-            list = RandomValueEx.GetRandomStrings();
+            list = Extensions.GetRandomStrings();
 
             actual = list.WhereIf( true, x => true );
             Assert.Equal( list.Count, actual.Count() );
@@ -54,7 +54,7 @@ namespace Extend.Testing
             actual = list.WhereIf( false, ( x, i ) => true );
             Assert.Empty( actual );
 
-            list = RandomValueEx.GetRandomStrings();
+            list = Extensions.GetRandomStrings();
 
             actual = list.WhereIf( true, ( x, i ) => true );
             Assert.Equal( list.Count, actual.Count() );

@@ -12,7 +12,7 @@ namespace Extend.Testing
         [Fact]
         public void IsEvenTest()
         {
-            var value = RandomValueEx.GetRandomInt16();
+            var value = Extensions.GetRandomInt16();
 
             var expected = value % 2 == 0;
             var actual = value.IsEven();

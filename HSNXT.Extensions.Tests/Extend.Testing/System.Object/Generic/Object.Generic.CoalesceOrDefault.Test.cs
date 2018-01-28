@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceOrDefault1Test()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             String s = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -26,7 +26,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceOrDefault4Test()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = expected.CoalesceOrDefault( "default", null, null );
 
             actual.Should()
@@ -60,7 +60,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceOrDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             String s = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -72,7 +72,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceOrDefaultTest2()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             String s = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = Extensions.CoalesceOrDefault( null, () => s, null, null, expected, "Test2" );
@@ -99,7 +99,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceOrDefaultTest3()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             String s = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = expected.CoalesceOrDefault( () => s, null, null, "Test2" );

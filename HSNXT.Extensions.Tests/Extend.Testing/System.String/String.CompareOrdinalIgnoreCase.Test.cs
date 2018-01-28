@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void CompareOrdinalIgnoreNullTest()
         {
-            var left = RandomValueEx.GetRandomString();
+            var left = Extensions.GetRandomString();
             String right = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
@@ -29,7 +29,7 @@ namespace Extend.Testing
         public void CompareOrdinalIgnoreNullTest1()
         {
             String left = null;
-            var right = RandomValueEx.GetRandomString();
+            var right = Extensions.GetRandomString();
 
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = left.CompareOrdinalIgnoreCase( right );
@@ -42,7 +42,7 @@ namespace Extend.Testing
         [Fact]
         public void CompareOrdinalIgnoreTest()
         {
-            var value1 = RandomValueEx.GetRandomString();
+            var value1 = Extensions.GetRandomString();
             var value2 = value1;
 
             var actual = value1.CompareOrdinalIgnoreCase( value2 );
@@ -52,7 +52,7 @@ namespace Extend.Testing
             actual = value1.CompareOrdinalIgnoreCase( value2 );
             Assert.True( actual );
 
-            value2 = RandomValueEx.GetRandomString();
+            value2 = Extensions.GetRandomString();
             actual = value1.CompareOrdinalIgnoreCase( value2 );
             Assert.False( actual );
         }

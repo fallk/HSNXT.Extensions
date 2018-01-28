@@ -12,7 +12,7 @@ namespace Extend.Testing
         [Fact]
         public void IsNullTest()
         {
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
             var actual = value.IsNull();
 
             Assert.False( actual );

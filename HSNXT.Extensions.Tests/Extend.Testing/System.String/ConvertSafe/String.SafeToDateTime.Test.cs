@@ -145,7 +145,7 @@ namespace Extend.Testing
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .SafeToDateTime( RandomValueEx.GetRandomDateTime() );
+                                 .SafeToDateTime( Extensions.GetRandomDateTime() );
 
             actual
                 .Should()

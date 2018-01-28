@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteSafeTest()
         {
-            var expectedValue = RandomValueEx.GetRandomString();
+            var expectedValue = Extensions.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x => throw new InvalidOperationException( expectedValue ) );
 
             Assert.Null( actual.Result );
@@ -34,7 +34,7 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteSafeTest1()
         {
-            var expectedValue = RandomValueEx.GetRandomString();
+            var expectedValue = Extensions.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x =>
             {
                 if ( expectedValue.Length > 0 )

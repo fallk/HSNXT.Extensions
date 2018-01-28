@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void ToSecondsTest()
         {
-            var value = RandomValueEx.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32( 1, 100 );
 
             var expected = TimeSpan.FromSeconds( value );
             var actual = value.ToSeconds();

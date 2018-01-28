@@ -37,7 +37,7 @@ namespace Extend.Testing
         public void ResultTest()
         {
             var target = new ExecutionResult<String>();
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             target.Result = expected;
 
             target.Result.Should()

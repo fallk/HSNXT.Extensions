@@ -58,7 +58,7 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest1()
         {
-            var parameter = RandomValueEx.GetRandomString();
+            var parameter = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -113,7 +113,7 @@ namespace Extend.Testing
         public void ExecuteIfTrueTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ExecuteIfTrue( null, RandomValueEx.GetRandomString(), null, true, true );
+            Action test = () => Extensions.ExecuteIfTrue( null, Extensions.GetRandomString(), null, true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -121,8 +121,8 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest2()
         {
-            var parameter1 = RandomValueEx.GetRandomString();
-            var parameter2 = RandomValueEx.GetRandomString();
+            var parameter1 = Extensions.GetRandomString();
+            var parameter2 = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -194,8 +194,8 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.ExecuteIfTrue( null,
-                                                        RandomValueEx.GetRandomString(),
-                                                        RandomValueEx.GetRandomString(),
+                                                        Extensions.GetRandomString(),
+                                                        Extensions.GetRandomString(),
                                                         null,
                                                         true,
                                                         true );
@@ -206,9 +206,9 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest3()
         {
-            var parameter1 = RandomValueEx.GetRandomString();
-            var parameter2 = RandomValueEx.GetRandomString();
-            var parameter3 = RandomValueEx.GetRandomString();
+            var parameter1 = Extensions.GetRandomString();
+            var parameter2 = Extensions.GetRandomString();
+            var parameter3 = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -290,9 +290,9 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.ExecuteIfTrue( null,
-                                                        RandomValueEx.GetRandomString(),
-                                                        RandomValueEx.GetRandomString(),
-                                                        RandomValueEx.GetRandomString(),
+                                                        Extensions.GetRandomString(),
+                                                        Extensions.GetRandomString(),
+                                                        Extensions.GetRandomString(),
                                                         null,
                                                         true,
                                                         true );
@@ -303,10 +303,10 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest4()
         {
-            var parameter1 = RandomValueEx.GetRandomString();
-            var parameter2 = RandomValueEx.GetRandomString();
-            var parameter3 = RandomValueEx.GetRandomString();
-            var parameter4 = RandomValueEx.GetRandomString();
+            var parameter1 = Extensions.GetRandomString();
+            var parameter2 = Extensions.GetRandomString();
+            var parameter3 = Extensions.GetRandomString();
+            var parameter4 = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -400,10 +400,10 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => Extensions.ExecuteIfTrue( null,
-                                                        RandomValueEx.GetRandomString(),
-                                                        RandomValueEx.GetRandomString(),
-                                                        RandomValueEx.GetRandomString(),
-                                                        RandomValueEx.GetRandomString(),
+                                                        Extensions.GetRandomString(),
+                                                        Extensions.GetRandomString(),
+                                                        Extensions.GetRandomString(),
+                                                        Extensions.GetRandomString(),
                                                         null,
                                                         true,
                                                         true );
@@ -459,7 +459,7 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest6()
         {
-            var parameter = RandomValueEx.GetRandomString();
+            var parameter = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -498,7 +498,7 @@ namespace Extend.Testing
         {
             Action<String> trueAction = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), true, true );
+            Action test = () => trueAction.ExecuteIfTrue( Extensions.GetRandomString(), true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -506,8 +506,8 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest7()
         {
-            var parameter1 = RandomValueEx.GetRandomString();
-            var parameter2 = RandomValueEx.GetRandomString();
+            var parameter1 = Extensions.GetRandomString();
+            var parameter2 = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -566,7 +566,7 @@ namespace Extend.Testing
         {
             Action<String, String> trueAction = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true );
+            Action test = () => trueAction.ExecuteIfTrue( Extensions.GetRandomString(), Extensions.GetRandomString(), true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -574,9 +574,9 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest8()
         {
-            var parameter1 = RandomValueEx.GetRandomString();
-            var parameter2 = RandomValueEx.GetRandomString();
-            var parameter3 = RandomValueEx.GetRandomString();
+            var parameter1 = Extensions.GetRandomString();
+            var parameter2 = Extensions.GetRandomString();
+            var parameter3 = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -639,9 +639,9 @@ namespace Extend.Testing
         {
             Action<String, String, String> trueAction = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
-                                                          RandomValueEx.GetRandomString(),
-                                                          RandomValueEx.GetRandomString(),
+            Action test = () => trueAction.ExecuteIfTrue( Extensions.GetRandomString(),
+                                                          Extensions.GetRandomString(),
+                                                          Extensions.GetRandomString(),
                                                           true,
                                                           true );
 
@@ -651,10 +651,10 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfTrueTest9()
         {
-            var parameter1 = RandomValueEx.GetRandomString();
-            var parameter2 = RandomValueEx.GetRandomString();
-            var parameter3 = RandomValueEx.GetRandomString();
-            var parameter4 = RandomValueEx.GetRandomString();
+            var parameter1 = Extensions.GetRandomString();
+            var parameter2 = Extensions.GetRandomString();
+            var parameter3 = Extensions.GetRandomString();
+            var parameter4 = Extensions.GetRandomString();
 
             // Case 1
             var trueActionExecuted = false;
@@ -726,10 +726,10 @@ namespace Extend.Testing
         {
             Action<String, String, String, String> trueAction = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
-                                                          RandomValueEx.GetRandomString(),
-                                                          RandomValueEx.GetRandomString(),
-                                                          RandomValueEx.GetRandomString(),
+            Action test = () => trueAction.ExecuteIfTrue( Extensions.GetRandomString(),
+                                                          Extensions.GetRandomString(),
+                                                          Extensions.GetRandomString(),
+                                                          Extensions.GetRandomString(),
                                                           true,
                                                           true );
 

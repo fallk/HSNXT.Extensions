@@ -14,8 +14,8 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest()
         {
-            var expectedName = RandomValueEx.GetRandomString();
-            var expectedDescription = RandomValueEx.GetRandomString();
+            var expectedName = Extensions.GetRandomString();
+            var expectedDescription = Extensions.GetRandomString();
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Include, CompareMode.Is, expectedName, expectedDescription );
 
             target.RuleName.Should()

@@ -118,8 +118,8 @@ namespace Extend.Testing
         public void GetOrAddTest()
         {
             var dictionary = new Dictionary<String, String>();
-            var key = RandomValueEx.GetRandomString();
-            var value = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
+            var value = Extensions.GetRandomString();
 
             var actual = dictionary.GetOrAdd( key, value );
             Assert.Equal( value, actual );
@@ -136,8 +136,8 @@ namespace Extend.Testing
         public void GetOrAddTest1()
         {
             var dictionary = new Dictionary<String, String>();
-            var keyValuePair = new KeyValuePair<String, String>( RandomValueEx.GetRandomString(),
-                                                                 RandomValueEx.GetRandomString() );
+            var keyValuePair = new KeyValuePair<String, String>( Extensions.GetRandomString(),
+                                                                 Extensions.GetRandomString() );
 
             var actual = dictionary.GetOrAdd( keyValuePair );
             Assert.Equal( keyValuePair.Value, actual );
@@ -154,8 +154,8 @@ namespace Extend.Testing
         public void GetOrAddTest2()
         {
             var dictionary = new Dictionary<String, String>();
-            var key = RandomValueEx.GetRandomString();
-            var value = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
+            var value = Extensions.GetRandomString();
 
             var actual = dictionary.GetOrAdd( key, () => value );
             Assert.Equal( value, actual );
@@ -172,8 +172,8 @@ namespace Extend.Testing
         public void GetOrAddTest3()
         {
             var dictionary = new Dictionary<String, String>();
-            var key = RandomValueEx.GetRandomString();
-            var value = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
+            var value = Extensions.GetRandomString();
 
             var actual = dictionary.GetOrAdd( key, x => value );
             Assert.Equal( value, actual );

@@ -109,7 +109,7 @@ namespace Extend.Testing
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = target.Add( expected );
 
             Assert.Contains( actual, target );
@@ -148,7 +148,7 @@ namespace Extend.Testing
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = target.Add( expected );
             var actual1 = target.Add( expected );
 

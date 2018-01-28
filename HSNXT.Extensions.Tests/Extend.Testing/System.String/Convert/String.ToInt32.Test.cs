@@ -67,7 +67,7 @@ namespace Extend.Testing
         public void ToInt32OverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
-            var value = RandomValueEx.GetRandomInt32();
+            var value = Extensions.GetRandomInt32();
             var actual = value.ToString( culture )
                               .ToInt32( culture );
 
@@ -97,7 +97,7 @@ namespace Extend.Testing
         [Fact]
         public void ToInt32Test()
         {
-            var value = RandomValueEx.GetRandomInt32();
+            var value = Extensions.GetRandomInt32();
             var actual = value.ToString()
                               .ToInt32();
 

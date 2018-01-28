@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void ToDaysTest()
         {
-            var value = RandomValueEx.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32( 1, 100 );
 
             var expected = TimeSpan.FromDays( value );
             var actual = ( (Int64) value ).ToDays();

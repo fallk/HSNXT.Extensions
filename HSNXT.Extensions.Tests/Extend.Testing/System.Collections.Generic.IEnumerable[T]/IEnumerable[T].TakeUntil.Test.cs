@@ -21,7 +21,7 @@ namespace Extend.Testing
             var result = list.TakeUntil( x => true );
             Assert.Equal( list.Count, result.Count() );
 
-            list = RandomValueEx.GetRandomStrings( 10 );
+            list = Extensions.GetRandomStrings( 10 );
             result = list.TakeUntil( x => false );
             Assert.Equal( list.Count, result.Count() );
 

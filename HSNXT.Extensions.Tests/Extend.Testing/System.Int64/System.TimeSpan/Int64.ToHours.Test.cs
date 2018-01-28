@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void ToHoursTest()
         {
-            var value = RandomValueEx.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32( 1, 100 );
 
             var expected = TimeSpan.FromHours( value );
             var actual = ( (Int64) value ).ToHours();

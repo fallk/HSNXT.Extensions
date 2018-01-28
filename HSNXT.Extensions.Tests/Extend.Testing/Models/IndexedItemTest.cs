@@ -14,8 +14,8 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest()
         {
-            var index = RandomValueEx.GetRandomInt32();
-            var value = RandomValueEx.GetRandomString();
+            var index = Extensions.GetRandomInt32();
+            var value = Extensions.GetRandomString();
             var target = new IndexedItem<String>( index, value );
 
             target.Index.Should()

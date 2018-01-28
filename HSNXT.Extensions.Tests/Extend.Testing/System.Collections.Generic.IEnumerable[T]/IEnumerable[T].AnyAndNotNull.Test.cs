@@ -32,7 +32,7 @@ namespace Extend.Testing
             list = new List<String>();
             Assert.False( list.AnyAndNotNull() );
 
-            list.Add( RandomValueEx.GetRandomString() );
+            list.Add( Extensions.GetRandomString() );
             Assert.True( list.AnyAndNotNull() );
         }
 
@@ -45,10 +45,10 @@ namespace Extend.Testing
             list = new List<String>();
             Assert.False( list.AnyAndNotNull( x => true ) );
 
-            list.Add( RandomValueEx.GetRandomString() );
+            list.Add( Extensions.GetRandomString() );
             Assert.False( list.AnyAndNotNull( x => false ) );
 
-            list.Add( RandomValueEx.GetRandomString() );
+            list.Add( Extensions.GetRandomString() );
             Assert.True( list.AnyAndNotNull( x => true ) );
         }
     }

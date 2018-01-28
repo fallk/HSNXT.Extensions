@@ -47,7 +47,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDecimalInvalidValueWithDefaultTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var expected = new Decimal( Extensions.GetRandomInt32() );
             var actual = "InvalidValue".SafeToDecimal( expected );
 
             actual
@@ -59,7 +59,7 @@ namespace Extend.Testing
         public void SafeToDecimalNullTest()
         {
             String value = null;
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var expected = new Decimal( Extensions.GetRandomInt32() );
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.SafeToDecimal( expected );
 
@@ -81,7 +81,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDecimalOverloadInvalidValueWithDefaultTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var expected = new Decimal( Extensions.GetRandomInt32() );
             var actual = "InvalidValue".SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             actual
@@ -104,7 +104,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDecimalOverloadTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var expected = new Decimal( Extensions.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -116,7 +116,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDecimalOverloadWithDefaultTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.1523 );
+            var expected = new Decimal( Extensions.GetRandomInt32() + 0.1523 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, Decimal.MinValue );
 
@@ -128,7 +128,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDecimalTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var expected = new Decimal( Extensions.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToDecimal();
 
@@ -140,7 +140,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDecimalWithDefaultTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.123 );
+            var expected = new Decimal( Extensions.GetRandomInt32() + 0.123 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToDecimal( Decimal.MaxValue );
 

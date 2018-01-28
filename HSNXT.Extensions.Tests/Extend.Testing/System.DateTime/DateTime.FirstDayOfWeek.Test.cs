@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Fact]
         public void FirstDayOfWeekTest()
         {
-            var dateTime = RandomValueEx.GetRandomDateTime();
+            var dateTime = Extensions.GetRandomDateTime();
             var expected =
                 new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( -(Int32) dateTime.DayOfWeek );
             var actual = dateTime.FirstDayOfWeek();

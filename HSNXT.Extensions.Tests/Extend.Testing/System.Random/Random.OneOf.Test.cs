@@ -16,7 +16,7 @@ namespace Extend.Testing
         public void RandomOneTest()
         {
             var random = new Random();
-            var list = RandomValueEx.GetRandomStrings()
+            var list = Extensions.GetRandomStrings()
                                     .ToArray();
 
             var actual = random.RandomOne( list );
@@ -27,7 +27,7 @@ namespace Extend.Testing
         public void RandomOneTest1()
         {
             var random = new Random();
-            var list = RandomValueEx.GetRandomStrings();
+            var list = Extensions.GetRandomStrings();
 
             var actual = random.RandomOne<String>( list );
             Assert.Contains( actual, list );

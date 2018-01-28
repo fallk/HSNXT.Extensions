@@ -33,7 +33,7 @@ namespace Extend.Testing
         [Fact]
         public void ToBooleanTest()
         {
-            var value = RandomValueEx.GetRandomBoolean();
+            var value = Extensions.GetRandomBoolean();
             var actual = value.ToString()
                               .ToBoolean();
 

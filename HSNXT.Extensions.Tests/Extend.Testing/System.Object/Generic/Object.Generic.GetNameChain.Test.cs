@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void GetNameChainOverload1Test()
         {
-            var myInt = RandomValueEx.GetRandomInt32();
+            var myInt = Extensions.GetRandomInt32();
             var actual = this.GetNameChain( () => myInt );
 
             Assert.Equal( "myInt", actual );
@@ -82,7 +82,7 @@ namespace Extend.Testing
         [Fact]
         public void GetNameChainTest()
         {
-            var myInt = RandomValueEx.GetRandomInt32();
+            var myInt = Extensions.GetRandomInt32();
             var actual = this.GetNameChain( x => myInt );
 
             Assert.Equal( "myInt", actual );

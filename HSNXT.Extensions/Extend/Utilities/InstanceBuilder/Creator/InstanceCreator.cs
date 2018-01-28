@@ -233,7 +233,7 @@ namespace HSNXT
             var min = options.PopulateCollectionsMinCount ?? PopulateCollectionsMinCount;
             var max = options.PopulateCollectionsMaxCount ?? PopulateCollectionsMaxCount;
 
-            return RandomValueEx.GetRandomInt32( min, max );
+            return Extensions.GetRandomInt32( min, max );
         }
 
         /// <summary>

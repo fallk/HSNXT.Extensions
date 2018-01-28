@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Fact]
         public void ToMinutesTest()
         {
-            var value = RandomValueEx.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32( 1, 100 );
 
             var expected = TimeSpan.FromMinutes( value );
             var actual = ( (Int16) value ).ToMinutes();

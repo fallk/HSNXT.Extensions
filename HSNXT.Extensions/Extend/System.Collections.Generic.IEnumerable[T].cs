@@ -308,7 +308,7 @@ namespace HSNXT
             enumerable.ThrowIfNull( nameof(enumerable) );
 
             var list = enumerable as IList<T> ?? enumerable.ToList();
-            var index = RandomValueEx.GetRandomInt32( 0, list.Count );
+            var index = Extensions.GetRandomInt32( 0, list.Count );
             return list.ElementAt( index );
         }
         /// <summary>

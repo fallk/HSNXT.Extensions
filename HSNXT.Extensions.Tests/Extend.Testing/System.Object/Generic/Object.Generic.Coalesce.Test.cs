@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceTest()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = Extensions.Coalesce( null, null, null, null, expected, "Test2" );
 
             Assert.Equal( expected, actual );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceTest1()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = Extensions.Coalesce( null, null, null, null, expected, "Test2" );
 
             Assert.Equal( expected, actual );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceTest2()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = expected.Coalesce( null, null, null, expected, "Test2" );
 
             Assert.Equal( expected, actual );
@@ -41,7 +41,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceTest3()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var actual = expected.Coalesce( "Test2" );
 
             Assert.Equal( expected, actual );
@@ -50,7 +50,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceTest4()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = expected.Coalesce( value );
@@ -61,7 +61,7 @@ namespace Extend.Testing
         [Fact]
         public void CoalesceTest5()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.Coalesce( expected );

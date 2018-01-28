@@ -13,8 +13,8 @@ namespace Extend.Testing
         [Fact]
         public void DaysInMonthTest()
         {
-            var year = RandomValueEx.GetRandomInt32( 1990, 2015 );
-            var month = RandomValueEx.GetRandomInt32( 1, 12 );
+            var year = Extensions.GetRandomInt32( 1990, 2015 );
+            var month = Extensions.GetRandomInt32( 1, 12 );
 
             var expected = DateTime.DaysInMonth( year, month );
             var actual = ( (Int16) year ).DaysInMonth( (Int16) month );

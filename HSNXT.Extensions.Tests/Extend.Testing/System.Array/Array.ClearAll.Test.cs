@@ -40,7 +40,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.ClearAll();
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Extend.Testing
             Assert.True( list.MinimumOf( 0, x => false ) );
             Assert.True( list.MinimumOf( 0, x => true ) );
 
-            list = RandomValueEx.GetRandomStrings( 10 );
+            list = Extensions.GetRandomStrings( 10 );
             Assert.True( list.MinimumOf( 9, x => true ) );
             Assert.True( list.MinimumOf( 10, x => true ) );
             Assert.False( list.MinimumOf( 10, x => false ) );
@@ -35,7 +35,7 @@ namespace Extend.Testing
             Assert.False( list.MinimumOf( 1 ) );
             Assert.True( list.MinimumOf( 0 ) );
 
-            list = RandomValueEx.GetRandomStrings( 10 );
+            list = Extensions.GetRandomStrings( 10 );
             Assert.True( list.MinimumOf( 9 ) );
             Assert.True( list.MinimumOf( 10 ) );
             Assert.False( list.MinimumOf( 11 ) );

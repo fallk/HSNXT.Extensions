@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void SwapTest()
         {
             var value0 = new List<String>();
-            var value1 = new List<String> { RandomValueEx.GetRandomString() };
+            var value1 = new List<String> { Extensions.GetRandomString() };
 
             this.Swap( ref value0, ref value1 );
             Assert.Single( value0 );

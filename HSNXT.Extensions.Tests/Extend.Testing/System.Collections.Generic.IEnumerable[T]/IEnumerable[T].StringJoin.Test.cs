@@ -89,7 +89,7 @@ namespace Extend.Testing
             actual = list.StringJoin();
             Assert.Equal( String.Empty, actual );
 
-            list = RandomValueEx.GetRandomStrings();
+            list = Extensions.GetRandomStrings();
             actual = list.StringJoin( "," );
             var expected = String.Join( ",", list );
             Assert.Equal( expected, actual );

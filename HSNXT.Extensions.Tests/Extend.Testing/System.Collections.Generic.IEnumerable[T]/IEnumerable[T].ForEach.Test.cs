@@ -17,7 +17,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
             var actual = Extensions.ForEach( list, otherList.Add );
@@ -29,7 +29,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest1()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.ForEach( list, x => list.Remove( x ) );
@@ -62,7 +62,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest2()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
             var actual = Extensions.ForEach( list, otherList.Add );
@@ -74,7 +74,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest3()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => list.Remove( x ) );
@@ -85,7 +85,7 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest4()
         {
-            var list = RandomValueEx.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings( 10 );
             var total = 0;
             var actual = list.ForEach( ( x, i ) => total += i );
 

@@ -25,8 +25,8 @@ namespace Extend.Testing
         [Fact]
         public void IsMultipleOfTest()
         {
-            Int64 value = RandomValueEx.GetRandomInt32();
-            Int64 factor = RandomValueEx.GetRandomInt32();
+            Int64 value = Extensions.GetRandomInt32();
+            Int64 factor = Extensions.GetRandomInt32();
 
             var expected = value % factor == 0;
             var actual = value.IsMultipleOf( factor );

@@ -131,9 +131,9 @@ namespace Extend.Testing.Internal
             {
                 MyListInt = new List<Int32>
                 {
-                    RandomValueEx.GetRandomInt32(),
-                    RandomValueEx.GetRandomInt32(),
-                    RandomValueEx.GetRandomInt32()
+                    Extensions.GetRandomInt32(),
+                    Extensions.GetRandomInt32(),
+                    Extensions.GetRandomInt32()
                 }
             };
             var target = new ObjectValueProvider( model );

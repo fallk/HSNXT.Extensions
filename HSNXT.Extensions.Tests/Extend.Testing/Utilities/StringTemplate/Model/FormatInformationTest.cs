@@ -14,7 +14,7 @@ namespace Extend.Testing.Internal
         [Fact]
         public void FormatTest()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var target = new FormatInformation( "name", expected );
 
             target.Format.Should()
@@ -24,7 +24,7 @@ namespace Extend.Testing.Internal
         [Fact]
         public void ValueNameTest()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             var target = new FormatInformation( expected, null );
 
             target.ValueName.Should()

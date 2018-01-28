@@ -33,7 +33,7 @@ namespace Extend.Testing
         public void FTest()
         {
             const String format = "Test: {0}";
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
 
             var expected = $"Test: {value}";
             var actual = format.F( value );
@@ -45,8 +45,8 @@ namespace Extend.Testing
         public void FTest1()
         {
             const String format = "Test: {0}, {1}";
-            var value = RandomValueEx.GetRandomString();
-            var value1 = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
+            var value1 = Extensions.GetRandomString();
 
             var expected = $"Test: {value}, {value1}";
             var actual = format.F( value, value1 );
@@ -110,13 +110,13 @@ namespace Extend.Testing
         public void FTest4()
         {
             const String format = "Test: {0}, {1}, {2}";
-            var value = RandomValueEx.GetRandomString()
+            var value = Extensions.GetRandomString()
                                      .Substring( 0, 2 );
-            var value1 = RandomValueEx.GetRandomString()
+            var value1 = Extensions.GetRandomString()
                                       .Substring( 0, 2 );
-            var value2 = RandomValueEx.GetRandomString()
+            var value2 = Extensions.GetRandomString()
                                       .Substring( 0, 2 );
-            var value3 = RandomValueEx.GetRandomString()
+            var value3 = Extensions.GetRandomString()
                                       .Substring( 0, 2 );
 
             var expected = String.Format( CultureInfo.InvariantCulture, format, value, value1, value2 );

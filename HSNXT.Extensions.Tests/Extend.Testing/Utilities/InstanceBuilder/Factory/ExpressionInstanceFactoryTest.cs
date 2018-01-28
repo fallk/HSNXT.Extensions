@@ -32,7 +32,7 @@ namespace Extend.Testing
         [Fact]
         public void CreateValueTest()
         {
-            var expectedValue = RandomValueEx.GetRandomInt32();
+            var expectedValue = Extensions.GetRandomInt32();
             var expectedMemberInformation = new MemberInformation();
             IMemberInformation actualParameter = null;
             var target = new ExpressionInstanceFactory( x =>
@@ -51,8 +51,8 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest()
         {
-            var expectedName = RandomValueEx.GetRandomString();
-            var expectedDescription = RandomValueEx.GetRandomString();
+            var expectedName = Extensions.GetRandomString();
+            var expectedDescription = Extensions.GetRandomString();
             var target = new ExpressionInstanceFactory( x => "", expectedName, expectedDescription );
 
             target.FactoryName.Should()

@@ -16,7 +16,7 @@ namespace Extend.Testing
         [Fact]
         public void ToObservableCollectionTest()
         {
-            var list = RandomValueEx.GetRandomStrings();
+            var list = Extensions.GetRandomStrings();
             var actual = list.ToObservableCollection();
 
             Assert.Equal( list.Count, actual.Count );

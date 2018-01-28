@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToBooleanInvalidValueTest()
         {
-            var expected = RandomValueEx.GetRandomBoolean();
+            var expected = Extensions.GetRandomBoolean();
             var actual = "InvalidValue".SafeToBoolean( expected );
 
             Assert.Equal( expected, actual );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToBooleanTest()
         {
-            var expected = RandomValueEx.GetRandomBoolean();
+            var expected = Extensions.GetRandomBoolean();
             var actual = expected.ToString()
                                  .SafeToBoolean();
 

@@ -31,7 +31,7 @@ namespace Extend.Testing
         {
             String[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Populate( RandomValueEx.GetRandomString() );
+            Action test = () => array.Populate( Extensions.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

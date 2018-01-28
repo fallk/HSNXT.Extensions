@@ -44,7 +44,7 @@ namespace Extend.Testing
         [Fact]
         public void ExtractFirstDecimalTest1ArgumentOutOfRangeException()
         {
-            var sValue = RandomValueEx.GetRandomString();
+            var sValue = Extensions.GetRandomString();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDecimal( sValue.Length );
 
@@ -54,7 +54,7 @@ namespace Extend.Testing
         [Fact]
         public void ExtractFirstDecimalTest2ArgumentOutOfRangeException()
         {
-            var sValue = RandomValueEx.GetRandomString();
+            var sValue = Extensions.GetRandomString();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDecimal( -1 );
 

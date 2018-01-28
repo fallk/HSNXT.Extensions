@@ -19,10 +19,10 @@ namespace Extend.Testing
             var list = new List<String>();
             Assert.False( list.Many() );
 
-            list = RandomValueEx.GetRandomStrings( 1 );
+            list = Extensions.GetRandomStrings( 1 );
             Assert.False( list.Many() );
 
-            list = RandomValueEx.GetRandomStrings( 10 );
+            list = Extensions.GetRandomStrings( 10 );
             Assert.True( list.Many() );
         }
 
@@ -32,10 +32,10 @@ namespace Extend.Testing
             var list = new List<String>();
             Assert.False( list.Many( x => true ) );
 
-            list = RandomValueEx.GetRandomStrings( 1 );
+            list = Extensions.GetRandomStrings( 1 );
             Assert.False( list.Many( x => true ) );
 
-            list = RandomValueEx.GetRandomStrings( 10 );
+            list = Extensions.GetRandomStrings( 10 );
             Assert.False( list.Many( x => false ) );
             Assert.True( list.Many( x => true ) );
         }

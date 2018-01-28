@@ -16,7 +16,7 @@ namespace Extend.Testing
         public void RemoveRangeTest()
         {
             var list = new List<String>();
-            var values = RandomValueEx.GetRandomStrings( 10 );
+            var values = Extensions.GetRandomStrings( 10 );
             list.AddRange( values );
             Assert.Equal( values.Count, list.Count );
 
@@ -29,7 +29,7 @@ namespace Extend.Testing
         public void RemoveRangeTest1()
         {
             var list = new List<String>();
-            var values = RandomValueEx.GetRandomStrings( 10 );
+            var values = Extensions.GetRandomStrings( 10 );
             list.AddRange( values );
             Assert.Equal( values.Count, list.Count );
 

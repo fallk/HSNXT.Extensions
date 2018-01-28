@@ -21,7 +21,7 @@ namespace Extend.Testing
             list = new List<String>();
             Assert.True( list.IsNullOrEmpty() );
 
-            list.Add( RandomValueEx.GetRandomString() );
+            list.Add( Extensions.GetRandomString() );
             Assert.False( list.IsNullOrEmpty() );
         }
     }

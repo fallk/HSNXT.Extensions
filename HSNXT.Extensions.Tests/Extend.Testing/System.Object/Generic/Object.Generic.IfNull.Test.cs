@@ -12,7 +12,7 @@ namespace Extend.Testing
         [Fact]
         public void IfNullTest()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
 
             var actual = Extensions.IfNull( null, expected );
             Assert.Equal( expected, actual );

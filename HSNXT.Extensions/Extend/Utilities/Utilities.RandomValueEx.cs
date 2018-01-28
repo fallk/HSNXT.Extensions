@@ -18,10 +18,7 @@ using HSNXT.Internal;
 
 namespace HSNXT
 {
-    /// <summary>
-    ///     Class containing some methods to generate random values.
-    /// </summary>
-    public static class RandomValueEx
+    public static partial class Extensions
     {
         #region Constants
 
@@ -33,7 +30,7 @@ namespace HSNXT
         /// <summary>
         ///     The object used to generate random values.
         /// </summary>
-        private static readonly Random Random = new Random();
+        private static readonly Random Random2 = new Random();
 
         /// <summary>
         ///     The object used to synchronize accesses to <see cref="Rnd" /> across different threads.
@@ -52,7 +49,7 @@ namespace HSNXT
             get
             {
                 lock ( SyncLock )
-                    return Random;
+                    return Random2;
             }
         }
 

@@ -30,7 +30,7 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpression5()
         {
-            var myInt = RandomValueEx.GetRandomInt32();
+            var myInt = Extensions.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
             var actual = expression.TryGetMemberExpression( out var outResult );
 
@@ -84,7 +84,7 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTest()
         {
-            var myInt = RandomValueEx.GetRandomInt32();
+            var myInt = Extensions.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
             var actual = expression.TryGetMemberExpression( out var outResult );
 

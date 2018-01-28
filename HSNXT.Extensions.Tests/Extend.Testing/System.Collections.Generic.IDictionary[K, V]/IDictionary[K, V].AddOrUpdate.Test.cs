@@ -16,15 +16,15 @@ namespace Extend.Testing
         [Fact]
         public void AddOrUpdateTest()
         {
-            var key = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var valueToAdd = RandomValueEx.GetRandomString();
+            var valueToAdd = Extensions.GetRandomString();
             var result = dic.AddOrUpdate( key, valueToAdd );
             Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
 
-            valueToAdd = RandomValueEx.GetRandomString();
+            valueToAdd = Extensions.GetRandomString();
             result = dic.AddOrUpdate( key, valueToAdd );
             Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
@@ -33,15 +33,15 @@ namespace Extend.Testing
         [Fact]
         public void AddOrUpdateTest1()
         {
-            var key = RandomValueEx.GetRandomString();
-            var pair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
+            var key = Extensions.GetRandomString();
+            var pair = new KeyValuePair<String, String>( key, Extensions.GetRandomString() );
             var dic = new Dictionary<String, String>();
 
             var result = dic.AddOrUpdate( pair );
             Assert.Single( dic );
             Assert.Equal( pair.Value, result );
 
-            pair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
+            pair = new KeyValuePair<String, String>( key, Extensions.GetRandomString() );
             result = dic.AddOrUpdate( pair );
             Assert.Single( dic );
             Assert.Equal( pair.Value, result );
@@ -67,16 +67,16 @@ namespace Extend.Testing
         [Fact]
         public void AddOrUpdateTest2()
         {
-            var key = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var valueToAdd = RandomValueEx.GetRandomString();
+            var valueToAdd = Extensions.GetRandomString();
             // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, () => valueToAdd );
             Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
 
-            valueToAdd = RandomValueEx.GetRandomString();
+            valueToAdd = Extensions.GetRandomString();
             result = dic.AddOrUpdate( key, () => valueToAdd );
             Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
@@ -113,16 +113,16 @@ namespace Extend.Testing
         [Fact]
         public void AddOrUpdateTest3()
         {
-            var key = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var valueToAdd = RandomValueEx.GetRandomString();
+            var valueToAdd = Extensions.GetRandomString();
             // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, x => valueToAdd );
             Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
 
-            valueToAdd = RandomValueEx.GetRandomString();
+            valueToAdd = Extensions.GetRandomString();
             result = dic.AddOrUpdate( key, x => valueToAdd );
             Assert.Single( dic );
             Assert.Equal( valueToAdd, result );

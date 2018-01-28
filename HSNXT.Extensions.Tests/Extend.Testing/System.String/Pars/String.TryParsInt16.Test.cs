@@ -45,7 +45,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt16OverloadFormatProviderNullTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             CultureInfo culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString( CultureInfo.InvariantCulture )
@@ -58,7 +58,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt16OverloadInvalidNumberFormatTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
 
             Action test = () => expected.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once UnusedVariable
@@ -101,7 +101,7 @@ namespace Extend.Testing
         public void TryParsInt16OverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = expected.ToString( culture )
                                  .TryParsInt16( NumberStyles.Any, culture, out var result );
 
@@ -117,7 +117,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt16Test()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.CurrentCulture )
                                  .TryParsInt16( out var result );
 

@@ -16,7 +16,7 @@ namespace Extend.Testing
         public void MemberNameTest()
         {
             var target = new MemberInformation();
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             target.MemberName = expected;
             target.MemberName.Should()
                   .Be( expected );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         public void MemberObjectTest()
         {
             var target = new MemberInformation();
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             target.MemberObject = expected;
             target.MemberObject.Should()
                   .Be( expected );
@@ -36,7 +36,7 @@ namespace Extend.Testing
         public void MemberPathTest()
         {
             var target = new MemberInformation();
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             target.MemberPath = expected;
             target.MemberPath.Should()
                   .Be( expected );

@@ -39,7 +39,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.WithinIndex( 10 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
     }
 }

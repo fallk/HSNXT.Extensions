@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt64InvalidValueDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             var actual = "InvalidValue".SafeToInt64( expected );
 
             actual
@@ -37,7 +37,7 @@ namespace Extend.Testing
         public void SafeToInt64NullDefaultTest()
         {
             String value = null;
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.SafeToInt64( expected );
 
@@ -90,7 +90,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt64OverloadInvalidValueWithDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             var actual = "InvalidValue".SafeToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             actual
@@ -114,7 +114,7 @@ namespace Extend.Testing
         public void SafeToInt64OverloadNullWithDefaultTest()
         {
             String value = null;
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.SafeToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
@@ -126,7 +126,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt64OverloadTest()
         {
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -138,9 +138,9 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt64OverloadWitDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt64() );
+                                 .SafeToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, Extensions.GetRandomInt64() );
 
             actual
                 .Should()
@@ -150,7 +150,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt64Test()
         {
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToInt64();
 
@@ -162,9 +162,9 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt64WithDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt64();
+            var expected = Extensions.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToInt64( RandomValueEx.GetRandomInt64() );
+                                 .SafeToInt64( Extensions.GetRandomInt64() );
 
             actual
                 .Should()

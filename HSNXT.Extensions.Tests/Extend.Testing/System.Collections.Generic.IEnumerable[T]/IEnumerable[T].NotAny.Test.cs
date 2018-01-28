@@ -19,7 +19,7 @@ namespace Extend.Testing
             var list = new List<String>();
             Assert.True( list.NotAny() );
 
-            list.Add( RandomValueEx.GetRandomString() );
+            list.Add( Extensions.GetRandomString() );
             Assert.False( list.NotAny() );
         }
 
@@ -30,7 +30,7 @@ namespace Extend.Testing
             Assert.True( list.NotAny( x => true ) );
             Assert.True( list.NotAny( x => false ) );
 
-            list.Add( RandomValueEx.GetRandomString() );
+            list.Add( Extensions.GetRandomString() );
             Assert.False( list.NotAny( x => true ) );
             Assert.True( list.NotAny( x => false ) );
         }

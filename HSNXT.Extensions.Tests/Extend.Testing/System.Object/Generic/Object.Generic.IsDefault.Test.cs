@@ -18,7 +18,7 @@ namespace Extend.Testing
             var actual = value.IsDefault();
             Assert.True( actual );
 
-            value = RandomValueEx.GetRandomString();
+            value = Extensions.GetRandomString();
             actual = value.IsDefault();
             Assert.False( actual );
         }

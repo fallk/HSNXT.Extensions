@@ -15,8 +15,8 @@ namespace Extend.Testing
         [Fact]
         public void AppendLineFormatTest()
         {
-            var value0 = RandomValueEx.GetRandomString();
-            var value1 = RandomValueEx.GetRandomString();
+            var value0 = Extensions.GetRandomString();
+            var value1 = Extensions.GetRandomString();
 
             var sb = new StringBuilder();
             sb.AppendLine( "Line 1" );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         [Fact]
         public void AppendLineFormatTest1()
         {
-            var value0 = RandomValueEx.GetRandomString();
+            var value0 = Extensions.GetRandomString();
 
             var sb = new StringBuilder();
             sb.AppendLine( "Line 1" );
@@ -64,8 +64,8 @@ namespace Extend.Testing
         [Fact]
         public void AppendLineFormatTest2()
         {
-            var value0 = RandomValueEx.GetRandomString();
-            var value1 = RandomValueEx.GetRandomString();
+            var value0 = Extensions.GetRandomString();
+            var value1 = Extensions.GetRandomString();
 
             var sb = new StringBuilder();
             sb.AppendLine( "Line 1" );
@@ -98,9 +98,9 @@ namespace Extend.Testing
         [Fact]
         public void AppendLineFormatTest3()
         {
-            var value0 = RandomValueEx.GetRandomString();
-            var value1 = RandomValueEx.GetRandomString();
-            var value2 = RandomValueEx.GetRandomString();
+            var value0 = Extensions.GetRandomString();
+            var value1 = Extensions.GetRandomString();
+            var value2 = Extensions.GetRandomString();
 
             var sb = new StringBuilder();
             sb.AppendLine( "Line 1" );

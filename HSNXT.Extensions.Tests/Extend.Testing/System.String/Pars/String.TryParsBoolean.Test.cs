@@ -36,7 +36,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsBooleanTest()
         {
-            var expected = RandomValueEx.GetRandomBoolean();
+            var expected = Extensions.GetRandomBoolean();
             // ReSharper disable once RedundantAssignment
             var actual = expected.ToString()
                                  .TryParsBoolean( out var outValue );

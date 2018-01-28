@@ -34,14 +34,14 @@ namespace Extend.Testing
         [Fact]
         public void AddIfNotContainsKeyTest()
         {
-            var key = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
+            var result = dic.AddIfNotContainsKey( key, Extensions.GetRandomString() );
             Assert.True( result );
             Assert.Single( dic );
 
-            result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
+            result = dic.AddIfNotContainsKey( key, Extensions.GetRandomString() );
             Assert.False( result );
             Assert.Single( dic );
         }
@@ -50,8 +50,8 @@ namespace Extend.Testing
         public void AddIfNotContainsKeyTest1()
         {
             var dic = new Dictionary<String, String>();
-            var key = RandomValueEx.GetRandomString();
-            var keyValuePair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
+            var key = Extensions.GetRandomString();
+            var keyValuePair = new KeyValuePair<String, String>( key, Extensions.GetRandomString() );
 
             var result = dic.AddIfNotContainsKey( keyValuePair );
             Assert.True( result );
@@ -65,14 +65,14 @@ namespace Extend.Testing
         [Fact]
         public void AddIfNotContainsKeyTest2()
         {
-            var key = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
+            var result = dic.AddIfNotContainsKey( key, Extensions.GetRandomString );
             Assert.True( result );
             Assert.Single( dic );
 
-            result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
+            result = dic.AddIfNotContainsKey( key, Extensions.GetRandomString );
             Assert.False( result );
             Assert.Single( dic );
         }
@@ -108,14 +108,14 @@ namespace Extend.Testing
         [Fact]
         public void AddIfNotContainsKeyTest3()
         {
-            var key = RandomValueEx.GetRandomString();
+            var key = Extensions.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var result = dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
+            var result = dic.AddIfNotContainsKey( key, x => Extensions.GetRandomString() );
             Assert.True( result );
             Assert.Single( dic );
 
-            result = dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
+            result = dic.AddIfNotContainsKey( key, x => Extensions.GetRandomString() );
             Assert.False( result );
             Assert.Single( dic );
         }

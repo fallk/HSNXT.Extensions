@@ -21,7 +21,7 @@ namespace Extend.Testing
             var result = list.Randomize();
             Assert.Equal( list.Count, result.Count() );
 
-            list = RandomValueEx.GetRandomStrings( 100 );
+            list = Extensions.GetRandomStrings( 100 );
             result = list.Randomize();
             // ReSharper disable once PossibleMultipleEnumeration
             Assert.Equal( list.Count, result.Count() );

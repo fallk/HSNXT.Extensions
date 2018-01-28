@@ -81,7 +81,7 @@ namespace Extend.Testing
                 }
             };
 
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            var expected = Extensions.GetRandomEnum<TreeTraversalDirection>();
             target.AncestorsTraversalDirection = expected;
             AssertAncestorsTraversalDirection( expected, target );
         }
@@ -197,7 +197,7 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest1()
         {
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
 
             var target = new TreeNode<String>( value );
             Assert.Equal( value, target.Value );
@@ -275,7 +275,7 @@ namespace Extend.Testing
         public void CtorTest4()
         {
             var exParent = new TreeNode<String>();
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
             var children = new TreeNodeCollection<String>( exParent )
             {
                 "Item0",
@@ -310,7 +310,7 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest5()
         {
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
             var parent = new TreeNode<String>
             {
                 AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
@@ -335,7 +335,7 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest6()
         {
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
             var parent = new TreeNode<String>
             {
                 AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
@@ -398,7 +398,7 @@ namespace Extend.Testing
         [Fact]
         public void CtorTest8()
         {
-            var value = RandomValueEx.GetRandomString();
+            var value = Extensions.GetRandomString();
             var parent = new TreeNode<String>( "parent" );
             var children = new TreeNodeCollection<String>( parent )
             {
@@ -539,7 +539,7 @@ namespace Extend.Testing
                 }
             };
 
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            var expected = Extensions.GetRandomEnum<TreeTraversalDirection>();
             target.DescendantsTraversalDirection = expected;
             AssertDescendantsTraversalDirection( expected, target );
         }
@@ -607,7 +607,7 @@ namespace Extend.Testing
                 }
             };
 
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            var expected = Extensions.GetRandomEnum<TreeTraversalDirection>();
             target.DisposeTraversalDirection = expected;
             AssertDisposeTraversalDirection( expected, target );
         }
@@ -1503,7 +1503,7 @@ namespace Extend.Testing
                 }
             };
 
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            var expected = Extensions.GetRandomEnum<TreeTraversalDirection>();
             target.SearchTraversalDirection = expected;
             AssertSearchTraversalDirection( expected, target );
         }
@@ -1629,7 +1629,7 @@ namespace Extend.Testing
                 }
             };
 
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            var expected = Extensions.GetRandomEnum<TreeTraversalDirection>();
             target.TraversalDirection = expected;
             AssertTraversalDirection( expected, target );
         }
@@ -1641,7 +1641,7 @@ namespace Extend.Testing
         public void ValueTest()
         {
             var target = new TreeNode<String>();
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             target.Value = expected;
             Assert.Equal( expected, target.Value );
         }

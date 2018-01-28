@@ -15,14 +15,14 @@ namespace Extend.Testing
         [Fact]
         public void IsInTest()
         {
-            var array = RandomValueEx.GetRandomStrings()
+            var array = Extensions.GetRandomStrings()
                                      .ToArray();
             var value = array[0];
 
             var actual = value.IsIn( array );
             Assert.True( actual );
 
-            value = RandomValueEx.GetRandomString();
+            value = Extensions.GetRandomString();
             actual = value.IsIn( array );
             Assert.False( actual );
         }
@@ -30,13 +30,13 @@ namespace Extend.Testing
         [Fact]
         public void IsInTest1()
         {
-            var list = RandomValueEx.GetRandomStrings();
+            var list = Extensions.GetRandomStrings();
             var value = list[0];
 
             var actual = value.IsIn( list );
             Assert.True( actual );
 
-            value = RandomValueEx.GetRandomString();
+            value = Extensions.GetRandomString();
             actual = value.IsIn( list );
             Assert.False( actual );
         }

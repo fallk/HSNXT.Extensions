@@ -41,7 +41,7 @@ namespace Extend.Testing
         {
             var actualModel = new TestModel
             {
-                MyString = RandomValueEx.GetRandomString()
+                MyString = Extensions.GetRandomString()
             };
             var property = typeof(TestModel).GetPublicSettableProperties()
                                             .First();

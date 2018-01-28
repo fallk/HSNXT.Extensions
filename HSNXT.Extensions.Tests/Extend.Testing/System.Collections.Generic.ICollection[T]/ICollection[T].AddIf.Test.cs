@@ -17,11 +17,11 @@ namespace Extend.Testing
         {
             var c = new List<String>();
 
-            var result = c.AddIf( x => true, RandomValueEx.GetRandomString() );
+            var result = c.AddIf( x => true, Extensions.GetRandomString() );
             Assert.Single( c );
             Assert.True( result );
 
-            result = c.AddIf( x => false, RandomValueEx.GetRandomString() );
+            result = c.AddIf( x => false, Extensions.GetRandomString() );
             Assert.Single( c );
             Assert.False( result );
         }
@@ -31,7 +31,7 @@ namespace Extend.Testing
         {
             List<String> c = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => c.AddIf( x => true, RandomValueEx.GetRandomString() );
+            Action test = () => c.AddIf( x => true, Extensions.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -41,7 +41,7 @@ namespace Extend.Testing
         {
             var c = new List<String>();
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => c.AddIf( null, RandomValueEx.GetRandomString() );
+            Action test = () => c.AddIf( null, Extensions.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
         }

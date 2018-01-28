@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt16InvalidValueDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = "InvalidValue".SafeToInt16( expected );
 
             actual
@@ -37,7 +37,7 @@ namespace Extend.Testing
         public void SafeToInt16NullDefaultTest()
         {
             String value = null;
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.SafeToInt16( expected );
 
@@ -90,7 +90,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt16OverloadInvalidValueWithDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = "InvalidValue".SafeToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             actual
@@ -114,7 +114,7 @@ namespace Extend.Testing
         public void SafeToInt16OverloadNullWithDefaultTest()
         {
             String value = null;
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.SafeToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
@@ -126,7 +126,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt16OverloadTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -138,9 +138,9 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt16OverloadWitDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt16() );
+                                 .SafeToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, Extensions.GetRandomInt16() );
 
             actual
                 .Should()
@@ -150,7 +150,7 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt16Test()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SafeToInt16();
 
@@ -162,9 +162,9 @@ namespace Extend.Testing
         [Fact]
         public void SafeToInt16WithDefaultTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
+            var expected = Extensions.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToInt16( RandomValueEx.GetRandomInt16() );
+                                 .SafeToInt16( Extensions.GetRandomInt16() );
 
             actual
                 .Should()

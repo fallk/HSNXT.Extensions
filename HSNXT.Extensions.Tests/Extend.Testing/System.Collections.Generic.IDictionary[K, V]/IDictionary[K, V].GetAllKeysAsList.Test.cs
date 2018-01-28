@@ -30,8 +30,8 @@ namespace Extend.Testing
         {
             var dictionary = new Dictionary<String, String>
             {
-                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() },
-                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
+                { Extensions.GetRandomString(), Extensions.GetRandomString() },
+                { Extensions.GetRandomString(), Extensions.GetRandomString() }
             };
 
             var allKeys = dictionary.GetAllKeysAsList();

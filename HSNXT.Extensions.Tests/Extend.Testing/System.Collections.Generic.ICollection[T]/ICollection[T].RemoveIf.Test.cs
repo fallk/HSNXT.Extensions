@@ -16,7 +16,7 @@ namespace Extend.Testing
         public void RemoveIfTest()
         {
             var list = new List<String>();
-            var valueToRemove = RandomValueEx.GetRandomString();
+            var valueToRemove = Extensions.GetRandomString();
             list.Add( valueToRemove );
 
             Assert.Single( list );

@@ -34,7 +34,7 @@ namespace Extend.Testing
         [Fact]
         public void AnonymousItemNameTest()
         {
-            var expected = RandomValueEx.GetRandomString();
+            var expected = Extensions.GetRandomString();
             InstanceCreator.AnonymousItemName = expected;
             InstanceCreator.AnonymousItemName.Should()
                            .Be( expected );
@@ -404,7 +404,7 @@ namespace Extend.Testing
         [Fact]
         public void PopulateCollectionsMaxCountTest()
         {
-            var expeted = RandomValueEx.GetRandomInt32();
+            var expeted = Extensions.GetRandomInt32();
             InstanceCreator.PopulateCollectionsMaxCount = expeted;
             InstanceCreator.PopulateCollectionsMaxCount.Should()
                            .Be( expeted );
@@ -418,7 +418,7 @@ namespace Extend.Testing
         [Fact]
         public void PopulateCollectionsMinCountTest()
         {
-            var expeted = RandomValueEx.GetRandomInt32();
+            var expeted = Extensions.GetRandomInt32();
             InstanceCreator.PopulateCollectionsMinCount = expeted;
             InstanceCreator.PopulateCollectionsMinCount.Should()
                            .Be( expeted );
@@ -428,7 +428,7 @@ namespace Extend.Testing
         [Fact]
         public void PopulateCollectionsTest()
         {
-            var expeted = RandomValueEx.GetRandomBoolean();
+            var expeted = Extensions.GetRandomBoolean();
             InstanceCreator.PopulateCollections = expeted;
             InstanceCreator.PopulateCollections.Should()
                            .Be( expeted );

@@ -118,7 +118,7 @@ namespace Extend.Testing
         public void MatchTimeoutTest()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var text = RandomValueEx.GetRandomStrings( 50000 )
+            var text = Extensions.GetRandomStrings( 50000 )
                                     .StringJoin();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

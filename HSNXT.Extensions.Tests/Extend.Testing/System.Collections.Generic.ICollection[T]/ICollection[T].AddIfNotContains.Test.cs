@@ -17,11 +17,11 @@ namespace Extend.Testing
         {
             var c = new List<String>();
 
-            var result = c.AddIfNotContains( RandomValueEx.GetRandomString() );
+            var result = c.AddIfNotContains( Extensions.GetRandomString() );
             Assert.Single( c );
             Assert.True( result );
 
-            var valueToAdd = RandomValueEx.GetRandomString();
+            var valueToAdd = Extensions.GetRandomString();
             c.Add( valueToAdd );
             result = c.AddIfNotContains( valueToAdd );
             Assert.Equal( 2, c.Count );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         public void AddIfNotContainsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.AddIfNotContains( null, RandomValueEx.GetRandomString() );
+            Action test = () => Extensions.AddIfNotContains( null, Extensions.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
