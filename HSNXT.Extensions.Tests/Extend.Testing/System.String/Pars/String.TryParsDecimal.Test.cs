@@ -120,6 +120,7 @@ namespace Extend.Testing
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void TryParsDecimalTest()
         {
             var expected = new Decimal( 100.123123 );

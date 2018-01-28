@@ -138,17 +138,20 @@ namespace HSNXT
 
         public static Guid ToGuid(this string target)
         {
-            var result = Guid.Empty;
+            if (Guid.TryParse(target, out var maybeResult))
+            {
+                return maybeResult;
+            }
 
             if ((!string.IsNullOrEmpty(target)) && (target.Trim().Length == 22))
             {
                 var encoded = string.Concat(target.Trim().Replace("-", "+").Replace("_", "/"), "==");
                 var base64 = Convert.FromBase64String(encoded);
 
-                result = new Guid(base64);
+                return new Guid(base64);
             }
 
-            return result;
+            return Guid.Empty;
         }
 
         public static T ToEnum<T>(this string target, T defaultValue) where T : IComparable, IFormattable

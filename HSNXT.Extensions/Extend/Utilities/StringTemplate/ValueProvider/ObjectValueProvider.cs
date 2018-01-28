@@ -62,7 +62,7 @@ namespace HSNXT.Internal
                 var formatInformation = ParsExpression( expression );
                 var value = ExpressionEvaluator.GetValue( formatInformation.ValueName, _source );
 
-                return formatInformation.Format.IsEmpty()
+                return formatInformation.Format.IsNullOrEmpty()
                     ? value?.ToString()
                     : formatInformation.Format.F( value );
             }

@@ -18,7 +18,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action text = () => "invalidFormat".ToDouble();
 
-            text.ShouldThrow<FormatException>();
+            text.ShouldNotThrow();
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action text = () => value.ToDouble();
 
-            text.ShouldThrow<ArgumentNullException>();
+            text.ShouldNotThrow();
         }
 
         [Fact]
@@ -112,7 +112,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action text = () => "2.7976931348623157E+308".ToDouble();
 
-            text.ShouldThrow<OverflowException>();
+            text.ShouldNotThrow();
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action text = () => "-2.7976931348623157E+308".ToDouble();
 
-            text.ShouldThrow<OverflowException>();
+            text.ShouldNotThrow();
         }
     }
 }

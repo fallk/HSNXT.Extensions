@@ -80,6 +80,7 @@ namespace Extend.Testing.Internal
         }
 
         [Fact]
+        [UseCulture("en-US")]
         public void GetValueTest2()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();

@@ -30,7 +30,7 @@ namespace Extend.Testing
                                                   .GetName()
                                                   .Version.ToString();
             actual.FullName.Should()
-                  .Be( $"Extend, Version={expectedVersion}, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
+                  .Be( $"HSNXT.Extensions, Version={expectedVersion}, Culture=neutral, PublicKeyToken=null" );
         }
     }
 }

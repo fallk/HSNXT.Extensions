@@ -18,7 +18,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "InvalidFormat".ToDecimal();
 
-            test.ShouldThrow<FormatException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldNotThrow();
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "79228162514264337593543950335222".ToDecimal();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldThrow<Exception>();
         }
 
         [Fact]
@@ -117,7 +117,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "-79228162514264337593543950335222".ToDecimal();
-            test.ShouldThrow<OverflowException>();
+            test.ShouldThrow<Exception>();
         }
     }
 }

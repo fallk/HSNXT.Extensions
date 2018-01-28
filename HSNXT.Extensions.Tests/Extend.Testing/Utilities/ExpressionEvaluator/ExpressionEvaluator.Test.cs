@@ -233,7 +233,7 @@ namespace Extend.Testing
         public void GetValueTest_ExpressionNull()
         {
             Action test = () => ExpressionEvaluator.GetValue( null, new Object() );
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]

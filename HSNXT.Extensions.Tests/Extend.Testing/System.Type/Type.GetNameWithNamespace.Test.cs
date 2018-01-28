@@ -28,7 +28,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<IIndexedItem<TestClass>>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.IIndexedItem`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[HSNXT.IIndexedItem`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -41,7 +41,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TreeNode<IIndexedItem<TestClass>>>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.IIndexedItem`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend]], Extend]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[HSNXT.TreeNode`1[[HSNXT.IIndexedItem`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions]], HSNXT.Extensions]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -54,7 +54,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TreeNode<TypeExTest>>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest, Extend.Testing]], Extend]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[HSNXT.TreeNode`1[[Extend.Testing.TypeExTest, HSNXT.Extensions.Tests]], HSNXT.Extensions]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -67,7 +67,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TreeNode<TestClass>>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[HSNXT.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -81,7 +81,7 @@ namespace Extend.Testing
 
             actual.Should()
                   .Be(
-                      "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing]], Extend]], Extend" );
+                      "HSNXT.TreeNode`1[[HSNXT.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions.Tests]], HSNXT.Extensions]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -95,7 +95,7 @@ namespace Extend.Testing
 
             actual.Should()
                   .Be(
-                      "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[Extend.Testing.TypeExTest+TestClass, Extend.Testing],[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing],[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing]], Extend]], Extend" );
+                      "HSNXT.TreeNode`1[[HSNXT.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests],[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions.Tests],[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions.Tests]], HSNXT.Extensions]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -108,7 +108,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -121,7 +121,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -134,7 +134,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TypeExTest>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.Testing.TypeExTest, Extend.Testing]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[Extend.Testing.TypeExTest, HSNXT.Extensions.Tests]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -147,7 +147,7 @@ namespace Extend.Testing
             var actual = typeof(TreeNode<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend" );
+                  .Be( "HSNXT.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -160,7 +160,7 @@ namespace Extend.Testing
             var actual = typeof(TestClassGeneric<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.Testing.TypeExTest+TestClassGeneric`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing" );
+                  .Be( "Extend.Testing.TypeExTest+TestClassGeneric`1[[Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests]], HSNXT.Extensions.Tests" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -173,7 +173,7 @@ namespace Extend.Testing
             var actual = typeof(TestClass).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.Testing.TypeExTest+TestClass, Extend.Testing" );
+                  .Be( "Extend.Testing.TypeExTest+TestClass, HSNXT.Extensions.Tests" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -186,7 +186,7 @@ namespace Extend.Testing
             var actual = typeof(Extensions).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.ActionEx, Extend" );
+                  .Be( "HSNXT.Extensions, HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -199,7 +199,7 @@ namespace Extend.Testing
             var actual = typeof(Extensions).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.ArrayEx, Extend" );
+                  .Be( "HSNXT.Extensions, HSNXT.Extensions" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -212,7 +212,7 @@ namespace Extend.Testing
             var actual = typeof(TypeExTest).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.Testing.TypeExTest, Extend.Testing" );
+                  .Be( "Extend.Testing.TypeExTest, HSNXT.Extensions.Tests" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()

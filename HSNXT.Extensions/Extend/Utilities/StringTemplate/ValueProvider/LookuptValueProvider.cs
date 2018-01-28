@@ -60,7 +60,7 @@ namespace HSNXT.Internal
             try
             {
                 var formatInformation = ParsExpression( expression );
-                return formatInformation.Format.IsEmpty()
+                return formatInformation.Format.IsNullOrEmpty()
                     ? _values[formatInformation.ValueName]
                         ?.ToString()
                     : formatInformation.Format.F( _values[formatInformation.ValueName] );

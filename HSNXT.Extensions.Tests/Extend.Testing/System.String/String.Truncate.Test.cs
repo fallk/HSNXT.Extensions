@@ -37,15 +37,5 @@ namespace Extend.Testing
             var actual = String.Empty.Truncate( 7, "_-_" );
             Assert.Equal( String.Empty, actual );
         }
-
-        [Fact]
-        public void TruncateTest4()
-        {
-            String value = null;
-            // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.Truncate( 7, "_-_" );
-            // ReSharper disable once ExpressionIsAlwaysNull
-            Assert.Equal( value, actual );
-        }
     }
 }
