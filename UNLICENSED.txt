@@ -1,0 +1,5 @@
+Following libs I could not find license documents for:
+CSharpBasicExtensionsKit
+ExtensionMethodDotNet
+ExtensionMethods
+ExtensionsHelper
