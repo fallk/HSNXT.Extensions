@@ -735,6 +735,22 @@
       </e>
       <e p="HSNXT.Extensions" t="IncludeRecursive">
         <e p="__Assembly.cs" t="Include" />
+        <e p="aHSNXT" t="Include">
+          <e p="Conversions.cs" t="Include" />
+          <e p="Enumerations.cs" t="Include" />
+          <e p="Files.cs" t="Include" />
+          <e p="FunctionalInvariant.cs" t="Include" />
+          <e p="FunctionalWith.cs" t="Include" />
+          <e p="General.cs" t="Include" />
+          <e p="Helpers" t="Include">
+            <e p="LazyEnumerator.cs" t="Include" />
+            <e p="LazyEnumeratorIndex.cs" t="Include" />
+            <e p="LazySplitter.cs" t="Include" />
+            <e p="LazySplitterIndex.cs" t="Include" />
+            <e p="ReadOnlyDictionaryBuilder.cs" t="Include" />
+          </e>
+          <e p="Strings.cs" t="Include" />
+        </e>
         <e p="aResources" t="Include">
           <e p="Resource1.Designer.cs" t="Include" />
           <e p="Resource1.resx" t="Include" />
@@ -1550,7 +1566,6 @@
           <e p="IntExtension.cs" t="Include" />
           <e p="StringExtensions.cs" t="Include" />
         </e>
-        <e p="EnumerationExtensions.cs" t="Include" />
         <e p="Extend" t="Include">
           <e p="Convert.cs" t="Include" />
           <e p="ConvertSafe.cs" t="Include" />
@@ -1765,17 +1780,9 @@
             <e p="WebTextBoxExtensions.cs" t="Include" />
           </e>
         </e>
-        <e p="Extensions.cs" t="Include" />
         <e p="ExtensionsHelper.cs" t="Include" />
-        <e p="FileExt.cs" t="Include" />
-        <e p="FunctionalInvariant.cs" t="Include" />
-        <e p="FunctionalWith.cs" t="Include" />
         <e p="HSNXT.Extensions.csproj" t="IncludeRecursive" />
         <e p="HSNXT.Extensions.csproj.DotSettings" t="Include" />
-        <e p="LazyEnumerator.cs" t="Include" />
-        <e p="LazyEnumeratorIndex.cs" t="Include" />
-        <e p="LazySplitter.cs" t="Include" />
-        <e p="LazySplitterIndex.cs" t="Include" />
         <e p="LINQ2Charts" t="Include">
           <e p="Chart" t="Include">
             <e p="Chart" t="Include">
@@ -2487,7 +2494,6 @@
           </e>
         </e>
         <e p="packages.config" t="Include" />
-        <e p="ReadOnlyDictionaryBuilder.cs" t="Include" />
         <e p="RegexCache" t="Include">
           <e p="IsEmailBigRe.cs" t="Include" />
           <e p="IsEmailBigReFactory12.cs" t="Include" />
@@ -2900,7 +2906,6 @@
           <e p="StringExtension.cs" t="Include" />
           <e p="TimespanExtension.cs" t="Include" />
         </e>
-        <e p="String.cs" t="Include" />
         <e p="SuccincT" t="Include">
           <e p=".gitignore" t="Include" />
           <e p="Directory.Build.props" t="Include" />
@@ -4062,6 +4067,23 @@
           <e p="StringExtensionTests.cs" t="Include" />
           <e p="TimeSpanExtensionTests.cs" t="Include" />
         </e>
+        <e p="Eloquent.Tests" t="Include">
+          <e p="DateTimes" t="Include">
+            <e p="DateTimeExtensionsTests.cs" t="Include" />
+          </e>
+          <e p="Ints" t="Include">
+            <e p="IntExtensionsTests.cs" t="Include" />
+          </e>
+          <e p="Objects" t="Include">
+            <e p="ObjectExtensionsTests.cs" t="Include" />
+          </e>
+          <e p="Strings" t="Include">
+            <e p="StringExtensionsTests.cs" t="Include" />
+          </e>
+          <e p="TimeSpans" t="Include">
+            <e p="TimeSpanExtensionsTests.cs" t="Include" />
+          </e>
+        </e>
         <e p="Extend.Testing" t="Include">
           <e p="Models" t="Include">
             <e p="AttributeDefinitionPropertyTest.cs" t="Include" />
@@ -4764,6 +4786,12 @@
           <e p="IEnumerableExtensionsTests.cs" t="Include" />
           <e p="IntegerExtensionsTests.cs" t="Include" />
         </e>
+        <e p="NorthHorizon.Common.Xmp.Tests" t="Include">
+          <e p="CollectionExtensionsTestFixture.cs" t="Include" />
+          <e p="DictionaryExtensionsTestFixture.cs" t="Include" />
+          <e p="EnumerableExtensionsTestFixture.cs" t="Include" />
+          <e p="ObjectExtensionsTestFixture.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net47" t="Include">
@@ -5155,7 +5183,6 @@
               <e p="Object.InRange.cs" t="Include" />
               <e p="Object.IsAssignableFrom.cs" t="Include" />
               <e p="Object.IsDBNull.cs" t="Include" />
-              <e p="Object.IsDefault.cs" t="Include" />
               <e p="Object.IsNotNull.cs" t="Include" />
               <e p="Object.IsNull.cs" t="Include" />
               <e p="Object.IsValidInt32.cs" t="Include" />
