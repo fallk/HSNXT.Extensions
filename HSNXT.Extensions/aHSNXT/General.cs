@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Data;
 using System.Diagnostics;
 using System.Globalization;
@@ -12,7 +11,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web;
 using HSNXT.aResources;
 using HSNXT.SuccincT.Functional;
 using Newtonsoft.Json.Converters;
@@ -21,6 +19,34 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
+        //new DateTimeOffset(2015, 1, 1, 0, 0, 0, TimeSpan.Zero).ToUnixTimeMilliseconds();
+        public const long DiscordEpoch = 1420070400000L;
+        
+        /// <summary>
+        /// Gets the current date and time for a Discord snowflake.
+        /// </summary>
+        /// <param name="snowflake">the snowflake ID</param>
+        /// <returns>the date and time the snowflake corresponds to</returns>
+        public static DateTimeOffset ToDiscordTime(ulong snowflake)
+        {
+            return DateTimeOffset.FromUnixTimeMilliseconds((long)(snowflake >> 22) + DiscordEpoch);
+        }
+        
+        /// <summary>
+        /// Gets the current date and time for a Discord snowflake.
+        /// </summary>
+        /// <param name="snowflake">the snowflake ID</param>
+        /// <returns>the date and time the snowflake corresponds to</returns>
+        public static DateTimeOffset ToDiscordTime(long snowflake)
+        {
+            return DateTimeOffset.FromUnixTimeMilliseconds((snowflake >> 22) + DiscordEpoch);
+        }
+        
+        /// <summary>
+        /// Returns a Task that resolves when this process has exited.
+        /// </summary>
+        /// <param name="proc">This process</param>
+        /// <returns>a Task that resolves when this process has exited.</returns>
         public static Task WaitForExitAsync(this Process proc)
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -32,6 +58,11 @@ namespace HSNXT
             return tcs.Task;
         }
         
+        /// <summary>
+        /// Gets the date represented by this datetime with the suffix, such as 1st or 2nd.
+        /// </summary>
+        /// <param name="datetime">The datetime</param>
+        /// <returns>The day with suffix</returns>
         public static string OrdinalSuffix(this DateTime datetime)
         {
             var day = datetime.Day;
@@ -50,11 +81,24 @@ namespace HSNXT
             }
         }
 
+        /// <summary>
+        /// Counts the amount of matches of a regex in a string.
+        /// </summary>
+        /// <param name="instr">the string to search in</param>
+        /// <param name="search">the regex to search</param>
+        /// <returns>the amount of matches for the regex</returns>
         public static int Occurrence(this string instr, string search)
         {
             return Regex.Matches(instr, search).Count;
         }
         
+        /// <summary>
+        /// Adds the vararg values to this collection.
+        /// </summary>
+        /// <param name="list">The collection to add to</param>
+        /// <param name="values">The values to add</param>
+        /// <typeparam name="T">The collection type</typeparam>
+        /// <typeparam name="TS">The value type</typeparam>
         public static void AddThese<T, TS>(this ICollection<T> list, params TS[] values)
             where TS : T
         {
@@ -63,16 +107,15 @@ namespace HSNXT
         }
         
         /// <summary>
-        /// Parses a string into an Enum
+        /// Parse this string into an enum.
         /// </summary>
-        /// <typeparam name="T">The type of the Enum</typeparam>
-        /// <param name="value">String value to parse</param>
-        /// <returns>The Enum corresponding to the stringExtensions</returns>
-        public static T EnumParse<T>(this string value) {
-            return EnumParse<T>(value, false);
-        }
-
-        public static T EnumParse<T>(this string value, bool ignorecase) {
+        /// <param name="value">The string to parse</param>
+        /// <param name="ignorecase">Whether or not to enable case-sensitive parsing</param>
+        /// <typeparam name="T">The type of the enum to return</typeparam>
+        /// <returns>The returned enum</returns>
+        /// <exception cref="ArgumentNullException">If value is null</exception>
+        /// <exception cref="ArgumentException">If value is empty or whitespace-only, or if the type T isn't an enum</exception>
+        public static T EnumParse<T>(this string value, bool ignorecase = false) {
 
             if (value == null) {
                 throw new ArgumentNullException(nameof(value));
@@ -81,13 +124,13 @@ namespace HSNXT
             value = value.Trim();
 
             if (value.Length == 0) {
-                throw new ArgumentException("Must specify valid information for parsing in the string.", "value");
+                throw new ArgumentException("Must specify valid information for parsing in the string.", nameof(value));
             }
 
             var t = typeof(T);
 
             if (!t.IsEnum) {
-                throw new ArgumentException("Type provided must be an Enum.", "T");
+                throw new ArgumentException("Type provided must be an Enum.", nameof(T));
             }
 
             return (T)Enum.Parse(t, value, ignorecase);
@@ -364,11 +407,21 @@ namespace HSNXT
             return Task.WhenAny(tasks);
         }
 
+        /// <summary>
+        /// Benchmarks this action to the console.
+        /// </summary>
+        /// <param name="a">The action to benchmark</param>
         public static void Benchmark(this Action a)
         {
             Benchmark(a, 10000);
         }
 
+        /// <summary>
+        /// Benchmarks this action to the console.
+        /// </summary>
+        /// <param name="a">The action to benchmark</param>
+        /// <param name="iterations">The number of iterations per sample</param>
+        /// <param name="numberOfBenchmarks">The number of samples to take</param>
         public static void Benchmark(this Action a, int iterations, int numberOfBenchmarks = 1)
         {
             var process = Process.GetCurrentProcess();
@@ -405,9 +458,9 @@ namespace HSNXT
         /// <summary>
         /// Disable continue on captured context for this task
         /// </summary>
-        /// <param name="task"></param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <param name="task">The task</param>
+        /// <typeparam name="T">The task type</typeparam>
+        /// <returns>The configured task</returns>
         public static ConfiguredTaskAwaitable<T> Cfg<T>(this Task<T> task)
         {
             return task.ConfigureAwait(false);
@@ -536,6 +589,13 @@ namespace HSNXT
             }
         }
 
+        /// <summary>
+        /// Iterates through the items of two enumerables side-by-side.
+        /// </summary>
+        /// <param name="first">The first enumerable to iterate</param>
+        /// <param name="second">The second enumerable to iterate</param>
+        /// <typeparam name="T">The type</typeparam>
+        /// <returns>An IEnumerable that will go through each enumerable, alternating which element it returns</returns>
         public static IEnumerable<T> SideBySideEnumerable<T>(this IEnumerable<T> first, IEnumerable<T> second)
         {
             using (var afirst = first.GetEnumerator())
@@ -547,6 +607,13 @@ namespace HSNXT
                 }
         }
 
+        /// <summary>
+        /// Iterates through the items of multiple enumerables side-by-side.
+        /// </summary>
+        /// <param name="first">The first enumerable to iterate</param>
+        /// <param name="others">The other enumerables to iterate</param>
+        /// <typeparam name="T">The type</typeparam>
+        /// <returns>An IEnumerable that will go through each enumerable, alternating which element it returns</returns>
         public static IEnumerable<T> SideBySideEnumerable<T>(this IEnumerable<T> first, params IEnumerable<T>[] others)
         {
             using (var afirst = first.GetEnumerator())
@@ -579,6 +646,12 @@ namespace HSNXT
                 }
         }
 
+        /// <summary>
+        /// Returns the underlying array for this List, if one exists.
+        /// </summary>
+        /// <param name="instance">The instance to get the array of</param>
+        /// <typeparam name="T">The array type</typeparam>
+        /// <returns>The array backing this List, or null if none was found</returns>
         public static T[] ReflectToArray<T>(this IList<T> instance)
         {
             foreach (var f in instance.GetType()
@@ -594,6 +667,12 @@ namespace HSNXT
             return null;
         }
 
+        /// <summary>
+        /// Returns the underlying array for this List, if one exists.
+        /// </summary>
+        /// <param name="instance">The instance to get the array of</param>
+        /// <typeparam name="T">The array type</typeparam>
+        /// <returns>The array backing this List, or null if none was found</returns>
         public static T[] ReflectToArray<T>(this List<T> instance)
         {
             foreach (var f in instance.GetType()
@@ -609,6 +688,12 @@ namespace HSNXT
             return null;
         }
 
+        /// <summary>
+        /// Returns the underlying array for this List, if one exists.
+        /// </summary>
+        /// <param name="instance">The instance to get the array of</param>
+        /// <typeparam name="T">The array type</typeparam>
+        /// <returns>The array backing this List, or null if none was found</returns>
         public static T[] ReflectToArrayReadOnly<T>(this IReadOnlyList<T> instance)
         {
             foreach (var f in instance.GetType()
@@ -786,252 +871,6 @@ namespace HSNXT
         {
             if (null == source) throw new ArgumentNullException(nameof(source));
             return list.Contains(source);
-        }
-
-        /// <summary>Converts the value of this instance to all the string representations supported by the standard date and time format specifiers and the specified culture-specific formatting information.</summary>
-        /// <returns>A string array where each element is the representation of the value of this instance formatted with one of the standard date and time format specifiers.</returns>
-        public static string[] GetDateTimeFormatsInvariant(this DateTime o)
-        {
-            return o.GetDateTimeFormats(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to all the string representations supported by the specified standard date and time format specifier.</summary>
-        /// <param name="o">This object</param>
-        /// <param name="format">A standard date and time format string (see Remarks). </param>
-        /// <returns>A string array where each element is the representation of the value of this instance formatted with the <paramref name="format" /> standard date and time format specifier.</returns>
-        /// <exception cref="T:System.FormatException">
-        /// <paramref name="format" /> is not a valid standard date and time format specifier character.</exception>
-        public static string[] GetDateTimeFormatsInvariant(this DateTime o, char format)
-        {
-            return o.GetDateTimeFormats(format, CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent Boolean value using the specified culture-specific formatting information.</summary>
-        /// <returns>A Boolean value equivalent to the value of this instance.</returns>
-        public static bool ToBooleanInvariant(this IConvertible o)
-        {
-            return o.ToBoolean(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent Unicode character using the specified culture-specific formatting information.</summary>
-        /// <returns>A Unicode character equivalent to the value of this instance.</returns>
-        public static char ToCharInvariant(this IConvertible o)
-        {
-            return o.ToChar(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 8-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 8-bit signed integer equivalent to the value of this instance.</returns>
-        public static sbyte ToSByteInvariant(this IConvertible o)
-        {
-            return o.ToSByte(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 8-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 8-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static byte ToByteInvariant(this IConvertible o)
-        {
-            return o.ToByte(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 16-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 16-bit signed integer equivalent to the value of this instance.</returns>
-        public static short ToInt16Invariant(this IConvertible o)
-        {
-            return o.ToInt16(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 16-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 16-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static ushort ToUInt16Invariant(this IConvertible o)
-        {
-            return o.ToUInt16(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 32-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 32-bit signed integer equivalent to the value of this instance.</returns>
-        public static int ToInt32Invariant(this IConvertible o)
-        {
-            return o.ToInt32(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 32-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 32-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static uint ToUInt32Invariant(this IConvertible o)
-        {
-            return o.ToUInt32(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 64-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 64-bit signed integer equivalent to the value of this instance.</returns>
-        public static long ToInt64Invariant(this IConvertible o)
-        {
-            return o.ToInt64(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 64-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 64-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static ulong ToUInt64Invariant(this IConvertible o)
-        {
-            return o.ToUInt64(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent single-precision floating-point number using the specified culture-specific formatting information.</summary>
-        /// <returns>A single-precision floating-point number equivalent to the value of this instance.</returns>
-        public static float ToSingleInvariant(this IConvertible o)
-        {
-            return o.ToSingle(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent double-precision floating-point number using the specified culture-specific formatting information.</summary>
-        /// <returns>A double-precision floating-point number equivalent to the value of this instance.</returns>
-        public static double ToDoubleInvariant(this IConvertible o)
-        {
-            return o.ToDouble(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent <see cref="T:System.Decimal" /> number using the specified culture-specific formatting information.</summary>
-        /// <returns>A <see cref="T:System.Decimal" /> number equivalent to the value of this instance.</returns>
-        public static decimal ToDecimalInvariant(this IConvertible o)
-        {
-            return o.ToDecimal(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent <see cref="T:System.DateTime" /> using the specified culture-specific formatting information.</summary>
-        /// <returns>A <see cref="T:System.DateTime" /> instance equivalent to the value of this instance.</returns>
-        public static DateTime ToDateTimeInvariant(this IConvertible o)
-        {
-            return o.ToDateTime(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent <see cref="T:System.String" /> using the specified culture-specific formatting information.</summary>
-        /// <returns>A <see cref="T:System.String" /> instance equivalent to the value of this instance.</returns>
-        public static string ToStringInvariant(this IConvertible o)
-        {
-            return o.ToString(CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an <see cref="T:System.Object" /> of the specified <see cref="T:System.Type" /> that has an equivalent value, using the specified culture-specific formatting information.</summary>
-        /// <param name="o">This object</param>
-        /// <param name="conversionType">The <see cref="T:System.Type" /> to which the value of this instance is converted. </param>
-        /// <returns>An <see cref="T:System.Object" /> instance of type <paramref name="conversionType" /> whose value is equivalent to the value of this instance.</returns>
-        public static object ToTypeInvariant(this IConvertible o, Type conversionType)
-        {
-            return o.ToType(conversionType, CultureInfo.InvariantCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent Boolean value using the specified culture-specific formatting information.</summary>
-        /// <returns>A Boolean value equivalent to the value of this instance.</returns>
-        public static bool ToBoolean(this IConvertible o)
-        {
-            return o.ToBoolean(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent Unicode character using the specified culture-specific formatting information.</summary>
-        /// <returns>A Unicode character equivalent to the value of this instance.</returns>
-        public static char ToChar(this IConvertible o)
-        {
-            return o.ToChar(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 8-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 8-bit signed integer equivalent to the value of this instance.</returns>
-        public static sbyte ToSByte(this IConvertible o)
-        {
-            return o.ToSByte(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 8-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 8-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static byte ToByte(this IConvertible o)
-        {
-            return o.ToByte(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 16-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 16-bit signed integer equivalent to the value of this instance.</returns>
-        public static short ToInt16(this IConvertible o)
-        {
-            return o.ToInt16(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 16-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 16-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static ushort ToUInt16(this IConvertible o)
-        {
-            return o.ToUInt16(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 32-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 32-bit signed integer equivalent to the value of this instance.</returns>
-        public static int ToInt32(this IConvertible o)
-        {
-            return o.ToInt32(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 32-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 32-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static uint ToUInt32(this IConvertible o)
-        {
-            return o.ToUInt32(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 64-bit signed integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 64-bit signed integer equivalent to the value of this instance.</returns>
-        public static long ToInt64(this IConvertible o)
-        {
-            return o.ToInt64(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent 64-bit unsigned integer using the specified culture-specific formatting information.</summary>
-        /// <returns>An 64-bit unsigned integer equivalent to the value of this instance.</returns>
-        public static ulong ToUInt64(this IConvertible o)
-        {
-            return o.ToUInt64(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent single-precision floating-point number using the specified culture-specific formatting information.</summary>
-        /// <returns>A single-precision floating-point number equivalent to the value of this instance.</returns>
-        public static float ToSingle(this IConvertible o)
-        {
-            return o.ToSingle(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent double-precision floating-point number using the specified culture-specific formatting information.</summary>
-        /// <returns>A double-precision floating-point number equivalent to the value of this instance.</returns>
-        public static double ToDouble(this IConvertible o)
-        {
-            return o.ToDouble(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent <see cref="T:System.Decimal" /> number using the specified culture-specific formatting information.</summary>
-        /// <returns>A <see cref="T:System.Decimal" /> number equivalent to the value of this instance.</returns>
-        public static decimal ToDecimal(this IConvertible o)
-        {
-            return o.ToDecimal(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent <see cref="T:System.DateTime" /> using the specified culture-specific formatting information.</summary>
-        /// <returns>A <see cref="T:System.DateTime" /> instance equivalent to the value of this instance.</returns>
-        public static DateTime ToDateTime(this IConvertible o)
-        {
-            return o.ToDateTime(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an equivalent <see cref="T:System.String" /> using the specified culture-specific formatting information.</summary>
-        /// <returns>A <see cref="T:System.String" /> instance equivalent to the value of this instance.</returns>
-        public static string ToString(this IConvertible o)
-        {
-            return o.ToString(CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Converts the value of this instance to an <see cref="T:System.Object" /> of the specified <see cref="T:System.Type" /> that has an equivalent value, using the specified culture-specific formatting information.</summary>
-        /// <param name="o">This object</param>
-        /// <param name="conversionType">The <see cref="T:System.Type" /> to which the value of this instance is converted. </param>
-        /// <returns>An <see cref="T:System.Object" /> instance of type <paramref name="conversionType" /> whose value is equivalent to the value of this instance.</returns>
-        public static object ToType(this IConvertible o, Type conversionType)
-        {
-            return o.ToType(conversionType, CultureInfo.CurrentCulture);
         }
 
         /// <summary>
