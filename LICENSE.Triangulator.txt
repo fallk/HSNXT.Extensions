@@ -1,0 +1,4 @@
+Credit to Paul Bourke (pbourke@swin.edu.au) for the original Fortran 77 Program :))
+Converted to a standalone C# 2.0 library by Morten Nielsen (www.iter.dk)
+Check out: http://astronomy.swin.edu.au/~pbourke/terrain/triangulate/
+You can use this code however you like providing the above credits remain in tact
