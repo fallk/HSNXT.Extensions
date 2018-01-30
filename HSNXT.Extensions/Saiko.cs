@@ -4,9 +4,7 @@ using System.Net;
 
 namespace HSNXT
 {
-    /// <summary>
-    /// Extension methods by NaamloosDT, from https://github.com/NaamloosDT/Saiko
-    /// </summary>
+    // Extension methods by NaamloosDT, from https://github.com/NaamloosDT/Saiko
     public static partial class Extensions
     {
         public static string TryRemove(this string input, int index)
