@@ -265,14 +265,20 @@ namespace HSNXT
         /// <returns>A bool based on the string value</returns>
         public static bool? ToBoolean(this string value)
         {
-            if (value == "1" || value == "T" || value == "t" || value == "True" || value == "true")
+            switch (value)
             {
-                return true;
-            }
-
-            if (value == "0" || value == "F" || value == "f" || value == "False" || value == "false")
-            {
-                return false;
+                case "1":
+                case "T":
+                case "t":
+                case "True":
+                case "true":
+                    return true;
+                case "0":
+                case "F":
+                case "f":
+                case "False":
+                case "false":
+                    return false;
             }
 
             if (bool.TryParse(value, out var result))
@@ -290,14 +296,20 @@ namespace HSNXT
         /// <returns>A bool based on the string value</returns>
         public static bool ToBooleanNotNull(this string value)
         {
-            if (string.Compare("T", value, StringComparison.OrdinalIgnoreCase) == 0)
+            switch (value)
             {
-                return true;
-            }
-
-            if (string.Compare("F", value, StringComparison.OrdinalIgnoreCase) == 0)
-            {
-                return false;
+                case "1":
+                case "T":
+                case "t":
+                case "True":
+                case "true":
+                    return true;
+                case "0":
+                case "F":
+                case "f":
+                case "False":
+                case "false":
+                    return false;
             }
 
             return bool.TryParse(value, out var result) && result;
