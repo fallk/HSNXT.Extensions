@@ -23,6 +23,41 @@ namespace HSNXT
         private static readonly Regex ObjAlphaPattern = new ObjAlphaPattern();
         private static readonly Regex IsEmailBigRe = new IsEmailBigRe();
 
+        /// <summary>
+        /// Given a string as input find the longest contiguous substring that does not have any character twice or
+        /// more. If there are multiple such substrings you may output either.
+        /// </summary>
+        /// <param name="source">the input string</param>
+        /// <returns>the longest contiguous substring that does not have any character twice or more.</returns>
+        public static string LongestNonRepeatingSubstring(this string source)
+        {
+            int s = 0, e = 0, l = 0, x = 0, y = 0;
+            var b = new int [256];
+            for (; x < source.Length & y < source.Length & l < source.Length - x; x++)
+            {
+                b[source[x]] = 1;
+                for (y++; y < source.Length && b[source[y]] < 1; b[source[y++]] = 1)
+                {
+                }
+
+                if (l < y - x)
+                {
+                    s = x;
+                    e = y;
+                    l = y - x;
+                }
+
+                for (; y < source.Length && x < y & source[x] != source[y];) b[source[x++]] = 0;
+            }
+
+            var g = "";
+            for (; s < e; g += source[s++])
+            {
+            }
+
+            return g;
+        }
+
         public static bool EqualsAnyInvariant(this string a, params string[] b)
         {
             // ReSharper disable once LoopCanBeConvertedToQuery
