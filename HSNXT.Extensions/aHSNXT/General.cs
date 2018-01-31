@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -21,6 +22,24 @@ namespace HSNXT
     {
         //new DateTimeOffset(2015, 1, 1, 0, 0, 0, TimeSpan.Zero).ToUnixTimeMilliseconds();
         public const long DiscordEpoch = 1420070400000L;
+        
+        /// <summary>
+        /// Compares the identity of two images.
+        /// </summary>
+        /// <param name="self">the first image to compare</param>
+        /// <param name="target">the second image to compare</param>
+        /// <param name="hashSideSize">size of the identity image, bigger is more precise</param>
+        /// <returns>% of similarity</returns>
+        public static double CompareWith(this Image self, Image target, int hashSideSize = 16)
+        {
+            var hash1 = new ImgHash(hashSideSize);
+            hash1.GenerateFromImage(self);
+            
+            var hash2 = new ImgHash(hashSideSize);
+            hash2.GenerateFromImage(target);
+
+            return hash1.CompareWith(hash2);
+        }
         
         /// <summary>
         /// Gets the current date and time for a Discord snowflake.
@@ -136,6 +155,12 @@ namespace HSNXT
             return (T)Enum.Parse(t, value, ignorecase);
         }
 
+        /// <summary>
+        /// Gets the head of this element.
+        /// </summary>
+        /// <param name="this">this element</param>
+        /// <typeparam name="T">the element type</typeparam>
+        /// <returns>the value at the head of this element.</returns>
         public static T GetHead<T>(this IConsEnumerable<T> @this)
         {
             return @this.Cons().Head.Value;
