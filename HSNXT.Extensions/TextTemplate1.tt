@@ -52,6 +52,28 @@ namespace HSNXT
 			// type
 			var y = t[i];	
 #>
+        /// <summary>
+        /// Gets the closest item in this IEnumerable to a number.
+        /// </summary>
+        /// <param name="list">the list to check with</param>
+        /// <param name="number">the number to check against</param>
+        /// <returns>the entry closest to number</returns>
+        public static <#= y #> ClosestTo(this IEnumerable<<#= y #>> list, <#= y #> number)
+        {
+            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+        }
+        
+        /// <summary>
+        /// Enumerates the closest items in this IEnumerable to a number, in order.
+        /// </summary>
+        /// <param name="list">the list to check with</param>
+        /// <param name="number">the number to check against</param>
+        /// <returns>the entry closest to number</returns>
+        public static IOrderedEnumerable<<#= y #>> AllClosestTo(this IEnumerable<<#= y #>> list, <#= y #> number)
+        {
+            return list.OrderBy(item => Math.Abs(number - item));
+        }
+        
         public static <#= y #> Sums(this <#= y #> n, <#= y #> p1, <#= y #> p2, <#= y #> upperBound)
         {
             var result = <#= z0 #>;
