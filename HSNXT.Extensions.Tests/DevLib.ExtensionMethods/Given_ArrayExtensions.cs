@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DevLib.ExtensionMethods.UnitTest
 {
     [TestClass]
-    public class Given_ArrayExtensions
+    public class GivenArrayExtensions
     {
         [TestMethod]
         public void When_ForEach()

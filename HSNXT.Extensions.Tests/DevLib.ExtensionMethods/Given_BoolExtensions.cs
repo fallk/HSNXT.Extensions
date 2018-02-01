@@ -8,7 +8,7 @@ namespace DevLib.ExtensionMethods.UnitTest
     ///to contain all Given_BoolExtensions Unit Tests
     ///</summary>
     [TestClass]
-    public class Given_BoolExtensions
+    public class GivenBoolExtensions
     {
         /// <summary>
         ///Gets or sets the test context which provides

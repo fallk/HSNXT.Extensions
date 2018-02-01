@@ -11,9 +11,9 @@ namespace DevLib.ExtensionMethods.UnitTest
     ///to contain all Given_CollectionExtensions Unit Tests
     ///</summary>
     [TestClass]
-    public class Given_CollectionExtensions
+    public class GivenCollectionExtensions
     {
-        private TestContext testContextInstance;
+        private TestContext _testContextInstance;
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -23,11 +23,11 @@ namespace DevLib.ExtensionMethods.UnitTest
         {
             get
             {
-                return testContextInstance;
+                return _testContextInstance;
             }
             set
             {
-                testContextInstance = value;
+                _testContextInstance = value;
             }
         }
 
