@@ -27,7 +27,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static byte ClosestTo(this IEnumerable<byte> list, byte number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<byte> AllClosestTo(this IEnumerable<byte> list, byte number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static byte Sums(this byte n, byte p1, byte p2, byte upperBound)
@@ -71,7 +71,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static sbyte ClosestTo(this IEnumerable<sbyte> list, sbyte number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -82,7 +82,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<sbyte> AllClosestTo(this IEnumerable<sbyte> list, sbyte number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static sbyte Sums(this sbyte n, sbyte p1, sbyte p2, sbyte upperBound)
@@ -115,7 +115,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static short ClosestTo(this IEnumerable<short> list, short number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -126,7 +126,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<short> AllClosestTo(this IEnumerable<short> list, short number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static short Sums(this short n, short p1, short p2, short upperBound)
@@ -159,7 +159,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static ushort ClosestTo(this IEnumerable<ushort> list, ushort number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -170,7 +170,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<ushort> AllClosestTo(this IEnumerable<ushort> list, ushort number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static ushort Sums(this ushort n, ushort p1, ushort p2, ushort upperBound)
@@ -203,7 +203,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static int ClosestTo(this IEnumerable<int> list, int number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -214,7 +214,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<int> AllClosestTo(this IEnumerable<int> list, int number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static int Sums(this int n, int p1, int p2, int upperBound)
@@ -247,7 +247,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static uint ClosestTo(this IEnumerable<uint> list, uint number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -258,7 +258,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<uint> AllClosestTo(this IEnumerable<uint> list, uint number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static uint Sums(this uint n, uint p1, uint p2, uint upperBound)
@@ -291,7 +291,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static long ClosestTo(this IEnumerable<long> list, long number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -302,7 +302,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<long> AllClosestTo(this IEnumerable<long> list, long number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static long Sums(this long n, long p1, long p2, long upperBound)
@@ -335,7 +335,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static ulong ClosestTo(this IEnumerable<ulong> list, ulong number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -346,7 +346,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<ulong> AllClosestTo(this IEnumerable<ulong> list, ulong number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static ulong Sums(this ulong n, ulong p1, ulong p2, ulong upperBound)
@@ -379,7 +379,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static float ClosestTo(this IEnumerable<float> list, float number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -390,7 +390,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<float> AllClosestTo(this IEnumerable<float> list, float number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static float Sums(this float n, float p1, float p2, float upperBound)
@@ -423,7 +423,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static double ClosestTo(this IEnumerable<double> list, double number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -434,7 +434,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<double> AllClosestTo(this IEnumerable<double> list, double number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static double Sums(this double n, double p1, double p2, double upperBound)
@@ -467,7 +467,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static decimal ClosestTo(this IEnumerable<decimal> list, decimal number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -478,7 +478,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<decimal> AllClosestTo(this IEnumerable<decimal> list, decimal number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static decimal Sums(this decimal n, decimal p1, decimal p2, decimal upperBound)
@@ -511,7 +511,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static Int128 ClosestTo(this IEnumerable<Int128> list, Int128 number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -522,7 +522,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<Int128> AllClosestTo(this IEnumerable<Int128> list, Int128 number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static Int128 Sums(this Int128 n, Int128 p1, Int128 p2, Int128 upperBound)
@@ -555,7 +555,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static Int256 ClosestTo(this IEnumerable<Int256> list, Int256 number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -566,7 +566,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<Int256> AllClosestTo(this IEnumerable<Int256> list, Int256 number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static Int256 Sums(this Int256 n, Int256 p1, Int256 p2, Int256 upperBound)
@@ -599,7 +599,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static BigInteger ClosestTo(this IEnumerable<BigInteger> list, BigInteger number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -610,7 +610,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<BigInteger> AllClosestTo(this IEnumerable<BigInteger> list, BigInteger number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static BigInteger Sums(this BigInteger n, BigInteger p1, BigInteger p2, BigInteger upperBound)
@@ -643,7 +643,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static System.Numerics.BigInteger ClosestTo(this IEnumerable<System.Numerics.BigInteger> list, System.Numerics.BigInteger number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -654,7 +654,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<System.Numerics.BigInteger> AllClosestTo(this IEnumerable<System.Numerics.BigInteger> list, System.Numerics.BigInteger number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static System.Numerics.BigInteger Sums(this System.Numerics.BigInteger n, System.Numerics.BigInteger p1, System.Numerics.BigInteger p2, System.Numerics.BigInteger upperBound)

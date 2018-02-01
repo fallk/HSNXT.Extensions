@@ -60,7 +60,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static <#= y #> ClosestTo(this IEnumerable<<#= y #>> list, <#= y #> number)
         {
-            return list.Aggregate((x,y) => Math.Abs(x-number) < Math.Abs(y-number) ? x : y);
+            return list.Aggregate((x,y) => XMath.Abs(x-number) < XMath.Abs(y-number) ? x : y);
         }
         
         /// <summary>
@@ -71,7 +71,7 @@ namespace HSNXT
         /// <returns>the entry closest to number</returns>
         public static IOrderedEnumerable<<#= y #>> AllClosestTo(this IEnumerable<<#= y #>> list, <#= y #> number)
         {
-            return list.OrderBy(item => Math.Abs(number - item));
+            return list.OrderBy(item => XMath.Abs(number - item));
         }
         
         public static <#= y #> Sums(this <#= y #> n, <#= y #> p1, <#= y #> p2, <#= y #> upperBound)
