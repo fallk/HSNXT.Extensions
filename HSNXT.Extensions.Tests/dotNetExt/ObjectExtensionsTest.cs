@@ -3,6 +3,9 @@
 //Licensed under the GNU Library General Public License (LGPL)
 //License can be found here: http://www.codeplex.com/dotNetExt/license
 
+using System.Globalization;
+using System.Threading;
+
 namespace TestProject
 {
     using System;
@@ -21,6 +24,11 @@ using HSNXT.dotNetExt;
     [TestClass()]
     public class ExtensionsTest
     {
+        [TestInitialize]
+        public void Init()
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+        }
         //private TestContext testContextInstance;
 
         ///// <summary>
@@ -256,20 +264,9 @@ using HSNXT.dotNetExt;
         }
 
         [TestMethod]
-        public void ToDictionaryTest_005()
-        {
-            Dictionary<string, object> a = null;
-            var actual = a.ToDictionary();
-
-            Assert.IsNotNull(actual);
-            Assert.IsInstanceOfType(actual, typeof(Dictionary<string, object>));
-            Assert.AreEqual(0, actual.Count);
-        }
-
-        [TestMethod]
         public void ToDictionaryTest_006()
         {
-            object target = new NameValueCollection();
+            var target = new NameValueCollection();
             var actual = target.ToDictionary();
 
             Assert.IsNotNull(actual);

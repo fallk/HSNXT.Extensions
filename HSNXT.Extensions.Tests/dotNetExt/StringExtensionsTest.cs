@@ -50,22 +50,6 @@ using HSNXT.dotNetExt;
         }
 
         [TestMethod]
-        public void String_Repeat_001()
-        {
-            string s = null;
-            var actual = s.Repeat(0);
-            Assert.IsNull(actual);
-        }
-
-        [TestMethod]
-        public void String_Repeat_002()
-        {
-            string s = null;
-            var actual = s.Repeat(5);
-            Assert.IsNull(actual);
-        }
-
-        [TestMethod]
         public void String_Repeat_003()
         {
             string s = "Test";
@@ -99,13 +83,6 @@ using HSNXT.dotNetExt;
             var actual = s.Repeat(3);
             var expected = string.Empty;
             Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void String_Repeat_007()
-        {
-            string s = string.Empty;
-            var actual = s.Repeat(-3);
         }
 
         [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -226,42 +203,6 @@ using HSNXT.dotNetExt;
         }
 
         [TestMethod()]
-        public void RightTest_003()
-        {
-            string s = null;
-            string expected = null;
-            string actual = s.Right(4);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void RightTest_004()
-        {
-            string s = string.Empty;
-            string expected = string.Empty;
-            string actual = s.Right(4);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void RightTest_005()
-        {
-            string s = "test";
-            string expected = "test";
-            string actual = s.Right(7);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void RightTest_006()
-        {
-            string s = "test";
-            string expected = "test";
-            string actual = s.Right(-5);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
         public void RightTest_007()
         {
             string s = "test";
@@ -292,42 +233,6 @@ using HSNXT.dotNetExt;
             string s = "John";
             string expected = "John";
             string actual = s.Left(4);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void LeftTest_003()
-        {
-            string s = null;
-            string expected = null;
-            string actual = s.Left(4);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void LeftTest_004()
-        {
-            string s = string.Empty;
-            string expected = string.Empty;
-            string actual = s.Left(4);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void LeftTest_005()
-        {
-            string s = "test";
-            string expected = "test";
-            string actual = s.Left(7);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void LeftTest_006()
-        {
-            string s = "test";
-            string expected = "test";
-            string actual = s.Left(-5);
             Assert.AreEqual(expected, actual);
         }
 

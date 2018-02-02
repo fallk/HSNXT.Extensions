@@ -295,7 +295,7 @@ using HSNXT.dotNetExt;
             var utc = DateTime.UtcNow;
             var d = new DateTime(utc.Year, utc.Month, utc.Day);
 
-            var expected = new DateTime(utc.Year, utc.Month, utc.Day).AddDays(1).AddTicks(-1);
+            var expected = new DateTime(utc.Year, utc.Month, utc.Day).AddDays(1).Subtract(new TimeSpan(0, 0, 0, 0, 1));
             var actual = d.EndOfDay();
 
             Assert.AreEqual(expected, actual);
@@ -338,7 +338,7 @@ using HSNXT.dotNetExt;
         public void DateTime_EndOfMonth_001()
         {
             var dt = new DateTime(2012, 1, 20, 15, 34, 13);
-            var expected = new DateTime(2012, 1, 31).AddDays(1).AddTicks(-1);
+            var expected = new DateTime(2012, 1, 31).AddDays(1).Subtract(new TimeSpan(0, 0, 0, 0, 1));
             var actual = dt.EndOfMonth();
             Assert.AreEqual(expected, actual);
         }
@@ -382,7 +382,7 @@ using HSNXT.dotNetExt;
         public void DateTime_EndOfYear_001()
         {
             var dt = new DateTime(2012, 7, 20, 15, 34, 13);
-            var expected = new DateTime(2012, 12, 31).AddDays(1).AddTicks(-1);
+            var expected = new DateTime(2012, 12, 31).AddDays(1).Subtract(new TimeSpan(0, 0, 0, 0, 1));
             var actual = dt.EndOfYear();
             Assert.AreEqual(expected, actual);
         }
@@ -391,7 +391,7 @@ using HSNXT.dotNetExt;
         public void DateTime_EndOfYear_002()
         {
             var dt = new DateTime(2012, 1, 1, 0, 0, 0);
-            var expected = new DateTime(2012, 12, 31).AddDays(1).AddTicks(-1);
+            var expected = new DateTime(2012, 12, 31).AddDays(1).Subtract(new TimeSpan(0, 0, 0, 0, 1));
             var actual = dt.EndOfYear();
             Assert.AreEqual(expected, actual);
         }
@@ -400,7 +400,7 @@ using HSNXT.dotNetExt;
         public void DateTime_EndOfYear_003()
         {
             var dt = new DateTime(2012, 12, 31, 23, 59, 59);
-            var expected = new DateTime(2012, 12, 31).AddDays(1).AddTicks(-1);
+            var expected = new DateTime(2012, 12, 31).AddDays(1).Subtract(new TimeSpan(0, 0, 0, 0, 1));
             var actual = dt.EndOfYear();
             Assert.AreEqual(expected, actual);
         }
@@ -413,77 +413,77 @@ using HSNXT.dotNetExt;
         public void EndOfWeekTest01()
         {
             var end = (new DateTime(2011, 07, 17)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest02()
         {
             var end = (new DateTime(2011, 07, 18)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest03()
         {
             var end = (new DateTime(2011, 07, 19)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest04()
         {
             var end = (new DateTime(2011, 07, 20)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest05()
         {
             var end = (new DateTime(2011, 07, 21)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest06()
         {
             var end = (new DateTime(2011, 07, 22)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest07()
         {
             var end = (new DateTime(2011, 07, 23)).EndOfWeek();
-            Assert.AreEqual(new DateTime(2011, 07, 23), end);
+            Assert.AreEqual(new DateTime(2011, 07, 23, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest08()
         {
             var end = (new DateTime(2011, 07, 23)).EndOfWeek(DayOfWeek.Wednesday);
-            Assert.AreEqual(new DateTime(2011, 07, 26), end);
+            Assert.AreEqual(new DateTime(2011, 07, 26, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest09()
         {
             var end = (new DateTime(2011, 07, 23)).EndOfWeek(DayOfWeek.Friday);
-            Assert.AreEqual(new DateTime(2011, 07, 28), end);
+            Assert.AreEqual(new DateTime(2011, 07, 28, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest10()
         {
             var end = (new DateTime(2011, 07, 15)).EndOfWeek(DayOfWeek.Friday);
-            Assert.AreEqual(new DateTime(2011, 07, 21), end);
+            Assert.AreEqual(new DateTime(2011, 07, 21, 23, 59, 59, 999), end);
         }
 
         [TestMethod]
         public void EndOfWeekTest11()
         {
             var end = (new DateTime(2011, 08, 19)).EndOfWeek(DayOfWeek.Saturday);
-            Assert.AreEqual(new DateTime(2011, 08, 19), end);
+            Assert.AreEqual(new DateTime(2011, 08, 19, 23, 59, 59, 999), end);
         }
 
         #endregion
@@ -633,7 +633,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void NextWeekDay001()
         {
-            var target = new DateTime(2013, 6, 21);
+            var target = new DateTime(2013, 6, 22);
             var actual = target.NextWeekDay();
             var expected = new DateTime(2013, 6, 24);
             Assert.AreEqual(expected, actual);
@@ -662,7 +662,7 @@ using HSNXT.dotNetExt;
         {
             var target = new DateTime(2013, 6, 24);
             var actual = target.NextWeekDay();
-            var expected = new DateTime(2013, 6, 25);
+            var expected = new DateTime(2013, 6, 24);
             Assert.AreEqual(expected, actual);
         }
 

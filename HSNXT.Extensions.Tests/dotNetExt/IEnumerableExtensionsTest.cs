@@ -172,15 +172,7 @@ using HSNXT.dotNetExt;
             Assert.AreEqual(14, totalLength);
         }
 
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
-        public void EachTest002()
-        {
-            string[] arr = null;
-            var i = 0;
-            arr.Each(d => i = d.Length);
-        }
-
-        [TestMethod, ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod, ExpectedException(typeof(NullReferenceException))]
         public void EachTest003()
         {
             var arr = new int[] { 1, 2, 3 };
@@ -274,7 +266,7 @@ using HSNXT.dotNetExt;
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void IsEmptyTest03()
         {
             string[] arr = null;

@@ -3,6 +3,9 @@
 //Licensed under the GNU Library General Public License (LGPL)
 //License can be found here: http://www.codeplex.com/dotNetExt/license
 
+using System.Globalization;
+using System.Threading;
+
 namespace TestProject
 {
     using System;
@@ -13,6 +16,12 @@ using HSNXT.dotNetExt;
     [TestClass]
     public class IntExtensionsTest
     {
+        [TestInitialize]
+        public void Init()
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+        }
+        
         #region IsOdd Tests
         
         [TestMethod]
@@ -406,12 +415,6 @@ using HSNXT.dotNetExt;
             });
             Assert.AreEqual(45, total);
             Assert.AreEqual(10, count);
-        }
-
-        [TestMethod, ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void IntExtensionsTest_TimesTest03()
-        {
-            (-6).Times(i => { });
         }
 
         #endregion
