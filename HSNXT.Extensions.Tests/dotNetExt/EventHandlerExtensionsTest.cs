@@ -78,17 +78,6 @@ using HSNXT.dotNetExt;
         }
 
 
-        public event EventHandler EventHandler_Raise_002_Event;
-
-        /// <summary>
-        ///A test for Raise
-        ///</summary>
-        [TestMethod()]
-        public void EventHandler_Raise_002()
-        {
-            this.EventHandler_Raise_002_Event.Raise(this);
-        }
-
 
         public event EventHandler<EventArgs> EventHandler_Raise_003_Event;
 
@@ -100,18 +89,6 @@ using HSNXT.dotNetExt;
         {
             this.EventHandler_Raise_003_Event.Raise<EventArgs>(this, EventArgs.Empty);
         }
-
-        public event EventHandler<EventArgs> EventHandler_Raise_004_Event;
-
-        /// <summary>
-        ///A test for Raise
-        ///</summary>
-        [TestMethod]
-        public void EventHandler_Raise_004()
-        {
-            this.EventHandler_Raise_004_Event.Raise<EventArgs>(this);
-        }
-
 
         public event EventHandler<EventArgs> EventHandler_Raise_005_Event;
 
@@ -131,22 +108,5 @@ using HSNXT.dotNetExt;
             Assert.AreEqual(e, EventArgs.Empty);
         }
 
-        public event EventHandler EventHandler_Raise_006_Event;
-
-        /// <summary>
-        ///A test for Raise
-        ///</summary>
-        [TestMethod()]
-        public void EventHandler_Raise_006()
-        {
-            this.EventHandler_Raise_006_Event += EventHandlerExtensionsTest_EventHandler_Raise_006_Event;
-            this.EventHandler_Raise_006_Event.Raise(this);
-        }
-
-        void EventHandlerExtensionsTest_EventHandler_Raise_006_Event(object sender, EventArgs e)
-        {
-            Assert.AreEqual(this, sender);
-            Assert.AreEqual(e, EventArgs.Empty);
-        }
     }
 }

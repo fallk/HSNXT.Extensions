@@ -3,23 +3,25 @@
 //Licensed under the GNU Library General Public License (LGPL)
 //License can be found here: http://www.codeplex.com/dotNetExt/license
 
+using System;
+
 namespace HSNXT.dotNetExt
 {
     public class TimeSpanWrapper
     {
-        public TimeSpanWrapper(System.TimeSpan ts)
+        public TimeSpanWrapper(TimeSpan ts)
         {
             this.TimeSpan = ts;
         }
 
-        public System.TimeSpan TimeSpan { get; private set; }
+        public TimeSpan TimeSpan { get; private set; }
 
-        public static implicit operator TimeSpanWrapper(System.TimeSpan ts)
+        public static implicit operator TimeSpanWrapper(TimeSpan ts)
         {
             return new TimeSpanWrapper(ts);
         }
 
-        public static System.TimeSpan operator *(TimeSpanWrapper tsoe, int i)
+        public static TimeSpan operator *(TimeSpanWrapper tsoe, int i)
         {
             var ts = tsoe.TimeSpan;
             var r = ts;

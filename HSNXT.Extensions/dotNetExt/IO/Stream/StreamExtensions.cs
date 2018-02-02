@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace HSNXT
 {
@@ -20,7 +19,7 @@ namespace HSNXT
         /// <param name="key">Required. The Encryption Key</param>
         /// <param name="iv">Optional. The Initialization Vector for the symmetric algorithm</param>
         /// <returns>Returns a read-only cryptographic stream from the original stream.</returns>
-        public static System.IO.Stream Encrypt<Algorithm>(this System.IO.Stream stream, byte[] key, byte[] iv = null)
+        public static Stream Encrypt<Algorithm>(this Stream stream, byte[] key, byte[] iv = null)
             where Algorithm : SymmetricAlgorithm
         {
             var alg = Activator.CreateInstance<Algorithm>();
@@ -38,7 +37,7 @@ namespace HSNXT
         /// <param name="key"></param>
         /// /// <param name="iv">Optional. The Initialization Vector for the symmetric algorithm</param>
         /// <returns></returns>
-        public static System.IO.Stream Decrypt<Algorithm>(this System.IO.Stream stream, byte[] key, byte[] iv = null)
+        public static Stream Decrypt<Algorithm>(this Stream stream, byte[] key, byte[] iv = null)
             where Algorithm : SymmetricAlgorithm
         {
             var alg = Activator.CreateInstance<Algorithm>();

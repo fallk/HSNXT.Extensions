@@ -603,7 +603,7 @@ using HSNXT.dotNetExt;
         public void MillisecondsSince1970_001()
         {
             var target = new DateTime(1970, 1, 1, 0, 0, 0);
-            double actual = DateTimeExtensions.MillisecondsSince1970(target);
+            double actual = Extensions.MillisecondsSince1970(target);
             double expected = 0;
             Assert.AreEqual(expected, actual);
         }
@@ -612,7 +612,7 @@ using HSNXT.dotNetExt;
         public void MillisecondsSince1970_002()
         {
             var target = new DateTime(1969, 12, 31, 23, 59, 0);
-            double actual = DateTimeExtensions.MillisecondsSince1970(target);
+            double actual = Extensions.MillisecondsSince1970(target);
             double expected = -60000;
             Assert.AreEqual(expected, actual);
         }
@@ -621,7 +621,7 @@ using HSNXT.dotNetExt;
         public void MillisecondsSince1970_003()
         {
             var target = new DateTime(2006, 4, 16, 3, 15, 23);
-            double actual = DateTimeExtensions.MillisecondsSince1970(target);
+            double actual = Extensions.MillisecondsSince1970(target);
             double expected = 1145157323000;
             Assert.AreEqual(expected, actual);
         }

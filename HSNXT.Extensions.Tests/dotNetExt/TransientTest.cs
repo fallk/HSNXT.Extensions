@@ -60,19 +60,13 @@ namespace TestProject
         [TestMethod, ExpectedException(typeof(RetryTestException))]
         public void RetryTest_004()
         {
-            Transient.Retry(() =>
-            {
-                throw new RetryTestException();
-            });
+            Transient.Retry(() => throw new RetryTestException());
         }
 
         [TestMethod, ExpectedException(typeof(RetryTestException))]
         public void RetryTest_005()
         {
-            Transient.Retry(5, () =>
-            {
-                throw new RetryTestException();
-            });
+            Transient.Retry(5, () => throw new RetryTestException());
         }
 
         [TestMethod]

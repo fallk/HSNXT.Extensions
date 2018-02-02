@@ -7,34 +7,11 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace HSNXT
 {
     public static partial class Extensions
     {
-        /// <summary>
-        /// Retuns a String that is a concatenation of the source String repeated the specified number of times.
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="repeatCount">The number of times to repeat the String in the returned concatenation.</param>
-        /// <returns></returns>
-        public static string Repeat(this string s, int repeatCount)
-        {
-            if (repeatCount < 0)
-            {
-                throw new ArgumentOutOfRangeException("repeatCount", "repeatCount must be greater than zero.");
-            }
-
-            if (s.IsNull() || s.IsEmpty())
-            {
-                return s;
-            }
-
-            var sb = new StringBuilder();
-            repeatCount.Times((i) => { sb.Append(s); });
-            return sb.ToString();
-        }
 
         /// <summary>
         /// Returns an MD5 Hash from the specified string
@@ -43,7 +20,7 @@ namespace HSNXT
         /// <returns></returns>
         public static string ToMD5Hash(this string s)
         {
-            using (var md5 = System.Security.Cryptography.MD5.Create())
+            using (var md5 = MD5.Create())
             {
                 var bytes = s.ToByteArray();
                 var hashBytes = md5.ComputeHash(bytes);
@@ -51,94 +28,6 @@ namespace HSNXT
                 hashBytes.Each(b => sb.Append(b.ToString("X2")));
                 return sb.ToString();
             }
-        }
-
-        /// <summary>
-        /// Returns a string containing a specified number of characters from the left side of a string.
-        /// </summary>
-        /// <param name="s">Required. String expression from which the leftmost characters are returned</param>
-        /// <param name="length">Required. Integer expression. Numeric expression indicating how many characters to return. If 0, a zero-length string ("") is returned. If greater than or equal to the number of characters in str, the entire string is returned.</param>
-        /// <returns>Returns a string containing a specified number of characters from the left side of a string.</returns>
-        public static string Left(this string s, int length)
-        {
-            if (s.IsNullOrEmpty() || length > s.Length || length < 0)
-                return s;
-
-            return s.Substring(0, length);
-        }
-
-        /// <summary>
-        /// Returns a string containing a specified number of characters from the right side of a string.
-        /// </summary>
-        /// <param name="s">Required. String expression from which the rightmost characters are returned.</param>
-        /// <param name="length">Required. Integer. Numeric expression indicating how many characters to return. If 0, a zero-length string ("") is returned. If greater than or equal to the number of characters in str, the entire string is returned.</param>
-        /// <returns>Returns a string containing a specified number of characters from the right side of a string.</returns>
-        public static string Right(this string s, int length)
-        {
-            if (s.IsNullOrEmpty() || length > s.Length || length < 0)
-                return s;
-
-            return s.Substring(s.Length - length);
-        }
-
-        /// <summary>
-        /// Returns the String HtmlEncoded.
-        /// </summary>
-        /// <param name="str">Required. The String to HtmlEncode.</param>
-        /// <returns>Returns the String HtmlEncoded.</returns>
-        public static string EncodeHtml(this string str)
-        {
-            return HttpUtility.HtmlEncode(str);
-        }
-
-        /// <summary>
-        /// Returns the String HtmlDecoded.
-        /// </summary>
-        /// <param name="str">Required. The String to HtmlDecode.</param>
-        /// <returns>Returns the String HtmlDecoded.</returns>
-        public static string DecodeHtml(this string str)
-        {
-            return HttpUtility.HtmlDecode(str);
-        }
-
-        /// <summary>
-        /// Returns the String UrlEncoded.
-        /// </summary>
-        /// <param name="str">Required. The String to UrlEncode.</param>
-        /// <returns>Returns the String UrlEncoded.</returns>
-        public static string EncodeUrl(this string str)
-        {
-            return HttpUtility.UrlEncode(str);
-        }
-
-        /// <summary>
-        /// Returns the String UrlDecoded.
-        /// </summary>
-        /// <param name="str">Required. The String to UrlDecode.</param>
-        /// <returns>Returns the String UrlDecoded.</returns>
-        public static string DecodeUrl(this string str)
-        {
-            return HttpUtility.UrlDecode(str);
-        }
-
-        /// <summary>
-        /// Returns the String Base64 Encoded.
-        /// </summary>
-        /// <param name="str">Required. The String to Base64 Encode.</param>
-        /// <returns>Returns the String Base64 Encoded.</returns>
-        public static string EncodeBase64(this string str)
-        {
-            return Convert.ToBase64String(str.ToByteArray<System.Text.ASCIIEncoding>());
-        }
-
-        /// <summary>
-        /// Returns the String Base64 Decoded.
-        /// </summary>
-        /// <param name="str">Required. The String to Base64 Decode.</param>
-        /// <returns>Returns the String Base64 Decoded.</returns>
-        public static string DecodeBase64(this string str)
-        {
-            return System.Text.ASCIIEncoding.ASCII.GetString(Convert.FromBase64String(str));
         }
 
         /// <summary>
@@ -161,7 +50,7 @@ namespace HSNXT
         /// <returns>Returns a Stream representation of the String.</returns>
         public static Stream ToStream<encoding>(this string str) where encoding : Encoding
         {
-            return new System.IO.MemoryStream(str.ToByteArray<encoding>());
+            return new MemoryStream(str.ToByteArray<encoding>());
         }
 
         /// <summary>

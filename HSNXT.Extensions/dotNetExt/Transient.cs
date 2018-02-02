@@ -5,11 +5,10 @@
 
 using System;
 using System.Data.SqlClient;
-using HSNXT.dotNetExt;
 
 namespace HSNXT
 {
-    public static partial class Extensions
+    public static class Transient
     {
         const int defaultRetryCount = 2;
 

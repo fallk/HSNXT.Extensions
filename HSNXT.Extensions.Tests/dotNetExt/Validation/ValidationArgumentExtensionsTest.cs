@@ -45,20 +45,6 @@ using HSNXT.dotNetExt;
             v.RequireArgument("Name").NotNull();
         }
 
-        [TestMethod]
-        public void ValidationArgumentExtensionsTest_NotNull_003()
-        {
-            int? v = 42;
-            v.RequireArgument("Name").NotNull();
-        }
-
-        [TestMethod, Microsoft.VisualStudio.TestTools.UnitTesting.ExpectedException(typeof(ArgumentNullException))]
-        public void ValidationArgumentExtensionsTest_NotNull_004()
-        {
-            int? v = null;
-            v.RequireArgument("Name").NotNull();
-        }
-
         #endregion
 
         #region NotEmpty

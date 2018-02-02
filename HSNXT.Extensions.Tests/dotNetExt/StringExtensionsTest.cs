@@ -11,11 +11,11 @@ using HSNXT.dotNetExt;
     using System;
 
     /// <summary>
-    ///This is a test class for StringExtensionsTest and is intended
-    ///to contain all StringExtensionsTest Unit Tests
+    ///This is a test class for ExtensionsTest and is intended
+    ///to contain all ExtensionsTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class StringExtensionsTest
+    public class ExtensionsTest2
     {
         [TestMethod]
         public void String_IsEmpty_001()
@@ -162,7 +162,7 @@ using HSNXT.dotNetExt;
         {
             string str = "test";
             var expected = new byte[] { 116, 101, 115, 116 };
-            var actual = StringExtensions.ToStream<System.Text.ASCIIEncoding>(str).ToByteArray();
+            var actual = Extensions.ToStream<System.Text.ASCIIEncoding>(str).ToByteArray();
             CollectionAssert.AreEqual(expected, actual);
         }
 
@@ -174,7 +174,7 @@ using HSNXT.dotNetExt;
         {
             var str = "test";
             var expected = new byte[] { 116, 101, 115, 116 };
-            var actual = StringExtensions.ToStream(str).ToByteArray();
+            var actual = Extensions.ToStream(str).ToByteArray();
             CollectionAssert.AreEqual(expected, actual);
         }
 
@@ -186,7 +186,7 @@ using HSNXT.dotNetExt;
         {
             string str = "test";
             byte[] expected = new byte[] { 116, 101, 115, 116 };
-            byte[] actual = StringExtensions.ToByteArray(str);
+            byte[] actual = Extensions.ToByteArray(str);
             CollectionAssert.AreEqual(expected, actual);
         }
 
@@ -198,7 +198,7 @@ using HSNXT.dotNetExt;
         {
             string str = "test";
             byte[] expected = new byte[] { 116, 101, 115, 116 };
-            byte[] actual = StringExtensions.ToByteArray<System.Text.ASCIIEncoding>(str);
+            byte[] actual = Extensions.ToByteArray<System.Text.ASCIIEncoding>(str);
             CollectionAssert.AreEqual(expected, actual);
         }
 
@@ -494,7 +494,7 @@ using HSNXT.dotNetExt;
         public void RemoveAll_001()
         {
             var target = "121212";
-            var actual = StringExtensions.RemoveAll(target, "1");
+            var actual = Extensions.RemoveAll(target, "1");
             var expected = "222";
             Assert.AreEqual(expected, actual);
         }
@@ -503,7 +503,7 @@ using HSNXT.dotNetExt;
         public void RemoveAll_002()
         {
             var target = "121212";
-            var actual = StringExtensions.RemoveAll(target, "1", "2");
+            var actual = Extensions.RemoveAll(target, "1", "2");
             var expected = "";
             Assert.AreEqual(expected, actual);
         }

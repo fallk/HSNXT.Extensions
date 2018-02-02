@@ -39,7 +39,7 @@ namespace TestProject
         {
             var t = typeof(Person);
 
-            var p = t.CreateInstance("John", "Doe");
+            var p = t.CreateInstance(new object[] { "John", "Doe" });
 
             Assert.IsTrue(p is Person);
             Assert.IsNotNull(p);
@@ -52,9 +52,9 @@ namespace TestProject
         {
             var t = typeof(Person);
 
-            Person p = t.CreateInstance<Person>("Billy", "Idol");
+            var p = t.CreateInstance<Person>(new object[] { "Billy", "Idol" });
 
-            Assert.IsTrue(p is Person);
+            Assert.IsTrue(p != null);
             Assert.IsNotNull(p);
             Assert.AreEqual("Billy", p.FirstName);
             Assert.AreEqual("Idol", p.LastName);

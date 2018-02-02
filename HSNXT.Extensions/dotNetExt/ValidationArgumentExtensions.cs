@@ -3,14 +3,15 @@
 //Licensed under the GNU Library General Public License (LGPL)
 //License can be found here: http://www.codeplex.com/dotNetExt/license
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using HSNXT.dotNetExt.Validation;
+
 namespace HSNXT
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Text.RegularExpressions;
-    using dotNetExt.Validation;
-
     public static partial class Extensions
     {
         public static ValidationArgument<T> RequireArgument<T>(this T arg, string name)
@@ -35,7 +36,7 @@ namespace HSNXT
         #region "NotEmpty"
 
         [DebuggerHidden]
-        public static ValidationArgument<T> NotEmpty<T>(this ValidationArgument<T> arg) where T : class, System.Collections.IEnumerable
+        public static ValidationArgument<T> NotEmpty<T>(this ValidationArgument<T> arg) where T : class, IEnumerable
         {
             arg.NotNull();
             if (arg.Value.IsEmpty())

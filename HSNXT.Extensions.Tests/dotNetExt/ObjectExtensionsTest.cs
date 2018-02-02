@@ -15,11 +15,11 @@ using HSNXT.dotNetExt;
     using System.Collections.Specialized;
 
     /// <summary>
-    ///This is a test class for ObjectExtensionsTest and is intended
-    ///to contain all ObjectExtensionsTest Unit Tests
+    ///This is a test class for ExtensionsTest and is intended
+    ///to contain all ExtensionsTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class ObjectExtensionsTest
+    public class ExtensionsTest
     {
         //private TestContext testContextInstance;
 
@@ -378,7 +378,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void ConvertType_001()
         {
-            var actual = ObjectExtensions.ConvertType<int>("23");
+            var actual = Extensions.ConvertType<int>("23");
             int expected = 23;
             Assert.AreEqual(expected, actual);
         }
@@ -386,7 +386,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void ConvertType_002()
         {
-            var actual = ObjectExtensions.ConvertType<double>("23.567");
+            var actual = Extensions.ConvertType<double>("23.567");
             double expected = 23.567;
             Assert.AreEqual(expected, actual);
         }
@@ -394,7 +394,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void ConvertType_003()
         {
-            var actual = ObjectExtensions.ConvertType<int>(23.567);
+            var actual = Extensions.ConvertType<int>(23.567);
             double expected = 24;
             Assert.AreEqual(expected, actual);
         }
@@ -402,7 +402,7 @@ using HSNXT.dotNetExt;
         [TestMethod, ExpectedException(typeof(FormatException))]
         public void ConvertType_004()
         {
-            ObjectExtensions.ConvertType<int>("5.455");
+            Extensions.ConvertType<int>("5.455");
         }
 
         #endregion

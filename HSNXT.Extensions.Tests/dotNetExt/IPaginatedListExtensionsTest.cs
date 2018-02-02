@@ -22,7 +22,7 @@ namespace TestProject
             var arr = new string[]{
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
-            IPaginatedList<string> page = IEnumerableExtensions.ToPaginatedList(arr, 0, 5, 100);
+            IPaginatedList<string> page = Extensions.ToPaginatedList(arr, 0, 5, 100);
 
             var actual = page.ToDataPage();
 
@@ -35,7 +35,7 @@ namespace TestProject
             var arr = new string[]{
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
-            IPaginatedList page = IEnumerableExtensions.ToPaginatedList(arr, 0, 5, 100);
+            IPaginatedList page = Extensions.ToPaginatedList(arr, 0, 5, 100);
 
             var actual = page.ToDataPage();
 
@@ -48,7 +48,7 @@ namespace TestProject
             var arr = new string[]{
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
-            IPaginatedList<string> page = IEnumerableExtensions.ToPaginatedList(arr, 0, 5, 100);
+            IPaginatedList<string> page = Extensions.ToPaginatedList(arr, 0, 5, 100);
 
             var actual = ((IPaginatedList)page).ToDataPage();
 

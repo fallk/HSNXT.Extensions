@@ -14,19 +14,19 @@ namespace TestProject
         [TestMethod]
         public void IComparable_InRange_001()
         {
-            IComparable source = 3;
-            IComparable min = 1;
-            IComparable max = 5;
-            var actual = source.InRange(min, max);
+            var source = 3;
+            var min = 1;
+            var max = 5;
+            var actual = source.InRange<int>(min, max);
             Assert.IsTrue(actual);
         }
 
         [TestMethod]
         public void IComparable_InRange_002()
         {
-            IComparable source = 3;
-            IComparable min = 3;
-            IComparable max = 5;
+            var source = 3;
+            var min = 3;
+            var max = 5;
             var actual = source.InRange(min, max);
             Assert.IsTrue(actual);
         }
@@ -34,9 +34,9 @@ namespace TestProject
         [TestMethod]
         public void IComparable_InRange_003()
         {
-            IComparable source = 3;
-            IComparable min = 1;
-            IComparable max = 3;
+            var source = 3;
+            var min = 1;
+            var max = 3;
             var actual = source.InRange(min, max);
             Assert.IsTrue(actual);
         }
@@ -44,9 +44,9 @@ namespace TestProject
         [TestMethod]
         public void IComparable_InRange_004()
         {
-            IComparable source = 3;
-            IComparable min = 4;
-            IComparable max = 5;
+            var source = 3;
+            var min = 4;
+            var max = 5;
             var actual = source.InRange(min, max);
             Assert.IsFalse(actual);
         }
@@ -54,9 +54,9 @@ namespace TestProject
         [TestMethod]
         public void IComparable_InRange_005()
         {
-            IComparable source = 3;
-            IComparable min = -4;
-            IComparable max = -1;
+            var source = 3;
+            var min = -4;
+            var max = -1;
             var actual = source.InRange(min, max);
             Assert.IsFalse(actual);
         }

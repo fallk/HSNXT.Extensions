@@ -4,9 +4,6 @@
 //License can be found here: http://www.codeplex.com/dotNetExt/license
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HSNXT
 {
@@ -60,7 +57,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static System.DateTime PreviousWeekDay(this System.DateTime dt)
+        public static DateTime PreviousWeekDay(this DateTime dt)
         {
             var dayOfWeek = dt.DayOfWeek;
             double daysToAdd = -1;

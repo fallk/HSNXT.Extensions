@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using HSNXT;
 
 namespace HSNXT
 {
@@ -70,7 +69,7 @@ namespace HSNXT
         /// <returns>Returns a Boolean value indicating whether a variable points to a DateTime object.</returns>
         public static bool IsDate(this object obj)
         {
-            return obj.IsType(typeof(System.DateTime));
+            return obj.IsType(typeof(DateTime));
         }
 
         /// <summary>
@@ -82,16 +81,6 @@ namespace HSNXT
         public static bool IsDBNull(this object obj)
         {
             return obj.IsType(typeof(DBNull));
-        }
-
-        /// <summary>
-        /// Returns a Boolean value indicating whether an expression evaluates to be NULL.
-        /// </summary>
-        /// <param name="obj">Required. Object expression.</param>
-        /// <returns>Returns a Boolean value indicating whether an expression evaluates to be NULL.</returns>
-        public static bool IsNull<T>(this T obj)
-        {
-            return obj == null;
         }
 
         /// <summary>
@@ -114,30 +103,6 @@ namespace HSNXT
         public static TAttributeType[] GetAttributes<TAttributeType>(this object obj) where TAttributeType : Attribute
         {
             return (TAttributeType[])obj.GetType().GetCustomAttributes(typeof(TAttributeType), false);
-        }
-
-        /// <summary>
-        /// Returns a Dictionary containing Key/Value pairs that match the objects properties and their values
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static IDictionary<string, object> ToDictionary(this object obj)
-        {
-            if (obj is IDictionary<string, object>)
-            {
-                return (IDictionary<string, object>)obj;
-            }
-            else if (obj is NameValueCollection)
-            {
-                return (IDictionary<string, object>)Extensions.ToDictionary((NameValueCollection)obj);
-            }
-
-            var d = new Dictionary<string, object>();
-            foreach (PropertyDescriptor p in TypeDescriptor.GetProperties(obj))
-            {
-                d.Add(p.Name, p.GetValue(obj));
-            }
-            return d;
         }
 
         /// <summary>

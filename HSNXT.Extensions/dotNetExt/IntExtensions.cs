@@ -3,57 +3,12 @@
 //Licensed under the GNU Library General Public License (LGPL)
 //License can be found here: http://www.codeplex.com/dotNetExt/license
 
+using System;
+
 namespace HSNXT
 {
-    using System;
-
     public static partial class Extensions
     {
-        #region "IsOdd"
-
-        /// <summary>
-        /// Returns a boolean indicating whether this Integer is an Odd number.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static bool IsOdd(this int i)
-        {
-            return (i % 2) != 0;
-        }
-
-        #endregion
-
-        #region "IsEven"
-
-        /// <summary>
-        /// Returns a boolean indicating whether this Integer is an Even number.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static bool IsEven(this int i)
-        {
-            return (i % 2) == 0;
-        }
-
-        #endregion
-
-        #region "UpTo"
-
-        /// <summary>
-        /// Iterates from the Int through the specified stopAt and calls the specified Action for each passing in the iterator.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="stopAt"></param>
-        /// <param name="action"></param>
-        public static void UpTo(this int i, int stopAt, Action<int> action)
-        {
-            for (var a = i; a <= stopAt; a++)
-            {
-                action(a);
-            }
-        }
-
-        #endregion
 
 #if NetFX
         #region WeekdayName
@@ -110,106 +65,5 @@ namespace HSNXT
 
         #endregion
 #endif
-
-        #region "Between"
-
-        /// <summary>
-        /// Returns a boolean value indicating that the integer is "between" the low and high values specified. Ex: 1 is between 0 and 2, but 0 or 2 are not.
-        /// </summary>
-        /// <param name="low"></param>
-        /// <param name="high"></param>
-        /// <returns></returns>
-        public static bool Between(this int i, int low, int high)
-        {
-            return i > low && i < high;
-        }
-
-        #endregion
-
-        #region Times
-
-        /// <summary>
-        /// Executes the specified action the specified number of times, passing in the iterator value each time.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <param name="action"></param>
-        public static void Times(this int i, Action<int> action)
-        {
-            if (i < 0)
-            {
-                throw new ArgumentOutOfRangeException("i", "i must be not be less than zero.");
-            }
-
-            for (var c = 0; c < i; c++)
-            {
-                action(c);
-            }
-        }
-
-        #endregion
-
-        #region "TimeSpan extensions"
-
-        /// <summary>
-        /// Returns a TimeSpan that represents the integer in milliseconds
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static System.TimeSpan Milliseconds(this int i)
-        {
-            return TimeSpan.FromMilliseconds(i);
-        }
-
-        /// <summary>
-        /// Returns a TimeSpan that represents the integer in seconds
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static System.TimeSpan Seconds(this int i)
-        {
-            return TimeSpan.FromSeconds(i);
-        }
-
-        /// <summary>
-        /// Returns a TimeSpan that represents the integer in minutes
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static System.TimeSpan Minutes(this int i)
-        {
-            return TimeSpan.FromMinutes(i);
-        }
-
-        /// <summary>
-        /// Returns a TimeSpan that represents the integer in hours
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static System.TimeSpan Hours(this int i)
-        {
-            return TimeSpan.FromHours(i);
-        }
-
-        /// <summary>
-        /// Returns a TimeSpan that represents the integer in days
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static System.TimeSpan Days(this int i)
-        {
-            return TimeSpan.FromDays(i);
-        }
-
-        /// <summary>
-        /// Returns a TimeSpan that represents the integer in weeks
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public static System.TimeSpan Weeks(this int i)
-        {
-            return ((TimeSpanWrapper)i.Days() * 7);
-        }
-
-        #endregion
     }
 }

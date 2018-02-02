@@ -17,7 +17,7 @@ namespace TestProject
         public void ConvertFromUnixTimestamp_001()
         {
             long target = 30;
-            var actual = LongExtensions.ConvertFromUnixTimestamp(target);
+            var actual = Extensions.ConvertFromUnixTimestamp(target);
             var expected = new DateTime(1970, 1, 1, 0, 0, 30);
             Assert.AreEqual(expected, actual);
         }
@@ -26,7 +26,7 @@ namespace TestProject
         public void ConvertFromUnixTimestamp_002()
         {
             long target = 90;
-            var actual = LongExtensions.ConvertFromUnixTimestamp(target);
+            var actual = Extensions.ConvertFromUnixTimestamp(target);
             var expected = new DateTime(1970, 1, 1, 0, 1, 30);
             Assert.AreEqual(expected, actual);
         }
