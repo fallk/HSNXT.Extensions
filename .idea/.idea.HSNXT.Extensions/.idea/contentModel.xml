@@ -2896,7 +2896,7 @@
         <e p="ExtensionMethodApplier.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="ExtensionMethodApplier.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -3600,7 +3600,7 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="ExtensionMethodHarvester.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -3745,7 +3745,6 @@
           </e>
           <e p="Money.cs" t="Include" />
           <e p="NameValueCollectionExtension.cs" t="Include" />
-          <e p="nxl.snk" t="Include" />
           <e p="ObjectExtensions.cs" t="Include" />
           <e p="StreamExtensions.cs" t="Include" />
           <e p="Strings" t="Include">
@@ -4437,6 +4436,36 @@
           <e p="StringExtensions.cs" t="Include" />
           <e p="TimeSpanExtensions.cs" t="Include" />
         </e>
+        <e p="dotNetExt" t="Include">
+          <e p="Collections" t="Include">
+            <e p="Generic" t="Include">
+              <e p="DictionaryExtensions.cs" t="Include" />
+            </e>
+            <e p="IEnumerableExtensions.cs" t="Include" />
+          </e>
+          <e p="DataPage.cs" t="Include" />
+          <e p="DateTimeExtensions.cs" t="Include" />
+          <e p="IDataPage.cs" t="Include" />
+          <e p="IntExtensions.cs" t="Include" />
+          <e p="IO" t="Include">
+            <e p="Stream" t="Include">
+              <e p="StreamExtensions.cs" t="Include" />
+            </e>
+          </e>
+          <e p="IPaginatedList.cs" t="Include" />
+          <e p="IPaginatedListExtensions.cs" t="Include" />
+          <e p="Linq" t="Include">
+            <e p="IQueryableExtensions.cs" t="Include" />
+          </e>
+          <e p="LongExtensions.cs" t="Include" />
+          <e p="ObjectExtensions.cs" t="Include" />
+          <e p="PaginatedList.cs" t="Include" />
+          <e p="StringExtensions.cs" t="Include" />
+          <e p="TimeSpanWrapper.cs" t="Include" />
+          <e p="Transient.cs" t="Include" />
+          <e p="ValidationArgument.cs" t="Include" />
+          <e p="ValidationArgumentExtensions.cs" t="Include" />
+        </e>
         <e p="Eloquent" t="Include">
           <e p="DateTimeExtensions.cs" t="Include" />
           <e p="IntExtension.cs" t="Include" />
@@ -4445,7 +4474,6 @@
         <e p="Extend" t="Include">
           <e p="Convert.cs" t="Include" />
           <e p="ConvertSafe.cs" t="Include" />
-          <e p="Extend.snk" t="Include" />
           <e p="ExtractNumbers.cs" t="Include" />
           <e p="FromMonth.cs" t="Include" />
           <e p="Generic.cs" t="Include" />
@@ -6766,7 +6794,6 @@
             <e p="SortedArrayTests.cs" t="Include" />
           </e>
           <e p="BasesTest.cs" t="Include" />
-          <e p="C5.snk" t="Include" />
           <e p="hashing" t="Include">
             <e p="HashBagTests.cs" t="Include" />
             <e p="HashDictionaryTests.cs" t="Include" />
@@ -6969,6 +6996,52 @@
         <e p="Dff" t="Include">
           <e p="StringExtensionTests.cs" t="Include" />
           <e p="TimeSpanExtensionTests.cs" t="Include" />
+        </e>
+        <e p="dotNetExt" t="Include">
+          <e p="AuthoringTests.txt" t="Include" />
+          <e p="BooleanExtensionsTest.cs" t="Include" />
+          <e p="CharExtensionsTest.cs" t="Include" />
+          <e p="Collections" t="Include">
+            <e p="Generic" t="Include">
+              <e p="DictionaryExtensionsTest.cs" t="Include" />
+              <e p="IDictionaryExtensionsTest.cs" t="Include" />
+            </e>
+            <e p="Specialized" t="Include">
+              <e p="NameValueCollectionExtensionsTest.cs" t="Include" />
+            </e>
+          </e>
+          <e p="DataPageTests.cs" t="Include" />
+          <e p="DateTimeExtensionsTest.cs" t="Include" />
+          <e p="EnumExtensionsTest.cs" t="Include" />
+          <e p="EventHandlerExtensionsTest.cs" t="Include" />
+          <e p="IComparableExtensionsTest.cs" t="Include" />
+          <e p="IEnumerableExtensionsTest.cs" t="Include" />
+          <e p="IntExtensionsTest.cs" t="Include" />
+          <e p="IO" t="Include">
+            <e p="Stream" t="Include">
+              <e p="StreamExtensionsTest.cs" t="Include" />
+            </e>
+          </e>
+          <e p="IPaginatedListExtensionsTest.cs" t="Include" />
+          <e p="Linq" t="Include">
+            <e p="IQueryableExtensionsTest.cs" t="Include" />
+          </e>
+          <e p="LongExtensionsTest.cs" t="Include" />
+          <e p="ObjectExtensionsTest.cs" t="Include" />
+          <e p="packages.config" t="Include" />
+          <e p="PaginatedListTest.cs" t="Include" />
+          <e p="SqlExceptionHelper.cs" t="Include" />
+          <e p="StringExtensionsTest.cs" t="Include" />
+          <e p="Text" t="Include">
+            <e p="StringBuilderExtensionsTest.cs" t="Include" />
+          </e>
+          <e p="TimeSpanExtensionsTest.cs" t="Include" />
+          <e p="TransientTest.cs" t="Include" />
+          <e p="TypeExtensionsTest.cs" t="Include" />
+          <e p="Validation" t="Include">
+            <e p="ValidationArgumentExtensionsTest.cs" t="Include" />
+            <e p="ValidationArgumentTest.cs" t="Include" />
+          </e>
         </e>
         <e p="Eloquent" t="Include">
           <e p="DateTimes" t="Include">
@@ -7704,14 +7777,12 @@
         </e>
         <e p="SuccincT" t="Include">
           <e p="SuccincT.Examples" t="Include">
-            <e p="Directory.Build.props" t="Include" />
             <e p="LexicalAnalyserUsingUnions.cs" t="Include" />
             <e p="TrafficLights.cs" t="Include" />
             <e p="TreeUsingUnions.cs" t="Include" />
             <e p="UserInputExamples.cs" t="Include" />
           </e>
           <e p="SuccincT.Tests" t="Include">
-            <e p="Directory.Build.props" t="Include" />
             <e p="Examples" t="Include">
               <e p="ColorMatcher.cs" t="Include" />
               <e p="Fibonacci.cs" t="Include" />
@@ -7841,7 +7912,6 @@
             </e>
           </e>
           <e p="SuccincT.Tests.JSON" t="Include">
-            <e p="Directory.Build.props" t="Include" />
             <e p="EitherConverterTests.cs" t="Include" />
             <e p="NoneAndUnitConverterTests.cs" t="Include" />
             <e p="OptionConverterTests.cs" t="Include" />
@@ -7862,7 +7932,6 @@
               <e p="UnionT1T2Benchmarks.log" t="Include" />
             </e>
             <e p="Configuration.cs" t="Include" />
-            <e p="Directory.Build.props" t="Include" />
             <e p="OptionBenchmarks.cs" t="Include" />
             <e p="Program.cs" t="Include" />
             <e p="UnionT1T2Benchmarks.cs" t="Include" />
@@ -8415,14 +8484,13 @@
             <e p="PredicateError.cs" t="Include" />
             <e p="ToListError.cs" t="Include" />
           </e>
-          <e p="Z.Test.Linq.Async.csproj.vspscc" t="Include" />
         </e>
       </e>
       <e p="OEISReader" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="OEISReader.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -8435,7 +8503,7 @@
         <e p="Class1.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="OEISTestProject.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -8447,7 +8515,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="ReflectToArrayTest.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -8477,7 +8545,7 @@
         <e p="Lib.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="SuperOEISGenerator.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -8489,7 +8557,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="net47" t="Include">
+            <e p="netcoreapp2.0" t="Include">
               <e p="Wither.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
