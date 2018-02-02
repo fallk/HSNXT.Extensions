@@ -349,7 +349,7 @@ this.SafeInvoke(() =>
 
         public delegate void InvokeHandler();
 
-        public static void SafeInvoke(this System.Windows.Forms.Control control, InvokeHandler handler)
+        public static void SafeInvoke(this Control control, InvokeHandler handler)
         {
             if (control.InvokeRequired) control.Invoke(handler);
             else handler();
@@ -425,7 +425,7 @@ var v = YesNo.CloneExplicit((t, s) => { t.Text = s.Text; t.Value = s.Value; });
 this.ClearControls();
  */
 
-        public static void ClearControls(this System.Windows.Forms.Form form)
+        public static void ClearControls(this Form form)
         {
             foreach (var item in form.Controls)
             {
@@ -465,14 +465,14 @@ Decryp2:123
 
             try
             {
-                byKey = System.Text.Encoding.UTF8.GetBytes(strEncrKey.Substring(0, 8));
+                byKey = Encoding.UTF8.GetBytes(strEncrKey.Substring(0, 8));
                 var des = new DESCryptoServiceProvider();
                 var inputByteArray = Encoding.UTF8.GetBytes(str);
                 var ms = new MemoryStream();
                 var cs = new CryptoStream(ms, des.CreateEncryptor(byKey, iv), CryptoStreamMode.Write);
                 cs.Write(inputByteArray, 0, inputByteArray.Length);
                 cs.FlushFinalBlock();
-                return System.Convert.ToBase64String(ms.ToArray());
+                return Convert.ToBase64String(ms.ToArray());
             }
             catch (Exception ex)
             {
@@ -496,14 +496,14 @@ Decryp2:123
 
             try
             {
-                byKey = System.Text.Encoding.UTF8.GetBytes(sDecrKey.Substring(0, 8));
+                byKey = Encoding.UTF8.GetBytes(sDecrKey.Substring(0, 8));
                 var des = new DESCryptoServiceProvider();
-                inputByteArray = System.Convert.FromBase64String(str);
+                inputByteArray = Convert.FromBase64String(str);
                 var ms = new MemoryStream();
                 var cs = new CryptoStream(ms, des.CreateDecryptor(byKey, iv), CryptoStreamMode.Write);
                 cs.Write(inputByteArray, 0, inputByteArray.Length);
                 cs.FlushFinalBlock();
-                var encoding = System.Text.Encoding.UTF8;
+                var encoding = Encoding.UTF8;
                 return encoding.GetString(ms.ToArray());
             }
             catch (Exception ex)
@@ -768,7 +768,7 @@ var col = str.SplitTo<int>(',');
         public static IEnumerable<T> SplitTo<T>(this string str, params char[] separator) where T : IConvertible
         {
             foreach (var s in str.Split(separator, StringSplitOptions.None))
-                yield return (T) System.Convert.ChangeType(s, typeof(T));
+                yield return (T) Convert.ChangeType(s, typeof(T));
         }
 
 
@@ -790,7 +790,7 @@ Console.WriteLine("File Size is: {0} bytes.", path.FileSize());
 
             try
             {
-                var oFileInfo = new System.IO.FileInfo(filePath);
+                var oFileInfo = new FileInfo(filePath);
                 bytes = oFileInfo.Length;
             }
             catch
@@ -1275,7 +1275,7 @@ public void PrintNumbers() {
             /// <returns>
             /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
             /// </returns>
-            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+            IEnumerator IEnumerable.GetEnumerator()
             {
                 return this.GetEnumerator();
             }
@@ -1343,7 +1343,7 @@ public void PrintNumbers() {
                 /// <returns>
                 /// The element in the collection at the current position of the enumerator.
                 /// </returns>
-                object System.Collections.IEnumerator.Current
+                object IEnumerator.Current
                 {
                     get { return this.Current; }
                 }
@@ -1606,7 +1606,7 @@ Console.WriteLine (string.Join (", ", from l in list select l.ToString ()));
 
         public static T GetQueryStringValue<T>(this System.Web.UI.UserControl control, string name)
         {
-            return (T) System.Convert.ChangeType(control.Request.QueryString[name], typeof(T));
+            return (T) Convert.ChangeType(control.Request.QueryString[name], typeof(T));
         }
 #endif
 
@@ -2185,7 +2185,7 @@ a.Shuffle();
 "3".Apply(System.Int32.Parse);                   // = 3 (Int32)
  */
 
-        public static TB Apply<TA, TB>(this TA a, System.Func<TA, TB> f)
+        public static TB Apply<TA, TB>(this TA a, Func<TA, TB> f)
         {
             return f(a);
         }
@@ -2436,7 +2436,7 @@ textbox1.text.GetStrMoney() => 1,234,567.325
                     return res;
                 }
 
-                res = System.Enum.Parse(enumtype, value);
+                res = Enum.Parse(enumtype, value);
             }
             catch (Exception)
             {
@@ -2527,7 +2527,7 @@ public IEnumerable<Customer> GetCustomers()
             var request = WebRequest.Create($"http://tinyurl.com/api-create.php?url={UrlEncode(longUri.ToString())}");
             var response = request.GetResponse();
             Uri returnUri = null;
-            using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
+            using (var reader = new StreamReader(response.GetResponseStream()))
             {
                 returnUri = new Uri(reader.ReadToEnd());
             }

@@ -280,9 +280,9 @@ numbers.Remove(x => x > 5);
                 throw new ArgumentException("An empty string value cannot be hashed.");
             }
 
-            var data = System.Text.Encoding.UTF8.GetBytes(stringToHash);
+            var data = Encoding.UTF8.GetBytes(stringToHash);
             var hash = new SHA1CryptoServiceProvider().ComputeHash(data);
-            return System.Convert.ToBase64String(hash);
+            return Convert.ToBase64String(hash);
         }
 
 
@@ -335,7 +335,7 @@ string strShamsiDate3 = DateTime.Now.ToShamsiDateString();
         /// </summary>
         public static string ToShamsiDateYmd(this DateTime date)
         {
-            var pc = new System.Globalization.PersianCalendar();
+            var pc = new PersianCalendar();
             var intYear = pc.GetYear(date);
             var intMonth = pc.GetMonth(date);
             var intDay = pc.GetDayOfMonth(date);
@@ -347,7 +347,7 @@ string strShamsiDate3 = DateTime.Now.ToShamsiDateString();
         /// </summary>
         public static string ToShamsiDateDmy(this DateTime date)
         {
-            var pc = new System.Globalization.PersianCalendar();
+            var pc = new PersianCalendar();
             var intYear = pc.GetYear(date);
             var intMonth = pc.GetMonth(date);
             var intDay = pc.GetDayOfMonth(date);
@@ -359,7 +359,7 @@ string strShamsiDate3 = DateTime.Now.ToShamsiDateString();
         /// </summary>
         public static string ToShamsiDateString(this DateTime date)
         {
-            var pc = new System.Globalization.PersianCalendar();
+            var pc = new PersianCalendar();
             var intYear = pc.GetYear(date);
             var intMonth = pc.GetMonth(date);
             var intDayOfMonth = pc.GetDayOfMonth(date);
@@ -1630,7 +1630,7 @@ bool isString = type.IsDateTime();
 
         public static bool IsDateTime(this Type type)
         {
-            return type.Equals(typeof(DateTime));
+            return type == typeof(DateTime);
         }
 
 
@@ -1795,7 +1795,7 @@ var urlName = name.ToUrlSlug(); // returns serdar-buyuktemiz-csguio
                 _dataGridView = dataGridView;
             }
 
-            protected override void OnLoad(System.EventArgs e)
+            protected override void OnLoad(EventArgs e)
             {
                 base.OnLoad(e);
                 for (var i = 0; i < _dataGridView.Columns.Count; i++)
@@ -1809,28 +1809,28 @@ var urlName = name.ToUrlSlug(); // returns serdar-buyuktemiz-csguio
                 _dataGridView.Columns[e.Index].Visible = e.NewValue == CheckState.Checked;
             }
 
-            private System.Windows.Forms.CheckedListBox _lstColumns;
-            private System.ComponentModel.IContainer components = null;
+            private CheckedListBox _lstColumns;
+            private IContainer components = null;
 
             private void InitializeComponent()
             {
-                this._lstColumns = new System.Windows.Forms.CheckedListBox();
+                this._lstColumns = new CheckedListBox();
                 this.SuspendLayout();
-                this._lstColumns.Dock = System.Windows.Forms.DockStyle.Fill;
+                this._lstColumns.Dock = DockStyle.Fill;
                 this._lstColumns.FormattingEnabled = true;
-                this._lstColumns.Location = new SD.Point(0, 0);
+                this._lstColumns.Location = new Point(0, 0);
                 this._lstColumns.Name = "_lstColumns";
-                this._lstColumns.Size = new SD.Size(258, 214);
+                this._lstColumns.Size = new Size(258, 214);
                 this._lstColumns.TabIndex = 0;
                 this._lstColumns.CheckOnClick = true;
-                this._lstColumns.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lstColumns_ItemCheck);
+                this._lstColumns.ItemCheck += new ItemCheckEventHandler(this.lstColumns_ItemCheck);
 
-                this.AutoScaleDimensions = new SD.SizeF(6F, 13F);
-                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-                this.ClientSize = new SD.Size(258, 214);
+                this.AutoScaleDimensions = new SizeF(6F, 13F);
+                this.AutoScaleMode = AutoScaleMode.Font;
+                this.ClientSize = new Size(258, 214);
                 this.Controls.Add(this._lstColumns);
                 this.Name = "FrmColumnsConfig";
-                this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+                this.StartPosition = FormStartPosition.CenterParent;
                 this.Text = "Columns configuration";
                 this.ResumeLayout(false);
             }
@@ -1945,7 +1945,7 @@ Amount.Text = amount.ToUIString();
             }
 
             return date.ToString("ddd, dd MMM yyyy HH:mm:ss " + timeZone.PadRight(5, '0'),
-                System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+                CultureInfo.GetCultureInfo("en-US"));
         }
 
 
@@ -2183,19 +2183,19 @@ LayoutRoot.Background = new SolidColorBrush(c);
         public static Color ToColor(this string argb)
         {
             argb = argb.Replace("#", "");
-            var a = System.Convert.ToByte("ff", 16);
+            var a = Convert.ToByte("ff", 16);
             byte pos = 0;
             if (argb.Length == 8)
             {
-                a = System.Convert.ToByte(argb.Substring(pos, 2), 16);
+                a = Convert.ToByte(argb.Substring(pos, 2), 16);
                 pos = 2;
             }
 
-            var r = System.Convert.ToByte(argb.Substring(pos, 2), 16);
+            var r = Convert.ToByte(argb.Substring(pos, 2), 16);
             pos += 2;
-            var g = System.Convert.ToByte(argb.Substring(pos, 2), 16);
+            var g = Convert.ToByte(argb.Substring(pos, 2), 16);
             pos += 2;
-            var b = System.Convert.ToByte(argb.Substring(pos, 2), 16);
+            var b = Convert.ToByte(argb.Substring(pos, 2), 16);
             return Color.FromArgb(a, r, g, b);
         }
 
@@ -2606,14 +2606,14 @@ var para = age.To<DateTime>();
                     if (value == null || value.Equals(""))
                         return default(T);
 
-                    return (T) System.Convert.ChangeType(value, u);
+                    return (T) Convert.ChangeType(value, u);
                 }
                 else
                 {
                     if (value == null || value.Equals(""))
                         return default(T);
 
-                    return (T) System.Convert.ChangeType(value, t);
+                    return (T) Convert.ChangeType(value, t);
                 }
             }
 
@@ -2635,14 +2635,14 @@ var para = age.To<DateTime>();
                     if (value == null || value.Equals(""))
                         return (T) ifError;
 
-                    return (T) System.Convert.ChangeType(value, u);
+                    return (T) Convert.ChangeType(value, u);
                 }
                 else
                 {
                     if (value == null || value.Equals(""))
                         return (T) (ifError.To<T>());
 
-                    return (T) System.Convert.ChangeType(value, t);
+                    return (T) Convert.ChangeType(value, t);
                 }
             }
             catch
@@ -2698,19 +2698,19 @@ MessageBox.Show(hash);
                     return HMAC.Create().ComputeHash(inputBytes);
 
                 case EHashType.HMACMD5:
-                    return HMACMD5.Create().ComputeHash(inputBytes);
+                    return HMAC.Create().ComputeHash(inputBytes);
 
                 case EHashType.HMACSHA1:
-                    return HMACSHA1.Create().ComputeHash(inputBytes);
+                    return HMAC.Create().ComputeHash(inputBytes);
 
                 case EHashType.HMACSHA256:
-                    return HMACSHA256.Create().ComputeHash(inputBytes);
+                    return HMAC.Create().ComputeHash(inputBytes);
 
                 case EHashType.HMACSHA384:
-                    return HMACSHA384.Create().ComputeHash(inputBytes);
+                    return HMAC.Create().ComputeHash(inputBytes);
 
                 case EHashType.HMACSHA512:
-                    return HMACSHA512.Create().ComputeHash(inputBytes);
+                    return HMAC.Create().ComputeHash(inputBytes);
 
                 case EHashType.MD5:
                     return MD5.Create().ComputeHash(inputBytes);
@@ -2729,7 +2729,7 @@ MessageBox.Show(hash);
 
 #if NetFX
                 case EHashType.MACTripleDES:
-                    return MACTripleDES.Create().ComputeHash(inputBytes);
+                    return KeyedHashAlgorithm.Create().ComputeHash(inputBytes);
 
                 case EHashType.RIPEMD160:
                     return RIPEMD160.Create().ComputeHash(inputBytes);
@@ -3192,7 +3192,7 @@ Textbox1.Text = value.ToNullableString();
 ' GetValueFromDatabase is simulating retrieving a System.Nullable<byte> value from the database.
  */
 
-        public static string ToNullableString<T>(this System.Nullable<T> param) where T : struct
+        public static string ToNullableString<T>(this Nullable<T> param) where T : struct
         {
             if (param.HasValue)
             {

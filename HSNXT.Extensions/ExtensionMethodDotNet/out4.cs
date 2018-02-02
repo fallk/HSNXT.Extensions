@@ -930,7 +930,7 @@ if(foo.IsNull())
 
         public static bool IsDbNull(this object obj)
         {
-            return obj == DBNull.Value || System.Convert.IsDBNull(obj);
+            return obj == DBNull.Value || Convert.IsDBNull(obj);
         }
 
 
@@ -1516,14 +1516,14 @@ string unzipstring = zipstring.DecompressString();
             memoryStream.Read(compressedData, 0, compressedData.Length);
 
             var gZipBuffer = new byte[compressedData.Length + 4];
-            System.Buffer.BlockCopy(compressedData, 0, gZipBuffer, 4, compressedData.Length);
-            System.Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
-            return System.Convert.ToBase64String(gZipBuffer);
+            Buffer.BlockCopy(compressedData, 0, gZipBuffer, 4, compressedData.Length);
+            Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gZipBuffer, 0, 4);
+            return Convert.ToBase64String(gZipBuffer);
         }
 
         public static string DecompressString(string compressedText)
         {
-            var gZipBuffer = System.Convert.FromBase64String(compressedText);
+            var gZipBuffer = Convert.FromBase64String(compressedText);
             using (var memoryStream = new MemoryStream())
             {
                 var dataLength = BitConverter.ToInt32(gZipBuffer, 0);
@@ -1790,11 +1790,11 @@ bool isValid = codeMelli.IsValidCodeMelli();
             long.TryParse(codeMelli, out number);
             if (Math.Log10(number) > 6 && Math.Log10(number) < 10)
             {
-                temp = System.Convert.ToInt16(number % 10);
+                temp = Convert.ToInt16(number % 10);
                 number /= 10;
                 for (var i = 2; i < 11; i++)
                 {
-                    sum += System.Convert.ToInt16(i * (number % 10));
+                    sum += Convert.ToInt16(i * (number % 10));
                     number /= 10;
                 }
 
@@ -1831,7 +1831,7 @@ t.SetSocketKeepAliveValues(300000, 1000);
 
             uint dummy = 0; //lenth = 4
             var inOptionValues =
-                new byte[System.Runtime.InteropServices.Marshal.SizeOf(dummy) * 3]; //size = lenth * 3 = 12
+                new byte[Marshal.SizeOf(dummy) * 3]; //size = lenth * 3 = 12
             var onOff = true;
 
             BitConverter.GetBytes((uint) (onOff ? 1 : 0)).CopyTo(inOptionValues, 0);

@@ -226,7 +226,7 @@ test2
                     element.Add(new XElement(col.ColumnName, row[col].ToString().Trim(' ')));
                 }
 
-                if (xdoc.Root != null) xdoc.Root.Add(element);
+                xdoc.Root?.Add(element);
             }
 
             return xdoc;
@@ -293,15 +293,15 @@ test2
             where T : Attribute
         {
             // Try to find the configuration attribute for the default logger if it exists
-            object[] configAttributes = Attribute.GetCustomAttributes(typeWithAttributes,
+            var configAttributes = Attribute.GetCustomAttributes(typeWithAttributes,
                 typeof(T), false);
 
-            if (configAttributes != null)
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (configAttributes == null) yield break;
+            // ReSharper disable once PossibleInvalidCastExceptionInForeachLoop
+            foreach (T attribute in configAttributes)
             {
-                foreach (T attribute in configAttributes)
-                {
-                    yield return attribute;
-                }
+                yield return attribute;
             }
         }
 
@@ -357,8 +357,9 @@ Int64 hours = dt.DateDiff("hour", DateTime.Now);
         ///     "second" (abbr. "ss", "s"), 
         ///     "millisecond" (abbr. "ms").
         /// </summary>
-        /// <param name="datePart"></param>
-        /// <param name="endDate"></param>
+        /// <param name="startDate">this object</param>
+        /// <param name="datePart">the date part</param>
+        /// <param name="endDate">the end date</param>
         /// <returns></returns>
         public static long DateDiff(this DateTime startDate, string datePart, DateTime endDate)
         {
@@ -583,7 +584,7 @@ bool isString = type.IsBoolean();
 
         private static double StdDevLogic(this IEnumerable<int> source, int buffer = 1)
         {
-            return StdDevLogic(source.Select(x => (double) x));
+            return StdDevLogic(source.Select(x => (double) x), buffer);
         }
 
         private static float StdDevLogic(this IEnumerable<float> source, int buffer = 1)
@@ -801,12 +802,7 @@ str.UcFirst();
         public static int TryParse(this string input, int defaultValue)
         {
             int value;
-            if (int.TryParse(input, out value))
-            {
-                return value;
-            }
-
-            return defaultValue;
+            return int.TryParse(input, out value) ? value : defaultValue;
         }
 
 
@@ -873,7 +869,7 @@ Console.WriteLine("Last Day: {0}", dateToday.LastDayOfMonth());
 
         public static bool Equals<T, TResult>(this T obj, object obj1, Func<T, TResult> selector)
         {
-            return obj1 is T && selector(obj).Equals(selector((T) obj1));
+            return obj1 is T variable && selector(obj).Equals(selector(variable));
         }
 
 
@@ -1126,17 +1122,13 @@ var custListUnder5000 = custs.WhereIf(showAccountBalancesUnder5000, c=>c.AcctBal
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition,
             Func<TSource, bool> predicate)
         {
-            if (condition)
-                return source.Where(predicate);
-            return source;
+            return condition ? source.Where(predicate) : source;
         }
 
         public static IEnumerable<TSource> WhereIf<TSource>(this IEnumerable<TSource> source, bool condition,
             Func<TSource, int, bool> predicate)
         {
-            if (condition)
-                return source.Where(predicate);
-            return source;
+            return condition ? source.Where(predicate) : source;
         }
 
 
@@ -1266,7 +1258,7 @@ txtCLSId.Bind(c => c.Text, _TaskListItem, ProjectServicesTaskList p) => p.CLSHea
 
         public static Binding Bind<TControl, TDataSourceItem>(this TControl control,
             Expression<Func<TControl, object>> controlProperty, object dataSource,
-            Expression<Func<TDataSourceItem, object>> dataSourceProperty, bool formattingEnabled = false)
+            Expression<Func<TDataSourceItem, object>> dataSourceProperty, bool formattingEnabled)
             where TControl : Control
         {
             return control.DataBindings.Add(PropertyName.For(controlProperty), dataSource,
@@ -1416,9 +1408,7 @@ Console.WriteLine(maskedWithDashes);
                     "The length must be a non-negative number.");
             }
 
-            return value != null
-                ? value.Length >= length
-                : false;
+            return value != null && value.Length >= length;
         }
 
         /// <summary>
@@ -2298,8 +2288,8 @@ list.AddElement("line 1")
         /// <summary>
         /// Compares two value arrays to see if they are equal. Also compares DBNULL.Value.
         /// </summary>
-        /// <param name="A">Object Array A</param>
-        /// <param name="B">Object Array B</param>
+        /// <param name="a">Object Array A</param>
+        /// <param name="b">Object Array B</param>
         /// <returns></returns>
         private static bool ObjectComparison(object[] a, object[] b)
         {
@@ -2432,7 +2422,7 @@ Console.WriteLine(value.ToMd5Hash());
 
             using (MD5 md5 = new MD5CryptoServiceProvider())
             {
-                var originalBytes = ASCIIEncoding.Default.GetBytes(value);
+                var originalBytes = Encoding.Default.GetBytes(value);
                 var encodedBytes = md5.ComputeHash(originalBytes);
                 return BitConverter.ToString(encodedBytes).Replace("-", string.Empty);
             }

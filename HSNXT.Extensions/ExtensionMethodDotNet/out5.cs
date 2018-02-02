@@ -435,7 +435,7 @@ var id = "AppID".FromAppSettings(int.MinValue);
                     T output;
                     try
                     {
-                        output = (T) System.Convert.ChangeType(value, tc);
+                        output = (T) Convert.ChangeType(value, tc);
                     }
                     catch
                     {
@@ -914,7 +914,7 @@ command.Parameters.Add(new SqlParameter("@Email",email.ForDatabase());
         {
             if (str == null)
             {
-                return System.DBNull.Value;
+                return DBNull.Value;
             }
 
             return str;
@@ -975,7 +975,7 @@ date.Formating("####/##/##")
 dataSetName.Tables[0].RemoveColumn("Column12");
  */
 
-        public static void RemoveColumn(this System.Data.DataTable dt, string columnName)
+        public static void RemoveColumn(this DataTable dt, string columnName)
         {
             if (dt != null && !string.IsNullOrEmpty(columnName) && dt.Columns.IndexOf(columnName) >= 0)
             {
@@ -1006,7 +1006,7 @@ if (t.ImplementsInterface(new List<Type> { typeof(ITest) }).Count > 0)
             if (obj == null || interfaces == null)
                 return new List<Type>();
 
-            var filter = new System.Reflection.TypeFilter(
+            var filter = new TypeFilter(
                 (Type typeObj, object criteriaObj) =>
                 {
                     return typeObj.ToString() == criteriaObj.ToString() ? true : false;
@@ -1159,8 +1159,8 @@ foreach (var name in names.AsNullSafeEnumerable()) {
 }
  */
 
-        public static System.Collections.Generic.IEnumerable<T> AsNullSafeEnumerable<T>(
-            this System.Collections.Generic.IEnumerable<T> collection)
+        public static IEnumerable<T> AsNullSafeEnumerable<T>(
+            this IEnumerable<T> collection)
         {
             if (collection != null && !collection.IsEmpty())
             {
@@ -2012,7 +2012,7 @@ Say("bytes");
 
         public static string GetSelectedValue(this System.Web.UI.WebControls.DropDownList ddl)
         {
-            return System.Web.HttpContext.Current.Request.Form[ddl.UniqueID];
+            return HttpContext.Current.Request.Form[ddl.UniqueID];
         }
 #endif
 
@@ -2029,7 +2029,7 @@ Say("bytes");
 
         public static T GetData<T>(this AppDomain app, string name)
         {
-            return (T) System.Convert.ChangeType(app.GetData(name), typeof(T));
+            return (T) Convert.ChangeType(app.GetData(name), typeof(T));
         }
 
 
@@ -2249,7 +2249,7 @@ Console.WriteLine (s.TakeFrom("d"));   // "de"
 
         public static void AddItemsToDropdownRadioEtc<T>(ref T control, DataTable data)
         {
-            dynamic controlToAdd = (T) System.Convert.ChangeType((object) control, typeof(T));
+            dynamic controlToAdd = (T) Convert.ChangeType((object) control, typeof(T));
             controlToAdd.DataSource = data;
             controlToAdd.DataValueField = "MajorID";
             controlToAdd.DataTextField = "MajorName";

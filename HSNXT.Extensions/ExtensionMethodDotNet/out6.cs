@@ -389,7 +389,7 @@ MessageBox.Show(result_string);
 }
  */
 
-        public static void RequireOrPermanentRedirect<T>(this System.Web.UI.Page page, string queryStringKey,
+        public static void RequireOrPermanentRedirect<T>(this Page page, string queryStringKey,
             string redirectUrl)
         {
             var queryStringValue = page.Request.QueryString[queryStringKey];
@@ -401,7 +401,7 @@ MessageBox.Show(result_string);
 
             try
             {
-                var value = (T) System.Convert.ChangeType(queryStringValue, typeof(T));
+                var value = (T) Convert.ChangeType(queryStringValue, typeof(T));
             }
             catch
             {
@@ -579,7 +579,7 @@ var entityID = Request.Params.GetValue<Guid>("UUID", Guid.Empty);
                 {
                     var val = collection[key];
 
-                    return (T) System.Convert.ChangeType(val, typeof(T));
+                    return (T) Convert.ChangeType(val, typeof(T));
                 }
             }
 
@@ -789,7 +789,7 @@ bool isSaved = str.Save("D:\myfile.txt");
             try
             {
                 //write string to file
-                System.IO.File.WriteAllText(pathWithTxtFullfilename, text);
+                File.WriteAllText(pathWithTxtFullfilename, text);
                 return true;
             }
             catch (Exception)
@@ -826,7 +826,7 @@ bool isSaved = str.Save("D:\myfile.txt");
 
         public static DateTime CurrentLocalTimeForTimeZone(this TimeZoneInfo tzi)
         {
-            return System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, tzi.Id);
+            return TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, tzi.Id);
         }
 
 
@@ -1381,7 +1381,7 @@ Some examples:
             }
 
             //Minutes = Minutes/60;
-            var test = System.Convert.ToInt64((minutes / 60) / 10);
+            var test = Convert.ToInt64((minutes / 60) / 10);
             return hours + minutes / 60;
         }
 
@@ -1774,7 +1774,7 @@ Fail=2
 var value=new Random().NextEnum<AjaxResultEnum>();
  */
 
-        public static T NextEnum<T>(this System.Random random)
+        public static T NextEnum<T>(this Random random)
             where T : struct
         {
             var type = typeof(T);
@@ -1841,20 +1841,20 @@ var value=new Random().NextEnum<AjaxResultEnum>();
                 properties.Add(types[i].GetProperty(strings[i]));
             }
 
-            var parameter = System.Linq.Expressions.Expression.Parameter(types[0], "p");
+            var parameter = Expression.Parameter(types[0], "p");
 
             for (var i = 0; i < properties.Count; i++)
             {
                 propertyAccesses.Add(i == 0
-                    ? System.Linq.Expressions.Expression.MakeMemberAccess(parameter, properties[i])
-                    : System.Linq.Expressions.Expression.MakeMemberAccess(propertyAccesses[i - 1], properties[i]));
+                    ? Expression.MakeMemberAccess(parameter, properties[i])
+                    : Expression.MakeMemberAccess(propertyAccesses[i - 1], properties[i]));
             }
 
-            var orderByExp = System.Linq.Expressions.Expression.Lambda(propertyAccesses.Last(), parameter);
+            var orderByExp = Expression.Lambda(propertyAccesses.Last(), parameter);
 
-            return System.Linq.Expressions.Expression.Call(typeof(Queryable), methodName,
+            return Expression.Call(typeof(Queryable), methodName,
                 new Type[] {types.First(), properties.Last().PropertyType}, source.Expression,
-                System.Linq.Expressions.Expression.Quote(orderByExp));
+                Expression.Quote(orderByExp));
         }
 
 
@@ -1991,7 +1991,7 @@ int? nullsAreSafe = thisWillNotThrowException.ToNullable<int>();
         {
             if (!string.IsNullOrEmpty(pSelf))
             {
-                var converter = System.ComponentModel.TypeDescriptor.GetConverter(typeof(T));
+                var converter = TypeDescriptor.GetConverter(typeof(T));
                 if (converter.IsValid(pSelf)) return (T) converter.ConvertFromString(pSelf);
                 if (typeof(T).IsEnum)
                 {
@@ -2073,7 +2073,7 @@ int? nullsAreSafe = thisWillNotThrowException.ToNullable<int>();
             }
             else
             {
-                var newValue = (T) System.Convert.ChangeType(value, typeof(T));
+                var newValue = (T) Convert.ChangeType(value, typeof(T));
                 dictionary.Add(property.Name, newValue);
             }
         }
@@ -4372,7 +4372,7 @@ var query = myEntities.MyEntity
         /// <returns>Returns a SQL Query in a string datatype</returns>
         public static string ToSqlQuery<T>(this IQueryable<T> source)
         {
-            var x = IsNullOrEmpty(System.Convert.ToString(source)) ? "" : source.ToString().Replace("[Extent", "[D");
+            var x = IsNullOrEmpty(Convert.ToString(source)) ? "" : source.ToString().Replace("[Extent", "[D");
             return x;
         }
 
@@ -4427,8 +4427,8 @@ double dblCorrelation = tblWeather.PearsonCorrelation("WindSpeed" , "Temperature
 
             foreach (DataRow row in aSourceTable.Rows)
             {
-                tmpX = System.Convert.ToDouble(row[aColumn1]);
-                tmpY = System.Convert.ToDouble(row[aColumn2]);
+                tmpX = Convert.ToDouble(row[aColumn1]);
+                tmpY = Convert.ToDouble(row[aColumn2]);
 
                 x += tmpX;
                 y += tmpY;
@@ -4762,7 +4762,7 @@ else {
 }
  */
 
-        private static RandomNumberGenerator _rand = System.Security.Cryptography.RandomNumberGenerator.Create();
+        private static RandomNumberGenerator _rand = RandomNumberGenerator.Create();
 
         public static bool IsRandomSecure(this int source)
         {
