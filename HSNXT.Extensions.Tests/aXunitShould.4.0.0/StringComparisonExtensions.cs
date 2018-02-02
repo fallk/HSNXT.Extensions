@@ -27,7 +27,7 @@ namespace XunitShould
                     return StringComparer.OrdinalIgnoreCase;
 
                 default:
-                    throw new ArgumentOutOfRangeException("comparisonType");
+                    throw new ArgumentOutOfRangeException(nameof(comparisonType));
             }
         }
     }

@@ -521,12 +521,12 @@ namespace HSNXT
         {
             if (source == null)
             {
-                throw new ArgumentNullException("source", "Can't parse null string");
+                throw new ArgumentNullException(nameof(source), "Can't parse null string");
             }
 
             if (comparison == null)
             {
-                throw new ArgumentNullException("comparison", "Can't parse null string");
+                throw new ArgumentNullException(nameof(comparison), "Can't parse null string");
             }
 
             var s = source.ToCharArray();
@@ -593,11 +593,11 @@ namespace HSNXT
         /// <returns>Soundex value of string</returns>
         public static string SimplifiedSoundex(this string source, int length)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             if (source.Length < 3)
             {
                 throw new ArgumentException(
-                    "Source string must be at least two characters", "source");
+                    "Source string must be at least two characters", nameof(source));
             }
 
             var t = source.ToUpper().ToCharArray();

@@ -6,12 +6,6 @@ namespace XunitShould.Sdk
 {
     internal abstract class RangeException : XunitException2
     {
-        private readonly string _actual;
-        private readonly string _high;
-        private readonly bool _highInclusive;
-        private readonly string _low;
-        private readonly bool _lowInclusive;
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="RangeException" /> class.
         /// </summary>
@@ -30,95 +24,74 @@ namespace XunitShould.Sdk
             string messageHeader)
             : base(messageHeader)
         {
-            _actual = actual == null ? null : actual.ToString();
-            _low = low == null ? null : low.ToString();
-            _lowInclusive = lowInclusive;
-            _high = high == null ? null : high.ToString();
-            _highInclusive = highInclusive;
+            Actual = actual == null ? null : actual.ToString();
+            Low = low == null ? null : low.ToString();
+            LowInclusive = lowInclusive;
+            High = high == null ? null : high.ToString();
+            HighInclusive = highInclusive;
         }
 
         /// <inheritdoc/>
         protected RangeException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
-            _actual = info.GetString("Actual");
-            _low = info.GetString("Low");
-            _lowInclusive = info.GetBoolean("LowInclusive");
-            _high = info.GetString("High");
-            _highInclusive = info.GetBoolean("HighInclusive");
+            Actual = info.GetString("Actual");
+            Low = info.GetString("Low");
+            LowInclusive = info.GetBoolean("LowInclusive");
+            High = info.GetString("High");
+            HighInclusive = info.GetBoolean("HighInclusive");
         }
 
         /// <summary>
         ///     Gets the actual object value
         /// </summary>
-        public string Actual
-        {
-            get { return _actual; }
-        }
+        public string Actual { get; }
 
         /// <summary>
         ///     Gets the high value of the range
         /// </summary>
-        public string High
-        {
-            get { return _high; }
-        }
+        public string High { get; }
 
         /// <summary>
         ///     Gets a value indicating whether high is considered in the range.
         /// </summary>
         /// <remarks></remarks>
-        public bool HighInclusive
-        {
-            get { return _highInclusive; }
-        }
+        public bool HighInclusive { get; }
 
         /// <summary>
         ///     Gets the low value of the range
         /// </summary>
-        public string Low
-        {
-            get { return _low; }
-        }
+        public string Low { get; }
 
         /// <summary>
         ///     Gets a value indicating whether low is considered in the range.
         /// </summary>
         /// <remarks></remarks>
-        public bool LowInclusive
-        {
-            get { return _lowInclusive; }
-        }
+        public bool LowInclusive { get; }
 
         /// <inheritdoc/>
-        public override string Message
-        {
-            get
-            {
-                return string.Format("{0}{6}Range:  {1}{2} - {3}{4}{6}Actual: {5}",
-                    base.Message,
-                    LowInclusive ? "[" : "(",
-                    Low,
-                    High,
-                    HighInclusive ? "]" : ")",
-                    Actual ?? "(null)",
-                    Environment.NewLine);
-            }
-        }
+        public override string Message => string.Format("{0}{6}Range:  {1}{2} - {3}{4}{6}Actual: {5}",
+            base.Message,
+            LowInclusive ? "[" : "(",
+            Low,
+            High,
+            HighInclusive ? "]" : ")",
+            Actual ?? "(null)",
+            Environment.NewLine);
 
         /// <inheritdoc/>
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             if (info == null)
             {
-                throw new ArgumentNullException("info");
+                throw new ArgumentNullException(nameof(info));
             }
 
-            info.AddValue("Actual", _actual);
-            info.AddValue("Low", _low);
-            info.AddValue("LowInclusive", _lowInclusive);
-            info.AddValue("High", _high);
-            info.AddValue("HighInclusive", _highInclusive);
+            info.AddValue("Actual", Actual);
+            info.AddValue("Low", Low);
+            info.AddValue("LowInclusive", LowInclusive);
+            info.AddValue("High", High);
+            info.AddValue("HighInclusive", HighInclusive);
 
             base.GetObjectData(info, context);
         }

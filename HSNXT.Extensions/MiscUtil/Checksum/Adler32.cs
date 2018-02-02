@@ -33,7 +33,7 @@ namespace HSNXT.MiscUtil.Checksum
         {
             if (data == null)
             {
-                throw (new System.ArgumentNullException("data"));
+                throw (new System.ArgumentNullException(nameof(data)));
             }
 
             uint s1 = (uint) (initial & 0xffff);
@@ -74,7 +74,7 @@ namespace HSNXT.MiscUtil.Checksum
         {
             if (data == null)
             {
-                throw (new System.ArgumentNullException("data"));
+                throw (new System.ArgumentNullException(nameof(data)));
             }
 
             return ComputeChecksum(initial, data, 0, data.Length);
@@ -90,7 +90,7 @@ namespace HSNXT.MiscUtil.Checksum
         {
             if (stream == null)
             {
-                throw (new System.ArgumentNullException("stream"));
+                throw (new System.ArgumentNullException(nameof(stream)));
             }
 
             byte[] buffer = new byte[8172];

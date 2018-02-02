@@ -229,12 +229,12 @@ namespace HSNXT.MiscUtil.Conversion
         {
             if (value == null)
             {
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
             }
 
             if (startIndex < 0 || startIndex > value.Length - bytesRequired)
             {
-                throw new ArgumentOutOfRangeException("startIndex");
+                throw new ArgumentOutOfRangeException(nameof(startIndex));
             }
         }
 
@@ -506,7 +506,7 @@ namespace HSNXT.MiscUtil.Conversion
         {
             if (buffer == null)
             {
-                throw new ArgumentNullException("buffer", "Byte array must not be null");
+                throw new ArgumentNullException(nameof(buffer), "Byte array must not be null");
             }
 
             if (buffer.Length < index + bytes)

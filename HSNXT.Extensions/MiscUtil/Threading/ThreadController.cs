@@ -184,7 +184,7 @@ namespace HSNXT.MiscUtil.Threading
         {
             if (starter == null)
             {
-                throw new ArgumentNullException("starter");
+                throw new ArgumentNullException(nameof(starter));
             }
 
             this.starter = starter;

@@ -2415,9 +2415,9 @@ dispatcher.InvokeAction(x=>Console.Write(X), "yay lol");
         public static void InvokeAction(this Dispatcher dispatcher, Action action, DispatcherPriority priority)
         {
             if (dispatcher == null)
-                throw new ArgumentNullException("dispatcher");
+                throw new ArgumentNullException(nameof(dispatcher));
             if (action == null)
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             dispatcher.Invoke(action, priority);
         }
 
@@ -2433,9 +2433,9 @@ dispatcher.InvokeAction(x=>Console.Write(X), "yay lol");
             DispatcherPriority priority = DispatcherPriority.ApplicationIdle)
         {
             if (dispatcher == null)
-                throw new ArgumentNullException("dispatcher");
+                throw new ArgumentNullException(nameof(dispatcher));
             if (action == null)
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             dispatcher.Invoke(action, priority, arg);
         }
 
@@ -2453,9 +2453,9 @@ dispatcher.InvokeAction(x=>Console.Write(X), "yay lol");
             DispatcherPriority priority = DispatcherPriority.ApplicationIdle)
         {
             if (dispatcher == null)
-                throw new ArgumentNullException("dispatcher");
+                throw new ArgumentNullException(nameof(dispatcher));
             if (action == null)
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             dispatcher.Invoke(action, priority, arg1, arg2);
         }
 
@@ -2475,9 +2475,9 @@ dispatcher.InvokeAction(x=>Console.Write(X), "yay lol");
             T2 arg2, T3 arg3, DispatcherPriority priority = DispatcherPriority.ApplicationIdle)
         {
             if (dispatcher == null)
-                throw new ArgumentNullException("dispatcher");
+                throw new ArgumentNullException(nameof(dispatcher));
             if (action == null)
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             dispatcher.Invoke(action, priority, arg1, arg2, arg3);
         }
 #endif

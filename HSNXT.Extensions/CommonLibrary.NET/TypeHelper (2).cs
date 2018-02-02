@@ -282,7 +282,7 @@ namespace HSNXT.ComLib.Lang.Helpers
         /// <returns></returns>
         public static bool IsBasicTypeCSharpType(object obj)
         {
-            if (obj == null) throw new ArgumentNullException("obj");
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
 
             var type = obj.GetType();
             if (type == typeof(int)) return true;

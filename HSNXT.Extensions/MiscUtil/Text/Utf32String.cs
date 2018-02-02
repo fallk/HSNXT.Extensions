@@ -94,7 +94,7 @@ namespace HSNXT.MiscUtil.Text
                 if (!IsValidUtf32Char(character))
                 {
                     throw new ArgumentException
-                        ("Invalid character in array: " + character, "characters");
+                        ("Invalid character in array: " + character, nameof(characters));
                 }
             }
 
@@ -110,7 +110,7 @@ namespace HSNXT.MiscUtil.Text
         {
             if (utf16 == null)
             {
-                throw (new System.ArgumentNullException("utf16"));
+                throw (new System.ArgumentNullException(nameof(utf16)));
             }
 
             // Assume no surrogates to start with
@@ -125,7 +125,7 @@ namespace HSNXT.MiscUtil.Text
                     if (highSurrogate != -1)
                     {
                         throw new ArgumentException
-                            ("Invalid string: two high surrogates in a row", "utf16");
+                            ("Invalid string: two high surrogates in a row", nameof(utf16));
                     }
 
                     highSurrogate = (c - HighSurrogateStart) * 0x400;
@@ -147,7 +147,7 @@ namespace HSNXT.MiscUtil.Text
                     if (highSurrogate != -1)
                     {
                         throw new ArgumentException
-                            ("Invalid string: high surrogates with no following low surrogate", "utf16");
+                            ("Invalid string: high surrogates with no following low surrogate", nameof(utf16));
                     }
 
                     characters[outputIndex++] = c;
@@ -283,7 +283,7 @@ namespace HSNXT.MiscUtil.Text
         {
             if (value == null)
             {
-                throw (new System.ArgumentNullException("value"));
+                throw (new System.ArgumentNullException(nameof(value)));
             }
 
             if (start < 0 || start > Length)
@@ -369,7 +369,7 @@ namespace HSNXT.MiscUtil.Text
         {
             if (!IsValidUtf32Char(character))
             {
-                throw new ArgumentException("Invalid UTF-32 character specified", "character");
+                throw new ArgumentException("Invalid UTF-32 character specified", nameof(character));
             }
 
             if (start < 0 || start > Length)
@@ -464,7 +464,7 @@ namespace HSNXT.MiscUtil.Text
         {
             if (strings == null)
             {
-                throw new ArgumentNullException("strings");
+                throw new ArgumentNullException(nameof(strings));
             }
 
             int size = 0;
@@ -699,7 +699,7 @@ namespace HSNXT.MiscUtil.Text
             Utf32String other = obj as Utf32String;
             if (other == null)
             {
-                throw new ArgumentException("Can only compare Utf32Strings", "obj");
+                throw new ArgumentException("Can only compare Utf32Strings", nameof(obj));
             }
 
             int minLength = Math.Min(this.Length, other.Length);

@@ -87,7 +87,7 @@ namespace BigMath.Tests
             q.Should().Be(expectedQ);
         }
 
-        [Test, TestCaseSource(typeof(MathUtilsTestCases), "ShiftTestCases")]
+        [Test, TestCaseSource(typeof(MathUtilsTestCases), nameof(MathUtilsTestCases.ShiftTestCases))]
         public ulong[] Should_shift(ulong[] bits, int shift)
         {
             var shiftedBits = MathUtils.Shift(bits, shift);

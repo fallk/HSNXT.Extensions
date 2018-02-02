@@ -142,12 +142,12 @@ PersonGridView.DataSource = persons.OrderBy(descending, p => p.Age, p => p.Name,
         {
             if (lista == null)
             {
-                throw new ArgumentNullException("lista", "variavel de destino não pode ser nula");
+                throw new ArgumentNullException(nameof(lista), "variavel de destino não pode ser nula");
             }
 
             if (string.IsNullOrEmpty(path))
             {
-                throw new ArgumentNullException("path", "caminho do xml não pode ser nulo ou vazio");
+                throw new ArgumentNullException(nameof(path), "caminho do xml não pode ser nulo ou vazio");
             }
 
             try
@@ -179,7 +179,7 @@ PersonGridView.DataSource = persons.OrderBy(descending, p => p.Age, p => p.Name,
         public static ImageCodecInfo GetImageCodecInfo(this ImageFormat imageFormat)
         {
             if (imageFormat == null)
-                throw new ArgumentNullException("imageFormat");
+                throw new ArgumentNullException(nameof(imageFormat));
 
             return ImageCodecInfo.GetImageEncoders().FirstOrDefault(i => i.Clsid == imageFormat.Guid);
         }
@@ -282,7 +282,7 @@ PersonGridView.DataSource = persons.OrderBy(descending, p => p.Age, p => p.Name,
         {
             if (string.IsNullOrEmpty(path))
             {
-                throw new ArgumentNullException("path", "caminho do xml não pode ser nulo ou vazio");
+                throw new ArgumentNullException(nameof(path), "caminho do xml não pode ser nulo ou vazio");
             }
 
             try
@@ -2099,7 +2099,7 @@ MyObject objectIWant = myList.MaxObject(item => item.ID);
         public static T MaxObject<T, TU>(this List<T> source, Func<T, TU> selector)
             where TU : IComparable<TU>
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null) throw new ArgumentNullException(nameof(source));
             var first = true;
             var maxObj = default(T);
             var maxKey = default(TU);
@@ -2392,8 +2392,8 @@ Console.WriteLine (s.TakeFrom("d"));   // "de"
             Func<TSource, TElement> elementSelector)
         {
             if (source == null) throw new NullReferenceException("The 'source' cannot be null.");
-            if (keySelector == null) throw new ArgumentNullException("keySelector");
-            if (elementSelector == null) throw new ArgumentNullException("elementSelector");
+            if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
+            if (elementSelector == null) throw new ArgumentNullException(nameof(elementSelector));
 
             var dictionary = new Dictionary<TKey, TElement>();
             foreach (var current in source)

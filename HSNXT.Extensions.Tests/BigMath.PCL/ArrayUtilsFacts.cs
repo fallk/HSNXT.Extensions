@@ -18,13 +18,13 @@ namespace BigMath.Tests
     [TestFixture]
     public class ArrayUtilsFacts
     {
-        [TestCaseSource("ByteArrayToHexStringTestCases")]
+        [TestCaseSource(nameof(ByteArrayToHexStringTestCases))]
         public string Should_convert_bytes_to_hex_string(HexBytes hexBytes)
         {
             return hexBytes.Bytes.ToHexString(hexBytes.Caps, hexBytes.Min, hexBytes.SpaceEveryByte, hexBytes.TrimZeros);
         }
 
-        [TestCaseSource("HexStringToByteArrayTestCases")]
+        [TestCaseSource(nameof(HexStringToByteArrayTestCases))]
         public byte[] Should_convert_hex_string_to_array_of_bytes(string str)
         {
             return str.HexToBytes();

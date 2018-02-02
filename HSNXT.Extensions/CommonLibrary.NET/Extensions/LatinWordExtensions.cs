@@ -134,7 +134,7 @@ namespace HSNXT
             if (phrase == null)
             {
                 var msg = "Can't process null string";
-                throw new ArgumentNullException("phrase", msg);
+                throw new ArgumentNullException(nameof(phrase), msg);
             }
 
             // Use the default value for delimiters - whitespace
@@ -191,7 +191,7 @@ namespace HSNXT
             if (text == null)
             {
                 var msg = "Can't process null string";
-                throw new ArgumentNullException("text", msg);
+                throw new ArgumentNullException(nameof(text), msg);
             }
 
             // Don't wrap when line length is less than or equal to zero
@@ -281,7 +281,7 @@ namespace HSNXT
             if (text == null)
             {
                 var msg = "Can't process null string";
-                throw new ArgumentNullException("text", msg);
+                throw new ArgumentNullException(nameof(text), msg);
             }
 
             var buffer = new StringBuilder(text.Length);

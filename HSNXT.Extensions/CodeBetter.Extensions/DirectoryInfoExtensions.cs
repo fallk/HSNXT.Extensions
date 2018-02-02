@@ -16,11 +16,11 @@
       {
          if (source == null)
          {
-            throw new ArgumentNullException("source");
+            throw new ArgumentNullException(nameof(source));
          }
          if (destination == null)
          {
-            throw new ArgumentNullException("destination");
+            throw new ArgumentNullException(nameof(destination));
          }
          DirectoryInfo target = new DirectoryInfo(destination);
          if (!source.Exists)

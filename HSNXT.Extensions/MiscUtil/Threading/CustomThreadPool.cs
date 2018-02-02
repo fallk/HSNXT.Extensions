@@ -613,7 +613,7 @@ namespace HSNXT.MiscUtil.Threading
         {
             if (workItemDelegate == null)
             {
-                throw new ArgumentNullException("workItemDelegate");
+                throw new ArgumentNullException(nameof(workItemDelegate));
             }
 
             AddWorkItem(new ThreadPoolWorkItem(workItemDelegate, parameters));
@@ -627,7 +627,7 @@ namespace HSNXT.MiscUtil.Threading
         {
             if (workItemDelegate == null)
             {
-                throw new ArgumentNullException("workItemDelegate");
+                throw new ArgumentNullException(nameof(workItemDelegate));
             }
 
             AddWorkItem(new ThreadPoolWorkItem(workItemDelegate, null));
@@ -644,7 +644,7 @@ namespace HSNXT.MiscUtil.Threading
         {
             if (workItem == null)
             {
-                throw new ArgumentNullException("workItem");
+                throw new ArgumentNullException(nameof(workItem));
             }
 
             bool startNewThread;
@@ -699,7 +699,7 @@ namespace HSNXT.MiscUtil.Threading
         {
             if (id == null)
             {
-                throw new ArgumentNullException("id");
+                throw new ArgumentNullException(nameof(id));
             }
 
             lock (queueLock)

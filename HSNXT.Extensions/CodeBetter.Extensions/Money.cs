@@ -31,13 +31,13 @@
       public Money(CultureInfo cultureInfo) : this(0, cultureInfo) { }
       public Money(decimal amount, CultureInfo cultureInfo)
       {
-         _cultureInfo = cultureInfo ?? throw new ArgumentNullException("cultureInfo");
+         _cultureInfo = cultureInfo ?? throw new ArgumentNullException(nameof(cultureInfo));
          _regionInfo = new RegionInfo(cultureInfo.LCID);
          Amount = amount;
       }
       public Money(long amount, CultureInfo cultureInfo)
       {
-         _cultureInfo = cultureInfo ?? throw new ArgumentNullException("cultureInfo");
+         _cultureInfo = cultureInfo ?? throw new ArgumentNullException(nameof(cultureInfo));
          _regionInfo = new RegionInfo(cultureInfo.LCID);
          Amount = amount;
       }
@@ -107,7 +107,7 @@
       }
       public static Money operator *(Money money, decimal value)
       {
-         if (money == null) throw new ArgumentNullException("money");
+         if (money == null) throw new ArgumentNullException(nameof(money));
          return new Money(Decimal.Floor(money.Amount * value), money.EnglishCultureName);
       }
       public static Money Multiply(Money money, decimal value)
@@ -116,7 +116,7 @@
       }
       public static Money operator /(Money money, decimal value)
       {
-         if (money == null) throw new ArgumentNullException("money");
+         if (money == null) throw new ArgumentNullException(nameof(money));
          return new Money(money.Amount / value, money.EnglishCultureName);
       }
       public static Money Divide(Money first, decimal value)

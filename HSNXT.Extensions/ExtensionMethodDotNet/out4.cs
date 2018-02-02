@@ -160,7 +160,7 @@ string aSaferString = myString.IsNull(string.Empty);
 
         public static string GetOrThrow(this ConnectionStringSettingsCollection connectionStrings, string name)
         {
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("name was null or empty.", "name");
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("name was null or empty.", nameof(name));
 
             var connectionString = connectionStrings[name];
             if (connectionString == null)
@@ -184,9 +184,9 @@ byte[] imageBytes = image.ToBytes(ImageFormat.Png);
         public static byte[] ToBytes(this System.Drawing.Image image, ImageFormat format)
         {
             if (image == null)
-                throw new ArgumentNullException("image");
+                throw new ArgumentNullException(nameof(image));
             if (format == null)
-                throw new ArgumentNullException("format");
+                throw new ArgumentNullException(nameof(format));
 
             using (var stream = new MemoryStream())
             {
@@ -297,7 +297,7 @@ new List<object>().IsSingle(); // returns false
         {
             if (source == null)
             {
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             }
 
             using (var enumerator = source.GetEnumerator())

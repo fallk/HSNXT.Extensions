@@ -1240,7 +1240,7 @@ public void PrintNumbers() {
             {
                 if (generator == null)
                 {
-                    throw new ArgumentNullException("generator");
+                    throw new ArgumentNullException(nameof(generator));
                 }
 
                 this._generator = generator;
@@ -1306,7 +1306,7 @@ public void PrintNumbers() {
                 {
                     if (parent == null)
                     {
-                        throw new ArgumentNullException("parent");
+                        throw new ArgumentNullException(nameof(parent));
                     }
 
                     this._parent = parent;
@@ -1482,7 +1482,7 @@ Console.WriteLine (string.Join (", ", from l in list select l.ToString ()));
                 throw new NullReferenceException();
 
             if (comparison == null)
-                throw new ArgumentNullException("comparison");
+                throw new ArgumentNullException(nameof(comparison));
 
             var count = @this.Count;
             if (count <= 1)
@@ -2115,14 +2115,14 @@ a.Shuffle();
 
         public static TR Pipe<T, TR>(this T o, Func<T, TR> func)
         {
-            if (func == null) throw new ArgumentNullException("func", "'func' can not be null.");
+            if (func == null) throw new ArgumentNullException(nameof(func), "'func' can not be null.");
             var buffer = o;
             return func(buffer);
         }
 
         public static T Pipe<T>(this T o, Action<T> action)
         {
-            if (action == null) throw new ArgumentNullException("action", "'action' can not be null.");
+            if (action == null) throw new ArgumentNullException(nameof(action), "'action' can not be null.");
             var buffer = o;
             action(buffer);
             return buffer;
@@ -2755,8 +2755,8 @@ public IEnumerable<Customer> GetCustomers()
             SplitUp<T>(this IEnumerable<T> input, int n)
         {
             // Non-lazy error checking
-            if (input == null) throw new ArgumentNullException("input");
-            if (n < 1) throw new ArgumentOutOfRangeException("n", n, "<1");
+            if (input == null) throw new ArgumentNullException(nameof(input));
+            if (n < 1) throw new ArgumentOutOfRangeException(nameof(n), n, "<1");
             return SplitUpLazy(input, n);
         }
 

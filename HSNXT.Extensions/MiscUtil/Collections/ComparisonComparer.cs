@@ -20,7 +20,7 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (comparison == null)
             {
-                throw new ArgumentNullException("comparison");
+                throw new ArgumentNullException(nameof(comparison));
             }
 
             this.comparison = comparison;
@@ -44,7 +44,7 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (comparer == null)
             {
-                throw new ArgumentNullException("comparer");
+                throw new ArgumentNullException(nameof(comparer));
             }
 
             return delegate(T x, T y) { return comparer.Compare(x, y); };

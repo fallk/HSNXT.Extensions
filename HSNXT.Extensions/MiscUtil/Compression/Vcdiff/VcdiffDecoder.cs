@@ -79,12 +79,12 @@ namespace HSNXT.MiscUtil.Compression.Vcdiff
 
             if (original != null && (!original.CanRead || !original.CanSeek))
             {
-                throw new ArgumentException("Must be able to read and seek in original stream", "original");
+                throw new ArgumentException("Must be able to read and seek in original stream", nameof(original));
             }
 
             if (delta == null)
             {
-                throw new ArgumentNullException("delta");
+                throw new ArgumentNullException(nameof(delta));
             }
 
             if (!delta.CanRead)
@@ -94,12 +94,12 @@ namespace HSNXT.MiscUtil.Compression.Vcdiff
 
             if (output == null)
             {
-                throw new ArgumentNullException("output");
+                throw new ArgumentNullException(nameof(output));
             }
 
             if (!output.CanWrite || !output.CanRead || !output.CanSeek)
             {
-                throw new ArgumentException("Must be able to read, write and seek in output stream", "output");
+                throw new ArgumentException("Must be able to read, write and seek in output stream", nameof(output));
             }
 
             #endregion

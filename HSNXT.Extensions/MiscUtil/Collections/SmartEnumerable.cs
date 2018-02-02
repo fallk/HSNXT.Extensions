@@ -24,7 +24,7 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (enumerable == null)
             {
-                throw new ArgumentNullException("enumerable");
+                throw new ArgumentNullException(nameof(enumerable));
             }
 
             this.enumerable = enumerable;

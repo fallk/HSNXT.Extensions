@@ -536,18 +536,18 @@ string result = result.Slice(2,3); // Returns "67"
             //
             if (start < 0)
             {
-                throw new ArgumentOutOfRangeException("start", "start cannot be less than zero");
+                throw new ArgumentOutOfRangeException(nameof(start), "start cannot be less than zero");
             }
 
             if (end > upperBound)
             {
-                throw new ArgumentOutOfRangeException("end",
+                throw new ArgumentOutOfRangeException(nameof(end),
                     $"end cannot be greater than {upperBound}");
             }
 
             if (start > end)
             {
-                throw new ArgumentOutOfRangeException("start", "start may not be greater than end");
+                throw new ArgumentOutOfRangeException(nameof(start), "start may not be greater than end");
             }
 
             return value.Substring(start, (end - start + 1));
@@ -1602,7 +1602,7 @@ public void LimitTextLength_shorter_than_ellipsis()
         /// you specify a maximum length less than or equal to 3.</remarks>
         public static string LimitTextLength(this string text, int maxLength, bool showEllipsis = true)
         {
-            if (maxLength < 0) throw new ArgumentOutOfRangeException("maxLength", "Value must not be negative");
+            if (maxLength < 0) throw new ArgumentOutOfRangeException(nameof(maxLength), "Value must not be negative");
             if (string.IsNullOrWhiteSpace(text)) return string.Empty;
             var n = text.Length;
             var ellipsis = showEllipsis ? "..." : string.Empty;
@@ -4528,7 +4528,7 @@ string display = seconds.SecondsToString(); // 2 hours 11 mins
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             rwlock.EnterWriteLock();
@@ -4547,7 +4547,7 @@ string display = seconds.SecondsToString(); // 2 hours 11 mins
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             rwlock.EnterReadLock();
@@ -4566,7 +4566,7 @@ string display = seconds.SecondsToString(); // 2 hours 11 mins
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             rwlock.EnterUpgradeableReadLock();

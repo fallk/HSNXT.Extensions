@@ -22,7 +22,7 @@ namespace HSNXT.ComLib
         public Upgrade(string currentVersion, bool catchErrors)
         {
             if (string.IsNullOrEmpty(currentVersion))
-                throw new ArgumentNullException("currentVersion");
+                throw new ArgumentNullException(nameof(currentVersion));
 
             _catchErrors = catchErrors;
             _currentVersion = ToVersion(currentVersion);

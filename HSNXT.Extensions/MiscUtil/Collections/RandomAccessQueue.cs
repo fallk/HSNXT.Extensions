@@ -56,7 +56,7 @@ namespace HSNXT.MiscUtil.Collections
             {
                 if (index < 0 || index >= count)
                 {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException(nameof(index));
                 }
 
                 return buffer[(start + index) % Capacity];
@@ -65,7 +65,7 @@ namespace HSNXT.MiscUtil.Collections
             {
                 if (index < 0 || index >= count)
                 {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException(nameof(index));
                 }
 
                 version++;
@@ -215,7 +215,7 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (index < 0 || index >= count)
             {
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
 
             // Special case: head of queue
@@ -271,7 +271,7 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (dest == null)
             {
-                throw new ArgumentNullException("dest");
+                throw new ArgumentNullException(nameof(dest));
             }
 
             T[] strongDest = dest as T[];
@@ -383,7 +383,7 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (comparer == null)
             {
-                throw new ArgumentNullException("comparer");
+                throw new ArgumentNullException(nameof(comparer));
             }
 
             if (count == 0)
@@ -635,12 +635,12 @@ namespace HSNXT.MiscUtil.Collections
         {
             if (dest == null)
             {
-                throw new ArgumentNullException("dest");
+                throw new ArgumentNullException(nameof(dest));
             }
 
             if (index < 0)
             {
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
 
             if (dest.Length < index + Count)

@@ -247,7 +247,7 @@ test2
         public static T GetPropertyValue<T>(this object source, string property)
         {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
 
             var sourceType = source.GetType();
             var sourceProperties = sourceType.GetProperties();
@@ -1412,7 +1412,7 @@ Console.WriteLine(maskedWithDashes);
         {
             if (length < 0)
             {
-                throw new ArgumentOutOfRangeException("length", length,
+                throw new ArgumentOutOfRangeException(nameof(length), length,
                     "The length must be a non-negative number.");
             }
 

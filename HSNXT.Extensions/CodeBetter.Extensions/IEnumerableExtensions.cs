@@ -14,7 +14,7 @@ namespace HSNXT
       {
          if (action == null)
          {
-            throw new ArgumentNullException("action");
+            throw new ArgumentNullException(nameof(action));
          }
          var enumerator = list.GetEnumerator();
          var count = 0;
@@ -30,7 +30,7 @@ namespace HSNXT
       {
          if (predicate == null)
          {
-            throw new ArgumentNullException("predicate");
+            throw new ArgumentNullException(nameof(predicate));
          }
          var enumerator = list.GetEnumerator();
          while (enumerator.MoveNext())
@@ -49,7 +49,7 @@ namespace HSNXT
       {
          if (predicate == null)
          {
-            throw new ArgumentNullException("predicate");
+            throw new ArgumentNullException(nameof(predicate));
          }
          var found = new List<T>();
          var enumerator = list.GetEnumerator();
@@ -69,7 +69,7 @@ namespace HSNXT
       {         
          if (predicate == null)
          {
-            throw new ArgumentNullException("predicate");
+            throw new ArgumentNullException(nameof(predicate));
          }         
          var enumerator = list.GetEnumerator();
          while (enumerator.MoveNext())
@@ -88,7 +88,7 @@ namespace HSNXT
       {
          if (predicate == null)
          {
-            throw new ArgumentNullException("predicate");
+            throw new ArgumentNullException(nameof(predicate));
          }
          var enumerator = list.GetEnumerator();
          for (int i = 0; enumerator.MoveNext(); ++i)

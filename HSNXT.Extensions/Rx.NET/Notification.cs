@@ -76,7 +76,7 @@ namespace HSNXT.Reactive
         /// Represents an OnNext notification to an observer.
         /// </summary>
 #if !NO_DEBUGGER_ATTRIBUTES
-        [DebuggerDisplay("OnNext({Value})")]
+        [DebuggerDisplay("OnNext({" + nameof(Value) + "})")]
 #endif
 #if !NO_SERIALIZABLE
         [Serializable]
@@ -204,7 +204,7 @@ namespace HSNXT.Reactive
         /// Represents an OnError notification to an observer.
         /// </summary>
 #if !NO_DEBUGGER_ATTRIBUTES
-        [DebuggerDisplay("OnError({Exception})")]
+        [DebuggerDisplay("OnError({" + nameof(Exception) + "})")]
 #endif
 #if !NO_SERIALIZABLE
         [Serializable]
