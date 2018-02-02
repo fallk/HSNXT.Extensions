@@ -30,7 +30,24 @@ build: off
 
 build_script:
   - ps: dotnet build "HSNXT.Extensions.sln" -c Release
-  - ps: dotnet publish "HSNXT.Extensions.sln" -c Release
+  - ps: dotnet publish "Cheaturu/Cheaturu.csproj"                                     -c Release -f netcoreapp2.0
+  - ps: dotnet publish "Cheaturu.Compare/Cheaturu.Compare.csproj"                     -c Release -f netcoreapp2.0
+  - ps: dotnet publish "Cheaturu.Compare.Precalc/Cheaturu.Compare.Precalc.csproj"     -c Release -f netcoreapp2.0
+  - ps: dotnet publish "Cheaturu.Compare.Precalced/Cheaturu.Compare.Precalced.csproj" -c Release -f netcoreapp2.0
+  - ps: dotnet publish "ExtensionMethodApplier/ExtensionMethodApplier.csproj"         -c Release -f netcoreapp2.0
+  - ps: dotnet publish "ExtensionMethodHarvester/ExtensionMethodHarvester.csproj"     -c Release -f netcoreapp2.0
+  - ps: dotnet publish "OEISReader/OEISReader.csproj"                                 -c Release -f netcoreapp2.0
+  - ps: dotnet publish "OEISTestProject/OEISTestProject.csproj"                       -c Release -f netcoreapp2.0
+  - ps: dotnet publish "ReflectToArrayTest/ReflectToArrayTest.csproj"                 -c Release -f netcoreapp2.0
+  - ps: dotnet publish "SuperOEISGenerator/SuperOEISGenerator.csproj"                 -c Release -f netcoreapp2.0
+  - ps: dotnet publish "Wither/Wither.csproj"                                         -c Release -f netcoreapp2.0
+
+  - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f netcoreapp2.0
+  - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f net47
+  
+  - ps: dotnet publish "HSNXT.Extensions.Tests/HSNXT.Extensions.Tests.csproj"         -c Release -f net47
+  - ps: dotnet publish "RegexesToAssembly/RegexesToAssembly.csproj"                   -c Release -f net47
+    
   - ps: dotnet pack "HSNXT.Extensions/HSNXT.Extensions.csproj" -c Release -o "Proj1" --no-build
 
 artifacts:
