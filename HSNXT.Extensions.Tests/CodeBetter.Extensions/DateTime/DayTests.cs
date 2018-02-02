@@ -42,21 +42,21 @@
       [Test]
       public void FirstDayOfMonth()
       {
-         DateTime expected = new DateTime(_monday.Year, _monday.Month, 1);
+         var expected = new DateTime(_monday.Year, _monday.Month, 1);
          Assert.AreEqual(expected, _march.First());
       }
 
       [Test]
       public void FirstSpecificDayOfMonth()
       {
-         DateTime expected = new DateTime(_monday.Year, _monday.Month, 3); // first monday in march 2008
+         var expected = new DateTime(_monday.Year, _monday.Month, 3); // first monday in march 2008
          Assert.AreEqual(expected, _march.First(DayOfWeek.Monday));
       }
 
       [Test]
       public void FirstSpecificDayOfMonthWhenItIsReallyFirstDayOfMonth()
       {
-         DateTime expected = new DateTime(2008, 3, 1); // first saturday in march 2008
+         var expected = new DateTime(2008, 3, 1); // first saturday in march 2008
          Assert.AreEqual(DayOfWeek.Saturday, expected.DayOfWeek);
          Assert.AreEqual(expected, _march.First(DayOfWeek.Saturday));
       }
@@ -64,14 +64,14 @@
       [Test]
       public void LastDayOfMonth()
       {
-         DateTime expected = new DateTime(_march.Year, _march.Month, DateTime.DaysInMonth(_march.Year, _march.Month));
+         var expected = new DateTime(_march.Year, _march.Month, DateTime.DaysInMonth(_march.Year, _march.Month));
          Assert.AreEqual(expected, _march.Last());
       }
 
       [Test]
       public void LastSpecificDayOfMonth()
       {
-         DateTime expected = new DateTime(_march.Year, _march.Month, DateTime.DaysInMonth(_march.Year, _march.Month));
+         var expected = new DateTime(_march.Year, _march.Month, DateTime.DaysInMonth(_march.Year, _march.Month));
          while (expected.DayOfWeek != DayOfWeek.Sunday)
          {
             expected = expected.AddDays(-1);
@@ -82,7 +82,7 @@
       [Test]
       public void LastSpecificDayOfMonthWhenItIsReallyLastDayOfMonth()
       {
-         DateTime expected = new DateTime(2008, 3, 31); // last day in march 2008 = monday
+         var expected = new DateTime(2008, 3, 31); // last day in march 2008 = monday
          Assert.AreEqual(DayOfWeek.Monday, expected.DayOfWeek);
          Assert.AreEqual(expected, _march.Last(DayOfWeek.Monday));
       }

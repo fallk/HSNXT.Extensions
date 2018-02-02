@@ -15,7 +15,7 @@
       [Test]
       public void In_ReferenceTypes()
       {
-         object o = new object();
+         var o = new object();
          Assert.IsTrue(o.In(new[] { new object(), o, new object() }));
          Assert.IsFalse(o.In(new[] { new object(), new object() }));
       }

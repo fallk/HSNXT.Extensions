@@ -78,13 +78,13 @@
       [Test]
       public void ToBytes()
       {        
-         byte[] normal = new byte[] {105, 116, 39, 115, 32, 111, 118, 101, 114, 32, 57, 48, 48, 48};       
+         var normal = new byte[] {105, 116, 39, 115, 32, 111, 118, 101, 114, 32, 57, 48, 48, 48};       
          Assert.AreEqual(normal, "it's over 9000".GetBytes());
       }
       [Test]
       public void ToBytes_WithEncoding()
       {
-         byte[] normal = new byte[] { 105, 116, 39, 115, 32, 111, 118, 101, 114, 32, 57, 48, 48, 48 };         
+         var normal = new byte[] { 105, 116, 39, 115, 32, 111, 118, 101, 114, 32, 57, 48, 48, 48 };         
          Assert.AreEqual(normal, "it's over 9000".GetBytes());         
       }
       

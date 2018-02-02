@@ -12,13 +12,13 @@
       [Test]
       public void CreateType_ReturnsInstanceWithNoParameters()
       {
-         FakeClass type = "CodeBetter.Extensions.Tests.FakeClass, HSNXT.Extensions.Tests".CreateType<FakeClass>();
+         var type = "CodeBetter.Extensions.Tests.FakeClass, HSNXT.Extensions.Tests".CreateType<FakeClass>();
          Assert.AreEqual(0, type.Id);
       }
       [Test]
       public void CreateType_ReturnsInstanceWithParameters()
       {
-         FakeClass type = "CodeBetter.Extensions.Tests.FakeClass, HSNXT.Extensions.Tests".CreateType<FakeClass>(1);
+         var type = "CodeBetter.Extensions.Tests.FakeClass, HSNXT.Extensions.Tests".CreateType<FakeClass>(1);
          Assert.AreEqual(1, type.Id);
       }
       
@@ -67,7 +67,7 @@
       [Test]
       public void NewlineToBr()
       {
-         string input = "Hello {0} world!{0}{0}How Goes?".FormatWith(Environment.NewLine);
+         var input = "Hello {0} world!{0}{0}How Goes?".FormatWith(Environment.NewLine);
          Assert.AreEqual("Hello <br /> world!<br /><br />How Goes?", input.NewlineToBr());
       }
 

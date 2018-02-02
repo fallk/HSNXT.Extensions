@@ -11,9 +11,9 @@
       [Test]
       public void Each()
       {
-         int[] list = new[] {1, 2, 3, 4};
-         int[] seen = new int[4];
-         int counter = 0;
+         var list = new[] {1, 2, 3, 4};
+         var seen = new int[4];
+         var counter = 0;
          list.Each(i => seen[counter++] = i);         
          Assert.AreEqual(list, seen);
       }

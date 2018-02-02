@@ -30,14 +30,14 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void AddingSameCurrenciesAddMethod()
       {
-         Money result = Money.Add(_cad1, _cad3);
+         var result = Money.Add(_cad1, _cad3);
          Assert.AreEqual(15, result.Amount);
          Assert.AreEqual(_cad3, result);
       }
       [Test]
       public void AddingSameCurrenciesAddOperator()
       {
-         Money result = _cad1 + _cad3;
+         var result = _cad1 + _cad3;
          Assert.AreEqual(15, result.Amount);
          Assert.AreEqual(_cad3, result);
       }
@@ -58,8 +58,8 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void CloneTest()
       {
-         Money money = new Money(53m);
-         Money clone = money.Clone();
+         var money = new Money(53m);
+         var clone = money.Clone();
          Assert.IsFalse(money == clone);
          Assert.AreEqual(money.IsoCurrencySymbol, clone.IsoCurrencySymbol);
          Assert.AreEqual(0, clone.Amount);
@@ -88,7 +88,7 @@ namespace CodeBetter.Extensions.Tests
       public void ConstructorWithLongAndCultureInfoTest()
       {
          long value = 1;
-         Money money = new Money(value, CultureInfo.CurrentCulture);
+         var money = new Money(value, CultureInfo.CurrentCulture);
          Assert.AreEqual(Convert.ToDecimal(value), money.Amount);
          Assert.AreEqual(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalDigits, money.DecimalDigits);
          Assert.AreEqual(CultureInfo.CurrentCulture.Name, money.EnglishCultureName);
@@ -97,34 +97,34 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void CopyTest()
       {
-         Money originalMoney = new Money(53m);
+         var originalMoney = new Money(53m);
          Assert.AreEqual(originalMoney, originalMoney.Copy());
          Assert.IsFalse(originalMoney == new Money(53m, "fr-FR"));
       }
       [Test]
       public void DefaultConstructor()
       {
-         Money money = Money.LocalCurrency;
+         var money = Money.LocalCurrency;
          Assert.AreEqual(RegionInfo.CurrentRegion.ISOCurrencySymbol, money.IsoCurrencySymbol);
          Assert.AreEqual(0, money.Amount);
       }
       [Test]
       public void DivisionDivideMethod()
       {
-         Money result = Money.Divide(_cad3, 5);
+         var result = Money.Divide(_cad3, 5);
          Assert.AreEqual(3m, result.Amount);
       }
       [Test]
       public void DivisionOperator()
       {
-         Money result = _cad3 / 5;
+         var result = _cad3 / 5;
          Assert.AreEqual(3m, result.Amount);
       }
       [Test]
       public void DivisionOperatorDividingToRealNumber()
       {
          _cad3 = new Money(1);
-         Money result = _cad3 / 8;
+         var result = _cad3 / 8;
          Assert.AreEqual(1m / 8m, result.Amount);
       }
       [Test]
@@ -171,18 +171,17 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void Exchange()
       {
-         var exchangeRate = 1.12565m;
-         Money usDollars = new Money(50m, "en-us");
-         Money convertedCanadianDollars = new Money(usDollars.Amount * 1.12565m, "en-CA");
+         var usDollars = new Money(50m, "en-us");
+         var convertedCanadianDollars = new Money(usDollars.Amount * 1.12565m, "en-CA");
          Assert.AreEqual(50 * 1.12565m, convertedCanadianDollars.Amount);
       }
       [Test]
       public void GreaterThanOrEqualTo()
       {
-         Money comparator = new Money(500);
-         Money greaterThan = new Money(600);
-         Money lessThan = new Money(400);
-         Money equalTo = new Money(500);
+         var comparator = new Money(500);
+         var greaterThan = new Money(600);
+         var lessThan = new Money(400);
+         var equalTo = new Money(500);
          Assert.IsFalse(comparator >= greaterThan, "Comparator compared to Greater Than");
          Assert.IsTrue(comparator >= equalTo, "Comparator compared to Equal To");
          Assert.IsTrue(comparator >= lessThan, "Comparator compared to Less Than");
@@ -201,10 +200,10 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void LessThanOrEqualTo()
       {
-         Money comparator = new Money(500);
-         Money greaterThan = new Money(600);
-         Money lessThan = new Money(400);
-         Money equalTo = new Money(500);
+         var comparator = new Money(500);
+         var greaterThan = new Money(600);
+         var lessThan = new Money(400);
+         var equalTo = new Money(500);
          Assert.IsTrue(comparator <= greaterThan, "Comparator compared to Greater Than");
          Assert.IsTrue(comparator <= equalTo, "Comparator compared to Equal To");
          Assert.IsFalse(comparator <= lessThan, "Comparator compared to Less Than");
@@ -223,13 +222,13 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void MultiplicationMethod()
       {
-         Money result = Money.Multiply(_cad3, 4);
+         var result = Money.Multiply(_cad3, 4);
          Assert.AreEqual(60m, result.Amount);
       }
       [Test]
       public void MultiplicationOperator()
       {
-         Money result = _cad3 * 4;
+         var result = _cad3 * 4;
          Assert.AreEqual(60m, result.Amount);
       }
       [Test]
@@ -249,7 +248,7 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void SubtractingSameCurrenciesSubtractMethod()
       {
-         Money result = Money.Subtract(_cad3, _cad1);
+         var result = Money.Subtract(_cad3, _cad1);
          Assert.AreEqual(15m, result.Amount);
 
          result = Money.Subtract(_cad1, _cad3);
@@ -258,7 +257,7 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void SubtractingSameCurrenciesSubtractOperator()
       {
-         Money result = _cad3 - _cad1;
+         var result = _cad3 - _cad1;
          Assert.AreEqual(15m, result.Amount);
 
          result = _cad1 - _cad3;

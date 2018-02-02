@@ -15,7 +15,7 @@ namespace BCLExtensions.Tests.IEnumerableExtensions
             IEnumerable<T> input = null;
             var result = input.OrEmptyIfNull();
             Assert.NotNull(result);
-            Assert.Equal(0, result.Count());
+            Assert.Empty(result);
         }
 
         [Theory]

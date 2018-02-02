@@ -42,7 +42,7 @@ namespace BCLExtensions.Tests.TestHelperTests
         {
             var result = FuncHelpers.SelectSelf<string>(null);
 
-            Assert.Equal(null, result);
+            Assert.Null(result);
         }
 
         [Fact]

@@ -1,4 +1,5 @@
 ﻿
+#pragma warning disable 169
 namespace CodeBetter.Extensions.Tests
 {
    public class FakeClass

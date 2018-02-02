@@ -35,21 +35,21 @@ namespace CodeBetter.Extensions.Tests
       [Test]
       public void SetTimeToMinutePrecision()
       {
-         DateTime expected = _mondayMidnight.AddHours(14).AddMinutes(30);
+         var expected = _mondayMidnight.AddHours(14).AddMinutes(30);
          Assert.AreEqual(expected, _monday.SetTime(14, 30));
       }
 
       [Test]
       public void SetTimeToSecondPrecision()
       {
-         DateTime expected = _mondayMidnight.AddHours(14).AddMinutes(30).AddSeconds(15);
+         var expected = _mondayMidnight.AddHours(14).AddMinutes(30).AddSeconds(15);
          Assert.AreEqual(expected, _monday.SetTime(14, 30, 15));
       }
 
       [Test]
       public void SetTimeToMillisecondPrecision()
       {
-         DateTime expected = _mondayMidnight.AddHours(14).AddMinutes(30).AddSeconds(15).AddMilliseconds(7);
+         var expected = _mondayMidnight.AddHours(14).AddMinutes(30).AddSeconds(15).AddMilliseconds(7);
          Assert.AreEqual(expected, _monday.SetTime(14, 30, 15, 7));
       }
    }

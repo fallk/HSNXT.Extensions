@@ -34,7 +34,7 @@ namespace BCLExtensions.Tests.ArrayExtensions
             var result = array.OrEmptyIfNull();
 
             Assert.NotNull(result);
-            Assert.Equal(0, result.Length);
+            Assert.Empty(result);
         }
     }
 }

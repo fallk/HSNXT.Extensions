@@ -38,7 +38,7 @@ namespace BCLExtensions.Tests.StringExtensions
             {
                 var stringParameter = "FizzBuzz";
                 var formattedString = _myString.FormatWith(stringParameter);
-                Assert.True(formattedString.Contains(stringParameter));
+                Assert.Contains(formattedString, stringParameter);
             }
         }
     }
