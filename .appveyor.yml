@@ -42,7 +42,7 @@ build_script:
   - ps: dotnet publish "SuperOEISGenerator/SuperOEISGenerator.csproj"                 -c Release -f netcoreapp2.0
   - ps: dotnet publish "Wither/Wither.csproj"                                         -c Release -f netcoreapp2.0
 
-  - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f netcoreapp2.0
+  - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f netstandard2.0
   - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f net47
   
   - ps: dotnet publish "HSNXT.Extensions.Tests/HSNXT.Extensions.Tests.csproj"         -c Release -f net47
