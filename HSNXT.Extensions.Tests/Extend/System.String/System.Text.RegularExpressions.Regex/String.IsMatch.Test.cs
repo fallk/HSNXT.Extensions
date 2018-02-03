@@ -47,7 +47,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.IsMatch( null, "", RegexOptions.CultureInvariant );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
@@ -101,7 +101,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Extensions.IsMatch( null, "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Fact]
