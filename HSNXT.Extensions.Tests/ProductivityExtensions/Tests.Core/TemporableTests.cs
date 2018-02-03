@@ -54,7 +54,7 @@ namespace Tests.Core
 		{
 			TimeSpan actual = 10.Years();
 
-			Assert.Equal(3650, actual.TotalDays);
+			Assert.Equal(3652.4249999999997d, actual.TotalDays);
 		}
 
 		[Fact]
