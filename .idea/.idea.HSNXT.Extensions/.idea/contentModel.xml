@@ -7787,6 +7787,37 @@
             </e>
           </e>
         </e>
+        <e p="ProductivityExtensions" t="Include">
+          <e p="Tests" t="Include">
+            <e p="SequenceableTests.cs" t="Include" />
+            <e p="StringableTests.cs" t="Include" />
+            <e p="when_adding_range_to_collection.cs" t="Include" />
+            <e p="when_adding_range_to_dictionary.cs" t="Include" />
+            <e p="when_comparing_versions.cs" t="Include" />
+            <e p="when_getting_value_from_dictionary.cs" t="Include" />
+            <e p="when_swapping_list_values.cs" t="Include" />
+            <e p="when_testing_creating_multicast_delegates.cs" t="Include" />
+            <e p="when_testing_list_for_null_or_empty.cs" t="Include" />
+            <e p="when_testing_set_equality.cs" t="Include" />
+            <e p="when_wrapping_task_with_apm.cs" t="Include" />
+          </e>
+          <e p="Tests.Core" t="Include">
+            <e p="TemporableTests.cs" t="Include" />
+            <e p="TypeableTests.cs" t="Include" />
+          </e>
+          <e p="Tests.net45" t="Include">
+            <e p="ActionableTests.cs" t="Include" />
+            <e p="CustomAttributeProviderExtensionsTests.cs" t="Include" />
+            <e p="DataColumnableTests.cs" t="Include" />
+            <e p="ReflectableTests.cs" t="Include" />
+            <e p="StreamableTests.cs" t="Include" />
+            <e p="TemporableTests.cs" t="Include" />
+            <e p="TypeableTests.cs" t="Include" />
+            <e p="when_closing_dbconnection.cs" t="Include" />
+            <e p="when_configuring_await.cs" t="Include" />
+            <e p="when_working_with_ipv4_addresses.cs" t="Include" />
+          </e>
+        </e>
         <e p="Rx.NET" t="Include">
           <e p="ColdObservable.cs" t="Include" />
           <e p="GlobalSuppressions.cs" t="Include" />
