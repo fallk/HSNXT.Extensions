@@ -63,14 +63,14 @@ namespace Extend.Testing
         [Fact]
         public void IsMatchTest2()
         {
-            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String emailPattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             const String validEmail = "dave.senn@myDomain.com";
             const String invalidEmail = "dave.senn-myDomain.com";
 
-            var actual = validEmail.IsMatch( emaiLpattern, RegexOptions.Compiled, 10.ToSeconds() );
+            var actual = validEmail.IsMatch( emailPattern, RegexOptions.Compiled, 10.ToSeconds() );
             Assert.True( actual );
 
-            actual = invalidEmail.IsMatch( emaiLpattern, RegexOptions.None, 10.ToSeconds() );
+            actual = invalidEmail.IsMatch( emailPattern, RegexOptions.None, 10.ToSeconds() );
             Assert.False( actual );
         }
 
