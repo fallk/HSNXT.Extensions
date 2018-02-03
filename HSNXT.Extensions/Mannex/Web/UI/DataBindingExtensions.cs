@@ -29,7 +29,9 @@ namespace HSNXT.Web.UI
     using System.Diagnostics;
     using System.Globalization;
     using System.Web;
+    #if NetFX
     using System.Web.UI;
+    #endif
 
     #endregion
 
@@ -40,6 +42,7 @@ namespace HSNXT.Web.UI
 
     public static partial class Extensions
     {
+#if NetFX
         /// <summary>
         /// Evaluates data-binding expressions at run time using an expression
         /// syntax that is similar to C# and Visual Basic for accessing
@@ -94,7 +97,8 @@ namespace HSNXT.Web.UI
             var value = DataBinder.Eval(obj, expression);
             return Convert.IsDBNull(value) ? null : value;
         }
-
+#endif
+        
         /// <summary>
         /// Format string using <paramref name="args"/> as sources for
         /// data-binding replacements.
@@ -110,6 +114,7 @@ namespace HSNXT.Web.UI
             return format.FormatWith(null, args);
         }
 
+#if NetFX
         /// <summary>
         /// Format string using <paramref name="args"/> as sources for
         /// data-binding replacements and <paramref name="provider"/> 
@@ -169,5 +174,6 @@ namespace HSNXT.Web.UI
                  ? string.Format(provider, format, result)
                  : result.ToString();
         }
+#endif
     }
 }

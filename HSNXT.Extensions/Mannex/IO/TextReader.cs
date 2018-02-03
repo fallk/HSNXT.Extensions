@@ -30,8 +30,10 @@ namespace HSNXT.IO
     using System.IO;
     using System.Linq;
     using Collections.Generic;
+    #if NetFX
     using TextFieldParser = Microsoft.VisualBasic.FileIO.TextFieldParser;
     using FieldType = Microsoft.VisualBasic.FileIO.FieldType;
+    #endif
 
     #endregion
 
@@ -118,7 +120,7 @@ namespace HSNXT.IO
             public override int Peek()
             {
                 var reader = GetReader();
-                return reader == null ? -1 : reader.Peek();
+                return reader?.Peek() ?? -1;
             }
 
             public override int Read()
@@ -170,6 +172,7 @@ namespace HSNXT.IO
             }
         }
 
+#if NetFX
         /// <summary>
         /// Parses delimited text like CSV (command-separated values) and
         /// returns each row of data as a sequence of items.
@@ -261,7 +264,7 @@ namespace HSNXT.IO
                 }
             }
         }
-
+#endif
         /*
         abstract class DataReader : DbDataReader
         {

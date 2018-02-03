@@ -38,6 +38,7 @@ namespace HSNXT.Web
 
     public static partial class Extensions
     {
+#if NetFX
         /// <summary>
         /// Determines whether <see cref="HttpRequest.HttpMethod"/> 
         /// equals an expected value. The comparison is case-insensitive.
@@ -59,7 +60,6 @@ namespace HSNXT.Web
             if (request == null) throw new ArgumentNullException("request");
             return StringComparer.OrdinalIgnoreCase.Equals(verb, request.HttpMethod);
         }
-
         /// <summary>
         /// Determines whether this request originated using Ajax.
         /// </summary>
@@ -79,6 +79,7 @@ namespace HSNXT.Web
             if (request == null) throw new ArgumentNullException("request");
             return IsAjax(request.Headers);
         }
+#endif
 
         static bool IsAjax(NameValueCollection headers)
         {

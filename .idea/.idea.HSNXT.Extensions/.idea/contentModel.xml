@@ -5318,11 +5318,6 @@
           </e>
           <e p="OperatingSystem.cs" t="Include" />
           <e p="Predicate.cs" t="Include" />
-          <e p="Properties" t="Include">
-            <e p="AssemblyInfo.cs" t="Include" />
-            <e p="AssemblyInfo.g.cs" t="Include" />
-            <e p="AssemblyInfo.g.tt" t="Include" />
-          </e>
           <e p="Publics.cs" t="Include" />
           <e p="Reflection" t="Include">
             <e p="Assembly.cs" t="Include" />
@@ -7892,9 +7887,6 @@
           </e>
           <e p="packages.config" t="Include" />
           <e p="PredicateTests.cs" t="Include" />
-          <e p="Properties" t="Include">
-            <e p="AssemblyInfo.cs" t="Include" />
-          </e>
           <e p="Reflection" t="Include">
             <e p="ICustomAttributeProviderTests.cs" t="Include" />
             <e p="MethodInfoTests.cs" t="Include" />

@@ -1,3 +1,5 @@
+
+#if NetFX
 #region License, Terms and Author(s)
 //
 // Mannex - Extension methods for .NET
@@ -81,3 +83,5 @@ namespace HSNXT.Security.Cryptography
         }
     }
 }
+
+#endif

@@ -1,3 +1,4 @@
+#if NetFX
 #region License, Terms and Author(s)
 //
 // Mannex - Extension methods for .NET
@@ -114,3 +115,4 @@ namespace HSNXT.Web.UI
         }
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if NetFX
 #region License, Terms and Author(s)
 //
 // Mannex - Extension methods for .NET
@@ -27,9 +28,9 @@ namespace HSNXT.Web.Script.Serialization
 
     using System;
     using System.Diagnostics;
-    using System.Web.Script.Serialization;
     using System.Text;
-
+    using System.Web.Script.Serialization;
+    
     #endregion
 
     /// <summary>
@@ -57,7 +58,7 @@ namespace HSNXT.Web.Script.Serialization
         {
             return new JavaScriptSerializer().Serialize(obj);
         }
-
+        
         /// <summary>
         /// Formats object as JSON text using <see cref="JavaScriptSerializer"/>,
         /// sending result to <paramref name="output"/> cref="output"/>.
@@ -71,3 +72,4 @@ namespace HSNXT.Web.Script.Serialization
         }
     }
 }
+#endif
