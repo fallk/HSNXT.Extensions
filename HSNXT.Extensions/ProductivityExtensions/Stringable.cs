@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PRI.ProductivityExtensions.StringExtensions
+namespace HSNXT
 {
-	public static partial class Stringable
+    public static partial class Extensions
 	{
 		/// <summary>
 		/// Returns the last few characters of the string with a length
@@ -51,7 +51,7 @@ namespace PRI.ProductivityExtensions.StringExtensions
 		/// <param name="chars">individual characters to search for.</param>
 		/// <param name="c">character to replace any found characters with.</param>
 		/// <returns></returns>
-#if (NET40 || NET45)
+#if (NET47)
 		public static string ReplaceEach(this string text, IEnumerable<char> chars, char c)
 		{
 			return string.Join(c.ToString(System.Globalization.CultureInfo.InvariantCulture),

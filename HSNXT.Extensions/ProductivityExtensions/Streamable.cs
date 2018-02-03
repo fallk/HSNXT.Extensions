@@ -1,14 +1,14 @@
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 using System;
 using System.IO;
 using System.Threading;
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 using System.Threading.Tasks;
 #endif
 
-namespace PRI.ProductivityExtensions.StreamExtensions
+namespace HSNXT
 {
-	public static partial class Streamable
+    public static partial class Extensions
 	{
 /// <summary>
 /// Asynchronously read to end of stream
@@ -36,7 +36,7 @@ namespace PRI.ProductivityExtensions.StreamExtensions
 			"Microsoft.Reliability",
 			"CA2000:Dispose objects before losing scope",
 			Justification = "'result' is used asynchronously")]
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 		[Obsolete("Prefer Stream.ReadAsync")]
 #endif
 		public static IAsyncResult BeginReadToEnd(this Stream stream, byte[] buffer, int offset, int count, AsyncCallback callback, object state)
@@ -74,7 +74,7 @@ namespace PRI.ProductivityExtensions.StreamExtensions
 		/// <exception cref="T:System.ArgumentException">One or more of the arguments is invalid. </exception>
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
 		/// <exception cref="T:System.NotSupportedException">The current Stream implementation does not support the read operation. </exception>
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 		[Obsolete("Prefer Stream.ReadAsync")]
 #endif
 		public static void BeginReadToEnd(this Stream stream, byte[] buffer, int offset, int count, AsyncCallback callback)
@@ -102,7 +102,7 @@ namespace PRI.ProductivityExtensions.StreamExtensions
 		/// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
 		/// <exception cref="T:System.NotSupportedException">The current Stream implementation does not support the read operation. </exception>
 		/// <returns>An <see cref="T:System.IAsyncResult"/> that represents the asynchronous read, which could still be pending.</returns>
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 		[Obsolete("Prefer Stream.ReadAsync")]
 #endif
 		public static IAsyncResult BeginReadToEnd(this Stream stream, byte[] buffer, AsyncCallback callback)
@@ -124,7 +124,7 @@ namespace PRI.ProductivityExtensions.StreamExtensions
 			"CA1801:ReviewUnusedParameters",
 			MessageId = "stream",
 			Justification = "'stream' is required for this to be an extension method")]
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 		[Obsolete("Prefer Stream.ReadAsync")]
 #endif
 		public static int EndReadToEnd(this Stream stream, IAsyncResult ar)
@@ -186,7 +186,7 @@ namespace PRI.ProductivityExtensions.StreamExtensions
 			public int Length;
 			private ManualResetEvent asyncWaitHandle;
 
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 			internal ByteArrayAsyncResult(AsyncCallback cb, object state, byte[] buffer, int offset, byte[] tempBuffer)
 				: this(cb, state, buffer, offset, tempBuffer, false)
 			{
@@ -251,7 +251,7 @@ namespace PRI.ProductivityExtensions.StreamExtensions
 				}
 			}
 
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 			internal void Complete(bool didCompleteSynchronously)
 			{
 				lock (syncRoot)

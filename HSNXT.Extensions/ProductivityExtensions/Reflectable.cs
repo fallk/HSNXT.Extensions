@@ -1,19 +1,15 @@
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
-using PRI.ProductivityExtensions.IEnumerableExtensions;
-using PRI.ProductivityExtensions.ReflectionExtensions;
+using HSNXT.PRI.ProductivityExtensions.ReflectionExtensions;
 
-namespace PRI.ProductivityExtensions.ReflectionExtensions
+namespace HSNXT
 {
-	/// <summary>
-	/// class hat contains extension methods that extend reflection-related classes
-	/// </summary>
-	public static class Reflectable
+    public static partial class Extensions
 	{
 		/// <summary>
 		/// Makes Attribute.GetCustomAttribute() generic and avoids having to pass a Type and cast the result.
@@ -32,21 +28,6 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 				throw new ArgumentNullException(nameof(source));
 			}
 
-			return (T)Attribute.GetCustomAttribute(source, typeof(T));
-		}
-
-		/// <summary>
-		/// Makes Attribute.GetCustomAttribute() generic and avoids having to pass a Type and cast the result.
-		/// <example>
-		/// SerializableAttribute attr = memberInfo.GetCustomAttribute&lt;SerializableAttribute&gt;();
-		/// </example>
-		/// </summary>
-		/// <typeparam name="T">The type, or a base type, of the custom attribute to search for.</typeparam>
-		/// <param name="source"></param>
-		/// <returns></returns>
-		public static T GetCustomAttribute<T>(this MemberInfo source)
-			where T : Attribute
-		{
 			return (T)Attribute.GetCustomAttribute(source, typeof(T));
 		}
 
@@ -98,22 +79,6 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 				throw new ArgumentNullException(nameof(source));
 			}
 
-			return (T)Attribute.GetCustomAttribute(source, typeof(T), inherit);
-		}
-
-		/// <summary>
-		/// Makes Attribute.GetCustomAttribute() generic and avoids having to pass a Type and cast the result.
-		/// <example>
-		/// SerializableAttribute attr = memberInfo.GetCustomAttribute&lt;SerializableAttribute&gt;();
-		/// </example>
-		/// </summary>
-		/// <typeparam name="T">The type, or a base type, of the custom attribute to search for.</typeparam>
-		/// <param name="source"></param>
-		/// <param name="inherit">If true, specifies to also search the ancestors of <paramref name="source" /> for custom attributes. </param>
-		/// <returns></returns>
-		public static T GetCustomAttribute<T>(this MemberInfo source, bool inherit)
-			where T : Attribute
-		{
 			return (T)Attribute.GetCustomAttribute(source, typeof(T), inherit);
 		}
 
@@ -172,21 +137,6 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 		/// <summary>
 		/// Makes Attribute.GetCustomAttributes() generic and avoids having to pass a Type and cast the result.
 		/// <example>
-		/// SerializableAttribute attr = memberInfo.GetCustomAttributes&lt;SerializableAttribute&gt;();
-		/// </example>
-		/// </summary>
-		/// <typeparam name="T">The type, or a base type, of the custom attribute to search for.</typeparam>
-		/// <param name="source"></param>
-		/// <returns></returns>
-		public static T[] GetCustomAttributes<T>(this MemberInfo source)
-			where T : Attribute
-		{
-			return (T[])Attribute.GetCustomAttributes(source, typeof(T));
-		}
-
-		/// <summary>
-		/// Makes Attribute.GetCustomAttributes() generic and avoids having to pass a Type and cast the result.
-		/// <example>
 		/// SerializableAttribute attr = parameterInfo.GetCustomAttributes&lt;SerializableAttribute&gt;();
 		/// </example>
 		/// </summary>
@@ -238,22 +188,6 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 		/// <summary>
 		/// Makes Attribute.GetCustomAttributes() generic and avoids having to pass a Type and cast the result.
 		/// <example>
-		/// SerializableAttribute attr = memberInfo.GetCustomAttributes&lt;SerializableAttribute&gt;();
-		/// </example>
-		/// </summary>
-		/// <typeparam name="T">The type, or a base type, of the custom attribute to search for.</typeparam>
-		/// <param name="source"></param>
-		/// <param name="inherit">If true, specifies to also search the ancestors of <paramref name="source" /> for custom attributes. </param>
-		/// <returns></returns>
-		public static T[] GetCustomAttributes<T>(this MemberInfo source, bool inherit)
-			where T : Attribute
-		{
-			return (T[])Attribute.GetCustomAttributes(source, typeof(T), inherit);
-		}
-
-		/// <summary>
-		/// Makes Attribute.GetCustomAttributes() generic and avoids having to pass a Type and cast the result.
-		/// <example>
 		/// SerializableAttribute attr = parameterInfo.GetCustomAttributes&lt;SerializableAttribute&gt;();
 		/// </example>
 		/// </summary>
@@ -285,12 +219,6 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 
 		private static readonly OpCode[] SingleByteOpCodes = new OpCode[0x100];
 		private static readonly OpCode[] MultiByteOpCodes = new OpCode[0x100];
-
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline")]
-		static Reflectable()
-		{
-			LoadOpCodes();
-		}
 
 		private static void LoadOpCodes()
 		{

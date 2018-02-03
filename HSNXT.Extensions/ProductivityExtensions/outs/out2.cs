@@ -276,7 +276,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -298,7 +298,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -322,12 +322,9 @@ namespace HSNXT
 #endif
 #if (NETSTANDARD2_0 || NET47)
 
-namespace PRI.ProductivityExtensions.DataColumnExcentions
+namespace HSNXT
 {
-	/// <summary>
-	/// class that contains extension methods that extend <seealso cref="DataColumnCollection"/>
-	/// </summary>
-	public static class DataColumable
+    public static partial class Extensions
 	{
 		/// <summary>
 		/// Adds a generic Add&lt;T&gt; to DataColumnCollection to avoid Add(typeof(T), "columnName")
@@ -612,7 +609,7 @@ namespace HSNXT
 #endif
 #if (NETSTANDARD2_0 || NET47 || NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0)
 
-namespace PRI.ProductivityExtensions
+namespace HSNXT.PRI.ProductivityExtensions
 {
 	public interface IAwaitable : INotifyCompletion
 	{
@@ -644,9 +641,9 @@ namespace HSNXT
 
 	}
 }
-#endifusing System.Reflection.Emit;
+#endif
 
-namespace PRI.ProductivityExtensions.ReflectionExtensions
+namespace HSNXT.PRI.ProductivityExtensions.ReflectionExtensions
 {
 	/// <summary>
 	/// class that contains information about an IL Instruction
@@ -672,7 +669,8 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 		/// </summary>
 		public object Operand { get; set; }
 	}
-}﻿#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
+}
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 namespace HSNXT
 {
@@ -1238,7 +1236,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1260,7 +1258,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1282,7 +1280,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1304,7 +1302,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1326,7 +1324,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1348,7 +1346,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1392,7 +1390,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1480,7 +1478,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1771,5 +1769,4 @@ namespace HSNXT
 
 	}
 }
-#endif
 #endif

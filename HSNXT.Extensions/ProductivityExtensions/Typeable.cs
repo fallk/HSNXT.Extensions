@@ -1,24 +1,22 @@
-#if (NETCOREAPP1_0 || NETCOREAPP1_2 || NETCOREAPP2_0 || NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETCOREAPP1_0 || NETCOREAPP1_2 || NETCOREAPP2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-#if (NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
-using PRI.ProductivityExtensions.IEnumerableExtensions;
+#if (NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
+using HSNXT.PRI.ProductivityExtensions.IEnumerableExtensions;
 #endif
 
-namespace PRI.ProductivityExtensions.ReflectionExtensions
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Typeable'
-	public static partial class Typeable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable'
+	public static partial class Extensions
 	{
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsStatic(Type)'
 		public static bool IsStatic(this Type type)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsStatic(Type)'
 		{
 			if (type == null) throw new ArgumentNullException(nameof(type));
-#if (NET40 || NET45)
+#if (NET47)
 			return type.IsAbstract && type.IsSealed;
 #else
 			return type.GetTypeInfo().IsAbstract && type.GetTypeInfo().IsSealed;
@@ -29,7 +27,7 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 		public static bool IsOpenGenericType(this Type type)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsOpenGenericType(Type)'
 		{
-#if (NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47 || NET451 || NET452 || NET46 || NET461 || NET462)
 			return type.GetGenericTypeArguments().Length == 0 && type.IsGenericType;
 #else
 			return type.GetGenericTypeArguments().Length == 0 && type.GetTypeInfo().IsGenericType;
@@ -52,7 +50,7 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 				return typeInfo.GenericTypeArguments;
 #endif
 			else
-#if (NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
 				return Type.EmptyTypes;
 #else
 				return new Type[0];
@@ -170,7 +168,7 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 			{
 				throw new ArgumentNullException(nameof(namespaceName));
 			}
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 			if (!interfaceType.IsInterface)
 			{
 				throw new ArgumentException("Type is not an interface", nameof(interfaceType));
@@ -276,7 +274,7 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 		/// <returns><seealso cref="ConstructorInfo"/> about the default constructor.</returns>
 		public static ConstructorInfo GetConstructor(this Type type)
 		{
-#if (NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 			return type.GetConstructor(new Type[0]);
 #else
 			return type.GetTypeInfo().DeclaredConstructors.Single(e => !e.GetParameters().Any());

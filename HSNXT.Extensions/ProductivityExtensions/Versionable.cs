@@ -1,10 +1,8 @@
 using System;
 
-namespace PRI.ProductivityExtensions.VersionExtensions
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Versionable'
-	public static class Versionable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Versionable'
+	public static partial class Extensions
 	{
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Versionable.WindowsVistaVersion'
 		public static Version WindowsVistaVersion = new Version(6, 0, 6000);

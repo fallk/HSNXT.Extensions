@@ -1,13 +1,11 @@
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace PRI.ProductivityExtensions.ReflectionExtensions
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'TypeBuilderable'
-	public static partial class TypeBuilderable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'TypeBuilderable'
+	public static partial class Extensions
 	{
 		/// <summary>
 		/// Add public field to <paramref name="typeBuilder"/> of name <paramref name="fieldName"/>

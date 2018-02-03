@@ -2,9 +2,9 @@
 using System;
 using System.Threading.Tasks;
 
-namespace PRI.ProductivityExtensions.TaskFactoryExtensions
+namespace HSNXT
 {
-	public static class TaskFactoryable
+    public static partial class Extensions
 	{
 		/// <summary>
 		///  Extends FromAsync so that when a state object is not needed, null does not need to be passed.

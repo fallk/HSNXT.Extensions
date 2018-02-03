@@ -154,7 +154,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
 
 namespace HSNXT
 {
@@ -229,7 +229,7 @@ namespace HSNXT
 
 	}
 }
-#endifusing System;
+#endif
 
 namespace HSNXT
 {
@@ -272,7 +272,8 @@ namespace HSNXT
 			return AsHexString(buffer, 0, buffer.Length);
 		}
 	}
-}#if (NETSTANDARD2_0 || NET47)
+}
+#if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
@@ -494,7 +495,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1025,17 +1026,15 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
 
 #if (NETSTANDARD2_0 || NET47)
 
 #endif
 
-namespace PRI.ProductivityExtensions.Reflection
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Expressionable'
-	public static class Expressionable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Expressionable'
+    public static partial class Extensions
 	{
 //#if NETSTANDARD1_0
 		/// <summary>
@@ -1410,7 +1409,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
+#if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
@@ -2161,7 +2160,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -2296,7 +2295,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 namespace HSNXT
 {
@@ -2482,7 +2481,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -2519,7 +2518,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET40 || NET45)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -2708,7 +2707,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
+#if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
@@ -3339,5 +3338,4 @@ namespace HSNXT
 
 	}
 }
-#endif
 #endif

@@ -20,27 +20,6 @@ namespace HSNXT
         /// <summary>Field ReaderSettings.</summary>
         private static readonly XmlReaderSettings ReaderSettings = new XmlReaderSettings();
 
-        static Extensions()
-        {
-            ReaderSettings.CheckCharacters = true;
-            ReaderSettings.ConformanceLevel = ConformanceLevel.Document;
-            ReaderSettings.DtdProcessing = DtdProcessing.Prohibit;
-            ReaderSettings.IgnoreComments = true;
-            ReaderSettings.IgnoreProcessingInstructions = true;
-            ReaderSettings.IgnoreWhitespace = true;
-            ReaderSettings.ValidationFlags = XmlSchemaValidationFlags.None;
-            ReaderSettings.ValidationType = ValidationType.None;
-            ReaderSettings.CloseInput = true;
-
-            LookupTableLower = new char[256][];
-            LookupTableUpper = new char[256][];
-            for (var i = 0; i < 256; i++)
-            {
-                LookupTableLower[i] = i.ToString("x2").ToCharArray();
-                LookupTableUpper[i] = i.ToString("X2").ToCharArray();
-            }
-        }
-
         /// <summary>
         /// Determines whether the source string is valid Xml string.
         /// </summary>

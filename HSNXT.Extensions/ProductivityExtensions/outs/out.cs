@@ -58,7 +58,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms.Layout;
 #endif
 
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -84,7 +84,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -109,7 +109,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -135,7 +135,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -161,7 +161,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -187,7 +187,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -213,7 +213,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -239,7 +239,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -262,19 +262,13 @@ namespace HSNXT
 			return componenteventhandler.BeginInvoke(sender, e, callback, null);
 		}
 
-	}
-}
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
 
 
-namespace HSNXT
-{
-    public static partial class Extensions
-	{
 		/// <summary>
 		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
 		/// <example>
@@ -288,21 +282,13 @@ namespace HSNXT
 			return contentsresizedeventhandler.BeginInvoke(sender, e, callback, null);
 		}
 
-	}
-}
+
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
 
-namespace PRI.ProductivityExtensions.ReflectionExtensions
-{
-	/// <summary>
-	/// Extensions to <seealso cref="ICustomAttributeProvider"/>
-	/// </summary>
-	public static class CustomAttributeProviderExtensions
-	{
 		/// <summary>
 		/// Tests if <paramref name="t"/> has any custom attributes defined with the type name <paramref name="attr"/>
 		/// </summary>
@@ -322,7 +308,7 @@ namespace PRI.ProductivityExtensions.ReflectionExtensions
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -348,7 +334,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -374,7 +360,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -400,7 +386,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -426,7 +412,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -452,7 +438,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -478,7 +464,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -504,7 +490,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -530,7 +516,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -556,7 +542,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -582,7 +568,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -608,7 +594,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -634,7 +620,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -660,7 +646,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -686,7 +672,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -712,7 +698,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -738,7 +724,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -764,7 +750,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -790,7 +776,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -816,7 +802,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -842,7 +828,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -868,7 +854,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 
 
@@ -894,7 +880,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -920,7 +906,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -946,7 +932,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -972,7 +958,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -998,7 +984,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1024,7 +1010,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1050,7 +1036,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1076,7 +1062,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1102,7 +1088,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1128,7 +1114,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1154,7 +1140,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1180,7 +1166,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1206,7 +1192,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1255,7 +1241,7 @@ namespace HSNXT
 
 	}
 }
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1281,7 +1267,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1307,7 +1293,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1333,7 +1319,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1359,7 +1345,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1385,7 +1371,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1411,7 +1397,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1437,7 +1423,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1463,7 +1449,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1489,7 +1475,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1515,7 +1501,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1541,7 +1527,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1567,7 +1553,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1593,7 +1579,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1619,7 +1605,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1697,7 +1683,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1723,7 +1709,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1749,7 +1735,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD1_6 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD1_6 || NET47)
 
 
 
@@ -1775,7 +1761,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD1_6 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD1_6 || NET47)
 
 
 
@@ -1801,7 +1787,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1827,7 +1813,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1853,7 +1839,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1879,7 +1865,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -1905,7 +1891,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -1931,7 +1917,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD1_6 || NETSTANDARD1_5 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 
 
@@ -1983,7 +1969,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -2009,7 +1995,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -2035,7 +2021,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -2061,7 +2047,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NET4O || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 
 
 
@@ -2087,7 +2073,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2164,7 +2150,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2190,7 +2176,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2216,7 +2202,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2242,7 +2228,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2268,7 +2254,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2294,7 +2280,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2320,7 +2306,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2347,7 +2333,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2374,7 +2360,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2400,7 +2386,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 
@@ -2426,7 +2412,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 
 
 

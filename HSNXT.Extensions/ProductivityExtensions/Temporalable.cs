@@ -1,13 +1,11 @@
 using System;
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 using System.Diagnostics.Contracts;
 #endif
 
-namespace PRI.ProductivityExtensions.TemporalExtensions
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Temporalable'
-	public static class Temporalable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Temporalable'
+    public static partial class Extensions
 	{
 		private const int DaysPerYear = 365;
 		private const int DaysPerMonth = 30;
@@ -139,7 +137,7 @@ namespace PRI.ProductivityExtensions.TemporalExtensions
 			{
 				throw new ArgumentOutOfRangeException(nameof(source), source, "'source' must have value of '1'.");
 			}
-#if (NETSTANDARD2_0 || NET45 || NET40 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NETSTANDARD2_0 || NET47)
 			Contract.EndContractBlock();
 #endif
 			return new TimeSpan(0, 0, 0, 1);

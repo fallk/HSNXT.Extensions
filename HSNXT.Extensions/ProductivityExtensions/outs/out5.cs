@@ -579,89 +579,8 @@ namespace HSNXT
 			encoder.Convert(chars, 0, chars.Length, bytes, byteIndex, byteCount, flush, out charsUsed, out bytesUsed, out completed);
 		}
 
-	}
-}
-﻿//////////////////////////////////////////////////////////////////////
-// BCLExtensions is (c) 2010 Solutions Design. All rights reserved.
-// http://www.sd.nl
-//////////////////////////////////////////////////////////////////////
-// COPYRIGHTS:
-// Copyright (c) 2010 Solutions Design. All rights reserved.
-//
-// The BCLExtensions library sourcecode and its accompanying tools, tests and support code
-// are released under the following license: (BSD2)
-// ----------------------------------------------------------------------
-// Redistribution and use in source and binary forms, with or without modification,
-// are permitted provided that the following conditions are met:
-//
-// 1) Redistributions of source code must retain the above copyright notice, this list of
-//    conditions and the following disclaimer.
-// 2) Redistributions in binary form must reproduce the above copyright notice, this list of
-//    conditions and the following disclaimer in the documentation and/or other materials
-//    provided with the distribution.
-//
-// THIS SOFTWARE IS PROVIDED BY SOLUTIONS DESIGN ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-// INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-// PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SOLUTIONS DESIGN OR CONTRIBUTORS BE LIABLE FOR
-// ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-// BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
-// USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// The views and conclusions contained in the software and documentation are those of the authors
-// and should not be interpreted as representing official policies, either expressed or implied,
-// of Solutions Design.
-//
-//////////////////////////////////////////////////////////////////////
-// Contributers to the code:
-// - Frans Bouma [FB]
-//////////////////////////////////////////////////////////////////////
+#if (NETSTANDARD2_0 || NET47)
 
-namespace PRI.ProductivityExtensions.EventHandlerExtensions
-{
-	public static partial class EventHandlerable
-	{
-		/// <summary>
-		/// Raises the event which is represented by the handler specified.
-		/// </summary>
-		/// <typeparam name="T">type of the event args</typeparam>
-		/// <param name="handler">The handler of the event to raise.</param>
-		/// <param name="sender">The sender of the event.</param>
-		/// <param name="arguments">The arguments to pass to the handler.</param>
-		public static void RaiseEvent<T>(this EventHandler<T> handler, object sender, T arguments)
-			where T : EventArgs
-		{
-			handler?.Invoke(sender, arguments);
-		}
-
-		/// <summary>
-		/// Raises the PropertyChanged event, if the handler isn't null, otherwise a no-op
-		/// </summary>
-		/// <param name="handler">The handler.</param>
-		/// <param name="sender">The sender.</param>
-		/// <param name="propertyName">Name of the property.</param>
-		public static void RaiseEvent(this PropertyChangedEventHandler handler, object sender, string propertyName)
-		{
-			handler?.Invoke(sender, new PropertyChangedEventArgs(propertyName));
-		}
-
-		/// <summary>
-		/// Raises the event on the handler passed in with default empty arguments
-		/// </summary>
-		/// <param name="handler">The handler.</param>
-		/// <param name="sender">The sender.</param>
-		public static void RaiseEvent(this EventHandler handler, object sender)
-		{
-			handler?.Invoke(sender, EventArgs.Empty);
-		}
-	}
-}#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
-
-namespace HSNXT
-{
-    public static partial class Extensions
-	{
 #if (NETSTANDARD2_0 || NET47)
 		/// <summary>
 		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
@@ -719,15 +638,10 @@ namespace HSNXT
 			return filestream.BeginWrite(array, 0, array.Length, userCallback);
 		}
 #endif
-	}
-}
-#endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
-namespace HSNXT
-{
-    public static partial class Extensions
-	{
+#endif
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
+
 #if (NETSTANDARD2_0 || NET47)
 		/// <summary>
 		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
@@ -788,7 +702,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
+#if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
@@ -827,87 +741,9 @@ namespace HSNXT
 #endif
 	}
 }
-#endif﻿﻿//////////////////////////////////////////////////////////////////////
-// BCLExtensions is (c) 2010 Solutions Design. All rights reserved.
-// http://www.sd.nl
-//////////////////////////////////////////////////////////////////////
-// COPYRIGHTS:
-// Copyright (c) 2010 Solutions Design. All rights reserved.
-//
-// The BCLExtensions library sourcecode and its accompanying tools, tests and support code
-// are released under the following license: (BSD2)
-// ----------------------------------------------------------------------
-// Redistribution and use in source and binary forms, with or without modification,
-// are permitted provided that the following conditions are met:
-//
-// 1) Redistributions of source code must retain the above copyright notice, this list of
-//    conditions and the following disclaimer.
-// 2) Redistributions in binary form must reproduce the above copyright notice, this list of
-//    conditions and the following disclaimer in the documentation and/or other materials
-//    provided with the distribution.
-//
-// THIS SOFTWARE IS PROVIDED BY SOLUTIONS DESIGN ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-// INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-// PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SOLUTIONS DESIGN OR CONTRIBUTORS BE LIABLE FOR
-// ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-// NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-// BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
-// USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// The views and conclusions contained in the software and documentation are those of the authors
-// and should not be interpreted as representing official policies, either expressed or implied,
-// of Solutions Design.
-//
-//////////////////////////////////////////////////////////////////////
-// Contributers to the code:
-// - Frans Bouma [FB]
-//////////////////////////////////////////////////////////////////////
+#endif
 
-namespace PRI.ProductivityExtensions.ICollectionableExtensions
-{
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ICollectionable'
-	// ReSharper disable once PartialTypeWithSinglePart
-	public static partial class ICollectionable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ICollectionable'
-	{
-		/// <summary>
-		/// Determines whether the passed in list is null or empty.
-		/// </summary>
-		/// <typeparam name="T">the type of the elements in the list to check</typeparam>
-		/// <param name="toCheck">the list to check.</param>
-		/// <returns>true if the passed in list is null or empty, false otherwise</returns>
-		// PR: was originally extension IList<T>
-		public static bool IsNullOrEmpty<T>(this ICollection<T> toCheck)
-		{
-			return toCheck == null || toCheck.Count <= 0;
-		}
-
-		/// <summary>
-		/// Adds the range defined by source to the destination.
-		/// </summary>
-		/// <param name="destination">The destination.</param>
-		/// <param name="source">The source.</param>
-		// PR: was originally an extension on HashSet<T>
-		public static void AddRange<T>(this ICollection<T> destination, IEnumerable<T> source)
-		{
-			if (destination == null)
-			{
-				throw new ArgumentNullException(nameof(destination));
-			}
-
-			if (source == null)
-			{
-				return;
-			}
-
-			foreach (T element in source)
-			{
-				destination.Add(element);
-			}
-		}
-	}
-}#if (NETSTANDARD2_0 || NET47)
+#if (NETSTANDARD2_0 || NET47)
 //////////////////////////////////////////////////////////////////////
 // BCLExtensions is (c) 2010 Solutions Design. All rights reserved.
 // http://www.sd.nl
@@ -945,12 +781,9 @@ namespace PRI.ProductivityExtensions.ICollectionableExtensions
 // 	- Frans Bouma [FB]
 //////////////////////////////////////////////////////////////////////
 
-namespace PRI.ProductivityExtensions.IDbConnectionExtensions
+namespace HSNXT
 {
-	/// <summary>
-	/// class that contains extension methods that extend <seealso cref="IDbConnection"/>
-	/// </summary>
-	public static class IDbConnectionable
+    public static partial class Extensions
 	{
 		/// <summary>
 		/// A safe close routine for a database connection, which can also dispose the connection, if required.
@@ -1108,7 +941,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
 
 namespace HSNXT
 {
@@ -1317,7 +1150,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
+#if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 namespace HSNXT
 {
@@ -1447,13 +1280,11 @@ namespace HSNXT
 
 	}
 }
-#endifusing System;
+#endif
 
-namespace PRI.ProductivityExtensions.SequenceExtensions
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Sequenceable'
-	public static class Sequenceable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Sequenceable'
+    public static partial class Extensions
 	{
 		/// <summary>
 		/// Compares two sequences to see if they are equal
@@ -1561,7 +1392,8 @@ namespace PRI.ProductivityExtensions.SequenceExtensions
 			return p == 100 ? 0 : p;
 		}
 	}
-}#if (NET40 || NET45)
+}
+#if (NET40 || NET45)
 
 namespace HSNXT
 {
@@ -1629,12 +1461,12 @@ namespace HSNXT
 
 	}
 }
-#endif﻿
+#endif
 #if (NETSTANDARD2_0 || NET47)
 
-namespace PRI.ProductivityExtensions.SocketExtensions
+namespace HSNXT
 {
-	public partial class Socketable
+    public static partial class Extensions
 	{
 #if NET45
 #region based on code from http://blogs.msdn.com/b/pfxteam/archive/2011/12/15/10248293.aspx
@@ -1925,16 +1757,15 @@ namespace HSNXT
 
 	}
 }
-#endif﻿
+
+#endif
 #if (NET47)
 
 #endif
 
-namespace PRI.ProductivityExtensions.TaskExtensions
+namespace HSNXT
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Taskable'
-	public static class Taskable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Taskable'
+    public static partial class Extensions
 	{
 		/// from: http://blogs.msdn.com/b/pfxteam/archive/2011/06/27/10179452.aspx
 		/// <summary>
@@ -2052,15 +1883,16 @@ namespace PRI.ProductivityExtensions.TaskExtensions
 		}
 #endif // NET45
 	}
-}﻿#if (NET47)
+}﻿
+#if (NET47)
 
 #if (NET47)
 
 #endif
 
-namespace PRI.ProductivityExtensions.TcpClientExtensions
+namespace HSNXT
 {
-	public static partial class TcpClientable
+    public static partial class Extensions
 	{
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'TcpClientable.BeginConnect(TcpClient, IPEndPoint, AsyncCallback)'
 		public static IAsyncResult BeginConnect(this TcpClient tcpClient, IPEndPoint endPoint, AsyncCallback asyncCallback)
@@ -2104,7 +1936,7 @@ namespace PRI.ProductivityExtensions.TcpClientExtensions
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
+#if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
@@ -2551,5 +2383,4 @@ namespace HSNXT
 
 	}
 }
-#endif
 #endif
