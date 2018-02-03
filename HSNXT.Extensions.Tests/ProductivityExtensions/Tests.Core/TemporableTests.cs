@@ -106,12 +106,6 @@ namespace Tests.Core
 		}
 
 		[Fact]
-		public void SecondWithValueOtherThan1ResultsInException()
-		{
-			Assert.Throws<ArgumentOutOfRangeException>(() => { TimeSpan actual = 2.Second(); });
-		}
-
-		[Fact]
 		public void MillisecondsResultsInCorrectNumberOfMilliseconds()
 		{
 			TimeSpan actual = 1100.Milliseconds();

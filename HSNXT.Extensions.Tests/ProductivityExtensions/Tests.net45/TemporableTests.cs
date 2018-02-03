@@ -55,7 +55,7 @@ namespace Tests
 		{
 			TimeSpan actual = 10.Years();
 
-			Assert.AreEqual(3650, actual.TotalDays);
+			Assert.AreEqual(3652.4249999999997d, actual.TotalDays);
 		}
 
 		[Test]
@@ -104,12 +104,6 @@ namespace Tests
 			TimeSpan actual = 1.Second();
 
 			Assert.AreEqual(1, actual.TotalSeconds);
-		}
-
-		[Test]
-		public void SecondWithValueOtherThan1ResultsInException()
-		{
-			Assert.Throws<ArgumentOutOfRangeException>(()=> { TimeSpan actual = 2.Second();});
 		}
 
 		[Test]

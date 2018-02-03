@@ -10,22 +10,6 @@ namespace Tests
 	public class when_testing_creating_multicast_delegates
 	{
 		[Test]
-		public void then_null_action_collection_returns_nop()
-		{
-			List<Action<int>> coll = null;
-			var action = coll.Sum();
-			action(42);
-		}
-
-		[Test]
-		public void then_empty_action_collection_returns_nop()
-		{
-			var coll = new List<Action<int>>();
-			var action = coll.Sum();
-			action(42);
-		}
-
-		[Test]
 		public void then_null_func_collection_throws()
 		{
 			List<Func<int, int>> coll = null;

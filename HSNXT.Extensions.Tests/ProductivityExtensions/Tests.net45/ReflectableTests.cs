@@ -76,13 +76,6 @@ namespace Tests
 		}
 
 		[Test]
-		public void AssemblyGetCustomAttributeReturnsNonNullForAssemblyWithAttribute()
-		{
-			var value = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyCopyrightAttribute>();
-			Assert.IsNotNull(value);
-		}
-
-		[Test]
 		public void AssemblyGetCustomAttributeReturnsNullForAssemblyWithoutAttribute()
 		{
 			var value = Assembly.GetExecutingAssembly().GetCustomAttribute<SerializableAttribute>();
@@ -175,13 +168,6 @@ namespace Tests
 		{
 			var b = typeof(UnattributedClass).ReferencesConstructor<String>();
 			Assert.IsFalse(b);
-		}
-
-		[Test]
-		public void AssemblyReferencesConstructorFindsReferencedConstructor()
-		{
-			var b = Assembly.GetExecutingAssembly().ReferencesConstructor<AttributedClass>();
-			Assert.IsTrue(b);
 		}
 
 		[Test]
