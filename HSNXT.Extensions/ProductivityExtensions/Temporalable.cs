@@ -8,28 +8,7 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-        private const int DaysPerYear = 365;
         private const int DaysPerMonth = 30;
-
-        /// <summary>
-        /// Gets a <seealso cref="DateTime"/> that represents the last millisecond of the day represented by <paramref name="date"/>
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        public static DateTime EndOfDay(this DateTime date)
-        {
-            return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59, 999);
-        }
-
-        /// <summary>
-        /// Gets a <seealso cref="DateTime"/> that represents the first  millisecond of the day represented by <paramref name="date"/>
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        public static DateTime BeginningOfDay(this DateTime date)
-        {
-            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, 0);
-        }
 
         /// <summary>
         /// Calculates a final date spanning <paramref name="source"/> after <paramref name="origin"/>
@@ -60,21 +39,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> years.
-        /// <example>
-        /// var oneYear = 1.Years();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow",
-            MessageId = "source*365")]
-        public static TimeSpan Years(this int source)
-        {
-            return new TimeSpan(source * DaysPerYear, 0, 0, 0);
-        }
-
-        /// <summary>
         /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> months.
         /// </summary>
         /// var oneMonth = 1.Months();
@@ -85,91 +49,6 @@ namespace HSNXT
         public static TimeSpan Months(this int source)
         {
             return new TimeSpan(source * DaysPerMonth, 0, 0, 0);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> minutes.
-        /// <example>
-        /// var oneMinute = 1.Minutes();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static TimeSpan Minutes(this int source)
-        {
-            return new TimeSpan(0, 0, source, 0);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> hours.
-        /// <example>
-        /// var oneHour = 1.Hours();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static TimeSpan Hours(this int source)
-        {
-            return new TimeSpan(0, source, 0, 0);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> days.
-        /// <example>
-        /// var oneDay = 1.Days();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static TimeSpan Days(this int source)
-        {
-            return new TimeSpan(source, 0, 0, 0);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning 1 second.
-        /// <example>
-        /// var oneSecond = 1.Second();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static TimeSpan Second(this int source)
-        {
-            if (source != 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(source), source, "'source' must have value of '1'.");
-            }
-#if (NETSTANDARD2_0 || NET47)
-            Contract.EndContractBlock();
-#endif
-            return new TimeSpan(0, 0, 0, 1);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> seconds.
-        /// <example>
-        /// var fiveSeconds = 5.Second();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static TimeSpan Seconds(this int source)
-        {
-            return new TimeSpan(0, 0, 0, source);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="TimeSpan"/> spanning <paramref name="source"/> milliseconds.
-        /// <example>
-        /// var fiftyMilliseconds = 50.Milliseconds();
-        /// </example>
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static TimeSpan Milliseconds(this int source)
-        {
-            return new TimeSpan(0, 0, 0, 0, source);
         }
 
         /// <summary>

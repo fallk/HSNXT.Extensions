@@ -520,7 +520,7 @@ namespace HSNXT
         /// formatterconverter.Convert&lt;int&gt;(value);
         /// </example>
         /// </summary>
-        public static T Convert<T>(this FormatterConverter formatterconverter, Object value)
+        public static T ConvertTo<T>(this FormatterConverter formatterconverter, Object value)
         {
             if (formatterconverter == null) throw new ArgumentNullException("formatterconverter");
 
@@ -617,7 +617,7 @@ namespace HSNXT
         /// iformatterconverter.Convert&lt;int&gt;(value);
         /// </example>
         /// </summary>
-        public static T Convert<T>(this IFormatterConverter iformatterconverter, Object value)
+        public static T ConvertTo<T>(this IFormatterConverter iformatterconverter, Object value)
         {
             if (iformatterconverter == null) throw new ArgumentNullException("iformatterconverter");
 

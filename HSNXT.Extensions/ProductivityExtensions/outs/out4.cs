@@ -387,7 +387,7 @@ namespace HSNXT
     }
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1141,7 +1141,7 @@ namespace HSNXT
     }
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1371,7 +1371,7 @@ namespace HSNXT
     }
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1486,7 +1486,7 @@ namespace HSNXT
     }
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1524,7 +1524,7 @@ namespace HSNXT
     }
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -1937,7 +1937,7 @@ namespace HSNXT
     }
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {
@@ -2121,7 +2121,7 @@ namespace HSNXT
 	}
 }
 #endif
-#if (NETSTANDARD2_0 || NET47)
+#if (NET47)
 
 namespace HSNXT
 {

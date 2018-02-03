@@ -464,7 +464,7 @@ namespace HSNXT
         /// decoder.Convert(bytes, chars, charIndex, charCount, flush, bytesUsed, charsUsed, completed);
         /// </example>
         /// </summary>
-        public static void Convert(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex, Int32 charCount,
+        public static void ConvertTo(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex, Int32 charCount,
             Boolean flush, out Int32 bytesUsed, out Int32 charsUsed, out Boolean completed)
         {
             if (decoder == null) throw new ArgumentNullException("decoder");
@@ -586,7 +586,7 @@ namespace HSNXT
         /// encoder.Convert(chars, bytes, byteIndex, byteCount, flush, charsUsed, bytesUsed, completed);
         /// </example>
         /// </summary>
-        public static void Convert(this System.Text.Encoder encoder, Char[] chars, Byte[] bytes, Int32 byteIndex,
+        public static void ConvertTo(this System.Text.Encoder encoder, Char[] chars, Byte[] bytes, Int32 byteIndex,
             Int32 byteCount, Boolean flush, out Int32 charsUsed, out Int32 bytesUsed, out Boolean completed)
         {
             if (encoder == null) throw new ArgumentNullException("encoder");

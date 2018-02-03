@@ -8,42 +8,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        /// Returns the last few characters of the string with a length
-        /// specified by the given parameter. If the string's length is less than the
-        /// given length the complete string is returned. If length is zero or
-        /// less an empty string is returned
-        /// </summary>
-        /// <param name="s">the string to process</param>
-        /// <param name="length">Number of characters to return</param>
-        /// <returns></returns>
-        // PR: source http://www.extensionmethod.net/Details.aspx?ID=58
-        // Author: C.F. Meijers
-        public static string Right(this string s, int length)
-        {
-            length = Math.Max(length, 0);
-
-            return s.Length > length ? s.Substring(s.Length - length, length) : s;
-        }
-
-        /// <summary>
-        /// Returns the first few characters of the string with a length
-        /// specified by the given parameter. If the string's length is less than the
-        /// given length the complete string is returned. If length is zero or
-        /// less an empty string is returned
-        /// </summary>
-        /// <param name="s">the string to process</param>
-        /// <param name="length">Number of characters to return</param>
-        /// <returns></returns>
-        // PR: source http://www.extensionmethod.net/Details.aspx?ID=57
-        // Author: C.F. Meijers
-        public static string Left(this string s, int length)
-        {
-            length = Math.Max(length, 0);
-
-            return s.Length > length ? s.Substring(0, length) : s;
-        }
-
-        /// <summary>
         /// Replace any instances of individual elements in <paramref name="chars"/> with <paramref name="c"/>
         /// in <paramref name="text"/>.
         /// </summary>
@@ -66,16 +30,6 @@ namespace HSNXT
         }
 #endif
 
-        /// <summary>
-        /// Truncate string <paramref name="text"/> to a maximim length of <paramref name="maxLength"/>
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="maxLength"></param>
-        /// <returns></returns>
-        public static string Truncate(this string text, int maxLength)
-        {
-            return text?.Substring(0, Math.Min(text.Length, maxLength));
-        }
 
         /// <summary>
         /// Convert a string value to an int.
@@ -102,18 +56,6 @@ namespace HSNXT
         {
             int results;
             return !int.TryParse(source, out results) ? default(int) : results;
-        }
-
-        /// <summary>
-        /// Convert a string value to an int.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="defaultValue"></param>
-        /// <returns><paramref name="defaultValue"/> if textual value is not an int or the int value.</returns>
-        public static int ToInt(this string source, int defaultValue = 0)
-        {
-            int results;
-            return !int.TryParse(source, out results) ? defaultValue : results;
         }
 
         /// <summary>
@@ -291,32 +233,6 @@ namespace HSNXT
 
             var x = value.IndexOf(" ", StringComparison.Ordinal);
             return x != -1 ? value.Substring(0, x) : value;
-        }
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Stringable.Initials(string)'
-        public static string Initials(this string value)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Stringable.Initials(string)'
-        {
-            if (value == null)
-            {
-                return null;
-            }
-
-            var items = value.Split(' ');
-            var sb = new StringBuilder();
-            foreach (var e in items.Where(e => e.Length >= 1))
-            {
-                sb.Append(e[0]);
-            }
-
-            return sb.ToString();
-        }
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Stringable.IsEmpty(string)'
-        public static bool IsEmpty(this string value)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Stringable.IsEmpty(string)'
-        {
-            return string.Empty.Equals(value);
         }
     }
 }

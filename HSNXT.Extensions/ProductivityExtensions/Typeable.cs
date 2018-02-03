@@ -1,61 +1,21 @@
-#if (NETCOREAPP1_0 || NETCOREAPP1_2 || NETCOREAPP2_0 || NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
+#if (NETSTANDARD2_0 || NET47)
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-#if (NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
-using HSNXT.PRI.ProductivityExtensions.IEnumerableExtensions;
-
-#endif
 
 namespace HSNXT
 {
     public static partial class Extensions
     {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsStatic(Type)'
-        public static bool IsStatic(this Type type)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsStatic(Type)'
-        {
-            if (type == null) throw new ArgumentNullException(nameof(type));
-#if (NET47)
-			return type.IsAbstract && type.IsSealed;
-#else
-            return type.GetTypeInfo().IsAbstract && type.GetTypeInfo().IsSealed;
-#endif
-        }
-
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsOpenGenericType(Type)'
         public static bool IsOpenGenericType(this Type type)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsOpenGenericType(Type)'
         {
-#if (NET47 || NET451 || NET452 || NET46 || NET461 || NET462)
+#if (NET47)
 			return type.GetGenericTypeArguments().Length == 0 && type.IsGenericType;
 #else
             return type.GetGenericTypeArguments().Length == 0 && type.GetTypeInfo().IsGenericType;
-#endif
-        }
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Typeable.GetGenericTypeArguments(Type)'
-        public static Type[] GetGenericTypeArguments(this Type type)
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable.GetGenericTypeArguments(Type)'
-        {
-#if (NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
-			return type.GenericTypeArguments;
-#else
-#if NET40
-			if (type.IsGenericType && !type.IsGenericTypeDefinition)
-				return type.GetGenericArguments();
-#else
-            var typeInfo = type.GetTypeInfo();
-            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
-                return typeInfo.GenericTypeArguments;
-#endif
-            else
-#if (NETSTANDARD2_0 || NETSTANDARD1_4 || NETSTANDARD1_3 || NET47)
-                return Type.EmptyTypes;
-#else
-				return new Type[0];
-#endif
 #endif
         }
 
@@ -287,11 +247,7 @@ namespace HSNXT
         /// <returns><seealso cref="ConstructorInfo"/> about the default constructor.</returns>
         public static ConstructorInfo GetConstructor(this Type type)
         {
-#if (NET47)
 			return type.GetConstructor(new Type[0]);
-#else
-            return type.GetTypeInfo().DeclaredConstructors.Single(e => !e.GetParameters().Any());
-#endif
         }
     }
 }
