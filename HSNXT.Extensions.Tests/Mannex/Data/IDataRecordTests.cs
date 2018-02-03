@@ -30,7 +30,7 @@ namespace Mannex.Tests.Data
     using System.Data;
     using System.Data.Common;
     using System.Linq;
-    using Mannex.Data;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -41,7 +41,7 @@ namespace Mannex.Tests.Data
         public void GetValueByIndexFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        IDataRecordExtensions.GetValue<object>(null, 0));
+                Extensions.GetValue<object>(null, 0));
             Assert.Equal("record", e.ParamName);
         }
 
@@ -49,7 +49,7 @@ namespace Mannex.Tests.Data
         public void GetValueByNameFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        IDataRecordExtensions.GetValue<object>(null, string.Empty));
+                Extensions.GetValue<object>((IDataRecord)null, string.Empty));
             Assert.Equal("record", e.ParamName);
         }
 

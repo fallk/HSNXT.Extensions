@@ -27,7 +27,7 @@ namespace Mannex.Tests.Text
 
     using System;
     using System.Text;
-    using Mannex.Text;
+    using HSNXT;
     using Xunit;
 
     #endregion

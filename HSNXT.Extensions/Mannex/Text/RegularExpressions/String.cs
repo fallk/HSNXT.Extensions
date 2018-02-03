@@ -39,49 +39,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        /// Indicates whether the string contains a match for the regular 
-        /// expression pattern specified as an argument.
-        /// </summary>
-
-        public static bool IsMatch(this string str, string pattern)
-        {
-            return str.IsMatch(pattern, RegexOptions.None);
-        }
-
-        /// <summary>
-        /// Indicates whether the string contains a match for the regular 
-        /// expression pattern specified as an argument  along with 
-        /// matching options.
-        /// </summary>
-
-        public static bool IsMatch(this string str, string pattern, RegexOptions options)
-        {
-            if (str == null) throw new ArgumentNullException("str");
-            if (pattern == null) throw new ArgumentNullException("pattern");
-            return Regex.IsMatch(str, pattern, options);
-        }
-
-        /// <summary>
-        /// Searches string for an occurrence of the regular expression 
-        /// specified as an argument.
-        /// </summary>
-
-        public static Match Match(this string str, string pattern)
-        {
-            return str.Match(pattern, RegexOptions.None);
-        }
-
-        /// <summary>
-        /// Searches string for an occurrence of the regular expression 
-        /// specified as an argument along with matching options.
-        /// </summary>
-
-        public static Match Match(this string str, string pattern, RegexOptions options)
-        {
-            return str.Match(pattern, options, m => m);
-        }
-
-        /// <summary>
         /// Searches string for an occurrence of the regular expression 
         /// specified as an argument along with matching options.
         /// </summary>
@@ -102,33 +59,6 @@ namespace HSNXT
             if (pattern == null) throw new ArgumentNullException("pattern");
             if (selector == null) throw new ArgumentNullException("selector");
             return selector(Regex.Match(str, pattern, options));
-        }
-
-        /// <summary>
-        /// Searches the specified input string for all occurrences of the 
-        /// regular expression specified as an argument.
-        /// </summary>
-        /// <remarks>
-        /// This method uses deferred execution semantics.
-        /// </remarks>
-
-        public static IEnumerable<Match> Matches(this string str, string pattern)
-        {
-            return str.Matches(pattern, RegexOptions.None);
-        }
-
-        /// <summary>
-        /// Searches the specified input string for all occurrences of the 
-        /// regular expression specified as an argument along with matching
-        /// options.
-        /// </summary>
-        /// <remarks>
-        /// This method uses deferred execution semantics.
-        /// </remarks>
-
-        public static IEnumerable<Match> Matches(this string str, string pattern, RegexOptions options)
-        {
-            return str.Matches(pattern, options, m => m);
         }
 
         /// <summary>

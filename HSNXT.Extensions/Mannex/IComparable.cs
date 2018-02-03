@@ -58,26 +58,14 @@ namespace HSNXT
 
         /// <summary>
         /// Determines if the value lies within a range, given the lower
-        /// (inclusive) and upper (inclusive) bounds.
-        /// </summary>
-
-        public static bool IsBetween<T>(this T value, T lower, T upper)
-            where T : IComparable<T>
-        {
-            if (value == null) throw new ArgumentNullException("value");
-            return value.CompareTo(lower) >= 0 && value.CompareTo(upper) <= 0;
-        }
-
-        /// <summary>
-        /// Determines if the value lies within a range, given the lower
         /// (inclusive) and upper (inclusive) bounds. If the value is <c>null</c>
         /// then so is the result.
         /// </summary>
 
         public static bool? IsBetween<T>(this T? value, T lower, T upper)
-            where T : struct, IComparable<T>
+            where T : struct, IComparable
         {
-            return value != null ? value.Value.IsBetween(lower, upper) : (bool?) null;
+            return value?.IsBetween(lower, upper);
         }
 
         /// <summary>

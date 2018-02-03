@@ -28,7 +28,7 @@ namespace Mannex.Tests.Net
     using System;
     using System.Net;
     using System.Net.Mime;
-    using Mannex.Net;
+    using HSNXT;
     using Xunit;
 
     #endregion

@@ -29,7 +29,7 @@ namespace Mannex.Tests.Text.RegularExpressions
     using System.Linq;
     using System.Text.RegularExpressions;
     using Xunit;
-    using Mannex.Text.RegularExpressions;
+    using HSNXT;
 
     #endregion
 

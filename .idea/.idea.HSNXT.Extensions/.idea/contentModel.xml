@@ -5260,9 +5260,6 @@
             <e p="INotifyPropertyChanged.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
-            <e p="Common" t="Include">
-              <e p="DbConnection.cs" t="Include" />
-            </e>
             <e p="DataRow.cs" t="Include" />
             <e p="DataTable.cs" t="Include" />
             <e p="IDataReader.cs" t="Include" />
@@ -5283,7 +5280,6 @@
           <e p="Exception.cs" t="Include" />
           <e p="Func+Action.Apply.cs" t="Include" />
           <e p="Func+Action.Apply.tt" t="Include" />
-          <e p="Func.cs" t="Include" />
           <e p="Globalization" t="Include">
             <e p="Calendar.cs" t="Include" />
             <e p="DateTimeFormatInfo.cs" t="Include" />
@@ -5318,7 +5314,6 @@
           </e>
           <e p="OperatingSystem.cs" t="Include" />
           <e p="Predicate.cs" t="Include" />
-          <e p="Publics.cs" t="Include" />
           <e p="Reflection" t="Include">
             <e p="Assembly.cs" t="Include" />
             <e p="ICustomAttributeProvider.cs" t="Include" />
@@ -5326,11 +5321,6 @@
             <e p="PropertyInfo.cs" t="Include" />
           </e>
           <e p="RuntimeMethodHandle.cs" t="Include" />
-          <e p="Security" t="Include">
-            <e p="Cryptography" t="Include">
-              <e p="Array.cs" t="Include" />
-            </e>
-          </e>
           <e p="Single.cs" t="Include" />
           <e p="String.cs" t="Include" />
           <e p="Text" t="Include">
@@ -5369,7 +5359,6 @@
                 <e p="Object.cs" t="Include" />
               </e>
             </e>
-            <e p="StringHtml.cs" t="Include" />
             <e p="UI" t="Include">
               <e p="Control.cs" t="Include" />
               <e p="DataBindingExtensions.cs" t="Include" />

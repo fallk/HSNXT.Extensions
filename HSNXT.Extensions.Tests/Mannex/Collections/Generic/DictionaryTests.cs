@@ -27,7 +27,7 @@ namespace Mannex.Tests.Collections.Generic
 
     using System;
     using System.Collections.Generic;
-    using Mannex.Collections.Generic;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -38,7 +38,7 @@ namespace Mannex.Tests.Collections.Generic
         public void FindFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() => 
-                DictionaryExtensions.Find<object, object>(null, null));
+                Extensions.Find<object, object>(null, null));
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void GetFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => DictionaryExtensions.GetValue<object, object>(null, "foo", delegate { return null; }));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.GetValue<object, object>(null, "foo", delegate { return null; }));
             Assert.Equal(e.ParamName, "dictionary");
         }
 
@@ -100,7 +100,7 @@ namespace Mannex.Tests.Collections.Generic
         public void PopFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                DictionaryExtensions.Pop<object, object>(null, new object()));
+                Extensions.Pop<object, object>(null, new object()));
             Assert.Equal(e.ParamName, "dictionary");
         }
 

@@ -25,7 +25,7 @@ namespace Mannex.Tests.Collections.Generic
 {
     #region Imports
 
-    using Mannex.Collections.Generic;
+    using HSNXT;
     using Xunit;
 
     #endregion

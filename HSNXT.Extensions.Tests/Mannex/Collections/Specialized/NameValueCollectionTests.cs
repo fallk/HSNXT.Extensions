@@ -28,7 +28,7 @@ namespace Mannex.Tests.Collections.Specialized
     using System;
     using System.Collections.Specialized;
     using System.Globalization;
-    using Mannex.Collections.Specialized;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -39,7 +39,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void FilterFailsWithNullThisAndPredicate()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                NameValueCollectionExtensions.Filter<NameValueCollection>(null, delegate { return false; }));
+                Extensions.Filter<NameValueCollection>((NameValueCollection)null, delegate { return false; }));
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void FilterFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                NameValueCollectionExtensions.Filter<NameValueCollection>(null, delegate { return false; }, k => k));
+                Extensions.Filter<NameValueCollection>(null, delegate { return false; }, k => k));
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void FilterByPrefixFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                NameValueCollectionExtensions.FilterByPrefix<NameValueCollection>(null, "prefix"));
+                Extensions.FilterByPrefix<NameValueCollection>(null, "prefix"));
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void UpdateFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        NameValueCollectionExtensions.Update(null, new NameValueCollection()));
+                Extensions.Update(null, new NameValueCollection()));
             Assert.Equal("collection", e.ParamName);
         }
 
@@ -211,7 +211,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void AsEnumerableFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                NameValueCollectionExtensions.AsEnumerable(null));
+                Extensions.AsEnumerable((NameValueCollection)null));
             Assert.Equal("collection", e.ParamName);
         }
 
@@ -269,7 +269,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void ContainsKeyFailsWithNullCollection()
         {
             var e = Assert.Throws<ArgumentNullException>(() => 
-                        NameValueCollectionExtensions.ContainsKey(null, null));
+                Extensions.ContainsKey(null, null));
             Assert.Equal("collection", e.ParamName);
         }
 

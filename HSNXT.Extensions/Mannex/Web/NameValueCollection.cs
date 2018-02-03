@@ -38,20 +38,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        /// Creates a query string from the key and value pairs found
-        /// in the collection.
-        /// </summary>
-        /// <remarks>
-        /// A question mark (?) is prepended if the resulting query string
-        /// is not empty.
-        /// </remarks>
-
-        public static string ToQueryString(this NameValueCollection collection)
-        {
-            return W3FormEncode(collection, "?", null);
-        }
-
-        /// <summary>
         /// Encodes the content of the collection to a string
         /// suitably formatted per the <c>application/x-www-form-urlencoded</c>
         /// MIME media type.

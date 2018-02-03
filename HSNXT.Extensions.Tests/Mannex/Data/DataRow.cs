@@ -30,7 +30,7 @@ namespace Mannex.Tests.Data
     using System.Data;
     using System.Linq;
     using System.Web.UI.WebControls;
-    using Mannex.Data;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -49,7 +49,7 @@ namespace Mannex.Tests.Data
         public void TrySetFieldWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        DataRowExtensions.TrySetField(null, "Monty", "Python"));
+                Extensions.TrySetField(null, "Monty", "Python"));
             Assert.Equal("row", e.ParamName);
         }
 

@@ -39,15 +39,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        /// Formats bytes in hexadecimal format.
-        /// </summary>
-
-        public static string ToHex(this byte[] buffer)
-        {
-            return ToHex(buffer, 0, buffer.Length);
-        }
-
-        /// <summary>
         /// Formats bytes in hexadecimal format. Additional parameters
         /// specify the segment of the array for format.
         /// </summary>

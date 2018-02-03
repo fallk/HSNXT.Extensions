@@ -33,7 +33,6 @@ namespace HSNXT
     #if NET4
     using System.Threading.Tasks;
     #endif
-    using Threading;
 
     #endregion
 

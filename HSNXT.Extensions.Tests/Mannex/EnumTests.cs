@@ -29,17 +29,12 @@ namespace Mannex.Tests
     using System.IO;
     using System.Linq;
     using Xunit;
+    using HSNXT;
 
     #endregion
 
     public class EnumTests
     {
-        [Fact]
-        public void GetFlagsFailsWithNonEnumTypeArgument()
-        {
-            Assert.Throws<NotSupportedException>(() => FileAttributes.Archive.GetFlags<string>());
-        }
-
         [Fact]
         public void GetFlagsFailsWithValueMismatchingTypeArgument()
         {

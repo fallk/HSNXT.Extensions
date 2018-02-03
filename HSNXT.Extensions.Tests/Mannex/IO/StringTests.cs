@@ -28,9 +28,8 @@ namespace Mannex.Tests.IO
     using System;
     using System.IO;
     using System.Linq;
-    using Mannex.IO;
+    using HSNXT;
     using Xunit;
-    using StringExtensions = Mannex.IO.StringExtensions;
 
     #endregion
 
@@ -39,10 +38,10 @@ namespace Mannex.Tests.IO
         [Fact]
         public void ToFileNameSafeFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.ToFileNameSafe(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ToFileNameSafe(null));
             Assert.Equal("str", e.ParamName);
             
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.ToFileNameSafe(null, string.Empty));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.ToFileNameSafe(null, string.Empty));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -90,10 +89,10 @@ namespace Mannex.Tests.IO
         [Fact]
         public void ToPathNameSafeFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.ToPathNameSafe(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ToPathNameSafe(null));
             Assert.Equal("str", e.ParamName);
 
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.ToPathNameSafe(null, string.Empty));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.ToPathNameSafe(null, string.Empty));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -141,7 +140,7 @@ namespace Mannex.Tests.IO
         [Fact]
         public void ReadWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Read(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Read(null));
             Assert.Equal("str", e.ParamName);
         }
 

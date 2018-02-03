@@ -28,7 +28,7 @@ namespace Mannex.Tests.Collections
     using System;
     using System.Collections;
     using System.Linq;
-    using Mannex.Collections;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -38,7 +38,7 @@ namespace Mannex.Tests.Collections
         [Fact]
         public void AsEnumerableFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => BitArrayExtensions.AsEnumerable(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.AsEnumerable((BitArray)null));
             Assert.Equal("array", e.ParamName);
         }
 

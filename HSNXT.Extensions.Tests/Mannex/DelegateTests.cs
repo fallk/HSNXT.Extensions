@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     using System;
@@ -43,7 +45,7 @@ namespace Mannex.Tests
         public void InvokeAsEventHandlerWhileIgnoringErrorsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                DelegateExtensions.InvokeAsEventHandlerWhileIgnoringErrors(null, new object(), EventArgs.Empty));
+                Extensions.InvokeAsEventHandlerWhileIgnoringErrors(null, new object(), EventArgs.Empty));
             Assert.Equal("del", e.ParamName);
         }
 

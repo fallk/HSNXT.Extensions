@@ -21,6 +21,8 @@
 //
 #endregion
 
+using System.Collections;
+
 namespace Mannex.Tests.Collections.Generic
 {
     #region Imports
@@ -28,7 +30,7 @@ namespace Mannex.Tests.Collections.Generic
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Mannex.Collections.Generic;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -38,7 +40,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void LastIndexFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.LastIndex<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.LastIndex<object>(null));
         }
 
         [Fact]
@@ -58,7 +60,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PushFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Push(null, new object()));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Push(null, new object()));
         }
 
         [Fact]
@@ -74,7 +76,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PopFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Pop<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Pop<object>(null));
         }
 
         [Fact]
@@ -99,7 +101,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryPopFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.TryPop<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.TryPop<object>(null));
         }
 
         [Fact]
@@ -126,7 +128,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PeekFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Peek<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Peek<object>(null));
         }
 
         [Fact]
@@ -144,7 +146,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryPeekFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.TryPeek<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.TryPeek<object>(null));
         }
 
         [Fact]
@@ -164,7 +166,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void UnshiftFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Unshift(null, new object()));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Unshift(null, new object()));
         }
 
         [Fact]
@@ -181,7 +183,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void ShiftFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Shift<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Shift<object>(null));
         }
 
         [Fact]
@@ -206,7 +208,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryShiftFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.TryShift<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.TryShift<object>(null));
         }
 
         [Fact]
@@ -281,8 +283,8 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void SliceFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Slice<object>(null, 0));
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.Slice<object>(null, 0, 0));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Slice<object>(null, 0));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Slice<object>(null, 0, 0));
         }
 
         [Fact]
@@ -324,10 +326,10 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void BinarySearchFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.BinarySearch(null, "foo"));
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.BinarySearch(null, 0, 10, "foo"));
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.BinarySearch(null, "foo", null));
-            Assert.Throws<ArgumentNullException>(() => ListExtensions.BinarySearch(null, 0, 10, "foo", null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, "foo"));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo"));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch((IList)null, "foo", null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo", null));
         }
  
         [Fact]
@@ -371,7 +373,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void AsReadOnlyWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => ListExtensions.AsReadOnly<object>(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.AsReadOnly<object>(null));
             Assert.Equal("list", e.ParamName);
         }
 
@@ -397,7 +399,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PopAtFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => ListExtensions.PopAt<object>(null, 0));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.PopAt<object>(null, 0));
             Assert.Equal("list", e.ParamName);
         }
 
@@ -424,7 +426,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryPopAtFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => ListExtensions.TryPopAt<object>(null, 0));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.TryPopAt<object>(null, 0));
             Assert.Equal("list", e.ParamName);
         }
 

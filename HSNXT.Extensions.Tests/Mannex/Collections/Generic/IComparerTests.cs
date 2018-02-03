@@ -27,7 +27,7 @@ namespace Mannex.Tests.Collections.Generic
 
     using System;
     using System.Collections.Generic;
-    using Mannex.Collections.Generic;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -37,7 +37,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void InvertFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => IComparerExtensions.Invert<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Invert<object>(null));
         }
 
         [Fact]

@@ -338,18 +338,7 @@ namespace HSNXT
 
         public static int BinarySearch<T>(this IList<T> list, T value)
         {
-            return list.BinarySearch(value, null);
-        }
-
-        /// <summary>
-        /// Searches the entire sorted list for a value using the specified 
-        /// <see cref="IComparer{T}"/> implementation. 
-        /// </summary>
-
-        public static int BinarySearch<T>(this IList<T> list, T value, IComparer<T> comparer)
-        {
-            if (list == null) throw new ArgumentNullException("list");
-            return list.BinarySearch(0, list.Count, value, comparer);
+            return list.BinarySearch(0, list.Count, value, null);
         }
 
         /// <summary>

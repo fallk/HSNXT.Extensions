@@ -27,7 +27,7 @@ namespace Mannex.Tests.Threading
 
     using System;
     using System.Threading;
-    using Mannex.Threading;
+    using HSNXT;
     using Xunit;
 
     #endregion

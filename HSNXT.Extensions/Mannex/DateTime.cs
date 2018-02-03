@@ -98,16 +98,6 @@ namespace HSNXT
 
         /// <summary>
         /// Gets a <see cref="DateTime"/> that represents the first day of 
-        /// the month of this <see cref="DateTime"/>.
-        /// </summary>
-
-        public static DateTime FirstDayOfMonth(this DateTime time)
-        {
-            return new DateTime(time.Year, time.Month, 1, time.Hour, time.Minute, time.Second, time.Millisecond, time.Kind);
-        }
-
-        /// <summary>
-        /// Gets a <see cref="DateTime"/> that represents the first day of 
         /// the year of this <see cref="DateTime"/>.
         /// </summary>
 

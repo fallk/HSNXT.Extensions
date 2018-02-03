@@ -77,41 +77,6 @@ namespace HSNXT
                 || others.Any(value.HasFlag);
         }
 
-        /// <summary>
-        /// Returns a sequence of the enumeration members that are flagged
-        /// in the given enumeration value.
-        /// </summary>
-        /// <exception cref="NotSupportedException">
-        /// <typeparam name="T"/> is not an enumeration.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// The <paramref name="value"/> argument is not an instance of 
-        /// the enumeration <typeparamref name="T"/>.
-        /// </exception>
-
-        public static IEnumerable<T> GetFlags<T>(this Enum value)
-        {
-            var type = value.GetType();
-
-            if (!typeof(T).IsEnum)
-            {
-                throw new NotSupportedException(string.Format(
-                    @"{0} is not an enumeration and therefore an invalid type argument for {1}.",
-                    typeof(T), MethodBase.GetCurrentMethod()));
-            }
-
-            if (!typeof(T).IsEquivalentTo(type))
-                throw new ArgumentException(null, "value");
-
-            return type.IsDefined(typeof(FlagsAttribute), false)
-                 ? from Enum flag in Enum.GetValues(type)
-                   where value.HasFlag(flag)
-                   select (T) (object) flag
-                 : Enum.IsDefined(type, value) 
-                 ? Enumerable.Repeat((T)(object) value, 1) 
-                 : Enumerable.Empty<T>();
-        }
-
         #endif
     }
 }

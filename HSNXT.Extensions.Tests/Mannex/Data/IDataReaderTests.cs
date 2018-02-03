@@ -28,8 +28,8 @@ namespace Mannex.Tests.Data
     using System;
     using System.Data;
     using System.Linq;
-    using Mannex.Collections.Generic;
-    using Mannex.Data;
+    using HSNXT;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -40,7 +40,7 @@ namespace Mannex.Tests.Data
         public void SelectFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        IDataReaderExtensions.Select<object>(null, delegate { throw new NotImplementedException(); }));
+                Extensions.Select<object>(null, delegate { throw new NotImplementedException(); }));
             Assert.Equal("reader", e.ParamName);
         }
 

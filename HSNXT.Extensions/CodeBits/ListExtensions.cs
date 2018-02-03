@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace HSNXT
 {
-    public static class ListExtensions
+    public static partial class Extensions
     {
         public static void AddRange<T>(this IList<T> list, IEnumerable<T> items, Func<T, bool> predicate)
         {

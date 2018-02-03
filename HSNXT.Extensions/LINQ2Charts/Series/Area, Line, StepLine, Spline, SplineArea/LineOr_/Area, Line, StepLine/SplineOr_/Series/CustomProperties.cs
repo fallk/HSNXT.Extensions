@@ -7,8 +7,8 @@
         /// </summary>
         public double LineTension
         {
-            get { return this.Get<double>("LineTension"); }
-            set { this.Set("LineTension", value.Between(0, 2) ? value : 0.8); }
+            get => this.Get<double>("LineTension");
+            set => this.Set("LineTension", value.Between(0, 2) ? value : 0.8);
         }
     }
 }

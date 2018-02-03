@@ -28,7 +28,7 @@ namespace HSNXT
 
     #if NET4
 
-    partial class TupleExtensions
+    public static partial class Extensions
     {
         /// <summary>
         /// Returns a <see cref="IEnumerable{T}"/> of <see cref="object"/> 

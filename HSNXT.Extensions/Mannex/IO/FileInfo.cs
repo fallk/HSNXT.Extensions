@@ -38,26 +38,6 @@ namespace HSNXT
 
     public static partial class Extensions
     {
-        /// <summary>
-        /// Reads all lines from the file using deferred semantics.
-        /// The encoding is selected using byte order mark detection.
-        /// </summary>
-
-        public static IEnumerable<string> ReadLines(this FileInfo info)
-        {
-            return ReadLines(info, null);
-        }
-
-        /// <summary>
-        /// Reads all lines from the file using deferred semantics.
-        /// </summary>
-
-        public static IEnumerable<string> ReadLines(this FileInfo info, Encoding encoding)
-        {
-            if (info == null) throw new ArgumentNullException("info");
-            return ReadLinesImpl(info.FullName, encoding);
-        }
-
         static IEnumerable<string> ReadLinesImpl(string path, Encoding encoding)
         {
             var reader = encoding == null 

@@ -30,7 +30,7 @@ namespace Mannex.Tests.Web.Hosting
     using System.Linq;
     using System.Text;
     using System.Web.Hosting;
-    using Mannex.Web.Hosting;
+    using HSNXT;
     using Xunit;
 
     #endregion

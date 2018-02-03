@@ -28,7 +28,7 @@ namespace Mannex.Tests.Xml.Linq
     using System;
     using System.Linq;
     using System.Xml.Linq;
-    using Mannex.Xml.Linq;
+    using HSNXT;
     using Xunit;
 
     #endregion

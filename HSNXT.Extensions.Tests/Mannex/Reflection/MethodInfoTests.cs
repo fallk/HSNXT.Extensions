@@ -26,7 +26,7 @@ namespace Mannex.Tests.Reflection
     #region Imports
 
     using System;
-    using Mannex.Reflection;
+    using HSNXT;
     using Xunit;
 
     #endregion

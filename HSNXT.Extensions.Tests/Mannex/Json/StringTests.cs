@@ -25,9 +25,8 @@ namespace Mannex.Tests.Json
 {
     #region Imports
 
-    using Mannex.Json;
+    using HSNXT;
     using Xunit;
-    using StringExtensions = Mannex.Json.StringExtensions;
 
     #endregion
 
@@ -36,7 +35,7 @@ namespace Mannex.Tests.Json
         [Fact]
         public void ToJsonStringWithNullThisReturnJsonNull()
         {
-            Assert.Equal("null", StringExtensions.ToJsonString(null));
+            Assert.Equal("null", Extensions.ToJsonString((string)null));
         }
 
         [Fact]

@@ -24,7 +24,7 @@
 namespace Mannex.Tests.Threading.Tasks
 {
     using System;
-    using Mannex.Threading.Tasks;
+    using HSNXT;
     using Xunit;
 
     public class ExceptionTests

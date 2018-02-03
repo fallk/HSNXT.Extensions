@@ -27,7 +27,7 @@ namespace Mannex.Tests.Collections.Generic
 
     using System;
     using System.Collections.Generic;
-    using Mannex.Collections.Generic;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -37,7 +37,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void EqualsFuncWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => IEqualityComparerExtensions.EqualsFunc<object>(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.EqualsFunc<object>(null));
             Assert.Equal("comparer", e.ParamName);
         }
 
@@ -51,7 +51,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void GetHashCodeFuncWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => IEqualityComparerExtensions.GetHashCodeFunc<object>(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.GetHashCodeFunc<object>(null));
             Assert.Equal("comparer", e.ParamName);
         }
 

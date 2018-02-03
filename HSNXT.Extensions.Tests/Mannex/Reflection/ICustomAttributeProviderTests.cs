@@ -29,7 +29,7 @@ namespace Mannex.Tests.Reflection
     using System.ComponentModel;
     using System.Linq;
     using System.Reflection;
-    using Mannex.Reflection;
+    using HSNXT;
     using Xunit;
 
     #endregion

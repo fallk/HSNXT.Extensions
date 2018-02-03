@@ -1,4 +1,7 @@
-﻿using System.Xml;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Xml;
 using System.Xml.Schema;
 
 namespace HSNXT
@@ -27,6 +30,20 @@ namespace HSNXT
             }
             
             LoadOpCodes();
+            
+            // Mannex
+            var method = typeof(Exception).GetMethod("PrepForRemoting", 
+                BindingFlags.Instance | BindingFlags.NonPublic, 
+                /* binder */ null, Type.EmptyTypes, null);
+
+            PrepForRemoting = method != null
+                ? (Func<Exception, Exception>) Delegate.CreateDelegate(typeof(Func<Exception, Exception>), method)
+                : (e => e);
+            
+            _badFileNameChars = Path.GetInvalidFileNameChars();
+            _badFileNameCharsPattern = Patternize(_badFileNameChars);
+            _badPathChars = Path.GetInvalidPathChars();
+            _badPathCharsPattern = Patternize(_badPathChars);
         }
 
     }

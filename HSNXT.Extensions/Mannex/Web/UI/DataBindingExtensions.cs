@@ -99,38 +99,7 @@ namespace HSNXT
         }
 #endif
         
-        /// <summary>
-        /// Format string using <paramref name="args"/> as sources for
-        /// data-binding replacements.
-        /// </summary>
-        /// <remarks>
-        /// This method implements most of what is described in
-        /// <a href="http://www.python.org/dev/peps/pep-3101/">PEP 3101 (Advanced String Formatting)</a> 
-        /// from Python.
-        /// </remarks>
-
-        public static string FormatWith(this string format, params object[] args)
-        {
-            return format.FormatWith(null, args);
-        }
-
 #if NetFX
-        /// <summary>
-        /// Format string using <paramref name="args"/> as sources for
-        /// data-binding replacements and <paramref name="provider"/> 
-        /// for cultural formatting.
-        /// </summary>
-        /// <remarks>
-        /// This method implements most of what is described in
-        /// <a href="http://www.python.org/dev/peps/pep-3101/">PEP 3101 (Advanced String Formatting)</a> 
-        /// from Python.
-        /// </remarks>
-
-        public static string FormatWith(this string format, IFormatProvider provider, params object[] args)
-        {
-            return format.FormatWith(provider, FormatTokenBinder, args);
-        }
-
         static string FormatTokenBinder(string token, object[] args, IFormatProvider provider)
         {
             Debug.Assert(token != null);

@@ -21,6 +21,10 @@
 //
 #endregion
 
+using HSNXT;
+using HSNXT.Linq;
+using HSNXT.Linq.Charting;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -36,7 +40,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -51,7 +55,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis1()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object>((Action)null, null)).ParamName);
         }
         
         [Fact]
@@ -68,7 +72,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis2()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -85,7 +89,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis3()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -102,7 +106,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis4()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -119,7 +123,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis5()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -136,7 +140,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis6()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -153,7 +157,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis7()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -170,7 +174,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis8()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -187,7 +191,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis9()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -204,7 +208,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis10()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -221,7 +225,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis11()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -238,7 +242,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis12()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -255,7 +259,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis13()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -272,7 +276,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis14()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -289,7 +293,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis15()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]
@@ -306,7 +310,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis16()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => ActionExtensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
+            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object, object, object, object, object, object, object, object, object, object, object, object, object, object, object, object>(null, null)).ParamName);
         }
         
         [Fact]

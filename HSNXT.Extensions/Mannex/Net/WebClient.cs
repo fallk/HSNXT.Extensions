@@ -30,7 +30,6 @@ namespace HSNXT
     using System.Net;
     using System.Net.Mime;
     using System.Text;
-    using Mime;
 
     #endregion
 

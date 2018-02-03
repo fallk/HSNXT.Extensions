@@ -27,6 +27,7 @@ namespace Mannex.Tests
 
     using System;
     using Xunit;
+    using HSNXT;
 
     #endregion
 
@@ -47,13 +48,6 @@ namespace Mannex.Tests
             Assert.Equal(4, new DateTime(2014, 10, 15).GetQuarter());
             Assert.Equal(4, new DateTime(2014, 11, 15).GetQuarter());
             Assert.Equal(4, new DateTime(2014, 12, 15).GetQuarter());
-        }
-
-        [Fact]
-        public void FirstDayOfMonth()
-        {
-            var input = new DateTime(2014, 6, 15, 1, 2, 3, 4, DateTimeKind.Local);
-            Assert.Equal(new DateTime(2014, 6, 1, 1, 2, 3, 4, DateTimeKind.Local), input.FirstDayOfMonth());
         }
 
         [Fact]

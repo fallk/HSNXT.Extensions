@@ -26,7 +26,7 @@ namespace HSNXT
     using System;
     using System.Diagnostics;
 
-    partial class ActionExtensions
+    public static partial class Extensions
     {
         
         /// <summary>

@@ -29,7 +29,6 @@ namespace HSNXT
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using Collections.Generic;
     #if NetFX
     using TextFieldParser = Microsoft.VisualBasic.FileIO.TextFieldParser;
     using FieldType = Microsoft.VisualBasic.FileIO.FieldType;

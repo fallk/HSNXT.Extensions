@@ -41,17 +41,6 @@ namespace HSNXT
     {
         static readonly Func<Exception, Exception> PrepForRemoting;
 
-        static ExceptionExtensions()
-        {
-            var method = typeof(Exception).GetMethod("PrepForRemoting", 
-                             BindingFlags.Instance | BindingFlags.NonPublic, 
-                             /* binder */ null, Type.EmptyTypes, null);
-
-            PrepForRemoting = method != null
-                            ? (Func<Exception, Exception>) Delegate.CreateDelegate(typeof(Func<Exception, Exception>), method)
-                            : (e => e);
-        }
-
         /// <summary>
         /// Preserve stack trace for re-throwing. 
         /// </summary>

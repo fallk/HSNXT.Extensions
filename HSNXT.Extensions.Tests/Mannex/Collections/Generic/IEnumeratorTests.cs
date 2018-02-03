@@ -27,7 +27,7 @@ namespace Mannex.Tests.Collections.Generic
 
     using System;
     using System.Linq;
-    using Mannex.Collections.Generic;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -38,7 +38,7 @@ namespace Mannex.Tests.Collections.Generic
         public void ReadWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                IEnumeratorExtensions.Read<object>(null));
+                Extensions.Read<object>(null));
             Assert.Equal("enumerator", e.ParamName);
         }
 
@@ -62,7 +62,7 @@ namespace Mannex.Tests.Collections.Generic
         public void TryReadWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                IEnumeratorExtensions.TryRead<object>(null));
+                Extensions.TryRead<object>(null));
             Assert.Equal("enumerator", e.ParamName);
         }
 

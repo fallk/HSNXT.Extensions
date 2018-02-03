@@ -3,9 +3,9 @@
 // INTENTIONALLY HERE
 // DO NOT MOVE TO ROOT NAMESPACE
 
-namespace HSNXT.Linq.Charting
+namespace HSNXT.Linq
 {
-    public static class Extensions
+    public static class Linq2ChartExtensionsDoNotMove2
     {
         public static bool Between(this int n, int lower, int upper)
         {

@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -74,7 +76,7 @@ namespace Mannex.Tests
         public void OnceFailsWithNullHandler()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                EventHandlerExtensions.Once(null, delegate { }, delegate { }));
+                Extensions.Once(null, delegate { }, delegate { }));
             Assert.Equal("handler", e.ParamName);
         }
 
@@ -98,7 +100,7 @@ namespace Mannex.Tests
         public void OnceTFailsWithNullHandler()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                EventHandlerExtensions.Once<EventArgs>(null, delegate { }, delegate { }));
+                Extensions.Once<EventArgs>(null, delegate { }, delegate { }));
             Assert.Equal("handler", e.ParamName);
         }
 

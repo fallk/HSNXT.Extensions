@@ -30,8 +30,6 @@ namespace HSNXT
     using System.Data;
     using System.IO;
     using System.Linq;
-    using Collections.Generic;
-    using IO;
 
     #endregion
 
@@ -41,6 +39,7 @@ namespace HSNXT
 
     public static partial class Extensions
     {
+#if NetFX
         /// <summary>
         /// Parses delimited text like CSV (command-separated values) into
         /// a <see cref="DataTable"/> object given a set of columns to bind
@@ -123,6 +122,7 @@ namespace HSNXT
 
             return table;
         }
+#endif
 
         /// <summary>
         /// Parses text with fixed width fields into a <see cref="DataTable"/> 

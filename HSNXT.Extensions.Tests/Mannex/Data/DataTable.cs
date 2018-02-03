@@ -30,7 +30,7 @@ namespace Mannex.Tests.Data
     using System.Data;
     using System.Linq;
     using System.Web.UI.WebControls;
-    using Mannex.Data;
+    using HSNXT;
     using Xunit;
 
     #endregion
@@ -53,7 +53,7 @@ namespace Mannex.Tests.Data
         public void FindColumnsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        DataTableExtensions.FindColumns(null, new string[0]));
+                Extensions.FindColumns(null, new string[0]));
             Assert.Equal("table", e.ParamName);
         }
 
@@ -77,7 +77,7 @@ namespace Mannex.Tests.Data
         public void SetColumnsOrderFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        DataTableExtensions.SetColumnsOrder(null, new DataColumn[0]));
+                Extensions.SetColumnsOrder(null, new DataColumn[0]));
             Assert.Equal("table", e.ParamName);
         }
 

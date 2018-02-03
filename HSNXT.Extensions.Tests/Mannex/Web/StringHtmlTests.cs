@@ -26,7 +26,7 @@ namespace Mannex.Tests.Web
     #region Imports
 
     using System;
-    using Mannex.Web;
+    using HSNXT;
     using Xunit;
 
     #endregion

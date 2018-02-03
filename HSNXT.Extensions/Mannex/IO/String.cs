@@ -45,14 +45,6 @@ namespace HSNXT
         static readonly char[] _badPathChars;
         static readonly string _badPathCharsPattern;
 
-        static StringExtensions()
-        {
-            _badFileNameChars = Path.GetInvalidFileNameChars();
-            _badFileNameCharsPattern = Patternize(_badFileNameChars);
-            _badPathChars = Path.GetInvalidPathChars();
-            _badPathCharsPattern = Patternize(_badPathChars);
-        }
-
         static string Patternize(IEnumerable<char> chars)
         {
             Debug.Assert(chars != null);

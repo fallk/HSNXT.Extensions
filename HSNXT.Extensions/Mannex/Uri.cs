@@ -32,8 +32,6 @@ namespace HSNXT
     using System.Net;
     using System.Text;
     using System.Web;
-    using Collections.Specialized;
-    using Web;
 
     #endregion
 

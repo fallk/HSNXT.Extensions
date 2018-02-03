@@ -27,7 +27,7 @@ namespace Mannex.Tests.Threading
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using Mannex.Threading;
+    using HSNXT;
     using Xunit;
 
     public class WaitHandleTests

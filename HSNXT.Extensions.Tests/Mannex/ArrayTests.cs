@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -39,7 +41,7 @@ namespace Mannex.Tests
         public void ToHexFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                ArrayExtensions.ToHex(null, 0, 0, new StringBuilder()));
+                Extensions.ToHex(null, 0, 0, new StringBuilder()));
         }
 
         [Fact]
@@ -101,7 +103,7 @@ namespace Mannex.Tests
         public void RotateFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        ArrayExtensions.Rotate<object>(null));
+                Extensions.Rotate<object>(null));
             Assert.Equal("array", e.ParamName);
         }
 
@@ -127,11 +129,11 @@ namespace Mannex.Tests
             ArgumentNullException e1, e2;
 
             e1 = Assert.Throws<ArgumentNullException>(() =>
-                     ArrayExtensions.Update<object, object>(null, new object[0], (t, s, i) => -1));
+                Extensions.Update<object, object>(null, new object[0], (t, s, i) => -1));
             Assert.Equal("target", e1.ParamName);
 
             e2 = Assert.Throws<ArgumentNullException>(() =>
-                     ArrayExtensions.Update<object, object>(null, new object[0], (t, s, i) => -1));
+                Extensions.Update<object, object>(null, new object[0], (t, s, i) => -1));
             Assert.Equal("target", e2.ParamName);
         }
 
@@ -194,7 +196,7 @@ namespace Mannex.Tests
         public void RemoveFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                ArrayExtensions.Remove(null, 0));
+                Extensions.Remove((int[])null, 0));
             Assert.Equal("array", e.ParamName);
         }
 
@@ -250,7 +252,7 @@ namespace Mannex.Tests
         public void PartitionFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                ArrayExtensions.Partition<object, object>(null, 0, delegate { return null; }));
+                Extensions.Partition<object, object>(null, 0, delegate { return null; }));
             Assert.Equal("array", e.ParamName);
         }
 
@@ -294,7 +296,7 @@ namespace Mannex.Tests
         public void PartitionStrictlyFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                ArrayExtensions.PartitionStrictly<object, object>(null, 0, delegate { return null; }));
+                Extensions.PartitionStrictly<object, object>(null, 0, delegate { return null; }));
             Assert.Equal("array", e.ParamName);
         }
 
