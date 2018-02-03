@@ -4685,6 +4685,11 @@
           </e>
         </e>
         <e p="ExtensionsHelper.cs" t="Include" />
+        <e p="FizzWare.NBuilder" t="Include">
+          <e p="MemberInfoExtensions.cs" t="Include" />
+          <e p="ObjectExtensions.cs" t="Include" />
+          <e p="TypeExtensions.cs" t="Include" />
+        </e>
         <e p="HSNXT.Extensions.csproj" t="IncludeRecursive" />
         <e p="HSNXT.Extensions.csproj.DotSettings" t="Include" />
         <e p="LINQ2Charts" t="Include">
@@ -5398,6 +5403,26 @@
           </e>
         </e>
         <e p="packages.config" t="Include" />
+        <e p="ProductivityExtensions" t="Include">
+          <e p="NegotiateStreamable.g.cs" t="Include" />
+          <e p="outs" t="Include">
+            <e p="out.cs" t="Include" />
+            <e p="out2.cs" t="Include" />
+            <e p="out3.cs" t="Include" />
+            <e p="out4.cs" t="Include" />
+            <e p="out5.cs" t="Include" />
+            <e p="out6.cs" t="Include" />
+          </e>
+          <e p="Reflectable.cs" t="Include" />
+          <e p="Socketable.g.cs" t="Include" />
+          <e p="Streamable.cs" t="Include" />
+          <e p="Stringable.cs" t="Include" />
+          <e p="TaskFactoryable.cs" t="Include" />
+          <e p="Temporalable.cs" t="Include" />
+          <e p="Typeable.cs" t="Include" />
+          <e p="TypeBuilderable.cs" t="Include" />
+          <e p="Versionable.cs" t="Include" />
+        </e>
         <e p="RegexCache" t="Include">
           <e p="IsEmailBigRe.cs" t="Include" />
           <e p="IsEmailBigReFactory12.cs" t="Include" />
