@@ -5230,6 +5230,163 @@
             </e>
           </e>
         </e>
+        <e p="Mannex" t="Include">
+          <e p="Action.cs" t="Include" />
+          <e p="Action.Return.g.cs" t="Include" />
+          <e p="Action.Return.g.tt" t="Include" />
+          <e p="Array.cs" t="Include" />
+          <e p="Boolean.cs" t="Include" />
+          <e p="Collections" t="Include">
+            <e p="ArrayList.cs" t="Include" />
+            <e p="BitArray.cs" t="Include" />
+            <e p="Generic" t="Include">
+              <e p="Dictionary.cs" t="Include" />
+              <e p="IComparer.cs" t="Include" />
+              <e p="IEnumerator.cs" t="Include" />
+              <e p="IEqualityComparer.cs" t="Include" />
+              <e p="KeyValuePair.cs" t="Include" />
+              <e p="List.cs" t="Include" />
+              <e p="Pairing.cs" t="Include" />
+            </e>
+            <e p="IEnumerator.cs" t="Include" />
+            <e p="Specialized" t="Include">
+              <e p="NameValueCollection.cs" t="Include" />
+            </e>
+          </e>
+          <e p="ComponentModel" t="Include">
+            <e p="Design" t="Include">
+              <e p="IServiceContainer.cs" t="Include" />
+            </e>
+            <e p="INotifyPropertyChanged.cs" t="Include" />
+          </e>
+          <e p="Data" t="Include">
+            <e p="Common" t="Include">
+              <e p="DbConnection.cs" t="Include" />
+            </e>
+            <e p="DataRow.cs" t="Include" />
+            <e p="DataTable.cs" t="Include" />
+            <e p="IDataReader.cs" t="Include" />
+            <e p="IDataRecord.cs" t="Include" />
+            <e p="IDbCommand.cs" t="Include" />
+            <e p="TextReader.cs" t="Include" />
+          </e>
+          <e p="DateTime.cs" t="Include" />
+          <e p="Delegate.cs" t="Include" />
+          <e p="Diagnostics" t="Include">
+            <e p="Process.cs" t="Include" />
+            <e p="ProcessStartInfo.cs" t="Include" />
+          </e>
+          <e p="Disposable.cs" t="Include" />
+          <e p="Double.cs" t="Include" />
+          <e p="Enum.cs" t="Include" />
+          <e p="EventHandler.cs" t="Include" />
+          <e p="Exception.cs" t="Include" />
+          <e p="Func+Action.Apply.cs" t="Include" />
+          <e p="Func+Action.Apply.tt" t="Include" />
+          <e p="Func.cs" t="Include" />
+          <e p="Globalization" t="Include">
+            <e p="Calendar.cs" t="Include" />
+            <e p="DateTimeFormatInfo.cs" t="Include" />
+            <e p="NumberStyles.cs" t="Include" />
+          </e>
+          <e p="ICloneable.cs" t="Include" />
+          <e p="IComparable.cs" t="Include" />
+          <e p="IFormattable.cs" t="Include" />
+          <e p="Int32.cs" t="Include" />
+          <e p="Int64.cs" t="Include" />
+          <e p="IO" t="Include">
+            <e p="Array.cs" t="Include" />
+            <e p="ArraySegment.cs" t="Include" />
+            <e p="DirectoryInfo.cs" t="Include" />
+            <e p="FileInfo.cs" t="Include" />
+            <e p="FileSystemInfo.cs" t="Include" />
+            <e p="Stream.cs" t="Include" />
+            <e p="String.cs" t="Include" />
+            <e p="TextReader.cs" t="Include" />
+          </e>
+          <e p="IServiceProvider.cs" t="Include" />
+          <e p="JSON" t="Include">
+            <e p="NameValueCollection.cs" t="Include" />
+            <e p="String.cs" t="Include" />
+          </e>
+          <e p="Net" t="Include">
+            <e p="Mime" t="Include">
+              <e p="ContentType.cs" t="Include" />
+            </e>
+            <e p="WebClient.cs" t="Include" />
+            <e p="WebHeaderCollection.cs" t="Include" />
+          </e>
+          <e p="OperatingSystem.cs" t="Include" />
+          <e p="Predicate.cs" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+            <e p="AssemblyInfo.g.cs" t="Include" />
+            <e p="AssemblyInfo.g.tt" t="Include" />
+          </e>
+          <e p="Publics.cs" t="Include" />
+          <e p="Reflection" t="Include">
+            <e p="Assembly.cs" t="Include" />
+            <e p="ICustomAttributeProvider.cs" t="Include" />
+            <e p="MethodInfo.cs" t="Include" />
+            <e p="PropertyInfo.cs" t="Include" />
+          </e>
+          <e p="RuntimeMethodHandle.cs" t="Include" />
+          <e p="Security" t="Include">
+            <e p="Cryptography" t="Include">
+              <e p="Array.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Single.cs" t="Include" />
+          <e p="String.cs" t="Include" />
+          <e p="Text" t="Include">
+            <e p="RegularExpressions" t="Include">
+              <e p="Match.cs" t="Include" />
+              <e p="String.cs" t="Include" />
+            </e>
+            <e p="StringBuilder.cs" t="Include" />
+          </e>
+          <e p="Threading" t="Include">
+            <e p="Tasks" t="Include">
+              <e p="CancellationToken.cs" t="Include" />
+              <e p="Exception.cs" t="Include" />
+              <e p="Task.cs" t="Include" />
+              <e p="TaskCompletionSource.cs" t="Include" />
+              <e p="TaskFactory.cs" t="Include" />
+            </e>
+            <e p="TimeSpan.cs" t="Include" />
+            <e p="WaitHandleExtensions.cs" t="Include" />
+          </e>
+          <e p="TimeSpan.cs" t="Include" />
+          <e p="TimeZoneInfo.cs" t="Include" />
+          <e p="Tuple.cs" t="Include" />
+          <e p="Tuple.g.cs" t="Include" />
+          <e p="Tuple.g.tt" t="Include" />
+          <e p="Type.cs" t="Include" />
+          <e p="Uri.cs" t="Include" />
+          <e p="Web" t="Include">
+            <e p="Hosting" t="Include">
+              <e p="VirtualFile.cs" t="Include" />
+            </e>
+            <e p="HttpRequest.cs" t="Include" />
+            <e p="NameValueCollection.cs" t="Include" />
+            <e p="Script" t="Include">
+              <e p="Serialization" t="Include">
+                <e p="Object.cs" t="Include" />
+              </e>
+            </e>
+            <e p="StringHtml.cs" t="Include" />
+            <e p="UI" t="Include">
+              <e p="Control.cs" t="Include" />
+              <e p="DataBindingExtensions.cs" t="Include" />
+            </e>
+            <e p="Uri.cs" t="Include" />
+          </e>
+          <e p="Xml" t="Include">
+            <e p="Linq" t="Include">
+              <e p="XElement.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="MiscUtil" t="Include">
           <e p="BufferAcquisitionException.cs" t="Include" />
           <e p="CachedBuffer.cs" t="Include" />
@@ -7683,6 +7840,110 @@
         </e>
         <e p="HSNXT.Extensions.Tests.csproj" t="IncludeRecursive" />
         <e p="HSNXT.Extensions.Tests.csproj.DotSettings" t="Include" />
+        <e p="Mannex" t="Include">
+          <e p="ActionTests.cs" t="Include" />
+          <e p="ArrayTests.cs" t="Include" />
+          <e p="BooleanTests.cs" t="Include" />
+          <e p="Collections" t="Include">
+            <e p="BitArrayTests.cs" t="Include" />
+            <e p="Generic" t="Include">
+              <e p="DictionaryTests.cs" t="Include" />
+              <e p="IComparerTests.cs" t="Include" />
+              <e p="IEnumeratorTests.cs" t="Include" />
+              <e p="IEqualityComparerTests.cs" t="Include" />
+              <e p="ListTests.cs" t="Include" />
+              <e p="PairingTests.cs" t="Include" />
+            </e>
+            <e p="Specialized" t="Include">
+              <e p="NameValueCollectionTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Data" t="Include">
+            <e p="DataRow.cs" t="Include" />
+            <e p="DataTable.cs" t="Include" />
+            <e p="IDataReaderTests.cs" t="Include" />
+            <e p="IDataRecordTests.cs" t="Include" />
+          </e>
+          <e p="DateTimeTests.cs" t="Include" />
+          <e p="DelegateTests.cs" t="Include" />
+          <e p="DoubleTests.cs" t="Include" />
+          <e p="EnumTests.cs" t="Include" />
+          <e p="EventHandlerTests.cs" t="Include" />
+          <e p="ExceptionTests.cs" t="Include" />
+          <e p="FuncTests.cs" t="Include" />
+          <e p="ICloneableTests.cs" t="Include" />
+          <e p="IComparableTests.cs" t="Include" />
+          <e p="IFormattableTests.cs" t="Include" />
+          <e p="Int32Tests.cs" t="Include" />
+          <e p="Int64Tests.cs" t="Include" />
+          <e p="IO" t="Include">
+            <e p="StringTests.cs" t="Include" />
+            <e p="TextReaderTests.cs" t="Include" />
+          </e>
+          <e p="IServiceProviderTests.cs" t="Include" />
+          <e p="JSON" t="Include">
+            <e p="StringTests.cs" t="Include" />
+          </e>
+          <e p="Net" t="Include">
+            <e p="Mime" t="Include">
+              <e p="ContentTypeTests.cs" t="Include" />
+            </e>
+            <e p="WebHeaderCollectionTests.cs" t="Include" />
+          </e>
+          <e p="packages.config" t="Include" />
+          <e p="PredicateTests.cs" t="Include" />
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+          </e>
+          <e p="Reflection" t="Include">
+            <e p="ICustomAttributeProviderTests.cs" t="Include" />
+            <e p="MethodInfoTests.cs" t="Include" />
+          </e>
+          <e p="SingleTests.cs" t="Include" />
+          <e p="StringTests.cs" t="Include" />
+          <e p="Text" t="Include">
+            <e p="RegularExpressions" t="Include">
+              <e p="MatchTests.cs" t="Include" />
+              <e p="StringTests.cs" t="Include" />
+            </e>
+            <e p="StringBuilderTests.cs" t="Include" />
+          </e>
+          <e p="Threading" t="Include">
+            <e p="Tasks" t="Include">
+              <e p="ExceptionTests.cs" t="Include" />
+              <e p="ImmediateTaskScheduler.cs" t="Include" />
+              <e p="TaskCompletionSourceTests.cs" t="Include" />
+              <e p="TaskTests.cs" t="Include" />
+            </e>
+            <e p="TimeSpanTests.cs" t="Include" />
+            <e p="WaitHandleTests.cs" t="Include" />
+          </e>
+          <e p="TimeSpanTests.cs" t="Include" />
+          <e p="TimeZoneInfoTests.cs" t="Include" />
+          <e p="TupleTests.cs" t="Include" />
+          <e p="TypeTests.cs" t="Include" />
+          <e p="UriTests.cs" t="Include" />
+          <e p="Web" t="Include">
+            <e p="Hosting" t="Include">
+              <e p="VirtualFileTests.cs" t="Include" />
+            </e>
+            <e p="NameValueCollectionTests.cs" t="Include" />
+            <e p="Script" t="Include">
+              <e p="Serialization" t="Include">
+                <e p="ObjectTests.cs" t="Include" />
+              </e>
+            </e>
+            <e p="StringHtmlTests.cs" t="Include" />
+            <e p="UI" t="Include">
+              <e p="DataBindingTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Xml" t="Include">
+            <e p="Linq" t="Include">
+              <e p="XElementTests.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="MoreLinq" t="Include">
           <e p="AcquireTest.cs" t="Include" />
           <e p="AggregateRightTest.cs" t="Include" />

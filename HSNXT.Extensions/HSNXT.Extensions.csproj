@@ -101,7 +101,7 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net47'">
-    <DefineConstants>FUNC16;NetFX</DefineConstants>
+    <DefineConstants>FUNC16;NetFX;NET4</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <DefineConstants>FUNC16;NO_REMOTING</DefineConstants>
