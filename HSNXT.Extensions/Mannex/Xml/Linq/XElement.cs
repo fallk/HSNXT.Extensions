@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Xml.Linq
+namespace HSNXT
 {
     #region Imports
 

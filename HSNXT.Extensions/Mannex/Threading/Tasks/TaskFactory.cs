@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Threading.Tasks
+namespace HSNXT
 {
     #if NET4
 

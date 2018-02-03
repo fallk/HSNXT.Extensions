@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Web
+namespace HSNXT
 {
     #region Imports
 

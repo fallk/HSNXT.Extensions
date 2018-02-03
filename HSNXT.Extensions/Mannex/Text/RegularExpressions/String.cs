@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Text.RegularExpressions
+namespace HSNXT
 {
     #region Imports
 

@@ -22,7 +22,7 @@
 //
 #endregion
 
-namespace HSNXT.Web.Script.Serialization
+namespace HSNXT
 {
     #region Imports
 

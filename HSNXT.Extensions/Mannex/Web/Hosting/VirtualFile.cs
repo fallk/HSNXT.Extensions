@@ -22,7 +22,7 @@
 //
 #endregion
 
-namespace HSNXT.Web.Hosting
+namespace HSNXT
 {
     #region Imports
 

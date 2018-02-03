@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Collections
+namespace HSNXT
 {
     #region Imports
 

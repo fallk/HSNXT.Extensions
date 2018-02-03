@@ -23,7 +23,7 @@
 
 #if NET4
 
-namespace HSNXT.Threading.Tasks
+namespace HSNXT
 {
     #region Imports
 

@@ -23,7 +23,7 @@
 //
 #endregion
 
-namespace HSNXT.Security.Cryptography
+namespace HSNXT
 {
     #region Imports
 

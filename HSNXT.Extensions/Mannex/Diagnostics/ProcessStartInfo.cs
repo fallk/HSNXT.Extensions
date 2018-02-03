@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Diagnostics
+namespace HSNXT
 {
     #region Imports
 

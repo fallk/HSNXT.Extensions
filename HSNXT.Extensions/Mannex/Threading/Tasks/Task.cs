@@ -23,7 +23,7 @@
 
 #if NET4
 
-namespace HSNXT.Threading.Tasks
+namespace HSNXT
 {
     #region Imports
 
@@ -142,7 +142,7 @@ namespace HSNXT.Threading.Tasks
 
 #if NET45
 
-namespace HSNXT.Threading.Tasks
+namespace HSNXT
 {
     using System;
     using System.Collections.Generic;

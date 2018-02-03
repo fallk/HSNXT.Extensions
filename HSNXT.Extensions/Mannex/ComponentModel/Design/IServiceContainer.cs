@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.ComponentModel.Design
+namespace HSNXT
 {
     #region Imports
 

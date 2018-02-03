@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Threading
+namespace HSNXT
 {
     #region Imports
 

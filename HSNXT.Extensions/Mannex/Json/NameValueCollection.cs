@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Json
+namespace HSNXT
 {
     #region Imports
 

@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Globalization
+namespace HSNXT
 {
     using System.Globalization;
 

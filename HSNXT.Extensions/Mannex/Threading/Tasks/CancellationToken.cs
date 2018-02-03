@@ -23,7 +23,7 @@
 
 #if NET4
 
-namespace HSNXT.Threading.Tasks
+namespace HSNXT
 {
     using System.Threading;
     using System.Threading.Tasks;

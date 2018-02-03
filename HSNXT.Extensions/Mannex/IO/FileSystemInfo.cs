@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.IO
+namespace HSNXT
 {
     using System;
     using System.IO;

@@ -21,7 +21,7 @@
 //
 #endregion
 
-namespace HSNXT.Collections.Generic
+namespace HSNXT
 {
     using System.Collections.Generic;
 
