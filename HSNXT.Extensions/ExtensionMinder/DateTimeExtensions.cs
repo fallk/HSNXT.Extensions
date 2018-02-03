@@ -56,19 +56,5 @@ namespace HSNXT
         {
             return new DateTime(date.Year + (date.Month <= 6 ? 0 : 1), 6, 30);
         }
-
-        public static DateTime Min(DateTime t1, DateTime t2)
-        {
-            if (DateTime.Compare(t1, t2) > 0)
-                return t2;
-            return t1;
-        }
-
-        public static DateTime Max(DateTime t1, DateTime t2)
-        {
-            if (DateTime.Compare(t1, t2) < 0)
-                return t2;
-            return t1;
-        }
     }
 }
