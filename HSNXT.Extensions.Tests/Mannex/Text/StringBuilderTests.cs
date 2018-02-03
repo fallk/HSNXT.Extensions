@@ -35,13 +35,6 @@ namespace Mannex.Tests.Text
     public class StringBuilderTests
     {
         [Fact]
-        public void AppendNullableCharFailsWithNullThis()
-        {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Append(null, 'a'));
-            Assert.Equal("sb", e.ParamName);
-        }
-
-        [Fact]
         public void AppendNullableCharDoesntAppendWithNullChar()
         {
             Assert.Equal(0, new StringBuilder().Append((char?) null).Length);

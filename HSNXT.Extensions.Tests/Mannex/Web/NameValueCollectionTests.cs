@@ -39,7 +39,7 @@ namespace Mannex.Tests.Web
         public void ToQueryStringFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() => Extensions.ToQueryString(null));
-            Assert.Equal("collection", e.ParamName);
+            Assert.Equal("source", e.ParamName);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Mannex.Tests.Web
             {
                 { "key", "value" },
             };
-            Assert.Equal("?key=value", collection.ToQueryString());
+            Assert.Equal("key=value", collection.ToQueryString());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Mannex.Tests.Web
                 { "kb", "v2" },
                 { "kc", "v3" },
             };
-            Assert.Equal("?ka=v1&kb=v2&kc=v3", collection.ToQueryString());
+            Assert.Equal("ka=v1&kb=v2&kc=v3", collection.ToQueryString());
         }
 
         [Fact]
@@ -85,7 +85,7 @@ namespace Mannex.Tests.Web
                 { "c", "c3" },
                 { "b", "b3" },
             };
-            Assert.Equal("?a=a1&a=a2&a=a3&c=c1&c=c2&c=c3&b=b1&b=b2&b=b3", collection.ToQueryString());
+            Assert.Equal("a=a1%2ca2%2ca3&c=c1%2cc2%2cc3&b=b1%2cb2%2cb3", collection.ToQueryString());
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace Mannex.Tests.Web
                 { null, "v2" },
                 { null, "v3" },
             };
-            Assert.Equal("?v1&v2&v3", collection.ToQueryString());
+            Assert.Equal("=v1%2cv2%2cv3", collection.ToQueryString());
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace Mannex.Tests.Web
                 { null, string.Empty },
                 { null, string.Empty },
             };
-            Assert.Equal(string.Empty, collection.ToQueryString());
+            Assert.Equal("=%2c%2c", collection.ToQueryString());
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Mannex.Tests.Web
                 { "key", string.Empty },
                 { "key", string.Empty },
             };
-            Assert.Equal("?key=&key=&key=", collection.ToQueryString());
+            Assert.Equal("key=%2c%2c", collection.ToQueryString());
         }
 
         [Fact]
@@ -133,7 +133,7 @@ namespace Mannex.Tests.Web
                 { string.Empty, string.Empty },
                 { string.Empty, string.Empty },
             };
-            Assert.Equal(string.Empty, collection.ToQueryString());
+            Assert.Equal("=%2c%2c", collection.ToQueryString());
         }
 
         [Fact]
@@ -143,7 +143,7 @@ namespace Mannex.Tests.Web
             {
                 { "msg", "hello world" },
             };
-            Assert.Equal("?msg=hello%20world", collection.ToQueryString());
+            Assert.Equal("msg=hello+world", collection.ToQueryString());
         }
 
         [Fact]

@@ -36,12 +36,6 @@ namespace Mannex.Tests
     public class EnumTests
     {
         [Fact]
-        public void GetFlagsFailsWithValueMismatchingTypeArgument()
-        {
-            Assert.Throws<ArgumentException>(() => FileAttributes.Archive.GetFlags<Environment.SpecialFolder>());
-        }
-
-        [Fact]
         public void GetFlagsWithSingleFlag()
         {
             var flags = FileAttributes.Archive.GetFlags<FileAttributes>().ToArray();

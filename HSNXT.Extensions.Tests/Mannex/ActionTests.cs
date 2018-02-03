@@ -55,7 +55,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReturnWithNullThis1()
         {
-            Assert.Equal("action", Assert.Throws<ArgumentNullException>(() => Extensions.Return<object, object>((Action)null, null)).ParamName);
+            Assert.Throws<NullReferenceException>(() => Extensions.Return<object, object>((Action)null, null));
         }
         
         [Fact]

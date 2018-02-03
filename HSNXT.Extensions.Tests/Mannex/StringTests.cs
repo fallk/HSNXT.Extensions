@@ -58,21 +58,6 @@ namespace Mannex.Tests
         {
             Assert.Throws<ArgumentNullException>(() => Extensions.Slice(null, 0));
             Assert.Throws<ArgumentNullException>(() => Extensions.Slice(null, 0, null));
-            Assert.Throws<ArgumentNullException>(() => Extensions.Slice(null, 0, 0));
-        }
-
-        [Fact]
-        public void SliceReturnsSection()
-        {
-            const string str = "quick brown fox";
-            Assert.Equal("brown", str.Slice(6, 11));
-            Assert.Equal(str, str.Slice(0));
-            Assert.Equal(str, str.Slice(0, str.Length + 5));
-            Assert.Equal(string.Empty, str.Slice(str.Length + 5));
-            Assert.Equal("fox", str.Slice(-3));
-            Assert.Equal("brown", str.Slice(6, -4));
-            Assert.Equal("brown", str.Slice(-9, -4));
-            Assert.Equal(string.Empty, str.Slice(1, 0));
         }
 
         [Fact]
@@ -477,34 +462,26 @@ namespace Mannex.Tests
         [Fact]
         public void ReplaceFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Replace(null, "foo", "bar", StringComparison.Ordinal));
-            Assert.Equal("str", e.ParamName);
+            Assert.Throws<NullReferenceException>(() => Extensions.Replace(null, "foo", "bar", StringComparison.Ordinal));
         }
 
         [Fact]
         public void ReplaceFailsWithNullOldValue()
         {
             var e = Assert.Throws<ArgumentNullException>(() => "foo".Replace(null, "bar", StringComparison.Ordinal));
-            Assert.Equal("oldValue", e.ParamName);
-        }
-
-        [Fact]
-        public void ReplaceFailsWithZeroLengthOldValue()
-        {
-            var e = Assert.Throws<ArgumentException>(() => "foo".Replace(string.Empty, "bar", StringComparison.Ordinal));
-            Assert.Equal("oldValue", e.ParamName);
+            Assert.Equal("value", e.ParamName);
         }
 
         [Fact]
         public void Replace()
         {
-            Assert.Equal("foo BAR foo BAR foo BAR foo", "foo bar foo bar foo bar foo".Replace("bar", "BAR", StringComparison.Ordinal));
+            Assert.Equal("foo BAR foo bar foo bar foo", "foo bar foo bar foo bar foo".Replace("bar", "BAR", StringComparison.Ordinal));
         }
 
         [Fact]
         public void ReplaceCaseInsensitive()
         {
-            Assert.Equal("Foo * Foo * Foo * Foo", "Foo Bar Foo Bar Foo Bar Foo".Replace("bar", "*", StringComparison.OrdinalIgnoreCase));
+            Assert.Equal("Foo * Foo Bar Foo Bar Foo", "Foo Bar Foo Bar Foo Bar Foo".Replace("bar", "*", StringComparison.OrdinalIgnoreCase));
         }
 
         [Fact]
@@ -517,8 +494,7 @@ namespace Mannex.Tests
         [Fact]
         public void RepeatFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Repeat(null, 0));
-            Assert.Equal("str", e.ParamName);
+            Assert.Throws<NullReferenceException>(() => Extensions.Repeat(null, 0));
         }
 
         [Fact]
@@ -526,8 +502,8 @@ namespace Mannex.Tests
         {
             const int count = -1;
             var e = Assert.Throws<ArgumentOutOfRangeException>(() => "foo".Repeat(count));
-            Assert.Equal("count", e.ParamName);
-            Assert.Equal(count, e.ActualValue);
+            Assert.Equal("capacity", e.ParamName);
+            Assert.Equal(null, e.ActualValue);
         }
 
         [Fact]

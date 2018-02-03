@@ -82,7 +82,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PopFailsWithEmptyList()
         {
-            Assert.Throws<InvalidOperationException>(() => new List<object>().Pop());
+            Assert.Throws<ArgumentOutOfRangeException>(() => new List<object>().Pop());
         }
 
         [Fact]
@@ -134,7 +134,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PeekFailsWithEmptyList()
         {
-            Assert.Throws<InvalidOperationException>(() => new List<object>().Peek());
+            Assert.Throws<ArgumentOutOfRangeException>(() => new List<object>().Peek());
         }
 
         [Fact]
@@ -189,7 +189,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void ShiftFailsWithEmptyList()
         {
-            Assert.Throws<InvalidOperationException>(() => new List<object>().Shift());
+            Assert.Throws<ArgumentOutOfRangeException>(() => new List<object>().Shift());
         }
 
         [Fact]
@@ -288,48 +288,12 @@ namespace Mannex.Tests.Collections.Generic
         }
 
         [Fact]
-        public void SliceReturnsIdentifiedPortion()
-        {
-            var nums = new[] { 12, 34, 56, 78 };
-            Assert.Equal(nums, nums.Slice(0).ToArray());
-            Assert.Equal(nums, nums.Slice(0, 4).ToArray());
-            Assert.Equal(new[] { 12, 34, 56 }, nums.Slice(0, 3).ToArray());
-            Assert.Equal(new[] { 34, 56 }, nums.Slice(1, 3).ToArray());
-        }
-
-        [Fact]
-        public void SliceClipsEnd()
-        {
-            var nums = new[] { 12, 34, 56, 78 };
-            Assert.Equal(nums, nums.Slice(0, 10).ToArray());
-        }
-
-        [Fact]
-        public void SliceReturnsEmptySequenceWhenEndOccursBeforeStart()
-        {
-            var nums = new[] { 12, 34, 56, 78 };
-            Assert.Empty(nums.Slice(10).ToArray());
-            Assert.Empty(nums.Slice(3, 1).ToArray());
-            Assert.Empty(nums.Slice(1, -10).ToArray());
-        }
-
-        [Fact]
-        public void SliceReturnsPortionIdentifiedByOffsets()
-        {
-            var nums = new[] { 12, 34, 56, 78 };
-            Assert.Equal(new[] { 78 }, nums.Slice(-1).ToArray());
-            Assert.Equal(new[] { 56, 78 }, nums.Slice(-2).ToArray());
-            Assert.Equal(new[] { 34, 56, 78 }, nums.Slice(-3).ToArray());
-            Assert.Equal(new[] { 34, 56 }, nums.Slice(-3, -1).ToArray());
-        }
-
-        [Fact]
         public void BinarySearchFailsWithNullThis()
         {
             Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, "foo"));
-            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, 0, 10, "foo"));
-            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch((IList)null, "foo", null));
-            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, 0, 10, "foo", null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo"));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch((IList)null, "foo", null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo", null));
         }
  
         [Fact]

@@ -37,9 +37,8 @@ namespace Mannex.Tests
         [Fact]
         public void ToConverterFailsWithNullSender()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentException>(() => 
                 Extensions.ToConverter<object, object>(null));
-            Assert.Equal("converter", e.ParamName);
         }
 
         [Fact]
@@ -54,9 +53,8 @@ namespace Mannex.Tests
         [Fact]
         public void ToPredicateWithNullSender()
         {
-            var e = Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
                 Extensions.ToPredicate<object>(null));
-            Assert.Equal("predicate", e.ParamName);
         }
 
         [Fact]

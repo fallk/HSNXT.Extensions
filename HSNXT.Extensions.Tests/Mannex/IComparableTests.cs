@@ -59,18 +59,11 @@ namespace Mannex.Tests
             Assert.Equal(null, ((int?) null).MinMax(10, 50));
         }
 
-        [Fact]
-        public void IsBetweenFailsWithNullReferenceForThis()
-        {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsBetween(null, new Version(), new Version()));
-            Assert.Equal("value", e.ParamName);
-        }
-
         [Theory]
         [InlineData(true , -5,   0, 5)]
         [InlineData(false, -5,  10, 5)]
-        [InlineData(true , -5,  -5, 5)]
-        [InlineData(true , -5,   5, 5)]
+        [InlineData(false, -5,  -5, 5)]
+        [InlineData(false, -5,   5, 5)]
         [InlineData(false, -5, -10, 5)]
         public void IsBetween(bool expected, int lower, int test, int upper)
         {
@@ -80,8 +73,8 @@ namespace Mannex.Tests
         [Theory]
         [InlineData(true , -5,    0, 5)]
         [InlineData(false, -5,   10, 5)]
-        [InlineData(true , -5,   -5, 5)]
-        [InlineData(true , -5,    5, 5)]
+        [InlineData(false , -5,   -5, 5)]
+        [InlineData(false , -5,    5, 5)]
         [InlineData(false, -5,  -10, 5)]
         [InlineData(null , -5, null, 5)]
         public void IsBetweenNullable(bool? expected, int lower, int? test, int upper)

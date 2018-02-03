@@ -38,8 +38,7 @@ namespace Mannex.Tests.Text.RegularExpressions
         [Fact]
         public void IsMatchFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsMatch(null, string.Empty));
-            Assert.Equal("str", e.ParamName);
+            var e = Assert.Throws<NullReferenceException>(() => Extensions.IsMatch(null, string.Empty));
         }
 
         [Fact]
@@ -76,7 +75,7 @@ namespace Mannex.Tests.Text.RegularExpressions
         public void MatchFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() => Extensions.Match(null, string.Empty));
-            Assert.Equal("str", e.ParamName);
+            Assert.Equal("input", e.ParamName);
         }
 
         [Fact]
@@ -121,7 +120,7 @@ namespace Mannex.Tests.Text.RegularExpressions
         public void MatchesFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() => Extensions.Matches(null, string.Empty));
-            Assert.Equal("str", e.ParamName);
+            Assert.Equal("input", e.ParamName);
         }
 
         [Fact]

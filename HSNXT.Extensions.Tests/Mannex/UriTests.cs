@@ -323,7 +323,7 @@ namespace Mannex.Tests
                 { "b", "foo" },
                 { "b", "bar" },
             });
-            Assert.Equal(new Uri("http://www.example.com/?a=1&b=foo&b=bar&c=3"), result);
+            Assert.Equal(new Uri("http://www.example.com/?a=1&b=foo%2cbar&c=3"), result);
         }
 
         [Fact]

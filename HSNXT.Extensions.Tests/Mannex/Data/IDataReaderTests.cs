@@ -37,14 +37,6 @@ namespace Mannex.Tests.Data
     public class IDataReaderTests
     {
         [Fact]
-        public void SelectFailsWithNullThis()
-        {
-            var e = Assert.Throws<ArgumentNullException>(() =>
-                Extensions.Select<object>(null, delegate { throw new NotImplementedException(); }));
-            Assert.Equal("reader", e.ParamName);
-        }
-
-        [Fact]
         public void SelectFailsWithNullSelector()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
