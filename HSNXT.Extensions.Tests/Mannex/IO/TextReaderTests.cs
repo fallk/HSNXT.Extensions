@@ -40,7 +40,7 @@ namespace Mannex.Tests.IO
         [Fact]
         public void ReadLinesFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => TextReaderExtensions.ReadLines(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadLines((TextReader)null));
             Assert.Equal("reader", e.ParamName);
         }
 
@@ -54,14 +54,14 @@ namespace Mannex.Tests.IO
         [Fact]
         public void ConcatFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => TextReaderExtensions.Concat(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Concat(null));
             Assert.Equal("first", e.ParamName);
         }
 
         [Fact]
         public void ConcatSequenceOverloadFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => TextReaderExtensions.Concat(null, (IEnumerable<TextReader>)null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Concat(null, (IEnumerable<TextReader>)null));
             Assert.Equal("first", e.ParamName);
         }
 

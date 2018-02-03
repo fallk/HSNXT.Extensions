@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -36,7 +38,7 @@ namespace Mannex.Tests
         public void ToConverterFailsWithNullSender()
         {
             var e = Assert.Throws<ArgumentNullException>(() => 
-                        FuncExtensions.ToConverter<object, object>(null));
+                Extensions.ToConverter<object, object>(null));
             Assert.Equal("converter", e.ParamName);
         }
 
@@ -53,7 +55,7 @@ namespace Mannex.Tests
         public void ToPredicateWithNullSender()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        FuncExtensions.ToPredicate<object>(null));
+                Extensions.ToPredicate<object>(null));
             Assert.Equal("predicate", e.ParamName);
         }
 

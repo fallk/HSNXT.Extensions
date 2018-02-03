@@ -22,6 +22,7 @@
 #endregion
 
 using System;
+using HSNXT;
 
 namespace Mannex.Tests
 {

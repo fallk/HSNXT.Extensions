@@ -326,10 +326,10 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void BinarySearchFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, "foo"));
-            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo"));
-            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch((IList)null, "foo", null));
-            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo", null));
+            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, "foo"));
+            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, 0, 10, "foo"));
+            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch((IList)null, "foo", null));
+            Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, 0, 10, "foo", null));
         }
  
         [Fact]
@@ -368,13 +368,6 @@ namespace Mannex.Tests.Collections.Generic
             Assert.Equal(0, items.BinarySearch("alpha", comparer));
             Assert.Equal(1, items.BinarySearch("bravo", comparer));
             Assert.Equal(2, items.BinarySearch("charlie", comparer));
-        }
-
-        [Fact]
-        public void AsReadOnlyWithNullThis()
-        {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.AsReadOnly<object>(null));
-            Assert.Equal("list", e.ParamName);
         }
 
         [Fact]

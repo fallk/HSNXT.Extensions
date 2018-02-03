@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -39,7 +41,7 @@ namespace Mannex.Tests
         [Fact]
         public void AndFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => PredicateExtensions.And(null, _error));
+            Assert.Throws<ArgumentNullException>(() => Extensions.And(null, _error));
         }
 
         [Fact]
@@ -60,7 +62,7 @@ namespace Mannex.Tests
         [Fact]
         public void OrFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => PredicateExtensions.Or(null, _error));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Or(null, _error));
         }
 
         [Fact]

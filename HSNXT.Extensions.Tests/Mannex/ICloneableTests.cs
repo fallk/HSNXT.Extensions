@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -35,7 +37,7 @@ namespace Mannex.Tests
         [Fact]
         public void CloneObjectFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => ICloneableExtensions.CloneObject<Array>(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.CloneObject<Array>(null));
             Assert.Equal("source", e.ParamName);
         }
 

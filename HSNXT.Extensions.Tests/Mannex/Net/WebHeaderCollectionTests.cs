@@ -38,7 +38,7 @@ namespace Mannex.Tests.Net
         [Fact]
         public void MapWithNullThis()
         {
-            Assert.Equal("headers", Assert.Throws<ArgumentNullException>(() => WebHeaderCollectionExtensions.Map(null, default(HttpResponseHeader), _ => (object)null)).ParamName);
+            Assert.Equal("headers", Assert.Throws<ArgumentNullException>(() => Extensions.Map(null, default(HttpResponseHeader), _ => (object)null)).ParamName);
         }
 
         [Fact]

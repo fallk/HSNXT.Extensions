@@ -41,10 +41,10 @@ namespace Mannex.Tests.Threading
 
         static IEnumerable<Task<ArgumentNullException>> WaitOneAsyncWithNullThis()
         {
-            yield return Assert.ThrowsAsync<ArgumentNullException>(() => WaitHandleExtensions.WaitOneAsync(null));
-            yield return Assert.ThrowsAsync<ArgumentNullException>(() => WaitHandleExtensions.WaitOneAsync(null, CancellationToken.None));
-            yield return Assert.ThrowsAsync<ArgumentNullException>(() => WaitHandleExtensions.WaitOneAsync(null, TimeSpan.Zero));
-            yield return Assert.ThrowsAsync<ArgumentNullException>(() => WaitHandleExtensions.WaitOneAsync(null, TimeSpan.Zero, CancellationToken.None));
+            yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null));
+            yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null, CancellationToken.None));
+            yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null, TimeSpan.Zero));
+            yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null, TimeSpan.Zero, CancellationToken.None));
         }
 
         [Fact]

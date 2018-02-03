@@ -40,7 +40,7 @@ namespace Mannex.Tests.Reflection
         public void IsDefinedFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() => 
-                ICustomAttributeProviderExtensions.IsDefined<object>(null, true));
+                Extensions.IsDefined<object>(null, true));
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Mannex.Tests.Reflection
         public void GetCustomAttributesFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                ICustomAttributeProviderExtensions.GetCustomAttributes<object>(null, true));
+                Extensions.GetCustomAttributes<object>((ICustomAttributeProvider)null, true));
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace Mannex.Tests.Reflection
         public void GetCustomAttributeFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                ICustomAttributeProviderExtensions.GetCustomAttribute<object>(null, true));
+                Extensions.GetCustomAttribute<object>((ICustomAttributeProvider)null, true));
         }
 
         [Fact]

@@ -38,10 +38,10 @@ namespace Mannex.Tests.Net.Mime
         [Fact]
         public void EncodingFromCharSetWithNullThis()
         {
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => ContentTypeExtensions.EncodingFromCharSet(null)).ParamName);
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => ContentTypeExtensions.EncodingFromCharSet(null, (Encoding)null)).ParamName);
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => ContentTypeExtensions.EncodingFromCharSet(null, (Func<string, Encoding>)null)).ParamName);
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => ContentTypeExtensions.EncodingFromCharSet(null, null, null)).ParamName);
+            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null)).ParamName);
+            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, (Encoding)null)).ParamName);
+            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, (Func<string, Encoding>)null)).ParamName);
+            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, null, null)).ParamName);
         }
         
         [Fact]

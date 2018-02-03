@@ -38,7 +38,7 @@ namespace Mannex.Tests.Threading.Tasks
         public void TryConcludeFromFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        TaskCompletionSourceExtensions.TryConcludeFrom(null, new TaskCompletionSource<object>().Task));
+                Extensions.TryConcludeFrom(null, new TaskCompletionSource<object>().Task));
             Assert.Equal("source", e.ParamName);
         }
 

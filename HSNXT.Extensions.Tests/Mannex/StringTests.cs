@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -42,7 +44,7 @@ namespace Mannex.Tests
         [Fact]
         public void MaskEmptyReturnsMaskWithNullThis()
         {
-            Assert.Equal("foo", StringExtensions.MaskEmpty(null, "foo"));
+            Assert.Equal("foo", Extensions.MaskEmpty(null, "foo"));
         }
 
         [Fact]
@@ -54,9 +56,9 @@ namespace Mannex.Tests
         [Fact]
         public void SliceFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.Slice(null, 0));
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.Slice(null, 0, null));
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.Slice(null, 0, 0));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Slice(null, 0));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Slice(null, 0, null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Slice(null, 0, 0));
         }
 
         [Fact]
@@ -76,7 +78,7 @@ namespace Mannex.Tests
         [Fact]
         public void EmbedFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.Embed(null, string.Empty));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Embed(null, string.Empty));
         }
 
         [Fact]
@@ -94,7 +96,7 @@ namespace Mannex.Tests
         [Fact]
         public void WrapFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.Wrap(null, string.Empty, string.Empty));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Wrap(null, string.Empty, string.Empty));
         }
 
         [Fact]
@@ -114,7 +116,7 @@ namespace Mannex.Tests
         [Fact]
         public void QuoteFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.Quote(null, string.Empty, string.Empty));
+            Assert.Throws<ArgumentNullException>(() => Extensions.Quote(null, string.Empty, string.Empty));
         }
 
         [Fact]
@@ -138,19 +140,19 @@ namespace Mannex.Tests
         [Fact] 
         public void SplitFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Split(null, ',', (a, b) => a + b));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Split(null, ',', (a, b) => a + b));
             Assert.Equal("str", e.ParamName);
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Split(null, ',', (a, b, c) => a + b + c));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.Split(null, ',', (a, b, c) => a + b + c));
             Assert.Equal("str", e.ParamName);
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Split(null, ',', (a, b, c, d) => a + b + c + d));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.Split(null, ',', (a, b, c, d) => a + b + c + d));
             Assert.Equal("str", e.ParamName);
             
             var separators = new char[0];
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Split(null, separators, (a, b) => a + b));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.Split(null, separators, (a, b) => a + b));
             Assert.Equal("str", e.ParamName);
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Split(null, separators, (a, b, c) => a + b + c));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.Split(null, separators, (a, b, c) => a + b + c));
             Assert.Equal("str", e.ParamName);
-            e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Split(null, separators, (a, b, c, d) => a + b + c + d));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.Split(null, separators, (a, b, c, d) => a + b + c + d));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -218,7 +220,7 @@ namespace Mannex.Tests
         [Fact]
         public void SplitIntoLinesFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => StringExtensions.SplitIntoLines(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.SplitIntoLines(null));
         }
 
         [Fact]
@@ -239,7 +241,7 @@ namespace Mannex.Tests
         public void NormalizeWhiteSpaceFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() => 
-                        StringExtensions.NormalizeWhiteSpace(null));
+                Extensions.NormalizeWhiteSpace(null));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -252,9 +254,9 @@ namespace Mannex.Tests
         [Fact]
         public void SubstringsFailsWithNullThis()
         {
-            var e1 = Assert.Throws<ArgumentNullException>(() => StringExtensions.Substrings(null, 0, 0));
+            var e1 = Assert.Throws<ArgumentNullException>(() => Extensions.Substrings(null, 0, 0));
             Assert.Equal("str", e1.ParamName);
-            var e2 = Assert.Throws<ArgumentNullException>(() => StringExtensions.Substrings<object>(null, 0, 0, delegate { return null; }));
+            var e2 = Assert.Throws<ArgumentNullException>(() => Extensions.Substrings<object>(null, 0, 0, delegate { return null; }));
             Assert.Equal("str", e2.ParamName);
         }
 
@@ -283,7 +285,7 @@ namespace Mannex.Tests
         [Fact]
         public void IsTruthyWithNullReturnsFalse()
         {
-            Assert.False(StringExtensions.IsTruthy(null));
+            Assert.False(Extensions.IsTruthy(null));
         }
 
         [Fact]
@@ -322,7 +324,7 @@ namespace Mannex.Tests
         public void HasPrefixFailsWithNullThis()
         {
              var e = Assert.Throws<ArgumentNullException>(() => 
-                        StringExtensions.HasPrefix(null, string.Empty, StringComparison.Ordinal));
+                 Extensions.HasPrefix(null, string.Empty, StringComparison.Ordinal));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -340,7 +342,7 @@ namespace Mannex.Tests
         public void HasSuffixFailsWithNullThis()
         {
              var e = Assert.Throws<ArgumentNullException>(() => 
-                        StringExtensions.HasSuffix(null, string.Empty, StringComparison.Ordinal));
+                 Extensions.HasSuffix(null, string.Empty, StringComparison.Ordinal));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -357,7 +359,7 @@ namespace Mannex.Tests
         [Fact]
         public void CharAtFailsWithNullThis()
         {
-             var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.TryCharAt(null, 0));
+             var e = Assert.Throws<ArgumentNullException>(() => Extensions.TryCharAt(null, 0));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -383,7 +385,7 @@ namespace Mannex.Tests
         [Fact]
         public void TrimCommonLeadingSpaceFailsWithNullThis()
         {
-             var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.TrimCommonLeadingSpace(null));
+             var e = Assert.Throws<ArgumentNullException>(() => Extensions.TrimCommonLeadingSpace(null));
             Assert.Equal("str", e.ParamName);
         }
  
@@ -412,7 +414,7 @@ namespace Mannex.Tests
         [Fact]
         public void PartitionFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Partition(null, 42));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Partition(null, 42));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -475,7 +477,7 @@ namespace Mannex.Tests
         [Fact]
         public void ReplaceFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Replace(null, "foo", "bar", StringComparison.Ordinal));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Replace(null, "foo", "bar", StringComparison.Ordinal));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -515,7 +517,7 @@ namespace Mannex.Tests
         [Fact]
         public void RepeatFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Repeat(null, 0));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Repeat(null, 0));
             Assert.Equal("str", e.ParamName);
         }
 

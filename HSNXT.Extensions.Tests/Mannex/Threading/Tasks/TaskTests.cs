@@ -100,7 +100,7 @@ namespace Mannex.Tests.Threading.Tasks
         public async void WhenAllCompletedFailsWithNullThis()
         {
             var e = await Assert.ThrowsAsync<ArgumentNullException>(() =>
-                Mannex.Threading.Tasks.TaskExtensions.WhenAllCompleted((IEnumerable<Task>)null));
+                Extensions.WhenAllCompleted((IEnumerable<Task>)null));
             Assert.Equal("tasks", e.ParamName);
         }
 

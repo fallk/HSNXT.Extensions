@@ -33,7 +33,7 @@ namespace Mannex.Tests.Threading.Tasks
         public async void AsTaskNullThis()
         {
             var e = await Assert.ThrowsAsync<ArgumentNullException>(() =>
-                ExceptionExtensions.AsTask<int>(null));
+                Extensions.AsTask<int>(null));
             Assert.Equal("exception", e.ParamName);
         }
 

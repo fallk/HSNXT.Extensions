@@ -140,7 +140,7 @@ namespace HSNXT
 
 #endif // NET4
 
-#if NET45
+#if NET47
 
 namespace HSNXT
 {

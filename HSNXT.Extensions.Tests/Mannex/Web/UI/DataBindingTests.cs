@@ -36,9 +36,9 @@ namespace Mannex.Tests.Web.UI
         [Fact]
         public void DataBindFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => DataBindingExtensions.DataBind(null, "?"));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.DataBind(null, "?"));
             Assert.Equal("obj", e.ParamName);
-            e = Assert.Throws<ArgumentNullException>(() => DataBindingExtensions.DataBind<object>(null, "?"));
+            e = Assert.Throws<ArgumentNullException>(() => Extensions.DataBind<object>(null, "?"));
             Assert.Equal("obj", e.ParamName);
         }
 

@@ -36,7 +36,7 @@ namespace Mannex.Tests.Web
         [Fact]
         public void HtmlEncodeFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => HtmlStringExtensions.HtmlEncode(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.HtmlEncode(null));
             Assert.Equal("str", e.ParamName);
         }
 

@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -36,7 +38,7 @@ namespace Mannex.Tests
         [Fact]
         public void MinMaxFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => IComparableExtensions.MinMax(null, new Version(), new Version()));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.MinMax(null, new Version(), new Version()));
             Assert.Equal("value", e.ParamName);
         }
 
@@ -60,7 +62,7 @@ namespace Mannex.Tests
         [Fact]
         public void IsBetweenFailsWithNullReferenceForThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => IComparableExtensions.IsBetween(null, new Version(), new Version()));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsBetween(null, new Version(), new Version()));
             Assert.Equal("value", e.ParamName);
         }
 
@@ -90,7 +92,7 @@ namespace Mannex.Tests
         [Fact]
         public void IsInBetweenFailsWithNullReferenceForThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => IComparableExtensions.IsInBetween(null, new Version(), new Version()));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsInBetween(null, new Version(), new Version()));
             Assert.Equal("value", e.ParamName);
         }
 

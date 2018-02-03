@@ -17,6 +17,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     using System;
@@ -40,7 +42,7 @@ namespace Mannex.Tests
         public void HoursInDayWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        TimeZoneInfoExtensions.HoursInDay(null, DateTime.MinValue));
+                Extensions.HoursInDay(null, DateTime.MinValue));
             Assert.Equal("tz", e.ParamName);
         }
 
@@ -55,7 +57,7 @@ namespace Mannex.Tests
         public void GetDayLengthWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        TimeZoneInfoExtensions.GetDayLength(null, DateTime.MinValue));
+                Extensions.GetDayLength(null, DateTime.MinValue));
             Assert.Equal("tz", e.ParamName);
         }
 

@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -36,7 +38,7 @@ namespace Mannex.Tests
         [Fact]
         public void GetServiceFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => IServiceProviderExtensions.GetService<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.GetService<object>(null));
         }
 
         [Fact]
@@ -57,7 +59,7 @@ namespace Mannex.Tests
         [Fact]
         public void GetRequiredServiceFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => IServiceProviderExtensions.GetRequiredService<object>(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.GetRequiredService<object>(null));
         }
 
         [Fact]

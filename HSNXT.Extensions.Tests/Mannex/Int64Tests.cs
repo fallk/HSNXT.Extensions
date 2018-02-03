@@ -28,6 +28,7 @@ namespace Mannex.Tests
     #region Imports
 
     using Xunit;
+    using HSNXT;
 
     #endregion
 

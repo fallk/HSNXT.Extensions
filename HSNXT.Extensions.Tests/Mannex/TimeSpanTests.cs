@@ -26,6 +26,7 @@ namespace Mannex.Tests
     using System;
     using System.Globalization;
     using Xunit;
+    using HSNXT;
 
     public class TimeSpanTests
     {

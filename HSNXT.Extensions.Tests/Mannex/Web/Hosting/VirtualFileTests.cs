@@ -40,7 +40,7 @@ namespace Mannex.Tests.Web.Hosting
         [Fact]
         public void ReadAllTextFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => VirtualFileExtensions.ReadAllText(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadAllText((VirtualFile)null));
             Assert.Equal("file", e.ParamName);
         }
 
@@ -69,7 +69,7 @@ namespace Mannex.Tests.Web.Hosting
         [Fact]
         public void ReadLinesFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => VirtualFileExtensions.ReadLines(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadLines((VirtualFile)null));
             Assert.Equal("file", e.ParamName);
         }
 

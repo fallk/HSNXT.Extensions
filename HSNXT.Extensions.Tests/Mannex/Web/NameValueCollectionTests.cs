@@ -38,7 +38,7 @@ namespace Mannex.Tests.Web
         [Fact]
         public void ToQueryStringFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => NameValueCollectionExtensions.ToQueryString(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ToQueryString(null));
             Assert.Equal("collection", e.ParamName);
         }
 
@@ -149,7 +149,7 @@ namespace Mannex.Tests.Web
         [Fact]
         public void ToW3FormEncodedFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => NameValueCollectionExtensions.ToW3FormEncoded(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ToW3FormEncoded(null));
             Assert.Equal("collection", e.ParamName);
         }
 

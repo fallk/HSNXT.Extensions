@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -37,7 +39,7 @@ namespace Mannex.Tests
         public void PrepareForRethrowFailsWithNullSelf()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                ExceptionExtensions.PrepareForRethrow(null));
+                Extensions.PrepareForRethrow(null));
         }
 
         [Fact]
@@ -55,7 +57,7 @@ namespace Mannex.Tests
         public void RethrowFailsWithNullSelf()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                ExceptionExtensions.Rethrow(null));
+                Extensions.Rethrow(null));
         }
 
         [Fact]
@@ -95,7 +97,7 @@ namespace Mannex.Tests
         public void InnerExceptionsFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                 ExceptionExtensions.InnerExceptions(null));
+                Extensions.InnerExceptions(null));
         }
 
         [Fact]
@@ -122,7 +124,7 @@ namespace Mannex.Tests
         public void IsSharingViolationFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                 ExceptionExtensions.IsSharingViolation(null));
+                Extensions.IsSharingViolation(null));
         }
 
         [Fact]

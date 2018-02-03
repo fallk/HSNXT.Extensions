@@ -21,6 +21,8 @@
 //
 #endregion
 
+using HSNXT;
+
 namespace Mannex.Tests
 {
     #region Imports
@@ -39,7 +41,7 @@ namespace Mannex.Tests
         [Fact]
         public void IsConstructionOfGenericTypeDefinitionWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => TypeExtensions.IsConstructionOfGenericTypeDefinition(null, typeof(Nullable<>)));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsConstructionOfGenericTypeDefinition(null, typeof(Nullable<>)));
             Assert.Equal("type", e.ParamName);
         }
 
@@ -72,7 +74,7 @@ namespace Mannex.Tests
         [Fact]
         public void IsConstructionOfNullableWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => TypeExtensions.IsConstructionOfNullable(null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.IsConstructionOfNullable(null));
         }
 
         [Fact]
@@ -90,7 +92,7 @@ namespace Mannex.Tests
         [Fact]
         public void FindParseMethodWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => TypeExtensions.FindParseMethod(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.FindParseMethod(null));
             Assert.Equal("type", e.ParamName);
         }
 
@@ -129,7 +131,7 @@ namespace Mannex.Tests
         [Fact]
         public void GetDefaultValueWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => TypeExtensions.GetDefaultValue(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.GetDefaultValue(null));
             Assert.Equal("type", e.ParamName);
         }
 

@@ -37,7 +37,7 @@ namespace Mannex.Tests.Text
         [Fact]
         public void AppendNullableCharFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringBuilderExtensions.Append(null, 'a'));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Append(null, 'a'));
             Assert.Equal("sb", e.ParamName);
         }
 

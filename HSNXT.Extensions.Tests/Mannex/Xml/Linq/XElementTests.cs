@@ -39,7 +39,7 @@ namespace Mannex.Tests.Xml.Linq
         public void GetNamespacesInScopeFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() => 
-                        XElementExtensions.GetNamespacesInScope(null));
+                HSNXT.Extensions.GetNamespacesInScope(null));
             Assert.Equal("element", e.ParamName);
         }
         

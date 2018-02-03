@@ -36,7 +36,7 @@ namespace Mannex.Tests.Reflection
         [Fact]
         public void CompileStaticInvokerFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => MethodInfoExtensions.CompileStaticInvoker(null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.CompileStaticInvoker(null));
             Assert.Equal("method", e.ParamName);
         }
 

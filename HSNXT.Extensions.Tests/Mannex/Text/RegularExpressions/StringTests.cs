@@ -38,7 +38,7 @@ namespace Mannex.Tests.Text.RegularExpressions
         [Fact]
         public void IsMatchFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.IsMatch(null, string.Empty));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsMatch(null, string.Empty));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -75,7 +75,7 @@ namespace Mannex.Tests.Text.RegularExpressions
         [Fact]
         public void MatchFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Match(null, string.Empty));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Match(null, string.Empty));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -120,7 +120,7 @@ namespace Mannex.Tests.Text.RegularExpressions
         [Fact]
         public void MatchesFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => StringExtensions.Matches(null, string.Empty));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.Matches(null, string.Empty));
             Assert.Equal("str", e.ParamName);
         }
 
@@ -143,9 +143,9 @@ namespace Mannex.Tests.Text.RegularExpressions
         {
             var e = "(123,456)".Matches(@"[0-9]+").GetEnumerator();
             Assert.True(e.MoveNext());
-            Assert.Equal("123", e.Current.Value);
+            Assert.Equal("123", ((Match)e.Current).Value);
             Assert.True(e.MoveNext());
-            Assert.Equal("456", e.Current.Value);
+            Assert.Equal("456", ((Match)e.Current).Value);
             Assert.False(e.MoveNext());
         }
 
@@ -154,13 +154,6 @@ namespace Mannex.Tests.Text.RegularExpressions
         {
             var e = "(123,456)".Matches(@"[a-z]+").GetEnumerator();
             Assert.False(e.MoveNext());
-        }
-
-        [Fact]
-        public void MatchesRespectsOptions()
-        {
-            Assert.False("(abc,def)".Matches(@"[A-Z]+").Any());
-            Assert.True("(abc,def)".Matches(@"[A-Z]+", RegexOptions.IgnoreCase).Any());
         }
     }
 }
