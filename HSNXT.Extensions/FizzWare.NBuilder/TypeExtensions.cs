@@ -7,26 +7,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-#if !NETSTANDARD1_6
-        // added for api compatibility with .net standard
-
-        //public static MethodInfo GetMethodInfo(this MulticastDelegate d)
-        //{
-        //    return d.Method;
-        //}
-
-        public static MethodInfo GetMethodInfo(this Delegate d)
-        {
-            return d.Method;
-        }
-
-        public static Type GetTypeInfo(this Type t)
-        {
-            return t; 
-        }
-#else
-#endif
-
         public static IList<MemberInfo> GetPublicInstancePropertiesAndFields(this Type t)
         {
             var memberInfos = new List<MemberInfo>();
