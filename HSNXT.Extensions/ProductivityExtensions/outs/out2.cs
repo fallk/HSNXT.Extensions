@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Net;
 using System.ComponentModel.Design;
@@ -49,6 +49,7 @@ using System.IO.MemoryMappedFiles;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using System.Collections.ObjectModel;
+
 #if NetFX
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
@@ -59,7 +60,6 @@ using System.Windows.Forms.Layout;
 #endif
 
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -81,7 +81,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -107,43 +106,42 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// asynccallback.BeginInvoke(ar, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this AsyncCallback asynccallback, IAsyncResult ar, AsyncCallback callback)
-		{
-			if(asynccallback == null) throw new ArgumentNullException("asynccallback");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// asynccallback.BeginInvoke(ar, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this AsyncCallback asynccallback, IAsyncResult ar,
+            AsyncCallback callback)
+        {
+            if (asynccallback == null) throw new ArgumentNullException("asynccallback");
 
-			return asynccallback.BeginInvoke(ar, callback, null);
-		}
-
-	}
+            return asynccallback.BeginInvoke(ar, callback, null);
+        }
+    }
 }
 #if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ChangeType so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// binder.ChangeType&lt;int&gt;(value, culture);
-		/// </example>
-		/// </summary>
-		public static T ChangeType<T>(this Binder binder, Object value, System.Globalization.CultureInfo culture)
-		{
-			if(binder == null) throw new ArgumentNullException("binder");
+    {
+        /// <summary>
+        /// Extends ChangeType so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// binder.ChangeType&lt;int&gt;(value, culture);
+        /// </example>
+        /// </summary>
+        public static T ChangeType<T>(this Binder binder, Object value, System.Globalization.CultureInfo culture)
+        {
+            if (binder == null) throw new ArgumentNullException("binder");
 
-			return (T)binder.ChangeType(value, typeof(T), culture);
-		}
-
-	}
+            return (T) binder.ChangeType(value, typeof(T), culture);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -151,67 +149,65 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// canceleventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this CancelEventHandler canceleventhandler, Object sender, CancelEventArgs e, AsyncCallback callback)
-		{
-			if(canceleventhandler == null) throw new ArgumentNullException("canceleventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// canceleventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this CancelEventHandler canceleventhandler, Object sender,
+            CancelEventArgs e, AsyncCallback callback)
+        {
+            if (canceleventhandler == null) throw new ArgumentNullException("canceleventhandler");
 
-			return canceleventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return canceleventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke&lt;T&gt; so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// comparison.BeginInvoke&lt;T&gt;(x, y, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke<T>(this Comparison<T> comparison, T x, T y, AsyncCallback callback)
-		{
-			if(comparison == null) throw new ArgumentNullException("comparison");
+    {
+        /// <summary>
+        /// Extends BeginInvoke&lt;T&gt; so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// comparison.BeginInvoke&lt;T&gt;(x, y, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke<T>(this Comparison<T> comparison, T x, T y, AsyncCallback callback)
+        {
+            if (comparison == null) throw new ArgumentNullException("comparison");
 
-			return comparison.BeginInvoke(x, y, callback, null);
-		}
-
-	}
+            return comparison.BeginInvoke(x, y, callback, null);
+        }
+    }
 }
 #if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// contextcallback.BeginInvoke(state, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ContextCallback contextcallback, Object state, AsyncCallback callback)
-		{
-			if(contextcallback == null) throw new ArgumentNullException("contextcallback");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// contextcallback.BeginInvoke(state, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ContextCallback contextcallback, Object state,
+            AsyncCallback callback)
+        {
+            if (contextcallback == null) throw new ArgumentNullException("contextcallback");
 
-			return contextcallback.BeginInvoke(state, callback, null);
-		}
-
-	}
+            return contextcallback.BeginInvoke(state, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -237,25 +233,24 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke&lt;TInput, TOutput&gt; so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// converter.BeginInvoke&lt;TInput, TOutput&gt;(input, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke<TInput, TOutput>(this Converter<TInput,TOutput> converter, TInput input, AsyncCallback callback)
-		{
-			if(converter == null) throw new ArgumentNullException("converter");
+    {
+        /// <summary>
+        /// Extends BeginInvoke&lt;TInput, TOutput&gt; so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// converter.BeginInvoke&lt;TInput, TOutput&gt;(input, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke<TInput, TOutput>(this Converter<TInput, TOutput> converter, TInput input,
+            AsyncCallback callback)
+        {
+            if (converter == null) throw new ArgumentNullException("converter");
 
-			return converter.BeginInvoke(input, callback, null);
-		}
-
-	}
+            return converter.BeginInvoke(input, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -277,7 +272,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -299,7 +293,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -325,27 +318,26 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Adds a generic Add&lt;T&gt; to DataColumnCollection to avoid Add(typeof(T), "columnName")
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="dataColumnCollection"></param>
-		/// <param name="columnName"></param>
-		public static void Add<T>(this DataColumnCollection dataColumnCollection, string columnName)
-		{
-			if (dataColumnCollection == null)
-			{
-				throw new ArgumentNullException(nameof(dataColumnCollection));
-			}
+    {
+        /// <summary>
+        /// Adds a generic Add&lt;T&gt; to DataColumnCollection to avoid Add(typeof(T), "columnName")
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dataColumnCollection"></param>
+        /// <param name="columnName"></param>
+        public static void Add<T>(this DataColumnCollection dataColumnCollection, string columnName)
+        {
+            if (dataColumnCollection == null)
+            {
+                throw new ArgumentNullException(nameof(dataColumnCollection));
+            }
 
-			dataColumnCollection.Add(columnName, typeof(T));
-		}
-	}
+            dataColumnCollection.Add(columnName, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -367,7 +359,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -393,25 +384,24 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// doworkeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DoWorkEventHandler doworkeventhandler, Object sender, DoWorkEventArgs e, AsyncCallback callback)
-		{
-			if(doworkeventhandler == null) throw new ArgumentNullException("doworkeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// doworkeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DoWorkEventHandler doworkeventhandler, Object sender,
+            DoWorkEventArgs e, AsyncCallback callback)
+        {
+            if (doworkeventhandler == null) throw new ArgumentNullException("doworkeventhandler");
 
-			return doworkeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return doworkeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -433,7 +423,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -459,21 +448,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// elapsedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ElapsedEventHandler elapsedeventhandler, Object sender, ElapsedEventArgs e, AsyncCallback callback)
-		{
-			if(elapsedeventhandler == null) throw new ArgumentNullException("elapsedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// elapsedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ElapsedEventHandler elapsedeventhandler, Object sender,
+            ElapsedEventArgs e, AsyncCallback callback)
+        {
+            if (elapsedeventhandler == null) throw new ArgumentNullException("elapsedeventhandler");
 
-			return elapsedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return elapsedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -481,68 +470,66 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// erroreventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ErrorEventHandler erroreventhandler, Object sender, ErrorEventArgs e, AsyncCallback callback)
-		{
-			if(erroreventhandler == null) throw new ArgumentNullException("erroreventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// erroreventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ErrorEventHandler erroreventhandler, Object sender,
+            ErrorEventArgs e, AsyncCallback callback)
+        {
+            if (erroreventhandler == null) throw new ArgumentNullException("erroreventhandler");
 
-			return erroreventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return erroreventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke&lt;TEventArgs&gt; so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// eventhandler.BeginInvoke&lt;TEventArgs&gt;(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke<TEventArgs>(this EventHandler<TEventArgs> eventhandler, Object sender, TEventArgs e, AsyncCallback callback) where TEventArgs : EventArgs
-		{
-			if(eventhandler == null) throw new ArgumentNullException("eventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke&lt;TEventArgs&gt; so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// eventhandler.BeginInvoke&lt;TEventArgs&gt;(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke<TEventArgs>(this EventHandler<TEventArgs> eventhandler, Object sender,
+            TEventArgs e, AsyncCallback callback) where TEventArgs : EventArgs
+        {
+            if (eventhandler == null) throw new ArgumentNullException("eventhandler");
 
-			return eventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return eventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends Convert so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// formatterconverter.Convert&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T Convert<T>(this FormatterConverter formatterconverter, Object value)
-		{
-			if(formatterconverter == null) throw new ArgumentNullException("formatterconverter");
+    {
+        /// <summary>
+        /// Extends Convert so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// formatterconverter.Convert&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T Convert<T>(this FormatterConverter formatterconverter, Object value)
+        {
+            if (formatterconverter == null) throw new ArgumentNullException("formatterconverter");
 
-			return (T)formatterconverter.Convert(value, typeof(T));
-		}
-
-	}
+            return (T) formatterconverter.Convert(value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -564,7 +551,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -590,33 +576,32 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginGetContext so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// httplistener.BeginGetContext(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginGetContext(this HttpListener httplistener, AsyncCallback callback)
-		{
-			if(httplistener == null) throw new ArgumentNullException("httplistener");
+    {
+        /// <summary>
+        /// Extends BeginGetContext so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// httplistener.BeginGetContext(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginGetContext(this HttpListener httplistener, AsyncCallback callback)
+        {
+            if (httplistener == null) throw new ArgumentNullException("httplistener");
 
-			return httplistener.BeginGetContext(callback, null);
-		}
-
-	}
+            return httplistener.BeginGetContext(callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47 || NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0)
 
 namespace HSNXT.PRI.ProductivityExtensions
 {
-	public interface IAwaitable : INotifyCompletion
-	{
-		IAwaitable GetAwaiter();
-		bool IsCompleted { get; }
-		void GetResult();
-	}
+    public interface IAwaitable : INotifyCompletion
+    {
+        IAwaitable GetAwaiter();
+        bool IsCompleted { get; }
+        void GetResult();
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -624,78 +609,76 @@ namespace HSNXT.PRI.ProductivityExtensions
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends Convert so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// iformatterconverter.Convert&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T Convert<T>(this IFormatterConverter iformatterconverter, Object value)
-		{
-			if(iformatterconverter == null) throw new ArgumentNullException("iformatterconverter");
+    {
+        /// <summary>
+        /// Extends Convert so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// iformatterconverter.Convert&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T Convert<T>(this IFormatterConverter iformatterconverter, Object value)
+        {
+            if (iformatterconverter == null) throw new ArgumentNullException("iformatterconverter");
 
-			return (T)iformatterconverter.Convert(value, typeof(T));
-		}
-
-	}
+            return (T) iformatterconverter.Convert(value, typeof(T));
+        }
+    }
 }
 #endif
 
 namespace HSNXT.PRI.ProductivityExtensions.ReflectionExtensions
 {
-	/// <summary>
-	/// class that contains information about an IL Instruction
-	/// </summary>
-	public class IlInstruction
-	{
-		/// <summary>
-		/// construct an IlInstruction based on the OpCode
-		/// </summary>
-		/// <param name="code"></param>
-		public IlInstruction(OpCode code)
-		{
-			Code = code;
-		}
+    /// <summary>
+    /// class that contains information about an IL Instruction
+    /// </summary>
+    public class IlInstruction
+    {
+        /// <summary>
+        /// construct an IlInstruction based on the OpCode
+        /// </summary>
+        /// <param name="code"></param>
+        public IlInstruction(OpCode code)
+        {
+            Code = code;
+        }
 
-		/// <summary>
-		/// Opcode of the instruction
-		/// </summary>
-		public OpCode Code { get; set; }
+        /// <summary>
+        /// Opcode of the instruction
+        /// </summary>
+        public OpCode Code { get; set; }
 
-		/// <summary>
-		/// Optional operand of the instruction
-		/// </summary>
-		public object Operand { get; set; }
-	}
+        /// <summary>
+        /// Optional operand of the instruction
+        /// </summary>
+        public object Operand { get; set; }
+    }
 }
 #if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Checks if an <see cref="IPAddress"/> is IPv4 link local or not
-		/// </summary>
-		/// <param name="ipAddress">IPAddress to check</param>
-		/// <returns>true if IP address is an IPv4 link local address</returns>
-		public static bool IsIPv4LinkLocal(this IPAddress ipAddress)
-		{
-			if (ipAddress == null)
-			{
-				throw new ArgumentNullException(nameof(ipAddress));
-			}
+    {
+        /// <summary>
+        /// Checks if an <see cref="IPAddress"/> is IPv4 link local or not
+        /// </summary>
+        /// <param name="ipAddress">IPAddress to check</param>
+        /// <returns>true if IP address is an IPv4 link local address</returns>
+        public static bool IsIPv4LinkLocal(this IPAddress ipAddress)
+        {
+            if (ipAddress == null)
+            {
+                throw new ArgumentNullException(nameof(ipAddress));
+            }
 
-			byte[] ipBytes = ipAddress.GetAddressBytes();
-			return ipBytes[0] == 169 && ipBytes[1] == 254;
-		}
-	}
+            byte[] ipBytes = ipAddress.GetAddressBytes();
+            return ipBytes[0] == 169 && ipBytes[1] == 254;
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -717,7 +700,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -739,7 +721,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -761,7 +742,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -783,7 +763,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -805,7 +784,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -830,46 +808,43 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends CopyTo&lt;T&gt; so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// list.CopyTo&lt;T&gt;(index, array);
-		/// </example>
-		/// </summary>
-		public static void CopyTo<T>(this List<T> list, Int32 index, T[] array)
-		{
-			if(list == null) throw new ArgumentNullException("list");
+    {
+        /// <summary>
+        /// Extends CopyTo&lt;T&gt; so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// list.CopyTo&lt;T&gt;(index, array);
+        /// </example>
+        /// </summary>
+        public static void CopyTo<T>(this List<T> list, Int32 index, T[] array)
+        {
+            if (list == null) throw new ArgumentNullException("list");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			list.CopyTo(index, array, 0, array.Length);
-		}
-
-	}
+            list.CopyTo(index, array, 0, array.Length);
+        }
+    }
 }
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// matchevaluator.BeginInvoke(match, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this MatchEvaluator matchevaluator, Match match, AsyncCallback callback)
-		{
-			if(matchevaluator == null) throw new ArgumentNullException("matchevaluator");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// matchevaluator.BeginInvoke(match, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this MatchEvaluator matchevaluator, Match match, AsyncCallback callback)
+        {
+            if (matchevaluator == null) throw new ArgumentNullException("matchevaluator");
 
-			return matchevaluator.BeginInvoke(match, callback, null);
-		}
-
-	}
+            return matchevaluator.BeginInvoke(match, callback, null);
+        }
+    }
 }
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -891,7 +866,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -910,7 +884,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -932,7 +905,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -954,7 +926,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -976,7 +947,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1002,25 +972,24 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// parameterizedthreadstart.BeginInvoke(obj, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ParameterizedThreadStart parameterizedthreadstart, Object obj, AsyncCallback callback)
-		{
-			if(parameterizedthreadstart == null) throw new ArgumentNullException("parameterizedthreadstart");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// parameterizedthreadstart.BeginInvoke(obj, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ParameterizedThreadStart parameterizedthreadstart, Object obj,
+            AsyncCallback callback)
+        {
+            if (parameterizedthreadstart == null) throw new ArgumentNullException("parameterizedthreadstart");
 
-			return parameterizedthreadstart.BeginInvoke(obj, callback, null);
-		}
-
-	}
+            return parameterizedthreadstart.BeginInvoke(obj, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1045,66 +1014,64 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke&lt;T&gt; so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// predicate.BeginInvoke&lt;T&gt;(obj, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke<T>(this Predicate<T> predicate, T obj, AsyncCallback callback)
-		{
-			if(predicate == null) throw new ArgumentNullException("predicate");
+    {
+        /// <summary>
+        /// Extends BeginInvoke&lt;T&gt; so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// predicate.BeginInvoke&lt;T&gt;(obj, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke<T>(this Predicate<T> predicate, T obj, AsyncCallback callback)
+        {
+            if (predicate == null) throw new ArgumentNullException("predicate");
 
-			return predicate.BeginInvoke(obj, callback, null);
-		}
-
-	}
+            return predicate.BeginInvoke(obj, callback, null);
+        }
+    }
 }
 #if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// printeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this PrintEventHandler printeventhandler, Object sender, PrintEventArgs e, AsyncCallback callback)
-		{
-			if(printeventhandler == null) throw new ArgumentNullException("printeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// printeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this PrintEventHandler printeventhandler, Object sender,
+            PrintEventArgs e, AsyncCallback callback)
+        {
+            if (printeventhandler == null) throw new ArgumentNullException("printeventhandler");
 
-			return printeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return printeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// propertychangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this PropertyChangedEventHandler propertychangedeventhandler, Object sender, PropertyChangedEventArgs e, AsyncCallback callback)
-		{
-			if(propertychangedeventhandler == null) throw new ArgumentNullException("propertychangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// propertychangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this PropertyChangedEventHandler propertychangedeventhandler,
+            Object sender, PropertyChangedEventArgs e, AsyncCallback callback)
+        {
+            if (propertychangedeventhandler == null) throw new ArgumentNullException("propertychangedeventhandler");
 
-			return propertychangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return propertychangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1130,21 +1097,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// refresheventhandler.BeginInvoke(e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this RefreshEventHandler refresheventhandler, RefreshEventArgs e, AsyncCallback callback)
-		{
-			if(refresheventhandler == null) throw new ArgumentNullException("refresheventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// refresheventhandler.BeginInvoke(e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this RefreshEventHandler refresheventhandler, RefreshEventArgs e,
+            AsyncCallback callback)
+        {
+            if (refresheventhandler == null) throw new ArgumentNullException("refresheventhandler");
 
-			return refresheventhandler.BeginInvoke(e, callback, null);
-		}
-
-	}
+            return refresheventhandler.BeginInvoke(e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1152,21 +1119,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// renamedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this RenamedEventHandler renamedeventhandler, Object sender, RenamedEventArgs e, AsyncCallback callback)
-		{
-			if(renamedeventhandler == null) throw new ArgumentNullException("renamedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// renamedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this RenamedEventHandler renamedeventhandler, Object sender,
+            RenamedEventArgs e, AsyncCallback callback)
+        {
+            if (renamedeventhandler == null) throw new ArgumentNullException("renamedeventhandler");
 
-			return renamedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return renamedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1174,25 +1141,24 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// resolveeventhandler.BeginInvoke(sender, args, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ResolveEventHandler resolveeventhandler, Object sender, ResolveEventArgs args, AsyncCallback callback)
-		{
-			if(resolveeventhandler == null) throw new ArgumentNullException("resolveeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// resolveeventhandler.BeginInvoke(sender, args, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ResolveEventHandler resolveeventhandler, Object sender,
+            ResolveEventArgs args, AsyncCallback callback)
+        {
+            if (resolveeventhandler == null) throw new ArgumentNullException("resolveeventhandler");
 
-			return resolveeventhandler.BeginInvoke(sender, args, callback, null);
-		}
-
-	}
+            return resolveeventhandler.BeginInvoke(sender, args, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1218,26 +1184,24 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends GetValue so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// serializationinfo.GetValue&lt;int&gt;(name);
-		/// </example>
-		/// </summary>
-		public static T GetValue<T>(this SerializationInfo serializationinfo, String name)
-		{
-			if(serializationinfo == null) throw new ArgumentNullException("serializationinfo");
+    {
+        /// <summary>
+        /// Extends GetValue so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// serializationinfo.GetValue&lt;int&gt;(name);
+        /// </example>
+        /// </summary>
+        public static T GetValue<T>(this SerializationInfo serializationinfo, String name)
+        {
+            if (serializationinfo == null) throw new ArgumentNullException("serializationinfo");
 
-			return (T)serializationinfo.GetValue(name, typeof(T));
-		}
-
-	}
+            return (T) serializationinfo.GetValue(name, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1259,7 +1223,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1281,7 +1244,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1303,7 +1265,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1325,7 +1286,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1347,7 +1307,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1369,7 +1328,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1391,7 +1349,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1416,70 +1373,66 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends CopyTo so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// text.CopyTo(sourceIndex, destination);
-		/// </example>
-		/// </summary>
-		public static void CopyTo(this String text, Int32 sourceIndex, Char[] destination)
-		{
-			if(text == null) throw new ArgumentNullException("text");
+    {
+        /// <summary>
+        /// Extends CopyTo so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// text.CopyTo(sourceIndex, destination);
+        /// </example>
+        /// </summary>
+        public static void CopyTo(this String text, Int32 sourceIndex, Char[] destination)
+        {
+            if (text == null) throw new ArgumentNullException("text");
 
-			if(destination == null) throw new ArgumentNullException("destination");
+            if (destination == null) throw new ArgumentNullException("destination");
 
-			text.CopyTo(sourceIndex, destination, 0, destination.Length);
-		}
-
-	}
+            text.CopyTo(sourceIndex, destination, 0, destination.Length);
+        }
+    }
 }
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends CopyTo so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stringbuilder.CopyTo(sourceIndex, destination);
-		/// </example>
-		/// </summary>
-		public static void CopyTo(this StringBuilder stringbuilder, Int32 sourceIndex, Char[] destination)
-		{
-			if(stringbuilder == null) throw new ArgumentNullException("stringbuilder");
+    {
+        /// <summary>
+        /// Extends CopyTo so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stringbuilder.CopyTo(sourceIndex, destination);
+        /// </example>
+        /// </summary>
+        public static void CopyTo(this StringBuilder stringbuilder, Int32 sourceIndex, Char[] destination)
+        {
+            if (stringbuilder == null) throw new ArgumentNullException("stringbuilder");
 
-			if(destination == null) throw new ArgumentNullException("destination");
+            if (destination == null) throw new ArgumentNullException("destination");
 
-			stringbuilder.CopyTo(sourceIndex, destination, 0, destination.Length);
-		}
-
-	}
+            stringbuilder.CopyTo(sourceIndex, destination, 0, destination.Length);
+        }
+    }
 }
 #if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// threadstart.BeginInvoke(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ThreadStart threadstart, AsyncCallback callback)
-		{
-			if(threadstart == null) throw new ArgumentNullException("threadstart");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// threadstart.BeginInvoke(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ThreadStart threadstart, AsyncCallback callback)
+        {
+            if (threadstart == null) throw new ArgumentNullException("threadstart");
 
-			return threadstart.BeginInvoke(callback, null);
-		}
-
-	}
+            return threadstart.BeginInvoke(callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1501,7 +1454,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1527,25 +1479,24 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// typefilter.BeginInvoke(m, filterCriteria, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this TypeFilter typefilter, Type m, Object filterCriteria, AsyncCallback callback)
-		{
-			if(typefilter == null) throw new ArgumentNullException("typefilter");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// typefilter.BeginInvoke(m, filterCriteria, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this TypeFilter typefilter, Type m, Object filterCriteria,
+            AsyncCallback callback)
+        {
+            if (typefilter == null) throw new ArgumentNullException("typefilter");
 
-			return typefilter.BeginInvoke(m, filterCriteria, callback, null);
-		}
-
-	}
+            return typefilter.BeginInvoke(m, filterCriteria, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1567,7 +1518,6 @@ namespace HSNXT
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1593,21 +1543,20 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// waitcallback.BeginInvoke(state, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this WaitCallback waitcallback, Object state, AsyncCallback callback)
-		{
-			if(waitcallback == null) throw new ArgumentNullException("waitcallback");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// waitcallback.BeginInvoke(state, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this WaitCallback waitcallback, Object state, AsyncCallback callback)
+        {
+            if (waitcallback == null) throw new ArgumentNullException("waitcallback");
 
-			return waitcallback.BeginInvoke(state, callback, null);
-		}
-
-	}
+            return waitcallback.BeginInvoke(state, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1615,22 +1564,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ValueAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlatomicvalue.ValueAs&lt;int&gt;(nsResolver);
-		/// </example>
-		/// </summary>
-		public static T ValueAs<T>(this XmlAtomicValue xmlatomicvalue, System.Xml.IXmlNamespaceResolver nsResolver)
-		{
-			if(xmlatomicvalue == null) throw new ArgumentNullException("xmlatomicvalue");
+    {
+        /// <summary>
+        /// Extends ValueAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlatomicvalue.ValueAs&lt;int&gt;(nsResolver);
+        /// </example>
+        /// </summary>
+        public static T ValueAs<T>(this XmlAtomicValue xmlatomicvalue, System.Xml.IXmlNamespaceResolver nsResolver)
+        {
+            if (xmlatomicvalue == null) throw new ArgumentNullException("xmlatomicvalue");
 
-			return (T)xmlatomicvalue.ValueAs(typeof(T), nsResolver);
-		}
-
-	}
+            return (T) xmlatomicvalue.ValueAs(typeof(T), nsResolver);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1638,22 +1586,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends GetEntity so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlresolver.GetEntity&lt;int&gt;(absoluteUri, role);
-		/// </example>
-		/// </summary>
-		public static T GetEntity<T>(this XmlResolver xmlresolver, Uri absoluteUri, String role)
-		{
-			if(xmlresolver == null) throw new ArgumentNullException("xmlresolver");
+    {
+        /// <summary>
+        /// Extends GetEntity so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlresolver.GetEntity&lt;int&gt;(absoluteUri, role);
+        /// </example>
+        /// </summary>
+        public static T GetEntity<T>(this XmlResolver xmlresolver, Uri absoluteUri, String role)
+        {
+            if (xmlresolver == null) throw new ArgumentNullException("xmlresolver");
 
-			return (T)xmlresolver.GetEntity(absoluteUri, role, typeof(T));
-		}
-
-	}
+            return (T) xmlresolver.GetEntity(absoluteUri, role, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1661,22 +1608,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends Find so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlschemas.Find&lt;int&gt;(name);
-		/// </example>
-		/// </summary>
-		public static T Find<T>(this XmlSchemas xmlschemas, System.Xml.XmlQualifiedName name)
-		{
-			if(xmlschemas == null) throw new ArgumentNullException("xmlschemas");
+    {
+        /// <summary>
+        /// Extends Find so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlschemas.Find&lt;int&gt;(name);
+        /// </example>
+        /// </summary>
+        public static T Find<T>(this XmlSchemas xmlschemas, System.Xml.XmlQualifiedName name)
+        {
+            if (xmlschemas == null) throw new ArgumentNullException("xmlschemas");
 
-			return (T)xmlschemas.Find(name, typeof(T));
-		}
-
-	}
+            return (T) xmlschemas.Find(name, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1684,22 +1630,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends GetEntity so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlurlresolver.GetEntity&lt;int&gt;(absoluteUri, role);
-		/// </example>
-		/// </summary>
-		public static T GetEntity<T>(this XmlUrlResolver xmlurlresolver, Uri absoluteUri, String role)
-		{
-			if(xmlurlresolver == null) throw new ArgumentNullException("xmlurlresolver");
+    {
+        /// <summary>
+        /// Extends GetEntity so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlurlresolver.GetEntity&lt;int&gt;(absoluteUri, role);
+        /// </example>
+        /// </summary>
+        public static T GetEntity<T>(this XmlUrlResolver xmlurlresolver, Uri absoluteUri, String role)
+        {
+            if (xmlurlresolver == null) throw new ArgumentNullException("xmlurlresolver");
 
-			return (T)xmlurlresolver.GetEntity(absoluteUri, role, typeof(T));
-		}
-
-	}
+            return (T) xmlurlresolver.GetEntity(absoluteUri, role, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1707,21 +1652,20 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// xmlvaluegetter.BeginInvoke(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this XmlValueGetter xmlvaluegetter, AsyncCallback callback)
-		{
-			if(xmlvaluegetter == null) throw new ArgumentNullException("xmlvaluegetter");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// xmlvaluegetter.BeginInvoke(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this XmlValueGetter xmlvaluegetter, AsyncCallback callback)
+        {
+            if (xmlvaluegetter == null) throw new ArgumentNullException("xmlvaluegetter");
 
-			return xmlvaluegetter.BeginInvoke(callback, null);
-		}
-
-	}
+            return xmlvaluegetter.BeginInvoke(callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1729,22 +1673,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ValueAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xpathitem.ValueAs&lt;int&gt;(nsResolver);
-		/// </example>
-		/// </summary>
-		public static T ValueAs<T>(this XPathItem xpathitem, System.Xml.IXmlNamespaceResolver nsResolver)
-		{
-			if(xpathitem == null) throw new ArgumentNullException("xpathitem");
+    {
+        /// <summary>
+        /// Extends ValueAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xpathitem.ValueAs&lt;int&gt;(nsResolver);
+        /// </example>
+        /// </summary>
+        public static T ValueAs<T>(this XPathItem xpathitem, System.Xml.IXmlNamespaceResolver nsResolver)
+        {
+            if (xpathitem == null) throw new ArgumentNullException("xpathitem");
 
-			return (T)xpathitem.ValueAs(typeof(T), nsResolver);
-		}
-
-	}
+            return (T) xpathitem.ValueAs(typeof(T), nsResolver);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1752,21 +1695,20 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ValueAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xpathnavigator.ValueAs&lt;int&gt;(nsResolver);
-		/// </example>
-		/// </summary>
-		public static T ValueAs<T>(this XPathNavigator xpathnavigator, System.Xml.IXmlNamespaceResolver nsResolver)
-		{
-			if(xpathnavigator == null) throw new ArgumentNullException("xpathnavigator");
+    {
+        /// <summary>
+        /// Extends ValueAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xpathnavigator.ValueAs&lt;int&gt;(nsResolver);
+        /// </example>
+        /// </summary>
+        public static T ValueAs<T>(this XPathNavigator xpathnavigator, System.Xml.IXmlNamespaceResolver nsResolver)
+        {
+            if (xpathnavigator == null) throw new ArgumentNullException("xpathnavigator");
 
-			return (T)xpathnavigator.ValueAs(typeof(T), nsResolver);
-		}
-
-	}
+            return (T) xpathnavigator.ValueAs(typeof(T), nsResolver);
+        }
+    }
 }
 #endif

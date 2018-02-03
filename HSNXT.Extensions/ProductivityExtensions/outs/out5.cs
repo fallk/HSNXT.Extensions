@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Net;
 using System.ComponentModel.Design;
@@ -49,6 +49,7 @@ using System.IO.MemoryMappedFiles;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using System.Collections.ObjectModel;
+
 #if NetFX
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
@@ -63,64 +64,67 @@ using System.Windows.Forms.Layout;
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this AnonymousPipeClientStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this AnonymousPipeClientStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this AnonymousPipeClientStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this AnonymousPipeClientStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this AnonymousPipeClientStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this AnonymousPipeClientStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this AnonymousPipeClientStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this AnonymousPipeClientStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -128,64 +132,67 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this AnonymousPipeServerStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this AnonymousPipeServerStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this AnonymousPipeServerStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this AnonymousPipeServerStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this AnonymousPipeServerStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this AnonymousPipeServerStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this AnonymousPipeServerStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this AnonymousPipeServerStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -193,64 +200,65 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this AuthenticatedStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this AuthenticatedStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return stream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this AuthenticatedStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this AuthenticatedStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this AuthenticatedStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this AuthenticatedStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return stream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this AuthenticatedStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this AuthenticatedStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return stream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NETSTANDARD2_0 || NET47)
@@ -258,64 +266,65 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this BufferedStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this BufferedStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return stream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this BufferedStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this BufferedStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this BufferedStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this BufferedStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return stream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this BufferedStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this BufferedStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return stream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD1_6 || NETSTANDARD2_0 || NET47)
@@ -323,383 +332,396 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this CryptoStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this CryptoStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return stream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this CryptoStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this CryptoStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this CryptoStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this CryptoStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return stream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this CryptoStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this CryptoStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return stream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends GetCharCount so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// decoder.GetCharCount(bytes);
-		/// </example>
-		/// </summary>
-		public static Int32 GetCharCount(this Decoder decoder, Byte[] bytes)
-		{
-			if(decoder == null) throw new ArgumentNullException("decoder");
+    {
+        /// <summary>
+        /// Extends GetCharCount so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// decoder.GetCharCount(bytes);
+        /// </example>
+        /// </summary>
+        public static Int32 GetCharCount(this Decoder decoder, Byte[] bytes)
+        {
+            if (decoder == null) throw new ArgumentNullException("decoder");
 
-			if(bytes == null) throw new ArgumentNullException("bytes");
+            if (bytes == null) throw new ArgumentNullException("bytes");
 
-			return decoder.GetCharCount(bytes, 0, bytes.Length);
-		}
+            return decoder.GetCharCount(bytes, 0, bytes.Length);
+        }
 
-		/// <summary>
-		/// Extends GetCharCount so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// decoder.GetCharCount(bytes, flush);
-		/// </example>
-		/// </summary>
-		public static Int32 GetCharCount(this Decoder decoder, Byte[] bytes, Boolean flush)
-		{
-			if(decoder == null) throw new ArgumentNullException("decoder");
+        /// <summary>
+        /// Extends GetCharCount so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// decoder.GetCharCount(bytes, flush);
+        /// </example>
+        /// </summary>
+        public static Int32 GetCharCount(this Decoder decoder, Byte[] bytes, Boolean flush)
+        {
+            if (decoder == null) throw new ArgumentNullException("decoder");
 
-			if(bytes == null) throw new ArgumentNullException("bytes");
+            if (bytes == null) throw new ArgumentNullException("bytes");
 
-			return decoder.GetCharCount(bytes, 0, bytes.Length, flush);
-		}
+            return decoder.GetCharCount(bytes, 0, bytes.Length, flush);
+        }
 
-		/// <summary>
-		/// Extends GetChars so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// decoder.GetChars(bytes, chars, charIndex);
-		/// </example>
-		/// </summary>
-		public static Int32 GetChars(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex)
-		{
-			if(decoder == null) throw new ArgumentNullException("decoder");
+        /// <summary>
+        /// Extends GetChars so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// decoder.GetChars(bytes, chars, charIndex);
+        /// </example>
+        /// </summary>
+        public static Int32 GetChars(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex)
+        {
+            if (decoder == null) throw new ArgumentNullException("decoder");
 
-			if(bytes == null) throw new ArgumentNullException("bytes");
+            if (bytes == null) throw new ArgumentNullException("bytes");
 
-			return decoder.GetChars(bytes, 0, bytes.Length, chars, charIndex);
-		}
+            return decoder.GetChars(bytes, 0, bytes.Length, chars, charIndex);
+        }
 
-		/// <summary>
-		/// Extends GetChars so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// decoder.GetChars(bytes, chars, charIndex, flush);
-		/// </example>
-		/// </summary>
-		public static Int32 GetChars(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex, Boolean flush)
-		{
-			if(decoder == null) throw new ArgumentNullException("decoder");
+        /// <summary>
+        /// Extends GetChars so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// decoder.GetChars(bytes, chars, charIndex, flush);
+        /// </example>
+        /// </summary>
+        public static Int32 GetChars(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex, Boolean flush)
+        {
+            if (decoder == null) throw new ArgumentNullException("decoder");
 
-			if(bytes == null) throw new ArgumentNullException("bytes");
+            if (bytes == null) throw new ArgumentNullException("bytes");
 
-			return decoder.GetChars(bytes, 0, bytes.Length, chars, charIndex, flush);
-		}
+            return decoder.GetChars(bytes, 0, bytes.Length, chars, charIndex, flush);
+        }
 
-		/// <summary>
-		/// Extends Convert so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// decoder.Convert(bytes, chars, charIndex, charCount, flush, bytesUsed, charsUsed, completed);
-		/// </example>
-		/// </summary>
-		public static void Convert(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex, Int32 charCount, Boolean flush, out Int32 bytesUsed, out Int32 charsUsed, out Boolean completed)
-		{
-			if(decoder == null) throw new ArgumentNullException("decoder");
+        /// <summary>
+        /// Extends Convert so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// decoder.Convert(bytes, chars, charIndex, charCount, flush, bytesUsed, charsUsed, completed);
+        /// </example>
+        /// </summary>
+        public static void Convert(this Decoder decoder, Byte[] bytes, Char[] chars, Int32 charIndex, Int32 charCount,
+            Boolean flush, out Int32 bytesUsed, out Int32 charsUsed, out Boolean completed)
+        {
+            if (decoder == null) throw new ArgumentNullException("decoder");
 
-			if(bytes == null) throw new ArgumentNullException("bytes");
+            if (bytes == null) throw new ArgumentNullException("bytes");
 
-			decoder.Convert(bytes, 0, bytes.Length, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed, out completed);
-		}
-
-	}
+            decoder.Convert(bytes, 0, bytes.Length, chars, charIndex, charCount, flush, out bytesUsed, out charsUsed,
+                out completed);
+        }
+    }
 }
 #if (NETSTANDARD2_0 || NET47)
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// deflatestream.BeginRead(array, offset, count, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this DeflateStream deflatestream, Byte[] array, Int32 offset, Int32 count, AsyncCallback asyncCallback)
-		{
-			if(deflatestream == null) throw new ArgumentNullException("deflatestream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// deflatestream.BeginRead(array, offset, count, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this DeflateStream deflatestream, Byte[] array, Int32 offset, Int32 count,
+            AsyncCallback asyncCallback)
+        {
+            if (deflatestream == null) throw new ArgumentNullException("deflatestream");
 
-			return deflatestream.BeginRead(array, offset, count, asyncCallback, null);
-		}
+            return deflatestream.BeginRead(array, offset, count, asyncCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// deflatestream.BeginRead(array, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this DeflateStream deflatestream, Byte[] array, AsyncCallback asyncCallback)
-		{
-			if(deflatestream == null) throw new ArgumentNullException("deflatestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// deflatestream.BeginRead(array, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this DeflateStream deflatestream, Byte[] array,
+            AsyncCallback asyncCallback)
+        {
+            if (deflatestream == null) throw new ArgumentNullException("deflatestream");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return deflatestream.BeginRead(array, 0, array.Length, asyncCallback);
-		}
+            return deflatestream.BeginRead(array, 0, array.Length, asyncCallback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// deflatestream.BeginWrite(array, offset, count, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this DeflateStream deflatestream, Byte[] array, Int32 offset, Int32 count, AsyncCallback asyncCallback)
-		{
-			if(deflatestream == null) throw new ArgumentNullException("deflatestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// deflatestream.BeginWrite(array, offset, count, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this DeflateStream deflatestream, Byte[] array, Int32 offset, Int32 count,
+            AsyncCallback asyncCallback)
+        {
+            if (deflatestream == null) throw new ArgumentNullException("deflatestream");
 
-			return deflatestream.BeginWrite(array, offset, count, asyncCallback, null);
-		}
+            return deflatestream.BeginWrite(array, offset, count, asyncCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// deflatestream.BeginWrite(array, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this DeflateStream deflatestream, Byte[] array, AsyncCallback asyncCallback)
-		{
-			if(deflatestream == null) throw new ArgumentNullException("deflatestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// deflatestream.BeginWrite(array, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this DeflateStream deflatestream, Byte[] array,
+            AsyncCallback asyncCallback)
+        {
+            if (deflatestream == null) throw new ArgumentNullException("deflatestream");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return deflatestream.BeginWrite(array, 0, array.Length, asyncCallback);
-		}
-	}
+            return deflatestream.BeginWrite(array, 0, array.Length, asyncCallback);
+        }
+    }
 }
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends GetByteCount so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// encoder.GetByteCount(chars, flush);
-		/// </example>
-		/// </summary>
-		public static Int32 GetByteCount(this System.Text.Encoder encoder, Char[] chars, Boolean flush)
-		{
-			if(encoder == null) throw new ArgumentNullException("encoder");
+    {
+        /// <summary>
+        /// Extends GetByteCount so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// encoder.GetByteCount(chars, flush);
+        /// </example>
+        /// </summary>
+        public static Int32 GetByteCount(this System.Text.Encoder encoder, Char[] chars, Boolean flush)
+        {
+            if (encoder == null) throw new ArgumentNullException("encoder");
 
-			if(chars == null) throw new ArgumentNullException("chars");
+            if (chars == null) throw new ArgumentNullException("chars");
 
-			return encoder.GetByteCount(chars, 0, chars.Length, flush);
-		}
+            return encoder.GetByteCount(chars, 0, chars.Length, flush);
+        }
 
-		/// <summary>
-		/// Extends GetBytes so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// encoder.GetBytes(chars, bytes, byteIndex, flush);
-		/// </example>
-		/// </summary>
-		public static Int32 GetBytes(this System.Text.Encoder encoder, Char[] chars, Byte[] bytes, Int32 byteIndex, Boolean flush)
-		{
-			if(encoder == null) throw new ArgumentNullException("encoder");
+        /// <summary>
+        /// Extends GetBytes so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// encoder.GetBytes(chars, bytes, byteIndex, flush);
+        /// </example>
+        /// </summary>
+        public static Int32 GetBytes(this System.Text.Encoder encoder, Char[] chars, Byte[] bytes, Int32 byteIndex,
+            Boolean flush)
+        {
+            if (encoder == null) throw new ArgumentNullException("encoder");
 
-			if(chars == null) throw new ArgumentNullException("chars");
+            if (chars == null) throw new ArgumentNullException("chars");
 
-			return encoder.GetBytes(chars, 0, chars.Length, bytes, byteIndex, flush);
-		}
+            return encoder.GetBytes(chars, 0, chars.Length, bytes, byteIndex, flush);
+        }
 
-		/// <summary>
-		/// Extends Convert so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// encoder.Convert(chars, bytes, byteIndex, byteCount, flush, charsUsed, bytesUsed, completed);
-		/// </example>
-		/// </summary>
-		public static void Convert(this System.Text.Encoder encoder, Char[] chars, Byte[] bytes, Int32 byteIndex, Int32 byteCount, Boolean flush, out Int32 charsUsed, out Int32 bytesUsed, out Boolean completed)
-		{
-			if(encoder == null) throw new ArgumentNullException("encoder");
+        /// <summary>
+        /// Extends Convert so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// encoder.Convert(chars, bytes, byteIndex, byteCount, flush, charsUsed, bytesUsed, completed);
+        /// </example>
+        /// </summary>
+        public static void Convert(this System.Text.Encoder encoder, Char[] chars, Byte[] bytes, Int32 byteIndex,
+            Int32 byteCount, Boolean flush, out Int32 charsUsed, out Int32 bytesUsed, out Boolean completed)
+        {
+            if (encoder == null) throw new ArgumentNullException("encoder");
 
-			if(chars == null) throw new ArgumentNullException("chars");
+            if (chars == null) throw new ArgumentNullException("chars");
 
-			encoder.Convert(chars, 0, chars.Length, bytes, byteIndex, byteCount, flush, out charsUsed, out bytesUsed, out completed);
-		}
+            encoder.Convert(chars, 0, chars.Length, bytes, byteIndex, byteCount, flush, out charsUsed, out bytesUsed,
+                out completed);
+        }
 
 #if (NETSTANDARD2_0 || NET47)
 
 #if (NETSTANDARD2_0 || NET47)
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// filestream.BeginRead(array, offset, numBytes, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this FileStream filestream, Byte[] array, Int32 offset, Int32 numBytes, AsyncCallback userCallback)
-		{
-			if(filestream == null) throw new ArgumentNullException("filestream");
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// filestream.BeginRead(array, offset, numBytes, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this FileStream filestream, Byte[] array, Int32 offset, Int32 numBytes,
+            AsyncCallback userCallback)
+        {
+            if (filestream == null) throw new ArgumentNullException("filestream");
 
-			return filestream.BeginRead(array, offset, numBytes, userCallback, null);
-		}
+            return filestream.BeginRead(array, offset, numBytes, userCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// filestream.BeginRead(array, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this FileStream filestream, Byte[] array, AsyncCallback userCallback)
-		{
-			if(filestream == null) throw new ArgumentNullException("filestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// filestream.BeginRead(array, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this FileStream filestream, Byte[] array, AsyncCallback userCallback)
+        {
+            if (filestream == null) throw new ArgumentNullException("filestream");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return filestream.BeginRead(array, 0, array.Length, userCallback);
-		}
+            return filestream.BeginRead(array, 0, array.Length, userCallback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// filestream.BeginWrite(array, offset, numBytes, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this FileStream filestream, Byte[] array, Int32 offset, Int32 numBytes, AsyncCallback userCallback)
-		{
-			if(filestream == null) throw new ArgumentNullException("filestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// filestream.BeginWrite(array, offset, numBytes, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this FileStream filestream, Byte[] array, Int32 offset, Int32 numBytes,
+            AsyncCallback userCallback)
+        {
+            if (filestream == null) throw new ArgumentNullException("filestream");
 
-			return filestream.BeginWrite(array, offset, numBytes, userCallback, null);
-		}
+            return filestream.BeginWrite(array, offset, numBytes, userCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// filestream.BeginWrite(array, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this FileStream filestream, Byte[] array, AsyncCallback userCallback)
-		{
-			if(filestream == null) throw new ArgumentNullException("filestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// filestream.BeginWrite(array, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this FileStream filestream, Byte[] array, AsyncCallback userCallback)
+        {
+            if (filestream == null) throw new ArgumentNullException("filestream");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return filestream.BeginWrite(array, 0, array.Length, userCallback);
-		}
+            return filestream.BeginWrite(array, 0, array.Length, userCallback);
+        }
 #endif
 
 #endif
 #if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
 
 #if (NETSTANDARD2_0 || NET47)
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// gzipstream.BeginRead(array, offset, count, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this GZipStream gzipstream, Byte[] array, Int32 offset, Int32 count, AsyncCallback asyncCallback)
-		{
-			if(gzipstream == null) throw new ArgumentNullException("gzipstream");
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// gzipstream.BeginRead(array, offset, count, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this GZipStream gzipstream, Byte[] array, Int32 offset, Int32 count,
+            AsyncCallback asyncCallback)
+        {
+            if (gzipstream == null) throw new ArgumentNullException("gzipstream");
 
-			return gzipstream.BeginRead(array, offset, count, asyncCallback, null);
-		}
+            return gzipstream.BeginRead(array, offset, count, asyncCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// gzipstream.BeginRead(array, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this GZipStream gzipstream, Byte[] array, AsyncCallback asyncCallback)
-		{
-			if(gzipstream == null) throw new ArgumentNullException("gzipstream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// gzipstream.BeginRead(array, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this GZipStream gzipstream, Byte[] array, AsyncCallback asyncCallback)
+        {
+            if (gzipstream == null) throw new ArgumentNullException("gzipstream");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return gzipstream.BeginRead(array, 0, array.Length, asyncCallback);
-		}
+            return gzipstream.BeginRead(array, 0, array.Length, asyncCallback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// gzipstream.BeginWrite(array, offset, count, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this GZipStream gzipstream, Byte[] array, Int32 offset, Int32 count, AsyncCallback asyncCallback)
-		{
-			if(gzipstream == null) throw new ArgumentNullException("gzipstream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// gzipstream.BeginWrite(array, offset, count, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this GZipStream gzipstream, Byte[] array, Int32 offset, Int32 count,
+            AsyncCallback asyncCallback)
+        {
+            if (gzipstream == null) throw new ArgumentNullException("gzipstream");
 
-			return gzipstream.BeginWrite(array, offset, count, asyncCallback, null);
-		}
+            return gzipstream.BeginWrite(array, offset, count, asyncCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// gzipstream.BeginWrite(array, asyncCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this GZipStream gzipstream, Byte[] array, AsyncCallback asyncCallback)
-		{
-			if(gzipstream == null) throw new ArgumentNullException("gzipstream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// gzipstream.BeginWrite(array, asyncCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this GZipStream gzipstream, Byte[] array, AsyncCallback asyncCallback)
+        {
+            if (gzipstream == null) throw new ArgumentNullException("gzipstream");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return gzipstream.BeginWrite(array, 0, array.Length, asyncCallback);
-		}
+            return gzipstream.BeginWrite(array, 0, array.Length, asyncCallback);
+        }
 #endif
-	}
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -707,39 +729,40 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #if (NETSTANDARD2_0 || NET47)
-		/// <summary>
-		/// Extends TransformBlock so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// hashalgorithm.TransformBlock(inputBuffer, outputBuffer, outputOffset);
-		/// </example>
-		/// </summary>
-		public static Int32 TransformBlock(this HashAlgorithm hashalgorithm, Byte[] inputBuffer, Byte[] outputBuffer, Int32 outputOffset)
-		{
-			if(hashalgorithm == null) throw new ArgumentNullException("hashalgorithm");
+        /// <summary>
+        /// Extends TransformBlock so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// hashalgorithm.TransformBlock(inputBuffer, outputBuffer, outputOffset);
+        /// </example>
+        /// </summary>
+        public static Int32 TransformBlock(this HashAlgorithm hashalgorithm, Byte[] inputBuffer, Byte[] outputBuffer,
+            Int32 outputOffset)
+        {
+            if (hashalgorithm == null) throw new ArgumentNullException("hashalgorithm");
 
-			if(inputBuffer == null) throw new ArgumentNullException("inputBuffer");
+            if (inputBuffer == null) throw new ArgumentNullException("inputBuffer");
 
-			return hashalgorithm.TransformBlock(inputBuffer, 0, inputBuffer.Length, outputBuffer, outputOffset);
-		}
+            return hashalgorithm.TransformBlock(inputBuffer, 0, inputBuffer.Length, outputBuffer, outputOffset);
+        }
 
-		/// <summary>
-		/// Extends TransformFinalBlock so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// hashalgorithm.TransformFinalBlock(inputBuffer);
-		/// </example>
-		/// </summary>
-		public static Byte[] TransformFinalBlock(this HashAlgorithm hashalgorithm, Byte[] inputBuffer)
-		{
-			if(hashalgorithm == null) throw new ArgumentNullException("hashalgorithm");
+        /// <summary>
+        /// Extends TransformFinalBlock so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// hashalgorithm.TransformFinalBlock(inputBuffer);
+        /// </example>
+        /// </summary>
+        public static Byte[] TransformFinalBlock(this HashAlgorithm hashalgorithm, Byte[] inputBuffer)
+        {
+            if (hashalgorithm == null) throw new ArgumentNullException("hashalgorithm");
 
-			if(inputBuffer == null) throw new ArgumentNullException("inputBuffer");
+            if (inputBuffer == null) throw new ArgumentNullException("inputBuffer");
 
-			return hashalgorithm.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
-		}
+            return hashalgorithm.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
+        }
 #endif
-	}
+    }
 }
 #endif
 
@@ -784,31 +807,31 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// A safe close routine for a database connection, which can also dispose the connection, if required.
-		/// </summary>
-		/// <param name="toClose">the connection to close</param>
-		/// <param name="dispose">if set to true, it will also dispose the connection.</param>
-		// PR: was an extension on DbConnection without a default on dispose
-		public static void SafeClose(this IDbConnection toClose, bool dispose = false)
-		{
-			if (toClose == null)
-			{
-				return;
-			}
+    {
+        /// <summary>
+        /// A safe close routine for a database connection, which can also dispose the connection, if required.
+        /// </summary>
+        /// <param name="toClose">the connection to close</param>
+        /// <param name="dispose">if set to true, it will also dispose the connection.</param>
+        // PR: was an extension on DbConnection without a default on dispose
+        public static void SafeClose(this IDbConnection toClose, bool dispose = false)
+        {
+            if (toClose == null)
+            {
+                return;
+            }
 
-			if (toClose.State != ConnectionState.Closed)
-			{
-				toClose.Close();
-			}
+            if (toClose.State != ConnectionState.Closed)
+            {
+                toClose.Close();
+            }
 
-			if (dispose)
-			{
-				toClose.Dispose();
-			}
-		}
-	}
+            if (dispose)
+            {
+                toClose.Dispose();
+            }
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -816,64 +839,67 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// isolatedstoragefilestream.BeginRead(buffer, offset, numBytes, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer, Int32 offset, Int32 numBytes, AsyncCallback userCallback)
-		{
-			if(isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// isolatedstoragefilestream.BeginRead(buffer, offset, numBytes, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer,
+            Int32 offset, Int32 numBytes, AsyncCallback userCallback)
+        {
+            if (isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
 
-			return isolatedstoragefilestream.BeginRead(buffer, offset, numBytes, userCallback, null);
-		}
+            return isolatedstoragefilestream.BeginRead(buffer, offset, numBytes, userCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// isolatedstoragefilestream.BeginRead(buffer, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer, AsyncCallback userCallback)
-		{
-			if(isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// isolatedstoragefilestream.BeginRead(buffer, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer,
+            AsyncCallback userCallback)
+        {
+            if (isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return isolatedstoragefilestream.BeginRead(buffer, 0, buffer.Length, userCallback);
-		}
+            return isolatedstoragefilestream.BeginRead(buffer, 0, buffer.Length, userCallback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// isolatedstoragefilestream.BeginWrite(buffer, offset, numBytes, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer, Int32 offset, Int32 numBytes, AsyncCallback userCallback)
-		{
-			if(isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// isolatedstoragefilestream.BeginWrite(buffer, offset, numBytes, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer,
+            Int32 offset, Int32 numBytes, AsyncCallback userCallback)
+        {
+            if (isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
 
-			return isolatedstoragefilestream.BeginWrite(buffer, offset, numBytes, userCallback, null);
-		}
+            return isolatedstoragefilestream.BeginWrite(buffer, offset, numBytes, userCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// isolatedstoragefilestream.BeginWrite(buffer, userCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer, AsyncCallback userCallback)
-		{
-			if(isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// isolatedstoragefilestream.BeginWrite(buffer, userCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this IsolatedStorageFileStream isolatedstoragefilestream, Byte[] buffer,
+            AsyncCallback userCallback)
+        {
+            if (isolatedstoragefilestream == null) throw new ArgumentNullException("isolatedstoragefilestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return isolatedstoragefilestream.BeginWrite(buffer, 0, buffer.Length, userCallback);
-		}
-
-	}
+            return isolatedstoragefilestream.BeginWrite(buffer, 0, buffer.Length, userCallback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -881,64 +907,65 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this MemoryMappedViewStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this MemoryMappedViewStream stream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return stream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this MemoryMappedViewStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this MemoryMappedViewStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this MemoryMappedViewStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this MemoryMappedViewStream stream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return stream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this MemoryMappedViewStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this MemoryMappedViewStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return stream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NETSTANDARD1_0 || NET47)
@@ -946,65 +973,67 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #if (NETSTANDARD2_0 || NET47)
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this MemoryStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this MemoryStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return stream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this MemoryStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this MemoryStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this MemoryStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this MemoryStream stream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return stream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this MemoryStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this MemoryStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
 #endif
-	}
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1012,64 +1041,67 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this NamedPipeClientStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this NamedPipeClientStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this NamedPipeClientStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this NamedPipeClientStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this NamedPipeClientStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this NamedPipeClientStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this NamedPipeClientStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this NamedPipeClientStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1077,77 +1109,81 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginWaitForConnection so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// namedpipeserverstream.BeginWaitForConnection(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWaitForConnection(this NamedPipeServerStream namedpipeserverstream, AsyncCallback callback)
-		{
-			if(namedpipeserverstream == null) throw new ArgumentNullException("namedpipeserverstream");
+    {
+        /// <summary>
+        /// Extends BeginWaitForConnection so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// namedpipeserverstream.BeginWaitForConnection(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWaitForConnection(this NamedPipeServerStream namedpipeserverstream,
+            AsyncCallback callback)
+        {
+            if (namedpipeserverstream == null) throw new ArgumentNullException("namedpipeserverstream");
 
-			return namedpipeserverstream.BeginWaitForConnection(callback, null);
-		}
+            return namedpipeserverstream.BeginWaitForConnection(callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this NamedPipeServerStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this NamedPipeServerStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this NamedPipeServerStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this NamedPipeServerStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this NamedPipeServerStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this NamedPipeServerStream pipestream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this NamedPipeServerStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this NamedPipeServerStream pipestream, Byte[] buffer,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
@@ -1155,65 +1191,67 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #if (NETSTANDARD2_0 || NET47)
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// networkstream.BeginRead(buffer, offset, size, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this NetworkStream networkstream, Byte[] buffer, Int32 offset, Int32 size, AsyncCallback callback)
-		{
-			if(networkstream == null) throw new ArgumentNullException("networkstream");
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// networkstream.BeginRead(buffer, offset, size, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this NetworkStream networkstream, Byte[] buffer, Int32 offset, Int32 size,
+            AsyncCallback callback)
+        {
+            if (networkstream == null) throw new ArgumentNullException("networkstream");
 
-			return networkstream.BeginRead(buffer, offset, size, callback, null);
-		}
+            return networkstream.BeginRead(buffer, offset, size, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// networkstream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this NetworkStream networkstream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(networkstream == null) throw new ArgumentNullException("networkstream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// networkstream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this NetworkStream networkstream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (networkstream == null) throw new ArgumentNullException("networkstream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return networkstream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return networkstream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// networkstream.BeginWrite(buffer, offset, size, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this NetworkStream networkstream, Byte[] buffer, Int32 offset, Int32 size, AsyncCallback callback)
-		{
-			if(networkstream == null) throw new ArgumentNullException("networkstream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// networkstream.BeginWrite(buffer, offset, size, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this NetworkStream networkstream, Byte[] buffer, Int32 offset, Int32 size,
+            AsyncCallback callback)
+        {
+            if (networkstream == null) throw new ArgumentNullException("networkstream");
 
-			return networkstream.BeginWrite(buffer, offset, size, callback, null);
-		}
+            return networkstream.BeginWrite(buffer, offset, size, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// networkstream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this NetworkStream networkstream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(networkstream == null) throw new ArgumentNullException("networkstream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// networkstream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this NetworkStream networkstream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (networkstream == null) throw new ArgumentNullException("networkstream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return networkstream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
+            return networkstream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
 #endif
-	}
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1221,180 +1259,182 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this PipeStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this PipeStream pipestream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this PipeStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this PipeStream pipestream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return pipestream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this PipeStream pipestream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this PipeStream pipestream, Byte[] buffer, Int32 offset, Int32 count,
+            AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			return pipestream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return pipestream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// pipestream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this PipeStream pipestream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(pipestream == null) throw new ArgumentNullException("pipestream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// pipestream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this PipeStream pipestream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (pipestream == null) throw new ArgumentNullException("pipestream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return pipestream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Compares two sequences to see if they are equal
-		/// </summary>
-		/// <remarks>
-		/// The default <see cref="EqualityComparer&lt;T&gt;"/> for <typeparamref name="TSource"/> is used
-		/// </remarks>
-		/// <typeparam name="TSource"></typeparam>
-		/// <param name="first"></param>
-		/// <param name="second"></param>
-		/// <param name="offsetIntoSecond"></param>
-		/// <returns></returns>
-		public static bool SequenceEqual<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, int offsetIntoSecond)
-		{
-			if (first == null)
-			{
-				throw new ArgumentNullException(nameof(first));
-			}
+    {
+        /// <summary>
+        /// Compares two sequences to see if they are equal
+        /// </summary>
+        /// <remarks>
+        /// The default <see cref="EqualityComparer&lt;T&gt;"/> for <typeparamref name="TSource"/> is used
+        /// </remarks>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <param name="offsetIntoSecond"></param>
+        /// <returns></returns>
+        public static bool SequenceEqual<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second,
+            int offsetIntoSecond)
+        {
+            if (first == null)
+            {
+                throw new ArgumentNullException(nameof(first));
+            }
 
-			if (second == null)
-			{
-				throw new ArgumentNullException(nameof(second));
-			}
+            if (second == null)
+            {
+                throw new ArgumentNullException(nameof(second));
+            }
 
-			var comparer = EqualityComparer<TSource>.Default;
-			using (IEnumerator<TSource> e1 = first.GetEnumerator())
-			using (IEnumerator<TSource> e2 = second.GetEnumerator())
-			{
-				for (int i = 0; i < offsetIntoSecond; ++i)
-				{
-					e2.MoveNext();
-				}
+            var comparer = EqualityComparer<TSource>.Default;
+            using (IEnumerator<TSource> e1 = first.GetEnumerator())
+            using (IEnumerator<TSource> e2 = second.GetEnumerator())
+            {
+                for (int i = 0; i < offsetIntoSecond; ++i)
+                {
+                    e2.MoveNext();
+                }
 
-				while (e1.MoveNext())
-				{
-					if (!(e2.MoveNext() && comparer.Equals(e1.Current, e2.Current)))
-					{
-						return false;
-					}
-				}
-			}
+                while (e1.MoveNext())
+                {
+                    if (!(e2.MoveNext() && comparer.Equals(e1.Current, e2.Current)))
+                    {
+                        return false;
+                    }
+                }
+            }
 
-			return true;
-		}
+            return true;
+        }
 
-		/// <summary>
-		/// Compare percentage equality of one collection to another
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="source"></param>
-		/// <param name="that"></param>
-		/// <param name="equalityComparer"></param>
-		/// <returns></returns>
-		public static int SequenceEquality<T>(this IEnumerable<T> source, IEnumerable<T> that, IEqualityComparer<T> equalityComparer)
-		{
-			if (source == null)
-			{
-				throw new ArgumentNullException(nameof(source));
-			}
+        /// <summary>
+        /// Compare percentage equality of one collection to another
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="that"></param>
+        /// <param name="equalityComparer"></param>
+        /// <returns></returns>
+        public static int SequenceEquality<T>(this IEnumerable<T> source, IEnumerable<T> that,
+            IEqualityComparer<T> equalityComparer)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
 
-			if (that == null)
-			{
-				throw new ArgumentNullException(nameof(that));
-			}
+            if (that == null)
+            {
+                throw new ArgumentNullException(nameof(that));
+            }
 
-			var sourceCount = source.Count();
-			if (sourceCount == 0)
-			{
-				return 100;
-			}
+            var sourceCount = source.Count();
+            if (sourceCount == 0)
+            {
+                return 100;
+            }
 
-			var thatCount = that.Count();
-			if (thatCount == 0)
-			{
-				return -100;
-			}
+            var thatCount = that.Count();
+            if (thatCount == 0)
+            {
+                return -100;
+            }
 
-			int matches = 0;
-			foreach (var e in source)
-			{
-				if (that.Contains(e, equalityComparer))
-				{
-					matches++;
-				}
-			}
+            int matches = 0;
+            foreach (var e in source)
+            {
+                if (that.Contains(e, equalityComparer))
+                {
+                    matches++;
+                }
+            }
 
-			int p;
-			if (sourceCount >= thatCount)
-			{
-				if (matches == 0)
-				{
-					return 100;
-				}
+            int p;
+            if (sourceCount >= thatCount)
+            {
+                if (matches == 0)
+                {
+                    return 100;
+                }
 
-				p = matches * 100 / sourceCount;
-				return p == 100 ? 0 : p;
-			}
+                p = matches * 100 / sourceCount;
+                return p == 100 ? 0 : p;
+            }
 
-			if (matches == 0)
-			{
-				return -100;
-			}
+            if (matches == 0)
+            {
+                return -100;
+            }
 
-			p = -matches * 100 / thatCount;
-			return p == 100 ? 0 : p;
-		}
-	}
+            p = -matches * 100 / thatCount;
+            return p == 100 ? 0 : p;
+        }
+    }
 }
 #if (NET40 || NET45)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1467,7 +1507,7 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #if NET45
 #region based on code from http://blogs.msdn.com/b/pfxteam/archive/2011/12/15/10248293.aspx
 		private sealed class SocketAwaitable : IAwaitable
@@ -1560,11 +1600,10 @@ namespace HSNXT
 		}
 #endregion msdn blog
 #endif // NET4_5
-	}
+    }
 }
 #endif
 #if (NETSTANDARD1_6 || NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1625,7 +1664,6 @@ namespace HSNXT
 }
 #endif
 #if (NETSTANDARD1_6 || NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1694,7 +1732,6 @@ namespace HSNXT
 }
 #endif
 #if (NET40 || NET45)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -1760,121 +1797,118 @@ namespace HSNXT
 
 #endif
 #if (NET47)
-
 #endif
 
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// from: http://blogs.msdn.com/b/pfxteam/archive/2011/06/27/10179452.aspx
-		/// <summary>
-		/// Converts an executing task from a TAP implementation to another that can be used in an APM implementation
-		/// </summary>
-		/// <typeparam name="TResult">inferred type of the result</typeparam>
-		/// <param name="task"><see cref="Task&lt;TResult&gt;"/> object that is executing</param>
-		/// <param name="callback"><see cref="AsyncCallback"/> from the Begin* method.</param>
-		/// <param name="state">Optional state</param>
-		/// <example>
-		/// static IAsyncResult BeginFoo(AsyncCallback callback, object state)
-		/// {
-		/// 	return FooAsync().ToApm(callback, state);
-		/// }
-		///
-		/// static int EndFoo(IAsyncResult asyncResult)
-		/// {
-		///    return ((Task&lt;int&gt;)asyncResult).Result;
-		/// }
-		/// </example>
-		/// <returns>New task that can be cast to <see cref="IAsyncResult"/>.</returns>
-		public static Task<TResult> ToApm<TResult>(this Task<TResult> task, AsyncCallback callback, object state)
-		{
-			if (task == null)
-			{
-				throw new ArgumentNullException(nameof(task));
-			}
+    {
+        /// from: http://blogs.msdn.com/b/pfxteam/archive/2011/06/27/10179452.aspx
+        /// <summary>
+        /// Converts an executing task from a TAP implementation to another that can be used in an APM implementation
+        /// </summary>
+        /// <typeparam name="TResult">inferred type of the result</typeparam>
+        /// <param name="task"><see cref="Task&lt;TResult&gt;"/> object that is executing</param>
+        /// <param name="callback"><see cref="AsyncCallback"/> from the Begin* method.</param>
+        /// <param name="state">Optional state</param>
+        /// <example>
+        /// static IAsyncResult BeginFoo(AsyncCallback callback, object state)
+        /// {
+        /// 	return FooAsync().ToApm(callback, state);
+        /// }
+        ///
+        /// static int EndFoo(IAsyncResult asyncResult)
+        /// {
+        ///    return ((Task&lt;int&gt;)asyncResult).Result;
+        /// }
+        /// </example>
+        /// <returns>New task that can be cast to <see cref="IAsyncResult"/>.</returns>
+        public static Task<TResult> ToApm<TResult>(this Task<TResult> task, AsyncCallback callback, object state)
+        {
+            if (task == null)
+            {
+                throw new ArgumentNullException(nameof(task));
+            }
 
-			var tcs = new TaskCompletionSource<TResult>(state);
+            var tcs = new TaskCompletionSource<TResult>(state);
 
-			task.
-				ContinueWith(
-					_ =>
-					{
-						if (task.IsFaulted)
-						{
-							tcs.TrySetException(task.Exception.InnerExceptions);
-						}
-						else if (task.IsCanceled)
-						{
-							tcs.TrySetCanceled();
-						}
-						else
-						{
-							tcs.TrySetResult(task.Result);
-						}
+            task.ContinueWith(
+                _ =>
+                {
+                    if (task.IsFaulted)
+                    {
+                        tcs.TrySetException(task.Exception.InnerExceptions);
+                    }
+                    else if (task.IsCanceled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(task.Result);
+                    }
 
-						callback?.Invoke(tcs.Task);
-					},
-					CancellationToken.None,
-					TaskContinuationOptions.None,
-					TaskScheduler.Default);
+                    callback?.Invoke(tcs.Task);
+                },
+                CancellationToken.None,
+                TaskContinuationOptions.None,
+                TaskScheduler.Default);
 
-			return tcs.Task;
-		}
+            return tcs.Task;
+        }
 
-		/// from: http://blogs.msdn.com/b/pfxteam/archive/2011/06/27/10179452.aspx
-		/// <summary>
-		/// Converts an executing task from a TAP implementation to another that can be used in an APM implementation
-		/// </summary>
-		/// <param name="task"><see cref="Task&lt;TResult&gt;"/> object that is executing</param>
-		/// <param name="callback"><see cref="AsyncCallback"/> from the Begin* method.</param>
-		/// <param name="state">Optional state</param>
-		/// <example>
-		/// static IAsyncResult BeginFoo(AsyncCallback callback, object state)
-		/// {
-		/// 	return FooAsync().ToApm(callback, state);
-		/// }
-		///
-		/// static void EndFoo(IAsyncResult asyncResult)
-		/// {
-		///    ((Task)asyncResult).Result;
-		/// }
-		/// </example>
-		/// <returns>New task that can be cast to <see cref="IAsyncResult"/>.</returns>
-		public static Task ToApm(this Task task, AsyncCallback callback, object state)
-		{
-			if (task == null)
-			{
-				throw new ArgumentNullException(nameof(task));
-			}
+        /// from: http://blogs.msdn.com/b/pfxteam/archive/2011/06/27/10179452.aspx
+        /// <summary>
+        /// Converts an executing task from a TAP implementation to another that can be used in an APM implementation
+        /// </summary>
+        /// <param name="task"><see cref="Task&lt;TResult&gt;"/> object that is executing</param>
+        /// <param name="callback"><see cref="AsyncCallback"/> from the Begin* method.</param>
+        /// <param name="state">Optional state</param>
+        /// <example>
+        /// static IAsyncResult BeginFoo(AsyncCallback callback, object state)
+        /// {
+        /// 	return FooAsync().ToApm(callback, state);
+        /// }
+        ///
+        /// static void EndFoo(IAsyncResult asyncResult)
+        /// {
+        ///    ((Task)asyncResult).Result;
+        /// }
+        /// </example>
+        /// <returns>New task that can be cast to <see cref="IAsyncResult"/>.</returns>
+        public static Task ToApm(this Task task, AsyncCallback callback, object state)
+        {
+            if (task == null)
+            {
+                throw new ArgumentNullException(nameof(task));
+            }
 
-			var tcs = new TaskCompletionSource<object>(state);
+            var tcs = new TaskCompletionSource<object>(state);
 
-			task.
-				ContinueWith(
-					_ =>
-					{
-						if (task.IsFaulted)
-						{
-							tcs.TrySetException(task.Exception.InnerExceptions);
-						}
-						else if (task.IsCanceled)
-						{
-							tcs.TrySetCanceled();
-						}
-						else
-						{
-							tcs.TrySetResult(null);
-						}
+            task.ContinueWith(
+                _ =>
+                {
+                    if (task.IsFaulted)
+                    {
+                        tcs.TrySetException(task.Exception.InnerExceptions);
+                    }
+                    else if (task.IsCanceled)
+                    {
+                        tcs.TrySetCanceled();
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(null);
+                    }
 
-						callback?.Invoke(tcs.Task);
-					},
-					CancellationToken.None,
-					TaskContinuationOptions.None,
-					TaskScheduler.Default);
+                    callback?.Invoke(tcs.Task);
+                },
+                CancellationToken.None,
+                TaskContinuationOptions.None,
+                TaskScheduler.Default);
 
-			return tcs.Task;
-		}
+            return tcs.Task;
+        }
 
 #if (NET47)
 		public static ConfiguredTaskAwaitable ContinueOnTaskContext(this Task task)
@@ -1882,10 +1916,9 @@ namespace HSNXT
 			return task.ConfigureAwait(continueOnCapturedContext: false);
 		}
 #endif // NET45
-	}
-}﻿
+    }
+}
 #if (NET47)
-
 #if (NET47)
 
 #endif
@@ -1941,52 +1974,54 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #if (NETSTANDARD2_0 || NET47)
-		/// <summary>
-		/// Extends BeginConnect so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// tcpclient.BeginConnect(host, port, requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginConnect(this TcpClient tcpclient, String host, Int32 port, AsyncCallback requestCallback)
-		{
-			if(tcpclient == null) throw new ArgumentNullException("tcpclient");
+        /// <summary>
+        /// Extends BeginConnect so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// tcpclient.BeginConnect(host, port, requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginConnect(this TcpClient tcpclient, String host, Int32 port,
+            AsyncCallback requestCallback)
+        {
+            if (tcpclient == null) throw new ArgumentNullException("tcpclient");
 
-			return tcpclient.BeginConnect(host, port, requestCallback, null);
-		}
+            return tcpclient.BeginConnect(host, port, requestCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginConnect so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// tcpclient.BeginConnect(address, port, requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginConnect(this TcpClient tcpclient, System.Net.IPAddress address, Int32 port, AsyncCallback requestCallback)
-		{
-			if(tcpclient == null) throw new ArgumentNullException("tcpclient");
+        /// <summary>
+        /// Extends BeginConnect so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// tcpclient.BeginConnect(address, port, requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginConnect(this TcpClient tcpclient, System.Net.IPAddress address, Int32 port,
+            AsyncCallback requestCallback)
+        {
+            if (tcpclient == null) throw new ArgumentNullException("tcpclient");
 
-			return tcpclient.BeginConnect(address, port, requestCallback, null);
-		}
+            return tcpclient.BeginConnect(address, port, requestCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginConnect so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// tcpclient.BeginConnect(addresses, port, requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginConnect(this TcpClient tcpclient, System.Net.IPAddress[] addresses, Int32 port, AsyncCallback requestCallback)
-		{
-			if(tcpclient == null) throw new ArgumentNullException("tcpclient");
+        /// <summary>
+        /// Extends BeginConnect so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// tcpclient.BeginConnect(addresses, port, requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginConnect(this TcpClient tcpclient, System.Net.IPAddress[] addresses, Int32 port,
+            AsyncCallback requestCallback)
+        {
+            if (tcpclient == null) throw new ArgumentNullException("tcpclient");
 
-			return tcpclient.BeginConnect(addresses, port, requestCallback, null);
-		}
+            return tcpclient.BeginConnect(addresses, port, requestCallback, null);
+        }
 #endif
-	}
+    }
 }
 #endif
 #if (NET47)
-
 namespace HSNXT
 {
     public static partial class Extensions
@@ -2051,64 +2086,65 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginRead(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this UnmanagedMemoryStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+    {
+        /// <summary>
+        /// Extends BeginRead so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginRead(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this UnmanagedMemoryStream stream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginRead(buffer, offset, count, callback, null);
-		}
+            return stream.BeginRead(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginRead(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginRead(this UnmanagedMemoryStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginRead so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginRead(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginRead(this UnmanagedMemoryStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginRead(buffer, 0, buffer.Length, callback);
-		}
+            return stream.BeginRead(buffer, 0, buffer.Length, callback);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// stream.BeginWrite(buffer, offset, count, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this UnmanagedMemoryStream stream, Byte[] buffer, Int32 offset, Int32 count, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// stream.BeginWrite(buffer, offset, count, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this UnmanagedMemoryStream stream, Byte[] buffer, Int32 offset,
+            Int32 count, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			return stream.BeginWrite(buffer, offset, count, callback, null);
-		}
+            return stream.BeginWrite(buffer, offset, count, callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// stream.BeginWrite(buffer, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginWrite(this UnmanagedMemoryStream stream, Byte[] buffer, AsyncCallback callback)
-		{
-			if(stream == null) throw new ArgumentNullException("stream");
+        /// <summary>
+        /// Extends BeginWrite so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// stream.BeginWrite(buffer, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginWrite(this UnmanagedMemoryStream stream, Byte[] buffer, AsyncCallback callback)
+        {
+            if (stream == null) throw new ArgumentNullException("stream");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return stream.BeginWrite(buffer, 0, buffer.Length, callback);
-		}
-
-	}
+            return stream.BeginWrite(buffer, 0, buffer.Length, callback);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2116,50 +2152,50 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ReadContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadContentAs&lt;int&gt;(namespaceResolver);
-		/// </example>
-		/// </summary>
-		public static T ReadContentAs<T>(this XmlNodeReader xmlreader, IXmlNamespaceResolver namespaceResolver)
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+    {
+        /// <summary>
+        /// Extends ReadContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadContentAs&lt;int&gt;(namespaceResolver);
+        /// </example>
+        /// </summary>
+        public static T ReadContentAs<T>(this XmlNodeReader xmlreader, IXmlNamespaceResolver namespaceResolver)
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadContentAs(typeof(T), namespaceResolver);
-		}
+            return (T) xmlreader.ReadContentAs(typeof(T), namespaceResolver);
+        }
 
-		/// <summary>
-		/// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver);
-		/// </example>
-		/// </summary>
-		public static T ReadElementContentAs<T>(this XmlNodeReader xmlreader, IXmlNamespaceResolver namespaceResolver)
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        /// <summary>
+        /// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver);
+        /// </example>
+        /// </summary>
+        public static T ReadElementContentAs<T>(this XmlNodeReader xmlreader, IXmlNamespaceResolver namespaceResolver)
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadElementContentAs(typeof(T), namespaceResolver);
-		}
+            return (T) xmlreader.ReadElementContentAs(typeof(T), namespaceResolver);
+        }
 
-		/// <summary>
-		/// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver, localName, namespaceURI);
-		/// </example>
-		/// </summary>
-		public static T ReadElementContentAs<T>(this XmlNodeReader xmlreader, IXmlNamespaceResolver namespaceResolver, String localName, String namespaceURI)
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        /// <summary>
+        /// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver, localName, namespaceURI);
+        /// </example>
+        /// </summary>
+        public static T ReadElementContentAs<T>(this XmlNodeReader xmlreader, IXmlNamespaceResolver namespaceResolver,
+            String localName, String namespaceURI)
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadElementContentAs(typeof(T), namespaceResolver, localName, namespaceURI);
-		}
-
-	}
+            return (T) xmlreader.ReadElementContentAs(typeof(T), namespaceResolver, localName, namespaceURI);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2167,95 +2203,95 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ReadChars so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmltextreader.ReadChars(buffer);
-		/// </example>
-		/// </summary>
-		public static Int32 ReadChars(this XmlTextReader xmltextreader, Char[] buffer)
-		{
-			if(xmltextreader == null) throw new ArgumentNullException("xmltextreader");
+    {
+        /// <summary>
+        /// Extends ReadChars so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmltextreader.ReadChars(buffer);
+        /// </example>
+        /// </summary>
+        public static Int32 ReadChars(this XmlTextReader xmltextreader, Char[] buffer)
+        {
+            if (xmltextreader == null) throw new ArgumentNullException("xmltextreader");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return xmltextreader.ReadChars(buffer, 0, buffer.Length);
-		}
+            return xmltextreader.ReadChars(buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends ReadBase64 so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmltextreader.ReadBase64(array);
-		/// </example>
-		/// </summary>
-		public static Int32 ReadBase64(this XmlTextReader xmltextreader, Byte[] array)
-		{
-			if(xmltextreader == null) throw new ArgumentNullException("xmltextreader");
+        /// <summary>
+        /// Extends ReadBase64 so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmltextreader.ReadBase64(array);
+        /// </example>
+        /// </summary>
+        public static Int32 ReadBase64(this XmlTextReader xmltextreader, Byte[] array)
+        {
+            if (xmltextreader == null) throw new ArgumentNullException("xmltextreader");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return xmltextreader.ReadBase64(array, 0, array.Length);
-		}
+            return xmltextreader.ReadBase64(array, 0, array.Length);
+        }
 
-		/// <summary>
-		/// Extends ReadBinHex so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmltextreader.ReadBinHex(array);
-		/// </example>
-		/// </summary>
-		public static Int32 ReadBinHex(this XmlTextReader xmltextreader, Byte[] array)
-		{
-			if(xmltextreader == null) throw new ArgumentNullException("xmltextreader");
+        /// <summary>
+        /// Extends ReadBinHex so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmltextreader.ReadBinHex(array);
+        /// </example>
+        /// </summary>
+        public static Int32 ReadBinHex(this XmlTextReader xmltextreader, Byte[] array)
+        {
+            if (xmltextreader == null) throw new ArgumentNullException("xmltextreader");
 
-			if(array == null) throw new ArgumentNullException("array");
+            if (array == null) throw new ArgumentNullException("array");
 
-			return xmltextreader.ReadBinHex(array, 0, array.Length);
-		}
+            return xmltextreader.ReadBinHex(array, 0, array.Length);
+        }
 
-		/// <summary>
-		/// Extends ReadContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadContentAs&lt;int&gt;(namespaceResolver);
-		/// </example>
-		/// </summary>
-		public static T ReadContentAs<T>(this XmlTextReader xmlreader, IXmlNamespaceResolver namespaceResolver)
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        /// <summary>
+        /// Extends ReadContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadContentAs&lt;int&gt;(namespaceResolver);
+        /// </example>
+        /// </summary>
+        public static T ReadContentAs<T>(this XmlTextReader xmlreader, IXmlNamespaceResolver namespaceResolver)
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadContentAs(typeof(T), namespaceResolver);
-		}
+            return (T) xmlreader.ReadContentAs(typeof(T), namespaceResolver);
+        }
 
-		/// <summary>
-		/// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver);
-		/// </example>
-		/// </summary>
-		public static T ReadElementContentAs<T>(this XmlTextReader xmlreader, IXmlNamespaceResolver namespaceResolver)
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        /// <summary>
+        /// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver);
+        /// </example>
+        /// </summary>
+        public static T ReadElementContentAs<T>(this XmlTextReader xmlreader, IXmlNamespaceResolver namespaceResolver)
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadElementContentAs(typeof(T), namespaceResolver);
-		}
+            return (T) xmlreader.ReadElementContentAs(typeof(T), namespaceResolver);
+        }
 
-		/// <summary>
-		/// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver, localName, namespaceURI);
-		/// </example>
-		/// </summary>
-		public static T ReadElementContentAs<T>(this XmlTextReader xmlreader, IXmlNamespaceResolver namespaceResolver, String localName, String namespaceURI)
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        /// <summary>
+        /// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver, localName, namespaceURI);
+        /// </example>
+        /// </summary>
+        public static T ReadElementContentAs<T>(this XmlTextReader xmlreader, IXmlNamespaceResolver namespaceResolver,
+            String localName, String namespaceURI)
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadElementContentAs(typeof(T), namespaceResolver, localName, namespaceURI);
-		}
-
-	}
+            return (T) xmlreader.ReadElementContentAs(typeof(T), namespaceResolver, localName, namespaceURI);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2263,56 +2299,57 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #pragma warning disable CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
-		/// <summary>
-		/// Extends ReadContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadContentAs&lt;int&gt;(namespaceResolver);
-		/// </example>
-		/// </summary>
-		public static T ReadContentAs<T>(this XmlValidatingReader xmlreader, IXmlNamespaceResolver namespaceResolver)
+        /// <summary>
+        /// Extends ReadContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadContentAs&lt;int&gt;(namespaceResolver);
+        /// </example>
+        /// </summary>
+        public static T ReadContentAs<T>(this XmlValidatingReader xmlreader, IXmlNamespaceResolver namespaceResolver)
 #pragma warning restore CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadContentAs(typeof(T), namespaceResolver);
-		}
-
-#pragma warning disable CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
-		/// <summary>
-		/// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver);
-		/// </example>
-		/// </summary>
-		public static T ReadElementContentAs<T>(this XmlValidatingReader xmlreader, IXmlNamespaceResolver namespaceResolver)
-#pragma warning restore CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
-
-			return (T)xmlreader.ReadElementContentAs(typeof(T), namespaceResolver);
-		}
+            return (T) xmlreader.ReadContentAs(typeof(T), namespaceResolver);
+        }
 
 #pragma warning disable CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
-		/// <summary>
-		/// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver, localName, namespaceURI);
-		/// </example>
-		/// </summary>
-		public static T ReadElementContentAs<T>(this XmlValidatingReader xmlreader, IXmlNamespaceResolver namespaceResolver, String localName, String namespaceURI)
+        /// <summary>
+        /// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver);
+        /// </example>
+        /// </summary>
+        public static T ReadElementContentAs<T>(this XmlValidatingReader xmlreader,
+            IXmlNamespaceResolver namespaceResolver)
 #pragma warning restore CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
-		{
-			if(xmlreader == null) throw new ArgumentNullException("xmlreader");
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
 
-			return (T)xmlreader.ReadElementContentAs(typeof(T), namespaceResolver, localName, namespaceURI);
-		}
+            return (T) xmlreader.ReadElementContentAs(typeof(T), namespaceResolver);
+        }
 
-	}
+#pragma warning disable CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
+        /// <summary>
+        /// Extends ReadElementContentAs so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// xmlreader.ReadElementContentAs&lt;int&gt;(namespaceResolver, localName, namespaceURI);
+        /// </example>
+        /// </summary>
+        public static T ReadElementContentAs<T>(this XmlValidatingReader xmlreader,
+            IXmlNamespaceResolver namespaceResolver, String localName, String namespaceURI)
+#pragma warning restore CS0618 // 'XmlValidatingReader' is obsolete: 'Use XmlReader created by XmlReader.Create() method using appropriate XmlReaderSettings instead. http://go.microsoft.com/fwlink/?linkid=14202'
+        {
+            if (xmlreader == null) throw new ArgumentNullException("xmlreader");
+
+            return (T) xmlreader.ReadElementContentAs(typeof(T), namespaceResolver, localName, namespaceURI);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2320,67 +2357,66 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends WriteChars so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmlwriter.WriteChars(buffer);
-		/// </example>
-		/// </summary>
-		public static void WriteChars(this XmlWriter xmlwriter, Char[] buffer)
-		{
-			if(xmlwriter == null) throw new ArgumentNullException("xmlwriter");
+    {
+        /// <summary>
+        /// Extends WriteChars so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmlwriter.WriteChars(buffer);
+        /// </example>
+        /// </summary>
+        public static void WriteChars(this XmlWriter xmlwriter, Char[] buffer)
+        {
+            if (xmlwriter == null) throw new ArgumentNullException("xmlwriter");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			xmlwriter.WriteChars(buffer, 0, buffer.Length);
-		}
+            xmlwriter.WriteChars(buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends WriteRaw so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmlwriter.WriteRaw(buffer);
-		/// </example>
-		/// </summary>
-		public static void WriteRaw(this XmlWriter xmlwriter, Char[] buffer)
-		{
-			if(xmlwriter == null) throw new ArgumentNullException("xmlwriter");
+        /// <summary>
+        /// Extends WriteRaw so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmlwriter.WriteRaw(buffer);
+        /// </example>
+        /// </summary>
+        public static void WriteRaw(this XmlWriter xmlwriter, Char[] buffer)
+        {
+            if (xmlwriter == null) throw new ArgumentNullException("xmlwriter");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			xmlwriter.WriteRaw(buffer, 0, buffer.Length);
-		}
+            xmlwriter.WriteRaw(buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends WriteBase64 so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmlwriter.WriteBase64(buffer);
-		/// </example>
-		/// </summary>
-		public static void WriteBase64(this XmlWriter xmlwriter, Byte[] buffer)
-		{
-			if(xmlwriter == null) throw new ArgumentNullException("xmlwriter");
+        /// <summary>
+        /// Extends WriteBase64 so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmlwriter.WriteBase64(buffer);
+        /// </example>
+        /// </summary>
+        public static void WriteBase64(this XmlWriter xmlwriter, Byte[] buffer)
+        {
+            if (xmlwriter == null) throw new ArgumentNullException("xmlwriter");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			xmlwriter.WriteBase64(buffer, 0, buffer.Length);
-		}
+            xmlwriter.WriteBase64(buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends WriteBinHex so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// xmlwriter.WriteBinHex(buffer);
-		/// </example>
-		/// </summary>
-		public static void WriteBinHex(this XmlWriter xmlwriter, Byte[] buffer)
-		{
-			if(xmlwriter == null) throw new ArgumentNullException("xmlwriter");
+        /// <summary>
+        /// Extends WriteBinHex so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// xmlwriter.WriteBinHex(buffer);
+        /// </example>
+        /// </summary>
+        public static void WriteBinHex(this XmlWriter xmlwriter, Byte[] buffer)
+        {
+            if (xmlwriter == null) throw new ArgumentNullException("xmlwriter");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			xmlwriter.WriteBinHex(buffer, 0, buffer.Length);
-		}
-
-	}
+            xmlwriter.WriteBinHex(buffer, 0, buffer.Length);
+        }
+    }
 }
 #endif
