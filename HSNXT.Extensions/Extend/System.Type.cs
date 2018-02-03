@@ -99,9 +99,7 @@ namespace HSNXT
         {
             type.ThrowIfNull( nameof(type) );
 
-            return type
-                .GetTypeInfo()
-                .ImplementedInterfaces;
+            return type.GetInterfaces();
         }
         /// <summary>
         ///     Gets the name including namespace and assembly of the given type.
