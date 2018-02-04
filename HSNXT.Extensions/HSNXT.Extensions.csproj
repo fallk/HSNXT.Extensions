@@ -5,7 +5,7 @@
     <PackageId>HSNXT.Extensions</PackageId>
     <Company>uwx</Company>
     <Description>Yet another extension method library.</Description>
-    <DefineConstants>FUNC16</DefineConstants>
+    <DefineConstants>FUNC16;HAVE_REFLECTION_EMIT</DefineConstants>
     <TargetFrameworks>net47;netstandard2.0</TargetFrameworks>
     <AssemblyName>HSNXT.Extensions</AssemblyName>
     <RootNamespace>HSNXT.Extensions</RootNamespace>
@@ -101,10 +101,10 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'net47'">
-    <DefineConstants>FUNC16;NetFX;NET4</DefineConstants>
+    <DefineConstants>FUNC16;NetFX;NET4;HAVE_REFLECTION_EMIT;HAVE_LINQ</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DefineConstants>FUNC16;NO_REMOTING;NET4</DefineConstants>
+    <DefineConstants>FUNC16;NO_REMOTING;NET4;HAVE_REFLECTION_EMIT;HAVE_LINQ</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" Condition="'$(TargetFramework)' == 'net47'" />
@@ -141,5 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extend\New folder" />
+    <Folder Include="Newtonsoft.Json" />
   </ItemGroup>
 </Project>

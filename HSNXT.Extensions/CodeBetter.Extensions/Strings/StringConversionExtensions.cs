@@ -44,7 +44,7 @@
       /// </summary>      
       public static string EncodeBase64(this string @string, EncodingType encoding)
       {         
-         return Convert.ToBase64String(@string.ToBytes(encoding));
+         return System.Convert.ToBase64String(@string.ToBytes(encoding));
       }
 
       /// <summary>
@@ -52,7 +52,7 @@
       /// </summary>
       public static string DecodeBase64(this string base64String, EncodingType encoding)
       {
-         return GetEncoding(encoding).GetString(Convert.FromBase64String(base64String));
+         return GetEncoding(encoding).GetString(System.Convert.FromBase64String(base64String));
       }
 
       /// <summary>
