@@ -5562,6 +5562,100 @@
           </e>
         </e>
         <e p="packages.config" t="Include" />
+        <e p="PGK.Extensions" t="Include">
+          <e p="PGK.Extensions" t="Include">
+            <e p="ArrayExtension.cs" t="Include" />
+            <e p="BitmapExtensions.cs" t="Include" />
+            <e p="BooleanExtensions.cs" t="Include" />
+            <e p="ByteArrayExtensions.cs" t="Include" />
+            <e p="CollectionExtensions.cs" t="Include" />
+            <e p="ColorExtensions.cs" t="Include" />
+            <e p="CombinedException.cs" t="Include" />
+            <e p="ComparableExtensions.cs" t="Include" />
+            <e p="ComponentExtensions.cs" t="Include" />
+            <e p="ConstructorExtensions.cs" t="Include" />
+            <e p="Converter.cs" t="Include" />
+            <e p="Cultures.cs" t="Include" />
+            <e p="DataReaderExtensions.cs" t="Include" />
+            <e p="DataRowExtensions.cs" t="Include" />
+            <e p="DataRowViewExtensions.cs" t="Include" />
+            <e p="DateTimeExtensions.cs" t="Include" />
+            <e p="DateTimeOffsetExtensions.cs" t="Include" />
+            <e p="DbConnectionExtensions.cs" t="Include" />
+            <e p="DecimalExtensions.cs" t="Include" />
+            <e p="DictionaryExtensions.cs" t="Include" />
+            <e p="DirectoryInfoExtensions.cs" t="Include" />
+            <e p="DisplayStringAttribute.cs" t="Include" />
+            <e p="DoubleExtensions.cs" t="Include" />
+            <e p="DrawingExtensions.cs" t="Include" />
+            <e p="EnumerableExtensions.cs" t="Include" />
+            <e p="EnumExtensions.cs" t="Include" />
+            <e p="EventHandlerExtenders.cs" t="Include" />
+            <e p="ExceptionExtensions.cs" t="Include" />
+            <e p="ExtensionMethodSetting.cs" t="Include" />
+            <e p="FileInfoExtensions.cs" t="Include" />
+            <e p="FloatExtensions.cs" t="Include" />
+            <e p="IConverter.cs" t="Include" />
+            <e p="IntExtensions.cs" t="Include" />
+            <e p="IQueryableExtensions.cs" t="Include" />
+            <e p="ListExtensions.cs" t="Include" />
+            <e p="LongExtensions.cs" t="Include" />
+            <e p="ObjectExtensions.cs" t="Include" />
+            <e p="PrincipalExtensions.cs" t="Include" />
+            <e p="SocketExtensions.cs" t="Include" />
+            <e p="StreamExtensions.cs" t="Include" />
+            <e p="StringArrayExtensions.cs" t="Include" />
+            <e p="StringBuilderExtensions.cs" t="Include" />
+            <e p="StringConverter.cs" t="Include" />
+            <e p="StringExtensions.cs" t="Include" />
+            <e p="SystemDependencies" t="Include">
+              <e p="Clock.cs" t="Include" />
+              <e p="SubstituteForSystemDate.cs" t="Include" />
+            </e>
+            <e p="TextReaderExtensions.cs" t="Include" />
+            <e p="TimeSpanExtensions.cs" t="Include" />
+            <e p="TypeExtensions.cs" t="Include" />
+            <e p="ValueTypeExtensions.cs" t="Include" />
+            <e p="XmlNodeExtensions.cs" t="Include" />
+            <e p="XmlSerializeExtensions.cs" t="Include" />
+          </e>
+          <e p="PGK.Extensions.Entity" t="Include">
+            <e p="OperationResult.cs" t="Include" />
+          </e>
+          <e p="PGK.Extensions.Web" t="Include">
+            <e p="ControlExtensions.cs" t="Include" />
+            <e p="HttpListenerContextExtensions.cs" t="Include" />
+            <e p="HttpResponseExtensions.cs" t="Include" />
+            <e p="HttpSessionStateExtensions.cs" t="Include" />
+            <e p="StateBagExtensions.cs" t="Include" />
+            <e p="UriQueryString.cs" t="Include" />
+          </e>
+          <e p="PGK.Extensions.Windows" t="Include">
+            <e p="BitmapSourceExtensions.cs" t="Include" />
+            <e p="ButtonExtension.cs" t="Include" />
+            <e p="CanvasExtensions.cs" t="Include" />
+            <e p="ControlExtensions.cs" t="Include" />
+            <e p="DependencyObjectExtensions.cs" t="Include" />
+            <e p="DispatcherExtensions.cs" t="Include" />
+            <e p="FrameworkElementExtensions.cs" t="Include" />
+            <e p="InteropExtensions.cs" t="Include" />
+            <e p="TextboxExtensions.cs" t="Include" />
+            <e p="UIElementExtensions.cs" t="Include" />
+            <e p="WindowExtensions.cs" t="Include" />
+          </e>
+          <e p="PGK.Extensions.Windows.Forms" t="Include">
+            <e p="ComboBoxExtensions.cs" t="Include" />
+            <e p="ControlExtensions.cs" t="Include" />
+            <e p="PropertyGridExtensions.cs" t="Include" />
+            <e p="TabControlExtensions.cs" t="Include" />
+            <e p="TabPageExtensions.cs" t="Include" />
+          </e>
+          <e p="PGK.Extensions4" t="Include">
+            <e p="ConcurrentExtensions.cs" t="Include" />
+            <e p="ObjectCacheExtensions.cs" t="Include" />
+            <e p="StringExtensions.cs" t="Include" />
+          </e>
+        </e>
         <e p="ProductivityExtensions" t="Include">
           <e p="NegotiateStreamable.g.cs" t="Include" />
           <e p="outs" t="Include">
@@ -8419,6 +8513,63 @@
             <e p="net47" t="Include">
               <e p="HSNXT.Extensions.Tests.AssemblyInfo.cs" t="Include" />
             </e>
+          </e>
+        </e>
+        <e p="PGK.Extensions" t="Include">
+          <e p="PGK.Extensions.Test4" t="Include">
+            <e p="ConcurrentExtensionsTest.cs" t="Include" />
+            <e p="ObjectCacheExtensionsTest.cs" t="Include" />
+            <e p="PGK.Extensions.Test4.csproj.vspscc" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="AssemblyInfo.cs" t="Include" />
+            </e>
+            <e p="StringExtensionsTest.cs" t="Include" />
+          </e>
+          <e p="PGK.Extensions.Tests" t="Include">
+            <e p="ArrayExtensionTest.cs" t="Include" />
+            <e p="ByteArrayExtensionsTest.cs" t="Include" />
+            <e p="CollectionExtensionsTest.cs" t="Include" />
+            <e p="ComparableExtensionsTests.cs" t="Include" />
+            <e p="DataReaderExtensionsTests.cs" t="Include" />
+            <e p="DateTimeExtensionTest.cs" t="Include" />
+            <e p="DbConnectionExtensionsTests.cs" t="Include" />
+            <e p="DecimalExtensionsTests.cs" t="Include" />
+            <e p="DictionaryExtensionsTests.cs" t="Include" />
+            <e p="DirectoryInfoExtensionsTest.cs" t="Include" />
+            <e p="DoubleExtensionsTest.cs" t="Include" />
+            <e p="EnumerableExtensionsTests.cs" t="Include" />
+            <e p="EnumExtensionsTest.cs" t="Include" />
+            <e p="ExceptionExtensionTests.cs" t="Include" />
+            <e p="ExtensionMethodSettingTest.cs" t="Include" />
+            <e p="FileInfoExtensionsTest.cs" t="Include" />
+            <e p="FilesForTestingPurpose" t="Include">
+              <e p="AnotherFile.txt" t="Include" />
+              <e p="PGK.Extensions.sln.docstates.suo" t="Include" />
+              <e p="PGK.Extensions.suo" t="Include" />
+            </e>
+            <e p="FloatExtensionsTest.cs" t="Include" />
+            <e p="IntExtensionsTest.cs" t="Include" />
+            <e p="ListExtensionTest.cs" t="Include" />
+            <e p="LongExtensionsTest.cs" t="Include" />
+            <e p="ObjectExtensionsTest.cs" t="Include" />
+            <e p="packages.config" t="Include" />
+            <e p="PGK.Extensions.Tests.csproj.vspscc" t="Include" />
+            <e p="PGK.Extensions.Tests.snk" t="Include" />
+            <e p="Properties" t="Include">
+              <e p="AssemblyInfo.cs" t="Include" />
+            </e>
+            <e p="RhinoMocks" t="Include">
+              <e p="MethodOptionsExtensionsTest.cs" t="Include" />
+            </e>
+            <e p="StringBuilderExtensionsTests.cs" t="Include" />
+            <e p="StringExtensionsTest.cs" t="Include" />
+            <e p="TestObjects" t="Include">
+              <e p="Box.cs" t="Include" />
+            </e>
+            <e p="TextReaderExtensionsTest.cs" t="Include" />
+            <e p="TimeSpanExtensionsTests.cs" t="Include" />
+            <e p="Used_for_testing.txt" t="Include" />
+            <e p="XmlSerializeExtensionsTest.cs" t="Include" />
           </e>
         </e>
         <e p="ProductivityExtensions" t="Include">
