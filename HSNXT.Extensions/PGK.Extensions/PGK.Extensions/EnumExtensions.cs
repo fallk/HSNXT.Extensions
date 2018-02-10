@@ -34,7 +34,8 @@ namespace HSNXT
         public static T ClearFlags<T>(this Enum variable, params T[] flags)
         {
             var result = Convert.ToUInt64(variable);
-            foreach (T flag in flags)
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (var flag in flags)
                 result &= ~Convert.ToUInt64(flag);
             return (T) Enum.Parse(variable.GetType(), result.ToString());
         }

@@ -5,11 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace HSNXT.PGK.Extensions
-{
-    /// <summary>
-    ///     Extension methods for the XmlSerialize
-    /// </summary>
     namespace HSNXT
     {
         public static partial class Extensions
@@ -114,4 +109,3 @@ namespace HSNXT.PGK.Extensions
             }
         }
     }
-}

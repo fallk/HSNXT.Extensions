@@ -17,9 +17,12 @@ namespace HSNXT
         [Obsolete("Use GetBaseException instead")]
         public static Exception GetOriginalException(this Exception exception)
         {
-            if (exception.InnerException == null) return exception;
+            while (true)
+            {
+                if (exception.InnerException == null) return exception;
 
-            return exception.InnerException.GetOriginalException();
+                exception = exception.InnerException;
+            }
         }
 
         ///<summary>

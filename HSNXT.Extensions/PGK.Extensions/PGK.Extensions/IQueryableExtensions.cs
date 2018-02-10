@@ -44,18 +44,12 @@ namespace HSNXT
         /// <summary>
         /// Gets a value that indicate that does previous page exists or not.
         /// </summary>
-        public bool HasPreviousPage
-        {
-            get { return (PageIndex > 0); }
-        }
-    
+        public bool HasPreviousPage => (PageIndex > 0);
+
         /// <summary>
         /// Gets a value that indicate that does next page exists or not.
         /// </summary>
-        public bool HasNextPage
-        {
-            get { return (PageIndex + 1 < TotalPages); }
-        }
+        public bool HasNextPage => (PageIndex + 1 < TotalPages);
     }
 
     public static partial class Extensions

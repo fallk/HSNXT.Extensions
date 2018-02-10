@@ -8,20 +8,20 @@ using System.Linq;
 using System.Xml;
 using HSNXT;
 
-[Flags]
-public enum CharTypes
-{
-    Letters = 0x1,
-    Digits = 0x2,
-    XmlChar = 0x4,
-    WhiteSpace = 0x8,
-
-
-    LettersOrDigits = Letters | Digits
-}
-
 namespace HSNXT
 {
+    [Flags]
+    public enum CharTypes
+    {
+        Letters = 0x1,
+        Digits = 0x2,
+        XmlChar = 0x4,
+        WhiteSpace = 0x8,
+
+
+        LettersOrDigits = Letters | Digits
+    }
+
     public static partial class Extensions
     {
         /// <summary>
@@ -40,18 +40,6 @@ namespace HSNXT
 
 
         #region Extract
-
-        /// <summary>
-        /// Extracts characters that satisfy the given condition
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="condition"></param>
-        /// <returns></returns>
-        public static string Extract(this string value, Func<char, bool> condition)
-        {
-            if (value == null) throw new NullReferenceException();
-            return new string(value.ToCharArray().Where(c => condition(c)).ToArray());
-        }
 
         /// <summary>
         /// Extracts characters that exist within the given char array

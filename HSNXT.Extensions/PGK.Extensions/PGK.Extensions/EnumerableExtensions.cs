@@ -25,25 +25,6 @@ namespace HSNXT
             return source.Select(value => value.ConvertTo<TTarget>());
         }
 
-        /// <summary>
-        /// 	Performs an action for each item in the enumerable
-        /// </summary>
-        /// <typeparam name = "T">The enumerable data type</typeparam>
-        /// <param name = "values">The data values.</param>
-        /// <param name = "action">The action to be performed.</param>
-        /// <example>
-        /// 	var values = new[] { "1", "2", "3" };
-        /// 	values.ConvertList&lt;string, int&gt;().ForEach(Console.WriteLine);
-        /// </example>
-        /// <remarks>
-        /// 	This method was intended to return the passed values to provide method chaining. Howver due to defered execution the compiler would actually never run the entire code at all.
-        /// </remarks>
-        public static void ForEach<T>(this IEnumerable<T> values, Action<T> action)
-        {
-            foreach (var value in values)
-                action(value);
-        }
-
         ///<summary>
         ///	Returns enumerable object based on target, which does not contains null references.
         ///	If target is null reference, returns empty enumerable object.
@@ -311,14 +292,6 @@ namespace HSNXT
                 if (allowNull || !Equals(select, default(TSource)))
                     yield return select;
             }
-        }
-
-        /// <summary>
-        /// Returns true if the <paramref name="source"/> is contains at least one item.
-        /// </summary>
-        public static bool IsNotEmpty<T>(this IEnumerable<T> source)
-        {
-            return !source.IsNullOrEmpty();
         }
 
         /// <summary>

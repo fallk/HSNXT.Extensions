@@ -26,35 +26,6 @@ namespace HSNXT
                 action(i);
         }
 
-        /// <summary>
-        /// 	Determines whether the value is even
-        /// </summary>
-        /// <param name = "value">The Value</param>
-        /// <returns>true or false</returns>
-        public static bool IsEven(this long value)
-        {
-            return value % 2 == 0;
-        }
-
-        /// <summary>
-        /// 	Determines whether the value is odd
-        /// </summary>
-        /// <param name = "value">The Value</param>
-        /// <returns>true or false</returns>
-        public static bool IsOdd(this long value)
-        {
-            return value % 2 != 0;
-        }
-
-        /// <summary>Checks whether the value is in range</summary>
-        /// <param name="value">The Value</param>
-        /// <param name="minValue">The minimum value</param>
-        /// <param name="maxValue">The maximum value</param>
-        public static bool InRange(this long value, long minValue, long maxValue)
-        {
-            return (value >= minValue && value <= maxValue);
-        }
-
         /// <summary>Checks whether the value is in range or returns the default value</summary>
         /// <param name="value">The Value</param>
         /// <param name="minValue">The minimum value</param>
@@ -63,36 +34,6 @@ namespace HSNXT
         public static long InRange(this long value, long minValue, long maxValue, long defaultValue)
         {
             return value.InRange(minValue, maxValue) ? value : defaultValue;
-        }
-
-        /// <summary>
-        /// A prime number (or a prime) is a natural number that has exactly two distinct natural number divisors: 1 and itself.
-        /// </summary>
-        /// <param name="candidate">Object value</param>
-        /// <returns>Returns true if the value is a prime number.</returns>
-        public static bool IsPrime(this long candidate)
-        {
-            if ((candidate & 1) == 0)
-            {
-                if (candidate == 2)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            for (long i = 3; (i * i) <= candidate; i += 2)
-            {
-                if ((candidate % i) == 0)
-                {
-                    return false;
-                }
-            }
-
-            return candidate != 1;
         }
 
         /// <summary>
@@ -126,7 +67,7 @@ namespace HSNXT
                     break;
             }
 
-            return string.Format("{0}{1}", i, suffix);
+            return $"{i}{suffix}";
         }
 
         /// <summary>
@@ -141,74 +82,9 @@ namespace HSNXT
         }
 
         /// <summary>
-        /// Gets a TimeSpan from a long number of days.
-        /// </summary>
-        /// <param name="days">The number of days the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of days.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Days(this long days)
-        {
-            return TimeSpan.FromDays(days);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from a long number of hours.
-        /// </summary>
-        /// <param name="days">The number of hours the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of hours.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Hours(this long hours)
-        {
-            return TimeSpan.FromHours(hours);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from a long number of milliseconds.
-        /// </summary>
-        /// <param name="days">The number of milliseconds the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of milliseconds.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Milliseconds(this long milliseconds)
-        {
-            return TimeSpan.FromMilliseconds(milliseconds);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from a long number of minutes.
-        /// </summary>
-        /// <param name="days">The number of minutes the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of minutes.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Minutes(this long minutes)
-        {
-            return TimeSpan.FromMinutes(minutes);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from a long number of seconds.
-        /// </summary>
-        /// <param name="days">The number of seconds the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of seconds.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Seconds(this long seconds)
-        {
-            return TimeSpan.FromSeconds(seconds);
-        }
-
-        /// <summary>
         /// Gets a TimeSpan from a long number of ticks.
         /// </summary>
-        /// <param name="days">The number of ticks the TimeSpan will contain.</param>
+        /// <param name="ticks">The number of ticks the TimeSpan will contain.</param>
         /// <returns>A TimeSpan containing the specified number of ticks.</returns>
         /// <remarks>
         ///		Contributed by jceddy

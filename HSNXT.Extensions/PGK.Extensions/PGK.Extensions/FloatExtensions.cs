@@ -4,15 +4,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-        /// <summary>Checks whether the value is in range</summary>
-        /// <param name="value">The Value</param>
-        /// <param name="minValue">The minimum value</param>
-        /// <param name="maxValue">The maximum value</param>
-        public static bool InRange(this float value, float minValue, float maxValue)
-        {
-            return (value >= minValue && value <= maxValue);
-        }
-
         /// <summary>Checks whether the value is in range or returns the default value</summary>
         /// <param name="value">The Value</param>
         /// <param name="minValue">The minimum value</param>
@@ -39,7 +30,7 @@ namespace HSNXT
         /// <summary>
         /// Gets a TimeSpan from a float number of hours.
         /// </summary>
-        /// <param name="days">The number of hours the TimeSpan will contain.</param>
+        /// <param name="hours">The number of hours the TimeSpan will contain.</param>
         /// <returns>A TimeSpan containing the specified number of hours.</returns>
         /// <remarks>
         ///		Contributed by jceddy
@@ -52,7 +43,7 @@ namespace HSNXT
         /// <summary>
         /// Gets a TimeSpan from a float number of milliseconds.
         /// </summary>
-        /// <param name="days">The number of milliseconds the TimeSpan will contain.</param>
+        /// <param name="milliseconds">The number of milliseconds the TimeSpan will contain.</param>
         /// <returns>A TimeSpan containing the specified number of milliseconds.</returns>
         /// <remarks>
         ///		Contributed by jceddy
@@ -65,7 +56,7 @@ namespace HSNXT
         /// <summary>
         /// Gets a TimeSpan from a float number of minutes.
         /// </summary>
-        /// <param name="days">The number of minutes the TimeSpan will contain.</param>
+        /// <param name="minutes">The number of minutes the TimeSpan will contain.</param>
         /// <returns>A TimeSpan containing the specified number of minutes.</returns>
         /// <remarks>
         ///		Contributed by jceddy
@@ -78,7 +69,7 @@ namespace HSNXT
         /// <summary>
         /// Gets a TimeSpan from a float number of seconds.
         /// </summary>
-        /// <param name="days">The number of seconds the TimeSpan will contain.</param>
+        /// <param name="seconds">The number of seconds the TimeSpan will contain.</param>
         /// <returns>A TimeSpan containing the specified number of seconds.</returns>
         /// <remarks>
         ///		Contributed by jceddy

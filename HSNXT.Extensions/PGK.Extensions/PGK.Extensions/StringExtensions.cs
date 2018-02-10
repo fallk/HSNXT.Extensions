@@ -906,9 +906,9 @@ namespace HSNXT
         public static TEnum ParseStringToEnum<TEnum>(this string dataToMatch, bool ignorecase = default(bool))
             where TEnum : struct
         {
-            return dataToMatch.IsItemInEnum<TEnum>()()
-                ? default(TEnum)
-                : (TEnum) Enum.Parse(typeof(TEnum), dataToMatch, default(bool));
+            return dataToMatch.IsItemInEnum<TEnum>()
+                ? (TEnum) Enum.Parse(typeof(TEnum), dataToMatch, default(bool))
+                : default(TEnum);
         }
 
         #endregion

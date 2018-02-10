@@ -154,37 +154,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        /// 	Dynamically invokes a method using reflection and returns its value in a typed manner
-        /// </summary>
-        /// <typeparam name = "T">The expected return data types</typeparam>
-        /// <param name = "obj">The object to perform on.</param>
-        /// <param name = "methodName">The name of the method.</param>
-        /// <param name = "parameters">The parameters passed to the method.</param>
-        /// <returns>The return value</returns>
-        /// <example>
-        /// 	<code>
-        /// 		var type = Type.GetType("System.IO.FileInfo, mscorlib");
-        /// 		var file = type.CreateInstance(@"c:\autoexec.bat");
-        /// 		if(file.GetPropertyValue&lt;bool&gt;("Exists")) {
-        /// 		var reader = file.InvokeMethod&lt;StreamReader&gt;("OpenText");
-        /// 		Console.WriteLine(reader.ReadToEnd());
-        /// 		reader.Close();
-        /// 		}
-        /// 	</code>
-        /// </example>
-        public static T InvokeMethod<T>(this object obj, string methodName, params object[] parameters)
-        {
-            var type = obj.GetType();
-            var method = type.GetMethod(methodName, parameters.Select(o => o.GetType()).ToArray());
-
-            if (method == null)
-                throw new ArgumentException(string.Format("Method '{0}' not found.", methodName), methodName);
-
-            var value = method.Invoke(obj, parameters);
-            return (value is T ? (T) value : default(T));
-        }
-
-        /// <summary>
         /// 	Dynamically retrieves a property value.
         /// </summary>
         /// <param name = "obj">The object to perform on.</param>
@@ -397,31 +366,6 @@ namespace HSNXT
                 return default(T);
 
             return (T) value;
-        }
-
-        /// <summary>
-        /// 	Returns TRUE, if specified target reference is equals with null reference.
-        /// 	Othervise returns FALSE.
-        /// </summary>
-        /// <typeparam name = "T">Type of target.</typeparam>
-        /// <param name = "target">Target reference. Can be null.</param>
-        /// <remarks>
-        /// 	Some types has overloaded '==' and '!=' operators.
-        /// 	So the code "null == ((MyClass)null)" can returns <c>false</c>.
-        /// 	The most correct way how to test for null reference is using "System.Object.ReferenceEquals(object, object)" method.
-        /// 	However the notation with ReferenceEquals method is long and uncomfortable - this extension method solve it.
-        /// 
-        /// 	Contributed by tencokacistromy, http://www.codeplex.com/site/users/view/tencokacistromy
-        /// </remarks>
-        /// <example>
-        /// 	MyClass someObject = GetSomeObject();
-        /// 	if ( someObject.IsNotNull() ) { /* the someObject is not null */ }
-        /// 	else { /* the someObject is null */ }
-        /// </example>
-        public static bool IsNotNull<T>(this T target)
-        {
-            var result = !ReferenceEquals(target, null);
-            return result;
         }
 
         /// <summary>
@@ -724,7 +668,7 @@ namespace HSNXT
         static string CleanName(IEnumerable<char> name, bool isArray)
         {
             var sb = new StringBuilder();
-            foreach (var c in name.Where(c => Char.IsLetterOrDigit(c) && c != '`').Select(c => c))
+            foreach (var c in name.Where(c => System.Char.IsLetterOrDigit(c) && c != '`').Select(c => c))
                 sb.Append(c);
             if (isArray)
                 sb.Append("Array");
@@ -767,22 +711,6 @@ namespace HSNXT
                     "No matching cast operator found from {0} to {1}.",
                     originType.Name,
                     targetType.Name));
-        }
-
-        /// <summary>
-        /// Cast an object to the given type. Usefull especially for anonymous types.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj">The object to be cast</param>
-        /// <returns>
-        /// the casted type or null if casting is not possible.
-        /// </returns>
-        /// <remarks>
-        /// Contributed by Michael T, http://about.me/MichaelTran
-        /// </remarks>
-        public static T CastAs<T>(this object obj) where T : class, new()
-        {
-            return obj as T;
         }
 
         /// <summary>

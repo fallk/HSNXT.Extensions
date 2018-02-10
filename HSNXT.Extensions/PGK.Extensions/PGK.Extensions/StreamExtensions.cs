@@ -57,28 +57,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        /// 	Reads all text from the stream using the default encoding.
-        /// </summary>
-        /// <param name = "stream">The stream.</param>
-        /// <returns>The result string.</returns>
-        public static string ReadToEnd(this Stream stream)
-        {
-            return stream.ReadToEnd(null);
-        }
-
-        /// <summary>
-        /// 	Reads all text from the stream using a specified encoding.
-        /// </summary>
-        /// <param name = "stream">The stream.</param>
-        /// <param name = "encoding">The encoding.</param>
-        /// <returns>The result string.</returns>
-        public static string ReadToEnd(this Stream stream, Encoding encoding)
-        {
-            using (var reader = stream.GetReader(encoding))
-                return reader.ReadToEnd();
-        }
-
-        /// <summary>
         /// 	Sets the stream cursor to the beginning of the stream.
         /// </summary>
         /// <param name = "stream">The stream.</param>
@@ -114,7 +92,8 @@ namespace HSNXT
         /// <returns>The source stream.</returns>
         public static Stream CopyTo(this Stream stream, Stream targetStream)
         {
-            return stream.CopyTo(targetStream, 4096);
+            stream.CopyTo(targetStream, 4096);
+            return stream;
         }
 
         /// <summary>
@@ -162,16 +141,6 @@ namespace HSNXT
             } while (offset < bufsize);
 
             return buf;
-        }
-
-        /// <summary>
-        /// 	Writes all passed bytes to the specified stream.
-        /// </summary>
-        /// <param name = "stream">The stream.</param>
-        /// <param name = "bytes">The byte array / buffer.</param>
-        public static void Write(this Stream stream, byte[] bytes)
-        {
-            stream.Write(bytes, 0, bytes.Length);
         }
     }
 }

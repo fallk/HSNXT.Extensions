@@ -4,15 +4,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-        /// <summary>Checks whether the value is in range</summary>
-        /// <param name="value">The Value</param>
-        /// <param name="minValue">The minimum value</param>
-        /// <param name="maxValue">The maximum value</param>
-        public static bool InRange(this double value, double minValue, double maxValue)
-        {
-            return (value >= minValue && value <= maxValue);
-        }
-
         /// <summary>Checks whether the value is in range or returns the default value</summary>
         /// <param name="value">The Value</param>
         /// <param name="minValue">The minimum value</param>

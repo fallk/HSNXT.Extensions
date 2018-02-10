@@ -4,35 +4,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-        /// <summary>
-        /// 	Determines whether the value is even
-        /// </summary>
-        /// <param name = "value">The Value</param>
-        /// <returns>true or false</returns>
-        public static bool IsEven(this int value)
-        {
-            return value.AsLong().IsEven();
-        }
-
-        /// <summary>
-        /// 	Determines whether the value is odd
-        /// </summary>
-        /// <param name = "value">The Value</param>
-        /// <returns>true or false</returns>
-        public static bool IsOdd(this int value)
-        {
-            return value.AsLong().IsOdd();
-        }
-
-        /// <summary>Checks whether the value is in range</summary>
-        /// <param name="value">The Value</param>
-        /// <param name="minValue">The minimum value</param>
-        /// <param name="maxValue">The maximum value</param>
-        public static bool InRange(this int value, int minValue, int maxValue)
-        {
-            return value.AsLong().InRange(minValue, maxValue);
-        }
-
         /// <summary>Checks whether the value is in range or returns the default value</summary>
         /// <param name="value">The Value</param>
         /// <param name="minValue">The minimum value</param>
@@ -41,16 +12,6 @@ namespace HSNXT
         public static int InRange(this int value, int minValue, int maxValue, int defaultValue)
         {
             return (int) value.AsLong().InRange(minValue, maxValue, defaultValue);
-        }
-
-        /// <summary>
-        /// A prime number (or a prime) is a natural number that has exactly two distinct natural number divisors: 1 and itself.
-        /// </summary>
-        /// <param name="candidate">Object value</param>
-        /// <returns>Returns true if the value is a prime number.</returns>
-        public static bool IsPrime(this int candidate)
-        {
-            return candidate.AsLong().IsPrime();
         }
 
         /// <summary>
@@ -108,71 +69,6 @@ namespace HSNXT
         public static int GetArrayIndex(this int at)
         {
             return at == 0 ? 0 : at - 1;
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from an integer number of days.
-        /// </summary>
-        /// <param name="days">The number of days the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of days.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Days(this int days)
-        {
-            return TimeSpan.FromDays(days);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from an integer number of hours.
-        /// </summary>
-        /// <param name="days">The number of hours the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of hours.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Hours(this int hours)
-        {
-            return TimeSpan.FromHours(hours);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from an integer number of milliseconds.
-        /// </summary>
-        /// <param name="days">The number of milliseconds the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of milliseconds.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Milliseconds(this int milliseconds)
-        {
-            return TimeSpan.FromMilliseconds(milliseconds);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from an integer number of minutes.
-        /// </summary>
-        /// <param name="days">The number of minutes the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of minutes.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Minutes(this int minutes)
-        {
-            return TimeSpan.FromMinutes(minutes);
-        }
-
-        /// <summary>
-        /// Gets a TimeSpan from an integer number of seconds.
-        /// </summary>
-        /// <param name="days">The number of seconds the TimeSpan will contain.</param>
-        /// <returns>A TimeSpan containing the specified number of seconds.</returns>
-        /// <remarks>
-        ///		Contributed by jceddy
-        /// </remarks>
-        public static TimeSpan Seconds(this int seconds)
-        {
-            return TimeSpan.FromSeconds(seconds);
         }
 
         /// <summary>

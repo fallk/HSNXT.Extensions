@@ -1,10 +1,5 @@
 using System;
 
-namespace HSNXT.PGK.Extensions
-{
-    /// <summary>
-    /// TimeSpan extensions
-    /// </summary>
     namespace HSNXT
     {
         public static partial class Extensions
@@ -34,4 +29,3 @@ namespace HSNXT.PGK.Extensions
             }
         }
     }
-}

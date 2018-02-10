@@ -37,20 +37,18 @@ namespace HSNXT
         /// </example>
         public static int ToInt32(this IConverter<string> value, int defaultValue, bool ignoreException)
         {
-            if (ignoreException)
+            if (!ignoreException) return int.Parse(value.Value);
+            
+            try
             {
-                try
-                {
-                    return ToInt32(value, defaultValue, false);
-                }
-                catch
-                {
-                }
-
-                return defaultValue;
+                return ToInt32(value, defaultValue, false);
+            }
+            catch
+            {
             }
 
-            return int.Parse(value.Value);
+            return defaultValue;
+
         }
 
 

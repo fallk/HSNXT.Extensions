@@ -1,8 +1,4 @@
-﻿/// <summary>
-/// 	Extension methods for all kind of value types (structs)
-/// </summary>
-
-namespace HSNXT
+﻿namespace HSNXT
 {
     public static partial class Extensions
     {

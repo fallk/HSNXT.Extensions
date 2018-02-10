@@ -9,64 +9,6 @@ namespace HSNXT
     public static partial class Extensions
     {
         /// <summary>
-        /// 	Renames a file.
-        /// </summary>
-        /// <param name = "file">The file.</param>
-        /// <param name = "newName">The new name.</param>
-        /// <returns>The renamed file</returns>
-        /// <example>
-        /// 	<code>
-        /// 		var file = new FileInfo(@"c:\test.txt");
-        /// 		file.Rename("test2.txt");
-        /// 	</code>
-        /// </example>
-        public static FileInfo Rename(this FileInfo file, string newName)
-        {
-            var filePath = Path.Combine(Path.GetDirectoryName(file.FullName), newName);
-            file.MoveTo(filePath);
-            return file;
-        }
-
-        /// <summary>
-        /// 	Renames a without changing its extension.
-        /// </summary>
-        /// <param name = "file">The file.</param>
-        /// <param name = "newName">The new name.</param>
-        /// <returns>The renamed file</returns>
-        /// <example>
-        /// 	<code>
-        /// 		var file = new FileInfo(@"c:\test.txt");
-        /// 		file.RenameFileWithoutExtension("test3");
-        /// 	</code>
-        /// </example>
-        public static FileInfo RenameFileWithoutExtension(this FileInfo file, string newName)
-        {
-            var fileName = string.Concat(newName, file.Extension);
-            file.Rename(fileName);
-            return file;
-        }
-
-        /// <summary>
-        /// 	Changes the files extension.
-        /// </summary>
-        /// <param name = "file">The file.</param>
-        /// <param name = "newExtension">The new extension.</param>
-        /// <returns>The renamed file</returns>
-        /// <example>
-        /// 	<code>
-        /// 		var file = new FileInfo(@"c:\test.txt");
-        /// 		file.ChangeExtension("xml");
-        /// 	</code>
-        /// </example>
-        public static FileInfo ChangeExtension(this FileInfo file, string newExtension)
-        {
-            newExtension = newExtension.EnsureStartsWith(".");
-            var fileName = string.Concat(Path.GetFileNameWithoutExtension(file.FullName), newExtension);
-            file.Rename(fileName);
-            return file;
-        }
-
-        /// <summary>
         /// 	Changes the extensions of several files at once.
         /// </summary>
         /// <param name = "files">The files.</param>
