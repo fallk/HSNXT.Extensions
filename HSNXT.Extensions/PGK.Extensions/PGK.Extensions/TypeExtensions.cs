@@ -1,8 +1,5 @@
 ﻿using System;
 
-/// <summary>
-/// 	Extension methods for the reflection meta data type "Type"
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

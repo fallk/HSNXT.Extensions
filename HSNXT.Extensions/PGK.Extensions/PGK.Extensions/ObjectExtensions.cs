@@ -15,9 +15,6 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using HSNXT.PGK.Extensions;
 
-/// <summary>
-/// 	Extension methods for the root data type object
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

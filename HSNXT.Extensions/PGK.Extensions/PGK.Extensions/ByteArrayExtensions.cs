@@ -1,8 +1,5 @@
 ﻿using System;
 
-/// <summary>
-/// 	Extension methods for byte-Arrays
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

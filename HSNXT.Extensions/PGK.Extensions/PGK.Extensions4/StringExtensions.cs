@@ -20,9 +20,6 @@ public enum CharTypes
     LettersOrDigits = Letters | Digits
 }
 
-/// <summary>
-/// 	Extension methods for the string data type
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

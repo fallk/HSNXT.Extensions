@@ -6,9 +6,6 @@ using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Text;
 
-/// <summary>
-/// 	Extension methods for all kind of Lists implementing the IList&lt;T&gt; interface
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

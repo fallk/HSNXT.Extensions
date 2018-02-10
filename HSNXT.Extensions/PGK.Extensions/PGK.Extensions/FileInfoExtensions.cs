@@ -4,9 +4,6 @@ using System.IO;
 using System.Linq;
 using HSNXT.PGK.Extensions;
 
-/// <summary>
-/// 	Extension methods for the FileInfo and FileInfo-Array classes
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

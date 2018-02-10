@@ -2,9 +2,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-/// <summary>
-/// Extension methods for System.Windows.Forms.TabControl
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

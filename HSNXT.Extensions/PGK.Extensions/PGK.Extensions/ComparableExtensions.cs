@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/// <summary>
-/// 	Extension methods for all comparable objects eg. string, DateTime, numeric values ...
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

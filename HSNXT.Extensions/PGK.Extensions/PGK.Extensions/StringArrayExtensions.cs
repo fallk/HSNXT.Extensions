@@ -1,8 +1,5 @@
 ﻿using System.Text;
 
-/// <summary>
-/// 	Extension methods for string[]
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

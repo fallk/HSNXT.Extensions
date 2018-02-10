@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 
-/// <summary>
-/// 	Extension methods for the TextReader class and its sub classes (StreamReader, StringReader)
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

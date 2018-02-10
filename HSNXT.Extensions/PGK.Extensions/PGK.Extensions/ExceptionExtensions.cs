@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>
-///   Extension methods for all kinds of exceptions.
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

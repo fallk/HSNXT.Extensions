@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Text;
-using HSNXT.PGK.Extensions.SystemDependencies;
+using PGK.Extensions.SystemDependencies;
 
-/// <summary>
-/// 	Extension methods for the DateTimeOffset data type.
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions
@@ -87,6 +84,16 @@ namespace HSNXT
         /// 	Returns the last day of the month of the provided date.
         /// </summary>
         /// <param name = "date">The date.</param>
+        /// <returns>The last day of the month.</returns>
+        public static DateTime GetLastDayOfMonth(this DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, GetCountDaysOfMonth(date));
+        }
+
+        /// <summary>
+        /// 	Returns the last day of the month of the provided date.
+        /// </summary>
+        /// <param name = "date">The date.</param>
         /// <param name = "dayOfWeek">The desired day of week.</param>
         /// <returns>The date time</returns>
         public static DateTime GetLastDayOfMonth(this DateTime date, DayOfWeek dayOfWeek)
@@ -95,6 +102,46 @@ namespace HSNXT
             while (dt.DayOfWeek != dayOfWeek)
                 dt = dt.AddDays(-1);
             return dt;
+        }
+
+        /// <summary>
+        /// 	Indicates whether the date is today.
+        /// </summary>
+        /// <param name = "dt">The date.</param>
+        /// <returns>
+        /// 	<c>true</c> if the specified date is today; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsToday(this DateTime dt)
+        {
+            return (dt.Date == DateTime.Today);
+        }
+
+        /// <summary>
+        /// 	Sets the time on the specified DateTime value.
+        /// </summary>
+        /// <param name = "date">The base date.</param>
+        /// <param name = "hours">The hours to be set.</param>
+        /// <param name = "minutes">The minutes to be set.</param>
+        /// <param name = "seconds">The seconds to be set.</param>
+        /// <returns>The DateTime including the new time value</returns>
+        public static DateTime SetTime(this DateTime date, int hours, int minutes, int seconds)
+        {
+            return date.SetTime(new TimeSpan(hours, minutes, seconds));
+        }
+
+        /// <summary>
+        /// 	Sets the time on the specified DateTime value.
+        /// </summary>
+        /// <param name = "date">The base date.</param>
+        /// <param name="hours">The hour</param>
+        /// <param name="minutes">The minute</param>
+        /// <param name="seconds">The second</param>
+        /// <param name="milliseconds">The millisecond</param>
+        /// <returns>The DateTime including the new time value</returns>
+        /// <remarks>Added overload for milliseconds - jtolar</remarks>
+        public static DateTime SetTime(this DateTime date, int hours, int minutes, int seconds, int milliseconds)
+        {
+            return date.SetTime(new TimeSpan(0, hours, minutes, seconds, milliseconds));
         }
 
         /// <summary>
@@ -264,6 +311,32 @@ namespace HSNXT
         }
 
         /// <summary>
+        /// 	Determines whether the date only part of twi DateTime values are equal.
+        /// </summary>
+        /// <param name = "date">The date.</param>
+        /// <param name = "dateToCompare">The date to compare with.</param>
+        /// <returns>
+        /// 	<c>true</c> if both date values are equal; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsDateEqual(this DateTime date, DateTime dateToCompare)
+        {
+            return (date.Date == dateToCompare.Date);
+        }
+
+        /// <summary>
+        /// 	Determines whether the time only part of two DateTime values are equal.
+        /// </summary>
+        /// <param name = "time">The time.</param>
+        /// <param name = "timeToCompare">The time to compare.</param>
+        /// <returns>
+        /// 	<c>true</c> if both time values are equal; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsTimeEqual(this DateTime time, DateTime timeToCompare)
+        {
+            return (time.TimeOfDay == timeToCompare.TimeOfDay);
+        }
+
+        /// <summary>
         /// 	Get milliseconds of UNIX area. This is the milliseconds since 1/1/1970
         /// </summary>
         /// <param name = "datetime">Up to which time.</param>
@@ -286,6 +359,18 @@ namespace HSNXT
         public static long ToUnixEpoch(this DateTime dateTime)
         {
             return GetMillisecondsSince1970(dateTime);
+        }
+
+        /// <summary>
+        /// 	Indicates whether the specified date is a weekend (Saturday or Sunday).
+        /// </summary>
+        /// <param name = "date">The date.</param>
+        /// <returns>
+        /// 	<c>true</c> if the specified date is a weekend; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsWeekend(this DateTime date)
+        {
+            return date.DayOfWeek.EqualsAny(DayOfWeek.Saturday, DayOfWeek.Sunday);
         }
 
         /// <summary>
@@ -411,6 +496,20 @@ namespace HSNXT
         }
 
         /// <summary>
+        /// Gets the week number for a provided date time value based on the current culture settings. 
+        /// Uses DefaultCulture from ExtensionMethodSetting
+        /// </summary>
+        /// <param name="dateTime">The date time.</param>
+        /// <returns>The week number</returns>
+        /// <remarks>
+        ///     modified by jtolar to implement culture settings
+        /// </remarks>
+        public static int GetWeekOfYear(this DateTime dateTime)
+        {
+            return GetWeekOfYear(dateTime, ExtensionMethodSetting.DefaultCulture);
+        }
+
+        /// <summary>
         ///     Indicates whether the specified date is Easter in the Christian calendar.
         /// </summary>
         /// <param name="date">Instance value.</param>
@@ -461,6 +560,26 @@ namespace HSNXT
         }
 
         /// <summary>
+        /// Gets a DateTime representing Next Day
+        /// </summary>
+        /// <param name="date">The current day</param>
+        /// <returns></returns>
+        public static DateTime Tomorrow(this DateTime date)
+        {
+            return date.AddDays(1);
+        }
+
+        /// <summary>
+        /// Gets a DateTime representing Previous Day
+        /// </summary>
+        /// <param name="date">The current day</param>
+        /// <returns></returns>
+        public static DateTime Yesterday(this DateTime date)
+        {
+            return date.AddDays(-1);
+        }
+
+        /// <summary>
         /// The ToFriendlyString() method represents dates in a user friendly way. 
         /// For example, when displaying a news article on a webpage, you might want 
         /// articles that were published one day ago to have their publish dates 
@@ -499,5 +618,59 @@ namespace HSNXT
             return sbFormattedDate.ToString();
         }
 
+        ///<summary>
+        /// The ToFriendlyString() method represents dates in a user friendly way. 
+        /// For example, when displaying a news article on a webpage, you might want 
+        /// articles that were published one day ago to have their publish dates 
+        /// represented as "yesterday at 12:30 PM". Or if the article was publish today, 
+        /// show the date as "Today, 3:33 PM". Uses DefaultCulture from ExtensionMethodSetting.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>string</returns>
+        /// <remarks>
+        ///     modified by jtolar to implement culture settings
+        /// </remarks>/// <remarks></remarks>
+        public static string ToFriendlyDateString(this DateTime date)
+        {
+            return ToFriendlyDateString(date, ExtensionMethodSetting.DefaultCulture);
+        }
+
+        /// <summary>
+        /// Returns the date at 23:59.59.999 for the specified DateTime
+        /// </summary>
+        /// <param name="date">The DateTime to be processed</param>
+        /// <returns>The date at 23:50.59.999</returns>
+        public static DateTime EndOfDay(this DateTime date)
+        {
+            return date.SetTime(23, 59, 59, 999);
+        }
+
+        /// <summary>
+        /// Returns the date at 12:00:00 for the specified DateTime
+        /// </summary>
+        /// <param name="time">The current date</param>
+        public static DateTime Noon(this DateTime time)
+        {
+            return time.SetTime(12, 0, 0);
+        }
+
+        /// <summary>
+        /// Returns the date at 00:00:00 for the specified DateTime
+        /// </summary>
+        /// <param name="time">The current date</param>
+        public static DateTime Midnight(this DateTime time)
+        {
+            return time.SetTime(0, 0, 0, 0);
+        }
+
+        /// <summary>
+        /// Returns whether the DateTime falls on a weekday
+        /// </summary>
+        /// <param name="date">The date to be processed</param>
+        /// <returns>Whether the specified date occurs on a weekday</returns>
+        public static bool IsWeekDay(this DateTime date)
+        {
+            return !date.IsWeekend();
+        }
     }
 }

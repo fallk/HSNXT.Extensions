@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/// <summary>
-/// 	Extension methods for all kinds of (typed) enumerable data (Array, List, ...)
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

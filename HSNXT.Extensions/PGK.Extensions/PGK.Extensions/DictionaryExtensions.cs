@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>
-/// 	Extension methods for Dictionary.
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

@@ -13,9 +13,6 @@ using System.Xml.XPath;
 using HSNXT.PGK.Extensions;
 using System.Collections.ObjectModel;
 
-/// <summary>
-/// 	Extension methods for the string data type
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

@@ -1,8 +1,5 @@
 ﻿using System;
 
-/// <summary>
-/// 	Extension methods for the integer data type
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

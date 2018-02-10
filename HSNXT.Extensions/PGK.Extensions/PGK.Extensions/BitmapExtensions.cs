@@ -1,9 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 
-/// <summary>
-/// 	Extension methods for the System.Drawing.Bitmap class
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

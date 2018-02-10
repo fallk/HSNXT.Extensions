@@ -1,9 +1,6 @@
 using System;
 using System.Windows.Forms;
 
-/// <summary>
-/// Extension methods for System.Windows.Forms.ComboBox
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

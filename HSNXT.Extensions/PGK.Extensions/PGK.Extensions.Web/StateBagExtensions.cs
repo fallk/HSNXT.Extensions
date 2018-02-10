@@ -1,9 +1,6 @@
 ﻿#if NetFX
 using System.Web.UI;
 
-/// <summary>
-///   Extensions classes for the ASP.NET ViewState StateBag class
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

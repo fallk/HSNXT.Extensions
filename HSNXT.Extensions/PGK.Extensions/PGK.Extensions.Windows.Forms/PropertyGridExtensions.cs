@@ -1,9 +1,6 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-/// <summary>
-/// Extension methods for the PropertyGrid data type
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

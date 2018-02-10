@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-/// <summary>
-///   Extension methods for System.Windows.Forms.Control.
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

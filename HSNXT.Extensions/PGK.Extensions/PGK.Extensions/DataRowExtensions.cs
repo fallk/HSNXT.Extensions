@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data;
 
-/// <summary>
-/// 	Extension methods for ADO.NET DataRows (DataTable / DataSet)
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

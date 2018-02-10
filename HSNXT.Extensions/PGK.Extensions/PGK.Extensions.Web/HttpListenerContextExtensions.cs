@@ -3,9 +3,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Net;
 
-/// <summary>
-///   Extension methods for HttpListenerContext
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

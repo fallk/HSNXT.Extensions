@@ -4,9 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-/// <summary>
-///   Extension methods for the System.Windows.UIElement class
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

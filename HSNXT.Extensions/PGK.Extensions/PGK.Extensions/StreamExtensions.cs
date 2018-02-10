@@ -2,9 +2,6 @@
 using System.IO;
 using System.Text;
 
-/// <summary>
-/// 	Extension methods any kind of streams
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

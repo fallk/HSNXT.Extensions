@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-/// <summary>
-/// 	Extension methods for all kind of Collections implementing the ICollection&lt;T&gt; interface
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

@@ -1,8 +1,5 @@
 ﻿using System.ComponentModel;
 
-/// <summary>
-/// 	Extension methods for IComponent data type.
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

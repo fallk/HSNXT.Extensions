@@ -2,9 +2,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-/// <summary>
-/// Extension methods for the enum data type
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Data;
 
-/// <summary>
-/// 	Extension methods for all kind of ADO.NET DataReaders (SqlDataReader, OracleDataReader, ...)
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions

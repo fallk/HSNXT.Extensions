@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/// <summary>
-/// 	Extension methods for the array data type
-/// </summary>
 namespace HSNXT
 {
     public static partial class Extensions
