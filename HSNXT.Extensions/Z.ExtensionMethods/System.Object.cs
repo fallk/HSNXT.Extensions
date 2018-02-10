@@ -6403,9 +6403,9 @@ namespace HSNXT
         /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="this">The @this to act on.</param>
         /// <returns>true if not null, false if not.</returns>
-        public static bool IsNotNull<T>(this T @this) where T : class
+        public static bool IsNotNull<T>(this T @this)
         {
-            return @this != null;
+            return !ReferenceEquals(@this, null);
         }
 
         /// <summary>
