@@ -7039,6 +7039,40 @@
             <e p="ShouldExtensions.cs.orig" t="Include" />
             <e p="ShouldStringExtensions.cs" t="Include" />
           </e>
+          <e p="Should.Fluent.UnitTests" t="Include">
+            <e p="BeBoolSpecs.cs" t="Include" />
+            <e p="BeDateTimeSpecs.cs" t="Include" />
+            <e p="BeDateTimeSpecs.cs.orig" t="Include" />
+            <e p="BeDoubleSpecs.cs" t="Include" />
+            <e p="BeEnumerableSpecs.cs" t="Include" />
+            <e p="BeGuidSpecs.cs" t="Include" />
+            <e p="BeGuidSpecs.cs.orig" t="Include" />
+            <e p="Behaviors.cs" t="Include" />
+            <e p="BeMethodCallExpressionSpecs.cs" t="Include" />
+            <e p="BeNullableBoolSpecs.cs" t="Include" />
+            <e p="BeNullableDateTimeSpecs.cs" t="Include" />
+            <e p="BeSpecs.cs" t="Include" />
+            <e p="BeStringSpecs.cs" t="Include" />
+            <e p="ContainsSpecs.cs" t="Include" />
+            <e p="CountSpecs.cs" t="Include" />
+            <e p="CountSpecs.cs.orig" t="Include" />
+            <e p="ExtensilbitySpecs.cs" t="Include" />
+            <e p="IntegrationTests" t="Include">
+              <e p="GreaterThanSpecs.cs" t="Include" />
+              <e p="LessThanSpecs.cs" t="Include" />
+              <e p="TestBase.cs" t="Include" />
+            </e>
+            <e p="result_should_be_target.cs" t="Include" />
+            <e p="Should.Fluent.UnitTests.csproj.orig" t="Include" />
+            <e p="ShouldCoreProviderSpecs.cs" t="Include" />
+            <e p="ShouldCoreProviderSpecs.cs.orig" t="Include" />
+            <e p="ShouldDateTimeSpecs.cs" t="Include" />
+            <e p="ShouldDictionarySpecs.cs" t="Include" />
+            <e p="ShouldDoubleSpecs.cs" t="Include" />
+            <e p="ShouldExtensionsSpecs.cs" t="Include" />
+            <e p="ShouldSpecs.cs" t="Include" />
+            <e p="TestBase.cs" t="Include" />
+          </e>
         </e>
         <e p="aXunitShould.4.0.0" t="Include">
           <e p="AssertContainment.cs" t="Include" />

@@ -40,37 +40,5 @@ namespace erichexter.Should.Facts
             Assert.IsAssignableFrom<String>(sut);
         }
 
-        [Fact]
-        public void ShouldEqual_accepts_a_message_to_describe_failure()
-        {
-            String s = "foo";
-
-            var ex = Assert.Throws<EqualException>(() =>
-            {
-                s.ShouldEqual("bar", "custom failure message");
-            });
-
-
-            Assert.Equal(@"custom failure message
-Position: First difference is at position 0
-Expected: bar
-Actual:   foo", ex.Message);
-        }
-
-        [Fact]
-        public void ShouldImplement_accepts_a_custom_failure_message()
-        {
-            String s = "foo";
-
-            var ex = Assert.Throws<IsAssignableFromException>(() => 
-            {
-                s.ShouldImplement<IList>("custom failure message");
-            });
-
-            
-            Assert.Equal(@"custom failure message
-Expected: System.Collections.IList
-Actual:   System.String", ex.Message);
-        }
     }
 }

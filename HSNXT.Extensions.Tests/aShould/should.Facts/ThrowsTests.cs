@@ -49,27 +49,6 @@ namespace erichexter.Should.Facts.Core
                 }
             }
 
-            [Fact]
-            public void StackTraceForThrowsIsOriginalThrowNotAssertThrows()
-            {
-                var wasFilterStackTraceAssemblyPrefix = AssertException.FilterStackTraceAssemblyPrefix;
-                AssertException.FilterStackTraceAssemblyPrefix = "Should.Core";
-                Should.Core.Assertions.Assert.ThrowsDelegate throwsDelegate = ThrowingMethod;
-                try
-                {
-                    Should.Core.Assertions.Assert.Throws<InvalidCastException>(throwsDelegate);
-                }
-                catch (AssertActualExpectedException exception)
-                {
-                    Should.Core.Assertions.Assert.Contains(GetMethodFullName(throwsDelegate), exception.StackTrace);
-                    Should.Core.Assertions.Assert.DoesNotContain("Should.Core", exception.StackTrace);
-                }
-                finally
-                {
-                    AssertException.FilterStackTraceAssemblyPrefix = wasFilterStackTraceAssemblyPrefix;
-                }
-            }
-
             [MethodImpl(MethodImplOptions.NoInlining)]
             static void ThrowingMethod()
             {
@@ -115,28 +94,6 @@ namespace erichexter.Should.Facts.Core
                 catch (AssertException exception)
                 {
                     Should.Core.Assertions.Assert.Equal("Assert.Throws() Failure", exception.UserMessage);
-                }
-            }
-
-            [Fact]
-            public void StackTraceForThrowsIsOriginalThrowNotAssertThrows()
-            {
-                var wasFilterStackTraceAssemblyPrefix = AssertException.FilterStackTraceAssemblyPrefix;
-                AssertException.FilterStackTraceAssemblyPrefix = "Should.Core";
-                StubAccessor accessor = new StubAccessor();
-                Should.Core.Assertions.Assert.ThrowsDelegateWithReturn throwsDelegateWithReturn = () => accessor.FailingProperty;
-                try
-                {
-                    Should.Core.Assertions.Assert.Throws<InvalidCastException>(throwsDelegateWithReturn);
-                }
-                catch (AssertActualExpectedException exception)
-                {
-                    Should.Core.Assertions.Assert.Contains(GetMethodFullName(throwsDelegateWithReturn), exception.StackTrace);
-                    Should.Core.Assertions.Assert.DoesNotContain("Should.Core", exception.StackTrace);
-                }
-                finally
-                {
-                    AssertException.FilterStackTraceAssemblyPrefix = wasFilterStackTraceAssemblyPrefix;
                 }
             }
 

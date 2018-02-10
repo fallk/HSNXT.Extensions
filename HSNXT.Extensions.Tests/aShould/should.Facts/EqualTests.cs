@@ -41,19 +41,6 @@ namespace erichexter.Should.Facts.Core
                 Should.Core.Assertions.Assert.NotEqual(expected, actual);
             }
 
-            [Fact]
-            public void NullValuesInArraysCreateCorrectExceptionMessage()
-            {
-                Exception ex = Record.Exception(
-                    () => Should.Core.Assertions.Assert.Equal(new string[] { null, "hello" }, new string[] { null, "world" }));
-
-                Should.Core.Assertions.Assert.IsType<EqualException>(ex);
-                Should.Core.Assertions.Assert.Equal(
-                    @"Assert.Equal() Failure
-Position: First difference is at position 1
-Expected: System.String[] { (null), hello }
-Actual:   System.String[] { (null), world }", ex.Message);
-            }
         }
 
         public class DoubleInfinityTests
