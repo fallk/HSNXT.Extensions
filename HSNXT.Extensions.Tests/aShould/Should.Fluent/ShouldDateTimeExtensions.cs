@@ -1,6 +1,6 @@
 using System;
-using erichexter.Should.Fluent.Model;
 using erichexter.Should.Core;
+using erichexter.Should.Fluent.Model;
 
 namespace erichexter.Should.Fluent
 {
