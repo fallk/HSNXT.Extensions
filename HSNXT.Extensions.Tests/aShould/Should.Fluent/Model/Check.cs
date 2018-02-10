@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace erichexter.Should.Fluent.Model
@@ -10,6 +11,13 @@ namespace erichexter.Should.Fluent.Model
             return should.Apply(
                 (t, a) => a.IsNull(t),
                 (t, a) => a.IsNotNull(t));
+        }
+
+        public static TTarget IsNull<TTarget>(IShould<TTarget> should, IAssertProvider assertProvider)
+        {
+            return should.Apply(
+                (t, a) => assertProvider.IsNull(t),
+                (t, a) => assertProvider.IsNotNull(t));
         }
 
         public static TTarget GreaterThan<TTarget>(IShould<TTarget> should, TTarget value)

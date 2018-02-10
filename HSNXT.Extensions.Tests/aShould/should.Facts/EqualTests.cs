@@ -45,10 +45,14 @@ namespace erichexter.Should.Facts.Core
             public void NullValuesInArraysCreateCorrectExceptionMessage()
             {
                 Exception ex = Record.Exception(
-                    () => Should.Core.Assertions.Assert.Equal(new [] { null, "hello" }, new [] { null, "world" }));
+                    () => Should.Core.Assertions.Assert.Equal(new string[] { null, "hello" }, new string[] { null, "world" }));
 
                 Should.Core.Assertions.Assert.IsType<EqualException>(ex);
-                Should.Core.Assertions.Assert.Equal("Assert.Equal() Failure\r\nPosition: First difference is at position 1\r\nExpected: System.String[] { (null), hello }\r\nActual:   System.String[] { (null), world }", ex.Message);
+                Should.Core.Assertions.Assert.Equal(
+                    @"Assert.Equal() Failure
+Position: First difference is at position 1
+Expected: System.String[] { (null), hello }
+Actual:   System.String[] { (null), world }", ex.Message);
             }
         }
 

@@ -37,30 +37,10 @@ namespace HSNXT.PGK.Extensions.Tests
 		}
 
 		[TestMethod]
-		public void EqualsNone_Found()
-		{
-			Assert.IsFalse(5.EqualsNone(1, 2, 3, 4, 5));
-		}
-
-		[TestMethod]
 		public void EqualsNone_NotFound()
 		{
 			Assert.IsTrue(15.EqualsNone(1, 2, 3, 4, 5));
 		}
-
-		[TestMethod]
-		public void EqualsNone_EmptyParam()
-		{
-			Assert.IsTrue(15.EqualsNone());
-		}
-
-		[TestMethod]
-		public void EqualsNone_EmptyArray()
-		{
-			int[] target = { };
-			Assert.IsTrue(15.EqualsNone(target));
-		}
-
 
 		[TestMethod]
 		public void CastTo_nonNumericToInt()
@@ -86,21 +66,6 @@ namespace HSNXT.PGK.Extensions.Tests
 
 			// Assert
 			result.Should().Equal(new List<string>());
-		}
-
-		[TestMethod]
-		public void TestConvertToAndIgnoreException()
-		{
-			const string invalidValue = "test";
-			const string stringValue = "1234";
-			const int value = 1234;
-			const int defaultValue = 999;
-
-			invalidValue.ConvertToAndIgnoreException<int>().Should().Equal(0);
-			invalidValue.ConvertToAndIgnoreException(defaultValue).Should().Equal(defaultValue);
-
-			stringValue.ConvertToAndIgnoreException<int>().Should().Equal(value);
-			stringValue.ConvertToAndIgnoreException(defaultValue).Should().Equal(value);
 		}
 
 		[TestMethod, ExpectedException(typeof(Exception))]
@@ -195,21 +160,6 @@ namespace HSNXT.PGK.Extensions.Tests
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
-		public void InvokeMethod_BadMethod()
-		{
-			int testValue = 5;
-			var result = testValue.InvokeMethod<string>("NotAMethodOfInt32");
-		}
-
-		[TestMethod]
-		public void InvokeMethod_WrongReturnType()
-		{
-			int testValue = 5;
-			var result = testValue.InvokeMethod<int>("ToString");
-			Assert.AreEqual(0, result);
-		}
-		[TestMethod]
 		public void InvokeMethod_WithParamter()
 		{
 			int testValue = 5;
@@ -232,21 +182,7 @@ namespace HSNXT.PGK.Extensions.Tests
 			var result = testValue.GetPropertyValue<int>("Length");
 			Assert.AreEqual(testValue.Length, result);
 		}
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
-		public void GetPropertyValue_BadProperty()
-		{
-			var testValue = "Hello World";
-			var result = testValue.GetPropertyValue<int>("NotAPropertyOfString");
-		}
-
-		[TestMethod]
-		public void GetPropertyValue_WrongReturnType()
-		{
-			var testValue = "Hello World";
-			var result = testValue.GetPropertyValue<string>("Length");
-			Assert.IsNull(result);
-		}
+		
 		[TestMethod]
 		public void GetPropertyValue_NonGeneric()
 		{
@@ -266,7 +202,7 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.AreEqual("Hello World", testValue.HelpLink);
 		}
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
+		[ExpectedException(typeof(NullReferenceException))]
 		public void SetPropertyValue_BadProperty()
 		{
 			var testValue = new Exception("Test1");

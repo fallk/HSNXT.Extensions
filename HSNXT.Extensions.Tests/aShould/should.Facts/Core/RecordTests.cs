@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Xunit;
 using Assert = erichexter.Should.Core.Assertions.Assert;
 
@@ -9,9 +10,9 @@ namespace erichexter.Should.Facts.Core
         public class MethodsWithoutReturnValues
         {
             [Fact]
-            public void Exception()
+            public async Task Exception()
             {
-                Exception ex = Record.Exception(delegate { throw new InvalidOperationException(); });
+                Exception ex = await Record.ExceptionAsync(() => throw new InvalidOperationException());
 
                 Should.Core.Assertions.Assert.NotNull(ex);
                 Should.Core.Assertions.Assert.IsType<InvalidOperationException>(ex);

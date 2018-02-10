@@ -9,8 +9,8 @@ namespace erichexter.Should.Fluent.Model
 
         public IEnumerable<KeyValuePair<TKey, TValue>> ContainKey(TKey key)
         {
-            var match = target.Where(x => x.Key.Equals(key));
-            if (negate)
+            var match = Target.Where(x => x.Key.Equals(key));
+            if (Negate)
             {
                 if (match.Any())
                 {
@@ -24,7 +24,7 @@ namespace erichexter.Should.Fluent.Model
                     assertProvider.Fail("Expected dictionary to contain key '{0}' but it does not.", key);
                 }
             }
-            return target;
+            return Target;
         }
     }
 }

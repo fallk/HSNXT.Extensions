@@ -5,20 +5,20 @@ namespace erichexter.Should.Fluent.Model
     public class ShouldBase<T, TTarget, TBe> : IShould<TTarget> where T : ShouldBase<T, TTarget, TBe>
     {
         protected readonly IAssertProvider assertProvider;
-        protected TTarget target;
-        protected bool negate;
+        internal TTarget Target;
+        internal bool Negate;
 
         public ShouldBase(TTarget target, IAssertProvider assertProvider)
         {
             this.assertProvider = assertProvider;
-            this.target = target;
+            this.Target = target;
         }
 
         public T Not
         {
             get
             {
-                negate = !negate;
+                Negate = !Negate;
                 return (T)this;
             }
         }
@@ -32,33 +32,33 @@ namespace erichexter.Should.Fluent.Model
         {
             return ((IShould<TTarget>)this).Apply(
                 (t, a) => a.AreEqual(expected, t),
-                (t, a) => a.AreNotEqual(expected, target));
+                (t, a) => a.AreNotEqual(expected, Target));
         }
 
         TTarget IShould<TTarget>.Apply(Action<TTarget, IAssertProvider> positiveCase, Action<TTarget, IAssertProvider> negativeCase)
         {
-            if (negate)
+            if (Negate)
             {
-                negativeCase(target, assertProvider);
+                negativeCase(Target, assertProvider);
             }
             else
             {
-                positiveCase(target, assertProvider);
+                positiveCase(Target, assertProvider);
             }
-            return target;
+            return Target;
         }
 
         object IShould<TTarget>.Apply(Func<TTarget, IAssertProvider, object> positiveCase, Func<TTarget, IAssertProvider, object> negativeCase)
         {
-            return negate 
-                ? negativeCase(target, assertProvider) 
-                : positiveCase(target, assertProvider);
+            return Negate 
+                ? negativeCase(Target, assertProvider) 
+                : positiveCase(Target, assertProvider);
         }
 
         public TTarget Apply(Action<TTarget, IAssertProvider, bool> action)
         {
-            action(target, assertProvider, negate);
-            return target;
+            action(Target, assertProvider, Negate);
+            return Target;
         }
     }
 }

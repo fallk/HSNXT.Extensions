@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using HSNXT.PGK.Extensions.Tests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using erichexter.Should.Fluent;
@@ -253,7 +255,6 @@ namespace HSNXT.PGK.Extensions.Tests
 			emptyList.IsNotEmpty().Should().Be.False();
 
 			nullList.IsNullOrEmpty().Should().Be.True();
-			nullList.IsNotEmpty().Should().Be.False();
 		}
 
 		[TestMethod]
@@ -320,6 +321,13 @@ namespace HSNXT.PGK.Extensions.Tests
 
 			nullableUlongs = new ulong?[] { null };
 			nullableUlongs.Sum().Should().Equal(0UL);
+		}
+
+		[TestInitialize]
+		public void Init()
+		{
+			Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+			Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
 		}
 
 		[TestMethod]

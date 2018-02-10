@@ -15,11 +15,11 @@ namespace erichexter.Should.Fluent.Model
         {
             if (should.Negate)
             {
-                assertProvider.LessOrEqual(0, should.Target);
+                assertProvider.LessThanOrEqual(0, should.Target);
             }
             else
             {
-                assertProvider.Greater(0, should.Target);
+                assertProvider.GreaterThan(0, should.Target);
             }
             return should.Target;
         }
@@ -28,11 +28,11 @@ namespace erichexter.Should.Fluent.Model
         {
             if (should.Negate)
             {
-                assertProvider.GreaterOrEqual(0, should.Target);
+                assertProvider.GreaterThanOrEqual(0, should.Target);
             }
             else
             {
-                assertProvider.Less(0, should.Target);
+                assertProvider.LessThan(0, should.Target);
             }
             return should.Target;
         }

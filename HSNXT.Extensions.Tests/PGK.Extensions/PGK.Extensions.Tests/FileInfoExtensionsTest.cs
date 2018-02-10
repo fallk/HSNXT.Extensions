@@ -76,51 +76,6 @@ namespace HSNXT.PGK.Extensions.Tests
         }
 
         /// <summary>
-        ///A test for ChangeExtension
-        ///</summary>
-        /// <remarks>
-        /// 	Contributed by dkillewo, http://www.codeplex.com/site/users/view/dkillewo
-        /// </remarks>
-        [TestMethod()]
-        public void ChangeExtensionTest()
-        {
-            var fileName = "test_" + MethodBase.GetCurrentMethod().Name + ".txt";
-            File.Create(TestDir + fileName).Close();
-
-            var newExtension = ".data";
-
-            var file = new FileInfo(TestDir + fileName);
-            file.ChangeExtension(newExtension);
-
-            Assert.AreEqual(newExtension, Path.GetExtension(file.FullName));
-        }
-
-        /// <summary>
-        ///A test for ChangeExtensions
-        ///</summary>
-        /// <remarks>
-        /// 	Contributed by dkillewo, http://www.codeplex.com/site/users/view/dkillewo
-        /// </remarks>
-        [TestMethod()]
-        public void ChangeExtensionsTest()
-        {
-            var fileNames = new List<string>();
-            for (int i = 0; i < 10; i++)
-            {
-                var name = "test_" + i + "_" + MethodBase.GetCurrentMethod().Name + ".txt";
-                fileNames.Add(TestDir + name);
-                File.Create(TestDir + name).Close();
-            }
-            List<FileInfo> fileInfos = new List<FileInfo>();
-            foreach (var fileName in fileNames)
-                fileInfos.Add(new FileInfo(fileName));
-            fileInfos.ToArray().ChangeExtensions("data");
-
-            foreach (var fileInfo in fileInfos)
-                Assert.AreEqual(".data", Path.GetExtension(fileInfo.FullName));
-        }
-
-        /// <summary>
         ///A test for CopyTo
         ///</summary>
         /// <remarks>

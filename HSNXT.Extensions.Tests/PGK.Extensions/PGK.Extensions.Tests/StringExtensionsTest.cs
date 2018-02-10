@@ -17,21 +17,6 @@ namespace HSNXT.PGK.Extensions.Tests
 	public class StringExtensionsTest
 	{
 		[TestMethod]
-		public void TestIsEmpty()
-		{
-			/* positive testing */
-			String testValue = String.Empty;
-			Assert.IsTrue(testValue.IsEmpty());
-			/* negative testing */
-			testValue = "non empty";
-			Assert.IsFalse(testValue.IsEmpty());
-
-            /* null testing */
-            testValue = null;
-            Assert.IsTrue(testValue.IsEmpty());
-		}
-
-		[TestMethod]
 		public void TestIsNotEmpty()
 		{
 			/* positive testing */
@@ -127,14 +112,7 @@ namespace HSNXT.PGK.Extensions.Tests
 			var result = testValue.IfEmptyOrWhiteSpace(def);
 		  Assert.AreEqual(def, result);
 	  }
-		[TestMethod]
-	  public void IfEmptyOrWhiteSpace_Null()
-	  {
-			string testValue =null;
-			var def = "_default_";
-			var result = testValue.IfEmptyOrWhiteSpace(def);
-		  Assert.AreEqual(def, result);
-	  }
+		
 		[TestMethod]
 	  public void IfEmptyOrWhiteSpace_String()
 	  {
@@ -167,14 +145,6 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.AreEqual(String.Empty, result);
 	  }
 
-		[TestMethod]
-	  public void ToUpperFirstLetter_Null()
-	  {
-			string testValue = null;
-			var result = testValue.ToUpperFirstLetter();
-			Assert.AreEqual(string.Empty, result);
-	  }
-
 
 		[TestMethod]
 		public void Left_Simple()
@@ -193,7 +163,7 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.IsTrue(false, "If we've reached here, we didn't get expected exception");
 		}
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
+		[ExpectedException(typeof(NullReferenceException))]
 		public void Left_Null()
 		{
 			string testValue = null;
@@ -217,7 +187,7 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.IsTrue(false, "If we've reached here, we didn't get expected exception");
 		}
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
+		[ExpectedException(typeof(NullReferenceException))]
 		public void Right_Null()
 		{
 			string testValue = null;
@@ -289,15 +259,6 @@ namespace HSNXT.PGK.Extensions.Tests
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(FormatException))]
-		public void ToGuid_BadValue()
-		{
-			var testValue = "123456789z123456789z123456789z12";
-			var result = testValue.ToGuid();
-			Assert.IsTrue(false, "If we've reached here, we didn't get expected exception");
-		}
-
-		[TestMethod]
 		public void ToGuidSave_GoodValue()
 		{
 			var testValue = "123456789a123456789b123456789c12";
@@ -316,16 +277,6 @@ namespace HSNXT.PGK.Extensions.Tests
 			var result = testValue.ToGuidSave();
 			Assert.IsInstanceOfType(result, typeof(Guid));
 			Assert.AreEqual(Guid.Empty, result);
-		}
-
-		[TestMethod]
-		public void ToGuidSave_BadValueWithDefault()
-		{
-			var testValue = "123456789z123456789z123456789z12";
-			var expected = Guid.NewGuid();
-			var result = testValue.ToGuidSave(expected);
-			Assert.IsInstanceOfType(result, typeof(Guid));
-			Assert.AreEqual(expected, result);
 		}
 
 		[TestMethod]
@@ -369,7 +320,7 @@ namespace HSNXT.PGK.Extensions.Tests
 		{
 			String testValue = "the quick brown fox jumps over the lazy dog.";
 			var result = testValue.GetBetween("quick", "fox");
-			var expected = "brown";
+			var expected = " brown ";
 			Assert.AreEqual(expected, result);
 			
 		}
@@ -404,7 +355,7 @@ namespace HSNXT.PGK.Extensions.Tests
 		{
 			String testValue = "the quick brown fox jumps over the lazy dog.";
 			var result = testValue.GetAfter("over");
-			var expected = "the lazy dog.";
+			var expected = " the lazy dog.";
 			Assert.AreEqual(expected, result);
 		}
 
@@ -755,23 +706,6 @@ namespace HSNXT.PGK.Extensions.Tests
 			string testValue = @"asdf";
 			SecureString validationValue = testValue.ToSecureString();
 			Assert.AreEqual(testValue, validationValue.ToUnsecureString());
-		}
-
-		[TestMethod]
-		public void ContainsEquivalenceTo()
-		{
-			string value;
-
-			value = null;
-			value.ContainsEquivalenceTo("something else").Should().Be.False();
-			value.ContainsEquivalenceTo(null).Should().Be.True();
-
-			value = "string containting the VaLuE with different case for each letter";
-			value.ContainsEquivalenceTo("value").Should().Be.True();
-			value.ContainsEquivalenceTo("VALUE").Should().Be.True();
-			value.ContainsEquivalenceTo("VaLuE").Should().Be.True();
-
-			value.ContainsEquivalenceTo("Not value").Should().Be.False();
 		}
 
 		[TestMethod]

@@ -78,7 +78,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="array">The array to test.</param>
         /// <returns>True if the array is empty.</returns>
-        public static bool IsEmpty(this Array array)
+        public static bool IsArrayEmpty(this Array array)
         {
             array.ExceptionIfNullOrEmpty(
                 "The array cannot be null.",

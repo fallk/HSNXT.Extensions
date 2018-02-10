@@ -79,7 +79,7 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_PageIndex_001()
         {
-            var page = new PaginatedList<string>((new string[]{
+            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]{
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable(), 0, 5, 100);
             var target = new DataPage<string>(page);
@@ -89,7 +89,7 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_TotalCount_001()
         {
-            var page = new PaginatedList<string>((new string[]{
+            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]{
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable(), 0, 5, 100);
             var target = new DataPage<string>(page);
@@ -99,7 +99,7 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_TotalPages_001()
         {
-            var page = new PaginatedList<string>((new string[]{
+            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]{
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable(), 0, 5, 100);
             var target = new DataPage<string>(page);

@@ -6901,11 +6901,13 @@
             <e p="DateAssertionExtensions.cs" t="Include" />
             <e p="DoubleAssertionExtensions.cs" t="Include" />
             <e p="ObjectAssertExtensions.cs" t="Include" />
+            <e p="Should.csproj.orig" t="Include" />
             <e p="StringAssertionExtensions.cs" t="Include" />
           </e>
           <e p="Should.Core" t="Include">
             <e p="Assertions" t="Include">
               <e p="Assert.cs" t="Include" />
+              <e p="Assert.cs.orig" t="Include" />
               <e p="AssertComparer.cs" t="Include" />
               <e p="AssertEqualityComparer.cs" t="Include" />
               <e p="Assertions.cs" t="Include" />
@@ -6946,6 +6948,7 @@
               <e p="TraceAssertException.cs" t="Include" />
               <e p="TrueException.cs" t="Include" />
             </e>
+            <e p="Should.Core.csproj.orig" t="Include" />
           </e>
           <e p="should.Facts" t="Include">
             <e p="ActionAssertionExtension_Facts.cs" t="Include" />
@@ -6982,6 +6985,7 @@
             <e p="DoubleAssertionExtension_Facts.cs" t="Include" />
             <e p="EqualTests.cs" t="Include" />
             <e p="ObjectAssertionExtension_Facts.cs" t="Include" />
+            <e p="Should.Facts.csproj.orig" t="Include" />
             <e p="StringAssertionExtensions_Facts.cs" t="Include" />
             <e p="ThrowsTests.cs" t="Include" />
             <e p="TraceAssertTests.cs" t="Include" />
@@ -6997,6 +7001,7 @@
             <e p="BeNullableDateTimeExtensions.cs" t="Include" />
             <e p="BeStringExtensions.cs" t="Include" />
             <e p="IAssertProvider.cs" t="Include" />
+            <e p="IAssertProvider.cs.orig" t="Include" />
             <e p="Model" t="Include">
               <e p="Be.cs" t="Include" />
               <e p="BeBase.cs" t="Include" />
@@ -7025,40 +7030,14 @@
               <e p="ShouldEnumerable.cs" t="Include" />
               <e p="ShouldString.cs" t="Include" />
             </e>
+            <e p="Should.Fluent.csproj.orig" t="Include" />
             <e p="ShouldCoreAssertProvider.cs" t="Include" />
+            <e p="ShouldCoreAssertProvider.cs.orig" t="Include" />
             <e p="ShouldDateTimeExtensions.cs" t="Include" />
             <e p="ShouldDoubleExtensions.cs" t="Include" />
             <e p="ShouldExtensions.cs" t="Include" />
+            <e p="ShouldExtensions.cs.orig" t="Include" />
             <e p="ShouldStringExtensions.cs" t="Include" />
-          </e>
-          <e p="Should.Fluent.UnitTests" t="Include">
-            <e p="BeBoolSpecs.cs" t="Include" />
-            <e p="BeDateTimeSpecs.cs" t="Include" />
-            <e p="BeDoubleSpecs.cs" t="Include" />
-            <e p="BeEnumerableSpecs.cs" t="Include" />
-            <e p="BeGuidSpecs.cs" t="Include" />
-            <e p="Behaviors.cs" t="Include" />
-            <e p="BeMethodCallExpressionSpecs.cs" t="Include" />
-            <e p="BeNullableBoolSpecs.cs" t="Include" />
-            <e p="BeNullableDateTimeSpecs.cs" t="Include" />
-            <e p="BeSpecs.cs" t="Include" />
-            <e p="BeStringSpecs.cs" t="Include" />
-            <e p="ContainsSpecs.cs" t="Include" />
-            <e p="CountSpecs.cs" t="Include" />
-            <e p="ExtensilbitySpecs.cs" t="Include" />
-            <e p="IntegrationTests" t="Include">
-              <e p="GreaterThanSpecs.cs" t="Include" />
-              <e p="LessThanSpecs.cs" t="Include" />
-              <e p="TestBase.cs" t="Include" />
-            </e>
-            <e p="result_should_be_target.cs" t="Include" />
-            <e p="ShouldCoreProviderSpecs.cs" t="Include" />
-            <e p="ShouldDateTimeSpecs.cs" t="Include" />
-            <e p="ShouldDictionarySpecs.cs" t="Include" />
-            <e p="ShouldDoubleSpecs.cs" t="Include" />
-            <e p="ShouldExtensionsSpecs.cs" t="Include" />
-            <e p="ShouldSpecs.cs" t="Include" />
-            <e p="TestBase.cs" t="Include" />
           </e>
         </e>
         <e p="aXunitShould.4.0.0" t="Include">
@@ -8698,7 +8677,6 @@
             <e p="DbConnectionExtensionsTests.cs" t="Include" />
             <e p="DecimalExtensionsTests.cs" t="Include" />
             <e p="DictionaryExtensionsTests.cs" t="Include" />
-            <e p="DirectoryInfoExtensionsTest.cs" t="Include" />
             <e p="DoubleExtensionsTest.cs" t="Include" />
             <e p="EnumerableExtensionsTests.cs" t="Include" />
             <e p="EnumExtensionsTest.cs" t="Include" />

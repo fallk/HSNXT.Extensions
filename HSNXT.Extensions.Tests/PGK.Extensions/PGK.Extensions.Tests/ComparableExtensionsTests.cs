@@ -19,14 +19,14 @@ namespace HSNXT.PGK.Extensions.Tests
 			[TestMethod]
 			public void IsBetween_Value_Default_Low()
 			{
-				Assert.IsTrue(3.IsBetween(3, 7));
+				Assert.IsTrue(3.IsBetweenInclusive(3, 7));
 			}
 
 			[TestMethod]
 			public void IsBetween_Value_Default_High()
 			{
 				// NOTE: As Implemented, this is true.  However, in some context, we may want to include the low, but not the high end.
-				Assert.IsTrue(7.IsBetween(3, 7));
+				Assert.IsTrue(7.IsBetweenInclusive(3, 7));
 			}
 
 			[TestMethod]
@@ -35,24 +35,6 @@ namespace HSNXT.PGK.Extensions.Tests
 				Assert.IsFalse(15.IsBetween(3, 7));
 			}
 			//-----------------------------------------------
-
-			[TestMethod]
-			public void IsBetween_Value_Default_Middle_inverted()
-			{
-				Assert.IsTrue(5.IsBetween(7, 3));
-			}
-
-			[TestMethod]
-			public void IsBetween_Value_Default_Low_inverted()
-			{
-				Assert.IsTrue(3.IsBetween(7, 3));
-			}
-
-			[TestMethod]
-			public void IsBetween_Value_Default_High_inverted()
-			{
-				Assert.IsTrue(7.IsBetween(7, 3));
-			}
 
 			[TestMethod]
 			public void IsBetween_Value_Default_Outside_inverted()
@@ -76,7 +58,7 @@ namespace HSNXT.PGK.Extensions.Tests
 				var high = new Box(10, 15, 20);
 				var low = new Box(5, 20, 20);
 				var target = new Box(5, 20, 20);
-				Assert.IsTrue(target.IsBetween(low, high));
+				Assert.IsTrue(target.IsBetweenInclusive(low, high));
 			}
 
 			[TestMethod]
@@ -85,7 +67,7 @@ namespace HSNXT.PGK.Extensions.Tests
 				var high = new Box(10, 15, 20);
 				var low = new Box(5, 20, 20);
 				var target = new Box(10, 15, 20);
-				Assert.IsTrue(target.IsBetween(low, high));
+				Assert.IsTrue(target.IsBetweenInclusive(low, high));
 			}
 
 			[TestMethod]

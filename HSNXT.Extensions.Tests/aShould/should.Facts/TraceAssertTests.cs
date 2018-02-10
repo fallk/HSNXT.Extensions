@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using erichexter.Should.Core.Exceptions;
 using Xunit;
 using Xunit.Sdk;
 using Assert = erichexter.Should.Core.Assertions.Assert;

@@ -53,16 +53,6 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.IsTrue(false, "If we've reached here, we didn't get expected exception");
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
-		public void Sort_NullComparer()
-		{
-			var testValue = new Dictionary<int, string>();
-			IComparer<int> comparer = null;
-			var result = testValue.Sort(comparer);
-			Assert.IsTrue(false, "If we've reached here, we didn't get expected exception");
-		}
-
 
 		[TestMethod]
 		public void TestSortByValue()

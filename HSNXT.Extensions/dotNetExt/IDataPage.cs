@@ -15,9 +15,9 @@ namespace HSNXT.dotNetExt
 
     public interface IDataPage<T> : IDataPage
     {
-        IPaginatedList<T> Data { get; }
-        int PageIndex { get; }
-        int TotalCount { get; }
-        int TotalPages { get; }
+        new IPaginatedList<T> Data { get; }
+        new int PageIndex { get; }
+        new int TotalCount { get; }
+        new int TotalPages { get; }
     }
 }

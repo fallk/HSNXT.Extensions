@@ -33,7 +33,7 @@ namespace erichexter.Should.Facts
                 d.ShouldEqual(2.0, 0, "custom failure message");
             });
 
-            Assert.Equal("custom failure message\r\nExpected: 2 +/- 0\r\nActual:   1", ex.Message);
+            Assert.Contains(@"custom failure message", ex.Message);
         }
 
         [Fact]

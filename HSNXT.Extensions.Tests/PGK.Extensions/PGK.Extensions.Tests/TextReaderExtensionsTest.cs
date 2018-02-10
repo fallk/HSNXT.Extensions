@@ -16,7 +16,7 @@ namespace HSNXT.PGK.Extensions.Tests
 		[TestInitialize]
 		public void Initialize()
 		{
-			reader = File.OpenText(@"..\..\..\PGK.Extensions.Tests\used_for_testing.txt");
+			reader = File.OpenText(@".\..\..\..\PGK.Extensions\PGK.Extensions.Tests\used_for_testing.txt");
 		}
 
 		[TestCleanup]
