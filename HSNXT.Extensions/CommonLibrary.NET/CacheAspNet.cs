@@ -70,7 +70,7 @@ namespace HSNXT.ComLib.Caching
                 // If not using prefix. return all.
                 return !_settings.UsePrefix
                     ? _cache.Count
-                    : (from DictionaryEntry entry in _cache select (string) entry.Key).Count(key =>
+                    : _cache.Cast<DictionaryEntry>().Select(entry => (string) entry.Key).Count(key =>
                         key.StartsWith(_settings.PrefixForCacheKeys));
             }
         }

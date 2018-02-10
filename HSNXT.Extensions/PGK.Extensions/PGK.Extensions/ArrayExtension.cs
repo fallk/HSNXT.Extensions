@@ -10,7 +10,7 @@ namespace HSNXT
         ///</summary>
         ///<param name = "source"></param>
         ///<returns></returns>
-        public static bool IsNullOrEmpty(this Array source)
+        public static bool ArrayIsNullOrEmpty(this Array source)
         {
             return source == null || source.Length == 0;
         }

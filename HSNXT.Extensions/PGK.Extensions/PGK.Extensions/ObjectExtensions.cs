@@ -786,33 +786,6 @@ namespace HSNXT
         }
 
         /// <summary>
-        /// Casts the specified object to the specified type.
-        /// </summary>
-        /// <typeparam name="T">The type to cast to</typeparam>
-        /// <param name="o">The Object being casted</param>
-        /// <returns>returns the object as casted type.</returns>
-        public static T Cast<T>(this object o)
-        {
-            if (o == null)
-                throw new NullReferenceException();
-            return (T) Convert.ChangeType(o, typeof(T));
-        }
-
-        /// <summary>
-        /// Casts the specified object. If the object is null a return type can be specified.
-        /// </summary>
-        /// <typeparam name="T">The type to cast to.</typeparam>
-        /// <param name="o">The Object being casted</param>
-        /// <param name="defaultValue">The default Type.</param>
-        /// <returns>returns the object as casted type. If null the default type is returned.</returns>
-        public static T Cast<T>(this object o, T defaultValue)
-        {
-            if (o == null)
-                return defaultValue;
-            return (T) Convert.ChangeType(o, typeof(T));
-        }
-
-        /// <summary>
         /// Copies the readable and writable public property values from the source object to the target
         /// </summary>
         /// <remarks>The source and target objects must be of the same type.</remarks>

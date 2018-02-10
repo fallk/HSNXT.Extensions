@@ -10,7 +10,7 @@
         /// <returns>
         /// 	<c>true</c> if the specified value is empty; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsEmpty<T>(this T value) where T : struct
+        public static bool StructIsEmpty<T>(this T value) where T : struct
         {
             return value.Equals(default(T));
         }
@@ -23,9 +23,9 @@
         /// <returns>
         /// 	<c>true</c> if the specified value is not empty; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsNotEmpty<T>(this T value) where T : struct
+        public static bool StructIsNotEmpty<T>(this T value) where T : struct
         {
-            return (value.IsEmpty() == false);
+            return (value.StructIsEmpty() == false);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// <returns>The nullable type</returns>
         public static T? ToNullable<T>(this T value) where T : struct
         {
-            return (value.IsEmpty() ? null : (T?) value);
+            return (value.StructIsEmpty() ? null : (T?) value);
         }
     }
 }

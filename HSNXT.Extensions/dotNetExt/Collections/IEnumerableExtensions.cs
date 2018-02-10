@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using HSNXT.dotNetExt;
+using DNX = HSNXT.dotNetExt;
 
 namespace HSNXT
 {
@@ -21,9 +22,9 @@ namespace HSNXT
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public static PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex, int pageSize)
+        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex, int pageSize)
         {
-            return new PaginatedList<T>(collection.AsQueryable(), pageIndex, pageSize);
+            return new DNX.PaginatedList<T>(collection.AsQueryable(), pageIndex, pageSize);
         }
 
         /// <summary>
@@ -34,9 +35,9 @@ namespace HSNXT
         /// <param name="pageSize"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex, int pageSize, int totalCount)
+        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex, int pageSize, int totalCount)
         {
-            return new PaginatedList<T>(collection.AsQueryable(), pageIndex, pageSize, totalCount);
+            return new DNX.PaginatedList<T>(collection.AsQueryable(), pageIndex, pageSize, totalCount);
         }
 
         // <summary>
