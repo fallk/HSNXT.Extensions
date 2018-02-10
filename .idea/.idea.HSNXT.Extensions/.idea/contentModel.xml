@@ -6893,6 +6893,52 @@
       </e>
       <e p="HSNXT.Extensions.sln" t="IncludeFlat" />
       <e p="HSNXT.Extensions.Tests" t="IncludeRecursive">
+        <e p="aShould.Core" t="Include">
+          <e p="Assertions" t="Include">
+            <e p="Assert.cs" t="Include" />
+            <e p="Assert.cs.orig" t="Include" />
+            <e p="AssertComparer.cs" t="Include" />
+            <e p="AssertEqualityComparer.cs" t="Include" />
+            <e p="Assertions.cs" t="Include" />
+            <e p="EnumerableEqualityComparer.cs" t="Include" />
+            <e p="Record.cs" t="Include" />
+          </e>
+          <e p="DatePrecision.cs" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="AssertActualExpectedException.cs" t="Include" />
+            <e p="AssertException.cs" t="Include" />
+            <e p="ComparisonException.cs" t="Include" />
+            <e p="ContainsException.cs" t="Include" />
+            <e p="DoesNotContainException.cs" t="Include" />
+            <e p="DoesNotThrowException.cs" t="Include" />
+            <e p="EmptyException.cs" t="Include" />
+            <e p="EqualException.cs" t="Include" />
+            <e p="FalseException.cs" t="Include" />
+            <e p="GreaterThanException.cs" t="Include" />
+            <e p="GreaterThanOrEqualException.cs" t="Include" />
+            <e p="InRangeException.cs" t="Include" />
+            <e p="IsAssignableFromException.cs" t="Include" />
+            <e p="IsNotTypeException.cs" t="Include" />
+            <e p="IsTypeException.cs" t="Include" />
+            <e p="LessThanException.cs" t="Include" />
+            <e p="LessThanOrEqualException.cs" t="Include" />
+            <e p="NotEmptyException.cs" t="Include" />
+            <e p="NotEqualException.cs" t="Include" />
+            <e p="NotInRangeException.cs" t="Include" />
+            <e p="NotNullException.cs" t="Include" />
+            <e p="NotSameException.cs" t="Include" />
+            <e p="NullException.cs" t="Include" />
+            <e p="ParameterCountMismatchException.cs" t="Include" />
+            <e p="SameException.cs" t="Include" />
+            <e p="SingleException.cs" t="Include" />
+            <e p="StartsWithException.cs" t="Include" />
+            <e p="ThrowsException.cs" t="Include" />
+            <e p="TimeoutException.cs" t="Include" />
+            <e p="TraceAssertException.cs" t="Include" />
+            <e p="TrueException.cs" t="Include" />
+          </e>
+          <e p="Should.Core.csproj.orig" t="Include" />
+        </e>
         <e p="aShould.Fluent" t="Include">
           <e p="BeBoolExtensions.cs" t="Include" />
           <e p="BeCollectionExtensions.cs" t="Include" />
