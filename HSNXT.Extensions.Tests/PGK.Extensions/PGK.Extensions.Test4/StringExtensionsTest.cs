@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 
-namespace PGK.Extensions.Test4
+namespace HSNXT.PGK.Extensions.Test4
 {
 
 

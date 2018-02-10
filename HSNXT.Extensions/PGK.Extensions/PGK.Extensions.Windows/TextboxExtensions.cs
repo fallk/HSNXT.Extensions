@@ -1,18 +1,22 @@
-﻿using System.Windows.Controls;
+﻿#if NetFX
+using System.Windows.Controls;
 using System.Windows.Input;
 
-public static class TextboxExtension
+namespace HSNXT
 {
-    #region TextBox
-
-    public static void SetInputScope(this TextBox tb, InputScopeNameValue inputScopeNameValue)
+    public static partial class Extensions
     {
-        tb.InputScope = new InputScope
+        #region TextBox
+
+        public static void SetInputScope(this TextBox tb, InputScopeNameValue inputScopeNameValue)
         {
-            Names = { new InputScopeName { NameValue = inputScopeNameValue } }
-        };
+            tb.InputScope = new InputScope
+            {
+                Names = {new InputScopeName {NameValue = inputScopeNameValue}}
+            };
+        }
+
+        #endregion
     }
-
-    #endregion
 }
-
+#endif

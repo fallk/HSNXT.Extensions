@@ -5,60 +5,65 @@ using System.Windows.Forms;
 /// <summary>
 /// Extension methods for System.Windows.Forms.TabControl
 /// </summary>
-public static class TabControlExtensions
+namespace HSNXT
 {
-    private static readonly Dictionary<TabControl, object[]> _hiddenHeaders = new Dictionary<TabControl, object[]>();
-
-    /// <summary>
-    /// Hide tab page headers
-    /// </summary>
-    /// <param name="tabControl">Current TabControl</param>
-    public static void HideHeaders(this TabControl tabControl)
+    public static partial class Extensions
     {
-        _hiddenHeaders.Add(tabControl, new object[] { tabControl.Appearance, tabControl.ItemSize, tabControl.SizeMode });
+        private static readonly Dictionary<TabControl, object[]>
+            _hiddenHeaders = new Dictionary<TabControl, object[]>();
 
-        tabControl.Appearance = TabAppearance.FlatButtons;
-        tabControl.ItemSize = new Size(0, 1);
-        tabControl.SizeMode = TabSizeMode.Fixed;
-    }
+        /// <summary>
+        /// Hide tab page headers
+        /// </summary>
+        /// <param name="tabControl">Current TabControl</param>
+        public static void HideHeaders(this TabControl tabControl)
+        {
+            _hiddenHeaders.Add(tabControl,
+                new object[] {tabControl.Appearance, tabControl.ItemSize, tabControl.SizeMode});
 
-    /// <summary>
-    /// Show tab page headers
-    /// </summary>
-    /// <param name="tabControl">Current TabControl</param>
-    public static void ShowHeaders(this TabControl tabControl)
-    {
-        if (!_hiddenHeaders.ContainsKey(tabControl))
-            return;
+            tabControl.Appearance = TabAppearance.FlatButtons;
+            tabControl.ItemSize = new Size(0, 1);
+            tabControl.SizeMode = TabSizeMode.Fixed;
+        }
 
-        var opt = _hiddenHeaders[tabControl];
-        _hiddenHeaders.Remove(tabControl);
+        /// <summary>
+        /// Show tab page headers
+        /// </summary>
+        /// <param name="tabControl">Current TabControl</param>
+        public static void ShowHeaders(this TabControl tabControl)
+        {
+            if (!_hiddenHeaders.ContainsKey(tabControl))
+                return;
 
-        tabControl.Appearance = (TabAppearance)opt[0];
-        tabControl.ItemSize = (Size)opt[1];
-        tabControl.SizeMode = (TabSizeMode)opt[2];
-    }
+            var opt = _hiddenHeaders[tabControl];
+            _hiddenHeaders.Remove(tabControl);
 
-    /// <summary>
-    /// Check, tab page headers are visible or hidden
-    /// </summary>
-    /// <param name="tabControl">Current TabControl</param>
-    /// <returns>Returns true if visible</returns>
-    public static bool IsHeadersVisible(this TabControl tabControl)
-    {
-        return !_hiddenHeaders.ContainsKey(tabControl);
-    }
+            tabControl.Appearance = (TabAppearance) opt[0];
+            tabControl.ItemSize = (Size) opt[1];
+            tabControl.SizeMode = (TabSizeMode) opt[2];
+        }
 
-    /// <summary>
-    /// Set visibility of tab page headers
-    /// </summary>
-    /// <param name="tabControl">Current TabControl</param>
-    /// <param name="visible">Visibility of tab page headers</param>
-    public static void SetHeadersVisible(this TabControl tabControl, bool visible)
-    {
-        if (visible)
-            ShowHeaders(tabControl);
-        else
-            HideHeaders(tabControl);
+        /// <summary>
+        /// Check, tab page headers are visible or hidden
+        /// </summary>
+        /// <param name="tabControl">Current TabControl</param>
+        /// <returns>Returns true if visible</returns>
+        public static bool IsHeadersVisible(this TabControl tabControl)
+        {
+            return !_hiddenHeaders.ContainsKey(tabControl);
+        }
+
+        /// <summary>
+        /// Set visibility of tab page headers
+        /// </summary>
+        /// <param name="tabControl">Current TabControl</param>
+        /// <param name="visible">Visibility of tab page headers</param>
+        public static void SetHeadersVisible(this TabControl tabControl, bool visible)
+        {
+            if (visible)
+                ShowHeaders(tabControl);
+            else
+                HideHeaders(tabControl);
+        }
     }
 }

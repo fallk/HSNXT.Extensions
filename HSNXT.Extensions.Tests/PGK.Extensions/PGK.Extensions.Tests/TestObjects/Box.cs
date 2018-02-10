@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PGK.Extensions.Tests.TestObjects
+namespace HSNXT.PGK.Extensions.Tests.TestObjects
 {
 	public class Box : IComparable<Box>
 	{

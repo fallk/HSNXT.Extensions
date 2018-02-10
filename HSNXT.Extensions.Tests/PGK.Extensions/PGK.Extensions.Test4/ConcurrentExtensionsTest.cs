@@ -5,7 +5,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Diagnostics;
 
-namespace PGK.Extensions.Test4
+namespace HSNXT.PGK.Extensions.Test4
 {
     [TestClass]
     public class ConcurrentExtensionsTest

@@ -5616,14 +5616,12 @@
             <e p="TimeSpanExtensions.cs" t="Include" />
             <e p="TypeExtensions.cs" t="Include" />
             <e p="ValueTypeExtensions.cs" t="Include" />
-            <e p="XmlNodeExtensions.cs" t="Include" />
             <e p="XmlSerializeExtensions.cs" t="Include" />
           </e>
           <e p="PGK.Extensions.Entity" t="Include">
             <e p="OperationResult.cs" t="Include" />
           </e>
           <e p="PGK.Extensions.Web" t="Include">
-            <e p="ControlExtensions.cs" t="Include" />
             <e p="HttpListenerContextExtensions.cs" t="Include" />
             <e p="HttpResponseExtensions.cs" t="Include" />
             <e p="HttpSessionStateExtensions.cs" t="Include" />

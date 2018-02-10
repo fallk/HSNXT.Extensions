@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 using System.Data;
 
-namespace PGK.Extensions.Tests
+namespace HSNXT.PGK.Extensions.Tests
 {
     /// <summary>
     /// Summary description for DataReaderExtensionsTests

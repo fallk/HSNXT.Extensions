@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HSNXT.PGK.Extensions.Tests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PGK.Extensions.Tests.TestObjects;
 
-namespace PGK.Extensions.Tests
+namespace HSNXT.PGK.Extensions.Tests
 {
 		[TestClass]
 	public class ComparableExtensionsTests

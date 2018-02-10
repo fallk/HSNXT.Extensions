@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Threading;
 
-namespace PGK.Extensions.Test4
+namespace HSNXT.PGK.Extensions.Test4
 {
     [TestClass]
     public class ObjectCacheExtensionsTest

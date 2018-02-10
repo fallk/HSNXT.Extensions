@@ -4,9 +4,9 @@
 /// <typeparam name = "T"></typeparam>
 public interface IConverter<T>
 {
-	/// <summary>
-	/// 	Gets the internal value to be converted.
-	/// </summary>
-	/// <value>The value.</value>
-	T Value { get; }
+    /// <summary>
+    /// 	Gets the internal value to be converted.
+    /// </summary>
+    /// <value>The value.</value>
+    T Value { get; }
 }

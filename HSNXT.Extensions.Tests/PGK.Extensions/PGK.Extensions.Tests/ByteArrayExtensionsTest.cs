@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace PGK.Extensions.Tests
+namespace HSNXT.PGK.Extensions.Tests
 {
 	
 	

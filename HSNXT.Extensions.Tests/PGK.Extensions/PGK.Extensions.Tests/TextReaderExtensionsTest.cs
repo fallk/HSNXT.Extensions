@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
-namespace PGK.Extensions.Tests
+namespace HSNXT.PGK.Extensions.Tests
 {
 	[TestClass]
 	public class TextReaderExtensionsTest

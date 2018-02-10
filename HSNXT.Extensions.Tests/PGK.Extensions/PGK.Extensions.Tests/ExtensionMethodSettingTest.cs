@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using Should.Fluent;
 
-namespace PGK.Extensions.Tests
+namespace HSNXT.PGK.Extensions.Tests
 {
     
     

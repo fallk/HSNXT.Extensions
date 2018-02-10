@@ -82,7 +82,7 @@ public static class EventHandlerExtenders
     /// <param name="sender">The sender object instance to pass to subscribers.</param>
     /// <param name="e">The EventArgs (or derivative) to pass to subscribers.</param>
     public static void RaiseEvent<TEventArgs>(this EventHandler<TEventArgs> eventHandler, object sender,
-                                              TEventArgs e)
+        TEventArgs e)
         where TEventArgs : EventArgs
     {
         if (eventHandler != null)
@@ -184,7 +184,7 @@ public static class EventHandlerExtenders
                 if (syncInvoke != null && syncInvoke.InvokeRequired)
                 {
                     // Invoke the event on the event subscribers thread
-                    syncInvoke.Invoke(eventHandler, new[] { sender, e });
+                    syncInvoke.Invoke(eventHandler, new[] {sender, e});
                 }
                 else
                 {

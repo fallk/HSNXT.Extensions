@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 
-public static class ColorExtensions
+namespace HSNXT
+{
+    public static partial class Extensions
     {
         /// <summary>
         /// returns the RGB Value of a color.
@@ -35,3 +37,4 @@ public static class ColorExtensions
             return ColorTranslator.ToWin32(color);
         }
     }
+}

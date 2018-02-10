@@ -33,4 +33,3 @@ public static class ExtensionMethodSetting
     /// </remarks>
     public static CultureInfo DefaultCulture { get; set; }
 }
-

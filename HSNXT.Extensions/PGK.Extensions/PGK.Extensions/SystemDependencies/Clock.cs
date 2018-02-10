@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PGK.Extensions.SystemDependencies
+namespace HSNXT.PGK.Extensions.SystemDependencies
 {
     internal static class Clock
     {
@@ -10,8 +10,6 @@ namespace PGK.Extensions.SystemDependencies
         /// </summary>
         public static DateTime? SubstituteForNow;
 
-        public static DateTime Now { 
-            get { return (SubstituteForNow ?? DateTime.Now); }
-        }
+        public static DateTime Now => (SubstituteForNow ?? DateTime.Now);
     }
 }

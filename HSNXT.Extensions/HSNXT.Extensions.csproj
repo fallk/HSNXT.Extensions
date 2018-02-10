@@ -36,6 +36,12 @@
     <Compile Remove="LINQ2Charts\**" />
     <EmbeddedResource Remove="LINQ2Charts\**" />
     <None Remove="LINQ2Charts\**" />
+    <Compile Remove="PGK.Extensions\PGK.Extensions.Windows\**" />
+    <EmbeddedResource Remove="PGK.Extensions\PGK.Extensions.Windows\**" />
+    <None Remove="PGK.Extensions\PGK.Extensions.Windows\**" />
+    <Compile Remove="PGK.Extensions\PGK.Extensions.Windows.Forms\**" />
+    <EmbeddedResource Remove="PGK.Extensions\PGK.Extensions.Windows.Forms\**" />
+    <None Remove="PGK.Extensions\PGK.Extensions.Windows.Forms\**" />
     <!-- packages -->
     <PackageReference Include="System.CodeDom" Version="4.5.0-preview1-25914-04" />
     <PackageReference Include="System.Data.SqlClient" Version="4.4.2" />
@@ -108,9 +114,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" Condition="'$(TargetFramework)' == 'net47'" />
+    <Reference Include="PresentationCore" Condition="'$(TargetFramework)' == 'net47'" />
     <Reference Include="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" Condition="'$(TargetFramework)' == 'net47'" />
+    <Reference Include="System.DirectoryServices.AccountManagement" Condition="'$(TargetFramework)' == 'net47'" />
+    <Reference Include="System.DirectoryServices.Protocols" Condition="'$(TargetFramework)' == 'net47'" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="aResources\Resource1.Designer.cs">

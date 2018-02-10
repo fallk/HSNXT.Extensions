@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PGK.Extensions.RhinoMocks;
+using HSNXT.PGK.Extensions.RhinoMocks;
 using Rhino.Mocks;
 using Rhino.Mocks.Exceptions;
 using Should.Fluent;
 using ShouldAssert = Should.Core.Assertions.Assert;
 
-namespace PGK.Extensions.Tests.RhinoMocks
+namespace HSNXT.PGK.Extensions.Tests.RhinoMocks
 {
 	[TestClass]
     public class MethodOptionsExtensionsTest

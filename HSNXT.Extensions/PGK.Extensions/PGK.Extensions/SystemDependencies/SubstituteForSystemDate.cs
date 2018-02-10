@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PGK.Extensions.SystemDependencies
+namespace HSNXT.PGK.Extensions.SystemDependencies
 {
     /// <summary>
     /// Class to use for replacing System date used by extensions methods.

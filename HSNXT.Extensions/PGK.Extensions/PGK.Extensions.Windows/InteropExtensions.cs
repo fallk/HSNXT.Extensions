@@ -1,13 +1,15 @@
-﻿
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Interop;
 
-public static class InteropExtensions
+namespace HSNXT
 {
-    public static bool? ShowDialog(this Window win, IntPtr handle)
+    public static partial class Extensions
     {
-        var helper = new WindowInteropHelper(win) {Owner = handle};
-        return win.ShowDialog();
+        public static bool? ShowDialog(this Window win, IntPtr handle)
+        {
+            var helper = new WindowInteropHelper(win) {Owner = handle};
+            return win.ShowDialog();
+        }
     }
 }

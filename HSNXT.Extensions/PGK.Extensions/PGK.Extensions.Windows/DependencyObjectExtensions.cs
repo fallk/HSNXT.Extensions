@@ -3,7 +3,9 @@ using System.Windows;
 using System.Windows.Media;
 
 
-    public static class DependencyObjectExtensions
+namespace HSNXT
+{
+    public static partial class Extensions
     {
         /// <summary>
         /// Finds immediate parent of the child control 
@@ -57,17 +59,18 @@ using System.Windows.Media;
                     if (frameworkElement != null && frameworkElement.Name == childName)
                     {
                         // if the child's name is of the request name  
-                        foundChild = (T)child;
+                        foundChild = (T) child;
                         break;
                     }
                 }
                 else
                 {
                     // child control found.
-                    foundChild = (T)child;
+                    foundChild = (T) child;
                     break;
                 }
             }
+
             return foundChild;
         }
 
@@ -103,4 +106,4 @@ using System.Windows.Media;
             }
         }
     }
-
+}

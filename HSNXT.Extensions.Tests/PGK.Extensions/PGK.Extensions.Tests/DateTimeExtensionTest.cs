@@ -1,10 +1,10 @@
 ﻿using System;
+using HSNXT.PGK.Extensions.SystemDependencies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PGK.Extensions.SystemDependencies;
 using Should.Fluent;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace PGK.Extensions.Tests
+namespace HSNXT.PGK.Extensions.Tests
 {
 	[TestClass]
 	public class DateTimeExtensionTest

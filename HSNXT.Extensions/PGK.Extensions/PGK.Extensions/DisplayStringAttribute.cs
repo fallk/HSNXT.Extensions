@@ -43,6 +43,7 @@ public class DisplayStringAttribute : Attribute
     public static readonly DisplayStringAttribute Default = new DisplayStringAttribute();
 
     private readonly string _displayString;
+
     /// <summary>
     /// The value of this attribute
     /// </summary>
@@ -55,7 +56,9 @@ public class DisplayStringAttribute : Attribute
     /// Initializes a new instance of the class <c>DisplayStringAttribute</c> with default value (empty string)
     /// </summary>
     public DisplayStringAttribute()
-        :this(string.Empty) { }
+        : this(string.Empty)
+    {
+    }
 
     /// <summary>
     /// Initializes a new instance of the class <c>DisplayStringAttribute</c> with specified value

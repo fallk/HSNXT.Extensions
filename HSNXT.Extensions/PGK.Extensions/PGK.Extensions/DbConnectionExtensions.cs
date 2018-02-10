@@ -1,21 +1,18 @@
 ﻿using System.Data;
 using System.Linq;
 
-namespace PGK.Extensions
+namespace HSNXT
 {
-    /// <summary>
-    /// Extensions for IDbConnection
-    /// </summary>
-    public static class DbConnectionExtensions
+    public static partial class Extensions
     {
         /// <summary>
         /// Returns true if the database connection is in one of the states received.
         /// </summary>
         public static bool StateIsWithin(this IDbConnection connection, params ConnectionState[] states)
         {
-            return (connection != null && 
-                    (states != null && states.Length > 0) && 
-                    (states.Where(x => (connection.State & x) == x).Count() > 0));
+            return (connection != null &&
+                    (states != null && states.Length > 0) &&
+                    (states.Any(x => (connection.State & x) == x)));
         }
 
         /// <summary>
@@ -23,7 +20,7 @@ namespace PGK.Extensions
         /// </summary>
         public static bool IsInState(this IDbConnection connection, ConnectionState state)
         {
-            return (connection != null && 
+            return (connection != null &&
                     (connection.State & state) == state);
         }
 
