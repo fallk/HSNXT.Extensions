@@ -25,6 +25,7 @@
     <PackageReference Include="NUnit" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
     <PackageReference Include="ReversedString" Version="1.0.1" />
+    <PackageReference Include="RhinoMocks" Version="3.6.1" />
     <PackageReference Include="Shouldly" Version="2.8.3" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
     <PackageReference Include="xunit" Version="2.3.1" />

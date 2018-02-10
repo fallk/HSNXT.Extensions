@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HSNXT.PGK.Extensions.Tests.TestObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Should.Fluent;
+using erichexter.Should.Fluent;
 
 namespace HSNXT.PGK.Extensions.Tests
 {

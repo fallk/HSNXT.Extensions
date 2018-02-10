@@ -1,7 +1,7 @@
 ﻿using System;
 using HSNXT.PGK.Extensions.SystemDependencies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Should.Fluent;
+using erichexter.Should.Fluent;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace HSNXT.PGK.Extensions.Tests

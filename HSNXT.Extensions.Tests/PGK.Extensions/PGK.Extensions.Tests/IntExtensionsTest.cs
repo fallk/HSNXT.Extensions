@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Should.Fluent;
+using erichexter.Should.Fluent;
 
 namespace HSNXT.PGK.Extensions.Tests
 {

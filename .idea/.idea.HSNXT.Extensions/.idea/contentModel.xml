@@ -6893,6 +6893,55 @@
       </e>
       <e p="HSNXT.Extensions.sln" t="IncludeFlat" />
       <e p="HSNXT.Extensions.Tests" t="IncludeRecursive">
+        <e p="aShould.Fluent" t="Include">
+          <e p="BeBoolExtensions.cs" t="Include" />
+          <e p="BeCollectionExtensions.cs" t="Include" />
+          <e p="BeDateTimeExtensions.cs" t="Include" />
+          <e p="BeDoubleExtensions.cs" t="Include" />
+          <e p="BeEnumerableExtensions.cs" t="Include" />
+          <e p="BeGuidExtensions.cs" t="Include" />
+          <e p="BeNullableBoolExtensions.cs" t="Include" />
+          <e p="BeNullableDateTimeExtensions.cs" t="Include" />
+          <e p="BeStringExtensions.cs" t="Include" />
+          <e p="IAssertProvider.cs" t="Include" />
+          <e p="IAssertProvider.cs.orig" t="Include" />
+          <e p="Model" t="Include">
+            <e p="Be.cs" t="Include" />
+            <e p="BeBase.cs" t="Include" />
+            <e p="BeBool.cs" t="Include" />
+            <e p="BeCollection.cs" t="Include" />
+            <e p="BeDateTime.cs" t="Include" />
+            <e p="BeDecimal.cs" t="Include" />
+            <e p="BeEnumerable.cs" t="Include" />
+            <e p="BeGuid.cs" t="Include" />
+            <e p="BeMethodCallExpression.cs" t="Include" />
+            <e p="BeNullableBool.cs" t="Include" />
+            <e p="BeNullableDateTime.cs" t="Include" />
+            <e p="BeString.cs" t="Include" />
+            <e p="Check.cs" t="Include" />
+            <e p="Contain.cs" t="Include" />
+            <e p="ContainQueryable.cs" t="Include" />
+            <e p="Count.cs" t="Include" />
+            <e p="IBe.cs" t="Include" />
+            <e p="IShould.cs" t="Include" />
+            <e p="Should.cs" t="Include" />
+            <e p="ShouldBase.cs" t="Include" />
+            <e p="ShouldCollection.cs" t="Include" />
+            <e p="ShouldDateTime.cs" t="Include" />
+            <e p="ShouldDictionary.cs" t="Include" />
+            <e p="ShouldDouble.cs" t="Include" />
+            <e p="ShouldEnumerable.cs" t="Include" />
+            <e p="ShouldString.cs" t="Include" />
+          </e>
+          <e p="Should.Fluent.csproj.orig" t="Include" />
+          <e p="ShouldCoreAssertProvider.cs" t="Include" />
+          <e p="ShouldCoreAssertProvider.cs.orig" t="Include" />
+          <e p="ShouldDateTimeExtensions.cs" t="Include" />
+          <e p="ShouldDoubleExtensions.cs" t="Include" />
+          <e p="ShouldExtensions.cs" t="Include" />
+          <e p="ShouldExtensions.cs.orig" t="Include" />
+          <e p="ShouldStringExtensions.cs" t="Include" />
+        </e>
         <e p="aXunitShould.4.0.0" t="Include">
           <e p="AssertContainment.cs" t="Include" />
           <e p="AssertEmpty.cs" t="Include" />
@@ -8518,9 +8567,6 @@
             <e p="ConcurrentExtensionsTest.cs" t="Include" />
             <e p="ObjectCacheExtensionsTest.cs" t="Include" />
             <e p="PGK.Extensions.Test4.csproj.vspscc" t="Include" />
-            <e p="Properties" t="Include">
-              <e p="AssemblyInfo.cs" t="Include" />
-            </e>
             <e p="StringExtensionsTest.cs" t="Include" />
           </e>
           <e p="PGK.Extensions.Tests" t="Include">
@@ -8553,12 +8599,6 @@
             <e p="packages.config" t="Include" />
             <e p="PGK.Extensions.Tests.csproj.vspscc" t="Include" />
             <e p="PGK.Extensions.Tests.snk" t="Include" />
-            <e p="Properties" t="Include">
-              <e p="AssemblyInfo.cs" t="Include" />
-            </e>
-            <e p="RhinoMocks" t="Include">
-              <e p="MethodOptionsExtensionsTest.cs" t="Include" />
-            </e>
             <e p="StringBuilderExtensionsTests.cs" t="Include" />
             <e p="StringExtensionsTest.cs" t="Include" />
             <e p="TestObjects" t="Include">

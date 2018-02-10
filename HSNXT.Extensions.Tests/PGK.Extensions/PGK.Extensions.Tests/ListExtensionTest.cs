@@ -134,9 +134,9 @@ namespace HSNXT.PGK.Extensions.Tests
             var invalidList = new List<int>(expected);
             invalidList.Remove(4);
 
-            Should.Core.Assertions.Assert.Equal(expected,actual);
-            Should.Core.Assertions.Assert.Equal(expected,list1);
-            Should.Core.Assertions.Assert.NotEqual(invalidList, actual);
+            erichexter.Should.Core.Assertions.Assert.Equal(expected,actual);
+            erichexter.Should.Core.Assertions.Assert.Equal(expected,list1);
+            erichexter.Should.Core.Assertions.Assert.NotEqual(invalidList, actual);
         }
 
     }
