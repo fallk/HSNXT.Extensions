@@ -51,12 +51,12 @@ namespace HSNXT
             return c.CompareTo(o) == 0;
         }
 
-        public static bool IsBetween<T>(this T value, T lowerBound, T upperBound) where T : IComparable
+        public static bool IsBetween<T>(this T value, T lowerBound, T upperBound) where T : IComparable<T>
         {
             return value.CompareTo(lowerBound) > 0 && value.CompareTo(upperBound) < 0;
         }
 
-        public static bool IsBetweenInclusive<T>(this T value, T lowerBound, T upperBound) where T : IComparable
+        public static bool IsBetweenInclusive<T>(this T value, T lowerBound, T upperBound) where T : IComparable<T>
         {
             return value.CompareTo(lowerBound) >= 0 && value.CompareTo(upperBound) <= 0;
         }

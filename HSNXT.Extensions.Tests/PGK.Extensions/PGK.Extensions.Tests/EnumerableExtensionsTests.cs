@@ -277,7 +277,7 @@ namespace HSNXT.PGK.Extensions.Tests
 		[TestMethod]
 		public void TestToArray()
 		{
-			var intStrings = Enumerable.Range(1, 3).ToArray(i => i.ToString());
+			var intStrings = Enumerable.Range(1, 3).ToArray2(i => i.ToString());
 
 			new[] { "1", "2", "3" }.SequenceEqual(intStrings).Should().Be.True();
 		}

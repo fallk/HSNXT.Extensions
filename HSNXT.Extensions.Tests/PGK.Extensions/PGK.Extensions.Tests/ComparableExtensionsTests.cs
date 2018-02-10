@@ -150,7 +150,7 @@ namespace HSNXT.PGK.Extensions.Tests
 				String testValue = "the quick brown fox jumps over the lazy dog.";
 				var expected =      "        .abcdeeefghhijklmnoooopqrrsttuuvwxyz";
 				var chars = testValue.ToCharArray();
-				Array.Sort(chars, new ComparableExtensions.AscendingComparer<char>());
+				Array.Sort(chars, new HSNXT.Extensions.AscendingComparer<char>());
 				var result = new string(chars);
 				Assert.AreEqual(expected, result);
 				
@@ -162,7 +162,7 @@ namespace HSNXT.PGK.Extensions.Tests
 				String testValue = "1357924680";
 				var expected      = "9876543210";
 				var chars = testValue.ToCharArray();
-				Array.Sort(chars, new ComparableExtensions.DescendingComparer<char>());
+				Array.Sort(chars, new HSNXT.Extensions.DescendingComparer<char>());
 				var result = new string(chars);
 				Assert.AreEqual(expected, result);
 

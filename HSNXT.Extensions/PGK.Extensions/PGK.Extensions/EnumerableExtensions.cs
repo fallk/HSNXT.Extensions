@@ -318,7 +318,7 @@ namespace HSNXT
         /// <remarks>
         ///     This method is a shorthand for the frequently use pattern IEnumerable&lt;T&gt;.Select(Func).ToArray()
         /// </remarks>
-        public static TResult[] ToArray<TSource, TResult>(this IEnumerable<TSource> source,
+        public static TResult[] ToArray2<TSource, TResult>(this IEnumerable<TSource> source,
             Func<TSource, TResult> selector)
         {
             return source.Select(selector).ToArray();

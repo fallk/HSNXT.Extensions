@@ -33,7 +33,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Extract( null );
+            Action test = () => "".Extract( (Func<char, bool>)null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

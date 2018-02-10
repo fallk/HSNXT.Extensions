@@ -27,7 +27,7 @@ namespace HSNXT.PGK.Extensions.Tests
 									  };
 			// Act
 			var result = notSortedDictionary.Sort();
-			var sortByCompareResult = notSortedDictionary.Sort(new ComparableExtensions.AscendingComparer<int>());
+			var sortByCompareResult = notSortedDictionary.Sort(new HSNXT.Extensions.AscendingComparer<int>());
 
 			// Assert
 			result.Should().Equal(sortedDictionary);
@@ -49,7 +49,7 @@ namespace HSNXT.PGK.Extensions.Tests
 		public void Sort_NullSourceWithComparer()
 		{
 			Dictionary<int, string> testValue = null;
-			var result = testValue.Sort(new ComparableExtensions.AscendingComparer<int>());
+			var result = testValue.Sort(new HSNXT.Extensions.AscendingComparer<int>());
 			Assert.IsTrue(false, "If we've reached here, we didn't get expected exception");
 		}
 

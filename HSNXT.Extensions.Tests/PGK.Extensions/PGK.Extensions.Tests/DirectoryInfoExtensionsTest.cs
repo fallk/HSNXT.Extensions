@@ -4,26 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using HSNXT;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
 	[TestClass]
 	public class DirectoryInfoExtensionsTest
 	{
-		[TestMethod]
-        [DeploymentItem(@"..\..\FilesForTestingPurpose", @".\FilesForTestingPurpose")]
-		public void GetFiles()
-		{
-            var testValue = new DirectoryInfo(@".\FilesForTestingPurpose");
-			var results = testValue.GetFiles("*.sln", "*.suo");
-			Assert.IsNotNull(results);
-
-			Assert.AreEqual(3, results.Length);
-			Assert.AreEqual(1, results.Count(fi => fi.Name == "PGK.Extensions.sln"));
-			Assert.AreEqual(1, results.Count(fi => fi.Name == "PGK.Extensions.sln.docstates.suo"));
-			Assert.AreEqual(1, results.Count(fi => fi.Name == "PGK.Extensions.suo"));
-		}
-
 		[TestMethod]
 		public void FindFileRecursive_pattern()
 		{

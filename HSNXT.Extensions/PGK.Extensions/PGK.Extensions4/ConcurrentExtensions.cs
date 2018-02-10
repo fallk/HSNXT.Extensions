@@ -17,7 +17,7 @@ namespace HSNXT
         /// <remarks>
         /// Contributed by Chris Gessler
         /// </remarks>
-        public static TValue GetOrAdd<TKey, TValue>(this ConcurrentDictionary<TKey, Lazy<TValue>> @this, TKey key,
+        public static TValue GetOrAddConcurrent<TKey, TValue>(this ConcurrentDictionary<TKey, Lazy<TValue>> @this, TKey key,
             Func<TKey, TValue> valueFactory)
         {
             return @this.GetOrAdd(key, new Lazy<TValue>(() => valueFactory(key), true)).Value;

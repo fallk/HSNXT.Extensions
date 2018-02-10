@@ -896,7 +896,7 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.AreEqual(args.ElementAt(1), "Aleksey");
 			Assert.AreEqual(args.ElementAt(2), "Russia");
 
-			args = str.ExtractArguments(@"My name is {1} {0}. I'm from {2}.", StringExtensions.ComparsionTemplateOptions.Whole);
+			args = str.ExtractArguments(@"My name is {1} {0}. I'm from {2}.", HSNXT.Extensions.ComparsionTemplateOptions.Whole);
 			Assert.AreEqual(args.Count(), 3);
 			Assert.AreEqual(args.ElementAt(0), "Nagovitsyn");
 			Assert.AreEqual(args.ElementAt(1), "Aleksey");
@@ -911,14 +911,14 @@ namespace HSNXT.PGK.Extensions.Tests
 			Assert.AreEqual(args.Count(), 1);
 			Assert.AreEqual(args.ElementAt(0), "Russia");
 
-			args = str.ExtractArguments(@"I'm FROM {0}.", StringExtensions.ComparsionTemplateOptions.Default, RegexOptions.IgnoreCase);
+			args = str.ExtractArguments(@"I'm FROM {0}.", HSNXT.Extensions.ComparsionTemplateOptions.Default, RegexOptions.IgnoreCase);
 			Assert.AreEqual(args.Count(), 1);
 			Assert.AreEqual(args.ElementAt(0), "Russia");
 
-			args = str.ExtractArguments(@"I'm from {0}.", StringExtensions.ComparsionTemplateOptions.FromStart);
+			args = str.ExtractArguments(@"I'm from {0}.", HSNXT.Extensions.ComparsionTemplateOptions.FromStart);
 			Assert.AreEqual(args.Count(), 0);
 
-			args = str.ExtractArguments(@"I'm from {0}.", StringExtensions.ComparsionTemplateOptions.AtTheEnd);
+			args = str.ExtractArguments(@"I'm from {0}.", HSNXT.Extensions.ComparsionTemplateOptions.AtTheEnd);
 			Assert.AreEqual(args.Count(), 1);
 			Assert.AreEqual(args.ElementAt(0), "Russia");
 		}

@@ -80,7 +80,7 @@ namespace HSNXT.PGK.Extensions.Tests
         {
             string[] array = null;
 
-            Assert.IsTrue(ArrayExtension.IsNullOrEmpty(array));
+            Assert.IsTrue(array.ArrayIsNullOrEmpty());
         }
 
         [TestMethod]
@@ -88,7 +88,7 @@ namespace HSNXT.PGK.Extensions.Tests
         {
             string[] array = new string[0];
 
-            Assert.IsTrue(ArrayExtension.IsNullOrEmpty(array));
+            Assert.IsTrue(array.ArrayIsNullOrEmpty());
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace HSNXT.PGK.Extensions.Tests
         {
             string[] array = new string[1];
 
-            Assert.IsFalse(ArrayExtension.IsNullOrEmpty(array));
+            Assert.IsFalse(array.ArrayIsNullOrEmpty());
         }
 
         #endregion

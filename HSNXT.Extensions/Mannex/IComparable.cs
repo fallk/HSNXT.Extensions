@@ -63,7 +63,7 @@ namespace HSNXT
         /// </summary>
 
         public static bool? IsBetween<T>(this T? value, T lower, T upper)
-            where T : struct, IComparable
+            where T : struct, IComparable<T>
         {
             return value?.IsBetween(lower, upper);
         }

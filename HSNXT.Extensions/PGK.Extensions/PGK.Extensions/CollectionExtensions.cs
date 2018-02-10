@@ -51,31 +51,12 @@ namespace HSNXT
             return count;
         }
 
-        ///<summary>
-        ///	Remove an item from the collection with predicate
-        ///</summary>
-        ///<param name = "collection"></param>
-        ///<param name = "predicate"></param>
-        ///<typeparam name = "T"></typeparam>
-        ///<exception cref = "ArgumentNullException"></exception>
-        /// <remarks>
-        /// 	Contributed by Michael T, http://about.me/MichaelTran
-        /// 	Renamed by James Curran, to match corresponding HashSet.RemoveWhere()
-        /// </remarks>
-        public static void RemoveWhere<T>(this ICollection<T> collection, Predicate<T> predicate)
-        {
-            if (collection == null)
-                throw new ArgumentNullException("collection");
-            var deleteList = collection.Where(child => predicate(child)).ToList();
-            deleteList.ForEach(t => collection.Remove(t));
-        }
-
         /// <summary>
         /// Tests if the collection is empty.
         /// </summary>
         /// <param name="collection">The collection to test.</param>
         /// <returns>True if the collection is empty.</returns>
-        public static bool IsEmpty(this ICollection collection)
+        public static bool IsEmptyCollection(this ICollection collection)
         {
             collection.ExceptionIfNullOrEmpty("The collection cannot be null.", "collection");
 
@@ -87,23 +68,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="collection">The collection to test.</param>
         /// <returns>True if the collection is empty.</returns>
-        public static bool IsEmpty(this IList collection)
-        {
-            collection.ExceptionIfNullOrEmpty(
-                "The collection cannot be null.",
-                "collection");
-
-            return collection.Count == 0;
-        }
-
-        /// <summary>
-        /// Tests if the collection is empty.
-        /// </summary>
-        /// <typeparam name="T">The type of the items in 
-        /// the collection.</typeparam>
-        /// <param name="collection">The collection to test.</param>
-        /// <returns>True if the collection is empty.</returns>
-        public static bool IsEmpty<T>(this IList<T> collection)
+        public static bool IsEmptyList(this IList collection)
         {
             collection.ExceptionIfNullOrEmpty(
                 "The collection cannot be null.",
