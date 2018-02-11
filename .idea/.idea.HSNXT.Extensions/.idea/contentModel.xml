@@ -6988,7 +6988,6 @@
             <e p="Should.Facts.csproj.orig" t="Include" />
             <e p="StringAssertionExtensions_Facts.cs" t="Include" />
             <e p="ThrowsTests.cs" t="Include" />
-            <e p="TraceAssertTests.cs" t="Include" />
           </e>
           <e p="Should.Fluent" t="Include">
             <e p="BeBoolExtensions.cs" t="Include" />

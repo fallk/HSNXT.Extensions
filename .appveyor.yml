@@ -45,7 +45,9 @@ build_script:
   - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f netstandard2.0
   - ps: dotnet publish "HSNXT.Extensions/HSNXT.Extensions.csproj"                     -c Release -f net47
   
-  - ps: dotnet publish "HSNXT.Extensions.Tests/HSNXT.Extensions.Tests.csproj"         -c Release -f net47
+  # do NOT publish the test project, or else appveyor test discovery will see it twice (once from the dotnet build and once from the publish)
+  # and will fail the build
+  #- ps: dotnet publish "HSNXT.Extensions.Tests/HSNXT.Extensions.Tests.csproj"         -c Release -f net47
   - ps: dotnet publish "RegexesToAssembly/RegexesToAssembly.csproj"                   -c Release -f net47
     
   - ps: dotnet pack "HSNXT.Extensions/HSNXT.Extensions.csproj" -c Release -o "Proj1" --no-build
