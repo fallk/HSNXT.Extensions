@@ -113,40 +113,6 @@ namespace HSNXT
         /// <paramref name="source" /> is <see langword="null" />.</exception>
         public static bool Includes<TSource>(this IEnumerable<TSource> source, TSource value) => source.Contains(value);
 
-        /// <summary>The indexOf() method returns the first index at which a given element can be found in the array,
-        /// or -1 if it is not present.</summary>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return the index of an element from.</param>
-        /// <param name="searchElement">Element to locate in the array.</param>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-        /// <returns>
-        /// The first index of the element in the array; -1 if not found.</returns>
-        public static int IndexOf<TSource>(this IEnumerable<TSource> source, TSource searchElement)
-        {
-            if (source == null)
-                throw new ArgumentNullException(nameof (source));
-
-            var i = 0;
-            if (searchElement == null)
-            {
-                foreach (var source1 in source)
-                {
-                    if (source1 == null)
-                        return i;
-                    i++;
-                }
-            }
-            else
-            {
-                foreach (var source1 in source)
-                {
-                    if (searchElement.Equals(source1))
-                        return i;
-                    i++;
-                }
-            }
-            return -1;
-        }
-
         public static IEnumerable<int> Keys<T>(this IEnumerable<T> self)
         {
             var i = 0;

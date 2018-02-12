@@ -107,16 +107,6 @@ namespace HSNXT
             Func<TAccumulate, TSource, TAccumulate> func, Func<TAccumulate, TResult> resultSelector) =>
             source.Aggregate(seed, func, resultSelector);
 
-        /// <summary>Filters a sequence of values based on a predicate.</summary>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-        /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains elements from the input sequence that satisfy the condition.</returns>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null" />.</exception>
-        public static IEnumerable<TSource> Filter<TSource>(this IEnumerable<TSource> source,
-            Func<TSource, bool> predicate) => source.Where(predicate);
-
         /// <summary>Filters a sequence of values based on a predicate. Each element's index is used in the logic of the predicate function.</summary>
         /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to filter.</param>
         /// <param name="predicate">A function to test each source element for a condition; the second parameter of the function represents the index of the source element.</param>
@@ -244,7 +234,7 @@ namespace HSNXT
         /// <param name="mapper">A transform function to apply to each element.</param>
         /// <typeparam name="T">The type of the elements of <paramref name="self" />.</typeparam>
         /// <typeparam name="TR">The type of the value returned by <paramref name="mapper" />.</typeparam>
-        /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements are the result of invoking the transform function on each element of <paramref name="source" />.</returns>
+        /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements are the result of invoking the transform function on each element of <paramref name="self" />.</returns>
         /// <exception cref="T:System.ArgumentNullException">
         /// <paramref name="self" /> or <paramref name="mapper" /> is <see langword="null" />.</exception>
         public static IEnumerable<TR> Map<T, TR>(this IEnumerable<T> self, Func<T, TR> mapper) => self.Select(mapper);
