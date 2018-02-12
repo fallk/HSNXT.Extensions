@@ -284,14 +284,9 @@ namespace HSNXT
         /// Contributed by thinktech_coder
         /// </remarks>
         public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source,
-            Func<TSource, TResult> selector, bool allowNull = true)
+            Func<TSource, TResult> selector, bool allowNull)
         {
-            foreach (var item in source)
-            {
-                var select = selector(item);
-                if (allowNull || !Equals(select, default(TSource)))
-                    yield return select;
-            }
+            return source.Select(selector).Where(s => allowNull || !Equals(s, default(TSource)));
         }
 
         /// <summary>
@@ -300,7 +295,24 @@ namespace HSNXT
         /// </summary>
         public static T FirstOrDefault<T>(this IEnumerable<T> source, T defaultValue)
         {
-            return (source.IsNotEmpty() ? source.First() : defaultValue);
+            switch (source)
+            {
+                case null:
+                    throw new ArgumentNullException(nameof(source));
+                case IList<T> sourceList:
+                    if (sourceList.Count > 0)
+                        return sourceList[0];
+                    break;
+                default:
+                    using (var enumerator = source.GetEnumerator())
+                    {
+                        if (enumerator.MoveNext())
+                            return enumerator.Current;
+                    }
+
+                    break;
+            }
+            return defaultValue;
         }
 
         /// <summary>
