@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="ICustomAttributeProvider"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Indicates whether one or more instance of <typeparamref name="T"/> 
         /// is defined on this member.
         /// </summary>
-
         public static bool IsDefined<T>(this ICustomAttributeProvider provider, bool inherit) where T : class
         {
             if (provider == null) throw new ArgumentNullException("provider");
@@ -51,7 +51,6 @@ namespace HSNXT
         /// Returns <typeparamref name="T"/> custom attributes defined on 
         /// this member.
         /// </summary>
-
         public static T[] GetCustomAttributes<T>(this ICustomAttributeProvider provider, bool inherit) where T : class
         {
             if (provider == null) throw new ArgumentNullException("provider");
@@ -61,7 +60,6 @@ namespace HSNXT
         /// <summary>
         /// Returns a specific custom attribute defined on this member.
         /// </summary>
-
         public static T GetCustomAttribute<T>(this ICustomAttributeProvider provider, bool inherit) where T : class
         {
             if (provider == null) throw new ArgumentNullException("provider");

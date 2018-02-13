@@ -17,12 +17,12 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [PublicAPI]
         [Pure]
-        public static decimal Sum( this decimal value, [NotNull] params decimal[] values )
+        public static decimal Sum(this decimal value, [NotNull] params decimal[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Sum();
         }
 
@@ -37,12 +37,12 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static decimal? Sum( [CanBeNull] this decimal? value, [NotNull] params decimal?[] values )
+        public static decimal? Sum([CanBeNull] this decimal? value, [NotNull] params decimal?[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Sum();
         }
 
@@ -59,14 +59,15 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [PublicAPI]
         [Pure]
-        public static decimal Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, decimal> selector, [NotNull] params TSource[] values )
+        public static decimal Sum<TSource>([CanBeNull] this TSource value, [NotNull] Func<TSource, decimal> selector,
+            [NotNull] params TSource[] values)
         {
-            selector.ThrowIfNull( nameof(selector) );
-            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Sum( selector );
+            list.Add(value);
+            return list.Sum(selector);
         }
 
         /// <summary>
@@ -83,16 +84,16 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static decimal? Sum<TSource>( [CanBeNull] this TSource value,
-                                             [NotNull] Func<TSource, decimal?> selector,
-                                             [NotNull] params TSource[] values )
+        public static decimal? Sum<TSource>([CanBeNull] this TSource value,
+            [NotNull] Func<TSource, decimal?> selector,
+            [NotNull] params TSource[] values)
         {
-            selector.ThrowIfNull( nameof(selector) );
-            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Sum( selector );
+            list.Add(value);
+            return list.Sum(selector);
         }
     }
 }

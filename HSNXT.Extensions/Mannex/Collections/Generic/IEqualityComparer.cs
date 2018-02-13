@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,13 +31,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for types implementing <see cref="IEqualityComparer{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Returns a delegate to <see cref="IEqualityComparer{T}.Equals(T,T)"/>.
         /// </summary>
-        
         public static Func<T, T, bool> EqualsFunc<T>(this IEqualityComparer<T> comparer)
         {
             if (comparer == null) throw new ArgumentNullException("comparer");
@@ -45,7 +45,6 @@ namespace HSNXT
         /// <summary>
         /// Returns a delegate to <see cref="IEqualityComparer{T}.GetHashCode(T)"/>.
         /// </summary>
-
         public static Func<T, int> GetHashCodeFunc<T>(this IEqualityComparer<T> comparer)
         {
             if (comparer == null) throw new ArgumentNullException("comparer");

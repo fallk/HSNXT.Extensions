@@ -41,10 +41,11 @@ namespace HSNXT
         /// <param name="compareMode">The compare mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public TypeMemberSelectionRule( [NotNull] Type type, MemberSelectionMode selectionMode, CompareMode compareMode, string name = null, string description = null )
-            : base( name, description )
+        public TypeMemberSelectionRule([NotNull] Type type, MemberSelectionMode selectionMode, CompareMode compareMode,
+            string name = null, string description = null)
+            : base(name, description)
         {
-            type.ThrowIfNull( nameof(type) );
+            type.ThrowIfNull(nameof(type));
 
             _type = type;
             _selectionMode = selectionMode;
@@ -60,14 +61,14 @@ namespace HSNXT
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public override MemberSelectionResult GetSelectionResult( [NotNull] IMemberInformation member )
+        public override MemberSelectionResult GetSelectionResult([NotNull] IMemberInformation member)
         {
-            member.ThrowIfNull( nameof(member) );
+            member.ThrowIfNull(nameof(member));
 
             var matchesType = member.MemberType == _type;
-            if ( _compareMode == CompareMode.IsNot )
+            if (_compareMode == CompareMode.IsNot)
                 matchesType = !matchesType;
-            if ( !matchesType )
+            if (!matchesType)
                 return MemberSelectionResult.Neutral;
 
             return _selectionMode == MemberSelectionMode.Include

@@ -71,7 +71,7 @@ namespace HSNXT
                 }
             }
         }
-        
+
         /// <summary>
         /// Returns items from the input sequence until the given predicate returns true
         /// when applied to the current source item; does not return the last item.

@@ -381,7 +381,7 @@ sb.Clear();
         public static T GetRandomItem<T>(this IList<T> input)
         {
             if (input == null) return default;
-            
+
             if (input.Count == 1)
                 return input[0];
 

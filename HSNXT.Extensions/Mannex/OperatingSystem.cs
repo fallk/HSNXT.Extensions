@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,23 +36,21 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="OperatingSystem"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Determines whether the operating system is a Unix platform.
         /// </summary>
-
         [DebuggerStepThrough]
         public static bool IsUnix(this OperatingSystem os)
         {
             if (os == null) throw new ArgumentNullException("os");
             return os.Platform == PlatformID.Unix
-                // Testing Path.DirectorySeparatorChar for a forward slash
-                // seems to be the most reliable method for assuming a *nix
-                // platform:
-                // http://mono.wikia.com/wiki/Detecting_the_execution_platform
-                || Path.DirectorySeparatorChar == '/';
+                   // Testing Path.DirectorySeparatorChar for a forward slash
+                   // seems to be the most reliable method for assuming a *nix
+                   // platform:
+                   // http://mono.wikia.com/wiki/Detecting_the_execution_platform
+                   || Path.DirectorySeparatorChar == '/';
         }
     }
 }

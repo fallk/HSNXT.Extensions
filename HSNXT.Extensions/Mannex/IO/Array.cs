@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,13 +35,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Array"/> sub-types.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates a read-only stream on top of the supplied byte array.
         /// </summary>
-        
         public static Stream OpenRead(this byte[] buffer)
         {
             return OpenStream(buffer, null, null, false);
@@ -49,7 +49,6 @@ namespace HSNXT
         /// Creates a read-only stream on top of a section of supplied 
         /// byte array.
         /// </summary>
-
         public static Stream OpenRead(this byte[] buffer, int index, int count)
         {
             return OpenStream(buffer, index, count, false);
@@ -58,7 +57,6 @@ namespace HSNXT
         /// <summary>
         /// Creates a read-write stream on top of the supplied byte array.
         /// </summary>
-
         public static Stream OpenReadWrite(this byte[] buffer)
         {
             return OpenStream(buffer, null, null, true);
@@ -68,7 +66,6 @@ namespace HSNXT
         /// Creates a read-write stream on top of a section of supplied 
         /// byte array.
         /// </summary>
-
         public static Stream OpenReadWrite(this byte[] buffer, int index, int count)
         {
             if (buffer == null) throw new ArgumentNullException("buffer");

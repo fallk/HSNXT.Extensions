@@ -22,7 +22,7 @@ namespace HSNXT
     {
         //new DateTimeOffset(2015, 1, 1, 0, 0, 0, TimeSpan.Zero).ToUnixTimeMilliseconds();
         public const long DiscordEpoch = 1420070400000L;
-        
+
         /// <summary>
         /// Compares the identity of two images.
         /// </summary>
@@ -34,13 +34,13 @@ namespace HSNXT
         {
             var hash1 = new ImgHash(hashSideSize);
             hash1.GenerateFromImage(self);
-            
+
             var hash2 = new ImgHash(hashSideSize);
             hash2.GenerateFromImage(target);
 
             return hash1.CompareWith(hash2);
         }
-        
+
         /// <summary>
         /// Gets the current date and time for a Discord snowflake.
         /// </summary>
@@ -48,9 +48,9 @@ namespace HSNXT
         /// <returns>the date and time the snowflake corresponds to</returns>
         public static DateTimeOffset ToDiscordTime(ulong snowflake)
         {
-            return DateTimeOffset.FromUnixTimeMilliseconds((long)(snowflake >> 22) + DiscordEpoch);
+            return DateTimeOffset.FromUnixTimeMilliseconds((long) (snowflake >> 22) + DiscordEpoch);
         }
-        
+
         /// <summary>
         /// Gets the current date and time for a Discord snowflake.
         /// </summary>
@@ -60,7 +60,7 @@ namespace HSNXT
         {
             return DateTimeOffset.FromUnixTimeMilliseconds((snowflake >> 22) + DiscordEpoch);
         }
-        
+
         /// <summary>
         /// Returns a Task that resolves when this process has exited.
         /// </summary>
@@ -73,10 +73,10 @@ namespace HSNXT
             proc.Exited += (o, e) => tcs.SetResult(true);
 
             proc.Start();
-            
+
             return tcs.Task;
         }
-        
+
         /// <summary>
         /// Gets the date represented by this datetime with the suffix, such as 1st or 2nd.
         /// </summary>
@@ -110,7 +110,7 @@ namespace HSNXT
         {
             return Regex.Matches(instr, search).Count;
         }
-        
+
         /// <summary>
         /// Adds the vararg values to this collection.
         /// </summary>
@@ -124,7 +124,7 @@ namespace HSNXT
             foreach (var value in values)
                 list.Add(value);
         }
-        
+
         /// <summary>
         /// Parse this string into an enum.
         /// </summary>
@@ -134,25 +134,28 @@ namespace HSNXT
         /// <returns>The returned enum</returns>
         /// <exception cref="ArgumentNullException">If value is null</exception>
         /// <exception cref="ArgumentException">If value is empty or whitespace-only, or if the type T isn't an enum</exception>
-        public static T EnumParse<T>(this string value, bool ignorecase = false) {
-
-            if (value == null) {
+        public static T EnumParse<T>(this string value, bool ignorecase = false)
+        {
+            if (value == null)
+            {
                 throw new ArgumentNullException(nameof(value));
             }
 
             value = value.Trim();
 
-            if (value.Length == 0) {
+            if (value.Length == 0)
+            {
                 throw new ArgumentException("Must specify valid information for parsing in the string.", nameof(value));
             }
 
             var t = typeof(T);
 
-            if (!t.IsEnum) {
+            if (!t.IsEnum)
+            {
                 throw new ArgumentException("Type provided must be an Enum.", nameof(T));
             }
 
-            return (T)Enum.Parse(t, value, ignorecase);
+            return (T) Enum.Parse(t, value, ignorecase);
         }
 
         /// <summary>
@@ -521,7 +524,7 @@ namespace HSNXT
         public static uint SwapEndianness(this uint n)
         {
             n = n >> 16 | n << 16;
-            return(n & 0xFF00FF00) >> 8 | (n & 0xFF00FF) << 8;
+            return (n & 0xFF00FF00) >> 8 | (n & 0xFF00FF) << 8;
         }
 
         /// <summary>Returns a new <see cref="T:System.DateTime" /> that subtracts the specified number of days to the value of this instance.</summary>

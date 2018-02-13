@@ -53,7 +53,7 @@ namespace HSNXT
         {
             return dateTime.MinutesFrom(GetUnixEpoch());
         }
-       
+
         public static int SecondsFromUnixEpoch(this DateTime dateTime)
         {
             return dateTime.SecondsFrom(GetUnixEpoch());

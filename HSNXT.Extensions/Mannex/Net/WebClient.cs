@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="WebClient"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -44,7 +45,6 @@ namespace HSNXT
         /// <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17">Content-Type</a>
         /// response header as an instance of the <see cref="ContentType"/> object.
         /// </summary>
-
         public static ContentType GetResponseContentType(this WebClient client)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -61,7 +61,6 @@ namespace HSNXT
         /// correctly use the character set indicated in the response to decode
         /// the string. Otherwise it uses <see cref="WebClient.Encoding"/>.
         /// </summary>
-
         public static string DownloadStringUsingResponseEncoding(this WebClient client, string address)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -73,7 +72,6 @@ namespace HSNXT
         /// correctly use the character set indicated in the response to decode
         /// the string. Otherwise it uses <see cref="WebClient.Encoding"/>.
         /// </summary>
-
         public static string DownloadStringUsingResponseEncoding(this WebClient client, Uri address)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -87,8 +85,8 @@ namespace HSNXT
 
             var contentType = client.GetResponseContentType();
             var encoding = contentType != null
-                         ? contentType.EncodingFromCharSet(client.Encoding)
-                         : null;
+                ? contentType.EncodingFromCharSet(client.Encoding)
+                : null;
 
             return (encoding ?? client.Encoding).GetString(data);
         }

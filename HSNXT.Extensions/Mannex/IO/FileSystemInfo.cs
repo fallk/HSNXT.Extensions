@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,7 +31,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="FileSystemInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -42,19 +43,17 @@ namespace HSNXT
         /// On Unix systems, if <see cref="FileSystemInfo.Name"/> starts with
         /// a period or dot (.) then it is considered user-invisible.
         /// </remarks>
-
         public static bool IsUserVisible(this FileSystemInfo info)
         {
             if (info == null) throw new ArgumentNullException("info");
             return 0 == (info.Attributes & (FileAttributes.Hidden | FileAttributes.System))
-                && (!Environment.OSVersion.IsUnix() || info.Name.TryCharAt(0) != '.');
+                   && (!Environment.OSVersion.IsUnix() || info.Name.TryCharAt(0) != '.');
         }
 
         /// <summary>
         /// Determines if the file system entry has at least the the given
         /// bits of <see cref="FileAttributes"/> set.
         /// </summary>
-
         public static bool HasAttributes(this FileSystemInfo info, FileAttributes attributes)
         {
             if (info == null) throw new ArgumentNullException("info");
@@ -72,7 +71,6 @@ namespace HSNXT
         /// file (<see cref="FileInfo"/>) or directory
         /// (<see cref="DirectoryInfo"/>).
         /// </remarks>
-
         public static DirectoryInfo GetParentDirectory(FileSystemInfo info)
         {
             if (info == null) throw new ArgumentNullException("info");
@@ -93,7 +91,6 @@ namespace HSNXT
         /// using mapped local drive letters or UNC paths under Windows, for
         /// example, are returned verbatim.
         /// </remarks>
-
         public static string ReconstructFullName(this FileSystemInfo info)
         {
             // Inspiration & credit:
@@ -101,8 +98,8 @@ namespace HSNXT
 
             var parent = GetParentDirectory(info);
             return parent != null
-                 ? Path.Combine(parent.ReconstructFullName(), parent.GetFileSystemInfos(info.Name)[0].Name)
-                 : info.FullName;
+                ? Path.Combine(parent.ReconstructFullName(), parent.GetFileSystemInfos(info.Name)[0].Name)
+                : info.FullName;
         }
     }
 }

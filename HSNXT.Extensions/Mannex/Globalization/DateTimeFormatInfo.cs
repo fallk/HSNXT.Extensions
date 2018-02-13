@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="DateTimeFormatInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Calculates the first date that occurs in a calendar
         /// week given the year.
         /// </summary>
-        
         public static DateTime FirstDateOfWeek(this DateTimeFormatInfo info, int year, int weekOfYear)
         {
             if (info == null) throw new ArgumentNullException("info");

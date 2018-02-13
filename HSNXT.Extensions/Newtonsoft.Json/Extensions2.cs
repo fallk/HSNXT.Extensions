@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -32,7 +34,6 @@ using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 #endif
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
@@ -46,15 +47,15 @@ namespace HSNXT
             if (value == null)
                 throw new ArgumentNullException(parameterName);
         }
-        
+
         private static bool IsNullableType(Type t)
         {
-            ArgumentNotNull((object) t, nameof (t));
+            ArgumentNotNull((object) t, nameof(t));
             if (t.IsGenericType())
-                return t.GetGenericTypeDefinition() == typeof (Nullable<>);
+                return t.GetGenericTypeDefinition() == typeof(Nullable<>);
             return false;
         }
-        
+
         public static TimeSpan GetUtcOffset(this DateTime d)
         {
 #if !HAVE_TIME_ZONE_INFO
@@ -63,7 +64,7 @@ namespace HSNXT
             return TimeZoneInfo.Local.GetUtcOffset(d);
 #endif
         }
-        
+
         /// <summary>
         /// Returns a collection of tokens that contains the ancestors of every token in the source collection.
         /// </summary>
@@ -286,13 +287,14 @@ namespace HSNXT
                 && typeof(U) != typeof(IComparable) && typeof(U) != typeof(IFormattable))
             {
                 // HACK
-                return (U)(object)token;
+                return (U) (object) token;
             }
             else
             {
                 if (!(token is JValue value))
                 {
-                    throw new InvalidCastException("Cannot cast {0} to {1}.".FormatWith(CultureInfo.InvariantCulture, token.GetType(), typeof(T)));
+                    throw new InvalidCastException("Cannot cast {0} to {1}.".FormatWith(CultureInfo.InvariantCulture,
+                        token.GetType(), typeof(T)));
                 }
 
                 if (value.Value is U u)
@@ -312,7 +314,7 @@ namespace HSNXT
                     targetType = Nullable.GetUnderlyingType(targetType);
                 }
 
-                return (U)System.Convert.ChangeType(value.Value, targetType, CultureInfo.InvariantCulture);
+                return (U) System.Convert.ChangeType(value.Value, targetType, CultureInfo.InvariantCulture);
             }
         }
 
@@ -343,7 +345,7 @@ namespace HSNXT
             }
             else if (source is IJEnumerable<T>)
             {
-                return (IJEnumerable<T>)source;
+                return (IJEnumerable<T>) source;
             }
             else
             {

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,13 +36,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Stream"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Copies one stream into another using a transfer buffer size of 4K.
         /// </summary>
-
         public static void Copy(this Stream input, Stream output)
         {
             ValidateArguments(input, output);
@@ -51,7 +51,6 @@ namespace HSNXT
         /// Copies one stream into another using a caller-specified transfer 
         /// buffer size.
         /// </summary>
-        
         public static void Copy(this Stream input, Stream output, int bufferSize)
         {
             ValidateArguments(input, output, bufferSize);
@@ -62,7 +61,6 @@ namespace HSNXT
         /// Copies one stream into another using a caller-specified transfer 
         /// buffer. If the buffer is null then a default one of 4K is used.
         /// </summary>
-
         public static void Copy(this Stream input, Stream output, byte[] buffer)
         {
             ValidateArguments(input, output);
@@ -74,14 +72,12 @@ namespace HSNXT
             {
                 count = input.Read(buffer, 0, buffer.Length);
                 output.Write(buffer, 0, count);
-            }
-            while (count > 0);
+            } while (count > 0);
         }
 
         /// <summary>
         /// Copies content of the stream to fill the given buffer.
         /// </summary>
-
         public static int SaveTo(this Stream input, byte[] buffer)
         {
             ValidateArguments(input, buffer);
@@ -91,7 +87,6 @@ namespace HSNXT
         /// <summary>
         /// Copies content of the stream to fill the given buffer.
         /// </summary>
-
         public static int SaveTo(this Stream input, byte[] buffer, int offset, int count)
         {
             ValidateArguments(input, buffer, offset, count);
@@ -105,6 +100,7 @@ namespace HSNXT
                 offset += read;
                 total += read;
             }
+
             return total;
         }
 
@@ -113,7 +109,6 @@ namespace HSNXT
         /// to the given file path using a default transfer buffer size of 
         /// 4K.
         /// </summary>
-
         public static void SaveToFile(this Stream input, string path)
         {
             ValidateArguments(input);
@@ -125,7 +120,6 @@ namespace HSNXT
         /// to the given file path using a caller-specified transfer 
         /// buffer size.
         /// </summary>
-
         public static void SaveToFile(this Stream input, string path, int bufferSize)
         {
             ValidateArguments(input);
@@ -138,7 +132,6 @@ namespace HSNXT
         /// Copies the content of the input stream from its current position
         /// to a memory-based stream.
         /// </summary>
-
         public static MemoryStream Memorize(this Stream input)
         {
             ValidateArguments(input);
@@ -152,13 +145,12 @@ namespace HSNXT
         /// Returns the remaining contents of the input as an array of 
         /// unsigned bytes.
         /// </summary>
-
         public static byte[] ToArray(this Stream input)
         {
             ValidateArguments(input);
             return input.Memorize().ToArray();
         }
-        
+
         #region Argument Validation
 
         [DebuggerStepThrough]
@@ -231,6 +223,6 @@ namespace HSNXT
             if (offset + count > buffer.Length) throw new ArgumentOutOfRangeException("offset", offset, null);
         }
 
-        #endregion    
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Exception"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         static readonly Func<Exception, Exception> PrepForRemoting;
@@ -48,7 +49,6 @@ namespace HSNXT
         /// Credit: <a href="http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx">Reactive Extensions for .NET (Rx)</a>
         /// and <a href="http://piers7.blogspot.com/2010/09/rethrowing-exceptions-without-losing.html">Cup(Of T): Rethrowing Exceptions Without Losing Original Stack Trace</a>
         /// </remarks>
-
         public static Exception PrepareForRethrow(this Exception e)
         {
             if (e == null) throw new ArgumentNullException("e");
@@ -63,7 +63,6 @@ namespace HSNXT
         /// Credit: <a href="http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx">Reactive Extensions for .NET (Rx)</a>
         /// and <a href="http://piers7.blogspot.com/2010/09/rethrowing-exceptions-without-losing.html">Cup(Of T): Rethrowing Exceptions Without Losing Original Stack Trace</a>
         /// </remarks>
-
         [DebuggerStepThrough]
         public static void Rethrow(this Exception e)
         {
@@ -79,7 +78,6 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred and streaming execution semantics.
         /// </remarks>
-
         [DebuggerStepThrough]
         public static IEnumerable<Exception> InnerExceptions(this Exception e)
         {
@@ -98,7 +96,6 @@ namespace HSNXT
         /// <see cref="Exception"/> represents a file or device sharing 
         /// violation error.
         /// </summary>
-
         public static bool IsSharingViolation(this Exception exception)
         {
             if (exception == null) throw new ArgumentNullException("exception");

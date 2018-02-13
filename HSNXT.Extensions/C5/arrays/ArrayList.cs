@@ -2284,8 +2284,7 @@ namespace HSNXT.C5
 
         bool ICollection.IsSynchronized => false;
 
-        [Obsolete]
-        Object ICollection.SyncRoot => underlying != null ? ((ICollection) underlying).SyncRoot : array;
+        [Obsolete] Object ICollection.SyncRoot => underlying != null ? ((ICollection) underlying).SyncRoot : array;
 
         void ICollection.CopyTo(Array arr, int index)
         {

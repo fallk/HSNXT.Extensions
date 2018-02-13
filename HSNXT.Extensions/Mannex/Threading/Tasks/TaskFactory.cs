@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,11 +20,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
 {
-    #if NET4
+#if NET4
 
     #region Imports
 
@@ -38,7 +40,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="TaskFactory"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -46,7 +47,6 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-        
         public static Task StartNew(
             this TaskFactory taskFactory, IEnumerable<Task> job)
         {
@@ -58,7 +58,6 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-        
         public static Task StartNew(
             this TaskFactory taskFactory, IEnumerable<Task> job,
             CancellationToken cancellationToken)
@@ -71,7 +70,6 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-        
         public static Task StartNew(
             this TaskFactory taskFactory, IEnumerable<Task> job,
             TaskCreationOptions creationOptions)
@@ -84,7 +82,6 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-        
         public static Task StartNew(
             this TaskFactory taskFactory, IEnumerable<Task> job,
             CancellationToken cancellationToken, TaskCreationOptions creationOptions,
@@ -98,7 +95,6 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-        
         public static Task StartNew(
             this TaskFactory taskFactory, IEnumerable<Task> job, object state)
         {
@@ -110,7 +106,6 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-        
         public static Task StartNew(
             this TaskFactory taskFactory, IEnumerable<Task> job, object state,
             CancellationToken cancellationToken)
@@ -123,9 +118,8 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-
         public static Task StartNew(
-            this TaskFactory taskFactory, IEnumerable<Task> job, object state, 
+            this TaskFactory taskFactory, IEnumerable<Task> job, object state,
             TaskCreationOptions creationOptions)
         {
             return StartNew(taskFactory, job, state, CancellationToken.None, creationOptions, null);
@@ -136,10 +130,9 @@ namespace HSNXT
         /// through a sequence of tasks where each task is run as a 
         /// continuation of its predecessor.
         /// </summary>
-
         public static Task StartNew(
-            this TaskFactory taskFactory, IEnumerable<Task> job, object state, 
-            CancellationToken cancellationToken, TaskCreationOptions creationOptions, 
+            this TaskFactory taskFactory, IEnumerable<Task> job, object state,
+            CancellationToken cancellationToken, TaskCreationOptions creationOptions,
             TaskScheduler scheduler)
         {
             if (taskFactory == null) throw new ArgumentNullException("taskFactory");
@@ -173,8 +166,14 @@ namespace HSNXT
                         }
                         catch (Exception e)
                         {
-                            try { task.Dispose(); } // ReSharper disable once EmptyGeneralCatchClause
-                            catch { }
+                            try
+                            {
+                                task.Dispose();
+                            } // ReSharper disable once EmptyGeneralCatchClause
+                            catch
+                            {
+                            }
+
                             tcs.SetException(e);
                             return;
                         }
@@ -214,5 +213,5 @@ namespace HSNXT
         }
     }
 
-    #endif // NET4
+#endif // NET4
 }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,7 +37,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="string"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -45,7 +46,6 @@ namespace HSNXT
         /// String may be <c>null</c>, in which case <c>"null"</c> is 
         /// returned.
         /// </remarks>
-
         [DebuggerStepThrough]
         public static string ToJsonString(this string str)
         {
@@ -63,7 +63,6 @@ namespace HSNXT
         /// String may be <c>null</c>, in which case <c>"null"</c> is 
         /// returned.
         /// </remarks>
-
         [DebuggerStepThrough]
         public static void WriteJsonStringTo(this string str, TextWriter writer)
         {
@@ -104,18 +103,28 @@ namespace HSNXT
                         break;
                     }
 
-                    case '\b': writer.Write("\\b"); break;
-                    case '\t': writer.Write("\\t"); break;
-                    case '\n': writer.Write("\\n"); break;
-                    case '\f': writer.Write("\\f"); break;
-                    case '\r': writer.Write("\\r"); break;
+                    case '\b':
+                        writer.Write("\\b");
+                        break;
+                    case '\t':
+                        writer.Write("\\t");
+                        break;
+                    case '\n':
+                        writer.Write("\\n");
+                        break;
+                    case '\f':
+                        writer.Write("\\f");
+                        break;
+                    case '\r':
+                        writer.Write("\\r");
+                        break;
 
                     default:
                     {
                         if (ch < ' ')
                         {
                             writer.Write("\\u");
-                            writer.Write(((int)ch).ToString("x4", CultureInfo.InvariantCulture));
+                            writer.Write(((int) ch).ToString("x4", CultureInfo.InvariantCulture));
                         }
                         else
                         {

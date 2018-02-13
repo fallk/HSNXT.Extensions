@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -28,7 +30,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Delegate"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -37,16 +38,22 @@ namespace HSNXT
         /// thrown during the invocation of any one handler (continuing
         /// with the next handler in the list).
         /// </summary>
-
         public static void InvokeAsEventHandlerWhileIgnoringErrors<T>(this Delegate del, object sender, T args)
-            #if !NET45
+#if !NET45
             where T : EventArgs // constraint removed post-.NET 4
-            #endif
+#endif
         {
             if (del == null) throw new ArgumentNullException("del");
             // ReSharper disable once PossibleInvalidCastExceptionInForeachLoop
             foreach (EventHandler<T> handler in del.GetInvocationList())
-                try { handler(sender, args); } catch { /* ignored */ }
+                try
+                {
+                    handler(sender, args);
+                }
+                catch
+                {
+                    /* ignored */
+                }
         }
     }
 }

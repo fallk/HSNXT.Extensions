@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,6 +31,7 @@ namespace HSNXT
     using System.ComponentModel;
 #if !NO_LINQ_EXPRESSIONS
     using System.Linq.Expressions;
+
 #endif
 
     #endregion
@@ -36,7 +39,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="INotifyPropertyChanged"/>.
     /// </summary>
-
     public static partial class Extensions
     {
 #if !NO_LINQ_EXPRESSIONS
@@ -59,8 +61,8 @@ namespace HSNXT
         /// If <paramref name="expression"/> is <c>null</c> or empty then 
         /// <paramref name="handler"/> is called when any property changes.
         /// </remarks>
-
-        public static PropertyChangedEventHandler OnPropertyChanged<T, TValue>(this T source, Expression<Func<T, TValue>> expression, PropertyChangedEventHandler handler)
+        public static PropertyChangedEventHandler OnPropertyChanged<T, TValue>(this T source,
+            Expression<Func<T, TValue>> expression, PropertyChangedEventHandler handler)
             where T : INotifyPropertyChanged
         {
             string propertyName = null;
@@ -92,15 +94,15 @@ namespace HSNXT
         /// If <paramref name="propertyName"/> is <c>null</c> or empty then 
         /// <paramref name="handler"/> is called when any property changes.
         /// </remarks>
-
-        public static PropertyChangedEventHandler OnPropertyChanged(this INotifyPropertyChanged source, string propertyName, PropertyChangedEventHandler handler)
+        public static PropertyChangedEventHandler OnPropertyChanged(this INotifyPropertyChanged source,
+            string propertyName, PropertyChangedEventHandler handler)
         {
             if (source == null) throw new ArgumentNullException("source");
             if (handler == null) throw new ArgumentNullException("handler");
 
             PropertyChangedEventHandler onChanged = (sender, args) =>
             {
-                if (string.IsNullOrEmpty(propertyName) 
+                if (string.IsNullOrEmpty(propertyName)
                     || args.PropertyName.Equals(propertyName, StringComparison.OrdinalIgnoreCase))
                     handler(sender, args);
             };

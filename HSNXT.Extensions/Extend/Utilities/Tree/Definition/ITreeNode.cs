@@ -107,7 +107,7 @@ namespace HSNXT
         /// <returns>Returns the values which matches the given predicate.</returns>
         [NotNull]
         [PublicAPI]
-        IEnumerable<T> FindValue( [NotNull] Func<ITreeNode<T>, bool> predicate );
+        IEnumerable<T> FindValue([NotNull] Func<ITreeNode<T>, bool> predicate);
 
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
@@ -121,7 +121,7 @@ namespace HSNXT
         /// <returns>Returns the nodes which matches the given predicate.</returns>
         [PublicAPI]
         [NotNull]
-        IEnumerable<ITreeNode<T>> FindNode( [NotNull] Func<ITreeNode<T>, bool> predicate );
+        IEnumerable<ITreeNode<T>> FindNode([NotNull] Func<ITreeNode<T>, bool> predicate);
 
         /// <summary>
         ///     Gets the nodes with the given value.
@@ -130,7 +130,7 @@ namespace HSNXT
         /// <returns>Returns the nodes with the given value.</returns>
         [PublicAPI]
         [NotNull]
-        IEnumerable<ITreeNode<T>> FindNode( [CanBeNull] T value );
+        IEnumerable<ITreeNode<T>> FindNode([CanBeNull] T value);
 
         /// <summary>
         ///     Adds the given value as child to the node.
@@ -139,7 +139,7 @@ namespace HSNXT
         /// <returns>Returns the added node.</returns>
         [PublicAPI]
         [NotNull]
-        ITreeNode<T> Add( [CanBeNull] T value );
+        ITreeNode<T> Add([CanBeNull] T value);
 
         /// <summary>
         ///     Adds the given node as child to the node, if it is not already a child of the node.
@@ -148,7 +148,7 @@ namespace HSNXT
         /// <returns>Returns the added node.</returns>
         [PublicAPI]
         [NotNull]
-        ITreeNode<T> Add( [NotNull] ITreeNode<T> node );
+        ITreeNode<T> Add([NotNull] ITreeNode<T> node);
 
         /// <summary>
         ///     Sets the parent of the tree node.
@@ -163,7 +163,8 @@ namespace HSNXT
         /// </remarks>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
         [PublicAPI]
-        void SetParent( [CanBeNull] ITreeNode<T> parent, bool attacheToNewParent = true, bool detachFromOldParent = true );
+        void SetParent([CanBeNull] ITreeNode<T> parent, bool attacheToNewParent = true,
+            bool detachFromOldParent = true);
 
         /// <summary>
         ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
@@ -171,7 +172,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="direction">The new direction.</param>
         [PublicAPI]
-        void SetAllDirections( TreeTraversalDirection direction );
+        void SetAllDirections(TreeTraversalDirection direction);
 
         #endregion
     }

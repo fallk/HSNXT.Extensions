@@ -21,20 +21,20 @@ namespace HSNXT
         /// <returns>Returns the given collection.</returns>
         [PublicAPI]
         [NotNull]
-        public static ICollection<T> AddRangeIf<T>( [NotNull] this ICollection<T> collection,
-                                                    [NotNull] Func<T, bool> predicate,
-                                                    [NotNull] IEnumerable<T> enumerable )
+        public static ICollection<T> AddRangeIf<T>([NotNull] this ICollection<T> collection,
+            [NotNull] Func<T, bool> predicate,
+            [NotNull] IEnumerable<T> enumerable)
         {
-            collection.ThrowIfNull( nameof(collection) );
-            predicate.ThrowIfNull( nameof(predicate) );
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            collection.ThrowIfNull(nameof(collection));
+            predicate.ThrowIfNull(nameof(predicate));
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             enumerable
-                .Where( predicate )
-                .ForEach( collection.Add );
+                .Where(predicate)
+                .ForEach(collection.Add);
             return collection;
         }
-        
+
         /// <summary>
         ///     Adds all items of the given IEnumerable to the collection, if it not already contains it.
         /// </summary>
@@ -46,16 +46,17 @@ namespace HSNXT
         /// <returns>Returns the given collection.</returns>
         [PublicAPI]
         [NotNull]
-        public static ICollection<T> AddRangeIfNotContains<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
+        public static ICollection<T> AddRangeIfNotContains<T>([NotNull] this ICollection<T> collection,
+            [NotNull] IEnumerable<T> enumerable)
         {
-            collection.ThrowIfNull( nameof(collection) );
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            collection.ThrowIfNull(nameof(collection));
+            enumerable.ThrowIfNull(nameof(enumerable));
 
-            enumerable.ForEach( x =>
+            enumerable.ForEach(x =>
             {
-                if ( !collection.Contains( x ) )
-                    collection.Add( x );
-            } );
+                if (!collection.Contains(x))
+                    collection.Add(x);
+            });
             return collection;
         }
 
@@ -70,12 +71,13 @@ namespace HSNXT
         /// <returns>Returns the given collection.</returns>
         [PublicAPI]
         [NotNull]
-        public static ICollection<T> RemoveRange<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
+        public static ICollection<T> RemoveRange<T>([NotNull] this ICollection<T> collection,
+            [NotNull] IEnumerable<T> enumerable)
         {
-            collection.ThrowIfNull( nameof(collection) );
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            collection.ThrowIfNull(nameof(collection));
+            enumerable.ThrowIfNull(nameof(enumerable));
 
-            enumerable.ForEach( x => collection.Remove( x ) );
+            enumerable.ForEach(x => collection.Remove(x));
             return collection;
         }
 
@@ -92,17 +94,17 @@ namespace HSNXT
         /// <returns>Returns the given collection.</returns>
         [PublicAPI]
         [NotNull]
-        public static ICollection<T> RemoveRangeIf<T>( [NotNull] this ICollection<T> collection,
-                                                       [NotNull] Func<T, bool> predicate,
-                                                       [NotNull] IEnumerable<T> enumerable )
+        public static ICollection<T> RemoveRangeIf<T>([NotNull] this ICollection<T> collection,
+            [NotNull] Func<T, bool> predicate,
+            [NotNull] IEnumerable<T> enumerable)
         {
-            collection.ThrowIfNull( nameof(collection) );
-            predicate.ThrowIfNull( nameof(predicate) );
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            collection.ThrowIfNull(nameof(collection));
+            predicate.ThrowIfNull(nameof(predicate));
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             enumerable
-                .Where( predicate )
-                .ForEach( x => collection.Remove( x ) );
+                .Where(predicate)
+                .ForEach(x => collection.Remove(x));
             return collection;
         }
     }

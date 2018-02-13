@@ -49,7 +49,6 @@ using System.IO.MemoryMappedFiles;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using System.Collections.ObjectModel;
-
 #if NetFX
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
@@ -57,6 +56,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms.Layout;
+
 #endif
 
 #if (NETSTANDARD2_0 || NET47)
@@ -429,36 +429,37 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ColumnHeaderConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ColumnHeaderConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// columnheaderconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ColumnHeaderConverter columnheaderconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(columnheaderconverter == null) throw new ArgumentNullException("columnheaderconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// columnheaderconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ColumnHeaderConverter columnheaderconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (columnheaderconverter == null) throw new ArgumentNullException("columnheaderconverter");
 
-			return (T)columnheaderconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) columnheaderconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -502,38 +503,38 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends TransformBlock so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// cryptoapitransform.TransformBlock(inputBuffer, outputBuffer, outputOffset);
-		/// </example>
-		/// </summary>
-		public static Int32 TransformBlock(this CryptoAPITransform cryptoapitransform, Byte[] inputBuffer, Byte[] outputBuffer, Int32 outputOffset)
-		{
-			if(cryptoapitransform == null) throw new ArgumentNullException("cryptoapitransform");
+    {
+        /// <summary>
+        /// Extends TransformBlock so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// cryptoapitransform.TransformBlock(inputBuffer, outputBuffer, outputOffset);
+        /// </example>
+        /// </summary>
+        public static Int32 TransformBlock(this CryptoAPITransform cryptoapitransform, Byte[] inputBuffer,
+            Byte[] outputBuffer, Int32 outputOffset)
+        {
+            if (cryptoapitransform == null) throw new ArgumentNullException("cryptoapitransform");
 
-			if(inputBuffer == null) throw new ArgumentNullException("inputBuffer");
+            if (inputBuffer == null) throw new ArgumentNullException("inputBuffer");
 
-			return cryptoapitransform.TransformBlock(inputBuffer, 0, inputBuffer.Length, outputBuffer, outputOffset);
-		}
+            return cryptoapitransform.TransformBlock(inputBuffer, 0, inputBuffer.Length, outputBuffer, outputOffset);
+        }
 
-		/// <summary>
-		/// Extends TransformFinalBlock so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// cryptoapitransform.TransformFinalBlock(inputBuffer);
-		/// </example>
-		/// </summary>
-		public static Byte[] TransformFinalBlock(this CryptoAPITransform cryptoapitransform, Byte[] inputBuffer)
-		{
-			if(cryptoapitransform == null) throw new ArgumentNullException("cryptoapitransform");
+        /// <summary>
+        /// Extends TransformFinalBlock so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// cryptoapitransform.TransformFinalBlock(inputBuffer);
+        /// </example>
+        /// </summary>
+        public static Byte[] TransformFinalBlock(this CryptoAPITransform cryptoapitransform, Byte[] inputBuffer)
+        {
+            if (cryptoapitransform == null) throw new ArgumentNullException("cryptoapitransform");
 
-			if(inputBuffer == null) throw new ArgumentNullException("inputBuffer");
+            if (inputBuffer == null) throw new ArgumentNullException("inputBuffer");
 
-			return cryptoapitransform.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
-		}
-
-	}
+            return cryptoapitransform.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -577,108 +578,114 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this CursorConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this CursorConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// cursorconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this CursorConverter cursorconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(cursorconverter == null) throw new ArgumentNullException("cursorconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// cursorconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this CursorConverter cursorconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (cursorconverter == null) throw new ArgumentNullException("cursorconverter");
 
-			return (T)cursorconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) cursorconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this DataGridPreferredColumnWidthTypeConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this DataGridPreferredColumnWidthTypeConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// datagridpreferredcolumnwidthtypeconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this DataGridPreferredColumnWidthTypeConverter datagridpreferredcolumnwidthtypeconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(datagridpreferredcolumnwidthtypeconverter == null) throw new ArgumentNullException("datagridpreferredcolumnwidthtypeconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// datagridpreferredcolumnwidthtypeconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(
+            this DataGridPreferredColumnWidthTypeConverter datagridpreferredcolumnwidthtypeconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (datagridpreferredcolumnwidthtypeconverter == null)
+                throw new ArgumentNullException("datagridpreferredcolumnwidthtypeconverter");
 
-			return (T)datagridpreferredcolumnwidthtypeconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) datagridpreferredcolumnwidthtypeconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this DataGridViewCellStyleConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this DataGridViewCellStyleConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// datagridviewcellstyleconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this DataGridViewCellStyleConverter datagridviewcellstyleconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(datagridviewcellstyleconverter == null) throw new ArgumentNullException("datagridviewcellstyleconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// datagridviewcellstyleconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this DataGridViewCellStyleConverter datagridviewcellstyleconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (datagridviewcellstyleconverter == null)
+                throw new ArgumentNullException("datagridviewcellstyleconverter");
 
-			return (T)datagridviewcellstyleconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) datagridviewcellstyleconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif//------------------------------------------------------------------------------
 // <auto-generated>
@@ -1566,72 +1573,74 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ImageIndexConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ImageIndexConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// imageindexconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ImageIndexConverter imageindexconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(imageindexconverter == null) throw new ArgumentNullException("imageindexconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// imageindexconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ImageIndexConverter imageindexconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (imageindexconverter == null) throw new ArgumentNullException("imageindexconverter");
 
-			return (T)imageindexconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) imageindexconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ImageKeyConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ImageKeyConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// imagekeyconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ImageKeyConverter imagekeyconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(imagekeyconverter == null) throw new ArgumentNullException("imagekeyconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// imagekeyconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ImageKeyConverter imagekeyconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (imagekeyconverter == null) throw new ArgumentNullException("imagekeyconverter");
 
-			return (T)imagekeyconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) imagekeyconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1749,165 +1758,172 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this KeysConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this KeysConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// keysconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this KeysConverter keysconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(keysconverter == null) throw new ArgumentNullException("keysconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// keysconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this KeysConverter keysconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (keysconverter == null) throw new ArgumentNullException("keysconverter");
 
-			return (T)keysconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) keysconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this LinkConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this LinkConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// linkconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this LinkConverter linkconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(linkconverter == null) throw new ArgumentNullException("linkconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// linkconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this LinkConverter linkconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (linkconverter == null) throw new ArgumentNullException("linkconverter");
 
-			return (T)linkconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) linkconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ListBindingConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ListBindingConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// listbindingconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ListBindingConverter listbindingconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(listbindingconverter == null) throw new ArgumentNullException("listbindingconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// listbindingconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ListBindingConverter listbindingconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (listbindingconverter == null) throw new ArgumentNullException("listbindingconverter");
 
-			return (T)listbindingconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) listbindingconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ListViewItemConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ListViewItemConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// listviewitemconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this ListViewItemConverter listviewitemconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(listviewitemconverter == null) throw new ArgumentNullException("listviewitemconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// listviewitemconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this ListViewItemConverter listviewitemconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (listviewitemconverter == null) throw new ArgumentNullException("listviewitemconverter");
 
-			return (T)listviewitemconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) listviewitemconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// listviewvirtualitemsselectionrangechangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ListViewVirtualItemsSelectionRangeChangedEventHandler listviewvirtualitemsselectionrangechangedeventhandler, Object sender, ListViewVirtualItemsSelectionRangeChangedEventArgs e, AsyncCallback callback)
-		{
-			if(listviewvirtualitemsselectionrangechangedeventhandler == null) throw new ArgumentNullException("listviewvirtualitemsselectionrangechangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// listviewvirtualitemsselectionrangechangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ListViewVirtualItemsSelectionRangeChangedEventHandler
+                listviewvirtualitemsselectionrangechangedeventhandler, Object sender,
+            ListViewVirtualItemsSelectionRangeChangedEventArgs e, AsyncCallback callback)
+        {
+            if (listviewvirtualitemsselectionrangechangedeventhandler == null)
+                throw new ArgumentNullException("listviewvirtualitemsselectionrangechangedeventhandler");
 
-			return listviewvirtualitemsselectionrangechangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return listviewvirtualitemsselectionrangechangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2053,72 +2069,74 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this OpacityConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this OpacityConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// opacityconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this OpacityConverter opacityconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(opacityconverter == null) throw new ArgumentNullException("opacityconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// opacityconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this OpacityConverter opacityconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (opacityconverter == null) throw new ArgumentNullException("opacityconverter");
 
-			return (T)opacityconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) opacityconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this PaddingConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this PaddingConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// paddingconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this PaddingConverter paddingconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(paddingconverter == null) throw new ArgumentNullException("paddingconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// paddingconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this PaddingConverter paddingconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (paddingconverter == null) throw new ArgumentNullException("paddingconverter");
 
-			return (T)paddingconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) paddingconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
@@ -2163,36 +2181,37 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this RectangleConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this RectangleConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// rectangleconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this RectangleConverter rectangleconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(rectangleconverter == null) throw new ArgumentNullException("rectangleconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// rectangleconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this RectangleConverter rectangleconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (rectangleconverter == null) throw new ArgumentNullException("rectangleconverter");
 
-			return (T)rectangleconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) rectangleconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2263,38 +2282,40 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends TransformBlock so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// rijndaelmanagedtransform.TransformBlock(inputBuffer, outputBuffer, outputOffset);
-		/// </example>
-		/// </summary>
-		public static Int32 TransformBlock(this RijndaelManagedTransform rijndaelmanagedtransform, Byte[] inputBuffer, Byte[] outputBuffer, Int32 outputOffset)
-		{
-			if(rijndaelmanagedtransform == null) throw new ArgumentNullException("rijndaelmanagedtransform");
+    {
+        /// <summary>
+        /// Extends TransformBlock so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// rijndaelmanagedtransform.TransformBlock(inputBuffer, outputBuffer, outputOffset);
+        /// </example>
+        /// </summary>
+        public static Int32 TransformBlock(this RijndaelManagedTransform rijndaelmanagedtransform, Byte[] inputBuffer,
+            Byte[] outputBuffer, Int32 outputOffset)
+        {
+            if (rijndaelmanagedtransform == null) throw new ArgumentNullException("rijndaelmanagedtransform");
 
-			if(inputBuffer == null) throw new ArgumentNullException("inputBuffer");
+            if (inputBuffer == null) throw new ArgumentNullException("inputBuffer");
 
-			return rijndaelmanagedtransform.TransformBlock(inputBuffer, 0, inputBuffer.Length, outputBuffer, outputOffset);
-		}
+            return rijndaelmanagedtransform.TransformBlock(inputBuffer, 0, inputBuffer.Length, outputBuffer,
+                outputOffset);
+        }
 
-		/// <summary>
-		/// Extends TransformFinalBlock so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// rijndaelmanagedtransform.TransformFinalBlock(inputBuffer);
-		/// </example>
-		/// </summary>
-		public static Byte[] TransformFinalBlock(this RijndaelManagedTransform rijndaelmanagedtransform, Byte[] inputBuffer)
-		{
-			if(rijndaelmanagedtransform == null) throw new ArgumentNullException("rijndaelmanagedtransform");
+        /// <summary>
+        /// Extends TransformFinalBlock so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// rijndaelmanagedtransform.TransformFinalBlock(inputBuffer);
+        /// </example>
+        /// </summary>
+        public static Byte[] TransformFinalBlock(this RijndaelManagedTransform rijndaelmanagedtransform,
+            Byte[] inputBuffer)
+        {
+            if (rijndaelmanagedtransform == null) throw new ArgumentNullException("rijndaelmanagedtransform");
 
-			if(inputBuffer == null) throw new ArgumentNullException("inputBuffer");
+            if (inputBuffer == null) throw new ArgumentNullException("inputBuffer");
 
-			return rijndaelmanagedtransform.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
-		}
-
-	}
+            return rijndaelmanagedtransform.TransformFinalBlock(inputBuffer, 0, inputBuffer.Length);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NETSTANDARD1_2 || NETSTANDARD1_1 || NET47)
@@ -2376,36 +2397,37 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this SelectionRangeConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this SelectionRangeConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// selectionrangeconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this SelectionRangeConverter selectionrangeconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(selectionrangeconverter == null) throw new ArgumentNullException("selectionrangeconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// selectionrangeconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this SelectionRangeConverter selectionrangeconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (selectionrangeconverter == null) throw new ArgumentNullException("selectionrangeconverter");
 
-			return (T)selectionrangeconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) selectionrangeconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2485,72 +2507,74 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this SizeConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this SizeConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// sizeconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this SizeConverter sizeconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(sizeconverter == null) throw new ArgumentNullException("sizeconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// sizeconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this SizeConverter sizeconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (sizeconverter == null) throw new ArgumentNullException("sizeconverter");
 
-			return (T)sizeconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) sizeconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this SizeFConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this SizeFConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// sizefconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this SizeFConverter sizefconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(sizefconverter == null) throw new ArgumentNullException("sizefconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// sizefconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this SizeFConverter sizefconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (sizefconverter == null) throw new ArgumentNullException("sizefconverter");
 
-			return (T)sizefconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) sizefconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2670,36 +2694,38 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TableLayoutSettingsTypeConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TableLayoutSettingsTypeConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// tablelayoutsettingstypeconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TableLayoutSettingsTypeConverter tablelayoutsettingstypeconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(tablelayoutsettingstypeconverter == null) throw new ArgumentNullException("tablelayoutsettingstypeconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// tablelayoutsettingstypeconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TableLayoutSettingsTypeConverter tablelayoutsettingstypeconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (tablelayoutsettingstypeconverter == null)
+                throw new ArgumentNullException("tablelayoutsettingstypeconverter");
 
-			return (T)tablelayoutsettingstypeconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) tablelayoutsettingstypeconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2854,108 +2880,111 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TreeNodeConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TreeNodeConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// treenodeconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TreeNodeConverter treenodeconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(treenodeconverter == null) throw new ArgumentNullException("treenodeconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// treenodeconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TreeNodeConverter treenodeconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (treenodeconverter == null) throw new ArgumentNullException("treenodeconverter");
 
-			return (T)treenodeconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) treenodeconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TreeViewImageIndexConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TreeViewImageIndexConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// treeviewimageindexconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TreeViewImageIndexConverter treeviewimageindexconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(treeviewimageindexconverter == null) throw new ArgumentNullException("treeviewimageindexconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// treeviewimageindexconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TreeViewImageIndexConverter treeviewimageindexconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (treeviewimageindexconverter == null) throw new ArgumentNullException("treeviewimageindexconverter");
 
-			return (T)treeviewimageindexconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) treeviewimageindexconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// typeconverter.ConvertTo&lt;int&gt;(value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TreeViewImageKeyConverter typeconverter, Object value)
-		{
-			if(typeconverter == null) throw new ArgumentNullException("typeconverter");
+    {
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// typeconverter.ConvertTo&lt;int&gt;(value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TreeViewImageKeyConverter typeconverter, Object value)
+        {
+            if (typeconverter == null) throw new ArgumentNullException("typeconverter");
 
-			return (T)typeconverter.ConvertTo(value, typeof(T));
-		}
+            return (T) typeconverter.ConvertTo(value, typeof(T));
+        }
 
-		/// <summary>
-		/// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
-		/// used as generic method and casting is not required.
-		/// <example>
-		/// treeviewimagekeyconverter.ConvertTo&lt;int&gt;(context, culture, value);
-		/// </example>
-		/// </summary>
-		public static T ConvertTo<T>(this TreeViewImageKeyConverter treeviewimagekeyconverter, System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, Object value)
-		{
-			if(treeviewimagekeyconverter == null) throw new ArgumentNullException("treeviewimagekeyconverter");
+        /// <summary>
+        /// Extends ConvertTo so that methods that return a specific type object given a Type parameter can be
+        /// used as generic method and casting is not required.
+        /// <example>
+        /// treeviewimagekeyconverter.ConvertTo&lt;int&gt;(context, culture, value);
+        /// </example>
+        /// </summary>
+        public static T ConvertTo<T>(this TreeViewImageKeyConverter treeviewimagekeyconverter,
+            System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture,
+            Object value)
+        {
+            if (treeviewimagekeyconverter == null) throw new ArgumentNullException("treeviewimagekeyconverter");
 
-			return (T)treeviewimagekeyconverter.ConvertTo(context, culture, value, typeof(T));
-		}
-
-	}
+            return (T) treeviewimagekeyconverter.ConvertTo(context, culture, value, typeof(T));
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)

@@ -1,5 +1,7 @@
 #if NetFX
+
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -20,6 +22,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,26 +38,24 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Control"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Similar to <see cref="Page.GetDataItem"/> but provides strong-typed result.
         /// </summary>
-
         public static T GetDataItem<T>(this Control control)
         {
             if (control == null) throw new ArgumentNullException("control");
             var page = control.Page;
             if (page == null)
-                throw new InvalidOperationException("Data-binding methods such as Eval(), XPath(), and Bind() can only be used in controls contained in a page.");
+                throw new InvalidOperationException(
+                    "Data-binding methods such as Eval(), XPath(), and Bind() can only be used in controls contained in a page.");
             return (T) page.GetDataItem();
         }
 
         /// <summary>
         /// Similar to <see cref="Page.GetDataItem"/>.
         /// </summary>
-
         public static object GetDataItem(this Control control)
         {
             return control.GetDataItem<object>();
@@ -64,7 +65,6 @@ namespace HSNXT
         /// Similar to <see cref="TemplateControl.Eval(string)"/> but 
         /// provides strong-typed result.
         /// </summary>
-
         public static T Eval<T>(this Control control, string expression)
         {
             return (T) DataBinder.Eval(control.GetDataItem(), expression);
@@ -73,7 +73,6 @@ namespace HSNXT
         /// <summary>
         /// Similar to <see cref="TemplateControl.Eval(string)"/>.
         /// </summary>
-
         public static object Eval(this Control control, string expression)
         {
             return control.Eval<object>(expression);
@@ -83,7 +82,6 @@ namespace HSNXT
         /// Similar to <see cref="TemplateControl.Eval(string)"/> but 
         /// returns HTML-encoded text.
         /// </summary>
-
         public static string EvalText(this Control control, string expression)
         {
             return (control.Eval(expression) ?? string.Empty).ToString().HtmlEncode();
@@ -93,7 +91,6 @@ namespace HSNXT
         /// Similar to <see cref="TemplateControl.Eval(string,string)"/> but 
         /// formats the expression and returns it as HTML-encode text.
         /// </summary>
-        
         public static string EvalText(this Control control, string expression, string format)
         {
             return DataBinder.Eval(control.GetDataItem(), expression, format);
@@ -107,7 +104,6 @@ namespace HSNXT
         /// <remarks>
         /// The returned string is <em>not</em> HTML-encoded.
         /// </remarks>
-
         public static string EvalMany(this Control control, string format, params string[] expressions)
         {
             if (expressions == null) throw new ArgumentNullException("expressions");

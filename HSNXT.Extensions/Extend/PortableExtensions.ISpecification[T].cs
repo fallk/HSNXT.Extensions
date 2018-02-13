@@ -18,16 +18,17 @@ namespace HSNXT
         /// <returns>Returns the combined specifications.</returns>
         [NotNull]
         [PublicAPI]
-        public static ISpecification<T> And<T>( [NotNull] this ISpecification<T> specification,
-                                                [NotNull] Func<T, bool> expression,
-                                                [CanBeNull] string message = null )
+        public static ISpecification<T> And<T>([NotNull] this ISpecification<T> specification,
+            [NotNull] Func<T, bool> expression,
+            [CanBeNull] string message = null)
         {
-            specification.ThrowIfNull( nameof(specification) );
-            expression.ThrowIfNull( nameof(expression) );
+            specification.ThrowIfNull(nameof(specification));
+            expression.ThrowIfNull(nameof(expression));
 
-            var newSpecification = new ExpressionSpecification<T>( expression, message );
-            return specification.And( newSpecification );
+            var newSpecification = new ExpressionSpecification<T>(expression, message);
+            return specification.And(newSpecification);
         }
+
         /// <summary>
         ///     Combines the current specification with the given expression using a OR link.
         /// </summary>
@@ -40,16 +41,17 @@ namespace HSNXT
         /// <returns>Returns the combined specifications.</returns>
         [NotNull]
         [PublicAPI]
-        public static ISpecification<T> Or<T>( [NotNull] this ISpecification<T> specification,
-                                               [NotNull] Func<T, bool> expression,
-                                               [CanBeNull] string message = null )
+        public static ISpecification<T> Or<T>([NotNull] this ISpecification<T> specification,
+            [NotNull] Func<T, bool> expression,
+            [CanBeNull] string message = null)
         {
-            specification.ThrowIfNull( nameof(specification) );
-            expression.ThrowIfNull( nameof(expression) );
+            specification.ThrowIfNull(nameof(specification));
+            expression.ThrowIfNull(nameof(expression));
 
-            var newSpecification = new ExpressionSpecification<T>( expression, message );
-            return specification.Or( newSpecification );
+            var newSpecification = new ExpressionSpecification<T>(expression, message);
+            return specification.Or(newSpecification);
         }
+
         /// <summary>
         ///     Combines the current specification with the given expression using a XOr link.
         /// </summary>
@@ -62,15 +64,15 @@ namespace HSNXT
         /// <returns>Returns the combined specifications.</returns>
         [NotNull]
         [PublicAPI]
-        public static ISpecification<T> XOr<T>( [NotNull] this ISpecification<T> specification,
-                                                [NotNull] Func<T, bool> expression,
-                                                [CanBeNull] string message = null )
+        public static ISpecification<T> XOr<T>([NotNull] this ISpecification<T> specification,
+            [NotNull] Func<T, bool> expression,
+            [CanBeNull] string message = null)
         {
-            specification.ThrowIfNull( nameof(specification) );
-            expression.ThrowIfNull( nameof(expression) );
+            specification.ThrowIfNull(nameof(specification));
+            expression.ThrowIfNull(nameof(expression));
 
-            var newSpecification = new ExpressionSpecification<T>( expression, message );
-            return specification.XOr( newSpecification );
+            var newSpecification = new ExpressionSpecification<T>(expression, message);
+            return specification.XOr(newSpecification);
         }
     }
 }

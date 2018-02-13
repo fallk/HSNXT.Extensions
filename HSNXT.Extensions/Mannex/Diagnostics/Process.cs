@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -30,16 +32,16 @@ namespace HSNXT
     using System.Diagnostics;
     using System.IO;
     using System.Threading;
-    #if NET4
+#if NET4
     using System.Threading.Tasks;
-    #endif
+
+#endif
 
     #endregion
 
     /// <summary>
     /// Extension methods for <see cref="Process"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -47,7 +49,6 @@ namespace HSNXT
         /// object and returns <c>null</c> on success otherwise the error
         /// that occurred in the attempt.
         /// </summary>
-
         public static Exception TryKill(this Process process)
         {
             if (process == null) throw new ArgumentNullException("process");
@@ -79,7 +80,6 @@ namespace HSNXT
         /// amount of time for the associated process to exit. If the specified
         /// time-out period is <c>null</c> then the wait is indefinite.
         /// </summary>
-
         public static bool WaitForExit(this Process process, TimeSpan? timeout)
         {
             if (process == null) throw new ArgumentNullException("process");
@@ -94,7 +94,6 @@ namespace HSNXT
         /// <returns>
         /// Returns an action that can be used to wait on outputs to drain.
         /// </returns>
-
         public static Func<TimeSpan?, bool> BeginReadLine(this Process process, TextWriter output)
         {
             return BeginReadLine(process, output, null);
@@ -108,13 +107,12 @@ namespace HSNXT
         /// <returns>
         /// Returns an action that can be used to wait on outputs to drain.
         /// </returns>
-
         public static Func<TimeSpan?, bool> BeginReadLine(this Process process, TextWriter output, TextWriter error)
         {
             if (process == null) throw new ArgumentNullException("process");
 
             return BeginReadLine(process, (output ?? TextWriter.Null).WriteLine,
-                                          (error  ?? TextWriter.Null).WriteLine);
+                (error ?? TextWriter.Null).WriteLine);
         }
 
         /// <summary>
@@ -125,7 +123,6 @@ namespace HSNXT
         /// <returns>
         /// Returns an action that can be used to wait on outputs to drain.
         /// </returns>
-
         public static Func<TimeSpan?, bool> BeginReadLine(this Process process, Action<string> output)
         {
             return BeginReadLine(process, output, null);
@@ -140,13 +137,13 @@ namespace HSNXT
         /// <returns>
         /// Returns an action that can be used to wait on outputs to drain.
         /// </returns>
-
-        public static Func<TimeSpan?, bool> BeginReadLine(this Process process, Action<string> output, Action<string> error)
+        public static Func<TimeSpan?, bool> BeginReadLine(this Process process, Action<string> output,
+            Action<string> error)
         {
             if (process == null) throw new ArgumentNullException("process");
 
             var e = BeginReadLineImpl(process, output ?? TextWriter.Null.WriteLine,
-                                               error  ?? TextWriter.Null.WriteLine);
+                error ?? TextWriter.Null.WriteLine);
             return timeout => e.WaitOne(timeout.ToTimeout());
         }
 
@@ -154,7 +151,10 @@ namespace HSNXT
         {
             var done = new ManualResetEvent(false);
             var pending = 2;
-            var onEof = new Action(() => { if (Interlocked.Decrement(ref pending) == 0) done.Set(); });
+            var onEof = new Action(() =>
+            {
+                if (Interlocked.Decrement(ref pending) == 0) done.Set();
+            });
 
             process.OutputDataReceived += OnDataReceived(output, onEof);
             process.BeginOutputReadLine();
@@ -165,7 +165,7 @@ namespace HSNXT
             return done;
         }
 
-        #if NET4
+#if NET4
 
         /// <summary>
         /// Begins asynchronous read operations on the re-directed
@@ -177,15 +177,15 @@ namespace HSNXT
         /// Returns an action that can be used to asynchronously wait on
         /// outputs to drain.
         /// </returns>
-
-        public static Func<TimeSpan?, Task<bool>> BeginReadLineAsync(this Process process, Action<string> output, Action<string> error)
+        public static Func<TimeSpan?, Task<bool>> BeginReadLineAsync(this Process process, Action<string> output,
+            Action<string> error)
         {
             var e = BeginReadLineImpl(process, output ?? TextWriter.Null.WriteLine,
-                                               error ?? TextWriter.Null.WriteLine);
+                error ?? TextWriter.Null.WriteLine);
             return timeout => e.WaitOneAsync(timeout);
         }
 
-        #endif
+#endif
 
         static DataReceivedEventHandler OnDataReceived(
             Action<string> line, Action eof)
@@ -199,17 +199,17 @@ namespace HSNXT
             };
         }
 
-        #if NET4
+#if NET4
 
         /// <summary>
         /// Creates <see cref="Task"/> that completes when the process exits
         /// with an exit code of zero and throws an <see cref="Exception"/>
         /// otherwise.
         /// </summary>
-
         public static Task AsTask(this Process process)
         {
-            return AsTask(process, p => new Exception(string.Format("Process exited with the non-zero code {0}.", p.ExitCode)));
+            return AsTask(process,
+                p => new Exception(string.Format("Process exited with the non-zero code {0}.", p.ExitCode)));
         }
 
         /// <summary>
@@ -218,11 +218,10 @@ namespace HSNXT
         /// otherwise. An additional parameter enables a function to
         /// customize the <see cref="Exception"/> object thrown.
         /// </summary>
-
         public static Task AsTask(this Process process, Func<Process, Exception> errorSelector)
         {
             return process.AsTask(true, p => p.ExitCode != 0 ? errorSelector(p) : null,
-                                  e => e, _ => (object) null);
+                e => e, _ => (object) null);
         }
 
         /// <summary>
@@ -237,7 +236,6 @@ namespace HSNXT
         /// an instance of <see cref="Exception"/> then the task is
         /// considered to have failed with that exception.
         /// </remarks>
-
         public static Task<TResult> AsTask<T, TResult>(this Process process, bool dispose,
             Func<Process, T> selector,
             Func<T, Exception> errorSelector,
@@ -279,6 +277,6 @@ namespace HSNXT
                 tcs.TrySetResult(resultSelector(capture));
         }
 
-        #endif // NET4
+#endif // NET4
     }
 }

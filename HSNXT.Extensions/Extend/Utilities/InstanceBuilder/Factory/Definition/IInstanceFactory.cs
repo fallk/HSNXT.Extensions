@@ -40,7 +40,7 @@ namespace HSNXT
         /// <returns>Returns the modified factory.</returns>
         [PublicAPI]
         [NotNull]
-        IInstanceFactory AddSelectionRule( [NotNull] IMemberSelectionRule memberSelectionRule );
+        IInstanceFactory AddSelectionRule([NotNull] IMemberSelectionRule memberSelectionRule);
 
         /// <summary>
         ///     Gets the value for the given <see cref="IMemberInformation" />.
@@ -50,6 +50,6 @@ namespace HSNXT
         /// <returns>Returns the created value.</returns>
         [PublicAPI]
         [CanBeNull]
-        object CreateValue( [NotNull] IMemberInformation memberInformation );
+        object CreateValue([NotNull] IMemberInformation memberInformation);
     }
 }

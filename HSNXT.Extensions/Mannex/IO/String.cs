@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -37,7 +39,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="string"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         static readonly char[] _badFileNameChars;
@@ -48,9 +49,9 @@ namespace HSNXT
         static string Patternize(IEnumerable<char> chars)
         {
             Debug.Assert(chars != null);
-            return "[" 
-                 + string.Join(string.Empty, chars.Select(ch => Regex.Escape(ch.ToString())).ToArray())
-                 + "]";
+            return "["
+                   + string.Join(string.Empty, chars.Select(ch => Regex.Escape(ch.ToString())).ToArray())
+                   + "]";
         }
 
         /// <summary>
@@ -63,7 +64,6 @@ namespace HSNXT
         /// characters that are invalid in file and directory names.
         /// The full set of invalid characters can vary by file system.
         /// </remarks>
-
         public static string ToFileNameSafe(this string str)
         {
             return ToFileNameSafe(str, null);
@@ -87,11 +87,10 @@ namespace HSNXT
         /// The full set of invalid characters can vary by file system.
         /// </para>
         /// </remarks>
-
         public static string ToFileNameSafe(this string str, string replacement)
         {
-            return SanitizePathComponent(str, 
-                (replacement ?? string.Empty).MaskEmpty("_"), 
+            return SanitizePathComponent(str,
+                (replacement ?? string.Empty).MaskEmpty("_"),
                 _badFileNameChars, _badFileNameCharsPattern);
         }
 
@@ -105,7 +104,6 @@ namespace HSNXT
         /// characters that are invalid in file and directory names.
         /// The full set of invalid characters can vary by file system.
         /// </remarks>
-
         public static string ToPathNameSafe(this string str)
         {
             return ToPathNameSafe(str, null);
@@ -128,7 +126,6 @@ namespace HSNXT
         /// The full set of invalid characters can vary by file system.
         /// </para>
         /// </remarks>
-
         public static string ToPathNameSafe(this string str, string replacement)
         {
             return SanitizePathComponent(str,
@@ -148,7 +145,6 @@ namespace HSNXT
         /// <summary>
         /// Returns a <see cref="TextReader"/> for reading string.
         /// </summary>
-
         public static TextReader Read(this string str)
         {
             if (str == null) throw new ArgumentNullException("str");

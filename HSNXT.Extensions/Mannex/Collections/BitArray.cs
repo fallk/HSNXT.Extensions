@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="BitArray"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -44,7 +45,6 @@ namespace HSNXT
         /// of the sequence represents the state of the corresponding bit 
         /// field of the <see cref="BitArray"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static IEnumerable<bool> AsEnumerable(this BitArray array)
         {

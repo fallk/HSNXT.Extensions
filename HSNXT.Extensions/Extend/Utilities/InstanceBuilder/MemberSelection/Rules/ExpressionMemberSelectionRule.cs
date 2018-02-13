@@ -35,13 +35,13 @@ namespace HSNXT
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public ExpressionMemberSelectionRule( [NotNull] Func<IMemberInformation, bool> predicate,
-                                              MemberSelectionMode selectionMode,
-                                              string name = null,
-                                              string description = null )
-            : base( name, description )
+        public ExpressionMemberSelectionRule([NotNull] Func<IMemberInformation, bool> predicate,
+            MemberSelectionMode selectionMode,
+            string name = null,
+            string description = null)
+            : base(name, description)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             _predicate = predicate;
             _selectionMode = selectionMode;
@@ -56,10 +56,10 @@ namespace HSNXT
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
+        public override MemberSelectionResult GetSelectionResult(IMemberInformation member)
         {
-            var predicateReult = _predicate( member );
-            if ( !predicateReult )
+            var predicateReult = _predicate(member);
+            if (!predicateReult)
                 return MemberSelectionResult.Neutral;
 
             return _selectionMode == MemberSelectionMode.Include

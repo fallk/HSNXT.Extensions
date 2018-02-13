@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,7 +35,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Calendar"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -41,8 +42,8 @@ namespace HSNXT
         /// week given the year, week-rule and which day of the
         /// week should be used as the first of the week.
         /// </summary>
-        
-        public static DateTime FirstDateOfWeek(this Calendar calendar, int year, int weekOfYear, CalendarWeekRule weekRule, DayOfWeek firstDayOfWeek)
+        public static DateTime FirstDateOfWeek(this Calendar calendar, int year, int weekOfYear,
+            CalendarWeekRule weekRule, DayOfWeek firstDayOfWeek)
         {
             // Source & credit: 
             // http://stackoverflow.com/questions/662379/calculate-date-from-week-number/914943#914943

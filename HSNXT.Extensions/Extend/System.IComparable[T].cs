@@ -19,14 +19,16 @@ namespace HSNXT
         /// <returns>Returns true if the given value is between the minValue and maxValue, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool BetweenInclusive<T>( [NotNull] this T value, [NotNull] T minValue, [NotNull] T maxValue ) where T : IComparable<T>
+        public static bool BetweenInclusive<T>([NotNull] this T value, [NotNull] T minValue, [NotNull] T maxValue)
+            where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof(value) );
-            minValue.ThrowIfNull( nameof(minValue) );
-            maxValue.ThrowIfNull( nameof(maxValue) );
+            value.ThrowIfNull(nameof(value));
+            minValue.ThrowIfNull(nameof(minValue));
+            maxValue.ThrowIfNull(nameof(maxValue));
 
-            return value.CompareTo( minValue ) >= 0 && value.CompareTo( maxValue ) <= 0;
+            return value.CompareTo(minValue) >= 0 && value.CompareTo(maxValue) <= 0;
         }
+
         /// <summary>
         ///     Checks if the value is greater than the given compare value.
         /// </summary>
@@ -40,13 +42,14 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool Greater<T>( [NotNull] this T value, [NotNull] T compareValue ) where T : IComparable<T>
+        public static bool Greater<T>([NotNull] this T value, [NotNull] T compareValue) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof(value) );
-            compareValue.ThrowIfNull( nameof(compareValue) );
+            value.ThrowIfNull(nameof(value));
+            compareValue.ThrowIfNull(nameof(compareValue));
 
-            return value.CompareTo( compareValue ) > 0;
+            return value.CompareTo(compareValue) > 0;
         }
+
         /// <summary>
         ///     Checks if the value is greater or equals to the given compare value.
         /// </summary>
@@ -60,13 +63,14 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool GreaterOrEquals<T>( [NotNull] this T value, [NotNull] T compareValue ) where T : IComparable<T>
+        public static bool GreaterOrEquals<T>([NotNull] this T value, [NotNull] T compareValue) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof(value) );
-            compareValue.ThrowIfNull( nameof(compareValue) );
+            value.ThrowIfNull(nameof(value));
+            compareValue.ThrowIfNull(nameof(compareValue));
 
-            return value.CompareTo( compareValue ) >= 0;
+            return value.CompareTo(compareValue) >= 0;
         }
+
         /// <summary>
         ///     Checks if the value is smaller than the given compare value.
         /// </summary>
@@ -80,13 +84,14 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool Smaller<T>( [NotNull] this T value, [NotNull] T compareValue ) where T : IComparable<T>
+        public static bool Smaller<T>([NotNull] this T value, [NotNull] T compareValue) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof(value) );
-            compareValue.ThrowIfNull( nameof(compareValue) );
+            value.ThrowIfNull(nameof(value));
+            compareValue.ThrowIfNull(nameof(compareValue));
 
-            return value.CompareTo( compareValue ) == -1;
+            return value.CompareTo(compareValue) == -1;
         }
+
         /// <summary>
         ///     Checks if the value is smaller or equals to the given compare value.
         /// </summary>
@@ -100,12 +105,12 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool SmallerOrEquals<T>( [NotNull] this T value, [NotNull] T compareValue ) where T : IComparable<T>
+        public static bool SmallerOrEquals<T>([NotNull] this T value, [NotNull] T compareValue) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof(value) );
-            compareValue.ThrowIfNull( nameof(compareValue) );
+            value.ThrowIfNull(nameof(value));
+            compareValue.ThrowIfNull(nameof(compareValue));
 
-            return value.CompareTo( compareValue ) <= 0;
+            return value.CompareTo(compareValue) <= 0;
         }
     }
 }

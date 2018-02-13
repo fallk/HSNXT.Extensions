@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="XElement"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -44,20 +45,20 @@ namespace HSNXT
         /// returns a sequence of namespace names and their prefix that are 
         /// in scope this element.
         /// </summary>
-
         public static IEnumerable<KeyValuePair<string, XNamespace>> GetNamespacesInScope(this XElement element)
         {
             if (element == null) throw new ArgumentNullException("element");
-            
+
             // With some inspiration from:
             // http://www.hanselman.com/blog/GetNamespacesFromAnXMLDocumentWithXPathDocumentAndLINQToXML.aspx
 
-            return 
+            return
                 from e in element.AncestorsAndSelf()
-                from d in from a in e.Attributes() 
-                          where a.IsNamespaceDeclaration 
-                          select XNamespace.Get(a.Value).AsKeyTo(a.Name.LocalName)
-                group d.Value by d.Key into g
+                from d in from a in e.Attributes()
+                    where a.IsNamespaceDeclaration
+                    select XNamespace.Get(a.Value).AsKeyTo(a.Name.LocalName)
+                group d.Value by d.Key
+                into g
                 select g.First().AsKeyTo(g.Key);
         }
     }

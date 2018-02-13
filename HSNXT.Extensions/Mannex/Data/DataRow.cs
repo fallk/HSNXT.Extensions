@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,7 +36,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="DataRow"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -50,7 +51,6 @@ namespace HSNXT
         /// <paramref name="value"/> is <c>null</c> then the set value is
         /// <see cref="DBNull.Value"/>.
         /// </remarks>
-
         public static bool TrySetField<T>(this DataRow row, string name, T value)
         {
             if (row == null) throw new ArgumentNullException("row");
@@ -58,10 +58,10 @@ namespace HSNXT
             if (column == null)
                 return false;
             row[column] = (Nullable.GetUnderlyingType(typeof(T)) != null
-                          && EqualityComparer<T>.Default.Equals(value, default(T)))
+                           && EqualityComparer<T>.Default.Equals(value, default(T)))
                           || (typeof(T).IsClass && (object) value == null)
-                        ? (object) DBNull.Value
-                        : value;
+                ? (object) DBNull.Value
+                : value;
             return true;
         }
     }

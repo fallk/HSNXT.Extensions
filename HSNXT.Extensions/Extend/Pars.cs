@@ -23,8 +23,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsBoolean( [CanBeNull] this string value, out bool outValue )
-            => bool.TryParse( value, out outValue );
+        public static bool TryParsBoolean([CanBeNull] this string value, out bool outValue)
+            => bool.TryParse(value, out outValue);
 
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
@@ -44,8 +44,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsByte( [CanBeNull] this string value, out byte outValue )
-            => byte.TryParse( value, out outValue );
+        public static bool TryParsByte([CanBeNull] this string value, out byte outValue)
+            => byte.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -80,14 +80,14 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsByte( [CanBeNull] this string value,
-                                           NumberStyles numberStyle,
-                                           [NotNull] IFormatProvider formatProvider,
-                                           out byte outValue )
+        public static bool TryParsByte([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            out byte outValue)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return byte.TryParse( value, numberStyle, formatProvider, out outValue );
+            return byte.TryParse(value, numberStyle, formatProvider, out outValue);
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsChar( [CanBeNull] this string value, out char outValue )
-            => System.Char.TryParse( value, out outValue );
+        public static bool TryParsChar([CanBeNull] this string value, out char outValue)
+            => System.Char.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent and
@@ -123,8 +123,8 @@ namespace HSNXT
         /// <returns>Returns true if the s parameter was converted successfully; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDateTime( [CanBeNull] this string value, out DateTime result )
-            => DateTime.TryParse( value, out result );
+        public static bool TryParsDateTime([CanBeNull] this string value, out DateTime result)
+            => DateTime.TryParse(value, out result);
 
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent using the
@@ -157,14 +157,14 @@ namespace HSNXT
         /// <returns>Returns true if the s parameter was converted successfully; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDateTime( [CanBeNull] this string value,
-                                               [NotNull] IFormatProvider formatProvider,
-                                               DateTimeStyles dateTimeStyle,
-                                               out DateTime result )
+        public static bool TryParsDateTime([CanBeNull] this string value,
+            [NotNull] IFormatProvider formatProvider,
+            DateTimeStyles dateTimeStyle,
+            out DateTime result)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return DateTime.TryParse( value, formatProvider, dateTimeStyle, out result );
+            return DateTime.TryParse(value, formatProvider, dateTimeStyle, out result);
         }
 
         /// <summary>
@@ -202,16 +202,16 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDateTimeExact( [CanBeNull] this string value,
-                                                    [NotNull] string format,
-                                                    [NotNull] IFormatProvider formatProvider,
-                                                    DateTimeStyles dateTimeStyle,
-                                                    out DateTime outValue )
+        public static bool TryParsDateTimeExact([CanBeNull] this string value,
+            [NotNull] string format,
+            [NotNull] IFormatProvider formatProvider,
+            DateTimeStyles dateTimeStyle,
+            out DateTime outValue)
         {
-            format.ThrowIfNull( nameof(format) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            format.ThrowIfNull(nameof(format));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return DateTime.TryParseExact( value, format, formatProvider, dateTimeStyle, out outValue );
+            return DateTime.TryParseExact(value, format, formatProvider, dateTimeStyle, out outValue);
         }
 
         /// <summary>
@@ -256,16 +256,16 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDateTimeExact( [CanBeNull] this string value,
-                                                    [NotNull] string[] formats,
-                                                    [NotNull] IFormatProvider formatProvider,
-                                                    DateTimeStyles dateTimeStyle,
-                                                    out DateTime outValue )
+        public static bool TryParsDateTimeExact([CanBeNull] this string value,
+            [NotNull] string[] formats,
+            [NotNull] IFormatProvider formatProvider,
+            DateTimeStyles dateTimeStyle,
+            out DateTime outValue)
         {
-            formats.ThrowIfNull( nameof(formats) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formats.ThrowIfNull(nameof(formats));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return DateTime.TryParseExact( value, formats, formatProvider, dateTimeStyle, out outValue );
+            return DateTime.TryParseExact(value, formats, formatProvider, dateTimeStyle, out outValue);
         }
 
         /// <summary>
@@ -285,8 +285,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDecimal( [CanBeNull] this string value, out decimal outValue )
-            => decimal.TryParse( value, out outValue );
+        public static bool TryParsDecimal([CanBeNull] this string value, out decimal outValue)
+            => decimal.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number to its System.Decimal equivalent
@@ -315,14 +315,14 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDecimal( [CanBeNull] this string value,
-                                              NumberStyles numberStyle,
-                                              [NotNull] IFormatProvider formatProvider,
-                                              out decimal outValue )
+        public static bool TryParsDecimal([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            out decimal outValue)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return decimal.TryParse( value, numberStyle, CultureInfo.InvariantCulture, out outValue );
+            return decimal.TryParse(value, numberStyle, CultureInfo.InvariantCulture, out outValue);
         }
 
         /// <summary>
@@ -342,8 +342,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDouble( [CanBeNull] this string value, out double outValue )
-            => double.TryParse( value, out outValue );
+        public static bool TryParsDouble([CanBeNull] this string value, out double outValue)
+            => double.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -377,14 +377,14 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsDouble( [CanBeNull] this string value,
-                                             NumberStyles numberStyle,
-                                             [NotNull] IFormatProvider formatProvider,
-                                             out double outValue )
+        public static bool TryParsDouble([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            out double outValue)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return double.TryParse( value, numberStyle, formatProvider, out outValue );
+            return double.TryParse(value, numberStyle, formatProvider, out outValue);
         }
 
         /// <summary>
@@ -398,8 +398,8 @@ namespace HSNXT
         /// <returns>Returns true if the parse operation was successful; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsGuid( [CanBeNull] this string value, out Guid outValue )
-            => Guid.TryParse( value, out outValue );
+        public static bool TryParsGuid([CanBeNull] this string value, out Guid outValue)
+            => Guid.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number to its 16-bit signed integer
@@ -417,8 +417,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsInt16( [CanBeNull] this string value, out short outValue )
-            => short.TryParse( value, out outValue );
+        public static bool TryParsInt16([CanBeNull] this string value, out short outValue)
+            => short.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -450,14 +450,14 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsInt16( [CanBeNull] this string value,
-                                            NumberStyles numberStyle,
-                                            [NotNull] IFormatProvider formatProvider,
-                                            out short outValue )
+        public static bool TryParsInt16([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            out short outValue)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return short.TryParse( value, numberStyle, formatProvider, out outValue );
+            return short.TryParse(value, numberStyle, formatProvider, out outValue);
         }
 
         /// <summary>
@@ -477,8 +477,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsInt32( [CanBeNull] this string value, out int outValue )
-            => int.TryParse( value, out outValue );
+        public static bool TryParsInt32([CanBeNull] this string value, out int outValue)
+            => int.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyles and culture-specific
@@ -510,14 +510,14 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsInt32( [CanBeNull] this string value,
-                                            NumberStyles numberStyles,
-                                            [NotNull] IFormatProvider formatProvider,
-                                            out int outValue )
+        public static bool TryParsInt32([CanBeNull] this string value,
+            NumberStyles numberStyles,
+            [NotNull] IFormatProvider formatProvider,
+            out int outValue)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return int.TryParse( value, numberStyles, formatProvider, out outValue );
+            return int.TryParse(value, numberStyles, formatProvider, out outValue);
         }
 
         /// <summary>
@@ -536,8 +536,8 @@ namespace HSNXT
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryParsInt64( [CanBeNull] this string value, out long outValue )
-            => long.TryParse( value, out outValue );
+        public static bool TryParsInt64([CanBeNull] this string value, out long outValue)
+            => long.TryParse(value, out outValue);
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -567,14 +567,14 @@ namespace HSNXT
         ///     is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static bool TryParsInt64( [CanBeNull] this string value,
-                                            NumberStyles numberStyle,
-                                            [NotNull] IFormatProvider formatProvider,
-                                            out long outValue )
+        public static bool TryParsInt64([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            out long outValue)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return long.TryParse( value, numberStyle, formatProvider, out outValue );
+            return long.TryParse(value, numberStyle, formatProvider, out outValue);
         }
     }
 }

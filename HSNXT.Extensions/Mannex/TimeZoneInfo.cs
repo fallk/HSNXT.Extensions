@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,13 +37,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="TimeZoneInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Gets the daylight start and end date and time for a given year.
         /// </summary>
-
         public static T GetDaylightTransitionsInYear<T>(this TimeZoneInfo timeZone, int year,
             Func<DateTime, DateTime, T> selector)
         {
@@ -53,7 +53,6 @@ namespace HSNXT
         /// An additional parameter specifies the value to return when there
         /// are no daylight transitions defined for this time zone in the given year.
         /// </summary>
-
         public static T GetDaylightTransitionsInYear<T>(this TimeZoneInfo timeZone, int year,
             Func<DateTime, DateTime, T> selector, T noneValue)
         {
@@ -64,7 +63,6 @@ namespace HSNXT
         /// Gets the daylight start and end date and time for a given year.
         /// An additional parameter specifies the calendar to use for rules.
         /// </summary>
-
         public static T GetDaylightTransitionsInYear<T>(this TimeZoneInfo timeZone, int year, Calendar calendar,
             Func<DateTime, DateTime, T> selector)
         {
@@ -77,7 +75,6 @@ namespace HSNXT
         /// the value to return when there are no daylight transitions
         /// defined for this time zone in the given year.
         /// </summary>
-
         public static T GetDaylightTransitionsInYear<T>(this TimeZoneInfo timeZone, int year, Calendar calendar,
             Func<DateTime, DateTime, T> selector, T noneValue)
         {
@@ -103,8 +100,8 @@ namespace HSNXT
 
             var dls = adjustment.DaylightTransitionStart;
             var start = dls.IsFixedDateRule
-                       ? new DateTime(year, dls.Month, dls.Day, dls.TimeOfDay.Hour, dls.TimeOfDay.Minute, 0)
-                       : GetTransitionForYear(dls, startYear, calendar);
+                ? new DateTime(year, dls.Month, dls.Day, dls.TimeOfDay.Hour, dls.TimeOfDay.Minute, 0)
+                : GetTransitionForYear(dls, startYear, calendar);
 
             var dle = adjustment.DaylightTransitionEnd;
 
@@ -119,8 +116,8 @@ namespace HSNXT
             }
 
             var end = dle.IsFixedDateRule
-                    ? new DateTime(year, dle.Month, dle.Day).WithTimeFrom(dle.TimeOfDay)
-                    : GetTransitionForYear(dle, endYear, calendar);
+                ? new DateTime(year, dle.Month, dle.Day).WithTimeFrom(dle.TimeOfDay)
+                : GetTransitionForYear(dle, endYear, calendar);
 
             return selector(start, end);
         }
@@ -137,14 +134,14 @@ namespace HSNXT
             var startOfWeek = transition.Week * 7 - 6;
 
             // What day of the week does the month start on?
-            var firstDayOfWeek = (int)calendar.GetDayOfWeek(new DateTime(year, transition.Month, 1));
+            var firstDayOfWeek = (int) calendar.GetDayOfWeek(new DateTime(year, transition.Month, 1));
 
             // Determine how much start date has to be adjusted
-            var changeDayOfWeek = (int)transition.DayOfWeek;
+            var changeDayOfWeek = (int) transition.DayOfWeek;
 
             var transitionDay = firstDayOfWeek <= changeDayOfWeek
-                               ? startOfWeek + (changeDayOfWeek - firstDayOfWeek)
-                               : startOfWeek + (7 - firstDayOfWeek + changeDayOfWeek);
+                ? startOfWeek + (changeDayOfWeek - firstDayOfWeek)
+                : startOfWeek + (7 - firstDayOfWeek + changeDayOfWeek);
 
             // Adjust for months with no fifth week
             if (transitionDay > calendar.GetDaysInMonth(year, transition.Month))
@@ -162,7 +159,6 @@ namespace HSNXT
         /// <paramref name="date"/>, as well as whether its local or UTC,
         /// is ignored.
         /// </remarks>
-
         public static double HoursInDay(this TimeZoneInfo tz, DateTime date)
         {
             return tz.GetDayLength(date).TotalHours;
@@ -177,7 +173,6 @@ namespace HSNXT
         /// <paramref name="date"/>, as well as whether its local or UTC,
         /// is ignored.
         /// </remarks>
-
         public static TimeSpan GetDayLength(this TimeZoneInfo tz, DateTime date)
         {
             if (tz == null) throw new ArgumentNullException("tz");

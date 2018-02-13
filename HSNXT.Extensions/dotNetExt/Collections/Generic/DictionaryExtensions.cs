@@ -29,7 +29,8 @@ namespace HSNXT
         /// <param name="dict"></param>
         /// <param name="comparer"></param>
         /// <returns></returns>
-        public static SortedDictionary<TKey, TValue> Sort<TKey, TValue>(this Dictionary<TKey, TValue> dict, IComparer<TKey> comparer)
+        public static SortedDictionary<TKey, TValue> Sort<TKey, TValue>(this Dictionary<TKey, TValue> dict,
+            IComparer<TKey> comparer)
         {
             return new SortedDictionary<TKey, TValue>(dict, comparer);
         }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,21 +37,19 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IDataReader"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Projects each record of the reader into a new form.
         /// </summary>
-
         public static IEnumerator<T> Select<T>(this IDataReader reader, Func<IDataRecord, T> selector)
         {
             if (reader == null) throw new ArgumentNullException("reader");
             if (selector == null) throw new ArgumentNullException("selector");
-            
+
             return SelectImpl(reader, selector);
         }
-        
+
         static IEnumerator<T> SelectImpl<T>(IDataReader reader, Func<IDataRecord, T> selector)
         {
             using (reader)

@@ -5,7 +5,6 @@ using System.Web;
 
 namespace HSNXT
 {
-
     /// <summary>
     /// </summary>
     public class UriQueryString

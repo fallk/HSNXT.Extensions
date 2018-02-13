@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,13 +31,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="KeyValuePair{TKey,TValue}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Returns a projection of the key and its value.
         /// </summary>
-
         public static T Select<TKey, TValue, T>(this KeyValuePair<TKey, TValue> pair, Func<TKey, TValue, T> selector)
         {
             if (selector == null) throw new ArgumentNullException("selector");

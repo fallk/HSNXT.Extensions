@@ -13,8 +13,9 @@ namespace HSNXT
         /// <returns>True if the given char is a decimal digit, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsDigit( this char c )
-            => char.IsDigit( c );
+        public static bool IsDigit(this char c)
+            => char.IsDigit(c);
+
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a Unicode letter.
         /// </summary>
@@ -22,8 +23,9 @@ namespace HSNXT
         /// <returns>True if the given char is a letter, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsLetter( this char c )
-            => char.IsLetter( c );
+        public static bool IsLetter(this char c)
+            => char.IsLetter(c);
+
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a letter or a decimal digit.
         /// </summary>
@@ -31,8 +33,9 @@ namespace HSNXT
         /// <returns>True if the given char is a letter or a decimal digit, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsLetterOrDigit( this char c )
-            => char.IsLetterOrDigit( c );
+        public static bool IsLetterOrDigit(this char c)
+            => char.IsLetterOrDigit(c);
+
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a lowercase letter.
         /// </summary>
@@ -40,8 +43,9 @@ namespace HSNXT
         /// <returns>True if the given char is a lowercase letter, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsLower( this char c )
-            => char.IsLower( c );
+        public static bool IsLower(this char c)
+            => char.IsLower(c);
+
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as a number.
         /// </summary>
@@ -49,8 +53,9 @@ namespace HSNXT
         /// <returns>True if the given char is a number, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsNumber( this char c )
-            => char.IsNumber( c );
+        public static bool IsNumber(this char c)
+            => char.IsNumber(c);
+
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as an uppercase letter.
         /// </summary>
@@ -58,8 +63,9 @@ namespace HSNXT
         /// <returns>True if the given char is an uppercase letter, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsUpper( this char c )
-            => char.IsUpper( c );
+        public static bool IsUpper(this char c)
+            => char.IsUpper(c);
+
         /// <summary>
         ///     Indicates whether the specified Unicode character is categorized as white space.
         /// </summary>
@@ -67,8 +73,9 @@ namespace HSNXT
         /// <returns>True if the given char is a white space, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IsWhiteSpace( this char c )
-            => char.IsWhiteSpace( c );
+        public static bool IsWhiteSpace(this char c)
+            => char.IsWhiteSpace(c);
+
         /// <summary>
         ///     Repeats the given Char the specified number of times.
         /// </summary>
@@ -78,8 +85,9 @@ namespace HSNXT
         /// <returns>The repeated Char as String.</returns>
         [PublicAPI]
         [Pure]
-        public static string Repeat( this char c, int repeatCount )
-            => new string( c, repeatCount );
+        public static string Repeat(this char c, int repeatCount)
+            => new string(c, repeatCount);
+
         /// <summary>
         ///     Converts the value of a Unicode character to its lowercase equivalent.
         /// </summary>
@@ -90,8 +98,9 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static char ToLower( this char c )
-            => char.ToLower( c );
+        public static char ToLower(this char c)
+            => char.ToLower(c);
+
         /// <summary>
         ///     Converts the value of a Unicode character to its uppercase equivalent.
         /// </summary>
@@ -102,7 +111,7 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static char ToUpper( this char c )
-            => char.ToUpper( c );
+        public static char ToUpper(this char c)
+            => char.ToUpper(c);
     }
 }

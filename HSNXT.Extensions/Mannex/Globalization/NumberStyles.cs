@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -28,13 +30,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="NumberStyles"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Additionally sets styles to allow leading and trailing white space.
         /// </summary>
-
         public static NumberStyles AllowWhiteSpaces(this NumberStyles styles)
         {
             return styles | NumberStyles.AllowLeadingWhite

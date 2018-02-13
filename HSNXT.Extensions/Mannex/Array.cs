@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,14 +37,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Array"/> sub-types.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Formats bytes in hexadecimal format. Additional parameters
         /// specify the segment of the array for format.
         /// </summary>
-
         public static string ToHex(this byte[] buffer, int index, int count)
         {
             return ToHex(buffer, index, count, null).ToString();
@@ -52,7 +52,6 @@ namespace HSNXT
         /// Formats bytes in hexadecimal format, appending to the
         /// supplied <see cref="StringBuilder"/>.
         /// </summary>
-
         public static StringBuilder ToHex(this byte[] buffer, int index, int count, StringBuilder sb)
         {
             if (buffer == null) throw new ArgumentNullException("buffer");
@@ -66,8 +65,8 @@ namespace HSNXT
             {
                 const string hexdigits = "0123456789abcdef";
                 var b = buffer[i];
-                sb.Append(hexdigits[b/16]);
-                sb.Append(hexdigits[b%16]);
+                sb.Append(hexdigits[b / 16]);
+                sb.Append(hexdigits[b % 16]);
             }
 
             return sb;
@@ -78,7 +77,6 @@ namespace HSNXT
         /// elements are shifted left by one position, with the exception of
         /// the first element which assumes the last position in the array.
         /// </summary>
-
         public static void Rotate<T>(this T[] array)
         {
             if (array == null) throw new ArgumentNullException("array");
@@ -96,8 +94,8 @@ namespace HSNXT
         /// The array is not updated if the application of the function
         /// fails on any pair of elements. The operation is thus atomic.
         /// </remarks>
-
-        public static void Update<TTarget, TSource>(this TTarget[] target, IEnumerable<TSource> source, Func<TTarget, TSource, TTarget> function)
+        public static void Update<TTarget, TSource>(this TTarget[] target, IEnumerable<TSource> source,
+            Func<TTarget, TSource, TTarget> function)
         {
             if (function == null) throw new ArgumentNullException("function");
             target.Update(source, (l, r, i) => function(l, r));
@@ -113,8 +111,8 @@ namespace HSNXT
         /// The array is not updated if the application of the function
         /// fails on any pair of elements. The operation is thus atomic.
         /// </remarks>
-
-        public static void Update<TTarget, TSource>(this TTarget[] target, IEnumerable<TSource> source, Func<TTarget, TSource, int, TTarget> function)
+        public static void Update<TTarget, TSource>(this TTarget[] target, IEnumerable<TSource> source,
+            Func<TTarget, TSource, int, TTarget> function)
         {
             if (target == null) throw new ArgumentNullException("target");
             if (function == null) throw new ArgumentNullException("function");
@@ -123,12 +121,12 @@ namespace HSNXT
             var results = new TTarget[target.Length];
 
             using (var e = source.GetEnumerator())
-            for (var i = 0; i < target.Length; i++)
-            {
-                results[i] = e.MoveNext()
-                           ? function(target[i], e.Current, i)
-                           : target[i];
-            }
+                for (var i = 0; i < target.Length; i++)
+                {
+                    results[i] = e.MoveNext()
+                        ? function(target[i], e.Current, i)
+                        : target[i];
+                }
 
             Array.Copy(results, 0, target, 0, results.Length);
         }
@@ -141,8 +139,8 @@ namespace HSNXT
         /// The array is not updated if the application of the function
         /// fails on any pair of elements. The operation is thus atomic.
         /// </remarks>
-
-        public static TTarget[] Updating<TTarget, TSource>(this TTarget[] target, IEnumerable<TSource> source, Func<TTarget, TSource, TTarget> function)
+        public static TTarget[] Updating<TTarget, TSource>(this TTarget[] target, IEnumerable<TSource> source,
+            Func<TTarget, TSource, TTarget> function)
         {
             target.Update(source, function);
             return target;
@@ -158,8 +156,8 @@ namespace HSNXT
         /// The array is not updated if the application of the function
         /// fails on any pair of elements. The operation is thus atomic.
         /// </remarks>
-
-        public static TTarget[] Updating<TTarget, TSource>(this TTarget[] target, Func<TTarget, TSource, int, TTarget> function, IEnumerable<TSource> source)
+        public static TTarget[] Updating<TTarget, TSource>(this TTarget[] target,
+            Func<TTarget, TSource, int, TTarget> function, IEnumerable<TSource> source)
         {
             target.Update(source, function);
             return target;
@@ -172,7 +170,6 @@ namespace HSNXT
         /// Returns a new array with the item removed. If the item does not
         /// exist then the original array is returned.
         /// </returns>
-
         public static T[] Remove<T>(this T[] array, T item)
         {
             return Remove(array, item, null);
@@ -187,14 +184,13 @@ namespace HSNXT
         /// Returns a new array with the item removed. If the item does not
         /// exist then the original array is returned.
         /// </returns>
-
         public static T[] Remove<T>(this T[] array, T item, IEqualityComparer<T> comparer)
         {
             if (array == null) throw new ArgumentNullException("array");
 
             var index = comparer == null
-                      ? Array.IndexOf(array, item)
-                      : Array.FindIndex(array, other => comparer.Equals(other, item));
+                ? Array.IndexOf(array, item)
+                : Array.FindIndex(array, other => comparer.Equals(other, item));
             if (index < 0)
                 return array;
             var result = new T[array.Length - 1];
@@ -207,7 +203,6 @@ namespace HSNXT
         /// Converts a one-dimensional array into a two-dimensional array of
         /// user-specified width.
         /// </summary>
-
         public static T[,] ToArray2D<T>(this T[] source, int columns)
         {
             return ToArray2DImpl(source, columns, default(T), fill: false);
@@ -219,7 +214,6 @@ namespace HSNXT
         /// value to use to fill the resulting array when source array has too
         /// few elements.
         /// </summary>
-
         public static T[,] ToArray2D<T>(this T[] source, int columns, T defaultValue)
         {
             return ToArray2DImpl(source, columns, defaultValue, fill: true);
@@ -243,6 +237,7 @@ namespace HSNXT
                 for (var i = source.Length; i < target.Length; i++)
                     target[i / columns, i % columns] = defaultValue;
             }
+
             return target;
         }
 
@@ -253,19 +248,19 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
         public static IEnumerable<T> Row<T>(this T[,] array, int index)
         {
             if (array == null) throw new ArgumentNullException("array");
             var zero = array.GetLowerBound(0);
-            if (index < zero || index >= array.GetLength(0) - zero) throw new ArgumentOutOfRangeException("index", index, null);
+            if (index < zero || index >= array.GetLength(0) - zero)
+                throw new ArgumentOutOfRangeException("index", index, null);
             return RowImpl(array, index);
         }
 
         static IEnumerable<T> RowImpl<T>(T[,] array, int y)
         {
             return from x in Enumerable.Range(array.GetLowerBound(1), array.GetLength(1))
-                   select array[y, x];
+                select array[y, x];
         }
 
         /// <summary>
@@ -275,19 +270,19 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
         public static IEnumerable<T> Column<T>(this T[,] array, int index)
         {
             if (array == null) throw new ArgumentNullException("array");
             var zero = array.GetLowerBound(1);
-            if (index < zero || index >= array.GetLength(1) - zero) throw new ArgumentOutOfRangeException("index", index, null);
+            if (index < zero || index >= array.GetLength(1) - zero)
+                throw new ArgumentOutOfRangeException("index", index, null);
             return ColumnImpl(array, index);
         }
 
         static IEnumerable<T> ColumnImpl<T>(T[,] array, int x)
         {
             return from y in Enumerable.Range(array.GetLowerBound(0), array.GetLength(0))
-                   select array[y, x];
+                select array[y, x];
         }
 
         /// <summary>
@@ -296,15 +291,16 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
-        public static IEnumerable<TResult> Apply<T, TResult>(this T[,] array, int index1, int index2, Func<T, T, TResult> function)
+        public static IEnumerable<TResult> Apply<T, TResult>(this T[,] array, int index1, int index2,
+            Func<T, T, TResult> function)
         {
             if (array == null) throw new ArgumentNullException("array");
             if (function == null) throw new ArgumentNullException("function");
             return ApplyImpl(array, index1, index2, function);
         }
 
-        static IEnumerable<TResult> ApplyImpl<T, TResult>(T[,] array, int index1, int index2, Func<T, T, TResult> function)
+        static IEnumerable<TResult> ApplyImpl<T, TResult>(T[,] array, int index1, int index2,
+            Func<T, T, TResult> function)
         {
             for (var y = array.GetLowerBound(0); y < array.GetLength(0); y++)
                 yield return function(array[y, index1], array[y, index2]);
@@ -316,15 +312,16 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
-        public static IEnumerable<TResult> Apply<T, TResult>(this T[,] array, int index1, int index2, int index3, Func<T, T, T, TResult> function)
+        public static IEnumerable<TResult> Apply<T, TResult>(this T[,] array, int index1, int index2, int index3,
+            Func<T, T, T, TResult> function)
         {
             if (array == null) throw new ArgumentNullException("array");
             if (function == null) throw new ArgumentNullException("function");
             return ApplyImpl(array, index1, index2, index3, function);
         }
 
-        static IEnumerable<TResult> ApplyImpl<T, TResult>(T[,] array, int index1, int index2, int index3, Func<T, T, T, TResult> function)
+        static IEnumerable<TResult> ApplyImpl<T, TResult>(T[,] array, int index1, int index2, int index3,
+            Func<T, T, T, TResult> function)
         {
             for (var y = array.GetLowerBound(0); y < array.GetLength(0); y++)
                 yield return function(array[y, index1], array[y, index2], array[y, index3]);
@@ -336,15 +333,16 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
-        public static IEnumerable<TResult> Apply<T, TResult>(this T[,] array, int index1, int index2, int index3, int index4, Func<T, T, T, T, TResult> function)
+        public static IEnumerable<TResult> Apply<T, TResult>(this T[,] array, int index1, int index2, int index3,
+            int index4, Func<T, T, T, T, TResult> function)
         {
             if (array == null) throw new ArgumentNullException("array");
             if (function == null) throw new ArgumentNullException("function");
             return ApplyImpl(array, index1, index2, index3, index4, function);
         }
 
-        static IEnumerable<TResult> ApplyImpl<T, TResult>(T[,] array, int index1, int index2, int index3, int index4, Func<T, T, T, T, TResult> function)
+        static IEnumerable<TResult> ApplyImpl<T, TResult>(T[,] array, int index1, int index2, int index3, int index4,
+            Func<T, T, T, T, TResult> function)
         {
             for (var y = array.GetLowerBound(0); y < array.GetLength(0); y++)
                 yield return function(array[y, index1], array[y, index2], array[y, index3], array[y, index4]);
@@ -362,7 +360,6 @@ namespace HSNXT
         /// semantics require that the index ranges from zero to the length
         /// of the array.
         /// </summary>
-
         public static TResult PartitionStrictly<T, TResult>(this T[] array,
             int index, Func<T[], T[], TResult> selector)
         {
@@ -377,7 +374,6 @@ namespace HSNXT
         /// first part contains items up to (excluding) the index and the
         /// second contains items from the index and onward.
         /// </summary>
-
         public static TResult Partition<T, TResult>(this T[] array, int index,
             Func<T[], T[], TResult> selector)
         {
@@ -386,7 +382,7 @@ namespace HSNXT
             if (index < 0) throw new ArgumentOutOfRangeException("index", index, null);
 
             index = Math.Min(index, array.Length);
-            var left  = index > 0 ? new T[index] : Empty<T>.Value;
+            var left = index > 0 ? new T[index] : Empty<T>.Value;
             if (left.Length > 0)
                 Array.Copy(array, 0, left, 0, left.Length);
             var rightCount = array.Length - index;

@@ -31,12 +31,12 @@ namespace HSNXT
 
             var differenceCounter = HashData.Where((t, i) => t != compareWith.HashData[i]).Count();
 
-            return 100 - differenceCounter/100.0 * HashData.Length / 2.0;
+            return 100 - differenceCounter / 100.0 * HashData.Length / 2.0;
         }
 
         public void GenerateFromPath(string path)
         {
-            var image = (Bitmap)Image.FromFile(path, true);
+            var image = (Bitmap) Image.FromFile(path, true);
 
             GenerateFromImage(image);
 
@@ -49,7 +49,7 @@ namespace HSNXT
 
             //resize img to 16x16px (by default) or with configured size 
             var bmpMin = new Bitmap(img, new Size(_hashSide, _hashSide));
-            
+
             for (var j = 0; j < bmpMin.Height; j++)
             {
                 for (var i = 0; i < bmpMin.Width; i++)

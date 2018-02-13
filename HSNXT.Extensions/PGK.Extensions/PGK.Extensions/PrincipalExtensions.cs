@@ -16,7 +16,7 @@ namespace HSNXT
         {
             var directoryEntry = (principal.GetUnderlyingObject() as DirectoryEntry);
             if (!directoryEntry.Properties.Contains(name)) return null;
-            
+
             var property = directoryEntry.Properties[name];
             return property?.Value;
         }

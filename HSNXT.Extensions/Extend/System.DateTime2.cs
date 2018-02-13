@@ -17,8 +17,8 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static int DaysInMonth( this short year, short month )
-            => DateTime.DaysInMonth( year, month );
+        public static int DaysInMonth(this short year, short month)
+            => DateTime.DaysInMonth(year, month);
 
         /// <summary>
         ///     Returns whether the given year is a leap year or not.
@@ -27,8 +27,7 @@ namespace HSNXT
         /// <returns>Returns true if the year is a leap year, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsLeapYear( this short year )
-            => DateTime.IsLeapYear( year );
-
+        public static bool IsLeapYear(this short year)
+            => DateTime.IsLeapYear(year);
     }
 }

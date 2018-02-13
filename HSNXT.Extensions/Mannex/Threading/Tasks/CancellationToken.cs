@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 #if NET4
@@ -31,14 +33,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="CancellationToken"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates a task the completes when the cancellation token enters
         /// the cancelled state.
         /// </summary>
-
         public static Task AsTask(this CancellationToken cancellationToken)
         {
             return cancellationToken.AsTask(0);
@@ -49,23 +49,22 @@ namespace HSNXT
         /// the cancelled state. An additional parameter specifies the result
         /// to return for the task.
         /// </summary>
-
         public static Task<T> AsTask<T>(this CancellationToken cancellationToken, T result)
         {
-            #if NET45
+#if NET45
             if (cancellationToken.IsCancellationRequested)
                 return Task.FromResult(result);
             #endif
 
             var tcs = new TaskCompletionSource<T>();
 
-            #if !NET45
+#if !NET45
             if (cancellationToken.IsCancellationRequested)
             {
                 tcs.SetResult(result);
                 return tcs.Task;
             }
-            #endif
+#endif
 
             var registration = new CancellationTokenRegistration[1];
             registration[0] = cancellationToken.Register(() =>

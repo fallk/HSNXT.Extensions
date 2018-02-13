@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,17 +35,15 @@ namespace HSNXT
     /// Extension methods for <see cref="EventHandler"/> and
     /// <see cref="EventHandler{TEventArgs}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Ensures that an <see cref="EventHandler{T}"/> will fire only 
         /// once given a way to add and remove subscription from the event.
         /// </summary>
-
         public static void Once<T>(this EventHandler<T> handler,
-                                   Action<EventHandler<T>> addHandler,
-                                   Action<EventHandler<T>> removeHandler)
+            Action<EventHandler<T>> addHandler,
+            Action<EventHandler<T>> removeHandler)
             where T : EventArgs
         {
             if (handler == null) throw new ArgumentNullException("handler");
@@ -62,10 +62,9 @@ namespace HSNXT
         /// Ensures that an <see cref="EventHandler"/> will fire only 
         /// once given a way to add and remove subscription from the event.
         /// </summary>
-
         public static void Once(this EventHandler handler,
-                                Action<EventHandler> addHandler,
-                                Action<EventHandler> removeHandler)
+            Action<EventHandler> addHandler,
+            Action<EventHandler> removeHandler)
         {
             if (handler == null) throw new ArgumentNullException("handler");
             if (addHandler == null) throw new ArgumentNullException("addHandler");
@@ -87,8 +86,7 @@ namespace HSNXT
         /// only event under which the event is not fired is there are no
         /// handlers attached.
         /// </returns>
-
-        public static bool Fire<T>(this EventHandler<T> handler, object sender, T args) 
+        public static bool Fire<T>(this EventHandler<T> handler, object sender, T args)
             where T : EventArgs
         {
             if (sender == null) throw new ArgumentNullException("sender");
@@ -109,7 +107,6 @@ namespace HSNXT
         /// only event under which the event is not fired is there are no
         /// handlers attached.
         /// </returns>
-
         public static bool Fire(this EventHandler handler, object sender, EventArgs args)
         {
             if (sender == null) throw new ArgumentNullException("sender");

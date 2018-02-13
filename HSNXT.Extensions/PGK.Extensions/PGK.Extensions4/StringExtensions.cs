@@ -24,7 +24,7 @@ namespace HSNXT
 
     public static partial class Extensions
     {
-        #if NetFX
+#if NetFX
         /// <summary>
         /// Returns the plural form of the specified word.
         /// </summary>
@@ -38,7 +38,7 @@ namespace HSNXT
                 ? singular
                 : PluralizationService.CreateService(cultureInfo ?? new CultureInfo("en-US")).Pluralize(singular);
         }
-        #endif
+#endif
 
 
         #region Extract

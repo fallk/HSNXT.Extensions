@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,7 +36,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for types implementing <see cref="IComparable{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -42,7 +43,6 @@ namespace HSNXT
         /// that inverts the results of comparing values through
         /// another comparer such that the sort order is inverted.
         /// </summary>
-        
         public static IComparer<T> Invert<T>(this IComparer<T> comparer)
         {
             if (comparer == null) throw new ArgumentNullException("comparer");

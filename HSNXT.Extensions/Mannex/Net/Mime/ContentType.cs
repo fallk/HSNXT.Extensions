@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,13 +37,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="ContentType"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Determines whether content type is plain text.
         /// </summary>
-
         public static bool IsPlainText(this ContentType contentType)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
@@ -51,7 +51,6 @@ namespace HSNXT
         /// <summary>
         /// Determines whether content media type is text.
         /// </summary>
-
         public static bool IsText(this ContentType contentType)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
@@ -61,7 +60,6 @@ namespace HSNXT
         /// <summary>
         /// Determines whether content type identifies an HTML document.
         /// </summary>
-
         public static bool IsHtml(this ContentType contentType)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
@@ -71,7 +69,6 @@ namespace HSNXT
         /// <summary>
         /// Determines whether content media type identifies an image.
         /// </summary>
-
         public static bool IsImage(this ContentType contentType)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
@@ -81,7 +78,6 @@ namespace HSNXT
         /// <summary>
         /// Gets the base media of the content type, e.g. text from text/plain.
         /// </summary>
-
         public static string GetMediaBaseType(this ContentType contentType)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
@@ -92,7 +88,6 @@ namespace HSNXT
         /// <summary>
         /// Gets the media sub-type of the content type, e.g. plain from text/plain.
         /// </summary>
-
         public static string GetMediaSubType(this ContentType contentType)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
@@ -110,7 +105,6 @@ namespace HSNXT
         /// specified in the content-type header in the given headers 
         /// collection and <c>null</c> otherwise.
         /// </summary>
-
         public static Encoding EncodingFromCharSet(this ContentType contentType)
         {
             return contentType.EncodingFromCharSet((Encoding) null);
@@ -122,7 +116,6 @@ namespace HSNXT
         /// collection and a default encoding otherwise (that may be 
         /// <c>null</c>).
         /// </summary>
-
         public static Encoding EncodingFromCharSet(this ContentType contentType, Encoding defaultEncoding)
         {
             return EncodingFromCharSet(contentType, defaultEncoding, null);
@@ -136,8 +129,8 @@ namespace HSNXT
         /// <see cref="Encoding"/> object and uses 
         /// <see cref="Encoding.GetEncoding(string)"/> if <c>null</c>. 
         /// </summary>
-
-        public static Encoding EncodingFromCharSet(this ContentType contentType, Func<string, Encoding> encodingSelector)
+        public static Encoding EncodingFromCharSet(this ContentType contentType,
+            Func<string, Encoding> encodingSelector)
         {
             return EncodingFromCharSet(contentType, null, encodingSelector);
         }
@@ -151,13 +144,13 @@ namespace HSNXT
         /// object and uses <see cref="Encoding.GetEncoding(string)"/> if 
         /// <c>null</c>. 
         /// </summary>
-
-        public static Encoding EncodingFromCharSet(this ContentType contentType, Encoding defaultEncoding, Func<string, Encoding> encodingSelector)
+        public static Encoding EncodingFromCharSet(this ContentType contentType, Encoding defaultEncoding,
+            Func<string, Encoding> encodingSelector)
         {
             if (contentType == null) throw new ArgumentNullException("contentType");
             return string.IsNullOrEmpty(contentType.CharSet)
-                 ? defaultEncoding
-                 : (encodingSelector ?? Encoding.GetEncoding)(contentType.CharSet);
+                ? defaultEncoding
+                : (encodingSelector ?? Encoding.GetEncoding)(contentType.CharSet);
         }
     }
 }

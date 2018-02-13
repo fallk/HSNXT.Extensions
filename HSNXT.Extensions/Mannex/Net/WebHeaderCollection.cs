@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,7 +35,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="WebHeaderCollection"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -41,7 +42,6 @@ namespace HSNXT
         /// is contained in the collection is non-empty. Otherwise it 
         /// returns the default value for the type <typeparamref name="T"/>.
         /// </summary>
-
         public static T Map<T>(this WebHeaderCollection headers, HttpResponseHeader header, Func<string, T> mapper)
         {
             return Map(headers, header, default(T), mapper);
@@ -52,8 +52,8 @@ namespace HSNXT
         /// is contained in the collection is non-empty. Otherwise it 
         /// returns a given default of type <typeparamref name="T"/>.
         /// </summary>
-
-        public static T Map<T>(this WebHeaderCollection headers, HttpResponseHeader header, T defaultValue, Func<string, T> mapper)
+        public static T Map<T>(this WebHeaderCollection headers, HttpResponseHeader header, T defaultValue,
+            Func<string, T> mapper)
         {
             if (headers == null) throw new ArgumentNullException("headers");
             if (mapper == null) throw new ArgumentNullException("mapper");

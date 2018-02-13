@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,13 +35,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="ArraySegment{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates a read-only stream on top of the supplied buffer.
         /// </summary>
-        
         public static Stream OpenRead(this ArraySegment<byte> buffer)
         {
             return buffer.Array.OpenRead(buffer.Offset, buffer.Count);
@@ -48,7 +48,6 @@ namespace HSNXT
         /// <summary>
         /// Creates a read-write stream on top of the supplied buffer.
         /// </summary>
-
         public static Stream OpenReadWrite(this ArraySegment<byte> buffer)
         {
             return buffer.Array.OpenReadWrite(buffer.Offset, buffer.Count);

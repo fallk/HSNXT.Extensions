@@ -21,7 +21,7 @@ namespace HSNXT.Nardax.Serialization
             {
                 var binaryFormatter = new BinaryFormatter();
                 memoryStream.Position = 0;
-                return (T)binaryFormatter.Deserialize(memoryStream);
+                return (T) binaryFormatter.Deserialize(memoryStream);
             }
         }
     }

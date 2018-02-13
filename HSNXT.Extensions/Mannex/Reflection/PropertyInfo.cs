@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,7 +36,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="PropertyInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -45,7 +46,6 @@ namespace HSNXT
         /// <remarks>
         /// Indexer and static properties are not supported.
         /// </remarks>
-
         public static LambdaExpression CreateGetterLambda(this PropertyInfo info)
         {
             return CreateGetterLambda(info, false);
@@ -60,13 +60,12 @@ namespace HSNXT
         /// <remarks>
         /// Indexer and static properties are not supported.
         /// </remarks>
-
         public static LambdaExpression CreateGetterLambda(this PropertyInfo info, bool boxed)
         {
             ValidateGetterLambdaThis(info);
             var resultType = info.PropertyType.IsValueType && boxed
-                           ? typeof(object)
-                           : info.PropertyType;
+                ? typeof(object)
+                : info.PropertyType;
             return CreateGetterLambda(info, info.DeclaringType, resultType);
         }
 
@@ -79,7 +78,6 @@ namespace HSNXT
         /// <remarks>
         /// Indexer and static properties are not supported.
         /// </remarks>
-
         public static LambdaExpression CreateGetterLambda<T>(this PropertyInfo info)
         {
             ValidateGetterLambdaThis(info);
@@ -97,9 +95,10 @@ namespace HSNXT
         static LambdaExpression CreateGetterLambda(PropertyInfo info, Type declaringType, Type resultType)
         {
             var self = Expression.Parameter(declaringType, "self");
-            var delegateType = typeof (Func<,>).MakeGenericType(declaringType, resultType);
+            var delegateType = typeof(Func<,>).MakeGenericType(declaringType, resultType);
             Expression body = Expression.MakeMemberAccess(self, info);
-            return Expression.Lambda(delegateType, resultType != info.PropertyType ? Expression.Convert(body, resultType) : body, self);
+            return Expression.Lambda(delegateType,
+                resultType != info.PropertyType ? Expression.Convert(body, resultType) : body, self);
         }
     }
 }

@@ -16,11 +16,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetFileExtension( [NotNull] this string fileName )
+        public static string GetFileExtension([NotNull] this string fileName)
         {
-            fileName.ThrowIfNull( nameof(fileName) );
+            fileName.ThrowIfNull(nameof(fileName));
 
-            return Path.GetExtension( fileName );
+            return Path.GetExtension(fileName);
         }
     }
 }

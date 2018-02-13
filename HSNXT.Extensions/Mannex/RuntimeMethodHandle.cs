@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="RuntimeMethodHandle"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Gets method information by using the method's internal metadata 
         /// representation (handle).
         /// </summary>
-
         public static MethodInfo GetMethodInfo(this RuntimeMethodHandle handle)
         {
             return (MethodInfo) MethodBase.GetMethodFromHandle(handle);

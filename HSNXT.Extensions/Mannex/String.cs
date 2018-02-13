@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -37,7 +39,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="string"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -50,7 +51,6 @@ namespace HSNXT
         /// string. Bear in mind, however, that if the mask itself is an 
         /// empty string then this method could yield an empty string!
         /// </remarks>
-
         [DebuggerStepThrough]
         public static string MaskEmpty(this string str, string mask)
         {
@@ -61,28 +61,26 @@ namespace HSNXT
         /// Determines if a string has another non-empty string as its 
         /// prefix and longer by it by at least one character.
         /// </summary>
-
         public static bool HasPrefix(this string str, string prefix, StringComparison comparison)
         {
             if (str == null) throw new ArgumentNullException("str");
 
             return !string.IsNullOrEmpty(prefix)
-                && str.Length > prefix.Length
-                && str.StartsWith(prefix, comparison);
+                   && str.Length > prefix.Length
+                   && str.StartsWith(prefix, comparison);
         }
 
         /// <summary>
         /// Determines if a string has another non-empty string as its 
         /// suffix and longer by it by at least one character.
         /// </summary>
-
         public static bool HasSuffix(this string str, string suffix, StringComparison comparison)
         {
             if (str == null) throw new ArgumentNullException("str");
 
             return !string.IsNullOrEmpty(suffix)
-                && str.Length > suffix.Length
-                && str.EndsWith(suffix, comparison);
+                   && str.Length > suffix.Length
+                   && str.EndsWith(suffix, comparison);
         }
 
         /// <summary>
@@ -95,7 +93,6 @@ namespace HSNXT
         /// is greater or equal to the length of the string then 
         /// no characters are copied to the new string.
         /// </remarks>
-
         [DebuggerStepThrough]
         public static string Slice(this string str, int start)
         {
@@ -115,7 +112,6 @@ namespace HSNXT
         /// string. If <paramref name="end"/> occurs before <paramref name="start"/>, 
         /// no characters are copied to the new string.
         /// </remarks>
-
         [DebuggerStepThrough]
         public static string Slice(this string str, int start, int? end)
         {
@@ -154,15 +150,13 @@ namespace HSNXT
 
             var sliceLength = end - start;
 
-            return sliceLength > 0 ?
-                str.Substring(start, sliceLength) : string.Empty;
+            return sliceLength > 0 ? str.Substring(start, sliceLength) : string.Empty;
         }
-        
+
         /// <summary>
         /// Embeds string into <paramref name="target"/>, using {0} 
         /// within <paramref name="target"/> as the point of embedding.
         /// </summary>
-
         public static string Embed(this string str, string target)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -175,7 +169,6 @@ namespace HSNXT
         /// indicates the left side and the second indicates the
         /// right side.
         /// </summary>
-
         public static string Wrap(this string str, string lhs, string rhs)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -186,7 +179,6 @@ namespace HSNXT
         /// Enquotes string with <paramref name="quote"/>, escaping occurences
         /// of <paramref name="quote"/> itself with <paramref name="escape"/>.
         /// </summary>
-
         public static string Quote(this string str, string quote, string escape)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -201,9 +193,10 @@ namespace HSNXT
                 sb.Append(escape);
                 start = index + quote.Length;
             }
-            return sb != null 
-                 ? sb.Append(str, start, str.Length - start).Append(quote).ToString() 
-                 : str.Wrap(quote, quote);
+
+            return sb != null
+                ? sb.Append(str, start, str.Length - start).Append(quote).ToString()
+                : str.Wrap(quote, quote);
         }
 
         /// <summary>
@@ -211,8 +204,7 @@ namespace HSNXT
         /// replacements and a function, <paramref name="binder"/>, that
         /// determines how to bind and resolve replacement tokens.
         /// </summary>
-
-        public static string FormatWith(this string format, 
+        public static string FormatWith(this string format,
             Func<string, object[], IFormatProvider, string> binder, params object[] args)
         {
             return format.FormatWith(null, binder, args);
@@ -225,7 +217,6 @@ namespace HSNXT
         /// addition, <paramref name="provider"/> is used for cultural
         /// formatting.
         /// </summary>
-
         public static string FormatWith(this string format,
             IFormatProvider provider, Func<string, object[], IFormatProvider, string> binder, params object[] args)
         {
@@ -258,11 +249,13 @@ namespace HSNXT
                             token.Length = 0;
                             break;
                         }
+
                         if (ch == '{')
                         {
                             result.Append(ch);
                             break;
                         }
+
                         token.Append(ch);
                     }
                 }
@@ -288,7 +281,6 @@ namespace HSNXT
         /// <remarks>
         /// Neither half in the resulting pair is ever <c>null</c>.
         /// </remarks>
-
         public static T Split<T>(this string str, char separator, Func<string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -303,7 +295,6 @@ namespace HSNXT
         /// <remarks>
         /// None of the resulting parts is ever <c>null</c>.
         /// </remarks>
-        
         public static T Split<T>(this string str, char separator, Func<string, string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -318,7 +309,6 @@ namespace HSNXT
         /// <remarks>
         /// None of the resulting parts is ever <c>null</c>.
         /// </remarks>
-
         public static T Split<T>(this string str, char separator, Func<string, string, string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -333,15 +323,14 @@ namespace HSNXT
         /// <remarks>
         /// Neither half in the resulting pair is ever <c>null</c>.
         /// </remarks>
-
         public static T Split<T>(this string str, char[] separators, Func<string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
             if (resultFunc == null) throw new ArgumentNullException("resultFunc");
 
             return separators == null || separators.Length == 0
-                 ? resultFunc(str, string.Empty)
-                 : SplitRemoving(str, str.IndexOfAny(separators), 1, resultFunc);
+                ? resultFunc(str, string.Empty)
+                : SplitRemoving(str, str.IndexOfAny(separators), 1, resultFunc);
         }
 
         /// <summary>
@@ -351,7 +340,6 @@ namespace HSNXT
         /// <remarks>
         /// None of the resulting parts is ever <c>null</c>.
         /// </remarks>
-
         public static T Split<T>(this string str, char[] separators, Func<string, string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -366,7 +354,6 @@ namespace HSNXT
         /// <remarks>
         /// None of the resulting parts is ever <c>null</c>.
         /// </remarks>
-
         public static T Split<T>(this string str, char[] separators, Func<string, string, string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -382,8 +369,8 @@ namespace HSNXT
         /// <remarks>
         /// Neither half in the resulting pair is ever <c>null</c>.
         /// </remarks>
-
-        public static T Split<T>(this string str, string separator, StringComparison comparison, Func<string, string, T> resultFunc)
+        public static T Split<T>(this string str, string separator, StringComparison comparison,
+            Func<string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
             if (resultFunc == null) throw new ArgumentNullException("resultFunc");
@@ -398,12 +385,13 @@ namespace HSNXT
         /// <remarks>
         /// None of the resulting parts is ever <c>null</c>.
         /// </remarks>
-        
-        public static T Split<T>(this string str, string separator, StringComparison comparison, Func<string, string, string, T> resultFunc)
+        public static T Split<T>(this string str, string separator, StringComparison comparison,
+            Func<string, string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
             if (resultFunc == null) throw new ArgumentNullException("resultFunc");
-            return str.Split(separator, comparison, (a, rest) => rest.Split(separator, comparison, (b, c) => resultFunc(a, b, c)));
+            return str.Split(separator, comparison,
+                (a, rest) => rest.Split(separator, comparison, (b, c) => resultFunc(a, b, c)));
         }
 
         /// <summary>
@@ -414,12 +402,13 @@ namespace HSNXT
         /// <remarks>
         /// None of the resulting parts is ever <c>null</c>.
         /// </remarks>
-
-        public static T Split<T>(this string str, string separator, StringComparison comparison, Func<string, string, string, string, T> resultFunc)
+        public static T Split<T>(this string str, string separator, StringComparison comparison,
+            Func<string, string, string, string, T> resultFunc)
         {
             if (str == null) throw new ArgumentNullException("str");
             if (resultFunc == null) throw new ArgumentNullException("resultFunc");
-            return str.Split(separator, comparison, (a, b, rest) => rest.Split(separator, comparison, (c, d) => resultFunc(a, b, c, d)));
+            return str.Split(separator, comparison,
+                (a, b, rest) => rest.Split(separator, comparison, (c, d) => resultFunc(a, b, c, d)));
         }
 
         /// <summary>
@@ -428,21 +417,20 @@ namespace HSNXT
         /// <remarks>
         /// Neither half in the resulting pair is ever <c>null</c>.
         /// </remarks>
-        
         static T SplitRemoving<T>(string str, int index, int count, Func<string, string, T> resultFunc)
         {
             Debug.Assert(str != null);
             Debug.Assert(count > 0);
             Debug.Assert(resultFunc != null);
 
-            var a = index < 0 
-                  ? str 
-                  : str.Substring(0, index);
-            
-            var b = index < 0 || index + 1 >= str.Length 
-                  ? string.Empty 
-                  : str.Substring(index + count);
-            
+            var a = index < 0
+                ? str
+                : str.Substring(0, index);
+
+            var b = index < 0 || index + 1 >= str.Length
+                ? string.Empty
+                : str.Substring(index + count);
+
             return resultFunc(a, b);
         }
 
@@ -454,13 +442,13 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred exection.
         /// </remarks>
-
         public static IEnumerable<string> SplitIntoNonBlankLines(this string str)
         {
             return from line in str.SplitIntoLines()
-                   select line.Trim() into line
-                   where line.Length > 0
-                   select line;
+                select line.Trim()
+                into line
+                where line.Length > 0
+                select line;
         }
 
         /// <summary>
@@ -470,13 +458,12 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred exection.
         /// </remarks>
-
         public static IEnumerable<string> SplitIntoLines(this string str)
         {
             if (str == null) throw new ArgumentNullException("str");
             return SplitIntoLinesImpl(str);
         }
- 
+
         static IEnumerable<string> SplitIntoLinesImpl(string str)
         {
             using (var reader = str.Read())
@@ -490,7 +477,6 @@ namespace HSNXT
         /// and identified by <see cref="char.IsWhiteSpace(char)"/>) to a 
         /// single space and trims all leading and trailing white space.
         /// </summary>
-
         public static string NormalizeWhiteSpace(this string str)
         {
             if (str == null) throw new ArgumentNullException("str");
@@ -510,10 +496,9 @@ namespace HSNXT
         /// substrings. For example, even when <paramref name="index"/> is
         /// zero, the first substring will be an empty string, but not null.
         /// </remarks>
-
         public static string[] Substrings(this string str, int index, int length)
         {
-            return Substrings(str, index, length, (left, mid, right) => new[] { left, mid, right });
+            return Substrings(str, index, length, (left, mid, right) => new[] {left, mid, right});
         }
 
         /// <summary>
@@ -528,26 +513,24 @@ namespace HSNXT
         /// zero, the first substring will be an empty string, but not 
         /// <c>null</c>.
         /// </remarks>
-
         public static T Substrings<T>(this string str, int index, int length, Func<string, string, string, T> resultor)
         {
             if (str == null) throw new ArgumentNullException("str");
             if (resultor == null) throw new ArgumentNullException("resultor");
 
             return resultor(str.Substring(0, index),
-                            str.Substring(index, length),
-                            str.Substring(index + length));
+                str.Substring(index, length),
+                str.Substring(index + length));
         }
 
-        static readonly Regex TruthinessRegex = new Regex(@"\A\s*(?i:true|1|on|yes)\s*\z", 
-                                                    RegexOptions.CultureInvariant);
+        static readonly Regex TruthinessRegex = new Regex(@"\A\s*(?i:true|1|on|yes)\s*\z",
+            RegexOptions.CultureInvariant);
 
         /// <summary>
         /// Returns <c>true</c> if the string value reads (excluding leading
         /// and trailing white space) either <c>"true"</c>, <c>"1"</c>, 
         /// <c>"on"</c> or <c>"yes"</c>. Otherwise it returns <c>false</c>.
         /// </summary>
-
         public static bool IsTruthy(this string value)
         {
             return value != null && TruthinessRegex.IsMatch(value);
@@ -561,17 +544,16 @@ namespace HSNXT
         /// last character. Again, <c>null</c> is returned if the negative
         /// index goes beyond the first character of the string.
         /// </summary>
-        
         public static char? TryCharAt(this string str, int index)
         {
             if (str == null) throw new ArgumentNullException("str");
-            return index < str.Length 
-                 ? index < 0 
-                 ? str.Length + index < 0 
-                 ? (char?) null
-                 : str[str.Length + index] 
-                 : str[index]
-                 : null;
+            return index < str.Length
+                ? index < 0
+                    ? str.Length + index < 0
+                        ? (char?) null
+                        : str[str.Length + index]
+                    : str[index]
+                : null;
         }
 
         /// <summary>
@@ -582,33 +564,33 @@ namespace HSNXT
         /// <remarks>
         /// Empty lines are not removed in the returned string.
         /// </remarks>
-
         public static string TrimCommonLeadingSpace(this string str)
         {
             if (str == null) throw new ArgumentNullException("str");
 
             var output =
-                from lines in new[] { str.SplitIntoLines() }
-                let indents = 
+                from lines in new[] {str.SplitIntoLines()}
+                let indents =
                     from line in lines
 #if NET40 || NET45
                     where !string.IsNullOrWhiteSpace(line)
 #else
                     where !string.IsNullOrEmpty(line) && line.Trim().Length > 0
 #endif
-                    select line.TakeWhile(ch => ch == ' ').Count() into indent
+                    select line.TakeWhile(ch => ch == ' ').Count()
+                    into indent
                     select (int?) indent
                 let indent = indents.Min() ?? 0
                 from line in lines
                 select line.Slice(indent);
-            
-            return string.Join(Environment.NewLine, 
+
+            return string.Join(Environment.NewLine,
 #if NET40 || NET45
                        output.ToArray()
 #else
-                       output.ToArray()
+                output.ToArray()
 #endif
-                );
+            );
         }
 
         /// <summary>
@@ -619,7 +601,6 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution semantics.
         /// </remarks>
-
         public static IEnumerable<string> Partition(this string str, int size)
         {
             if (str == null) throw new ArgumentNullException("str");

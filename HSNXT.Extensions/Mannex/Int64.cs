@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,25 +36,22 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="long"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Converts <see cref="int"/> to its string representation in the
         /// invariant culture.
         /// </summary>
-
         [DebuggerStepThrough]
         public static string ToInvariantString(this long value)
         {
             return value.ToString(CultureInfo.InvariantCulture);
         }
-        
+
         /// <summary>
         /// Calculates the quotient and remainder from dividing two numbers 
         /// and returns a user-defined result.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T DivRem<T>(this long dividend, long divisor, Func<long, long, T> resultFunc)
         {

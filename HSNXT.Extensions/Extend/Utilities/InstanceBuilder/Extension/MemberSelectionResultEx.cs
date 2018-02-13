@@ -13,9 +13,9 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberSelectionResult">The <see cref="MemberSelectionResult" /> to convert.</param>
         /// <returns>Returns the boolean value of the given <see cref="MemberSelectionResult" />.</returns>
-        public static bool? AsBoolean( this MemberSelectionResult memberSelectionResult )
+        public static bool? AsBoolean(this MemberSelectionResult memberSelectionResult)
         {
-            switch ( memberSelectionResult )
+            switch (memberSelectionResult)
             {
                 case MemberSelectionResult.IncludeMember:
                     return true;
@@ -25,9 +25,9 @@ namespace HSNXT
                     return null;
                 default:
                     // This line can not be unit tested
-                    throw new ArgumentOutOfRangeException( nameof(memberSelectionResult),
-                                                           memberSelectionResult,
-                                                           $"The member selection result '{memberSelectionResult}' is not supported." );
+                    throw new ArgumentOutOfRangeException(nameof(memberSelectionResult),
+                        memberSelectionResult,
+                        $"The member selection result '{memberSelectionResult}' is not supported.");
             }
         }
     }

@@ -21,6 +21,5 @@ namespace HSNXT.dotNetExt
 
     public interface IPaginatedList<T> : IPaginatedList, IList<T>, ICollection<T>, IEnumerable<T>
     {
-
     }
 }

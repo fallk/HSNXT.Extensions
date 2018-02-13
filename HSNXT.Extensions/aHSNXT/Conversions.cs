@@ -250,6 +250,5 @@ namespace HSNXT
         {
             return o.ToType(conversionType, CultureInfo.CurrentCulture);
         }
-
     }
 }

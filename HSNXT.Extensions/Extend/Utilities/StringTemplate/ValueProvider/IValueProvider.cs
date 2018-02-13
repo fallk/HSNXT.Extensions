@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        string GetValue( string expression );
+        string GetValue(string expression);
     }
 }

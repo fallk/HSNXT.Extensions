@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 #if NET4
@@ -32,14 +34,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="WaitHandle"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Asynchronously and indefinitely waits for a
         /// <see cref="WaitHandle"/> to become signaled.
         /// </summary>
-
         public static Task<bool> WaitOneAsync(this WaitHandle handle)
         {
             return WaitOneAsync(handle, null, CancellationToken.None);
@@ -50,7 +50,6 @@ namespace HSNXT
         /// signaled. An additional parameter specifies a time-out for the
         /// wait to be satisfied.
         /// </summary>
-
         public static Task<bool> WaitOneAsync(this WaitHandle handle, TimeSpan? timeout)
         {
             return WaitOneAsync(handle, timeout, CancellationToken.None);
@@ -62,7 +61,6 @@ namespace HSNXT
         /// parameter specifies a <see cref="CancellationToken"/> to be used
         /// for cancelling the wait.
         /// </summary>
-
         public static Task<bool> WaitOneAsync(this WaitHandle handle, CancellationToken cancellationToken)
         {
             return WaitOneAsync(handle, null, cancellationToken);
@@ -74,8 +72,8 @@ namespace HSNXT
         /// well as a <see cref="CancellationToken"/> to be used for cancelling
         /// the wait.
         /// </summary>
-
-        public static Task<bool> WaitOneAsync(this WaitHandle handle, TimeSpan? timeout, CancellationToken cancellationToken)
+        public static Task<bool> WaitOneAsync(this WaitHandle handle, TimeSpan? timeout,
+            CancellationToken cancellationToken)
         {
             if (handle == null) throw new ArgumentNullException("handle");
 
@@ -83,7 +81,7 @@ namespace HSNXT
 
             var tcs = new TaskCompletionSource<bool>();
 
-            var rwhref = new[] { default(RegisteredWaitHandle) };
+            var rwhref = new[] {default(RegisteredWaitHandle)};
             var rwh = rwhref[0] = ThreadPool.RegisterWaitForSingleObject(handle,
                 (_, timedOut) =>
                 {
@@ -96,7 +94,7 @@ namespace HSNXT
             {
                 if (cancellationToken.CanBeCanceled)
                 {
-                    var ctrref = new[] { default(CancellationTokenRegistration) };
+                    var ctrref = new[] {default(CancellationTokenRegistration)};
                     ctrref[0] = cancellationToken.Register(() =>
                     {
                         if (tcs.TrySetCanceled())

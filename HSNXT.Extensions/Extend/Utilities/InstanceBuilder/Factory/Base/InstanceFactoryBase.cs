@@ -16,7 +16,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="name">The name of the factory.</param>
         /// <param name="description">The description of the factory.</param>
-        protected InstanceFactoryBase( string name, string description )
+        protected InstanceFactoryBase(string name, string description)
         {
             FactoryName = name;
             FactoryDescription = description;
@@ -45,11 +45,11 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">memberSelectionRule can not be null.</exception>
         /// <param name="memberSelectionRule">The <see cref="IMemberSelectionRule" /> to add.</param>
         /// <returns>Returns the modified factory.</returns>
-        public IInstanceFactory AddSelectionRule( IMemberSelectionRule memberSelectionRule )
+        public IInstanceFactory AddSelectionRule(IMemberSelectionRule memberSelectionRule)
         {
-            memberSelectionRule.ThrowIfNull( nameof(memberSelectionRule) );
+            memberSelectionRule.ThrowIfNull(nameof(memberSelectionRule));
 
-            SelectionRules.Add( memberSelectionRule );
+            SelectionRules.Add(memberSelectionRule);
             return this;
         }
 
@@ -58,7 +58,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberInformation">Information about the member to create a value for.</param>
         /// <returns>Returns the created value.</returns>
-        public abstract object CreateValue( IMemberInformation memberInformation );
+        public abstract object CreateValue(IMemberInformation memberInformation);
 
         /// <summary>
         ///     Gets the name of the factory.

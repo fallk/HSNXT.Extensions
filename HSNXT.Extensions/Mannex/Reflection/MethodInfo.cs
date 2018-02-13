@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -37,7 +39,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="MethodInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -52,24 +53,26 @@ namespace HSNXT
         /// corresponding optional parameter or <see cref="Missing.Value"/> 
         /// if the parameter is not optional or has no default value defined.
         /// </remarks>
-
-        public static IEnumerable<KeyValuePair<ParameterInfo, object>> ZipArgs(this MethodInfo method, params object[] args)
+        public static IEnumerable<KeyValuePair<ParameterInfo, object>> ZipArgs(this MethodInfo method,
+            params object[] args)
         {
             if (method == null) throw new ArgumentNullException("method");
             return ZipArgsImpl(method.GetParameters(), args);
         }
 
-        static IEnumerable<KeyValuePair<ParameterInfo, object>> ZipArgsImpl(IList<ParameterInfo> parameters, IList<object> args)
+        static IEnumerable<KeyValuePair<ParameterInfo, object>> ZipArgsImpl(IList<ParameterInfo> parameters,
+            IList<object> args)
         {
             Debug.Assert(parameters != null);
 
             return from i in Enumerable.Range(0, parameters.Count)
-                   let param = parameters[i]
-                   select param.AsKeyTo(args != null && i < args.Count
-                                        ? args[i]
-                                        : param.IsOptional && (ParameterAttributes.HasDefault == (param.Attributes & ParameterAttributes.HasDefault))
-                                        ? param.DefaultValue
-                                        : System.Reflection.Missing.Value);
+                let param = parameters[i]
+                select param.AsKeyTo(args != null && i < args.Count
+                    ? args[i]
+                    : param.IsOptional && (ParameterAttributes.HasDefault ==
+                                           (param.Attributes & ParameterAttributes.HasDefault))
+                        ? param.DefaultValue
+                        : System.Reflection.Missing.Value);
         }
 
         /// <summary>
@@ -82,53 +85,88 @@ namespace HSNXT
         /// <see cref="Type.Missing"/> for an argument to the invoker to 
         /// have the default value for an optional argument to be filled in.
         /// </remarks>
-        
         public static Func<object[], object> CompileStaticInvoker(this MethodInfo method)
         {
             if (method == null) throw new ArgumentNullException("method");
             if (!method.IsStatic) throw new ArgumentException(null, "method");
-            
+
             var returnsVoid = method.ReturnType == typeof(void);
-        #if !NET4
+#if !NET4
             if (returnsVoid) throw new ArgumentException(null, "method");
         #endif
 
             var argsParameter = Expression.Parameter(typeof(object[]), "args");
 
             var parameters = method.GetParameters();
-            var args = 
+            var args =
                 from p in parameters
                 let arg = Expression.ArrayIndex(argsParameter, Expression.Constant(p.Position))
                 select ParameterAttributes.HasDefault == (p.Attributes & ParameterAttributes.HasDefault)
-                     ? Expression.Call(MakeOptArgMethod(p.ParameterType), arg, Expression.Constant(p.DefaultValue))
-                     : (Expression) Expression.Call(MakeReqArgMethod(p.ParameterType), arg);
+                    ? Expression.Call(MakeOptArgMethod(p.ParameterType), arg, Expression.Constant(p.DefaultValue))
+                    : (Expression) Expression.Call(MakeReqArgMethod(p.ParameterType), arg);
 
             var e = (Expression) Expression.Call(method, args.ToArray());
-            if (!returnsVoid) 
+            if (!returnsVoid)
                 e = Expression.Convert(e, typeof(object));
-        #if NET4
+#if NET4
             var statements = new List<Expression>
             {
                 Expression.Call(ValidateArgCountMethod, argsParameter, Expression.Constant(parameters.Length)),
                 e,
             };
-            if (returnsVoid) 
+            if (returnsVoid)
                 statements.Add(Expression.Constant(null));
             e = Expression.Block(statements);
-        #endif
-            
+#endif
+
             return Expression.Lambda<Func<object[], object>>(e, argsParameter).Compile();
         }
 
         static RuntimeMethodHandle _genericReqArgHandle;
         static RuntimeMethodHandle _genericOptArgHandle;
-        static MethodInfo MakeReqArgMethod(Type type) { return (_genericReqArgHandle != default(RuntimeMethodHandle) ? _genericReqArgHandle : (_genericReqArgHandle = ((Func<object, object>) ReqArg<object>).Method.GetGenericMethodDefinition().MethodHandle)).GetMethodInfo().MakeGenericMethod(type); }
-        static MethodInfo MakeOptArgMethod(Type type) { return (_genericOptArgHandle != default(RuntimeMethodHandle) ? _genericOptArgHandle : (_genericOptArgHandle = ((Func<object, object, object>) OptArg).Method.GetGenericMethodDefinition().MethodHandle)).GetMethodInfo().MakeGenericMethod(type); }
-        static T ReqArg<T>(object arg) { return (T) (arg ?? default(T)); }
-        static T OptArg<T>(object arg, T defaultValue) { return (T) (arg == Type.Missing ? defaultValue : arg ?? default(T)); }
-        
+
+        static MethodInfo MakeReqArgMethod(Type type)
+        {
+            return (_genericReqArgHandle != default(RuntimeMethodHandle)
+                ? _genericReqArgHandle
+                : (_genericReqArgHandle = ((Func<object, object>) ReqArg<object>).Method.GetGenericMethodDefinition()
+                    .MethodHandle)).GetMethodInfo().MakeGenericMethod(type);
+        }
+
+        static MethodInfo MakeOptArgMethod(Type type)
+        {
+            return (_genericOptArgHandle != default(RuntimeMethodHandle)
+                ? _genericOptArgHandle
+                : (_genericOptArgHandle = ((Func<object, object, object>) OptArg).Method.GetGenericMethodDefinition()
+                    .MethodHandle)).GetMethodInfo().MakeGenericMethod(type);
+        }
+
+        static T ReqArg<T>(object arg)
+        {
+            return (T) (arg ?? default(T));
+        }
+
+        static T OptArg<T>(object arg, T defaultValue)
+        {
+            return (T) (arg == Type.Missing ? defaultValue : arg ?? default(T));
+        }
+
         static RuntimeMethodHandle _validateArgCountHandle;
-        static MethodInfo ValidateArgCountMethod { get { return (_validateArgCountHandle != default(RuntimeMethodHandle) ? _validateArgCountHandle : (_validateArgCountHandle = ((Action<object[], int>) ValidateArgCount).Method.MethodHandle)).GetMethodInfo(); } }
-        static void ValidateArgCount(object[] args, int count) { if (args.Length != count) throw new ArgumentException(null, "args"); }
+
+        static MethodInfo ValidateArgCountMethod
+        {
+            get
+            {
+                return (_validateArgCountHandle != default(RuntimeMethodHandle)
+                        ? _validateArgCountHandle
+                        : (_validateArgCountHandle = ((Action<object[], int>) ValidateArgCount).Method.MethodHandle))
+                    .GetMethodInfo();
+            }
+        }
+
+        static void ValidateArgCount(object[] args, int count)
+        {
+            if (args.Length != count) throw new ArgumentException(null, "args");
+        }
     }
 }

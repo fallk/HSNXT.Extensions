@@ -27,8 +27,9 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static bool ToBoolean( [CanBeNull] this object obj, IFormatProvider formatProvider )
-            => Convert.ToBoolean( obj, formatProvider );
+        public static bool ToBoolean([CanBeNull] this object obj, IFormatProvider formatProvider)
+            => Convert.ToBoolean(obj, formatProvider);
+
         /// <summary>
         ///     Converts the value of the specified object to an 8-bit unsigned integer, using the specified culture-specific
         ///     formatting information.
@@ -47,8 +48,9 @@ namespace HSNXT
         /// <returns>An 8-bit unsigned integer that is equivalent to value, or zero if value is null.</returns>
         [Pure]
         [PublicAPI]
-        public static byte ToByte( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToByte( obj, formatProvider );
+        public static byte ToByte([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToByte(obj, formatProvider);
+
         /// <summary>
         ///     Converts the value of the specified object to its equivalent Unicode character, using the specified
         ///     culture-specific formatting information.
@@ -68,9 +70,9 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static char ToChar( [CanBeNull] this object obj, IFormatProvider provider )
-            => Convert.ToChar( obj, provider );
-        
+        public static char ToChar([CanBeNull] this object obj, IFormatProvider provider)
+            => Convert.ToChar(obj, provider);
+
         /// <summary>
         ///     Converts the value of the specified object to a System.DateTime object, using the specified culture-specific
         ///     formatting information.
@@ -89,9 +91,9 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static DateTime ToDateTime( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToDateTime( obj, formatProvider );
-        
+        public static DateTime ToDateTime([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToDateTime(obj, formatProvider);
+
         /// <summary>
         ///     Converts the value of the specified object to an equivalent decimal number, using the specified culture-specific
         ///     formatting information.
@@ -110,9 +112,9 @@ namespace HSNXT
         /// <returns>A decimal number that is equivalent to value, or 0 (zero) if value is null.</returns>
         [Pure]
         [PublicAPI]
-        public static decimal ToDecimal( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToDecimal( obj, formatProvider );
-        
+        public static decimal ToDecimal([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToDecimal(obj, formatProvider);
+
         /// <summary>
         ///     Converts the value of the specified object to an double-precision floating-point number, using the specified
         ///     culture-specific formatting information.
@@ -131,9 +133,9 @@ namespace HSNXT
         /// <returns>A double-precision floating-point number that is equivalent to value, or zero if value is null.</returns>
         [Pure]
         [PublicAPI]
-        public static double ToDouble( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToDouble( obj, formatProvider );
-        
+        public static double ToDouble([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToDouble(obj, formatProvider);
+
         /// <summary>
         ///     Converts the specified string representation of a number to an equivalent 16-bit signed integer, using the
         ///     specified culture-specific formatting information.
@@ -152,9 +154,9 @@ namespace HSNXT
         /// <returns>A 16-bit signed integer that is equivalent to value, or zero if value is null.</returns>
         [Pure]
         [PublicAPI]
-        public static short ToInt16( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToInt16( obj, formatProvider );
-        
+        public static short ToInt16([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToInt16(obj, formatProvider);
+
         /// <summary>
         ///     Converts the specified string representation of a number to an equivalent 32-bit signed integer, using the
         ///     specified culture-specific formatting information.
@@ -173,9 +175,9 @@ namespace HSNXT
         /// <returns>A 32-bit signed integer that is equivalent to value, or zero if value is null.</returns>
         [Pure]
         [PublicAPI]
-        public static int ToInt32( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToInt32( obj, formatProvider );
-        
+        public static int ToInt32([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToInt32(obj, formatProvider);
+
         /// <summary>
         ///     Converts the specified string representation of a number to an equivalent 64-bit signed integer, using the
         ///     specified culture-specific formatting information.
@@ -194,8 +196,8 @@ namespace HSNXT
         /// <returns>A 64-bit signed integer that is equivalent to value, or zero if value is null.</returns>
         [Pure]
         [PublicAPI]
-        public static long ToInt64( [CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider )
-            => Convert.ToInt64( obj, formatProvider );
+        public static long ToInt64([CanBeNull] this object obj, [CanBeNull] IFormatProvider formatProvider)
+            => Convert.ToInt64(obj, formatProvider);
 
         /// <summary>
         ///     Converts the given string to a byte.
@@ -212,13 +214,14 @@ namespace HSNXT
         /// <returns>Returns a byte value that is equivalent to the number contained in value.</returns>
         [Pure]
         [PublicAPI]
-        public static byte ToByte( [NotNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static byte ToByte([NotNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return byte.Parse( value, formatProvider );
+            return byte.Parse(value, formatProvider);
         }
+
         /// <summary>
         ///     Converts the first character of a specified string to a Unicode character.
         /// </summary>
@@ -231,11 +234,11 @@ namespace HSNXT
         /// <returns>Returns a Unicode character that is equivalent to the first and only character in value.</returns>
         [Pure]
         [PublicAPI]
-        public static char ToChar( [NotNull] this string value )
+        public static char ToChar([NotNull] this string value)
         {
-            value.ThrowIfNull( nameof(value) );
+            value.ThrowIfNull(nameof(value));
 
-            return Convert.ToChar( value );
+            return Convert.ToChar(value);
         }
 
         /// <summary>
@@ -253,12 +256,12 @@ namespace HSNXT
         /// <returns>The decimal.</returns>
         [Pure]
         [PublicAPI]
-        public static decimal ToDecimal( [NotNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static decimal ToDecimal([NotNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return decimal.Parse( value, formatProvider );
+            return decimal.Parse(value, formatProvider);
         }
 
         /// <summary>
@@ -276,14 +279,14 @@ namespace HSNXT
         /// <returns>The double.</returns>
         [Pure]
         [PublicAPI]
-        public static double ToDouble( [NotNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static double ToDouble([NotNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return double.Parse( value, formatProvider );
+            return double.Parse(value, formatProvider);
         }
-        
+
         /// <summary>
         ///     Converts the given string to a Int16.
         /// </summary>
@@ -299,14 +302,14 @@ namespace HSNXT
         /// <returns>Returns the converted Int16.</returns>
         [Pure]
         [PublicAPI]
-        public static short ToInt16( [NotNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static short ToInt16([NotNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return short.Parse( value, formatProvider );
+            return short.Parse(value, formatProvider);
         }
-        
+
         /// <summary>
         ///     Converts the given string to a Int32.
         /// </summary>
@@ -322,14 +325,14 @@ namespace HSNXT
         /// <returns>Returns the converted Int32.</returns>
         [Pure]
         [PublicAPI]
-        public static int ToInt32( [NotNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static int ToInt32([NotNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return int.Parse( value, formatProvider );
+            return int.Parse(value, formatProvider);
         }
-        
+
         /// <summary>
         ///     Converts the given string to a Int64.
         /// </summary>
@@ -345,12 +348,12 @@ namespace HSNXT
         /// <returns>Returns the converted Int64.</returns>
         [Pure]
         [PublicAPI]
-        public static long ToInt64( [NotNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static long ToInt64([NotNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return long.Parse( value, formatProvider );
+            return long.Parse(value, formatProvider);
         }
     }
 }

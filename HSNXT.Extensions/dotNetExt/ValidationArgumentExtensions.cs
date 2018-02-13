@@ -20,7 +20,7 @@ namespace HSNXT
         }
 
         #region "NotNull"
-        
+
         [DebuggerHidden]
         public static ValidationArgument<T> NotNull<T>(this ValidationArgument<T> arg) where T : class
         {
@@ -28,6 +28,7 @@ namespace HSNXT
             {
                 throw new ArgumentNullException(arg.Name);
             }
+
             return arg;
         }
 
@@ -43,6 +44,7 @@ namespace HSNXT
             {
                 throw new ArgumentOutOfRangeException(arg.Name);
             }
+
             return arg;
         }
 
@@ -53,6 +55,7 @@ namespace HSNXT
             {
                 throw new ArgumentOutOfRangeException(arg.Name);
             }
+
             return arg;
         }
 
@@ -63,6 +66,7 @@ namespace HSNXT
             {
                 throw new ArgumentOutOfRangeException(arg.Name);
             }
+
             return arg;
         }
 
@@ -73,6 +77,7 @@ namespace HSNXT
             {
                 throw new ArgumentOutOfRangeException(arg.Name, "Guid can not be equal to Guid.Empty");
             }
+
             return arg;
         }
 
@@ -87,6 +92,7 @@ namespace HSNXT
             {
                 throw new ArgumentException("String can not be Null or WhiteSpace", arg.Name);
             }
+
             return arg;
         }
 
@@ -101,6 +107,7 @@ namespace HSNXT
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
@@ -111,46 +118,55 @@ namespace HSNXT
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<double> InRange(this ValidationArgument<double> arg, double minValue, double maxValue)
+        public static ValidationArgument<double> InRange(this ValidationArgument<double> arg, double minValue,
+            double maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<double?> InRange(this ValidationArgument<double?> arg, double minValue, double maxValue)
+        public static ValidationArgument<double?> InRange(this ValidationArgument<double?> arg, double minValue,
+            double maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<short> InRange(this ValidationArgument<short> arg, short minValue, short maxValue)
+        public static ValidationArgument<short> InRange(this ValidationArgument<short> arg, short minValue,
+            short maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<short?> InRange(this ValidationArgument<short?> arg, short minValue, short maxValue)
+        public static ValidationArgument<short?> InRange(this ValidationArgument<short?> arg, short minValue,
+            short maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
@@ -161,53 +177,63 @@ namespace HSNXT
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<long?> InRange(this ValidationArgument<long?> arg, long minValue, long maxValue)
+        public static ValidationArgument<long?> InRange(this ValidationArgument<long?> arg, long minValue,
+            long maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<float> InRange(this ValidationArgument<float> arg, float minValue, float maxValue)
+        public static ValidationArgument<float> InRange(this ValidationArgument<float> arg, float minValue,
+            float maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<float?> InRange(this ValidationArgument<float?> arg, short minValue, float maxValue)
+        public static ValidationArgument<float?> InRange(this ValidationArgument<float?> arg, short minValue,
+            float maxValue)
         {
             if (arg.Value < minValue || arg.Value > maxValue)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<T> InRange<T>(this ValidationArgument<T> arg, T minValue, T maxValue) where T: IComparable
+        public static ValidationArgument<T> InRange<T>(this ValidationArgument<T> arg, T minValue, T maxValue)
+            where T : IComparable
         {
             if (arg.Value.CompareTo(minValue) < 0 || arg.Value.CompareTo(maxValue) > 0)
             {
                 throwOutOfRange(arg.Name, minValue.ToString(), maxValue.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
         private static void throwOutOfRange(string paramName, string min, string max)
         {
-            throw new ArgumentOutOfRangeException(paramName, string.Format("Out of Range (min: {0}) (max: {1})", min, max));
+            throw new ArgumentOutOfRangeException(paramName,
+                string.Format("Out of Range (min: {0}) (max: {1})", min, max));
         }
 
         #endregion
@@ -221,23 +247,27 @@ namespace HSNXT
             {
                 throwStartsWith(arg.Name, value);
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<string> StartsWith(this ValidationArgument<string> arg, string value, StringComparison stringComparison)
+        public static ValidationArgument<string> StartsWith(this ValidationArgument<string> arg, string value,
+            StringComparison stringComparison)
         {
             if (!arg.Value.StartsWith(value, stringComparison))
             {
                 throwStartsWith(arg.Name, value);
             }
+
             return arg;
         }
 
         [DebuggerHidden]
         private static void throwStartsWith(string paramName, string val)
         {
-            throw new ArgumentException(string.Format("Parameter ({0}) must start with '{1}'", paramName, val), paramName);
+            throw new ArgumentException(string.Format("Parameter ({0}) must start with '{1}'", paramName, val),
+                paramName);
         }
 
         #endregion
@@ -251,23 +281,27 @@ namespace HSNXT
             {
                 throwEndsWith(arg.Name, value);
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<string> EndsWith(this ValidationArgument<string> arg, string value, StringComparison stringComparison)
+        public static ValidationArgument<string> EndsWith(this ValidationArgument<string> arg, string value,
+            StringComparison stringComparison)
         {
             if (!arg.Value.EndsWith(value, stringComparison))
             {
                 throwEndsWith(arg.Name, value);
             }
+
             return arg;
         }
 
         [DebuggerHidden]
         private static void throwEndsWith(string paramName, string val)
         {
-            throw new ArgumentException(string.Format("Parameter ({0}) must end with '{1}'", paramName, val), paramName);
+            throw new ArgumentException(string.Format("Parameter ({0}) must end with '{1}'", paramName, val),
+                paramName);
         }
 
         #endregion
@@ -281,6 +315,7 @@ namespace HSNXT
             {
                 throwContains(arg.Name, value);
             }
+
             return arg;
         }
 
@@ -301,6 +336,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -311,6 +347,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -321,6 +358,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -331,6 +369,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -341,6 +380,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -351,9 +391,10 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
-            return arg;
 
+            return arg;
         }
+
         [DebuggerHidden]
         public static ValidationArgument<double> LessThan(this ValidationArgument<double> arg, double value)
         {
@@ -361,6 +402,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -371,6 +413,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -381,6 +424,7 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -391,23 +435,27 @@ namespace HSNXT
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<T> LessThan<T>(this ValidationArgument<T> arg, T value) where T: IComparable
+        public static ValidationArgument<T> LessThan<T>(this ValidationArgument<T> arg, T value) where T : IComparable
         {
             if (arg.Value.CompareTo(value) >= 0)
             {
                 throwLessThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
         private static void throwLessThan(string paramName, string actualValue, string expectedValue)
         {
-            throw new ArgumentOutOfRangeException(paramName, string.Format("Value ({2}) of parameter ({0}) must be less than '{1}'", paramName, expectedValue, actualValue));
+            throw new ArgumentOutOfRangeException(paramName,
+                string.Format("Value ({2}) of parameter ({0}) must be less than '{1}'", paramName, expectedValue,
+                    actualValue));
         }
 
         #endregion
@@ -421,6 +469,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -431,6 +480,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -441,6 +491,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -451,6 +502,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -461,6 +513,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -471,9 +524,10 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
-            return arg;
 
+            return arg;
         }
+
         [DebuggerHidden]
         public static ValidationArgument<double> GreaterThan(this ValidationArgument<double> arg, double value)
         {
@@ -481,6 +535,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -491,6 +546,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -501,6 +557,7 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
@@ -511,23 +568,28 @@ namespace HSNXT
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
-        public static ValidationArgument<T> GreaterThan<T>(this ValidationArgument<T> arg, T value) where T : IComparable
+        public static ValidationArgument<T> GreaterThan<T>(this ValidationArgument<T> arg, T value)
+            where T : IComparable
         {
             if (arg.Value.CompareTo(value) <= 0)
             {
                 throwGreaterThan(arg.Name, arg.Value.ToString(), value.ToString());
             }
+
             return arg;
         }
 
         [DebuggerHidden]
         private static void throwGreaterThan(string paramName, string actualValue, string expectedValue)
         {
-            throw new ArgumentOutOfRangeException(paramName, string.Format("Value ({2}) of parameter ({0}) must be greater than '{1}'", paramName, expectedValue, actualValue));
+            throw new ArgumentOutOfRangeException(paramName,
+                string.Format("Value ({2}) of parameter ({0}) must be greater than '{1}'", paramName, expectedValue,
+                    actualValue));
         }
 
         #endregion
@@ -539,8 +601,11 @@ namespace HSNXT
         {
             if (arg.Value.Length >= value)
             {
-                throw new ArgumentException(string.Format("Length ({2}) of Parameter ({0}) must be less than {1}", arg.Name, value.ToString(), arg.Value.Length), arg.Name);
+                throw new ArgumentException(
+                    string.Format("Length ({2}) of Parameter ({0}) must be less than {1}", arg.Name, value.ToString(),
+                        arg.Value.Length), arg.Name);
             }
+
             return arg;
         }
 
@@ -553,8 +618,11 @@ namespace HSNXT
         {
             if (arg.Value.Length <= value)
             {
-                throw new ArgumentException(string.Format("Length ({2}) of Parameter ({0}) must be greater than {1}", arg.Name, value.ToString(), arg.Value.Length), arg.Name);
+                throw new ArgumentException(
+                    string.Format("Length ({2}) of Parameter ({0}) must be greater than {1}", arg.Name,
+                        value.ToString(), arg.Value.Length), arg.Name);
             }
+
             return arg;
         }
 
@@ -569,12 +637,14 @@ namespace HSNXT
         /// <param name="regularExpressionToMatch">The regular expression pattern to match.</param>
         /// <returns></returns>
         [DebuggerHidden]
-        public static ValidationArgument<string> IsMatch(this ValidationArgument<string> arg, string regularExpressionToMatch)
+        public static ValidationArgument<string> IsMatch(this ValidationArgument<string> arg,
+            string regularExpressionToMatch)
         {
             if (!Regex.IsMatch(arg.Value, regularExpressionToMatch))
             {
                 throwIsMatch(arg.Name, arg.Value, regularExpressionToMatch);
             }
+
             return arg;
         }
 
@@ -586,18 +656,22 @@ namespace HSNXT
         /// <param name="options">A bitwise combination of the enumeration values that provide options for matching.</param>
         /// <returns></returns>
         [DebuggerHidden]
-        public static ValidationArgument<string> IsMatch(this ValidationArgument<string> arg, string regularExpressionToMatch, RegexOptions options)
+        public static ValidationArgument<string> IsMatch(this ValidationArgument<string> arg,
+            string regularExpressionToMatch, RegexOptions options)
         {
             if (!Regex.IsMatch(arg.Value, regularExpressionToMatch, options))
             {
                 throwIsMatch(arg.Name, arg.Value, regularExpressionToMatch);
             }
+
             return arg;
         }
 
         private static void throwIsMatch(string paramName, string val, string regex)
         {
-            throw new ArgumentException(string.Format("Parameter ({0}) Value ({1}) does not match regular expression: {2}", paramName, val, regex), paramName);
+            throw new ArgumentException(
+                string.Format("Parameter ({0}) Value ({1}) does not match regular expression: {2}", paramName, val,
+                    regex), paramName);
         }
 
         #endregion

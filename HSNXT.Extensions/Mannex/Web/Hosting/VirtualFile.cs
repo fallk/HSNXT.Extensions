@@ -1,5 +1,7 @@
 #if NetFX
+
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -20,6 +22,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -37,14 +40,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="VirtualFile"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Opens the text file, reads and returns all its content as a 
         /// single string and then closes the file.
         /// </summary>
-
         public static string ReadAllText(this VirtualFile file)
         {
             return ReadAllTextImpl(file, null);
@@ -55,7 +56,6 @@ namespace HSNXT
         /// single string and then closes the file. An additional parameter
         /// specified the encoding to convert file bytes to text.
         /// </summary>
-
         public static string ReadAllText(this VirtualFile file, Encoding encoding)
         {
             if (encoding == null) throw new ArgumentNullException("encoding");
@@ -67,8 +67,8 @@ namespace HSNXT
             if (file == null) throw new ArgumentNullException("file");
             using (var stream = file.Open())
             using (var reader = encoding == null
-                              ? new StreamReader(stream)
-                              : new StreamReader(stream, encoding))
+                ? new StreamReader(stream)
+                : new StreamReader(stream, encoding))
             {
                 return reader.ReadToEnd();
             }
@@ -80,7 +80,6 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred semantics.
         /// </remarks>
-
         public static IEnumerable<string> ReadLines(this VirtualFile file)
         {
             if (file == null) throw new ArgumentNullException("file");
@@ -93,7 +92,6 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred semantics.
         /// </remarks>
-
         public static IEnumerable<string> ReadLines(this VirtualFile file, Encoding encoding)
         {
             if (file == null) throw new ArgumentNullException("file");
@@ -104,12 +102,12 @@ namespace HSNXT
         static IEnumerable<string> ReadLinesImpl(this VirtualFile file, Encoding encoding)
         {
             using (var stream = file.Open())
-            using (var reader = encoding == null 
-                              ? new StreamReader(stream)
-                              : new StreamReader(stream, encoding))
+            using (var reader = encoding == null
+                ? new StreamReader(stream)
+                : new StreamReader(stream, encoding))
             using (var e = reader.ReadLines())
-            while (e.MoveNext())
-                yield return e.Current;
+                while (e.MoveNext())
+                    yield return e.Current;
         }
     }
 }

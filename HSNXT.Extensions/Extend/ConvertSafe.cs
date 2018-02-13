@@ -16,8 +16,9 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static bool SafeToBoolean( [CanBeNull] this string value, bool defaultValue = default(bool) )
-            => value.TryParsBoolean( out var outValue ) ? outValue : defaultValue;
+        public static bool SafeToBoolean([CanBeNull] this string value, bool defaultValue = default(bool))
+            => value.TryParsBoolean(out var outValue) ? outValue : defaultValue;
+
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
         ///     equivalent.
@@ -31,8 +32,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static byte SafeToByte( [CanBeNull] this string value, byte defaultValue = default(byte) )
-            => value.TryParsByte( out var outValue ) ? outValue : defaultValue;
+        public static byte SafeToByte([CanBeNull] this string value, byte defaultValue = default(byte))
+            => value.TryParsByte(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
@@ -61,15 +62,16 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static byte SafeToByte( [CanBeNull] this string value,
-                                       NumberStyles numberStyle,
-                                       [NotNull] IFormatProvider formatProvider,
-                                       byte defaultValue = default(byte) )
+        public static byte SafeToByte([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            byte defaultValue = default(byte))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsByte( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsByte(numberStyle, formatProvider, out var outValue) ? outValue : defaultValue;
         }
+
         /// <summary>
         ///     Converts the value of the specified string to its equivalent Unicode character.
         /// </summary>
@@ -78,8 +80,9 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static char SafeToChar( [CanBeNull] this string value, char defaultValue = default(char) )
-            => value.TryParsChar( out var outValue ) ? outValue : defaultValue;
+        public static char SafeToChar([CanBeNull] this string value, char defaultValue = default(char))
+            => value.TryParsChar(out var outValue) ? outValue : defaultValue;
+
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent.
         /// </summary>
@@ -88,8 +91,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime SafeToDateTime( [CanBeNull] this string value, DateTime defaultValue = default(DateTime) )
-            => value.TryParsDateTime( out var outValue ) ? outValue : defaultValue;
+        public static DateTime SafeToDateTime([CanBeNull] this string value, DateTime defaultValue = default(DateTime))
+            => value.TryParsDateTime(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent using the
@@ -115,15 +118,16 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime SafeToDateTime( [CanBeNull] this string value,
-                                               [NotNull] IFormatProvider formatProvider,
-                                               DateTimeStyles dateTimeStyle,
-                                               DateTime defaultValue = default(DateTime) )
+        public static DateTime SafeToDateTime([CanBeNull] this string value,
+            [NotNull] IFormatProvider formatProvider,
+            DateTimeStyles dateTimeStyle,
+            DateTime defaultValue = default(DateTime))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsDateTime( formatProvider, dateTimeStyle, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsDateTime(formatProvider, dateTimeStyle, out var outValue) ? outValue : defaultValue;
         }
+
         /// <summary>
         ///     Converts the string representation of a number to its <see cref="Decimal" /> equivalent.
         /// </summary>
@@ -132,8 +136,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static decimal SafeToDecimal( [CanBeNull] this string value, decimal defaultValue = default(decimal) )
-            => value.TryParsDecimal( out var outValue ) ? outValue : defaultValue;
+        public static decimal SafeToDecimal([CanBeNull] this string value, decimal defaultValue = default(decimal))
+            => value.TryParsDecimal(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number to its System.Decimal equivalent
@@ -154,15 +158,16 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static decimal SafeToDecimal( [CanBeNull] this string value,
-                                             NumberStyles numberStyle,
-                                             [NotNull] IFormatProvider formatProvider,
-                                             decimal defaultValue = default(decimal) )
+        public static decimal SafeToDecimal([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            decimal defaultValue = default(decimal))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsDecimal( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsDecimal(numberStyle, formatProvider, out var outValue) ? outValue : defaultValue;
         }
+
         /// <summary>
         ///     Converts the string representation of a number to its double-precision floating-point
         ///     number equivalent.
@@ -172,8 +177,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static double SafeToDouble( [CanBeNull] this string value, double defaultValue = default(double) )
-            => value.TryParsDouble( out var outValue ) ? outValue : defaultValue;
+        public static double SafeToDouble([CanBeNull] this string value, double defaultValue = default(double))
+            => value.TryParsDouble(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -197,15 +202,16 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static double SafeToDouble( [CanBeNull] this string value,
-                                           NumberStyles numberStyle,
-                                           [NotNull] IFormatProvider formatProvider,
-                                           double defaultValue = default(double) )
+        public static double SafeToDouble([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            double defaultValue = default(double))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsDouble( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsDouble(numberStyle, formatProvider, out var outValue) ? outValue : defaultValue;
         }
+
         /// <summary>
         ///     Converts the string representation of a GUID to the equivalent <see cref="Guid" /> structure.
         /// </summary>
@@ -217,8 +223,9 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Guid SafeToGuid( [CanBeNull] this string value, Guid defaultValue = default(Guid) )
-            => value.TryParsGuid( out var outValue ) ? outValue : defaultValue;
+        public static Guid SafeToGuid([CanBeNull] this string value, Guid defaultValue = default(Guid))
+            => value.TryParsGuid(out var outValue) ? outValue : defaultValue;
+
         /// <summary>
         ///     Converts the string representation of a number to its 16-bit signed integer
         ///     equivalent.
@@ -228,8 +235,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static short SafeToInt16( [CanBeNull] this string value, short defaultValue = default(short) )
-            => value.TryParsInt16( out var outValue ) ? outValue : defaultValue;
+        public static short SafeToInt16([CanBeNull] this string value, short defaultValue = default(short))
+            => value.TryParsInt16(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -251,15 +258,16 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static short SafeToInt16( [CanBeNull] this string value,
-                                         NumberStyles numberStyle,
-                                         [NotNull] IFormatProvider formatProvider,
-                                         short defaultValue = default(short) )
+        public static short SafeToInt16([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            short defaultValue = default(short))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsInt16( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsInt16(numberStyle, formatProvider, out var outValue) ? outValue : defaultValue;
         }
+
         /// <summary>
         ///     Converts the string representation of a number to its 32-bit signed integer
         ///     equivalent.
@@ -269,8 +277,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static int SafeToInt32( [CanBeNull] this string value, int defaultValue = default(int) )
-            => value.TryParsInt32( out var outValue ) ? outValue : defaultValue;
+        public static int SafeToInt32([CanBeNull] this string value, int defaultValue = default(int))
+            => value.TryParsInt32(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -292,15 +300,16 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static int SafeToInt32( [CanBeNull] this string value,
-                                         NumberStyles numberStyle,
-                                         [NotNull] IFormatProvider formatProvider,
-                                         int defaultValue = default(int) )
+        public static int SafeToInt32([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            int defaultValue = default(int))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsInt32( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsInt32(numberStyle, formatProvider, out var outValue) ? outValue : defaultValue;
         }
+
         /// <summary>
         ///     Converts the string representation of a number to its 64-bit signed integer
         ///     equivalent.
@@ -310,8 +319,8 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static long SafeToInt64( [CanBeNull] this string value, long defaultValue = default(long) )
-            => value.TryParsInt64( out var outValue ) ? outValue : defaultValue;
+        public static long SafeToInt64([CanBeNull] this string value, long defaultValue = default(long))
+            => value.TryParsInt64(out var outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -333,14 +342,14 @@ namespace HSNXT
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static long SafeToInt64( [CanBeNull] this string value,
-                                         NumberStyles numberStyle,
-                                         [NotNull] IFormatProvider formatProvider,
-                                         long defaultValue = default(long) )
+        public static long SafeToInt64([CanBeNull] this string value,
+            NumberStyles numberStyle,
+            [NotNull] IFormatProvider formatProvider,
+            long defaultValue = default(long))
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return value.TryParsInt64( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsInt64(numberStyle, formatProvider, out var outValue) ? outValue : defaultValue;
         }
     }
 }

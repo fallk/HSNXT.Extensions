@@ -24,7 +24,7 @@ namespace HSNXT.Nardax.Serialization
             var bytes = new UTF8Encoding().GetBytes(value);
             using (var memoryStream = new MemoryStream(bytes))
             {
-                var obj = (T)new XmlSerializer(typeof(T)).Deserialize(memoryStream);
+                var obj = (T) new XmlSerializer(typeof(T)).Deserialize(memoryStream);
                 return obj;
             }
         }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,24 +31,23 @@ namespace HSNXT
     using System.Diagnostics;
     using System.IO;
     using System.Threading;
-    #if NET4
+#if NET4
     using System.Threading.Tasks;
-    #endif
+
+#endif
 
     #endregion
 
     /// <summary>
     /// Extension methods for <see cref="ProcessStartInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
-        #if NET4
+#if NET4
 
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<Process> StartAsync(this ProcessStartInfo startInfo)
         {
             return StartAsync(startInfo, new CancellationToken());
@@ -55,7 +56,6 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<Process> StartAsync(this ProcessStartInfo startInfo, CancellationToken cancellationToken)
         {
             return StartAsync(startInfo, null, null, cancellationToken);
@@ -64,7 +64,6 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<T> StartAsync<T>(this ProcessStartInfo startInfo, Func<Process, string, T> selector)
         {
             return StartAsync(startInfo, CancellationToken.None, selector);
@@ -73,8 +72,8 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
-        public static Task<T> StartAsync<T>(this ProcessStartInfo startInfo, CancellationToken cancellationToken, Func<Process, string, T> selector)
+        public static Task<T> StartAsync<T>(this ProcessStartInfo startInfo, CancellationToken cancellationToken,
+            Func<Process, string, T> selector)
         {
             return StartAsync(startInfo, false, cancellationToken, (p, stdout, _) => selector(p, stdout));
         }
@@ -82,7 +81,6 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<T> StartAsync<T>(this ProcessStartInfo startInfo, Func<Process, string, string, T> selector)
         {
             return StartAsync(startInfo, CancellationToken.None, selector);
@@ -91,30 +89,30 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
-        public static Task<T> StartAsync<T>(this ProcessStartInfo startInfo, CancellationToken cancellationToken, Func<Process, string, string, T> selector)
+        public static Task<T> StartAsync<T>(this ProcessStartInfo startInfo, CancellationToken cancellationToken,
+            Func<Process, string, string, T> selector)
         {
             return StartAsync(startInfo, true, cancellationToken, selector);
         }
 
-        static Task<T> StartAsync<T>(ProcessStartInfo startInfo, bool captureStandardError, CancellationToken cancellationToken, Func<Process, string, string, T> selector)
+        static Task<T> StartAsync<T>(ProcessStartInfo startInfo, bool captureStandardError,
+            CancellationToken cancellationToken, Func<Process, string, string, T> selector)
         {
             if (selector == null) throw new ArgumentNullException("selector");
             var stdout = new StringWriter();
             var stderr = captureStandardError ? new StringWriter() : null;
             var task = StartAsync(startInfo, stdout, stderr, cancellationToken);
             return task.ContinueWith(t => selector(t.Result,
-                                                   stdout.ToString(),
-                                                   (stderr != null ? stderr.ToString() : null)),
-                                     cancellationToken,
-                                     TaskContinuationOptions.ExecuteSynchronously,
-                                     TaskScheduler.Current);
+                    stdout.ToString(),
+                    (stderr != null ? stderr.ToString() : null)),
+                cancellationToken,
+                TaskContinuationOptions.ExecuteSynchronously,
+                TaskScheduler.Current);
         }
 
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<Process> StartAsync(this ProcessStartInfo startInfo, TextWriter stdout)
         {
             return StartAsync(startInfo, stdout, CancellationToken.None);
@@ -123,7 +121,6 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<Process> StartAsync(this ProcessStartInfo startInfo,
             TextWriter stdout, CancellationToken cancellationToken)
         {
@@ -133,7 +130,6 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<Process> StartAsync(this ProcessStartInfo startInfo,
             TextWriter stdout, TextWriter stderr)
         {
@@ -143,7 +139,6 @@ namespace HSNXT
         /// <summary>
         /// Starts the process and waits for it to complete asynchronously.
         /// </summary>
-
         public static Task<Process> StartAsync(this ProcessStartInfo startInfo,
             TextWriter stdout, TextWriter stderr,
             CancellationToken cancellationToken)
@@ -172,14 +167,15 @@ namespace HSNXT
                             process.CancelOutputRead();
                             process.CancelErrorRead();
                         }
+
                         process.TryKill();
                     });
 
                 process.EnableRaisingEvents = true;
 
                 var drain = capturingOutput
-                          ? process.BeginReadLine(stdout, stderr)
-                          : _ => true;
+                    ? process.BeginReadLine(stdout, stderr)
+                    : _ => true;
 
                 process.Exited += delegate
                 {
@@ -191,6 +187,7 @@ namespace HSNXT
                             return;
                         }
                     }
+
                     tcs.TrySetResult(process);
                 };
 
@@ -205,6 +202,6 @@ namespace HSNXT
             return tcs.Task;
         }
 
-        #endif
+#endif
     }
 }

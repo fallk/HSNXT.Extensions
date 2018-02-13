@@ -19,16 +19,16 @@ namespace HSNXT
         /// <param name="keyValuePair">The KeyValuePair to add.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
         [PublicAPI]
-        public static bool AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                                 KeyValuePair<TKey, TValue> keyValuePair )
+        public static bool AddIfNotContainsKey<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            KeyValuePair<TKey, TValue> keyValuePair)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keyValuePair.Key.ThrowIfNull( nameof(keyValuePair.Key) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keyValuePair.Key.ThrowIfNull(nameof(keyValuePair.Key));
 
-            if ( dictionary.ContainsKey( keyValuePair.Key ) )
+            if (dictionary.ContainsKey(keyValuePair.Key))
                 return false;
 
-            dictionary.Add( keyValuePair );
+            dictionary.Add(keyValuePair);
             return true;
         }
 
@@ -44,16 +44,16 @@ namespace HSNXT
         /// <param name="keyValuePair">The KeyValuePair to be added or updated.</param>
         /// <returns>The new value for the key.</returns>
         [PublicAPI]
-        public static TValue AddOrUpdate<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                        KeyValuePair<TKey, TValue> keyValuePair )
+        public static TValue AddOrUpdate<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            KeyValuePair<TKey, TValue> keyValuePair)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keyValuePair.Key.ThrowIfNull( nameof(keyValuePair.Key) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keyValuePair.Key.ThrowIfNull(nameof(keyValuePair.Key));
 
-            if ( dictionary.ContainsKey( keyValuePair.Key ) )
+            if (dictionary.ContainsKey(keyValuePair.Key))
                 dictionary[keyValuePair.Key] = keyValuePair.Value;
             else
-                dictionary.Add( keyValuePair );
+                dictionary.Add(keyValuePair);
 
             return dictionary[keyValuePair.Key];
         }
@@ -72,18 +72,18 @@ namespace HSNXT
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>The new value for the key.</returns>
         [PublicAPI]
-        public static TValue AddOrUpdate<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                        [NotNull] TKey key,
-                                                        [NotNull] Func<TValue> valueFactory )
+        public static TValue AddOrUpdate<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            [NotNull] TKey key,
+            [NotNull] Func<TValue> valueFactory)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-            valueFactory.ThrowIfNull( nameof(valueFactory) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
+            valueFactory.ThrowIfNull(nameof(valueFactory));
 
-            if ( dictionary.ContainsKey( key ) )
+            if (dictionary.ContainsKey(key))
                 dictionary[key] = valueFactory();
             else
-                dictionary.Add( key, valueFactory() );
+                dictionary.Add(key, valueFactory());
 
             return dictionary[key];
         }
@@ -99,21 +99,22 @@ namespace HSNXT
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>The new value for the key.</returns>
         [PublicAPI]
-        public static TValue AddOrUpdate<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                        [NotNull] TKey key,
-                                                        [NotNull] Func<TKey, TValue> valueFactory )
+        public static TValue AddOrUpdate<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            [NotNull] TKey key,
+            [NotNull] Func<TKey, TValue> valueFactory)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-            valueFactory.ThrowIfNull( nameof(valueFactory) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
+            valueFactory.ThrowIfNull(nameof(valueFactory));
 
-            if ( dictionary.ContainsKey( key ) )
-                dictionary[key] = valueFactory( key );
+            if (dictionary.ContainsKey(key))
+                dictionary[key] = valueFactory(key);
             else
-                dictionary.Add( key, valueFactory( key ) );
+                dictionary.Add(key, valueFactory(key));
 
             return dictionary[key];
         }
+
         /// <summary>
         ///     Adds the values of the given dictionary to the dictionary.
         /// </summary>
@@ -125,15 +126,17 @@ namespace HSNXT
         /// <typeparam name="TValue">The type of the values.</typeparam>
         /// <returns>Returns the dictionary containing all the items..</returns>
         [PublicAPI]
-        public static IDictionary<TKey, TValue> AddRange<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                                        [NotNull] IDictionary<TKey, TValue> otherDictionary )
+        public static IDictionary<TKey, TValue> AddRange<TKey, TValue>(
+            [NotNull] this IDictionary<TKey, TValue> dictionary,
+            [NotNull] IDictionary<TKey, TValue> otherDictionary)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            otherDictionary.ThrowIfNull( nameof(otherDictionary) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            otherDictionary.ThrowIfNull(nameof(otherDictionary));
 
-            otherDictionary.ForEach( x => dictionary.Add( x.Key, x.Value ) );
+            otherDictionary.ForEach(x => dictionary.Add(x.Key, x.Value));
             return dictionary;
         }
+
         /// <summary>
         ///     Concatenates the given sequences.
         /// </summary>
@@ -152,21 +155,22 @@ namespace HSNXT
         [NotNull]
         public static IDictionary<TValue, TKey> ConcatAllToDictionary<TValue, TKey>(
             [NotNull] this IDictionary<TValue, TKey> dictionary,
-            [NotNull] [ItemCanBeNull] params IDictionary<TValue, TKey>[] dictionaries )
+            [NotNull] [ItemCanBeNull] params IDictionary<TValue, TKey>[] dictionaries)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            dictionaries.ThrowIfNull( nameof(dictionaries) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            dictionaries.ThrowIfNull(nameof(dictionaries));
 
             var result = dictionary;
-            dictionaries.ForEach( x =>
+            dictionaries.ForEach(x =>
             {
-                if ( x == null )
+                if (x == null)
                     return;
-                x.ForEach( y => result.Add( y.Key, y.Value ) );
-            } );
+                x.ForEach(y => result.Add(y.Key, y.Value));
+            });
 
             return result;
         }
+
         /// <summary>
         ///     Concatenates the given sequences in a safe manner.
         /// </summary>
@@ -187,26 +191,27 @@ namespace HSNXT
         [NotNull]
         public static IDictionary<TValue, TKey> ConcatAllToDictionarySafe<TValue, TKey>(
             [NotNull] this IDictionary<TValue, TKey> dictionary,
-            [NotNull] [ItemCanBeNull] params IDictionary<TValue, TKey>[] dictionaries )
+            [NotNull] [ItemCanBeNull] params IDictionary<TValue, TKey>[] dictionaries)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            dictionaries.ThrowIfNull( nameof(dictionaries) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            dictionaries.ThrowIfNull(nameof(dictionaries));
 
             var result = dictionary;
-            dictionaries.ForEach( x =>
+            dictionaries.ForEach(x =>
             {
-                if ( x == null )
+                if (x == null)
                     return;
 
-                x.ForEach( y =>
+                x.ForEach(y =>
                 {
-                    if ( !result.ContainsKey( y.Key ) )
-                        result.Add( y.Key, y.Value );
-                } );
-            } );
+                    if (!result.ContainsKey(y.Key))
+                        result.Add(y.Key, y.Value);
+                });
+            });
 
             return result;
         }
+
         /// <summary>
         ///     Concatenates the given sequences.
         /// </summary>
@@ -226,15 +231,16 @@ namespace HSNXT
         [Pure]
         public static IDictionary<TValue, TKey> ConcatToDictionary<TValue, TKey>(
             [NotNull] this IEnumerable<KeyValuePair<TValue, TKey>> first,
-            [NotNull] IEnumerable<KeyValuePair<TValue, TKey>> second )
+            [NotNull] IEnumerable<KeyValuePair<TValue, TKey>> second)
         {
-            first.ThrowIfNull( nameof(first) );
-            second.ThrowIfNull( nameof(second) );
+            first.ThrowIfNull(nameof(first));
+            second.ThrowIfNull(nameof(second));
 
             return first
-                .Concat( second )
-                .ToDictionary( x => x.Key, x => x.Value );
+                .Concat(second)
+                .ToDictionary(x => x.Key, x => x.Value);
         }
+
         /// <summary>
         ///     Concatenates the given sequences in a safe manner.
         /// </summary>
@@ -256,18 +262,19 @@ namespace HSNXT
         [NotNull]
         public static IDictionary<TValue, TKey> ConcatToDictionarySafe<TValue, TKey>(
             [NotNull] this IEnumerable<KeyValuePair<TValue, TKey>> first,
-            [NotNull] IEnumerable<KeyValuePair<TValue, TKey>> second )
+            [NotNull] IEnumerable<KeyValuePair<TValue, TKey>> second)
         {
-            first.ThrowIfNull( nameof(first) );
-            second.ThrowIfNull( nameof(second) );
+            first.ThrowIfNull(nameof(first));
+            second.ThrowIfNull(nameof(second));
 
             return first
-                .Concat( second )
-                .GroupBy( x => x.Key )
-                .ToDictionary( x => x.Key,
-                               x => x.First()
-                                     .Value );
+                .Concat(second)
+                .GroupBy(x => x.Key)
+                .ToDictionary(x => x.Key,
+                    x => x.First()
+                        .Value);
         }
+
         /// <summary>
         ///     Checks if the dictionary contains all given keys.
         /// </summary>
@@ -280,14 +287,15 @@ namespace HSNXT
         /// <returns>Returns true if the dictionary contains all keys.</returns>
         [PublicAPI]
         [Pure]
-        public static bool ContainsAllKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                            [NotNull] [ItemNotNull] IEnumerable<TKey> keys )
+        public static bool ContainsAllKey<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            [NotNull] [ItemNotNull] IEnumerable<TKey> keys)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keys.ThrowIfNull( nameof(keys) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keys.ThrowIfNull(nameof(keys));
 
-            return keys.All( dictionary.ContainsKey );
+            return keys.All(dictionary.ContainsKey);
         }
+
         /// <summary>
         ///     Checks if the dictionary contains any of the given keys.
         /// </summary>
@@ -300,14 +308,15 @@ namespace HSNXT
         /// <returns>Returns true if the dictionary contains any of the given keys, otherwise false.</returns>
         [PublicAPI]
         [Pure]
-        public static bool ContainsAnyKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                            [NotNull] [ItemNotNull] IEnumerable<TKey> keys )
+        public static bool ContainsAnyKey<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            [NotNull] [ItemNotNull] IEnumerable<TKey> keys)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keys.ThrowIfNull( nameof(keys) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keys.ThrowIfNull(nameof(keys));
 
-            return keys.Any( dictionary.ContainsKey );
+            return keys.Any(dictionary.ContainsKey);
         }
+
         /// <summary>
         ///     Gets all keys of the given dictionary.
         /// </summary>
@@ -319,12 +328,13 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static IEnumerable<TKey> GetAllKeys<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary )
+        public static IEnumerable<TKey> GetAllKeys<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
+            dictionary.ThrowIfNull(nameof(dictionary));
 
-            return dictionary.Select( x => x.Key );
+            return dictionary.Select(x => x.Key);
         }
+
         /// <summary>
         ///     Gets all keys of the given dictionary as list.
         /// </summary>
@@ -336,13 +346,14 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static List<TKey> GetAllKeysAsList<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary )
+        public static List<TKey> GetAllKeysAsList<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
+            dictionary.ThrowIfNull(nameof(dictionary));
 
-            return dictionary.Select( x => x.Key )
-                             .ToList();
+            return dictionary.Select(x => x.Key)
+                .ToList();
         }
+
         /// <summary>
         ///     Adds the given key value pair to the dictionary if the key does not already exist.
         /// </summary>
@@ -360,14 +371,14 @@ namespace HSNXT
         [PublicAPI]
         [MustUseReturnValue]
         [CanBeNull]
-        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                     KeyValuePair<TKey, TValue> keyValuePair )
+        public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            KeyValuePair<TKey, TValue> keyValuePair)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            keyValuePair.Key.ThrowIfNull( nameof(keyValuePair.Key) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keyValuePair.Key.ThrowIfNull(nameof(keyValuePair.Key));
 
-            if ( !dictionary.ContainsKey( keyValuePair.Key ) )
-                dictionary.Add( keyValuePair );
+            if (!dictionary.ContainsKey(keyValuePair.Key))
+                dictionary.Add(keyValuePair);
 
             return keyValuePair.Value;
         }
@@ -390,16 +401,16 @@ namespace HSNXT
         [PublicAPI]
         [MustUseReturnValue]
         [CanBeNull]
-        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
-                                                     [NotNull] TKey key,
-                                                     [NotNull] Func<TValue> valueFactory )
+        public static TValue GetOrAdd<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary,
+            [NotNull] TKey key,
+            [NotNull] Func<TValue> valueFactory)
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
-            valueFactory.ThrowIfNull( nameof(valueFactory) );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
+            valueFactory.ThrowIfNull(nameof(valueFactory));
 
-            if ( !dictionary.ContainsKey( key ) )
-                dictionary.Add( key, valueFactory() );
+            if (!dictionary.ContainsKey(key))
+                dictionary.Add(key, valueFactory());
 
             return dictionary[key];
         }
@@ -423,14 +434,14 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         [Pure]
-        public static string StringJoin<TValue, TKey>( [NotNull] this IDictionary<TValue, TKey> dictionary,
-                                                       [CanBeNull] string keyValueSeparator = "=",
-                                                       [CanBeNull] string separator = "" )
+        public static string StringJoin<TValue, TKey>([NotNull] this IDictionary<TValue, TKey> dictionary,
+            [CanBeNull] string keyValueSeparator = "=",
+            [CanBeNull] string separator = "")
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
+            dictionary.ThrowIfNull(nameof(dictionary));
 
-            return dictionary.Select( x => x.Key + keyValueSeparator + x.Value )
-                             .StringJoin( separator );
+            return dictionary.Select(x => x.Key + keyValueSeparator + x.Value)
+                .StringJoin(separator);
         }
     }
 }

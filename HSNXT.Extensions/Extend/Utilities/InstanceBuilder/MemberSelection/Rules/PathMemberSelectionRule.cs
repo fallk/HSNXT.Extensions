@@ -31,10 +31,11 @@ namespace HSNXT
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public PathMemberSelectionRule( [NotNull] string memberPath, MemberSelectionMode selectionMode, string name = null, string description = null )
-            : base( name, description )
+        public PathMemberSelectionRule([NotNull] string memberPath, MemberSelectionMode selectionMode,
+            string name = null, string description = null)
+            : base(name, description)
         {
-            memberPath.ThrowIfNull( nameof(memberPath) );
+            memberPath.ThrowIfNull(nameof(memberPath));
 
             _memberPath = memberPath;
             _selectionMode = selectionMode;
@@ -49,10 +50,10 @@ namespace HSNXT
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
+        public override MemberSelectionResult GetSelectionResult(IMemberInformation member)
         {
             var matchesPath = member.MemberPath == _memberPath;
-            if ( !matchesPath )
+            if (!matchesPath)
                 return MemberSelectionResult.Neutral;
 
             return _selectionMode == MemberSelectionMode.Include

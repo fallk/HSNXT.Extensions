@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 #if NET4
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="TaskCompletionSource{TResult}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -45,7 +46,6 @@ namespace HSNXT
         /// based on the corresponding status of the given 
         /// <see cref="Task{T}"/>.
         /// </summary>
-
         public static bool TryConcludeFrom<T>(this TaskCompletionSource<T> source, Task<T> task)
         {
             return source.TryConcludeFrom(task, t => t.Result);
@@ -57,8 +57,8 @@ namespace HSNXT
         /// based on the corresponding status of the given 
         /// <see cref="Task{T}"/>.
         /// </summary>
-
-        public static bool TryConcludeFrom<T, TTask>(this TaskCompletionSource<T> source, TTask task, Func<TTask, T> resultSelector)
+        public static bool TryConcludeFrom<T, TTask>(this TaskCompletionSource<T> source, TTask task,
+            Func<TTask, T> resultSelector)
             where TTask : Task
         {
             if (source == null) throw new ArgumentNullException("source");
@@ -83,6 +83,7 @@ namespace HSNXT
             {
                 return false;
             }
+
             return true;
         }
     }

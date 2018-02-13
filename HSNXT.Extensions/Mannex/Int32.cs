@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,14 +37,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="int"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Converts <see cref="int"/> to its string representation in the
         /// invariant culture.
         /// </summary>
-
         [DebuggerStepThrough]
         public static string ToInvariantString(this int value)
         {
@@ -53,7 +53,6 @@ namespace HSNXT
         /// Calculates the quotient and remainder from dividing two numbers 
         /// and returns a user-defined result.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T DivRem<T>(this int dividend, int divisor, Func<int, int, T> resultFunc)
         {
@@ -68,9 +67,9 @@ namespace HSNXT
         /// system given as a list of ordered digits. The number of digits 
         /// in the list also determines the radix.
         /// </summary>
-        
         public static IEnumerable<T> LsDigits<T>(this int number, IList<T> digits)
-        {                                                    // ReSharper disable LoopCanBeConvertedToQuery
+        {
+            // ReSharper disable LoopCanBeConvertedToQuery
             foreach (var d in number.LsDigits(digits.Count)) // ReSharper restore LoopCanBeConvertedToQuery
                 yield return digits[d];
         }
@@ -79,7 +78,6 @@ namespace HSNXT
         /// Returns a sequence of the least significant base 10 digits in 
         /// the integer.
         /// </summary>
-
         public static IEnumerable<int> LsDigits(this int number)
         {
             return LsDigits(number, 10);
@@ -89,22 +87,19 @@ namespace HSNXT
         /// Returns a sequence of the least significant digits in the 
         /// integer in a given radix.
         /// </summary>
-        
         public static IEnumerable<int> LsDigits(this int number, int radix)
         {
             do
             {
                 yield return number % radix;
                 number = number / radix;
-            }
-            while (number > 0);
+            } while (number > 0);
         }
 
         /// <summary>
         /// Gets the digit at a specific position of the number (assuming 
         /// base 10) with the first position being zero.
         /// </summary>
-
         public static int GetDigit(this int number, int position)
         {
             return GetDigit(number, position, 10);
@@ -115,7 +110,6 @@ namespace HSNXT
         /// the first position being zero. An additional parameter specifies 
         /// the radix to assume.
         /// </summary>
-
         public static int GetDigit(this int number, int position, int radix)
         {
             return (number / checked((int) Math.Pow(radix, position))) % radix;

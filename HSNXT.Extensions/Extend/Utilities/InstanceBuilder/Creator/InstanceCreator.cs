@@ -24,13 +24,15 @@ namespace HSNXT
         ///     Gets the default member selection rule.
         /// </summary>
         /// <value>The default member selection rule.</value>
-        public static List<IMemberSelectionRule> DefaultMemberSelectionRules { get; } = new List<IMemberSelectionRule>();
+        public static List<IMemberSelectionRule> DefaultMemberSelectionRules { get; } =
+            new List<IMemberSelectionRule>();
 
         /// <summary>
         ///     Gets the default member children selection rule.
         /// </summary>
         /// <value>The default member children selection rule.</value>
-        public static List<IMemberSelectionRule> DefaultMemberChildreSelectionRules { get; } = new List<IMemberSelectionRule>();
+        public static List<IMemberSelectionRule> DefaultMemberChildreSelectionRules { get; } =
+            new List<IMemberSelectionRule>();
 
         /// <summary>
         ///     Gets or sets a value determining whether collections should get populated or not.
@@ -114,9 +116,9 @@ namespace HSNXT
         [NotNull]
         [PublicAPI]
         [Pure]
-        public static T CreateInstance<T>( [NotNull] this ICreateInstanceOptionsComplete<T> options ) where T : class
+        public static T CreateInstance<T>([NotNull] this ICreateInstanceOptionsComplete<T> options) where T : class
         {
-            options.ThrowIfNull( nameof(options) );
+            options.ThrowIfNull(nameof(options));
 
             //Create instance
             var rootMemberInformation = new MemberInformation
@@ -125,11 +127,11 @@ namespace HSNXT
                 MemberPath = string.Empty,
                 MemberName = string.Empty
             };
-            var instance = CreateRootMember( options, rootMemberInformation );
+            var instance = CreateRootMember(options, rootMemberInformation);
             rootMemberInformation.MemberObject = instance;
 
             //Set each member of the created instance.
-            SetAllMembers( options, rootMemberInformation );
+            SetAllMembers(options, rootMemberInformation);
 
             return instance;
         }
@@ -146,8 +148,9 @@ namespace HSNXT
         /// <param name="propertyInfos">The property informations.</param>
         /// <param name="parentMemberInformation">The parent of the given properties.</param>
         /// <returns>Returns the new created <see cref="IMemberInformation" />.</returns>
-        private static IEnumerable<IMemberInformation> GetMemberInformation( this IEnumerable<PropertyInfo> propertyInfos, IMemberInformation parentMemberInformation )
-            => propertyInfos.Select( x => x.ToMemberInformation( parentMemberInformation ) );
+        private static IEnumerable<IMemberInformation> GetMemberInformation(
+            this IEnumerable<PropertyInfo> propertyInfos, IMemberInformation parentMemberInformation)
+            => propertyInfos.Select(x => x.ToMemberInformation(parentMemberInformation));
 
         #endregion
 
@@ -161,8 +164,9 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
-        private static bool IncludeMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
-            => ShouldMemberBeIncluded( memberInformation, options.MemberSelectionRules, DefaultMemberSelectionRules );
+        private static bool IncludeMember<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation)
+            => ShouldMemberBeIncluded(memberInformation, options.MemberSelectionRules, DefaultMemberSelectionRules);
 
         /// <summary>
         ///     Gets a value determining whether the children should be included or not.
@@ -172,8 +176,10 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns a value of true if the children should be included; otherwise, false.</returns>
-        private static bool IncludeChildMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
-            => ShouldMemberBeIncluded( memberInformation, options.MemberChildrenSelectionRules, DefaultMemberChildreSelectionRules );
+        private static bool IncludeChildMembers<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation)
+            => ShouldMemberBeIncluded(memberInformation, options.MemberChildrenSelectionRules,
+                DefaultMemberChildreSelectionRules);
 
         /// <summary>
         ///     Gets a value determining whether the member should be included or not.
@@ -185,22 +191,23 @@ namespace HSNXT
         ///     Note: collections must be in correct order.
         /// </param>
         /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
-        private static bool ShouldMemberBeIncluded( IMemberInformation memberInformation, params IEnumerable<IMemberSelectionRule>[] selectionRuleSets )
+        private static bool ShouldMemberBeIncluded(IMemberInformation memberInformation,
+            params IEnumerable<IMemberSelectionRule>[] selectionRuleSets)
         {
             // Try to find selection result (starting at the first item in selectionRuleSets)
-            foreach ( var inspectionResult in selectionRuleSets
-                .Select( ruleSet => RuleInspector.Inspect( ruleSet, memberInformation )
-                                                 .AsBoolean() )
-                .Where( inspectionResult => inspectionResult.HasValue ) )
+            foreach (var inspectionResult in selectionRuleSets
+                .Select(ruleSet => RuleInspector.Inspect(ruleSet, memberInformation)
+                    .AsBoolean())
+                .Where(inspectionResult => inspectionResult.HasValue))
                 return inspectionResult.Value;
 
             //No matching rule found
-            throw new CreateInstanceException( "Found no selection rule targeting member.",
-                                               null,
-                                               null,
-                                               selectionRuleSets.SelectMany( x => x )
-                                                                .StringJoin( Environment.NewLine ),
-                                               memberInformation );
+            throw new CreateInstanceException("Found no selection rule targeting member.",
+                null,
+                null,
+                selectionRuleSets.SelectMany(x => x)
+                    .StringJoin(Environment.NewLine),
+                memberInformation);
         }
 
         #endregion
@@ -213,16 +220,16 @@ namespace HSNXT
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the number of items to create.</returns>
-        private static int GetCollectionItemCount<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        private static int GetCollectionItemCount<T>(ICreateInstanceOptionsComplete<T> options) where T : class
         {
             //Return count of 0 if collection should net get populated
-            if ( !PopulateCollection( options ) )
+            if (!PopulateCollection(options))
                 return 0;
 
             var min = options.PopulateCollectionsMinCount ?? PopulateCollectionsMinCount;
             var max = options.PopulateCollectionsMaxCount ?? PopulateCollectionsMaxCount;
 
-            return Extensions.GetRandomInt32( min, max );
+            return Extensions.GetRandomInt32(min, max);
         }
 
         /// <summary>
@@ -231,7 +238,7 @@ namespace HSNXT
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns a value of true if collections should get populated or not.</returns>
-        private static bool PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        private static bool PopulateCollection<T>(ICreateInstanceOptionsComplete<T> options) where T : class
             => options.PopulateCollections ?? PopulateCollections;
 
         /// <summary>
@@ -240,7 +247,7 @@ namespace HSNXT
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the name to use.</returns>
-        private static string GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        private static string GetAnonymousItemName<T>(ICreateInstanceOptionsComplete<T> options) where T : class
             => options.AnonymousItemName ?? AnonymousItemName;
 
         /// <summary>
@@ -251,21 +258,22 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to create.</param>
         /// <returns>Returns the created value.</returns>
-        private static T CreateRootMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static T CreateRootMember<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation) where T : class
         {
             try
             {
-                var value = GetValue( options, memberInformation );
+                var value = GetValue(options, memberInformation);
                 return (T) value;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw new CreateInstanceException( $"Failed to create root object of type: {typeof(T).Name}.",
-                                                   ex,
-                                                   options.Factories.Concat( DefaultFactories )
-                                                          .StringJoin( Environment.NewLine ),
-                                                   null,
-                                                   memberInformation );
+                throw new CreateInstanceException($"Failed to create root object of type: {typeof(T).Name}.",
+                    ex,
+                    options.Factories.Concat(DefaultFactories)
+                        .StringJoin(Environment.NewLine),
+                    null,
+                    memberInformation);
             }
         }
 
@@ -277,44 +285,47 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value.</returns>
-        private static object GetValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static object GetValue<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation) where T : class
         {
             // Try get value from factory
-            var factory = GetFactory( options, memberInformation );
-            if ( factory != null )
+            var factory = GetFactory(options, memberInformation);
+            if (factory != null)
                 try
                 {
-                    return factory.CreateValue( memberInformation );
+                    return factory.CreateValue(memberInformation);
                 }
-                catch ( Exception ex )
+                catch (Exception ex)
                 {
-                    throw new CreateInstanceException( "Factory has thrown exception.", ex, factory.ToString(), null, memberInformation );
+                    throw new CreateInstanceException("Factory has thrown exception.", ex, factory.ToString(), null,
+                        memberInformation);
                 }
 
             // Try create array value
-            var value = TryCreateArrayValue( options, memberInformation );
-            if ( value != null )
+            var value = TryCreateArrayValue(options, memberInformation);
+            if (value != null)
                 return value;
 
             // Create value (first try IEnumerable than anything else)
-            value = TryCreateCollectionValue( memberInformation );
+            value = TryCreateCollectionValue(memberInformation);
             // ReSharper disable once InvertIf
-            if ( value == null )
+            if (value == null)
                 try
                 {
-                    value = CreateValueUsingAcrivator( memberInformation );
+                    value = CreateValueUsingAcrivator(memberInformation);
                 }
-                catch ( Exception ex )
+                catch (Exception ex)
                 {
-                    throw new CreateInstanceException( $"Failed to create instance due to missing or invalid factory for type '{memberInformation.MemberType}'.",
-                                                       ex,
-                                                       null,
-                                                       null,
-                                                       memberInformation );
+                    throw new CreateInstanceException(
+                        $"Failed to create instance due to missing or invalid factory for type '{memberInformation.MemberType}'.",
+                        ex,
+                        null,
+                        null,
+                        memberInformation);
                 }
 
             // Populate collection if collection (could be ICollection)
-            return TryPopulateCollection( options, memberInformation, value );
+            return TryPopulateCollection(options, memberInformation, value);
         }
 
         /// <summary>
@@ -322,20 +333,21 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
-        private static object TryCreateCollectionValue( IMemberInformation memberInformation )
+        private static object TryCreateCollectionValue(IMemberInformation memberInformation)
         {
             // Check if member implements IEnumerable{T} or IList{T} or ICollection{T}
-            if ( !memberInformation.MemberType.IsIEnumerableT() && !memberInformation.MemberType.IsIListT() && !memberInformation.MemberType.IsICollectionT() )
+            if (!memberInformation.MemberType.IsIEnumerableT() && !memberInformation.MemberType.IsIListT() &&
+                !memberInformation.MemberType.IsICollectionT())
                 return null;
 
             // Get a List{T} of the IEnumerable{T}'s item type as type
-            var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GetGenericTypeArguments() );
+            var concreteType = typeof(List<>).MakeGenericType(memberInformation.MemberType.GetGenericTypeArguments());
 
             // Create an instance of the constructed type
-            var instnace = Activator.CreateInstance( concreteType );
+            var instnace = Activator.CreateInstance(concreteType);
 
             // Update the type of the member in the member information
-            if ( memberInformation is MemberInformation currentMember )
+            if (memberInformation is MemberInformation currentMember)
                 currentMember.MemberType = concreteType;
 
             return instnace;
@@ -348,19 +360,20 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type.</returns>
-        private static object TryCreateArrayValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static object TryCreateArrayValue<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation) where T : class
         {
             // Check if member is an array type
-            if ( !memberInformation.MemberType.IsArray )
+            if (!memberInformation.MemberType.IsArray)
                 return null;
 
             // Create the array
             var elementType = memberInformation.MemberType.GetElementType();
-            var array = Array.CreateInstance( elementType, GetCollectionItemCount( options ) );
+            var array = Array.CreateInstance(elementType, GetCollectionItemCount(options));
 
             // Add items
-            var anonymousItemName = GetAnonymousItemName( options );
-            for ( var i = 0; i < array.Length; i++ )
+            var anonymousItemName = GetAnonymousItemName(options);
+            for (var i = 0; i < array.Length; i++)
             {
                 var currentMember = new MemberInformation
                 {
@@ -370,10 +383,10 @@ namespace HSNXT
                 };
 
                 // Get the value of the current array item.
-                var arrayItemValue = GetValue( options, currentMember );
+                var arrayItemValue = GetValue(options, currentMember);
                 currentMember.MemberObject = arrayItemValue;
-                SetAllMembers( options, currentMember );
-                array.SetValue( arrayItemValue, i );
+                SetAllMembers(options, currentMember);
+                array.SetValue(arrayItemValue, i);
             }
 
             return array;
@@ -385,21 +398,21 @@ namespace HSNXT
         /// <exception cref="CreateInstanceException">Creation throw an exception.</exception>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value.</returns>
-        private static object CreateValueUsingAcrivator( IMemberInformation memberInformation )
+        private static object CreateValueUsingAcrivator(IMemberInformation memberInformation)
         {
             try
             {
                 // Create type using activator class
-                return Activator.CreateInstance( memberInformation.MemberType );
+                return Activator.CreateInstance(memberInformation.MemberType);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 throw new CreateInstanceException(
                     $"Failed to create an instance of the following type '{memberInformation.MemberType}' using Activator (Consider writing a custom factory for this type).",
                     ex,
                     null,
                     null,
-                    memberInformation );
+                    memberInformation);
             }
         }
 
@@ -411,23 +424,24 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
-        private static IInstanceFactory GetFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static IInstanceFactory GetFactory<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation) where T : class
         {
             // Get matching factory
-            var factory = GetExactlymatchingFactory( options, memberInformation );
-            if ( factory != null )
+            var factory = GetExactlymatchingFactory(options, memberInformation);
+            if (factory != null)
                 return factory;
 
             // Try get inner type of null-able
             var nullableType = memberInformation.MemberType.GetTypeFromNullable();
-            if ( nullableType == null )
+            if (nullableType == null)
                 return null;
 
             // Update type
-            if ( memberInformation is MemberInformation info )
+            if (memberInformation is MemberInformation info)
                 info.MemberType = nullableType;
 
-            return GetExactlymatchingFactory( options, memberInformation );
+            return GetExactlymatchingFactory(options, memberInformation);
         }
 
         /// <summary>
@@ -438,37 +452,40 @@ namespace HSNXT
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
-        private static IInstanceFactory GetExactlymatchingFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static IInstanceFactory GetExactlymatchingFactory<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation) where T : class
         {
             // Get factory from options
-            var matchingFactories = options.Factories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
-                                           .ToList();
-            if ( matchingFactories.Count == 1 )
+            var matchingFactories = options.Factories.Where(x =>
+                    RuleInspector.Inspect(x.SelectionRules, memberInformation) == MemberSelectionResult.IncludeMember)
+                .ToList();
+            if (matchingFactories.Count == 1)
                 return matchingFactories.Single();
 
             // Check if multiple factories have matched
-            if ( matchingFactories.Any() )
+            if (matchingFactories.Any())
                 throw new CreateInstanceException(
                     $"Found multiple matching factories for member (in options). Type is '{memberInformation.MemberType}'. Please make sure only one factory matches the member.",
                     null,
-                    options.Factories.StringJoin( Environment.NewLine ),
+                    options.Factories.StringJoin(Environment.NewLine),
                     null,
-                    memberInformation );
+                    memberInformation);
 
             // Get factory from default factories
-            matchingFactories = DefaultFactories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
-                                                .ToList();
-            if ( matchingFactories.Count == 1 )
+            matchingFactories = DefaultFactories.Where(x =>
+                    RuleInspector.Inspect(x.SelectionRules, memberInformation) == MemberSelectionResult.IncludeMember)
+                .ToList();
+            if (matchingFactories.Count == 1)
                 return matchingFactories.Single();
 
             //Check if multiple factories have matched
-            if ( matchingFactories.Any() )
+            if (matchingFactories.Any())
                 throw new CreateInstanceException(
                     $"Found multiple matching factories for member (in global configuration). Type is '{memberInformation.MemberType}'.  Please make sure only one factory matches the member.",
                     null,
-                    DefaultFactories.StringJoin( Environment.NewLine ),
+                    DefaultFactories.StringJoin(Environment.NewLine),
                     null,
-                    memberInformation );
+                    memberInformation);
 
             // No factory found
             return null;
@@ -482,14 +499,15 @@ namespace HSNXT
         /// <param name="memberInformation">The member to check.</param>
         /// <param name="collectionInstance">The instance to populate.</param>
         /// <returns>Returns the populated or unmodified instance.</returns>
-        private static object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, object collectionInstance ) where T : class
+        private static object TryPopulateCollection<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation, object collectionInstance) where T : class
         {
             // Check if collection should get populated or not
-            if ( !PopulateCollection( options ) || collectionInstance == null )
+            if (!PopulateCollection(options) || collectionInstance == null)
                 return collectionInstance;
 
             // Check if type is collection type
-            if ( !memberInformation.MemberType.ImplementsICollectionT() )
+            if (!memberInformation.MemberType.ImplementsICollectionT())
                 return collectionInstance;
 
             // Get generic parameter type
@@ -501,16 +519,16 @@ namespace HSNXT
             // Get the add method
 
             var addMethod = memberInformation.MemberType
-                                             .GetRuntimeMethod( "Add", genericArgumentTypes );
+                .GetRuntimeMethod("Add", genericArgumentTypes);
 
             // Add items
-            var anonymousItemName = GetAnonymousItemName( options );
-            var collectionCount = GetCollectionItemCount( options );
-            for ( var i = 0; i < collectionCount; i++ )
+            var anonymousItemName = GetAnonymousItemName(options);
+            var collectionCount = GetCollectionItemCount(options);
+            for (var i = 0; i < collectionCount; i++)
             {
                 var addParameters = new List<object>();
                 genericArgumentTypes
-                    .ForEach( x =>
+                    .ForEach(x =>
                     {
                         var currentMember = new MemberInformation
                         {
@@ -520,15 +538,16 @@ namespace HSNXT
                         };
 
                         // Get the value for the current collection item.
-                        var collectionItemValue = GetValue( options, currentMember );
+                        var collectionItemValue = GetValue(options, currentMember);
                         currentMember.MemberObject = collectionItemValue;
-                        SetAllMembers( options, currentMember );
+                        SetAllMembers(options, currentMember);
 
-                        addParameters.Add( collectionItemValue );
-                    } );
+                        addParameters.Add(collectionItemValue);
+                    });
 
-                addMethod.Invoke( collectionInstance, addParameters.ToArray() );
+                addMethod.Invoke(collectionInstance, addParameters.ToArray());
             }
+
             return collectionInstance;
         }
 
@@ -542,33 +561,34 @@ namespace HSNXT
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The current member.</param>
-        private static void SetAllMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static void SetAllMembers<T>(ICreateInstanceOptionsComplete<T> options,
+            IMemberInformation memberInformation) where T : class
         {
             // Check if children should be set or not
-            if ( !IncludeChildMembers( options, memberInformation ) )
+            if (!IncludeChildMembers(options, memberInformation))
                 return;
 
             // Get the properties of the current member as member information
             var propertyInfos = memberInformation.MemberType.GetPublicSettableProperties()
-                                                 .GetMemberInformation( memberInformation );
+                .GetMemberInformation(memberInformation);
 
-            propertyInfos.ForEach( x =>
+            propertyInfos.ForEach(x =>
             {
                 // Check if member should be set or not
-                if ( !IncludeMember( options, x ) )
+                if (!IncludeMember(options, x))
                     return;
 
                 // Create member value
-                var value = GetValue( options, x );
-                x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
+                var value = GetValue(options, x);
+                x.PropertyInfo.SetValue(memberInformation.MemberObject, value, null);
 
                 // Set children of value (recursive call)
                 var currentMember = x as MemberInformation;
-                if ( currentMember != null )
+                if (currentMember != null)
                     currentMember.MemberObject = value;
 
-                SetAllMembers( options, currentMember );
-            } );
+                SetAllMembers(options, currentMember);
+            });
         }
 
         #endregion
@@ -580,21 +600,21 @@ namespace HSNXT
         /// </summary>
         private static void CreateDefaultFactories()
             => InstanceFactoryProvider.GetDefaultFactories()
-                                      .ForEach( x => DefaultFactories.Add( x ) );
+                .ForEach(x => DefaultFactories.Add(x));
 
         /// <summary>
         ///     Creates the default member selection rules.
         /// </summary>
         private static void CreateDefaultMemberSelectionRules()
             => MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
-                                          .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
+                .ForEach(x => DefaultMemberSelectionRules.Add(x));
 
         /// <summary>
         ///     Creates the default member children selection rules.
         /// </summary>
         private static void CreateDefaultMemberChildreSelectionRules()
             => MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
-                                          .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
+                .ForEach(x => DefaultMemberChildreSelectionRules.Add(x));
 
         #endregion
 

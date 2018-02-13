@@ -19,11 +19,11 @@ namespace HSNXT
         /// <returns>Returns the cleared array.</returns>
         [NotNull]
         [PublicAPI]
-        public static T[] Clear<T>( [NotNull] this T[] array, int index, int length )
+        public static T[] Clear<T>([NotNull] this T[] array, int index, int length)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            Array.Clear( array, index, length );
+            Array.Clear(array, index, length);
             return array;
         }
 
@@ -40,11 +40,11 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static int IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
+        public static int IndexOf<T>([NotNull] this T[] array, [CanBeNull] T value)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            return Array.IndexOf( array, value );
+            return Array.IndexOf(array, value);
         }
 
         /// <summary>
@@ -62,11 +62,11 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static int IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex )
+        public static int IndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            return Array.IndexOf( array, value, startIndex );
+            return Array.IndexOf(array, value, startIndex);
         }
 
         /// <summary>
@@ -85,11 +85,11 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static int IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count )
+        public static int IndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            return Array.IndexOf( array, value, startIndex, count );
+            return Array.IndexOf(array, value, startIndex, count);
         }
 
         /// <summary>
@@ -106,11 +106,11 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static int LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
+        public static int LastIndexOf<T>([NotNull] this T[] array, [CanBeNull] T value)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            return Array.LastIndexOf( array, value );
+            return Array.LastIndexOf(array, value);
         }
 
         /// <summary>
@@ -128,11 +128,11 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static int LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex )
+        public static int LastIndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            return Array.LastIndexOf( array, value, startIndex );
+            return Array.LastIndexOf(array, value, startIndex);
         }
 
         /// <summary>
@@ -151,11 +151,11 @@ namespace HSNXT
         /// </returns>
         [PublicAPI]
         [Pure]
-        public static int LastIndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count )
+        public static int LastIndexOf<T>([NotNull] this T[] array, [CanBeNull] T value, int startIndex, int count)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            return Array.LastIndexOf( array, value, startIndex, count );
+            return Array.LastIndexOf(array, value, startIndex, count);
         }
 
         /// <summary>
@@ -167,11 +167,11 @@ namespace HSNXT
         /// <param name="value">The value.</param>
         /// <returns>Returns the given array.</returns>
         [PublicAPI]
-        public static T[] Populate<T>( [NotNull] this T[] array, [CanBeNull] T value )
+        public static T[] Populate<T>([NotNull] this T[] array, [CanBeNull] T value)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            for ( var i = 0; i < array.Length; i++ )
+            for (var i = 0; i < array.Length; i++)
                 array[i] = value;
 
             return array;
@@ -186,12 +186,12 @@ namespace HSNXT
         /// <param name="newSize">The new size of the array.</param>
         /// <returns>Returns the given array with the new size.</returns>
         [PublicAPI]
-        public static T[] Resize<T>( [NotNull] this T[] array, int newSize )
+        public static T[] Resize<T>([NotNull] this T[] array, int newSize)
         {
             // ReSharper disable once AccessToModifiedClosure
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            Array.Resize( ref array, newSize );
+            Array.Resize(ref array, newSize);
             return array;
         }
 
@@ -203,11 +203,11 @@ namespace HSNXT
         /// <param name="array">The one-dimensional array to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
         [PublicAPI]
-        public static T[] Reverse<T>( [NotNull] this T[] array )
+        public static T[] Reverse<T>([NotNull] this T[] array)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            Array.Reverse( array );
+            Array.Reverse(array);
             return array;
         }
 
@@ -221,11 +221,11 @@ namespace HSNXT
         /// <param name="length">The number of elements in the section to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
         [PublicAPI]
-        public static T[] Reverse<T>( [NotNull] this T[] array, int index, int length )
+        public static T[] Reverse<T>([NotNull] this T[] array, int index, int length)
         {
-            array.ThrowIfNull( nameof(array) );
+            array.ThrowIfNull(nameof(array));
 
-            Array.Reverse( array, index, length );
+            Array.Reverse(array, index, length);
             return array;
         }
 
@@ -253,32 +253,32 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, int startIndex, int itemsToCpoy, [NotNull] T[] targetArray )
+        public static T[] Slice<T>([NotNull] this T[] array, int startIndex, int itemsToCpoy, [NotNull] T[] targetArray)
         {
-            array.ThrowIfNull( nameof(array) );
-            targetArray.ThrowIfNull( nameof(targetArray) );
+            array.ThrowIfNull(nameof(array));
+            targetArray.ThrowIfNull(nameof(targetArray));
 
-            if ( startIndex < 0 )
-                throw new ArgumentOutOfRangeException( array.GetName( x => startIndex ),
-                                                       "The start index must be greater or equals to zero." );
+            if (startIndex < 0)
+                throw new ArgumentOutOfRangeException(array.GetName(x => startIndex),
+                    "The start index must be greater or equals to zero.");
 
-            if ( itemsToCpoy < 0 )
-                throw new ArgumentOutOfRangeException( array.GetName( x => itemsToCpoy ),
-                                                       "The number of items to copy must be greater or equals to zero." );
+            if (itemsToCpoy < 0)
+                throw new ArgumentOutOfRangeException(array.GetName(x => itemsToCpoy),
+                    "The number of items to copy must be greater or equals to zero.");
 
-            if ( startIndex > array.Length )
-                throw new ArgumentOutOfRangeException( array.GetName( x => startIndex ),
-                                                       "The start index cannot be greater than the length of the given array." );
+            if (startIndex > array.Length)
+                throw new ArgumentOutOfRangeException(array.GetName(x => startIndex),
+                    "The start index cannot be greater than the length of the given array.");
 
-            if ( itemsToCpoy > targetArray.Length )
-                throw new ArgumentOutOfRangeException( array.GetName( x => itemsToCpoy ),
-                                                       "The number of items to copy cannot be greater than the length of the target array." );
+            if (itemsToCpoy > targetArray.Length)
+                throw new ArgumentOutOfRangeException(array.GetName(x => itemsToCpoy),
+                    "The number of items to copy cannot be greater than the length of the target array.");
 
-            if ( itemsToCpoy > array.Length - startIndex )
-                throw new ArgumentOutOfRangeException( array.GetName( x => itemsToCpoy ),
-                                                       "The number of items to copy cannot be greater than the length of the source array (minus the start index)." );
+            if (itemsToCpoy > array.Length - startIndex)
+                throw new ArgumentOutOfRangeException(array.GetName(x => itemsToCpoy),
+                    "The number of items to copy cannot be greater than the length of the source array (minus the start index).");
 
-            for ( var i = 0; i < itemsToCpoy; ++i )
+            for (var i = 0; i < itemsToCpoy; ++i)
                 targetArray[i] = array[startIndex + i];
 
             return targetArray;
@@ -303,10 +303,10 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, int startIndex, int itemsToCpoy )
+        public static T[] Slice<T>([NotNull] this T[] array, int startIndex, int itemsToCpoy)
         {
             var targetArray = new T[itemsToCpoy];
-            return array.Slice( startIndex, itemsToCpoy, targetArray );
+            return array.Slice(startIndex, itemsToCpoy, targetArray);
         }
 
         /// <summary>
@@ -330,8 +330,8 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, int itemsToCpoy, [NotNull] T[] targetArray )
-            => array.Slice( 0, itemsToCpoy, targetArray );
+        public static T[] Slice<T>([NotNull] this T[] array, int itemsToCpoy, [NotNull] T[] targetArray)
+            => array.Slice(0, itemsToCpoy, targetArray);
 
         /// <summary>
         ///     Copies the specified range of items from the source array to the given target array.
@@ -348,10 +348,10 @@ namespace HSNXT
         /// <returns>Returns the target array.</returns>
         [PublicAPI]
         [NotNull]
-        public static T[] Slice<T>( [NotNull] this T[] array, int itemsToCpoy )
+        public static T[] Slice<T>([NotNull] this T[] array, int itemsToCpoy)
         {
             var targetArray = new T[itemsToCpoy];
-            return array.Slice( 0, itemsToCpoy, targetArray );
+            return array.Slice(0, itemsToCpoy, targetArray);
         }
 
         /// <summary>
@@ -367,13 +367,14 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         [Pure]
-        public static List<TResult> ToGenericList<TArray, TResult>( [NotNull] this TArray[] items, [NotNull] Func<TArray, TResult> selector )
+        public static List<TResult> ToGenericList<TArray, TResult>([NotNull] this TArray[] items,
+            [NotNull] Func<TArray, TResult> selector)
         {
-            items.ThrowIfNull( nameof(items) );
-            selector.ThrowIfNull( nameof(selector) );
+            items.ThrowIfNull(nameof(items));
+            selector.ThrowIfNull(nameof(selector));
 
             return items
-                .Select( selector )
+                .Select(selector)
                 .ToList();
         }
     }

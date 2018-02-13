@@ -13,7 +13,7 @@ namespace HSNXT
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Typeable.IsOpenGenericType(Type)'
         {
 #if (NET47)
-			return type.GetGenericTypeArguments().Length == 0 && type.IsGenericType;
+            return type.GetGenericTypeArguments().Length == 0 && type.IsGenericType;
 #else
             return type.GetGenericTypeArguments().Length == 0 && type.GetTypeInfo().IsGenericType;
 #endif
@@ -134,15 +134,16 @@ namespace HSNXT
                 throw new ArgumentNullException(nameof(namespaceName));
             }
 #if (NET47)
-			if (!interfaceType.IsInterface)
-			{
-				throw new ArgumentException("Type is not an interface", nameof(interfaceType));
-			}
+            if (!interfaceType.IsInterface)
+            {
+                throw new ArgumentException("Type is not an interface", nameof(interfaceType));
+            }
 
-			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-			return ByPredicate(
-				assemblies,
-				type => (type.Namespace ?? string.Empty).StartsWith(namespaceName) && type.ImplementsInterface(interfaceType));
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            return ByPredicate(
+                assemblies,
+                type => (type.Namespace ?? string.Empty).StartsWith(namespaceName) &&
+                        type.ImplementsInterface(interfaceType));
 #elif (NETSTANDARD2_0)
             if (!interfaceType.GetTypeInfo().IsInterface)
                 throw new ArgumentException("Type is not an interface", "interfaceType");
@@ -247,7 +248,7 @@ namespace HSNXT
         /// <returns><seealso cref="ConstructorInfo"/> about the default constructor.</returns>
         public static ConstructorInfo GetConstructor(this Type type)
         {
-			return type.GetConstructor(new Type[0]);
+            return type.GetConstructor(new Type[0]);
         }
     }
 }

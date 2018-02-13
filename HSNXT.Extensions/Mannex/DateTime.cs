@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -32,7 +34,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="DateTime"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         static readonly DateTime _epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -41,7 +42,6 @@ namespace HSNXT
         /// Returns number of milliseconds (including fractions) in UTC between the 
         /// specified date and midnight January 1, 1970.
         /// </summary>
-
         public static double ToUnixTime(this DateTime localTime)
         {
             return localTime.ToUniversalTime().Subtract(_epoch).TotalMilliseconds;
@@ -51,7 +51,6 @@ namespace HSNXT
         /// Trims millisecond component so that the precision of the 
         /// resulting time is to the second.
         /// </summary>
-
         public static DateTime TrimToSecond(this DateTime time)
         {
             return new DateTime(time.Year, time.Month, time.Day, time.Hour, time.Minute, time.Second, time.Kind);
@@ -61,7 +60,6 @@ namespace HSNXT
         /// Trims the second and millisecond components so that the 
         /// precision of the resulting time is to the minute.
         /// </summary>
-
         public static DateTime TrimToMinute(this DateTime time)
         {
             return new DateTime(time.Year, time.Month, time.Day, time.Hour, time.Minute, 0, time.Kind);
@@ -71,7 +69,6 @@ namespace HSNXT
         /// Trims the minute, second and millisecond components so that the 
         /// precision of the resulting time is to the hour.
         /// </summary>
-
         public static DateTime TrimToHour(this DateTime time)
         {
             return new DateTime(time.Year, time.Month, time.Day, time.Hour, 0, 0, time.Kind);
@@ -81,7 +78,6 @@ namespace HSNXT
         /// Trims the time components so that the precision of the resulting 
         /// time is to the day.
         /// </summary>
-
         public static DateTime TrimToDay(this DateTime time)
         {
             return time.Date;
@@ -90,7 +86,6 @@ namespace HSNXT
         /// <summary>
         /// Determines the quarter (from 1 to 4) to which the date belongs.
         /// </summary>
-
         public static int GetQuarter(this DateTime date)
         {
             return ((date.Month - 1) / 3) + 1;
@@ -100,7 +95,6 @@ namespace HSNXT
         /// Gets a <see cref="DateTime"/> that represents the first day of 
         /// the year of this <see cref="DateTime"/>.
         /// </summary>
-
         public static DateTime FirstDayOfYear(this DateTime time)
         {
             return new DateTime(time.Year, 1, 1, time.Hour, time.Minute, time.Second, time.Millisecond, time.Kind);
@@ -110,16 +104,15 @@ namespace HSNXT
         /// Gets a <see cref="DateTime"/> that represents the first day of 
         /// the quarter of this <see cref="DateTime"/>.
         /// </summary>
-
         public static DateTime FirstDayOfQuarter(this DateTime time)
         {
-            return new DateTime(time.Year, (time.GetQuarter() - 1) * 3 + 1, 1, time.Hour, time.Minute, time.Second, time.Millisecond, time.Kind);
+            return new DateTime(time.Year, (time.GetQuarter() - 1) * 3 + 1, 1, time.Hour, time.Minute, time.Second,
+                time.Millisecond, time.Kind);
         }
 
         /// <summary>
         /// Determines if the time component is midnight exactly.
         /// </summary>
-
         public static bool IsMidnight(this DateTime time)
         {
             return time.TrimToDay() == time;
@@ -129,12 +122,12 @@ namespace HSNXT
         /// Replaces time component with that of another
         /// <see cref="DateTime"/>.
         /// </summary>
-
         public static DateTime WithTimeFrom(this DateTime date, DateTime time)
         {
-            if (date.Kind != time.Kind) throw new ArgumentException(string.Format("Date ({0}) and time ({1}) kinds do not match.", date.Kind, time.Kind));
+            if (date.Kind != time.Kind)
+                throw new ArgumentException(string.Format("Date ({0}) and time ({1}) kinds do not match.", date.Kind,
+                    time.Kind));
             return new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second, time.Millisecond);
         }
-
     }
 }

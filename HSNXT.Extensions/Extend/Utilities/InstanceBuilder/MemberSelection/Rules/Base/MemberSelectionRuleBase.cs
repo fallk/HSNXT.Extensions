@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        protected MemberSelectionRuleBase( string name, string description )
+        protected MemberSelectionRuleBase(string name, string description)
         {
             RuleName = name;
             RuleDescription = description;
@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public abstract MemberSelectionResult GetSelectionResult( IMemberInformation member );
+        public abstract MemberSelectionResult GetSelectionResult(IMemberInformation member);
 
         /// <summary>
         ///     Gets the name of the rule.

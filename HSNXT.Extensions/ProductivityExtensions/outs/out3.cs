@@ -49,7 +49,6 @@ using System.IO.MemoryMappedFiles;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using System.Collections.ObjectModel;
-
 #if NetFX
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
@@ -57,6 +56,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms.Layout;
+
 #endif
 
 #if (NETSTANDARD2_0 || NET47)
@@ -110,21 +110,23 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// bindingmanagerdataerroreventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this BindingManagerDataErrorEventHandler bindingmanagerdataerroreventhandler, Object sender, BindingManagerDataErrorEventArgs e, AsyncCallback callback)
-		{
-			if(bindingmanagerdataerroreventhandler == null) throw new ArgumentNullException("bindingmanagerdataerroreventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// bindingmanagerdataerroreventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this BindingManagerDataErrorEventHandler bindingmanagerdataerroreventhandler, Object sender,
+            BindingManagerDataErrorEventArgs e, AsyncCallback callback)
+        {
+            if (bindingmanagerdataerroreventhandler == null)
+                throw new ArgumentNullException("bindingmanagerdataerroreventhandler");
 
-			return bindingmanagerdataerroreventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return bindingmanagerdataerroreventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -153,21 +155,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// cachevirtualitemseventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this CacheVirtualItemsEventHandler cachevirtualitemseventhandler, Object sender, CacheVirtualItemsEventArgs e, AsyncCallback callback)
-		{
-			if(cachevirtualitemseventhandler == null) throw new ArgumentNullException("cachevirtualitemseventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// cachevirtualitemseventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this CacheVirtualItemsEventHandler cachevirtualitemseventhandler,
+            Object sender, CacheVirtualItemsEventArgs e, AsyncCallback callback)
+        {
+            if (cachevirtualitemseventhandler == null) throw new ArgumentNullException("cachevirtualitemseventhandler");
 
-			return cachevirtualitemseventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return cachevirtualitemseventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -196,42 +198,44 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// columnwidthchangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ColumnWidthChangedEventHandler columnwidthchangedeventhandler, Object sender, ColumnWidthChangedEventArgs e, AsyncCallback callback)
-		{
-			if(columnwidthchangedeventhandler == null) throw new ArgumentNullException("columnwidthchangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// columnwidthchangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ColumnWidthChangedEventHandler columnwidthchangedeventhandler,
+            Object sender, ColumnWidthChangedEventArgs e, AsyncCallback callback)
+        {
+            if (columnwidthchangedeventhandler == null)
+                throw new ArgumentNullException("columnwidthchangedeventhandler");
 
-			return columnwidthchangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return columnwidthchangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// columnwidthchangingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ColumnWidthChangingEventHandler columnwidthchangingeventhandler, Object sender, ColumnWidthChangingEventArgs e, AsyncCallback callback)
-		{
-			if(columnwidthchangingeventhandler == null) throw new ArgumentNullException("columnwidthchangingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// columnwidthchangingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ColumnWidthChangingEventHandler columnwidthchangingeventhandler,
+            Object sender, ColumnWidthChangingEventArgs e, AsyncCallback callback)
+        {
+            if (columnwidthchangingeventhandler == null)
+                throw new ArgumentNullException("columnwidthchangingeventhandler");
 
-			return columnwidthchangingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return columnwidthchangingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -348,693 +352,753 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewautosizecolumnmodeeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewAutoSizeColumnModeEventHandler datagridviewautosizecolumnmodeeventhandler, Object sender, DataGridViewAutoSizeColumnModeEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewautosizecolumnmodeeventhandler == null) throw new ArgumentNullException("datagridviewautosizecolumnmodeeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewautosizecolumnmodeeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewAutoSizeColumnModeEventHandler datagridviewautosizecolumnmodeeventhandler, Object sender,
+            DataGridViewAutoSizeColumnModeEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewautosizecolumnmodeeventhandler == null)
+                throw new ArgumentNullException("datagridviewautosizecolumnmodeeventhandler");
 
-			return datagridviewautosizecolumnmodeeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewautosizecolumnmodeeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewautosizecolumnsmodeeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewAutoSizeColumnsModeEventHandler datagridviewautosizecolumnsmodeeventhandler, Object sender, DataGridViewAutoSizeColumnsModeEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewautosizecolumnsmodeeventhandler == null) throw new ArgumentNullException("datagridviewautosizecolumnsmodeeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewautosizecolumnsmodeeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewAutoSizeColumnsModeEventHandler datagridviewautosizecolumnsmodeeventhandler, Object sender,
+            DataGridViewAutoSizeColumnsModeEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewautosizecolumnsmodeeventhandler == null)
+                throw new ArgumentNullException("datagridviewautosizecolumnsmodeeventhandler");
 
-			return datagridviewautosizecolumnsmodeeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewautosizecolumnsmodeeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewautosizemodeeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewAutoSizeModeEventHandler datagridviewautosizemodeeventhandler, Object sender, DataGridViewAutoSizeModeEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewautosizemodeeventhandler == null) throw new ArgumentNullException("datagridviewautosizemodeeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewautosizemodeeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewAutoSizeModeEventHandler datagridviewautosizemodeeventhandler, Object sender,
+            DataGridViewAutoSizeModeEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewautosizemodeeventhandler == null)
+                throw new ArgumentNullException("datagridviewautosizemodeeventhandler");
 
-			return datagridviewautosizemodeeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewautosizemodeeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewbindingcompleteeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewBindingCompleteEventHandler datagridviewbindingcompleteeventhandler, Object sender, DataGridViewBindingCompleteEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewbindingcompleteeventhandler == null) throw new ArgumentNullException("datagridviewbindingcompleteeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewbindingcompleteeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewBindingCompleteEventHandler datagridviewbindingcompleteeventhandler, Object sender,
+            DataGridViewBindingCompleteEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewbindingcompleteeventhandler == null)
+                throw new ArgumentNullException("datagridviewbindingcompleteeventhandler");
 
-			return datagridviewbindingcompleteeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewbindingcompleteeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellcanceleventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellCancelEventHandler datagridviewcellcanceleventhandler, Object sender, DataGridViewCellCancelEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellcanceleventhandler == null) throw new ArgumentNullException("datagridviewcellcanceleventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellcanceleventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellCancelEventHandler datagridviewcellcanceleventhandler, Object sender,
+            DataGridViewCellCancelEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellcanceleventhandler == null)
+                throw new ArgumentNullException("datagridviewcellcanceleventhandler");
 
-			return datagridviewcellcanceleventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellcanceleventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellContextMenuStripNeededEventHandler datagridviewcellcontextmenustripneededeventhandler, Object sender, DataGridViewCellContextMenuStripNeededEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellcontextmenustripneededeventhandler == null) throw new ArgumentNullException("datagridviewcellcontextmenustripneededeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellContextMenuStripNeededEventHandler datagridviewcellcontextmenustripneededeventhandler,
+            Object sender, DataGridViewCellContextMenuStripNeededEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellcontextmenustripneededeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellcontextmenustripneededeventhandler");
 
-			return datagridviewcellcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellerrortextneededeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellErrorTextNeededEventHandler datagridviewcellerrortextneededeventhandler, Object sender, DataGridViewCellErrorTextNeededEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellerrortextneededeventhandler == null) throw new ArgumentNullException("datagridviewcellerrortextneededeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellerrortextneededeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellErrorTextNeededEventHandler datagridviewcellerrortextneededeventhandler, Object sender,
+            DataGridViewCellErrorTextNeededEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellerrortextneededeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellerrortextneededeventhandler");
 
-			return datagridviewcellerrortextneededeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellerrortextneededeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellformattingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellFormattingEventHandler datagridviewcellformattingeventhandler, Object sender, DataGridViewCellFormattingEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellformattingeventhandler == null) throw new ArgumentNullException("datagridviewcellformattingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellformattingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellFormattingEventHandler datagridviewcellformattingeventhandler, Object sender,
+            DataGridViewCellFormattingEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellformattingeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellformattingeventhandler");
 
-			return datagridviewcellformattingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellformattingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellmouseeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellMouseEventHandler datagridviewcellmouseeventhandler, Object sender, DataGridViewCellMouseEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellmouseeventhandler == null) throw new ArgumentNullException("datagridviewcellmouseeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellmouseeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DataGridViewCellMouseEventHandler datagridviewcellmouseeventhandler,
+            Object sender, DataGridViewCellMouseEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellmouseeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellmouseeventhandler");
 
-			return datagridviewcellmouseeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellmouseeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellpaintingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellPaintingEventHandler datagridviewcellpaintingeventhandler, Object sender, DataGridViewCellPaintingEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellpaintingeventhandler == null) throw new ArgumentNullException("datagridviewcellpaintingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellpaintingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellPaintingEventHandler datagridviewcellpaintingeventhandler, Object sender,
+            DataGridViewCellPaintingEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellpaintingeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellpaintingeventhandler");
 
-			return datagridviewcellpaintingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellpaintingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellparsingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellParsingEventHandler datagridviewcellparsingeventhandler, Object sender, DataGridViewCellParsingEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellparsingeventhandler == null) throw new ArgumentNullException("datagridviewcellparsingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellparsingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellParsingEventHandler datagridviewcellparsingeventhandler, Object sender,
+            DataGridViewCellParsingEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellparsingeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellparsingeventhandler");
 
-			return datagridviewcellparsingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellparsingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellstatechangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellStateChangedEventHandler datagridviewcellstatechangedeventhandler, Object sender, DataGridViewCellStateChangedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellstatechangedeventhandler == null) throw new ArgumentNullException("datagridviewcellstatechangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellstatechangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellStateChangedEventHandler datagridviewcellstatechangedeventhandler, Object sender,
+            DataGridViewCellStateChangedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellstatechangedeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellstatechangedeventhandler");
 
-			return datagridviewcellstatechangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellstatechangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellstylecontentchangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellStyleContentChangedEventHandler datagridviewcellstylecontentchangedeventhandler, Object sender, DataGridViewCellStyleContentChangedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellstylecontentchangedeventhandler == null) throw new ArgumentNullException("datagridviewcellstylecontentchangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellstylecontentchangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellStyleContentChangedEventHandler datagridviewcellstylecontentchangedeventhandler,
+            Object sender, DataGridViewCellStyleContentChangedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellstylecontentchangedeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellstylecontentchangedeventhandler");
 
-			return datagridviewcellstylecontentchangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellstylecontentchangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcelltooltiptextneededeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellToolTipTextNeededEventHandler datagridviewcelltooltiptextneededeventhandler, Object sender, DataGridViewCellToolTipTextNeededEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcelltooltiptextneededeventhandler == null) throw new ArgumentNullException("datagridviewcelltooltiptextneededeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcelltooltiptextneededeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellToolTipTextNeededEventHandler datagridviewcelltooltiptextneededeventhandler,
+            Object sender, DataGridViewCellToolTipTextNeededEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcelltooltiptextneededeventhandler == null)
+                throw new ArgumentNullException("datagridviewcelltooltiptextneededeventhandler");
 
-			return datagridviewcelltooltiptextneededeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcelltooltiptextneededeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellvalidatingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellValidatingEventHandler datagridviewcellvalidatingeventhandler, Object sender, DataGridViewCellValidatingEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellvalidatingeventhandler == null) throw new ArgumentNullException("datagridviewcellvalidatingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellvalidatingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewCellValidatingEventHandler datagridviewcellvalidatingeventhandler, Object sender,
+            DataGridViewCellValidatingEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellvalidatingeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellvalidatingeventhandler");
 
-			return datagridviewcellvalidatingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellvalidatingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcellvalueeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewCellValueEventHandler datagridviewcellvalueeventhandler, Object sender, DataGridViewCellValueEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcellvalueeventhandler == null) throw new ArgumentNullException("datagridviewcellvalueeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcellvalueeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DataGridViewCellValueEventHandler datagridviewcellvalueeventhandler,
+            Object sender, DataGridViewCellValueEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcellvalueeventhandler == null)
+                throw new ArgumentNullException("datagridviewcellvalueeventhandler");
 
-			return datagridviewcellvalueeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcellvalueeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcolumndividerdoubleclickeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewColumnDividerDoubleClickEventHandler datagridviewcolumndividerdoubleclickeventhandler, Object sender, DataGridViewColumnDividerDoubleClickEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcolumndividerdoubleclickeventhandler == null) throw new ArgumentNullException("datagridviewcolumndividerdoubleclickeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcolumndividerdoubleclickeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewColumnDividerDoubleClickEventHandler datagridviewcolumndividerdoubleclickeventhandler,
+            Object sender, DataGridViewColumnDividerDoubleClickEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcolumndividerdoubleclickeventhandler == null)
+                throw new ArgumentNullException("datagridviewcolumndividerdoubleclickeventhandler");
 
-			return datagridviewcolumndividerdoubleclickeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcolumndividerdoubleclickeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcolumneventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewColumnEventHandler datagridviewcolumneventhandler, Object sender, DataGridViewColumnEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcolumneventhandler == null) throw new ArgumentNullException("datagridviewcolumneventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcolumneventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DataGridViewColumnEventHandler datagridviewcolumneventhandler,
+            Object sender, DataGridViewColumnEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcolumneventhandler == null)
+                throw new ArgumentNullException("datagridviewcolumneventhandler");
 
-			return datagridviewcolumneventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcolumneventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewcolumnstatechangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewColumnStateChangedEventHandler datagridviewcolumnstatechangedeventhandler, Object sender, DataGridViewColumnStateChangedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewcolumnstatechangedeventhandler == null) throw new ArgumentNullException("datagridviewcolumnstatechangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewcolumnstatechangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewColumnStateChangedEventHandler datagridviewcolumnstatechangedeventhandler, Object sender,
+            DataGridViewColumnStateChangedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewcolumnstatechangedeventhandler == null)
+                throw new ArgumentNullException("datagridviewcolumnstatechangedeventhandler");
 
-			return datagridviewcolumnstatechangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewcolumnstatechangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewdataerroreventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewDataErrorEventHandler datagridviewdataerroreventhandler, Object sender, DataGridViewDataErrorEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewdataerroreventhandler == null) throw new ArgumentNullException("datagridviewdataerroreventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewdataerroreventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DataGridViewDataErrorEventHandler datagridviewdataerroreventhandler,
+            Object sender, DataGridViewDataErrorEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewdataerroreventhandler == null)
+                throw new ArgumentNullException("datagridviewdataerroreventhandler");
 
-			return datagridviewdataerroreventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewdataerroreventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridvieweditingcontrolshowingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewEditingControlShowingEventHandler datagridvieweditingcontrolshowingeventhandler, Object sender, DataGridViewEditingControlShowingEventArgs e, AsyncCallback callback)
-		{
-			if(datagridvieweditingcontrolshowingeventhandler == null) throw new ArgumentNullException("datagridvieweditingcontrolshowingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridvieweditingcontrolshowingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewEditingControlShowingEventHandler datagridvieweditingcontrolshowingeventhandler,
+            Object sender, DataGridViewEditingControlShowingEventArgs e, AsyncCallback callback)
+        {
+            if (datagridvieweditingcontrolshowingeventhandler == null)
+                throw new ArgumentNullException("datagridvieweditingcontrolshowingeventhandler");
 
-			return datagridvieweditingcontrolshowingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridvieweditingcontrolshowingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowcanceleventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowCancelEventHandler datagridviewrowcanceleventhandler, Object sender, DataGridViewRowCancelEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowcanceleventhandler == null) throw new ArgumentNullException("datagridviewrowcanceleventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowcanceleventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DataGridViewRowCancelEventHandler datagridviewrowcanceleventhandler,
+            Object sender, DataGridViewRowCancelEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowcanceleventhandler == null)
+                throw new ArgumentNullException("datagridviewrowcanceleventhandler");
 
-			return datagridviewrowcanceleventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowcanceleventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowContextMenuStripNeededEventHandler datagridviewrowcontextmenustripneededeventhandler, Object sender, DataGridViewRowContextMenuStripNeededEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowcontextmenustripneededeventhandler == null) throw new ArgumentNullException("datagridviewrowcontextmenustripneededeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowContextMenuStripNeededEventHandler datagridviewrowcontextmenustripneededeventhandler,
+            Object sender, DataGridViewRowContextMenuStripNeededEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowcontextmenustripneededeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowcontextmenustripneededeventhandler");
 
-			return datagridviewrowcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowcontextmenustripneededeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowdividerdoubleclickeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowDividerDoubleClickEventHandler datagridviewrowdividerdoubleclickeventhandler, Object sender, DataGridViewRowDividerDoubleClickEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowdividerdoubleclickeventhandler == null) throw new ArgumentNullException("datagridviewrowdividerdoubleclickeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowdividerdoubleclickeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowDividerDoubleClickEventHandler datagridviewrowdividerdoubleclickeventhandler,
+            Object sender, DataGridViewRowDividerDoubleClickEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowdividerdoubleclickeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowdividerdoubleclickeventhandler");
 
-			return datagridviewrowdividerdoubleclickeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowdividerdoubleclickeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowerrortextneededeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowErrorTextNeededEventHandler datagridviewrowerrortextneededeventhandler, Object sender, DataGridViewRowErrorTextNeededEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowerrortextneededeventhandler == null) throw new ArgumentNullException("datagridviewrowerrortextneededeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowerrortextneededeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowErrorTextNeededEventHandler datagridviewrowerrortextneededeventhandler, Object sender,
+            DataGridViewRowErrorTextNeededEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowerrortextneededeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowerrortextneededeventhandler");
 
-			return datagridviewrowerrortextneededeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowerrortextneededeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowheightinfoneededeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowHeightInfoNeededEventHandler datagridviewrowheightinfoneededeventhandler, Object sender, DataGridViewRowHeightInfoNeededEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowheightinfoneededeventhandler == null) throw new ArgumentNullException("datagridviewrowheightinfoneededeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowheightinfoneededeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowHeightInfoNeededEventHandler datagridviewrowheightinfoneededeventhandler, Object sender,
+            DataGridViewRowHeightInfoNeededEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowheightinfoneededeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowheightinfoneededeventhandler");
 
-			return datagridviewrowheightinfoneededeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowheightinfoneededeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowheightinfopushedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowHeightInfoPushedEventHandler datagridviewrowheightinfopushedeventhandler, Object sender, DataGridViewRowHeightInfoPushedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowheightinfopushedeventhandler == null) throw new ArgumentNullException("datagridviewrowheightinfopushedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowheightinfopushedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowHeightInfoPushedEventHandler datagridviewrowheightinfopushedeventhandler, Object sender,
+            DataGridViewRowHeightInfoPushedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowheightinfopushedeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowheightinfopushedeventhandler");
 
-			return datagridviewrowheightinfopushedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowheightinfopushedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowpostpainteventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowPostPaintEventHandler datagridviewrowpostpainteventhandler, Object sender, DataGridViewRowPostPaintEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowpostpainteventhandler == null) throw new ArgumentNullException("datagridviewrowpostpainteventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowpostpainteventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowPostPaintEventHandler datagridviewrowpostpainteventhandler, Object sender,
+            DataGridViewRowPostPaintEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowpostpainteventhandler == null)
+                throw new ArgumentNullException("datagridviewrowpostpainteventhandler");
 
-			return datagridviewrowpostpainteventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowpostpainteventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowprepainteventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowPrePaintEventHandler datagridviewrowprepainteventhandler, Object sender, DataGridViewRowPrePaintEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowprepainteventhandler == null) throw new ArgumentNullException("datagridviewrowprepainteventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowprepainteventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowPrePaintEventHandler datagridviewrowprepainteventhandler, Object sender,
+            DataGridViewRowPrePaintEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowprepainteventhandler == null)
+                throw new ArgumentNullException("datagridviewrowprepainteventhandler");
 
-			return datagridviewrowprepainteventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowprepainteventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowsaddedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowsAddedEventHandler datagridviewrowsaddedeventhandler, Object sender, DataGridViewRowsAddedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowsaddedeventhandler == null) throw new ArgumentNullException("datagridviewrowsaddedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowsaddedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DataGridViewRowsAddedEventHandler datagridviewrowsaddedeventhandler,
+            Object sender, DataGridViewRowsAddedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowsaddedeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowsaddedeventhandler");
 
-			return datagridviewrowsaddedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowsaddedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowsremovedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowsRemovedEventHandler datagridviewrowsremovedeventhandler, Object sender, DataGridViewRowsRemovedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowsremovedeventhandler == null) throw new ArgumentNullException("datagridviewrowsremovedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowsremovedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowsRemovedEventHandler datagridviewrowsremovedeventhandler, Object sender,
+            DataGridViewRowsRemovedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowsremovedeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowsremovedeventhandler");
 
-			return datagridviewrowsremovedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowsremovedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewrowstatechangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewRowStateChangedEventHandler datagridviewrowstatechangedeventhandler, Object sender, DataGridViewRowStateChangedEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewrowstatechangedeventhandler == null) throw new ArgumentNullException("datagridviewrowstatechangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewrowstatechangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewRowStateChangedEventHandler datagridviewrowstatechangedeventhandler, Object sender,
+            DataGridViewRowStateChangedEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewrowstatechangedeventhandler == null)
+                throw new ArgumentNullException("datagridviewrowstatechangedeventhandler");
 
-			return datagridviewrowstatechangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewrowstatechangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// datagridviewsortcompareeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DataGridViewSortCompareEventHandler datagridviewsortcompareeventhandler, Object sender, DataGridViewSortCompareEventArgs e, AsyncCallback callback)
-		{
-			if(datagridviewsortcompareeventhandler == null) throw new ArgumentNullException("datagridviewsortcompareeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// datagridviewsortcompareeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DataGridViewSortCompareEventHandler datagridviewsortcompareeventhandler, Object sender,
+            DataGridViewSortCompareEventArgs e, AsyncCallback callback)
+        {
+            if (datagridviewsortcompareeventhandler == null)
+                throw new ArgumentNullException("datagridviewsortcompareeventhandler");
 
-			return datagridviewsortcompareeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return datagridviewsortcompareeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1136,42 +1200,45 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// drawlistviewcolumnheadereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DrawListViewColumnHeaderEventHandler drawlistviewcolumnheadereventhandler, Object sender, DrawListViewColumnHeaderEventArgs e, AsyncCallback callback)
-		{
-			if(drawlistviewcolumnheadereventhandler == null) throw new ArgumentNullException("drawlistviewcolumnheadereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// drawlistviewcolumnheadereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this DrawListViewColumnHeaderEventHandler drawlistviewcolumnheadereventhandler, Object sender,
+            DrawListViewColumnHeaderEventArgs e, AsyncCallback callback)
+        {
+            if (drawlistviewcolumnheadereventhandler == null)
+                throw new ArgumentNullException("drawlistviewcolumnheadereventhandler");
 
-			return drawlistviewcolumnheadereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return drawlistviewcolumnheadereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// drawlistviewsubitemeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this DrawListViewSubItemEventHandler drawlistviewsubitemeventhandler, Object sender, DrawListViewSubItemEventArgs e, AsyncCallback callback)
-		{
-			if(drawlistviewsubitemeventhandler == null) throw new ArgumentNullException("drawlistviewsubitemeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// drawlistviewsubitemeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this DrawListViewSubItemEventHandler drawlistviewsubitemeventhandler,
+            Object sender, DrawListViewSubItemEventArgs e, AsyncCallback callback)
+        {
+            if (drawlistviewsubitemeventhandler == null)
+                throw new ArgumentNullException("drawlistviewsubitemeventhandler");
 
-			return drawlistviewsubitemeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return drawlistviewsubitemeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1201,74 +1268,76 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Emit code that will get the value from <paramref name="field"/>
-		/// </summary>
-		/// <param name="generator">Generator that will emit the instructions</param>
-		/// <param name="field">Field to read</param>
-		public static void EmitBackingFieldGetter(this ILGenerator generator, FieldInfo field)
-		{
-			generator.Emit(OpCodes.Ldarg_0);
-			generator.Emit(OpCodes.Ldfld, field);
-			generator.Emit(OpCodes.Ret);
-		}
+    {
+        /// <summary>
+        /// Emit code that will get the value from <paramref name="field"/>
+        /// </summary>
+        /// <param name="generator">Generator that will emit the instructions</param>
+        /// <param name="field">Field to read</param>
+        public static void EmitBackingFieldGetter(this ILGenerator generator, FieldInfo field)
+        {
+            generator.Emit(OpCodes.Ldarg_0);
+            generator.Emit(OpCodes.Ldfld, field);
+            generator.Emit(OpCodes.Ret);
+        }
 
-		/// <summary>
-		/// Emit code that will set the value <paramref name="field"/> based argument on stack
-		/// </summary>
-		/// <param name="generator">Generator that will emit the instructions</param>
-		/// <param name="field">Field to write</param>
-		public static void EmitBackingFieldSetter(this ILGenerator generator, FieldInfo field)
-		{
-			generator.Emit(OpCodes.Ldarg_0);
-			generator.Emit(OpCodes.Ldarg_1);
-			generator.Emit(OpCodes.Stfld, field);
-			generator.Emit(OpCodes.Ret);
-		}
-	}
+        /// <summary>
+        /// Emit code that will set the value <paramref name="field"/> based argument on stack
+        /// </summary>
+        /// <param name="generator">Generator that will emit the instructions</param>
+        /// <param name="field">Field to write</param>
+        public static void EmitBackingFieldSetter(this ILGenerator generator, FieldInfo field)
+        {
+            generator.Emit(OpCodes.Ldarg_0);
+            generator.Emit(OpCodes.Ldarg_1);
+            generator.Emit(OpCodes.Stfld, field);
+            generator.Emit(OpCodes.Ret);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// inputlanguagechangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this InputLanguageChangedEventHandler inputlanguagechangedeventhandler, Object sender, InputLanguageChangedEventArgs e, AsyncCallback callback)
-		{
-			if(inputlanguagechangedeventhandler == null) throw new ArgumentNullException("inputlanguagechangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// inputlanguagechangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this InputLanguageChangedEventHandler inputlanguagechangedeventhandler,
+            Object sender, InputLanguageChangedEventArgs e, AsyncCallback callback)
+        {
+            if (inputlanguagechangedeventhandler == null)
+                throw new ArgumentNullException("inputlanguagechangedeventhandler");
 
-			return inputlanguagechangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return inputlanguagechangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// inputlanguagechangingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this InputLanguageChangingEventHandler inputlanguagechangingeventhandler, Object sender, InputLanguageChangingEventArgs e, AsyncCallback callback)
-		{
-			if(inputlanguagechangingeventhandler == null) throw new ArgumentNullException("inputlanguagechangingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// inputlanguagechangingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this InputLanguageChangingEventHandler inputlanguagechangingeventhandler,
+            Object sender, InputLanguageChangingEventArgs e, AsyncCallback callback)
+        {
+            if (inputlanguagechangingeventhandler == null)
+                throw new ArgumentNullException("inputlanguagechangingeventhandler");
 
-			return inputlanguagechangingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return inputlanguagechangingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1320,84 +1389,90 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// linklabellinkclickedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this LinkLabelLinkClickedEventHandler linklabellinkclickedeventhandler, Object sender, LinkLabelLinkClickedEventArgs e, AsyncCallback callback)
-		{
-			if(linklabellinkclickedeventhandler == null) throw new ArgumentNullException("linklabellinkclickedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// linklabellinkclickedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this LinkLabelLinkClickedEventHandler linklabellinkclickedeventhandler,
+            Object sender, LinkLabelLinkClickedEventArgs e, AsyncCallback callback)
+        {
+            if (linklabellinkclickedeventhandler == null)
+                throw new ArgumentNullException("linklabellinkclickedeventhandler");
 
-			return linklabellinkclickedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return linklabellinkclickedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// listcontrolconverteventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ListControlConvertEventHandler listcontrolconverteventhandler, Object sender, ListControlConvertEventArgs e, AsyncCallback callback)
-		{
-			if(listcontrolconverteventhandler == null) throw new ArgumentNullException("listcontrolconverteventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// listcontrolconverteventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ListControlConvertEventHandler listcontrolconverteventhandler,
+            Object sender, ListControlConvertEventArgs e, AsyncCallback callback)
+        {
+            if (listcontrolconverteventhandler == null)
+                throw new ArgumentNullException("listcontrolconverteventhandler");
 
-			return listcontrolconverteventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return listcontrolconverteventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// listviewitemmousehovereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ListViewItemMouseHoverEventHandler listviewitemmousehovereventhandler, Object sender, ListViewItemMouseHoverEventArgs e, AsyncCallback callback)
-		{
-			if(listviewitemmousehovereventhandler == null) throw new ArgumentNullException("listviewitemmousehovereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// listviewitemmousehovereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ListViewItemMouseHoverEventHandler listviewitemmousehovereventhandler, Object sender,
+            ListViewItemMouseHoverEventArgs e, AsyncCallback callback)
+        {
+            if (listviewitemmousehovereventhandler == null)
+                throw new ArgumentNullException("listviewitemmousehovereventhandler");
 
-			return listviewitemmousehovereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return listviewitemmousehovereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// listviewitemselectionchangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ListViewItemSelectionChangedEventHandler listviewitemselectionchangedeventhandler, Object sender, ListViewItemSelectionChangedEventArgs e, AsyncCallback callback)
-		{
-			if(listviewitemselectionchangedeventhandler == null) throw new ArgumentNullException("listviewitemselectionchangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// listviewitemselectionchangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ListViewItemSelectionChangedEventHandler listviewitemselectionchangedeventhandler, Object sender,
+            ListViewItemSelectionChangedEventArgs e, AsyncCallback callback)
+        {
+            if (listviewitemselectionchangedeventhandler == null)
+                throw new ArgumentNullException("listviewitemselectionchangedeventhandler");
 
-			return listviewitemselectionchangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return listviewitemselectionchangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1496,21 +1571,21 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// playrecordcallback.BeginInvoke(recordType, flags, dataSize, recordData, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this PlayRecordCallback playrecordcallback, EmfPlusRecordType recordType, Int32 flags, Int32 dataSize, IntPtr recordData, AsyncCallback callback)
-		{
-			if(playrecordcallback == null) throw new ArgumentNullException("playrecordcallback");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// playrecordcallback.BeginInvoke(recordType, flags, dataSize, recordData, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this PlayRecordCallback playrecordcallback, EmfPlusRecordType recordType,
+            Int32 flags, Int32 dataSize, IntPtr recordData, AsyncCallback callback)
+        {
+            if (playrecordcallback == null) throw new ArgumentNullException("playrecordcallback");
 
-			return playrecordcallback.BeginInvoke(recordType, flags, dataSize, recordData, callback, null);
-		}
-
-	}
+            return playrecordcallback.BeginInvoke(recordType, flags, dataSize, recordData, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1561,126 +1636,133 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// propertyvaluechangedeventhandler.BeginInvoke(s, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this PropertyValueChangedEventHandler propertyvaluechangedeventhandler, Object s, PropertyValueChangedEventArgs e, AsyncCallback callback)
-		{
-			if(propertyvaluechangedeventhandler == null) throw new ArgumentNullException("propertyvaluechangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// propertyvaluechangedeventhandler.BeginInvoke(s, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this PropertyValueChangedEventHandler propertyvaluechangedeventhandler,
+            Object s, PropertyValueChangedEventArgs e, AsyncCallback callback)
+        {
+            if (propertyvaluechangedeventhandler == null)
+                throw new ArgumentNullException("propertyvaluechangedeventhandler");
 
-			return propertyvaluechangedeventhandler.BeginInvoke(s, e, callback, null);
-		}
-
-	}
+            return propertyvaluechangedeventhandler.BeginInvoke(s, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// propertyvalueuihandler.BeginInvoke(context, propDesc, valueUIItemList, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this PropertyValueUIHandler propertyvalueuihandler, System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor propDesc, System.Collections.ArrayList valueUIItemList, AsyncCallback callback)
-		{
-			if(propertyvalueuihandler == null) throw new ArgumentNullException("propertyvalueuihandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// propertyvalueuihandler.BeginInvoke(context, propDesc, valueUIItemList, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this PropertyValueUIHandler propertyvalueuihandler,
+            System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor propDesc,
+            System.Collections.ArrayList valueUIItemList, AsyncCallback callback)
+        {
+            if (propertyvalueuihandler == null) throw new ArgumentNullException("propertyvalueuihandler");
 
-			return propertyvalueuihandler.BeginInvoke(context, propDesc, valueUIItemList, callback, null);
-		}
-
-	}
+            return propertyvalueuihandler.BeginInvoke(context, propDesc, valueUIItemList, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// propertyvalueuiiteminvokehandler.BeginInvoke(context, descriptor, invokedItem, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this PropertyValueUIItemInvokeHandler propertyvalueuiiteminvokehandler, System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor descriptor, PropertyValueUIItem invokedItem, AsyncCallback callback)
-		{
-			if(propertyvalueuiiteminvokehandler == null) throw new ArgumentNullException("propertyvalueuiiteminvokehandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// propertyvalueuiiteminvokehandler.BeginInvoke(context, descriptor, invokedItem, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this PropertyValueUIItemInvokeHandler propertyvalueuiiteminvokehandler,
+            System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor descriptor,
+            PropertyValueUIItem invokedItem, AsyncCallback callback)
+        {
+            if (propertyvalueuiiteminvokehandler == null)
+                throw new ArgumentNullException("propertyvalueuiiteminvokehandler");
 
-			return propertyvalueuiiteminvokehandler.BeginInvoke(context, descriptor, invokedItem, callback, null);
-		}
-
-	}
+            return propertyvalueuiiteminvokehandler.BeginInvoke(context, descriptor, invokedItem, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// queryaccessibilityhelpeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this QueryAccessibilityHelpEventHandler queryaccessibilityhelpeventhandler, Object sender, QueryAccessibilityHelpEventArgs e, AsyncCallback callback)
-		{
-			if(queryaccessibilityhelpeventhandler == null) throw new ArgumentNullException("queryaccessibilityhelpeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// queryaccessibilityhelpeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this QueryAccessibilityHelpEventHandler queryaccessibilityhelpeventhandler, Object sender,
+            QueryAccessibilityHelpEventArgs e, AsyncCallback callback)
+        {
+            if (queryaccessibilityhelpeventhandler == null)
+                throw new ArgumentNullException("queryaccessibilityhelpeventhandler");
 
-			return queryaccessibilityhelpeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return queryaccessibilityhelpeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// querypagesettingseventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this QueryPageSettingsEventHandler querypagesettingseventhandler, Object sender, QueryPageSettingsEventArgs e, AsyncCallback callback)
-		{
-			if(querypagesettingseventhandler == null) throw new ArgumentNullException("querypagesettingseventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// querypagesettingseventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this QueryPageSettingsEventHandler querypagesettingseventhandler,
+            Object sender, QueryPageSettingsEventArgs e, AsyncCallback callback)
+        {
+            if (querypagesettingseventhandler == null) throw new ArgumentNullException("querypagesettingseventhandler");
 
-			return querypagesettingseventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return querypagesettingseventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// retrievevirtualitemeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this RetrieveVirtualItemEventHandler retrievevirtualitemeventhandler, Object sender, RetrieveVirtualItemEventArgs e, AsyncCallback callback)
-		{
-			if(retrievevirtualitemeventhandler == null) throw new ArgumentNullException("retrievevirtualitemeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// retrievevirtualitemeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this RetrieveVirtualItemEventHandler retrievevirtualitemeventhandler,
+            Object sender, RetrieveVirtualItemEventArgs e, AsyncCallback callback)
+        {
+            if (retrievevirtualitemeventhandler == null)
+                throw new ArgumentNullException("retrievevirtualitemeventhandler");
 
-			return retrievevirtualitemeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return retrievevirtualitemeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1710,42 +1792,45 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// searchforvirtualitemeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this SearchForVirtualItemEventHandler searchforvirtualitemeventhandler, Object sender, SearchForVirtualItemEventArgs e, AsyncCallback callback)
-		{
-			if(searchforvirtualitemeventhandler == null) throw new ArgumentNullException("searchforvirtualitemeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// searchforvirtualitemeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this SearchForVirtualItemEventHandler searchforvirtualitemeventhandler,
+            Object sender, SearchForVirtualItemEventArgs e, AsyncCallback callback)
+        {
+            if (searchforvirtualitemeventhandler == null)
+                throw new ArgumentNullException("searchforvirtualitemeventhandler");
 
-			return searchforvirtualitemeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return searchforvirtualitemeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// selectedgriditemchangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this SelectedGridItemChangedEventHandler selectedgriditemchangedeventhandler, Object sender, SelectedGridItemChangedEventArgs e, AsyncCallback callback)
-		{
-			if(selectedgriditemchangedeventhandler == null) throw new ArgumentNullException("selectedgriditemchangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// selectedgriditemchangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this SelectedGridItemChangedEventHandler selectedgriditemchangedeventhandler, Object sender,
+            SelectedGridItemChangedEventArgs e, AsyncCallback callback)
+        {
+            if (selectedgriditemchangedeventhandler == null)
+                throw new ArgumentNullException("selectedgriditemchangedeventhandler");
 
-			return selectedgriditemchangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return selectedgriditemchangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -1820,399 +1905,425 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// statusbardrawitemeventhandler.BeginInvoke(sender, sbdevent, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this StatusBarDrawItemEventHandler statusbardrawitemeventhandler, Object sender, StatusBarDrawItemEventArgs sbdevent, AsyncCallback callback)
-		{
-			if(statusbardrawitemeventhandler == null) throw new ArgumentNullException("statusbardrawitemeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// statusbardrawitemeventhandler.BeginInvoke(sender, sbdevent, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this StatusBarDrawItemEventHandler statusbardrawitemeventhandler,
+            Object sender, StatusBarDrawItemEventArgs sbdevent, AsyncCallback callback)
+        {
+            if (statusbardrawitemeventhandler == null) throw new ArgumentNullException("statusbardrawitemeventhandler");
 
-			return statusbardrawitemeventhandler.BeginInvoke(sender, sbdevent, callback, null);
-		}
-
-	}
+            return statusbardrawitemeventhandler.BeginInvoke(sender, sbdevent, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// statusbarpanelclickeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this StatusBarPanelClickEventHandler statusbarpanelclickeventhandler, Object sender, StatusBarPanelClickEventArgs e, AsyncCallback callback)
-		{
-			if(statusbarpanelclickeventhandler == null) throw new ArgumentNullException("statusbarpanelclickeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// statusbarpanelclickeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this StatusBarPanelClickEventHandler statusbarpanelclickeventhandler,
+            Object sender, StatusBarPanelClickEventArgs e, AsyncCallback callback)
+        {
+            if (statusbarpanelclickeventhandler == null)
+                throw new ArgumentNullException("statusbarpanelclickeventhandler");
 
-			return statusbarpanelclickeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return statusbarpanelclickeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// tablelayoutcellpainteventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this TableLayoutCellPaintEventHandler tablelayoutcellpainteventhandler, Object sender, TableLayoutCellPaintEventArgs e, AsyncCallback callback)
-		{
-			if(tablelayoutcellpainteventhandler == null) throw new ArgumentNullException("tablelayoutcellpainteventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// tablelayoutcellpainteventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this TableLayoutCellPaintEventHandler tablelayoutcellpainteventhandler,
+            Object sender, TableLayoutCellPaintEventArgs e, AsyncCallback callback)
+        {
+            if (tablelayoutcellpainteventhandler == null)
+                throw new ArgumentNullException("tablelayoutcellpainteventhandler");
 
-			return tablelayoutcellpainteventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return tablelayoutcellpainteventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolbarbuttonclickeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolBarButtonClickEventHandler toolbarbuttonclickeventhandler, Object sender, ToolBarButtonClickEventArgs e, AsyncCallback callback)
-		{
-			if(toolbarbuttonclickeventhandler == null) throw new ArgumentNullException("toolbarbuttonclickeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolbarbuttonclickeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ToolBarButtonClickEventHandler toolbarbuttonclickeventhandler,
+            Object sender, ToolBarButtonClickEventArgs e, AsyncCallback callback)
+        {
+            if (toolbarbuttonclickeventhandler == null)
+                throw new ArgumentNullException("toolbarbuttonclickeventhandler");
 
-			return toolbarbuttonclickeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolbarbuttonclickeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolboxcomponentscreatedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolboxComponentsCreatedEventHandler toolboxcomponentscreatedeventhandler, Object sender, ToolboxComponentsCreatedEventArgs e, AsyncCallback callback)
-		{
-			if(toolboxcomponentscreatedeventhandler == null) throw new ArgumentNullException("toolboxcomponentscreatedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolboxcomponentscreatedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolboxComponentsCreatedEventHandler toolboxcomponentscreatedeventhandler, Object sender,
+            ToolboxComponentsCreatedEventArgs e, AsyncCallback callback)
+        {
+            if (toolboxcomponentscreatedeventhandler == null)
+                throw new ArgumentNullException("toolboxcomponentscreatedeventhandler");
 
-			return toolboxcomponentscreatedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolboxcomponentscreatedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolboxcomponentscreatingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolboxComponentsCreatingEventHandler toolboxcomponentscreatingeventhandler, Object sender, ToolboxComponentsCreatingEventArgs e, AsyncCallback callback)
-		{
-			if(toolboxcomponentscreatingeventhandler == null) throw new ArgumentNullException("toolboxcomponentscreatingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolboxcomponentscreatingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolboxComponentsCreatingEventHandler toolboxcomponentscreatingeventhandler, Object sender,
+            ToolboxComponentsCreatingEventArgs e, AsyncCallback callback)
+        {
+            if (toolboxcomponentscreatingeventhandler == null)
+                throw new ArgumentNullException("toolboxcomponentscreatingeventhandler");
 
-			return toolboxcomponentscreatingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolboxcomponentscreatingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstriparrowrendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripArrowRenderEventHandler toolstriparrowrendereventhandler, Object sender, ToolStripArrowRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstriparrowrendereventhandler == null) throw new ArgumentNullException("toolstriparrowrendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstriparrowrendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ToolStripArrowRenderEventHandler toolstriparrowrendereventhandler,
+            Object sender, ToolStripArrowRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstriparrowrendereventhandler == null)
+                throw new ArgumentNullException("toolstriparrowrendereventhandler");
 
-			return toolstriparrowrendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstriparrowrendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripcontentpanelrendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripContentPanelRenderEventHandler toolstripcontentpanelrendereventhandler, Object sender, ToolStripContentPanelRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripcontentpanelrendereventhandler == null) throw new ArgumentNullException("toolstripcontentpanelrendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripcontentpanelrendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolStripContentPanelRenderEventHandler toolstripcontentpanelrendereventhandler, Object sender,
+            ToolStripContentPanelRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripcontentpanelrendereventhandler == null)
+                throw new ArgumentNullException("toolstripcontentpanelrendereventhandler");
 
-			return toolstripcontentpanelrendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripcontentpanelrendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripdropdownclosedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripDropDownClosedEventHandler toolstripdropdownclosedeventhandler, Object sender, ToolStripDropDownClosedEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripdropdownclosedeventhandler == null) throw new ArgumentNullException("toolstripdropdownclosedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripdropdownclosedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolStripDropDownClosedEventHandler toolstripdropdownclosedeventhandler, Object sender,
+            ToolStripDropDownClosedEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripdropdownclosedeventhandler == null)
+                throw new ArgumentNullException("toolstripdropdownclosedeventhandler");
 
-			return toolstripdropdownclosedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripdropdownclosedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripdropdownclosingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripDropDownClosingEventHandler toolstripdropdownclosingeventhandler, Object sender, ToolStripDropDownClosingEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripdropdownclosingeventhandler == null) throw new ArgumentNullException("toolstripdropdownclosingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripdropdownclosingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolStripDropDownClosingEventHandler toolstripdropdownclosingeventhandler, Object sender,
+            ToolStripDropDownClosingEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripdropdownclosingeventhandler == null)
+                throw new ArgumentNullException("toolstripdropdownclosingeventhandler");
 
-			return toolstripdropdownclosingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripdropdownclosingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripgriprendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripGripRenderEventHandler toolstripgriprendereventhandler, Object sender, ToolStripGripRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripgriprendereventhandler == null) throw new ArgumentNullException("toolstripgriprendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripgriprendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ToolStripGripRenderEventHandler toolstripgriprendereventhandler,
+            Object sender, ToolStripGripRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripgriprendereventhandler == null)
+                throw new ArgumentNullException("toolstripgriprendereventhandler");
 
-			return toolstripgriprendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripgriprendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripitemclickedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripItemClickedEventHandler toolstripitemclickedeventhandler, Object sender, ToolStripItemClickedEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripitemclickedeventhandler == null) throw new ArgumentNullException("toolstripitemclickedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripitemclickedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ToolStripItemClickedEventHandler toolstripitemclickedeventhandler,
+            Object sender, ToolStripItemClickedEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripitemclickedeventhandler == null)
+                throw new ArgumentNullException("toolstripitemclickedeventhandler");
 
-			return toolstripitemclickedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripitemclickedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripitemimagerendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripItemImageRenderEventHandler toolstripitemimagerendereventhandler, Object sender, ToolStripItemImageRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripitemimagerendereventhandler == null) throw new ArgumentNullException("toolstripitemimagerendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripitemimagerendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolStripItemImageRenderEventHandler toolstripitemimagerendereventhandler, Object sender,
+            ToolStripItemImageRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripitemimagerendereventhandler == null)
+                throw new ArgumentNullException("toolstripitemimagerendereventhandler");
 
-			return toolstripitemimagerendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripitemimagerendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripitemrendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripItemRenderEventHandler toolstripitemrendereventhandler, Object sender, ToolStripItemRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripitemrendereventhandler == null) throw new ArgumentNullException("toolstripitemrendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripitemrendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ToolStripItemRenderEventHandler toolstripitemrendereventhandler,
+            Object sender, ToolStripItemRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripitemrendereventhandler == null)
+                throw new ArgumentNullException("toolstripitemrendereventhandler");
 
-			return toolstripitemrendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripitemrendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripitemtextrendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripItemTextRenderEventHandler toolstripitemtextrendereventhandler, Object sender, ToolStripItemTextRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripitemtextrendereventhandler == null) throw new ArgumentNullException("toolstripitemtextrendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripitemtextrendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolStripItemTextRenderEventHandler toolstripitemtextrendereventhandler, Object sender,
+            ToolStripItemTextRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripitemtextrendereventhandler == null)
+                throw new ArgumentNullException("toolstripitemtextrendereventhandler");
 
-			return toolstripitemtextrendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripitemtextrendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstrippanelrendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripPanelRenderEventHandler toolstrippanelrendereventhandler, Object sender, ToolStripPanelRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstrippanelrendereventhandler == null) throw new ArgumentNullException("toolstrippanelrendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstrippanelrendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this ToolStripPanelRenderEventHandler toolstrippanelrendereventhandler,
+            Object sender, ToolStripPanelRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstrippanelrendereventhandler == null)
+                throw new ArgumentNullException("toolstrippanelrendereventhandler");
 
-			return toolstrippanelrendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstrippanelrendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// toolstripseparatorrendereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this ToolStripSeparatorRenderEventHandler toolstripseparatorrendereventhandler, Object sender, ToolStripSeparatorRenderEventArgs e, AsyncCallback callback)
-		{
-			if(toolstripseparatorrendereventhandler == null) throw new ArgumentNullException("toolstripseparatorrendereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// toolstripseparatorrendereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this ToolStripSeparatorRenderEventHandler toolstripseparatorrendereventhandler, Object sender,
+            ToolStripSeparatorRenderEventArgs e, AsyncCallback callback)
+        {
+            if (toolstripseparatorrendereventhandler == null)
+                throw new ArgumentNullException("toolstripseparatorrendereventhandler");
 
-			return toolstripseparatorrendereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return toolstripseparatorrendereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// treenodemouseclickeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this TreeNodeMouseClickEventHandler treenodemouseclickeventhandler, Object sender, TreeNodeMouseClickEventArgs e, AsyncCallback callback)
-		{
-			if(treenodemouseclickeventhandler == null) throw new ArgumentNullException("treenodemouseclickeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// treenodemouseclickeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this TreeNodeMouseClickEventHandler treenodemouseclickeventhandler,
+            Object sender, TreeNodeMouseClickEventArgs e, AsyncCallback callback)
+        {
+            if (treenodemouseclickeventhandler == null)
+                throw new ArgumentNullException("treenodemouseclickeventhandler");
 
-			return treenodemouseclickeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return treenodemouseclickeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// treenodemousehovereventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this TreeNodeMouseHoverEventHandler treenodemousehovereventhandler, Object sender, TreeNodeMouseHoverEventArgs e, AsyncCallback callback)
-		{
-			if(treenodemousehovereventhandler == null) throw new ArgumentNullException("treenodemousehovereventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// treenodemousehovereventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this TreeNodeMouseHoverEventHandler treenodemousehovereventhandler,
+            Object sender, TreeNodeMouseHoverEventArgs e, AsyncCallback callback)
+        {
+            if (treenodemousehovereventhandler == null)
+                throw new ArgumentNullException("treenodemousehovereventhandler");
 
-			return treenodemousehovereventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return treenodemousehovereventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2380,84 +2491,90 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// webbrowserdocumentcompletedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this WebBrowserDocumentCompletedEventHandler webbrowserdocumentcompletedeventhandler, Object sender, WebBrowserDocumentCompletedEventArgs e, AsyncCallback callback)
-		{
-			if(webbrowserdocumentcompletedeventhandler == null) throw new ArgumentNullException("webbrowserdocumentcompletedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// webbrowserdocumentcompletedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this WebBrowserDocumentCompletedEventHandler webbrowserdocumentcompletedeventhandler, Object sender,
+            WebBrowserDocumentCompletedEventArgs e, AsyncCallback callback)
+        {
+            if (webbrowserdocumentcompletedeventhandler == null)
+                throw new ArgumentNullException("webbrowserdocumentcompletedeventhandler");
 
-			return webbrowserdocumentcompletedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return webbrowserdocumentcompletedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// webbrowsernavigatedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this WebBrowserNavigatedEventHandler webbrowsernavigatedeventhandler, Object sender, WebBrowserNavigatedEventArgs e, AsyncCallback callback)
-		{
-			if(webbrowsernavigatedeventhandler == null) throw new ArgumentNullException("webbrowsernavigatedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// webbrowsernavigatedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this WebBrowserNavigatedEventHandler webbrowsernavigatedeventhandler,
+            Object sender, WebBrowserNavigatedEventArgs e, AsyncCallback callback)
+        {
+            if (webbrowsernavigatedeventhandler == null)
+                throw new ArgumentNullException("webbrowsernavigatedeventhandler");
 
-			return webbrowsernavigatedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return webbrowsernavigatedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// webbrowsernavigatingeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this WebBrowserNavigatingEventHandler webbrowsernavigatingeventhandler, Object sender, WebBrowserNavigatingEventArgs e, AsyncCallback callback)
-		{
-			if(webbrowsernavigatingeventhandler == null) throw new ArgumentNullException("webbrowsernavigatingeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// webbrowsernavigatingeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(this WebBrowserNavigatingEventHandler webbrowsernavigatingeventhandler,
+            Object sender, WebBrowserNavigatingEventArgs e, AsyncCallback callback)
+        {
+            if (webbrowsernavigatingeventhandler == null)
+                throw new ArgumentNullException("webbrowsernavigatingeventhandler");
 
-			return webbrowsernavigatingeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return webbrowsernavigatingeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// webbrowserprogresschangedeventhandler.BeginInvoke(sender, e, callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginInvoke(this WebBrowserProgressChangedEventHandler webbrowserprogresschangedeventhandler, Object sender, WebBrowserProgressChangedEventArgs e, AsyncCallback callback)
-		{
-			if(webbrowserprogresschangedeventhandler == null) throw new ArgumentNullException("webbrowserprogresschangedeventhandler");
+    {
+        /// <summary>
+        /// Extends BeginInvoke so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// webbrowserprogresschangedeventhandler.BeginInvoke(sender, e, callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginInvoke(
+            this WebBrowserProgressChangedEventHandler webbrowserprogresschangedeventhandler, Object sender,
+            WebBrowserProgressChangedEventArgs e, AsyncCallback callback)
+        {
+            if (webbrowserprogresschangedeventhandler == null)
+                throw new ArgumentNullException("webbrowserprogresschangedeventhandler");
 
-			return webbrowserprogresschangedeventhandler.BeginInvoke(sender, e, callback, null);
-		}
-
-	}
+            return webbrowserprogresschangedeventhandler.BeginInvoke(sender, e, callback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)

@@ -17,16 +17,18 @@ namespace HSNXT
         /// <returns>Returns a list containing the specified range.</returns>
         [Pure]
         [PublicAPI]
-        public static List<long> RangeTo( this long startValue, long endValue )
+        public static List<long> RangeTo(this long startValue, long endValue)
         {
-            if ( startValue > endValue )
-                throw new ArgumentException( "The start value can not be greater than the end value.", nameof(startValue) );
+            if (startValue > endValue)
+                throw new ArgumentException("The start value can not be greater than the end value.",
+                    nameof(startValue));
 
-            var list = new List<long>( (int) ( endValue - startValue ) );
-            for ( var i = startValue; i <= endValue; i++ )
-                list.Add( i );
+            var list = new List<long>((int) (endValue - startValue));
+            for (var i = startValue; i <= endValue; i++)
+                list.Add(i);
             return list;
         }
+
         /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>
@@ -37,12 +39,12 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [Pure]
         [PublicAPI]
-        public static long Sum( this long value, [NotNull] params long[] values )
+        public static long Sum(this long value, [NotNull] params long[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Sum();
         }
 
@@ -56,12 +58,12 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [Pure]
         [PublicAPI]
-        public static long? Sum( this long? value, [NotNull] params long?[] values )
+        public static long? Sum(this long? value, [NotNull] params long?[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Sum();
         }
 
@@ -78,14 +80,15 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [Pure]
         [PublicAPI]
-        public static long Sum<TSource>( this TSource value, [NotNull] Func<TSource, long> selector, [NotNull] params TSource[] values )
+        public static long Sum<TSource>(this TSource value, [NotNull] Func<TSource, long> selector,
+            [NotNull] params TSource[] values)
         {
-            selector.ThrowIfNull( nameof(selector) );
-            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Sum( selector );
+            list.Add(value);
+            return list.Sum(selector);
         }
 
         /// <summary>
@@ -101,14 +104,15 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [Pure]
         [PublicAPI]
-        public static long? Sum<TSource>( this TSource value, [NotNull] Func<TSource, long?> selector, [NotNull] params TSource[] values )
+        public static long? Sum<TSource>(this TSource value, [NotNull] Func<TSource, long?> selector,
+            [NotNull] params TSource[] values)
         {
-            selector.ThrowIfNull( nameof(selector) );
-            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Sum( selector );
+            list.Add(value);
+            return list.Sum(selector);
         }
     }
 }

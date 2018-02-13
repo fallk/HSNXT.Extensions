@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,14 +37,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Dictionary{TKey,TValue}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Finds the value for a key, returning the default value for
         /// <typeparamref name="TValue"/> if the key is not present.
         /// </summary>
-
         [DebuggerStepThrough]
         public static TValue Find<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key)
         {
@@ -53,7 +53,6 @@ namespace HSNXT
         /// Finds the value for a key, returning a given default value if the
         /// key is not present.
         /// </summary>
-
         [DebuggerStepThrough]
         public static TValue Find<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue @default)
         {
@@ -73,9 +72,9 @@ namespace HSNXT
         /// The same happens if a null reference is supplied for the
         /// function.
         /// </remarks>
-
         [DebuggerStepThrough]
-        public static TValue GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TKey, Exception> errorSelector)
+        public static TValue GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key,
+            Func<TKey, Exception> errorSelector)
         {
             if (dictionary == null) throw new ArgumentNullException("dictionary");
 
@@ -86,13 +85,11 @@ namespace HSNXT
             return value;
         }
 
-        #if NET45
-
-        /// <summary>
-        /// Returns a <see cref="ReadOnlyDictionary{TKey,TValue}"/> that
-        /// wraps this dictionary, rendering it effectively read-only.
-        /// </summary>
-
+#if NET45
+/// <summary>
+/// Returns a <see cref="ReadOnlyDictionary{TKey,TValue}"/> that
+/// wraps this dictionary, rendering it effectively read-only.
+/// </summary>
         [DebuggerStepThrough]
         public static ReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue>  dictionary)
         {
@@ -106,7 +103,6 @@ namespace HSNXT
         /// Removes the key from the dictionary and returns the associated
         /// value.
         /// </summary>
-
         [DebuggerStepThrough]
         public static TValue Pop<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
         {

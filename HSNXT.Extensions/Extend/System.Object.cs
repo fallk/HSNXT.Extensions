@@ -15,12 +15,12 @@ namespace HSNXT
         /// <returns>Returns true if the objects are the same instance.</returns>
         [Pure]
         [PublicAPI]
-        public static bool RefEquals( [NotNull] this object obj0, [NotNull] object obj1 )
+        public static bool RefEquals([NotNull] this object obj0, [NotNull] object obj1)
         {
-            obj0.ThrowIfNull( nameof(obj0) );
-            obj1.ThrowIfNull( nameof(obj1) );
+            obj0.ThrowIfNull(nameof(obj0));
+            obj1.ThrowIfNull(nameof(obj1));
 
-            return ReferenceEquals( obj0, obj1 );
+            return ReferenceEquals(obj0, obj1);
         }
     }
 }

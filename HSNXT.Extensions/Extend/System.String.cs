@@ -22,17 +22,17 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String Truncate( [CanBeNull] this String str, Int32 maxLength, String suffix)
+        public static String Truncate([CanBeNull] this String str, Int32 maxLength, String suffix)
         {
             // ReSharper disable once PossibleNullReferenceException
-            if ( str.IsEmpty() || str.Length <= maxLength )
+            if (str.IsEmpty() || str.Length <= maxLength)
                 // ReSharper disable once AssignNullToNotNullAttribute
                 return str;
 
-            return str.Substring( 0, Math.Max( 0, maxLength - suffix.Length ) )
-                .ConcatAll( suffix );
+            return str.Substring(0, Math.Max(0, maxLength - suffix.Length))
+                .ConcatAll(suffix);
         }
-        
+
         /// <summary>
         ///     Appends the given text to the string.
         ///     Adds a newline before <paramref name="append" />, if <paramref name="target" /> is not null.
@@ -43,15 +43,17 @@ namespace HSNXT
         /// <returns>Returns the concatenated string.</returns>
         [Pure]
         [PublicAPI]
-        public static string AppendWithNewLineIfNotEmpty( [CanBeNull] this string target, [CanBeNull] string append, string newLine = null )
+        public static string AppendWithNewLineIfNotEmpty([CanBeNull] this string target, [CanBeNull] string append,
+            string newLine = null)
         {
             newLine = newLine ?? Environment.NewLine;
 
-            if ( target.IsNotEmpty() )
+            if (target.IsNotEmpty())
                 target += newLine;
 
             return target + append;
         }
+
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
         ///     the specified object.
@@ -72,8 +74,8 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static object ChangeType( [CanBeNull] this string value, [NotNull] Type type )
-            => value.ChangeType( type, CultureInfo.InvariantCulture );
+        public static object ChangeType([CanBeNull] this string value, [NotNull] Type type)
+            => value.ChangeType(type, CultureInfo.InvariantCulture);
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
@@ -97,12 +99,13 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static object ChangeType( [CanBeNull] this string value, [NotNull] Type type, [NotNull] IFormatProvider formatProvider )
+        public static object ChangeType([CanBeNull] this string value, [NotNull] Type type,
+            [NotNull] IFormatProvider formatProvider)
         {
-            type.ThrowIfNull( nameof(type) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            type.ThrowIfNull(nameof(type));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return Convert.ChangeType( value, type, formatProvider );
+            return Convert.ChangeType(value, type, formatProvider);
         }
 
         /// <summary>
@@ -124,8 +127,8 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static T ChangeType<T>( [CanBeNull] this string value )
-            => (T) Convert.ChangeType( value, typeof(T) );
+        public static T ChangeType<T>([CanBeNull] this string value)
+            => (T) Convert.ChangeType(value, typeof(T));
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
@@ -149,12 +152,13 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static T ChangeType<T>( [CanBeNull] this string value, [NotNull] IFormatProvider formatProvider )
+        public static T ChangeType<T>([CanBeNull] this string value, [NotNull] IFormatProvider formatProvider)
         {
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
-            return (T) Convert.ChangeType( value, typeof(T), formatProvider );
+            return (T) Convert.ChangeType(value, typeof(T), formatProvider);
         }
+
         /// <summary>
         ///     Gets the character of the given string at the specified position.
         /// </summary>
@@ -165,15 +169,16 @@ namespace HSNXT
         /// <returns>Returns the character at the specified position.</returns>
         [Pure]
         [PublicAPI]
-        public static char CharAt( [NotNull] this string value, int index )
+        public static char CharAt([NotNull] this string value, int index)
         {
-            value.ThrowIfNull( nameof(value) );
+            value.ThrowIfNull(nameof(value));
 
-            if ( index < 0 || value.Length <= index )
-                throw new ArgumentOutOfRangeException( nameof(index), index, "The given index is out of range." );
+            if (index < 0 || value.Length <= index)
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The given index is out of range.");
 
             return value[index];
         }
+
         /// <summary>
         ///     Compares the given strings using <see cref="StringComparison.OrdinalIgnoreCase" />.
         /// </summary>
@@ -182,8 +187,9 @@ namespace HSNXT
         /// <returns>Returns true if the given strings are equals, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool CompareOrdinalIgnoreCase( [CanBeNull] this string value, [CanBeNull] string compareValue )
-            => string.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
+        public static bool CompareOrdinalIgnoreCase([CanBeNull] this string value, [CanBeNull] string compareValue)
+            => string.Compare(value, compareValue, StringComparison.OrdinalIgnoreCase) == 0;
+
         /// <summary>
         ///     Concatenates all given strings.
         /// </summary>
@@ -194,11 +200,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string ConcatAll( this string str, [NotNull] params string[] strings )
+        public static string ConcatAll(this string str, [NotNull] params string[] strings)
         {
-            strings.ThrowIfNull( nameof(strings) );
+            strings.ThrowIfNull(nameof(strings));
 
-            return string.Concat( str, string.Concat( strings ) );
+            return string.Concat(str, string.Concat(strings));
         }
 
         /// <summary>
@@ -210,11 +216,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string ConcatAll( [NotNull] this string[] strings )
+        public static string ConcatAll([NotNull] this string[] strings)
         {
-            strings.ThrowIfNull( nameof(strings) );
+            strings.ThrowIfNull(nameof(strings));
 
-            return string.Concat( strings );
+            return string.Concat(strings);
         }
 
         /// <summary>
@@ -227,11 +233,11 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string ConcatAll( this string str, [NotNull] params object[] values )
+        public static string ConcatAll(this string str, [NotNull] params object[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
-            return string.Concat( str, string.Concat( values ) );
+            return string.Concat(str, string.Concat(values));
         }
 
         /// <summary>
@@ -243,16 +249,14 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string ConcatAll( [NotNull] this object[] values )
+        public static string ConcatAll([NotNull] this object[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
-            return string.Concat( values );
+            return string.Concat(values);
         }
     }
 }
-
-
 
 
 namespace HSNXT
@@ -268,14 +272,15 @@ namespace HSNXT
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string ExtractNumbers( [NotNull] this string str )
+        public static string ExtractNumbers([NotNull] this string str)
         {
-            str.ThrowIfNull( nameof(str) );
+            str.ThrowIfNull(nameof(str));
 
-            return new string( str.ToCharArray()
-                                  .Where( x => x.IsNumber() )
-                                  .ToArray() );
+            return new string(str.ToCharArray()
+                .Where(x => x.IsNumber())
+                .ToArray());
         }
+
         /// <summary>
         ///     Replaces the format item in a specified <see cref="String" /> with the <see cref="String" /> representation of a
         ///     corresponding <see cref="Object" /> in a specified array.
@@ -292,16 +297,16 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding objects in <paramref name="args" />.
         /// </returns>
-        [StringFormatMethod( "format" )]
+        [StringFormatMethod("format")]
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string F( [NotNull] this string format, [NotNull] params object[] args )
+        public static string F([NotNull] this string format, [NotNull] params object[] args)
         {
-            format.ThrowIfNull( nameof(format) );
-            args.ThrowIfNull( nameof(args) );
+            format.ThrowIfNull(nameof(format));
+            args.ThrowIfNull(nameof(args));
 
-            return string.Format( format, args );
+            return string.Format(format, args);
         }
 
         /// <summary>
@@ -321,18 +326,20 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding objects in <paramref name="args" />.
         /// </returns>
-        [StringFormatMethod( "format" )]
+        [StringFormatMethod("format")]
         [Pure]
         [NotNull]
         [PublicAPI]
-        public static string F( [NotNull] this string format, [NotNull] IFormatProvider formatProvider, [NotNull] params object[] args )
+        public static string F([NotNull] this string format, [NotNull] IFormatProvider formatProvider,
+            [NotNull] params object[] args)
         {
-            format.ThrowIfNull( nameof(format) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
-            args.ThrowIfNull( nameof(args) );
+            format.ThrowIfNull(nameof(format));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
+            args.ThrowIfNull(nameof(args));
 
-            return string.Format( formatProvider, format, args );
+            return string.Format(formatProvider, format, args);
         }
+
         /// <summary>
         ///     Formats the given file extension.
         /// </summary>
@@ -346,17 +353,19 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string FormatFileExtension( [NotNull] this string fileExtension )
+        public static string FormatFileExtension([NotNull] this string fileExtension)
         {
-            fileExtension.ThrowIfNull( nameof(fileExtension) );
+            fileExtension.ThrowIfNull(nameof(fileExtension));
 
-            if ( fileExtension.IsEmpty() )
-                throw new ArgumentException( "Can not format a empty string to a file extension.", nameof(fileExtension) );
+            if (fileExtension.IsEmpty())
+                throw new ArgumentException("Can not format a empty string to a file extension.",
+                    nameof(fileExtension));
 
-            if ( !fileExtension.StartsWith( ".", StringComparison.Ordinal ) )
-                fileExtension = fileExtension.Insert( 0, "." );
+            if (!fileExtension.StartsWith(".", StringComparison.Ordinal))
+                fileExtension = fileExtension.Insert(0, ".");
             return fileExtension.ToLower();
         }
+
         /// <summary>
         ///     Gets the part of the string after the specified value, starting at the given start index.
         /// </summary>
@@ -370,11 +379,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetAfter( [NotNull] this string s, [NotNull] string value, int startIndex = 0 )
+        public static string GetAfter([NotNull] this string s, [NotNull] string value, int startIndex = 0)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.GetAfter( value, startIndex, s.Length - startIndex );
+            return s.GetAfter(value, startIndex, s.Length - startIndex);
         }
 
         /// <summary>
@@ -392,18 +401,18 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetAfter( [NotNull] this string s, [NotNull] string value, int startIndex, int length )
+        public static string GetAfter([NotNull] this string s, [NotNull] string value, int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
-            value.ThrowIfNull( nameof(value) );
+            s.ThrowIfNull(nameof(s));
+            value.ThrowIfNull(nameof(value));
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
+            if (startIndex < 0 || length < 0 || startIndex + length > s.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "The specified range is invalid.");
 
-            s = s.Substring( startIndex, length );
-            return !s.Contains( value )
+            s = s.Substring(startIndex, length);
+            return !s.Contains(value)
                 ? string.Empty
-                : s.Substring( s.IndexOf( value, StringComparison.Ordinal ) + value.Length );
+                : s.Substring(s.IndexOf(value, StringComparison.Ordinal) + value.Length);
         }
 
         /// <summary>
@@ -418,11 +427,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetAfter( [NotNull] this string s, char value, int startIndex = 0 )
+        public static string GetAfter([NotNull] this string s, char value, int startIndex = 0)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.GetAfter( value, startIndex, s.Length - startIndex );
+            return s.GetAfter(value, startIndex, s.Length - startIndex);
         }
 
         /// <summary>
@@ -439,19 +448,20 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetAfter( [NotNull] this string s, char value, int startIndex, int length )
+        public static string GetAfter([NotNull] this string s, char value, int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
+            if (startIndex < 0 || length < 0 || startIndex + length > s.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "The specified range is invalid.");
 
-            s = s.Substring( startIndex, length );
-            var valueIndex = s.IndexOf( value );
+            s = s.Substring(startIndex, length);
+            var valueIndex = s.IndexOf(value);
             return valueIndex < 0
                 ? string.Empty
-                : s.Substring( valueIndex + 1 );
+                : s.Substring(valueIndex + 1);
         }
+
         /// <summary>
         ///     Gets the part of the string before the specified value, starting at the given start index.
         /// </summary>
@@ -468,11 +478,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBefore( [NotNull] this string s, string value, int startIndex = 0 )
+        public static string GetBefore([NotNull] this string s, string value, int startIndex = 0)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.GetBefore( value, startIndex, s.Length - startIndex );
+            return s.GetBefore(value, startIndex, s.Length - startIndex);
         }
 
         /// <summary>
@@ -493,18 +503,18 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBefore( [NotNull] this string s, [NotNull] string value, int startIndex, int length )
+        public static string GetBefore([NotNull] this string s, [NotNull] string value, int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
-            value.ThrowIfNull( nameof(value) );
+            s.ThrowIfNull(nameof(s));
+            value.ThrowIfNull(nameof(value));
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
+            if (startIndex < 0 || length < 0 || startIndex + length > s.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "The specified range is invalid.");
 
-            s = s.Substring( startIndex, length );
-            return !s.Contains( value )
+            s = s.Substring(startIndex, length);
+            return !s.Contains(value)
                 ? string.Empty
-                : s.Substring( 0, s.IndexOf( value, StringComparison.Ordinal ) );
+                : s.Substring(0, s.IndexOf(value, StringComparison.Ordinal));
         }
 
         /// <summary>
@@ -522,11 +532,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBefore( [NotNull] this string s, char value, int startIndex = 0 )
+        public static string GetBefore([NotNull] this string s, char value, int startIndex = 0)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.GetBefore( value, startIndex, s.Length - startIndex );
+            return s.GetBefore(value, startIndex, s.Length - startIndex);
         }
 
         /// <summary>
@@ -546,19 +556,20 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBefore( [NotNull] this string s, char value, int startIndex, int length )
+        public static string GetBefore([NotNull] this string s, char value, int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
+            if (startIndex < 0 || length < 0 || startIndex + length > s.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "The specified range is invalid.");
 
-            s = s.Substring( startIndex, length );
-            var valueIndex = s.IndexOf( value );
+            s = s.Substring(startIndex, length);
+            var valueIndex = s.IndexOf(value);
             return valueIndex < 0
                 ? string.Empty
-                : s.Substring( 0, valueIndex );
+                : s.Substring(0, valueIndex);
         }
+
         /// <summary>
         ///     Gets the part of the input string between the before and after value, starting at the given start index.
         /// </summary>
@@ -573,11 +584,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBetween( [NotNull] this string s, [NotNull] string before, [NotNull] string after, int startIndex = 0 )
+        public static string GetBetween([NotNull] this string s, [NotNull] string before, [NotNull] string after,
+            int startIndex = 0)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.GetBetween( before, after, startIndex, s.Length - startIndex );
+            return s.GetBetween(before, after, startIndex, s.Length - startIndex);
         }
 
         /// <summary>
@@ -596,24 +608,25 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBetween( [NotNull] this string s, [NotNull] string before, [NotNull] string after, int startIndex, int length )
+        public static string GetBetween([NotNull] this string s, [NotNull] string before, [NotNull] string after,
+            int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
-            before.ThrowIfNull( nameof(before) );
-            after.ThrowIfNull( nameof(after) );
+            s.ThrowIfNull(nameof(s));
+            before.ThrowIfNull(nameof(before));
+            after.ThrowIfNull(nameof(after));
 
-            if ( startIndex < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
+            if (startIndex < 0 || startIndex + length > s.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "The specified range is invalid.");
 
-            s = s.Substring( startIndex, length );
+            s = s.Substring(startIndex, length);
 
-            var beforeIndex = s.IndexOf( before, StringComparison.Ordinal );
-            if ( beforeIndex < 0 )
+            var beforeIndex = s.IndexOf(before, StringComparison.Ordinal);
+            if (beforeIndex < 0)
                 return string.Empty;
 
             var actualStartIndex = beforeIndex + before.Length;
-            var afterIndex = s.IndexOf( after, actualStartIndex, StringComparison.Ordinal );
-            return afterIndex < 0 ? string.Empty : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
+            var afterIndex = s.IndexOf(after, actualStartIndex, StringComparison.Ordinal);
+            return afterIndex < 0 ? string.Empty : s.Substring(actualStartIndex, afterIndex - actualStartIndex);
         }
 
         /// <summary>
@@ -630,11 +643,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBetween( [NotNull] this string s, char before, char after, int startIndex = 0 )
+        public static string GetBetween([NotNull] this string s, char before, char after, int startIndex = 0)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.GetBetween( before, after, startIndex, s.Length - startIndex );
+            return s.GetBetween(before, after, startIndex, s.Length - startIndex);
         }
 
         /// <summary>
@@ -653,25 +666,26 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetBetween( [NotNull] this string s, char before, char after, int startIndex, int length )
+        public static string GetBetween([NotNull] this string s, char before, char after, int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
+            if (startIndex < 0 || length < 0 || startIndex + length > s.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "The specified range is invalid.");
 
-            s = s.Substring( startIndex, length );
+            s = s.Substring(startIndex, length);
 
-            var beforeIndex = s.IndexOf( before );
-            if ( beforeIndex < 0 )
+            var beforeIndex = s.IndexOf(before);
+            if (beforeIndex < 0)
                 return string.Empty;
 
             var actualStartIndex = beforeIndex + 1;
-            var afterIndex = s.IndexOf( after, actualStartIndex );
+            var afterIndex = s.IndexOf(after, actualStartIndex);
             return afterIndex < 0
                 ? string.Empty
-                : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
+                : s.Substring(actualStartIndex, afterIndex - actualStartIndex);
         }
+
         /// <summary>
         ///     Enumerates all lines in the given string.
         /// </summary>
@@ -681,17 +695,18 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<string> GetLines( [NotNull] this string value )
+        public static IEnumerable<string> GetLines([NotNull] this string value)
         {
-            value.ThrowIfNull( nameof(value) );
+            value.ThrowIfNull(nameof(value));
 
-            using ( var reader = new StringReader( value ) )
+            using (var reader = new StringReader(value))
             {
                 string line;
-                while ( ( line = reader.ReadLine() ) != null )
+                while ((line = reader.ReadLine()) != null)
                     yield return line;
             }
         }
+
         /// <summary>
         ///     Returns the input value if it's not empty, otherwise the alternative value.
         /// </summary>
@@ -701,9 +716,9 @@ namespace HSNXT
         [CanBeNull]
         [Pure]
         [PublicAPI]
-        public static string IfNotEmpty( [CanBeNull] this string value, [CanBeNull] string alternativeValue )
+        public static string IfNotEmpty([CanBeNull] this string value, [CanBeNull] string alternativeValue)
             => !value.IsEmpty() ? value : alternativeValue;
-        
+
         /// <summary>
         ///     Removes all characters which aren't letters.
         /// </summary>
@@ -713,14 +728,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string KeepLetters( [NotNull] this string str )
+        public static string KeepLetters([NotNull] this string str)
         {
-            str.ThrowIfNull( nameof(str) );
+            str.ThrowIfNull(nameof(str));
 
-            return new string( str.ToCharArray()
-                                  .Where( x => x.IsLetter() )
-                                  .ToArray() );
+            return new string(str.ToCharArray()
+                .Where(x => x.IsLetter())
+                .ToArray());
         }
+
         /// <summary>
         ///     Removes all characters which aren't letters or numbers.
         /// </summary>
@@ -730,14 +746,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string KeepLettersAndNumbers( [NotNull] this string str )
+        public static string KeepLettersAndNumbers([NotNull] this string str)
         {
-            str.ThrowIfNull( nameof(str) );
+            str.ThrowIfNull(nameof(str));
 
-            return new string( str.ToCharArray()
-                                  .Where( x => x.IsNumber() || x.IsLetter() )
-                                  .ToArray() );
+            return new string(str.ToCharArray()
+                .Where(x => x.IsNumber() || x.IsLetter())
+                .ToArray());
         }
+
         /// <summary>
         ///     Removes all characters which aren't numbers.
         /// </summary>
@@ -747,14 +764,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string KeepNumbers( [NotNull] this string str )
+        public static string KeepNumbers([NotNull] this string str)
         {
-            str.ThrowIfNull( nameof(str) );
+            str.ThrowIfNull(nameof(str));
 
-            return new string( str.ToCharArray()
-                                  .Where( x => x.IsNumber() )
-                                  .ToArray() );
+            return new string(str.ToCharArray()
+                .Where(x => x.IsNumber())
+                .ToArray());
         }
+
         /// <summary>
         ///     Returns a string which only contains the characters matching the given predicate.
         /// </summary>
@@ -766,15 +784,16 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string KeepWhere( [NotNull] this string str, [NotNull] Func<char, bool> predicate )
+        public static string KeepWhere([NotNull] this string str, [NotNull] Func<char, bool> predicate)
         {
-            str.ThrowIfNull( nameof(str) );
-            predicate.ThrowIfNull( nameof(predicate) );
+            str.ThrowIfNull(nameof(str));
+            predicate.ThrowIfNull(nameof(predicate));
 
-            return new string( str.ToCharArray()
-                                  .Where( predicate )
-                                  .ToArray() );
+            return new string(str.ToCharArray()
+                .Where(predicate)
+                .ToArray());
         }
+
         /// <summary>
         ///     Removes all letters from the given string.
         /// </summary>
@@ -784,14 +803,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string RemoveLetters( [NotNull] this string str )
+        public static string RemoveLetters([NotNull] this string str)
         {
-            str.ThrowIfNull( nameof(str) );
+            str.ThrowIfNull(nameof(str));
 
-            return new string( str.ToCharArray()
-                                  .Where( x => !x.IsLetter() )
-                                  .ToArray() );
+            return new string(str.ToCharArray()
+                .Where(x => !x.IsLetter())
+                .ToArray());
         }
+
         /// <summary>
         ///     Removes all letters and numbers from the given string.
         /// </summary>
@@ -801,14 +821,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string RemoveLettersAndNumbers( [NotNull] this string s )
+        public static string RemoveLettersAndNumbers([NotNull] this string s)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return new string( s.ToCharArray()
-                                .Where( x => !x.IsNumber() && !x.IsLetter() )
-                                .ToArray() );
+            return new string(s.ToCharArray()
+                .Where(x => !x.IsNumber() && !x.IsLetter())
+                .ToArray());
         }
+
         /// <summary>
         ///     Removes all numbers from the given string.
         /// </summary>
@@ -818,14 +839,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string RemoveNumbers( [NotNull] this string s )
+        public static string RemoveNumbers([NotNull] this string s)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return new string( s.ToCharArray()
-                                .Where( x => !x.IsNumber() )
-                                .ToArray() );
+            return new string(s.ToCharArray()
+                .Where(x => !x.IsNumber())
+                .ToArray());
         }
+
         /// <summary>
         ///     Replaces a single character at the specified position with the specified replacement character.
         /// </summary>
@@ -838,18 +860,19 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string ReplaceAt( [NotNull] this string value, int index, char replace )
+        public static string ReplaceAt([NotNull] this string value, int index, char replace)
         {
-            value.ThrowIfNull( nameof(value) );
+            value.ThrowIfNull(nameof(value));
 
-            if ( index < 0 || value.Length <= index )
-                throw new ArgumentOutOfRangeException( nameof(index), index, "The given index is out of range." );
+            if (index < 0 || value.Length <= index)
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The given index is out of range.");
 
             var chars = value.ToCharArray();
             chars[index] = replace;
 
-            return new string( chars );
+            return new string(chars);
         }
+
         /// <summary>
         ///     Tries to create a new <see cref="CultureInfo" /> with the given name.
         /// </summary>
@@ -857,11 +880,11 @@ namespace HSNXT
         /// <returns>Returns the <see cref="CultureInfo" /> with the given name, or null if the culture is not supported.</returns>
         [Pure]
         [PublicAPI]
-        public static CultureInfo SafeToCultureInfo( [NotNull] this string name )
+        public static CultureInfo SafeToCultureInfo([NotNull] this string name)
         {
             try
             {
-                return new CultureInfo( name );
+                return new CultureInfo(name);
             }
             catch
             {
@@ -878,17 +901,18 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static CultureInfo SafeToCultureInfo( [NotNull] this string name, CultureInfo fallbackCulture )
+        public static CultureInfo SafeToCultureInfo([NotNull] this string name, CultureInfo fallbackCulture)
         {
             try
             {
-                return new CultureInfo( name );
+                return new CultureInfo(name);
             }
             catch
             {
                 return fallbackCulture;
             }
         }
+
         /// <summary>
         ///     Returns a string array that contains the substrings in this string that are
         ///     delimited by elements of a specified string array. A parameter specifies
@@ -913,15 +937,16 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string[] Split( [NotNull] this string value,
-                                      StringSplitOptions stringSplitOption,
-                                      [NotNull] params string[] separators )
+        public static string[] Split([NotNull] this string value,
+            StringSplitOptions stringSplitOption,
+            [NotNull] params string[] separators)
         {
-            value.ThrowIfNull( nameof(value) );
-            separators.ThrowIfNull( nameof(separators) );
+            value.ThrowIfNull(nameof(value));
+            separators.ThrowIfNull(nameof(separators));
 
-            return value.Split( separators, stringSplitOption );
+            return value.Split(separators, stringSplitOption);
         }
+
         /// <summary>
         ///     Splits the given string at each line break (<see cref="Environment.NewLine" />).
         /// </summary>
@@ -939,15 +964,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string[] SplitLines( [NotNull] this string value, StringSplitOptions stringSplitOptions )
+        public static string[] SplitLines([NotNull] this string value, StringSplitOptions stringSplitOptions)
         {
-            value.ThrowIfNull( nameof(value) );
+            value.ThrowIfNull(nameof(value));
 
-            return value.Split( new[]
-                                {
-                                    Environment.NewLine
-                                },
-                                stringSplitOptions );
+            return value.Split(new[]
+                {
+                    Environment.NewLine
+                },
+                stringSplitOptions);
         }
 
         /// <summary>
@@ -962,12 +987,10 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string[] SplitLines( [NotNull] this string value )
-            => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
+        public static string[] SplitLines([NotNull] this string value)
+            => value.SplitLines(StringSplitOptions.RemoveEmptyEntries);
     }
 }
-
-
 
 
 namespace HSNXT
@@ -985,11 +1008,11 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string SubstringLeftSafe( [NotNull] this string s, int length )
+        public static string SubstringLeftSafe([NotNull] this string s, int length)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.Substring( 0, Math.Min( length, s.Length ) );
+            return s.Substring(0, Math.Min(length, s.Length));
         }
 
         /// <summary>
@@ -1004,17 +1027,15 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string SubstringLeftSafe( [NotNull] this string s, int startIndex, int length )
+        public static string SubstringLeftSafe([NotNull] this string s, int startIndex, int length)
         {
-            s.ThrowIfNull( nameof(s) );
+            s.ThrowIfNull(nameof(s));
 
-            return s.Substring( Math.Min( startIndex, s.Length ),
-                                Math.Min( length, Math.Max( s.Length - startIndex, 0 ) ) );
+            return s.Substring(Math.Min(startIndex, s.Length),
+                Math.Min(length, Math.Max(s.Length - startIndex, 0)));
         }
     }
 }
-
-
 
 
 namespace HSNXT
@@ -1032,12 +1053,13 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string SubstringRightSafe( [NotNull] this string str, int length )
+        public static string SubstringRightSafe([NotNull] this string str, int length)
         {
-            str.ThrowIfNull( nameof(str) );
+            str.ThrowIfNull(nameof(str));
 
-            return str.Substring( Math.Max( 0, str.Length - length ) );
+            return str.Substring(Math.Max(0, str.Length - length));
         }
+
         /// <summary>
         ///     Returns a specified number of characters from the start of the given value
         ///     and removes the returned characters from the value.
@@ -1052,20 +1074,21 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string TakeAndRemove( this int count, [NotNull] ref string value )
+        public static string TakeAndRemove(this int count, [NotNull] ref string value)
         {
-            value.ThrowIfNull( nameof(value) );
+            value.ThrowIfNull(nameof(value));
 
-            if ( count > value.Length )
-                throw new ArgumentOutOfRangeException( nameof(count),
-                                                       "Count must be smaller than the length of the given value." );
+            if (count > value.Length)
+                throw new ArgumentOutOfRangeException(nameof(count),
+                    "Count must be smaller than the length of the given value.");
 
-            var returnValue = new string( value.ToCharArray()
-                                               .Take( count )
-                                               .ToArray() );
-            value = value.Remove( 0, count );
+            var returnValue = new string(value.ToCharArray()
+                .Take(count)
+                .ToArray());
+            value = value.Remove(0, count);
             return returnValue;
         }
+
         /// <summary>
         ///     Creates a new <see cref="CultureInfo" /> with the given name.
         /// </summary>
@@ -1076,12 +1099,13 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static CultureInfo ToCultureInfo( [NotNull] this string name )
+        public static CultureInfo ToCultureInfo([NotNull] this string name)
         {
-            name.ThrowIfNull( nameof(name) );
+            name.ThrowIfNull(nameof(name));
 
-            return new CultureInfo( name );
+            return new CultureInfo(name);
         }
+
         /// <summary>
         ///     Truncates the given string to the specified maximum length and adds the specified
         ///     suffix to the end of the truncated string.
@@ -1093,16 +1117,17 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string Truncate2( [CanBeNull] this string str, int maxLength, string suffix = "..." )
+        public static string Truncate2([CanBeNull] this string str, int maxLength, string suffix = "...")
         {
             // ReSharper disable once PossibleNullReferenceException
-            if ( str.IsEmpty() || str.Length <= maxLength )
+            if (str.IsEmpty() || str.Length <= maxLength)
                 // ReSharper disable once AssignNullToNotNullAttribute
                 return str;
 
-            return str.Substring( 0, Math.Max( 0, maxLength - suffix.Length ) )
-                      .ConcatAll( suffix );
+            return str.Substring(0, Math.Max(0, maxLength - suffix.Length))
+                .ConcatAll(suffix);
         }
+
         /// <summary>
         ///     Tries to convert a string value to an enum.
         /// </summary>
@@ -1114,8 +1139,10 @@ namespace HSNXT
         /// <returns>Returns the converted enum value.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryToEnum<T>( [CanBeNull] string value, out T outValue, bool ignoreCase = true ) where T : struct
-            => Enum.TryParse( value, ignoreCase, out outValue );
+        public static bool TryToEnum<T>([CanBeNull] string value, out T outValue, bool ignoreCase = true)
+            where T : struct
+            => Enum.TryParse(value, ignoreCase, out outValue);
+
         /// <summary>
         ///     Converts the given wild-card pattern to a RegEx.
         /// </summary>
@@ -1123,14 +1150,14 @@ namespace HSNXT
         /// <returns>Returns the equivalent RegEx.</returns>
         [Pure]
         [NotNull]
-        public static string WildcardToRegex( [NotNull] this string pattern )
+        public static string WildcardToRegex([NotNull] this string pattern)
         {
-            pattern.ThrowIfNull( nameof(pattern) );
+            pattern.ThrowIfNull(nameof(pattern));
 
-            return "^" + Regex.Escape( pattern )
-                              .Replace( @"\*", ".*" )
-                              .Replace( @"\?", "." )
-                   + "$";
+            return "^" + Regex.Escape(pattern)
+                           .Replace(@"\*", ".*")
+                           .Replace(@"\?", ".")
+                       + "$";
         }
     }
 }

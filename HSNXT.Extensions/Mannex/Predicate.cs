@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,13 +35,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Predicate{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Combines two <see cref="Predicate{T}"/> to form a logical AND.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Predicate<T> And<T>(this Predicate<T> lhs, Predicate<T> rhs)
         {
@@ -51,7 +51,6 @@ namespace HSNXT
         /// <summary>
         /// Combines two <see cref="Predicate{T}"/> to form a logical OR.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Predicate<T> Or<T>(this Predicate<T> lhs, Predicate<T> rhs)
         {

@@ -18,11 +18,12 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         [Pure]
-        public static IEnumerable<T> GetFlags<T>( this Enum enumValue ) where T : struct, IConvertible
-            => Enum.GetValues( enumValue.GetType() )
-                   .Cast<Enum>()
-                   .Where( enumValue.HasFlag )
-                   .Cast<T>();
+        public static IEnumerable<T> GetFlags<T>(this Enum enumValue) where T : struct, IConvertible
+            => Enum.GetValues(enumValue.GetType())
+                .Cast<Enum>()
+                .Where(enumValue.HasFlag)
+                .Cast<T>();
+
         /// <summary>
         ///     Gets the values of the specified enumeration as strings.
         /// </summary>
@@ -33,7 +34,8 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         public static IEnumerable<string> GetStringValues<T>() where T : struct => GetValues<T>()
-            .Select( x => x.ToString() );
+            .Select(x => x.ToString());
+
         /// <summary>
         ///     Gets a dictionary containing the string value for each value of the enumeration of the given type.
         /// </summary>
@@ -46,8 +48,9 @@ namespace HSNXT
         public static IDictionary<T, string> GetValueAndStringValue<T>() where T : struct
         {
             var values = GetValues<T>();
-            return values.ToDictionary( x => x, x => x.ToString() );
+            return values.ToDictionary(x => x, x => x.ToString());
         }
+
         /// <summary>
         ///     Gets the values of the specified enumeration.
         /// </summary>
@@ -60,11 +63,11 @@ namespace HSNXT
         public static IEnumerable<T> GetValues<T>() where T : struct
         {
             var type = typeof(T);
-            if ( !type.IsEnum() )
-                throw new ArgumentException( "T must be an enumerated type." );
+            if (!type.IsEnum())
+                throw new ArgumentException("T must be an enumerated type.");
 
-            return Enum.GetValues( type )
-                       .OfType<T>();
+            return Enum.GetValues(type)
+                .OfType<T>();
         }
 
         /// <summary>
@@ -82,14 +85,15 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable GetValues( [NotNull] Type type )
+        public static IEnumerable GetValues([NotNull] Type type)
         {
-            type.ThrowIfNull( nameof(type) );
-            if ( !type.IsEnum() )
-                throw new ArgumentException( "T must be an enumerated type." );
+            type.ThrowIfNull(nameof(type));
+            if (!type.IsEnum())
+                throw new ArgumentException("T must be an enumerated type.");
 
-            return Enum.GetValues( type );
+            return Enum.GetValues(type);
         }
+
         /// <summary>
         ///     Gets all values of the specified enumeration type, expect the specified values.
         /// </summary>
@@ -100,7 +104,7 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> GetValuesExpect<T>( [CanBeNull] params T[] exceptions ) where T : struct
+        public static IEnumerable<T> GetValuesExpect<T>([CanBeNull] params T[] exceptions) where T : struct
         {
             var values = GetValues<T>();
 
@@ -108,7 +112,7 @@ namespace HSNXT
                 ? values
                 : values
                     .ToList()
-                    .RemoveRange( exceptions );
+                    .RemoveRange(exceptions);
         }
 
         /// <summary>
@@ -126,13 +130,13 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable GetValuesExpect( [NotNull] Type type, [CanBeNull] params object[] exceptions )
+        public static IEnumerable GetValuesExpect([NotNull] Type type, [CanBeNull] params object[] exceptions)
         {
-            var values = GetValues( type )
+            var values = GetValues(type)
                 .OfType<object>()
                 .ToList();
 
-            return exceptions == null ? values : values.RemoveRange( exceptions );
+            return exceptions == null ? values : values.RemoveRange(exceptions);
         }
     }
 }

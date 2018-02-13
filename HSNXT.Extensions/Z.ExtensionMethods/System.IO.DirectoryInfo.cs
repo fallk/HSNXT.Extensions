@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 #if NetFX
 using System.Security.AccessControl;
+
 #endif
 
 //using System.Data.SqlServerCe;
@@ -358,7 +359,7 @@ namespace HSNXT
             return Directory.CreateDirectory(@this.FullName, directorySecurity);
         }
 #endif
-        
+
         /// <summary>
         ///     Returns an enumerable collection of directory names in a specified @this.
         /// </summary>

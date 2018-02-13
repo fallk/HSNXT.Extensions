@@ -288,7 +288,7 @@ namespace HSNXT
 
             return null;
         }
-        
+
         /// <summary>
         /// Converts a string value to bool value, supports "T" and "F" conversions.
         /// </summary>

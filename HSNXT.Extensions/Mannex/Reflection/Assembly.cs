@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,7 +37,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Assembly"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -43,7 +44,6 @@ namespace HSNXT
         /// of the specified type, from this assembly and returns
         /// it ready for reading as <see cref="TextReader"/>.
         /// </summary>
-
         public static TextReader GetManifestResourceReader(this Assembly assembly, Type type, string name)
         {
             return GetManifestResourceReader(assembly, type, name, null);
@@ -55,23 +55,22 @@ namespace HSNXT
         /// it ready for reading as <see cref="TextReader"/>. A parameter
         /// specifies the text encoding to be used for reading.
         /// </summary>
-
-        public static TextReader GetManifestResourceReader(this Assembly assembly, Type type, string name, Encoding encoding)
+        public static TextReader GetManifestResourceReader(this Assembly assembly, Type type, string name,
+            Encoding encoding)
         {
             if (assembly == null) throw new ArgumentNullException("assembly");
             var stream = assembly.GetManifestResourceStream(type, name);
             if (stream == null)
                 return null;
-            return encoding == null 
-                 ? new StreamReader(stream, true) 
-                 : new StreamReader(stream, encoding);
+            return encoding == null
+                ? new StreamReader(stream, true)
+                : new StreamReader(stream, encoding);
         }
 
         /// <summary>
         /// Loads the specified manifest resource and returns it as a string, 
         /// scoped by the namespace  of the specified type, from this assembly. 
         /// </summary>
-
         public static string GetManifestResourceString(this Assembly assembly, Type type, string name)
         {
             return GetManifestResourceString(assembly, type, name, null);
@@ -83,8 +82,8 @@ namespace HSNXT
         /// A parameter specifies the text encoding to be used to decode the 
         /// resource bytes into text.
         /// </summary>
-
-        public static string GetManifestResourceString(this Assembly assembly, Type type, string name, Encoding encoding)
+        public static string GetManifestResourceString(this Assembly assembly, Type type, string name,
+            Encoding encoding)
         {
             if (assembly == null) throw new ArgumentNullException("assembly");
             using (var reader = assembly.GetManifestResourceReader(type, name))

@@ -69,33 +69,33 @@ namespace HSNXT
         /// <param name="format">The format.</param>
         /// <param name="reader">The reader used to consume the format.</param>
         /// <returns>Returns the error message.</returns>
-        private static string BuildErrorMessageCloseNotEscaped( string format, TextReader reader )
+        private static string BuildErrorMessageCloseNotEscaped(string format, TextReader reader)
         {
             try
             {
                 // Read the string to the end
                 var unprocessed = reader.ReadToEnd();
                 var errorMessage = $"Invalid format, expression is not closed; before: '{unprocessed}'";
-                if ( unprocessed.Length <= 0 )
+                if (unprocessed.Length <= 0)
                     return errorMessage;
 
                 // Find the start of the unprocessed part
-                var unprocessedStartIndex = format.IndexOf( unprocessed, StringComparison.Ordinal );
-                if ( unprocessedStartIndex <= 0 )
+                var unprocessedStartIndex = format.IndexOf(unprocessed, StringComparison.Ordinal);
+                if (unprocessedStartIndex <= 0)
                     return errorMessage;
 
                 // Search for the start of the faulty expression (not guaranteed to find the correct position) 
-                var faultyExpressionStart = format.Substring( 0, unprocessedStartIndex )
-                                                  .LastIndexOf( "{", StringComparison.Ordinal );
-                if ( faultyExpressionStart <= 0 )
+                var faultyExpressionStart = format.Substring(0, unprocessedStartIndex)
+                    .LastIndexOf("{", StringComparison.Ordinal);
+                if (faultyExpressionStart <= 0)
                     return errorMessage;
 
                 // Try to read the faulty expression from the format
                 var length = unprocessedStartIndex - faultyExpressionStart;
-                if ( length <= 0 || format.Length - faultyExpressionStart - length <= 0 )
+                if (length <= 0 || format.Length - faultyExpressionStart - length <= 0)
                     return errorMessage;
 
-                var before = format.Substring( faultyExpressionStart, length );
+                var before = format.Substring(faultyExpressionStart, length);
                 return $"Invalid format, expression is not closed; near '{before}', before '{unprocessed}'.";
             }
             catch
@@ -115,12 +115,12 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>  representation
         ///     of the corresponding objects from the value provider.
         /// </returns>
-        private static string FormatWithValueProvider( this string format, IValueProvider valueProvider )
+        private static string FormatWithValueProvider(this string format, IValueProvider valueProvider)
         {
-            format.ThrowIfNull( nameof(format) );
+            format.ThrowIfNull(nameof(format));
 
-            var result = new StringBuilder( format.Length * 2 );
-            using ( var reader = new StringReader( format ) )
+            var result = new StringBuilder(format.Length * 2);
+            using (var reader = new StringReader(format))
             {
                 var expression = new StringBuilder();
                 int currentChar;
@@ -128,12 +128,12 @@ namespace HSNXT
 
                 do
                     // ReSharper disable once SwitchStatementMissingSomeCases
-                    switch ( currentState )
+                    switch (currentState)
                     {
                         case StringFormatState.OutsideExpression:
                             // We are not in a expression => normal string literal
                             currentChar = reader.Read();
-                            switch ( currentChar )
+                            switch (currentChar)
                             {
                                 case -1:
                                     // End of string reached
@@ -149,67 +149,74 @@ namespace HSNXT
                                     break;
                                 default:
                                     // Normal string content
-                                    result.Append( (char) currentChar );
+                                    result.Append((char) currentChar);
                                     break;
                             }
+
                             break;
                         case StringFormatState.OnOpenBracket:
                             // Last character was an open bracket (only one bracket; yet)
                             currentChar = reader.Read();
-                            switch ( currentChar )
+                            switch (currentChar)
                             {
                                 case -1:
                                     // End of string => unescaped bracket without a valid expression
-                                    throw new FormatException( $"Invalid format, format ends with an unescaped open bracket; '{format}'." );
+                                    throw new FormatException(
+                                        $"Invalid format, format ends with an unescaped open bracket; '{format}'.");
                                 case BracketOpen:
                                     // Must be an escaped open bracket
-                                    result.Append( BracketOpen );
+                                    result.Append(BracketOpen);
                                     currentState = StringFormatState.OutsideExpression;
                                     break;
                                 default:
                                     // Part of expression
-                                    expression.Append( (char) currentChar );
+                                    expression.Append((char) currentChar);
                                     currentState = StringFormatState.InsideExpression;
                                     break;
                             }
+
                             break;
                         case StringFormatState.InsideExpression:
                             // We are inside of an expression
                             currentChar = reader.Read();
-                            switch ( currentChar )
+                            switch (currentChar)
                             {
                                 case -1:
                                     // End of string => unclosed expression
-                                    throw new FormatException( $"Invalid format, format ends with an unclosed expression; '{format}'." );
+                                    throw new FormatException(
+                                        $"Invalid format, format ends with an unclosed expression; '{format}'.");
                                 case BracketClose:
                                     // End of expression
-                                    result.Append( valueProvider.GetValue( expression.ToString() ) );
+                                    result.Append(valueProvider.GetValue(expression.ToString()));
                                     expression.Length = 0;
                                     currentState = StringFormatState.OutsideExpression;
                                     break;
                                 default:
                                     // Part of expression
-                                    expression.Append( (char) currentChar );
+                                    expression.Append((char) currentChar);
                                     break;
                             }
+
                             break;
                         case StringFormatState.OnCloseBracket:
                             // Last character was a close bracket
                             currentChar = reader.Read();
-                            switch ( currentChar )
+                            switch (currentChar)
                             {
                                 case BracketClose:
                                     // Must be an escaped close bracket
-                                    result.Append( BracketClose );
+                                    result.Append(BracketClose);
                                     currentState = StringFormatState.OutsideExpression;
                                     break;
                                 default:
-                                    throw new FormatException( BuildErrorMessageCloseNotEscaped( format, reader ) );
+                                    throw new FormatException(BuildErrorMessageCloseNotEscaped(format, reader));
                             }
+
                             break;
                         default:
-                            throw new ArgumentOutOfRangeException( nameof(currentState), currentState, $"Invalid state: '{format}'." );
-                    } while ( currentState != StringFormatState.End );
+                            throw new ArgumentOutOfRangeException(nameof(currentState), currentState,
+                                $"Invalid state: '{format}'.");
+                    } while (currentState != StringFormatState.End);
             }
 
             return result.ToString();
@@ -230,8 +237,8 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>  representation
         ///     of the corresponding objects from the object.
         /// </returns>
-        public static string FormatWithObject( this string format, object source )
-            => format.FormatWithValueProvider( new ObjectValueProvider( source ) );
+        public static string FormatWithObject(this string format, object source)
+            => format.FormatWithValueProvider(new ObjectValueProvider(source));
 
         /// <summary>
         ///     Replaces the format item in a specified <see cref="String" /> with the values from the given dictionary.
@@ -243,8 +250,8 @@ namespace HSNXT
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>  representation
         ///     of the corresponding objects from the dictionary.
         /// </returns>
-        public static string FormatWithValues( this string format, IDictionary<string, object> values )
-            => format.FormatWithValueProvider( new LookuptValueProvider( values ) );
+        public static string FormatWithValues(this string format, IDictionary<string, object> values)
+            => format.FormatWithValueProvider(new LookuptValueProvider(values));
 
         #endregion
     }

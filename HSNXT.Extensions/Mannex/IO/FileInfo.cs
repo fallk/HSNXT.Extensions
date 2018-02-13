@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,14 +37,13 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="FileInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         static IEnumerable<string> ReadLinesImpl(string path, Encoding encoding)
         {
-            var reader = encoding == null 
-                       ? new StreamReader(path, true) 
-                       : new StreamReader(path, encoding);
+            var reader = encoding == null
+                ? new StreamReader(path, true)
+                : new StreamReader(path, encoding);
 
             using (reader)
             using (var line = reader.ReadLines())

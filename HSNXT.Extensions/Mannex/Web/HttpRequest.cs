@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,7 +37,6 @@ namespace HSNXT
     /// Extension methods for <see cref="HttpRequest"/> and 
     /// <see cref="HttpRequestBase"/>.
     /// </summary>
-
     public static partial class Extensions
     {
 #if NetFX
@@ -43,7 +44,6 @@ namespace HSNXT
         /// Determines whether <see cref="HttpRequest.HttpMethod"/> 
         /// equals an expected value. The comparison is case-insensitive.
         /// </summary>
-
         public static bool IsHttpMethod(this HttpRequest request, string verb)
         {
             if (request == null) throw new ArgumentNullException("request");
@@ -54,16 +54,15 @@ namespace HSNXT
         /// Determines whether <see cref="HttpRequestBase.HttpMethod"/> 
         /// equals an expected value. The comparison is case-insensitive.
         /// </summary>
-
         public static bool IsHttpMethod(this HttpRequestBase request, string verb)
         {
             if (request == null) throw new ArgumentNullException("request");
             return StringComparer.OrdinalIgnoreCase.Equals(verb, request.HttpMethod);
         }
+
         /// <summary>
         /// Determines whether this request originated using Ajax.
         /// </summary>
-
         public static bool IsAjax(this HttpRequest request)
         {
             if (request == null) throw new ArgumentNullException("request");
@@ -73,7 +72,6 @@ namespace HSNXT
         /// <summary>
         /// Determines whether this request originated using Ajax.
         /// </summary>
-
         public static bool IsAjax(this HttpRequestBase request)
         {
             if (request == null) throw new ArgumentNullException("request");
@@ -86,8 +84,8 @@ namespace HSNXT
             // See "Common non-standard request headers[1]"
             // [1] http://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Common_non-standard_request_headers
 
-            return headers != null 
-                && "XMLHttpRequest".Equals(headers["X-Requested-With"], StringComparison.OrdinalIgnoreCase);
+            return headers != null
+                   && "XMLHttpRequest".Equals(headers["X-Requested-With"], StringComparison.OrdinalIgnoreCase);
         }
     }
 }

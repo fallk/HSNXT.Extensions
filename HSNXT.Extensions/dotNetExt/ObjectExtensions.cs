@@ -24,9 +24,10 @@ namespace HSNXT
         public static object CallMethodByName(this object obj, string methodName, params object[] args)
         {
             // Same as the VB CallByName method
-            return Microsoft.VisualBasic.Interaction.CallByName(obj, methodName, Microsoft.VisualBasic.CallType.Method, args);
+            return Microsoft.VisualBasic.Interaction.CallByName(obj, methodName, Microsoft.VisualBasic.CallType.Method,
+                args);
         }
-    
+
         /// <summary>
         /// Executes a method on an object and returns the result cast as the specified type
         /// </summary>
@@ -37,7 +38,7 @@ namespace HSNXT
         /// <returns></returns>
         public static T CallMethodByName<T>(this object obj, string methodName, params object[] args)
         {
-            return (T)obj.CallMethodByName(methodName, args);
+            return (T) obj.CallMethodByName(methodName, args);
         }
 #endif
 
@@ -102,7 +103,7 @@ namespace HSNXT
         /// <returns>Returns All Attributes tied to the Object of the Specified Generic Type</returns>
         public static TAttributeType[] GetAttributes<TAttributeType>(this object obj) where TAttributeType : Attribute
         {
-            return (TAttributeType[])obj.GetType().GetCustomAttributes(typeof(TAttributeType), false);
+            return (TAttributeType[]) obj.GetType().GetCustomAttributes(typeof(TAttributeType), false);
         }
 
         /// <summary>
@@ -114,7 +115,7 @@ namespace HSNXT
         /// <returns></returns>
         public static T CastAs<T>(this object obj, T targetType)
         {
-            return (T)obj;
+            return (T) obj;
         }
 
         /// <summary>
@@ -125,7 +126,7 @@ namespace HSNXT
         /// <returns></returns>
         public static T ConvertType<T>(this object obj)
         {
-            return (T)Convert.ChangeType(obj, typeof(T));
+            return (T) Convert.ChangeType(obj, typeof(T));
         }
     }
 }

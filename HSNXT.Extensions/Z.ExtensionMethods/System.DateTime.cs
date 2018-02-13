@@ -83,7 +83,9 @@ namespace HSNXT
 
             if (end.DayOfWeek != endDayOfWeek)
             {
-                end = endDayOfWeek < end.DayOfWeek ? end.AddDays(7 - (end.DayOfWeek - endDayOfWeek)) : end.AddDays(endDayOfWeek - end.DayOfWeek);
+                end = endDayOfWeek < end.DayOfWeek
+                    ? end.AddDays(7 - (end.DayOfWeek - endDayOfWeek))
+                    : end.AddDays(endDayOfWeek - end.DayOfWeek);
             }
 
             return new DateTime(end.Year, end.Month, end.Day, 23, 59, 59, 999);
@@ -306,10 +308,9 @@ namespace HSNXT
             var start = new DateTime(dt.Year, dt.Month, dt.Day);
 
             if (start.DayOfWeek == startDayOfWeek) return start;
-            
+
             var d = startDayOfWeek - start.DayOfWeek;
             return startDayOfWeek <= start.DayOfWeek ? start.AddDays(d) : start.AddDays(-7 + d);
-
         }
 
         /// <summary>

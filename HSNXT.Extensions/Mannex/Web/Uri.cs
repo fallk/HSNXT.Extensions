@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Uri"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Randomizes the URL by adding a query string parameter
         /// named <c>__rnd</c> and whose value is a newly generated GUID.
         /// </summary>
-
         public static Uri Randomize(this Uri url)
         {
             return Randomize(url, null);
@@ -51,7 +51,6 @@ namespace HSNXT
         /// named <c>__rnd</c> and whose random value component
         /// is the string representation of <paramref name="value"/>.
         /// </summary>
-
         public static Uri Randomize(this Uri url, object value)
         {
             return Randomize(url, null, value ?? Guid.NewGuid().ToString("N"));
@@ -63,7 +62,6 @@ namespace HSNXT
         /// component is the string representation of 
         /// <paramref name="value"/>.
         /// </summary>
-
         public static Uri Randomize(this Uri url, string key, object value)
         {
             if (url == null) throw new ArgumentNullException("url");

@@ -17,7 +17,7 @@ namespace HSNXT
         /// <returns>Returns the combined specifications.</returns>
         [NotNull]
         [PublicAPI]
-        ISpecification<T> And( [NotNull] ISpecification<T> specification );
+        ISpecification<T> And([NotNull] ISpecification<T> specification);
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.
@@ -25,7 +25,7 @@ namespace HSNXT
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
         [PublicAPI]
-        bool IsSatisfiedBy( [CanBeNull] T obj );
+        bool IsSatisfiedBy([CanBeNull] T obj);
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.
@@ -34,7 +34,7 @@ namespace HSNXT
         /// <returns>Returns a collection of error messages.</returns>
         [NotNull]
         [PublicAPI]
-        IEnumerable<string> IsSatisfiedByWithMessages( [CanBeNull] T obj );
+        IEnumerable<string> IsSatisfiedByWithMessages([CanBeNull] T obj);
 
         /// <summary>
         ///     Combines the current specification with the given specification using a OR link.
@@ -43,7 +43,7 @@ namespace HSNXT
         /// <returns>Returns the combined specifications.</returns>
         [NotNull]
         [PublicAPI]
-        ISpecification<T> Or( [NotNull] ISpecification<T> specification );
+        ISpecification<T> Or([NotNull] ISpecification<T> specification);
 
         /// <summary>
         ///     Combines the current specification with the given specification using a XOR link.
@@ -52,6 +52,6 @@ namespace HSNXT
         /// <returns>Returns the combined specifications.</returns>
         [NotNull]
         [PublicAPI]
-        ISpecification<T> XOr( [NotNull] ISpecification<T> specification );
+        ISpecification<T> XOr([NotNull] ISpecification<T> specification);
     }
 }

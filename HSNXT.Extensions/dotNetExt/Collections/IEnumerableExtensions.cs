@@ -22,7 +22,8 @@ namespace HSNXT
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex, int pageSize)
+        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex,
+            int pageSize)
         {
             return new DNX.PaginatedList<T>(collection.AsQueryable(), pageIndex, pageSize);
         }
@@ -35,7 +36,8 @@ namespace HSNXT
         /// <param name="pageSize"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex, int pageSize, int totalCount)
+        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IEnumerable<T> collection, int pageIndex,
+            int pageSize, int totalCount)
         {
             return new DNX.PaginatedList<T>(collection.AsQueryable(), pageIndex, pageSize, totalCount);
         }
@@ -73,10 +75,12 @@ namespace HSNXT
             {
                 throw new ArgumentNullException("collection");
             }
+
             if (action == null)
             {
                 throw new ArgumentNullException("action");
             }
+
             foreach (var item in collection)
             {
                 action(item);

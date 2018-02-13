@@ -16,13 +16,14 @@ namespace HSNXT
         /// <returns>Returns true if a <see cref="MemberExpression" /> could be extracted; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool TryGetMemberExpression( [NotNull] this Expression expression, out MemberExpression memberExpression )
+        public static bool TryGetMemberExpression([NotNull] this Expression expression,
+            out MemberExpression memberExpression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            while ( true )
+            while (true)
                 // ReSharper disable once SwitchStatementMissingSomeCases
-                switch ( expression.NodeType )
+                switch (expression.NodeType)
                 {
                     case ExpressionType.MemberAccess:
                         memberExpression = expression as MemberExpression;
@@ -30,9 +31,9 @@ namespace HSNXT
 
                     case ExpressionType.Convert:
                         // ReSharper disable once PossibleNullReferenceException
-                        var operand = ( expression as UnaryExpression ).Operand;
+                        var operand = (expression as UnaryExpression).Operand;
                         // Check if operand is member expression
-                        if ( operand is MemberExpression )
+                        if (operand is MemberExpression)
                         {
                             memberExpression = operand as MemberExpression;
                             return true;
@@ -47,7 +48,7 @@ namespace HSNXT
                         return false;
 
                     case ExpressionType.Lambda:
-                        expression = ( (LambdaExpression) expression ).Body;
+                        expression = ((LambdaExpression) expression).Body;
                         break;
 
                     default:

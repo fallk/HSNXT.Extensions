@@ -27,7 +27,7 @@ namespace HSNXT.JetBrains.Annotations
     /// </example>
     [AttributeUsage(
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-        AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event )]
+        AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event)]
     internal sealed class CanBeNullAttribute : Attribute
     {
     }
@@ -44,7 +44,7 @@ namespace HSNXT.JetBrains.Annotations
     /// </example>
     [AttributeUsage(
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-        AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event )]
+        AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event)]
     internal sealed class NotNullAttribute : Attribute
     {
     }
@@ -56,7 +56,7 @@ namespace HSNXT.JetBrains.Annotations
     /// </summary>
     [AttributeUsage(
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-        AttributeTargets.Delegate | AttributeTargets.Field )]
+        AttributeTargets.Delegate | AttributeTargets.Field)]
     internal sealed class ItemNotNullAttribute : Attribute
     {
     }
@@ -68,7 +68,7 @@ namespace HSNXT.JetBrains.Annotations
     /// </summary>
     [AttributeUsage(
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-        AttributeTargets.Delegate | AttributeTargets.Field )]
+        AttributeTargets.Delegate | AttributeTargets.Field)]
     internal sealed class ItemCanBeNullAttribute : Attribute
     {
     }
@@ -90,7 +90,7 @@ namespace HSNXT.JetBrains.Annotations
     /// </example>
     [AttributeUsage(
         AttributeTargets.Constructor | AttributeTargets.Method |
-        AttributeTargets.Property | AttributeTargets.Delegate )]
+        AttributeTargets.Property | AttributeTargets.Delegate)]
     internal sealed class StringFormatMethodAttribute : Attribute
     {
         #region Properties
@@ -104,7 +104,7 @@ namespace HSNXT.JetBrains.Annotations
         /// <param name="formatParameterName">
         ///     Specifies which parameter of an annotated method should be treated as format-string
         /// </param>
-        public StringFormatMethodAttribute( string formatParameterName )
+        public StringFormatMethodAttribute(string formatParameterName)
             => FormatParameterName = formatParameterName;
 
         #endregion
@@ -114,19 +114,18 @@ namespace HSNXT.JetBrains.Annotations
     ///     For a parameter that is expected to be one of the limited set of values.
     ///     Specify fields of which type should be used as values for this parameter.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
     internal sealed class ValueProviderAttribute : Attribute
     {
         #region Properties
 
-        [NotNull]
-        public string Name { get; private set; }
+        [NotNull] public string Name { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public ValueProviderAttribute( string name ) => Name = name;
+        public ValueProviderAttribute(string name) => Name = name;
 
         #endregion
     }
@@ -144,7 +143,7 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class InvokerParameterNameAttribute : Attribute
     {
     }
@@ -206,7 +205,7 @@ namespace HSNXT.JetBrains.Annotations
     ///         </item>
     ///     </list>
     /// </example>
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
         #region Properties
@@ -221,7 +220,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public NotifyPropertyChangedInvocatorAttribute( string parameterName ) => ParameterName = parameterName;
+        public NotifyPropertyChangedInvocatorAttribute(string parameterName) => ParameterName = parameterName;
 
         #endregion
     }
@@ -281,7 +280,7 @@ namespace HSNXT.JetBrains.Annotations
     ///         </item>
     ///     </list>
     /// </examples>
-    [AttributeUsage( AttributeTargets.Method, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     internal sealed class ContractAnnotationAttribute : Attribute
     {
         #region Properties
@@ -293,12 +292,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public ContractAnnotationAttribute( [NotNull] string contract )
-            : this( contract, false )
+        public ContractAnnotationAttribute([NotNull] string contract)
+            : this(contract, false)
         {
         }
 
-        public ContractAnnotationAttribute( [NotNull] string contract, bool forceFullStates )
+        public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
         {
             Contract = contract;
             ForceFullStates = forceFullStates;
@@ -318,7 +317,7 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.All )]
+    [AttributeUsage(AttributeTargets.All)]
     internal sealed class LocalizationRequiredAttribute : Attribute
     {
         #region Properties
@@ -330,11 +329,11 @@ namespace HSNXT.JetBrains.Annotations
         #region Ctor
 
         public LocalizationRequiredAttribute()
-            : this( true )
+            : this(true)
         {
         }
 
-        public LocalizationRequiredAttribute( bool required ) => Required = required;
+        public LocalizationRequiredAttribute(bool required) => Required = required;
 
         #endregion
     }
@@ -361,7 +360,7 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct )]
+    [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct)]
     internal sealed class CannotApplyEqualityOperatorAttribute : Attribute
     {
     }
@@ -379,20 +378,19 @@ namespace HSNXT.JetBrains.Annotations
     /// class MyComponent : IComponent { }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
-    [BaseTypeRequired( typeof(Attribute) )]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    [BaseTypeRequired(typeof(Attribute))]
     internal sealed class BaseTypeRequiredAttribute : Attribute
     {
         #region Properties
 
-        [NotNull]
-        public Type BaseType { get; private set; }
+        [NotNull] public Type BaseType { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public BaseTypeRequiredAttribute( [NotNull] Type baseType ) => BaseType = baseType;
+        public BaseTypeRequiredAttribute([NotNull] Type baseType) => BaseType = baseType;
 
         #endregion
     }
@@ -401,7 +399,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
     ///     so this symbol will not be marked as unused (as well as by other usage inspections).
     /// </summary>
-    [AttributeUsage( AttributeTargets.All )]
+    [AttributeUsage(AttributeTargets.All)]
     internal sealed class UsedImplicitlyAttribute : Attribute
     {
         #region Properties
@@ -414,21 +412,21 @@ namespace HSNXT.JetBrains.Annotations
         #region Ctor
 
         public UsedImplicitlyAttribute()
-            : this( ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default )
+            : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default)
         {
         }
 
-        public UsedImplicitlyAttribute( ImplicitUseKindFlags useKindFlags )
-            : this( useKindFlags, ImplicitUseTargetFlags.Default )
+        public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags)
+            : this(useKindFlags, ImplicitUseTargetFlags.Default)
         {
         }
 
-        public UsedImplicitlyAttribute( ImplicitUseTargetFlags targetFlags )
-            : this( ImplicitUseKindFlags.Default, targetFlags )
+        public UsedImplicitlyAttribute(ImplicitUseTargetFlags targetFlags)
+            : this(ImplicitUseKindFlags.Default, targetFlags)
         {
         }
 
-        public UsedImplicitlyAttribute( ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags )
+        public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
         {
             UseKindFlags = useKindFlags;
             TargetFlags = targetFlags;
@@ -441,37 +439,35 @@ namespace HSNXT.JetBrains.Annotations
     ///     Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes
     ///     as unused (as well as by other usage inspections)
     /// </summary>
-    [AttributeUsage( AttributeTargets.Class | AttributeTargets.GenericParameter )]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.GenericParameter)]
     internal sealed class MeansImplicitUseAttribute : Attribute
     {
         #region Properties
 
-        [UsedImplicitly]
-        public ImplicitUseKindFlags UseKindFlags { get; private set; }
+        [UsedImplicitly] public ImplicitUseKindFlags UseKindFlags { get; private set; }
 
-        [UsedImplicitly]
-        public ImplicitUseTargetFlags TargetFlags { get; private set; }
+        [UsedImplicitly] public ImplicitUseTargetFlags TargetFlags { get; private set; }
 
         #endregion
 
         #region Ctor
 
         public MeansImplicitUseAttribute()
-            : this( ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default )
+            : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default)
         {
         }
 
-        public MeansImplicitUseAttribute( ImplicitUseKindFlags useKindFlags )
-            : this( useKindFlags, ImplicitUseTargetFlags.Default )
+        public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags)
+            : this(useKindFlags, ImplicitUseTargetFlags.Default)
         {
         }
 
-        public MeansImplicitUseAttribute( ImplicitUseTargetFlags targetFlags )
-            : this( ImplicitUseKindFlags.Default, targetFlags )
+        public MeansImplicitUseAttribute(ImplicitUseTargetFlags targetFlags)
+            : this(ImplicitUseKindFlags.Default, targetFlags)
         {
         }
 
-        public MeansImplicitUseAttribute( ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags )
+        public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
         {
             UseKindFlags = useKindFlags;
             TargetFlags = targetFlags;
@@ -522,7 +518,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     This attribute is intended to mark publicly available API
     ///     which should not be removed and so is treated as used.
     /// </summary>
-    [MeansImplicitUse( ImplicitUseTargetFlags.WithMembers )]
+    [MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
     internal sealed class PublicAPIAttribute : Attribute
     {
         #region Properties
@@ -537,7 +533,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public PublicAPIAttribute( [NotNull] string comment ) => Comment = comment;
+        public PublicAPIAttribute([NotNull] string comment) => Comment = comment;
 
         #endregion
     }
@@ -547,7 +543,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     If the parameter is a delegate, indicates that delegate is executed while the method is executed.
     ///     If the parameter is an enumerable, indicates that it is enumerated while the method is executed.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class InstantHandleAttribute : Attribute
     {
     }
@@ -565,7 +561,7 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class PureAttribute : Attribute
     {
     }
@@ -573,7 +569,7 @@ namespace HSNXT.JetBrains.Annotations
     /// <summary>
     ///     Indicates that the return value of method invocation must be used.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class MustUseReturnValueAttribute : Attribute
     {
         #region Properties
@@ -588,7 +584,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public MustUseReturnValueAttribute( [NotNull] string justification ) => Justification = justification;
+        public MustUseReturnValueAttribute([NotNull] string justification) => Justification = justification;
 
         #endregion
     }
@@ -612,7 +608,7 @@ namespace HSNXT.JetBrains.Annotations
     /// </example>
     [AttributeUsage(
         AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter |
-        AttributeTargets.Method )]
+        AttributeTargets.Method)]
     internal sealed class ProvidesContextAttribute : Attribute
     {
     }
@@ -621,7 +617,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Indicates that a parameter is a path to a file or a folder within a web project.
     ///     Path can be relative or absolute, starting from web root (~).
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class PathReferenceAttribute : Attribute
     {
         #region Properties
@@ -636,7 +632,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public PathReferenceAttribute( [PathReference] string basePath ) => BasePath = basePath;
+        public PathReferenceAttribute([PathReference] string basePath) => BasePath = basePath;
 
         #endregion
     }
@@ -664,7 +660,7 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class SourceTemplateAttribute : Attribute
     {
     }
@@ -697,7 +693,7 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method, AllowMultiple = true)]
     internal sealed class MacroAttribute : Attribute
     {
         #region Properties
@@ -728,7 +724,7 @@ namespace HSNXT.JetBrains.Annotations
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class AspMvcAreaMasterLocationFormatAttribute : Attribute
     {
         #region Properties
@@ -739,12 +735,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcAreaMasterLocationFormatAttribute( string format ) => Format = format;
+        public AspMvcAreaMasterLocationFormatAttribute(string format) => Format = format;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class AspMvcAreaPartialViewLocationFormatAttribute : Attribute
     {
         #region Properties
@@ -755,12 +751,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcAreaPartialViewLocationFormatAttribute( string format ) => Format = format;
+        public AspMvcAreaPartialViewLocationFormatAttribute(string format) => Format = format;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class AspMvcAreaViewLocationFormatAttribute : Attribute
     {
         #region Properties
@@ -771,12 +767,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcAreaViewLocationFormatAttribute( string format ) => Format = format;
+        public AspMvcAreaViewLocationFormatAttribute(string format) => Format = format;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class AspMvcMasterLocationFormatAttribute : Attribute
     {
         #region Properties
@@ -787,12 +783,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcMasterLocationFormatAttribute( string format ) => Format = format;
+        public AspMvcMasterLocationFormatAttribute(string format) => Format = format;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class AspMvcPartialViewLocationFormatAttribute : Attribute
     {
         #region Properties
@@ -803,12 +799,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcPartialViewLocationFormatAttribute( string format ) => Format = format;
+        public AspMvcPartialViewLocationFormatAttribute(string format) => Format = format;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class AspMvcViewLocationFormatAttribute : Attribute
     {
         #region Properties
@@ -819,7 +815,7 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcViewLocationFormatAttribute( string format ) => Format = format;
+        public AspMvcViewLocationFormatAttribute(string format) => Format = format;
 
         #endregion
     }
@@ -830,7 +826,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     implicitly from the context. Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     internal sealed class AspMvcActionAttribute : Attribute
     {
         #region Properties
@@ -845,7 +841,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public AspMvcActionAttribute( string anonymousProperty ) => AnonymousProperty = anonymousProperty;
+        public AspMvcActionAttribute(string anonymousProperty) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -855,7 +851,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcAreaAttribute : Attribute
     {
         #region Properties
@@ -870,7 +866,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public AspMvcAreaAttribute( string anonymousProperty ) => AnonymousProperty = anonymousProperty;
+        public AspMvcAreaAttribute(string anonymousProperty) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -881,7 +877,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     implicitly from the context. Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     internal sealed class AspMvcControllerAttribute : Attribute
     {
         #region Properties
@@ -896,7 +892,7 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public AspMvcControllerAttribute( string anonymousProperty ) => AnonymousProperty = anonymousProperty;
+        public AspMvcControllerAttribute(string anonymousProperty) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -905,7 +901,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
     ///     for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcMasterAttribute : Attribute
     {
     }
@@ -914,7 +910,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
     ///     for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcModelTypeAttribute : Attribute
     {
     }
@@ -925,7 +921,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     from the context. Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     internal sealed class AspMvcPartialViewAttribute : Attribute
     {
     }
@@ -933,7 +929,7 @@ namespace HSNXT.JetBrains.Annotations
     /// <summary>
     ///     ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Class | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     internal sealed class AspMvcSuppressViewErrorAttribute : Attribute
     {
     }
@@ -943,7 +939,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcDisplayTemplateAttribute : Attribute
     {
     }
@@ -953,7 +949,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcEditorTemplateAttribute : Attribute
     {
     }
@@ -963,7 +959,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Use this attribute for custom wrappers similar to
     ///     <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcTemplateAttribute : Attribute
     {
     }
@@ -974,7 +970,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     from the context. Use this attribute for custom wrappers similar to
     ///     <c>System.Web.Mvc.Controller.View(Object)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     internal sealed class AspMvcViewAttribute : Attribute
     {
     }
@@ -983,7 +979,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
     ///     is an MVC view component name.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AspMvcViewComponentAttribute : Attribute
     {
     }
@@ -992,7 +988,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
     ///     is an MVC view component view. If applied to a method, the MVC view component view name is default.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     internal sealed class AspMvcViewComponentViewAttribute : Attribute
     {
     }
@@ -1010,12 +1006,12 @@ namespace HSNXT.JetBrains.Annotations
     /// }
     /// </code>
     /// </example>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]
     internal sealed class AspMvcActionSelectorAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
     internal sealed class HtmlElementAttributesAttribute : Attribute
     {
         #region Properties
@@ -1030,24 +1026,23 @@ namespace HSNXT.JetBrains.Annotations
         {
         }
 
-        public HtmlElementAttributesAttribute( string name ) => Name = name;
+        public HtmlElementAttributesAttribute(string name) => Name = name;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
     internal sealed class HtmlAttributeValueAttribute : Attribute
     {
         #region Properties
 
-        [NotNull]
-        public string Name { get; private set; }
+        [NotNull] public string Name { get; private set; }
 
         #endregion
 
         #region Ctor
 
-        public HtmlAttributeValueAttribute( [NotNull] string name ) => Name = name;
+        public HtmlAttributeValueAttribute([NotNull] string name) => Name = name;
 
         #endregion
     }
@@ -1057,7 +1052,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Use this attribute for custom wrappers similar to
     ///     <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     internal sealed class RazorSectionAttribute : Attribute
     {
     }
@@ -1066,7 +1061,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     Indicates how method, constructor invocation or property access
     ///     over collection type affects content of the collection.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property)]
     internal sealed class CollectionAccessAttribute : Attribute
     {
         #region Properties
@@ -1077,7 +1072,8 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public CollectionAccessAttribute( CollectionAccessType collectionAccessType ) => CollectionAccessType = collectionAccessType;
+        public CollectionAccessAttribute(CollectionAccessType collectionAccessType) =>
+            CollectionAccessType = collectionAccessType;
 
         #endregion
     }
@@ -1103,7 +1099,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     one of the conditions is satisfied. To set the condition, mark one of the parameters with
     ///     <see cref="AssertionConditionAttribute" /> attribute.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class AssertionMethodAttribute : Attribute
     {
     }
@@ -1113,7 +1109,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     marked by <see cref="AssertionMethodAttribute" /> attribute. The mandatory argument of
     ///     the attribute is the assertion type.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class AssertionConditionAttribute : Attribute
     {
         #region Properties
@@ -1124,7 +1120,7 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AssertionConditionAttribute( AssertionConditionType conditionType ) => ConditionType = conditionType;
+        public AssertionConditionAttribute(AssertionConditionType conditionType) => ConditionType = conditionType;
 
         #endregion
     }
@@ -1152,8 +1148,8 @@ namespace HSNXT.JetBrains.Annotations
     ///     Indicates that the marked method unconditionally terminates control flow execution.
     ///     For example, it could unconditionally throw exception.
     /// </summary>
-    [Obsolete( "Use [ContractAnnotation('=> halt')] instead" )]
-    [AttributeUsage( AttributeTargets.Method )]
+    [Obsolete("Use [ContractAnnotation('=> halt')] instead")]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class TerminatesProgramAttribute : Attribute
     {
     }
@@ -1163,7 +1159,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     .Where). This annotation allows inference of [InstantHandle] annotation for parameters
     ///     of delegate type by analyzing LINQ method chains.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class LinqTunnelAttribute : Attribute
     {
     }
@@ -1171,7 +1167,7 @@ namespace HSNXT.JetBrains.Annotations
     /// <summary>
     ///     Indicates that IEnumerable, passed as parameter, is not enumerated.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class NoEnumerationAttribute : Attribute
     {
     }
@@ -1179,7 +1175,7 @@ namespace HSNXT.JetBrains.Annotations
     /// <summary>
     ///     Indicates that parameter is regular expression pattern.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class RegexPatternAttribute : Attribute
     {
     }
@@ -1188,7 +1184,7 @@ namespace HSNXT.JetBrains.Annotations
     ///     XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
     ///     as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
     /// </summary>
-    [AttributeUsage( AttributeTargets.Class )]
+    [AttributeUsage(AttributeTargets.Class)]
     internal sealed class XamlItemsControlAttribute : Attribute
     {
     }
@@ -1202,12 +1198,12 @@ namespace HSNXT.JetBrains.Annotations
     ///     Property should have the tree ancestor of the <c>ItemsControl</c> type or
     ///     marked with the <see cref="XamlItemsControlAttribute" /> attribute.
     /// </remarks>
-    [AttributeUsage( AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Property)]
     internal sealed class XamlItemBindingOfItemsControlAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     internal sealed class AspChildControlTypeAttribute : Attribute
     {
         #region Properties
@@ -1219,7 +1215,7 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspChildControlTypeAttribute( string tagName, Type controlType )
+        public AspChildControlTypeAttribute(string tagName, Type controlType)
         {
             TagName = tagName;
             ControlType = controlType;
@@ -1228,22 +1224,22 @@ namespace HSNXT.JetBrains.Annotations
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Property | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
     internal sealed class AspDataFieldAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Property | AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
     internal sealed class AspDataFieldsAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Property)]
     internal sealed class AspMethodPropertyAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     internal sealed class AspRequiredAttributeAttribute : Attribute
     {
         #region Properties
@@ -1254,12 +1250,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspRequiredAttributeAttribute( [NotNull] string attribute ) => Attribute = attribute;
+        public AspRequiredAttributeAttribute([NotNull] string attribute) => Attribute = attribute;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Property)]
     internal sealed class AspTypePropertyAttribute : Attribute
     {
         #region Properties
@@ -1270,12 +1266,13 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public AspTypePropertyAttribute( bool createConstructorReferences ) => CreateConstructorReferences = createConstructorReferences;
+        public AspTypePropertyAttribute(bool createConstructorReferences) =>
+            CreateConstructorReferences = createConstructorReferences;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class RazorImportNamespaceAttribute : Attribute
     {
         #region Properties
@@ -1286,12 +1283,12 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public RazorImportNamespaceAttribute( string name ) => Name = name;
+        public RazorImportNamespaceAttribute(string name) => Name = name;
 
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Assembly, AllowMultiple = true )]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     internal sealed class RazorInjectionAttribute : Attribute
     {
         #region Properties
@@ -1303,7 +1300,7 @@ namespace HSNXT.JetBrains.Annotations
 
         #region Ctor
 
-        public RazorInjectionAttribute( string type, string fieldName )
+        public RazorInjectionAttribute(string type, string fieldName)
         {
             Type = type;
             FieldName = fieldName;
@@ -1312,27 +1309,27 @@ namespace HSNXT.JetBrains.Annotations
         #endregion
     }
 
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class RazorHelperCommonAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Property )]
+    [AttributeUsage(AttributeTargets.Property)]
     internal sealed class RazorLayoutAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class RazorWriteLiteralMethodAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Method )]
+    [AttributeUsage(AttributeTargets.Method)]
     internal sealed class RazorWriteMethodAttribute : Attribute
     {
     }
 
-    [AttributeUsage( AttributeTargets.Parameter )]
+    [AttributeUsage(AttributeTargets.Parameter)]
     internal sealed class RazorWriteMethodParameterAttribute : Attribute
     {
     }
@@ -1343,7 +1340,7 @@ namespace HSNXT.JetBrains.Annotations
     /// <remarks>
     ///     The attribute must be mentioned in your member reordering patterns
     /// </remarks>
-    [AttributeUsage( AttributeTargets.All )]
+    [AttributeUsage(AttributeTargets.All)]
     internal sealed class NoReorder : Attribute
     {
     }

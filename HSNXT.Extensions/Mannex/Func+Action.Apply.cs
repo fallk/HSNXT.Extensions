@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -31,14 +33,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Action{T}"/> and family.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Partially applies the first argument of
         /// <see cref="Action{T1,T2}"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Action<T2> Apply<T1, T2>(
             this Action<T1, T2> action,
@@ -52,7 +52,6 @@ namespace HSNXT
         /// Partially applies the first argument of
         /// <see cref="Action{T1,T2,T3}"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Action<T2, T3> Apply<T1, T2, T3>(
             this Action<T1, T2, T3> action,
@@ -66,7 +65,6 @@ namespace HSNXT
         /// Partially applies the first 2 arguments of
         /// <see cref="Action{T1,T2,T3}"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Action<T3> Apply<T1, T2, T3>(
             this Action<T1, T2, T3> action,
@@ -80,7 +78,6 @@ namespace HSNXT
         /// Partially applies the first argument of
         /// <see cref="Action{T1,T2,T3,T4}"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Action<T2, T3, T4> Apply<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4> action,
@@ -94,7 +91,6 @@ namespace HSNXT
         /// Partially applies the first 2 arguments of
         /// <see cref="Action{T1,T2,T3,T4}"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Action<T3, T4> Apply<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4> action,
@@ -108,7 +104,6 @@ namespace HSNXT
         /// Partially applies the first 3 arguments of
         /// <see cref="Action{T1,T2,T3,T4}"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static Action<T4> Apply<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4> action,

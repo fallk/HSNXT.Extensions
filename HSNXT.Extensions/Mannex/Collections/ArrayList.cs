@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,13 +35,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="ArrayList"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Strong-typed version of <see cref="ArrayList.ToArray()"/>.
         /// </summary>
-
         public static T[] ToArray<T>(this ArrayList list)
         {
             if (list == null) throw new ArgumentNullException("list");

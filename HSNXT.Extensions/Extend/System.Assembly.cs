@@ -17,15 +17,16 @@ namespace HSNXT
         /// <returns>Returns the types defined in the given assembly.</returns>
         [Pure]
         [PublicAPI]
-        public static IEnumerable<Type> GetDefinedTypes( [NotNull] this Assembly assembly )
+        public static IEnumerable<Type> GetDefinedTypes([NotNull] this Assembly assembly)
         {
-            assembly.ThrowIfNull( nameof(assembly) );
+            assembly.ThrowIfNull(nameof(assembly));
 
             return assembly
                 .DefinedTypes
-                .Select( x => x.AsType() )
+                .Select(x => x.AsType())
                 .ToArray();
         }
+
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
         /// </summary>
@@ -36,8 +37,9 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( [NotNull] params Assembly[] assemblies ) where T : Attribute
-            => GetTypesWithAttribute<T>( false, null, assemblies );
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>(
+            [NotNull] params Assembly[] assemblies) where T : Attribute
+            => GetTypesWithAttribute<T>(false, null, assemblies);
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
@@ -53,8 +55,9 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( bool inherit, [NotNull] params Assembly[] assemblies ) where T : Attribute
-            => GetTypesWithAttribute<T>( inherit, null, assemblies );
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>(bool inherit,
+            [NotNull] params Assembly[] assemblies) where T : Attribute
+            => GetTypesWithAttribute<T>(inherit, null, assemblies);
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type and are sub
@@ -72,32 +75,33 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( bool inherit, Type baseType, [NotNull] params Assembly[] assemblies )
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>(bool inherit, Type baseType,
+            [NotNull] params Assembly[] assemblies)
             where T : Attribute
         {
-            assemblies.ThrowIfNull( nameof(assemblies) );
+            assemblies.ThrowIfNull(nameof(assemblies));
 
             var attributeType = typeof(T);
             var result = new List<AttributeDefinitionType<T>>();
 
             assemblies
-                .ForEach( x => x.DefinedTypes
-                                .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
-                                .ForEach( y =>
-                                {
-                                    var attributes = y.GetCustomAttributes( attributeType, inherit )
-                                                      .ToArray();
-                                    if ( attributes.NotAny() )
-                                        return;
+                .ForEach(x => x.DefinedTypes
+                    .Where(y => baseType == null || y.IsSubclassOf(baseType))
+                    .ForEach(y =>
+                    {
+                        var attributes = y.GetCustomAttributes(attributeType, inherit)
+                            .ToArray();
+                        if (attributes.NotAny())
+                            return;
 
-                                    result.Add( new AttributeDefinitionType<T>
-                                    {
-                                        Type = y.AsType(),
-                                        Attributes = attributes
-                                            .Cast<T>()
-                                            .ToList()
-                                    } );
-                                } ) );
+                        result.Add(new AttributeDefinitionType<T>
+                        {
+                            Type = y.AsType(),
+                            Attributes = attributes
+                                .Cast<T>()
+                                .ToList()
+                        });
+                    }));
 
             return result;
         }

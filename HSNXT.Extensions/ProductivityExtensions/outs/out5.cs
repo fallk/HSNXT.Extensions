@@ -49,7 +49,6 @@ using System.IO.MemoryMappedFiles;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using System.Collections.ObjectModel;
-
 #if NetFX
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
@@ -57,6 +56,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms.Layout;
+
 #endif
 
 #if (NETSTANDARD2_0 || NET47)
@@ -1607,128 +1607,127 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginExecuteNonQuery so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// sqlcommand.BeginExecuteNonQuery(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginExecuteNonQuery(this SqlCommand sqlcommand, AsyncCallback callback)
-		{
-			if(sqlcommand == null) throw new ArgumentNullException("sqlcommand");
+    {
+        /// <summary>
+        /// Extends BeginExecuteNonQuery so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// sqlcommand.BeginExecuteNonQuery(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginExecuteNonQuery(this SqlCommand sqlcommand, AsyncCallback callback)
+        {
+            if (sqlcommand == null) throw new ArgumentNullException("sqlcommand");
 
-			return sqlcommand.BeginExecuteNonQuery(callback, null);
-		}
+            return sqlcommand.BeginExecuteNonQuery(callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginExecuteXmlReader so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// sqlcommand.BeginExecuteXmlReader(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginExecuteXmlReader(this SqlCommand sqlcommand, AsyncCallback callback)
-		{
-			if(sqlcommand == null) throw new ArgumentNullException("sqlcommand");
+        /// <summary>
+        /// Extends BeginExecuteXmlReader so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// sqlcommand.BeginExecuteXmlReader(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginExecuteXmlReader(this SqlCommand sqlcommand, AsyncCallback callback)
+        {
+            if (sqlcommand == null) throw new ArgumentNullException("sqlcommand");
 
-			return sqlcommand.BeginExecuteXmlReader(callback, null);
-		}
+            return sqlcommand.BeginExecuteXmlReader(callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginExecuteReader so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// sqlcommand.BeginExecuteReader(callback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginExecuteReader(this SqlCommand sqlcommand, AsyncCallback callback)
-		{
-			if(sqlcommand == null) throw new ArgumentNullException("sqlcommand");
+        /// <summary>
+        /// Extends BeginExecuteReader so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// sqlcommand.BeginExecuteReader(callback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginExecuteReader(this SqlCommand sqlcommand, AsyncCallback callback)
+        {
+            if (sqlcommand == null) throw new ArgumentNullException("sqlcommand");
 
-			return sqlcommand.BeginExecuteReader(callback, null);
-		}
+            return sqlcommand.BeginExecuteReader(callback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginExecuteReader so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// sqlcommand.BeginExecuteReader(callback, behavior);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginExecuteReader(this SqlCommand sqlcommand, AsyncCallback callback, System.Data.CommandBehavior behavior)
-		{
-			if(sqlcommand == null) throw new ArgumentNullException("sqlcommand");
+        /// <summary>
+        /// Extends BeginExecuteReader so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// sqlcommand.BeginExecuteReader(callback, behavior);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginExecuteReader(this SqlCommand sqlcommand, AsyncCallback callback,
+            System.Data.CommandBehavior behavior)
+        {
+            if (sqlcommand == null) throw new ArgumentNullException("sqlcommand");
 
-			return sqlcommand.BeginExecuteReader(callback, null, behavior);
-		}
-
-	}
+            return sqlcommand.BeginExecuteReader(callback, null, behavior);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD1_6 || NET47)
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends GetBytes so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// sqldatarecord.GetBytes(ordinal, fieldOffset, buffer);
-		/// </example>
-		/// </summary>
-		public static Int64 GetBytes(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Byte[] buffer)
-		{
-			if(sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
+    {
+        /// <summary>
+        /// Extends GetBytes so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// sqldatarecord.GetBytes(ordinal, fieldOffset, buffer);
+        /// </example>
+        /// </summary>
+        public static Int64 GetBytes(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Byte[] buffer)
+        {
+            if (sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return sqldatarecord.GetBytes(ordinal, fieldOffset, buffer, 0, buffer.Length);
-		}
+            return sqldatarecord.GetBytes(ordinal, fieldOffset, buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends GetChars so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// sqldatarecord.GetChars(ordinal, fieldOffset, buffer);
-		/// </example>
-		/// </summary>
-		public static Int64 GetChars(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Char[] buffer)
-		{
-			if(sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
+        /// <summary>
+        /// Extends GetChars so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// sqldatarecord.GetChars(ordinal, fieldOffset, buffer);
+        /// </example>
+        /// </summary>
+        public static Int64 GetChars(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Char[] buffer)
+        {
+            if (sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			return sqldatarecord.GetChars(ordinal, fieldOffset, buffer, 0, buffer.Length);
-		}
+            return sqldatarecord.GetChars(ordinal, fieldOffset, buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends SetBytes so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// sqldatarecord.SetBytes(ordinal, fieldOffset, buffer);
-		/// </example>
-		/// </summary>
-		public static void SetBytes(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Byte[] buffer)
-		{
-			if(sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
+        /// <summary>
+        /// Extends SetBytes so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// sqldatarecord.SetBytes(ordinal, fieldOffset, buffer);
+        /// </example>
+        /// </summary>
+        public static void SetBytes(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Byte[] buffer)
+        {
+            if (sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			sqldatarecord.SetBytes(ordinal, fieldOffset, buffer, 0, buffer.Length);
-		}
+            sqldatarecord.SetBytes(ordinal, fieldOffset, buffer, 0, buffer.Length);
+        }
 
-		/// <summary>
-		/// Extends SetChars so that buffer offset of 0 and call to Array.Length are not needed.
-		/// <example>
-		/// sqldatarecord.SetChars(ordinal, fieldOffset, buffer);
-		/// </example>
-		/// </summary>
-		public static void SetChars(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Char[] buffer)
-		{
-			if(sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
+        /// <summary>
+        /// Extends SetChars so that buffer offset of 0 and call to Array.Length are not needed.
+        /// <example>
+        /// sqldatarecord.SetChars(ordinal, fieldOffset, buffer);
+        /// </example>
+        /// </summary>
+        public static void SetChars(this SqlDataRecord sqldatarecord, Int32 ordinal, Int64 fieldOffset, Char[] buffer)
+        {
+            if (sqldatarecord == null) throw new ArgumentNullException("sqldatarecord");
 
-			if(buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null) throw new ArgumentNullException("buffer");
 
-			sqldatarecord.SetChars(ordinal, fieldOffset, buffer, 0, buffer.Length);
-		}
-
-	}
+            sqldatarecord.SetChars(ordinal, fieldOffset, buffer, 0, buffer.Length);
+        }
+    }
 }
 #endif
 #if (NET40 || NET45)
@@ -1911,10 +1910,10 @@ namespace HSNXT
         }
 
 #if (NET47)
-		public static ConfiguredTaskAwaitable ContinueOnTaskContext(this Task task)
-		{
-			return task.ConfigureAwait(continueOnCapturedContext: false);
-		}
+        public static ConfiguredTaskAwaitable ContinueOnTaskContext(this Task task)
+        {
+            return task.ConfigureAwait(continueOnCapturedContext: false);
+        }
 #endif // NET45
     }
 }
@@ -1926,47 +1925,49 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'TcpClientable.BeginConnect(TcpClient, IPEndPoint, AsyncCallback)'
-		public static IAsyncResult BeginConnect(this TcpClient tcpClient, IPEndPoint endPoint, AsyncCallback asyncCallback)
+        public static IAsyncResult BeginConnect(this TcpClient tcpClient, IPEndPoint endPoint,
+            AsyncCallback asyncCallback)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'TcpClientable.BeginConnect(TcpClient, IPEndPoint, AsyncCallback)'
-		{
-			if (tcpClient == null) throw new ArgumentNullException(nameof(tcpClient));
-			return tcpClient.BeginConnect(endPoint.Address, endPoint.Port, asyncCallback, null);
-		}
+        {
+            if (tcpClient == null) throw new ArgumentNullException(nameof(tcpClient));
+            return tcpClient.BeginConnect(endPoint.Address, endPoint.Port, asyncCallback, null);
+        }
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'TcpClientable.BeginConnect(TcpClient, IPEndPoint, AsyncCallback, object)'
-		public static IAsyncResult BeginConnect(this TcpClient tcpClient, IPEndPoint endPoint, AsyncCallback asyncCallback, object state)
+        public static IAsyncResult BeginConnect(this TcpClient tcpClient, IPEndPoint endPoint,
+            AsyncCallback asyncCallback, object state)
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'TcpClientable.BeginConnect(TcpClient, IPEndPoint, AsyncCallback, object)'
-		{
-			if (tcpClient == null) throw new ArgumentNullException(nameof(tcpClient));
-			return tcpClient.BeginConnect(endPoint.Address, endPoint.Port, asyncCallback, state);
-		}
+        {
+            if (tcpClient == null) throw new ArgumentNullException(nameof(tcpClient));
+            return tcpClient.BeginConnect(endPoint.Address, endPoint.Port, asyncCallback, state);
+        }
 
 #if (NET47)
-		/// <summary>
-		/// Connect asyncronously to <param name="endPoint"></param>
-		/// </summary>
-		/// <param name="tcpClient"><see cref="TcpClient"/> object to connect with</param>
-		/// <param name="endPoint"></param>
-		/// <returns></returns>
-		/// <exception cref="ArgumentException">if <param name="endPoint"/> is not a 
-		/// <see cref="DnsEndPoint"/> nor an <see cref="IPEndPoint"/></exception>
-		public static Task ConnectAsync(this TcpClient tcpClient, EndPoint endPoint)
-		{
-			if (tcpClient == null) throw new ArgumentNullException(nameof(tcpClient));
-			if (endPoint == null) throw new ArgumentNullException(nameof(endPoint));
+        /// <summary>
+        /// Connect asyncronously to <param name="endPoint"></param>
+        /// </summary>
+        /// <param name="tcpClient"><see cref="TcpClient"/> object to connect with</param>
+        /// <param name="endPoint"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException">if <param name="endPoint"/> is not a 
+        /// <see cref="DnsEndPoint"/> nor an <see cref="IPEndPoint"/></exception>
+        public static Task ConnectAsync(this TcpClient tcpClient, EndPoint endPoint)
+        {
+            if (tcpClient == null) throw new ArgumentNullException(nameof(tcpClient));
+            if (endPoint == null) throw new ArgumentNullException(nameof(endPoint));
 
-			var dnsEndPoint = endPoint as DnsEndPoint;
-			if (dnsEndPoint != null)
-				return tcpClient.ConnectAsync(dnsEndPoint.Host, dnsEndPoint.Port);
-			var ipEndPoint = endPoint as IPEndPoint;
-			if (ipEndPoint != null)
-				return tcpClient.ConnectAsync(ipEndPoint.Address, ipEndPoint.Port);
-			throw new ArgumentException("Unsupported EndPoint type", nameof(endPoint));
-		}
+            var dnsEndPoint = endPoint as DnsEndPoint;
+            if (dnsEndPoint != null)
+                return tcpClient.ConnectAsync(dnsEndPoint.Host, dnsEndPoint.Port);
+            var ipEndPoint = endPoint as IPEndPoint;
+            if (ipEndPoint != null)
+                return tcpClient.ConnectAsync(ipEndPoint.Address, ipEndPoint.Port);
+            throw new ArgumentException("Unsupported EndPoint type", nameof(endPoint));
+        }
 #endif
-	}
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)
@@ -2025,60 +2026,62 @@ namespace HSNXT
 namespace HSNXT
 {
     public static partial class Extensions
-	{
-		/// <summary>
-		/// Extends BeginSend so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// udpclient.BeginSend(datagram, bytes, endPoint, requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginSend(this UdpClient udpclient, Byte[] datagram, Int32 bytes, System.Net.IPEndPoint endPoint, AsyncCallback requestCallback)
-		{
-			if(udpclient == null) throw new ArgumentNullException("udpclient");
+    {
+        /// <summary>
+        /// Extends BeginSend so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// udpclient.BeginSend(datagram, bytes, endPoint, requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginSend(this UdpClient udpclient, Byte[] datagram, Int32 bytes,
+            System.Net.IPEndPoint endPoint, AsyncCallback requestCallback)
+        {
+            if (udpclient == null) throw new ArgumentNullException("udpclient");
 
-			return udpclient.BeginSend(datagram, bytes, endPoint, requestCallback, null);
-		}
+            return udpclient.BeginSend(datagram, bytes, endPoint, requestCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginSend so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// udpclient.BeginSend(datagram, bytes, hostname, port, requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginSend(this UdpClient udpclient, Byte[] datagram, Int32 bytes, String hostname, Int32 port, AsyncCallback requestCallback)
-		{
-			if(udpclient == null) throw new ArgumentNullException("udpclient");
+        /// <summary>
+        /// Extends BeginSend so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// udpclient.BeginSend(datagram, bytes, hostname, port, requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginSend(this UdpClient udpclient, Byte[] datagram, Int32 bytes, String hostname,
+            Int32 port, AsyncCallback requestCallback)
+        {
+            if (udpclient == null) throw new ArgumentNullException("udpclient");
 
-			return udpclient.BeginSend(datagram, bytes, hostname, port, requestCallback, null);
-		}
+            return udpclient.BeginSend(datagram, bytes, hostname, port, requestCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginSend so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// udpclient.BeginSend(datagram, bytes, requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginSend(this UdpClient udpclient, Byte[] datagram, Int32 bytes, AsyncCallback requestCallback)
-		{
-			if(udpclient == null) throw new ArgumentNullException("udpclient");
+        /// <summary>
+        /// Extends BeginSend so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// udpclient.BeginSend(datagram, bytes, requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginSend(this UdpClient udpclient, Byte[] datagram, Int32 bytes,
+            AsyncCallback requestCallback)
+        {
+            if (udpclient == null) throw new ArgumentNullException("udpclient");
 
-			return udpclient.BeginSend(datagram, bytes, requestCallback, null);
-		}
+            return udpclient.BeginSend(datagram, bytes, requestCallback, null);
+        }
 
-		/// <summary>
-		/// Extends BeginReceive so that when a state object is not needed, null does not need to be passed.
-		/// <example>
-		/// udpclient.BeginReceive(requestCallback);
-		/// </example>
-		/// </summary>
-		public static IAsyncResult BeginReceive(this UdpClient udpclient, AsyncCallback requestCallback)
-		{
-			if(udpclient == null) throw new ArgumentNullException("udpclient");
+        /// <summary>
+        /// Extends BeginReceive so that when a state object is not needed, null does not need to be passed.
+        /// <example>
+        /// udpclient.BeginReceive(requestCallback);
+        /// </example>
+        /// </summary>
+        public static IAsyncResult BeginReceive(this UdpClient udpclient, AsyncCallback requestCallback)
+        {
+            if (udpclient == null) throw new ArgumentNullException("udpclient");
 
-			return udpclient.BeginReceive(requestCallback, null);
-		}
-
-	}
+            return udpclient.BeginReceive(requestCallback, null);
+        }
+    }
 }
 #endif
 #if (NETSTANDARD2_0 || NET47)

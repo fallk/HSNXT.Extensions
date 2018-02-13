@@ -13,7 +13,7 @@
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="item">The item.</param>
-        public IndexedItem( int index, T item )
+        public IndexedItem(int index, T item)
         {
             Index = index;
             Item = item;

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -28,13 +30,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IServiceProvider"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Gets the service object of the specified type.
         /// </summary>
-
         public static T GetService<T>(this IServiceProvider sp) where T : class
         {
             if (sp == null) throw new ArgumentNullException("sp");
@@ -44,7 +44,6 @@ namespace HSNXT
         /// <summary>
         /// Gets the service object of the specified type.
         /// </summary>
-
         public static T GetRequiredService<T>(this IServiceProvider sp) where T : class
         {
             var service = sp.GetService<T>();

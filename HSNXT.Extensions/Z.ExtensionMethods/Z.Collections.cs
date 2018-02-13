@@ -82,7 +82,8 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="predicate">The predicate.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static ICollection<T> AddRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate, params T[] values)
+        public static ICollection<T> AddRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate,
+            params T[] values)
         {
             foreach (var value in values)
             {
@@ -110,7 +111,7 @@ namespace HSNXT
                     @this.Add(value);
                 }
             }
-            
+
             return @this;
         }
 
@@ -252,7 +253,8 @@ namespace HSNXT
         /// <param name="this">The @this to act on.</param>
         /// <param name="predicate">The predicate.</param>
         /// <param name="values">A variable-length parameters list containing values.</param>
-        public static ICollection<T> RemoveRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate, params T[] values)
+        public static ICollection<T> RemoveRangeIf<T>(this ICollection<T> @this, Func<T, bool> predicate,
+            params T[] values)
         {
             foreach (var value in values)
             {
@@ -280,7 +282,7 @@ namespace HSNXT
                     @this.Remove(value);
                 }
             }
-            
+
             return @this;
         }
 
@@ -297,7 +299,7 @@ namespace HSNXT
             {
                 @this.Remove(item);
             }
-            
+
             return @this;
         }
 

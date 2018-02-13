@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 #if NET4
@@ -31,13 +33,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Exception"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates a task in the faulted state with the given exception.
         /// </summary>
-
         public static Task<T> AsTask<T>(this Exception exception)
         {
             if (exception == null) throw new ArgumentNullException("exception");

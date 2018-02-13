@@ -23,8 +23,8 @@
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public AllMemberSelectionRule( MemberSelectionMode selectionMode, string name = null, string description = null )
-            : base( name, description ) => _selectionMode = selectionMode;
+        public AllMemberSelectionRule(MemberSelectionMode selectionMode, string name = null, string description = null)
+            : base(name, description) => _selectionMode = selectionMode;
 
         #endregion
 
@@ -35,7 +35,7 @@
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
+        public override MemberSelectionResult GetSelectionResult(IMemberInformation member)
             => _selectionMode == MemberSelectionMode.Include
                 ? MemberSelectionResult.IncludeMember
                 : MemberSelectionResult.ExcludeMember;

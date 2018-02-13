@@ -27,11 +27,11 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static string StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
+        public static string StringJoin<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
-            return string.Join( "", enumerable );
+            return string.Join("", enumerable);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static bool AnyAndNotNull<T>([CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
             => enumerable != null
                && enumerable.Any();
 
@@ -67,13 +67,14 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate )
+        public static bool AnyAndNotNull<T>([CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] Func<T, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
-            return enumerable != null && enumerable.Any( predicate );
+            return enumerable != null && enumerable.Any(predicate);
         }
-        
+
         /// <summary>
         ///     Checks if the IEnumerable contains all values of the given IEnumerable.
         /// </summary>
@@ -85,14 +86,15 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
+        public static bool ContainAll<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] [ItemCanBeNull] params T[] values)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            values.ThrowIfNull( nameof(values) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
-            return values.All( enumerable.Contains );
+            return values.All(enumerable.Contains);
         }
-        
+
         /// <summary>
         ///     Checks if the IEnumerable contains all values of the given IEnumerable.
         /// </summary>
@@ -104,14 +106,15 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
+        public static bool ContainAll<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] [ItemCanBeNull] IEnumerable<T> values)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            values.ThrowIfNull( nameof(values) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
-            return values.All( enumerable.Contains );
+            return values.All(enumerable.Contains);
         }
-        
+
         /// <summary>
         ///     Checks if the IEnumerable contains any of the values of the given IEnumerable.
         /// </summary>
@@ -126,14 +129,15 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
+        public static bool ContainAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] [ItemCanBeNull] params T[] values)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            values.ThrowIfNull( nameof(values) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
-            return values.Any( enumerable.Contains );
+            return values.Any(enumerable.Contains);
         }
-        
+
         /// <summary>
         ///     Checks if the IEnumerable contains any of the values of the given IEnumerable.
         /// </summary>
@@ -148,14 +152,15 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool ContainAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
+        public static bool ContainAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] [ItemCanBeNull] IEnumerable<T> values)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            values.ThrowIfNull( nameof(values) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
-            return values.Any( enumerable.Contains );
+            return values.Any(enumerable.Contains);
         }
-        
+
         /// <summary>
         ///     Ensures that the given <see cref="IEnumerable{T}" /> is not null.
         /// </summary>
@@ -165,8 +170,9 @@ namespace HSNXT
         [NotNull]
         [PublicAPI]
         [Pure]
-        public static IEnumerable<T> EnsureNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static IEnumerable<T> EnsureNotNull<T>([CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
             => enumerable ?? new T[0];
+
         /// <summary>
         ///     Produces the set difference of two sequences by using the specified
         ///     <see cref="System.Collections.Generic.IEqualityComparer{TKey}" /> to compare values.
@@ -193,19 +199,21 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<TSource> Except<TSource, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<TSource> first,
-                                                                  [NotNull] [ItemCanBeNull] IEnumerable<TSource> second,
-                                                                  [NotNull] Func<TSource, TKey> keySelector,
-                                                                  [CanBeNull] IEqualityComparer<TKey> comparer = null )
+        public static IEnumerable<TSource> Except<TSource, TKey>(
+            [NotNull] [ItemCanBeNull] this IEnumerable<TSource> first,
+            [NotNull] [ItemCanBeNull] IEnumerable<TSource> second,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer = null)
         {
-            first.ThrowIfNull( nameof(first) );
-            second.ThrowIfNull( nameof(second) );
-            keySelector.ThrowIfNull( nameof(keySelector) );
+            first.ThrowIfNull(nameof(first));
+            second.ThrowIfNull(nameof(second));
+            keySelector.ThrowIfNull(nameof(keySelector));
 
-            var internalComparer = Extensions.By( keySelector, comparer );
+            var internalComparer = Extensions.By(keySelector, comparer);
 
-            return first.Except( second, internalComparer );
+            return first.Except(second, internalComparer);
         }
+
         /// <summary>
         ///     Executes the given action for each item in the IEnumerable in a reversed order.
         /// </summary>
@@ -216,17 +224,19 @@ namespace HSNXT
         /// <param name="action">The action to execute for each item in the IEnumerable.</param>
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> ForEachReverse<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
+        public static IEnumerable<T> ForEachReverse<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] Action<T> action)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            action.ThrowIfNull( nameof(action) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            action.ThrowIfNull(nameof(action));
 
             var list = enumerable.ToList();
-            for ( var i = list.Count - 1; i >= 0; i-- )
-                action( list[i] );
+            for (var i = list.Count - 1; i >= 0; i--)
+                action(list[i]);
 
             return list;
         }
+
         /// <summary>
         ///     Executes the given action for each item in the IEnumerable in a reversed order.
         /// </summary>
@@ -237,19 +247,21 @@ namespace HSNXT
         /// <param name="action">The action to execute for each item in the IEnumerable.</param>
         [PublicAPI]
         [NotNull]
-        public static async Task<IEnumerable<T>> ForEachReverseAsync<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Task> action )
+        public static async Task<IEnumerable<T>> ForEachReverseAsync<T>(
+            [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Task> action)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            action.ThrowIfNull( nameof(action) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            action.ThrowIfNull(nameof(action));
 
             // ReSharper disable once PossibleMultipleEnumeration
             var list = enumerable.ToList();
-            for ( var i = list.Count - 1; i >= 0; i-- )
-                await action( list[i] );
+            for (var i = list.Count - 1; i >= 0; i--)
+                await action(list[i]);
 
             // ReSharper disable once PossibleMultipleEnumeration
             return enumerable;
         }
+
         /// <summary>
         ///     Returns the equal items of two IEnumerables, according to the specified comparer.
         ///     Beginning at the start of the IEnumerables, ending when first different item is found.
@@ -266,23 +278,24 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> GetEqualItemsFromStart<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> left,
-                                                                [NotNull] [ItemCanBeNull] IEnumerable<T> right,
-                                                                [CanBeNull] IEqualityComparer<T> comparer = null )
+        public static IEnumerable<T> GetEqualItemsFromStart<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> left,
+            [NotNull] [ItemCanBeNull] IEnumerable<T> right,
+            [CanBeNull] IEqualityComparer<T> comparer = null)
         {
-            left.ThrowIfNull( nameof(left) );
-            right.ThrowIfNull( nameof(right) );
+            left.ThrowIfNull(nameof(left));
+            right.ThrowIfNull(nameof(right));
 
             comparer = comparer ?? EqualityComparer<T>.Default;
 
-            using ( IEnumerator<T> rightEnumerator = left.GetEnumerator(),
-                leftEnumerator = right.GetEnumerator() )
-                while ( rightEnumerator.MoveNext() && leftEnumerator.MoveNext() )
-                    if ( comparer.Equals( rightEnumerator.Current, leftEnumerator.Current ) )
+            using (IEnumerator<T> rightEnumerator = left.GetEnumerator(),
+                leftEnumerator = right.GetEnumerator())
+                while (rightEnumerator.MoveNext() && leftEnumerator.MoveNext())
+                    if (comparer.Equals(rightEnumerator.Current, leftEnumerator.Current))
                         yield return rightEnumerator.Current;
                     else
                         yield break;
         }
+
         /// <summary>
         ///     Gets a random item form the given IEnumerable.
         /// </summary>
@@ -293,15 +306,15 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [CanBeNull]
-        public static T GetRandomItem<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static T GetRandomItem<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             var list = enumerable as IList<T> ?? enumerable.ToList();
-            var index = Extensions.GetRandomInt32( 0, list.Count );
-            return list.ElementAt( index );
+            var index = Extensions.GetRandomInt32(0, list.Count);
+            return list.ElementAt(index);
         }
-        
+
         /// <summary>
         ///     Orders the items in the IEnumerable randomly.
         /// </summary>
@@ -311,13 +324,14 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> Randomize<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static IEnumerable<T> Randomize<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             var rnd = new Random();
-            return enumerable.OrderBy( x => rnd.Next() );
+            return enumerable.OrderBy(x => rnd.Next());
         }
+
         /// <summary>
         ///     Produces the set intersection of two sequences.
         /// </summary>
@@ -343,19 +357,21 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [CanBeNull]
-        public static IEnumerable<TSource> Intersect<TSource, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<TSource> first,
-                                                                     [NotNull] [ItemCanBeNull] IEnumerable<TSource> second,
-                                                                     [NotNull] Func<TSource, TKey> keySelector,
-                                                                     [CanBeNull] IEqualityComparer<TKey> comparer = null )
+        public static IEnumerable<TSource> Intersect<TSource, TKey>(
+            [NotNull] [ItemCanBeNull] this IEnumerable<TSource> first,
+            [NotNull] [ItemCanBeNull] IEnumerable<TSource> second,
+            [NotNull] Func<TSource, TKey> keySelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer = null)
         {
-            first.ThrowIfNull( nameof(first) );
-            second.ThrowIfNull( nameof(second) );
-            keySelector.ThrowIfNull( nameof(keySelector) );
+            first.ThrowIfNull(nameof(first));
+            second.ThrowIfNull(nameof(second));
+            keySelector.ThrowIfNull(nameof(keySelector));
 
-            var internalComparer = Extensions.By( keySelector, comparer );
+            var internalComparer = Extensions.By(keySelector, comparer);
 
-            return first.Intersect( second, internalComparer );
+            return first.Intersect(second, internalComparer);
         }
+
         /// <summary>
         ///     Gets whether the IEnumerable contains at least the specified number of items matching the specified predicate.
         /// </summary>
@@ -371,12 +387,13 @@ namespace HSNXT
         /// </returns>
         [Pure]
         [PublicAPI]
-        public static bool MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, int count, [NotNull] Func<T, bool> predicate )
+        public static bool MinimumOf<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, int count,
+            [NotNull] Func<T, bool> predicate)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            predicate.ThrowIfNull( nameof(predicate) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            predicate.ThrowIfNull(nameof(predicate));
 
-            return enumerable.Count( predicate ) >= count;
+            return enumerable.Count(predicate) >= count;
         }
 
         /// <summary>
@@ -389,12 +406,13 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable contains at least the specified number of items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, int count )
+        public static bool MinimumOf<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, int count)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             return enumerable.Count() >= count;
         }
+
         /// <summary>
         ///     Determines whether the given IEnumerable contains no items, or not.
         /// </summary>
@@ -404,9 +422,9 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+        public static bool NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             return !enumerable.Any();
         }
@@ -422,13 +440,15 @@ namespace HSNXT
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate )
+        public static bool NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] Func<T, bool> predicate)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            predicate.ThrowIfNull( nameof(predicate) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            predicate.ThrowIfNull(nameof(predicate));
 
-            return !enumerable.Any( predicate );
+            return !enumerable.Any(predicate);
         }
+
         /// <summary>
         ///     Partitions the given sequence into blocks with the specified size.
         /// </summary>
@@ -441,18 +461,20 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<IEnumerable<T>> Partition<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, int size )
+        public static IEnumerable<IEnumerable<T>> Partition<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> source,
+            int size)
         {
-            source.ThrowIfNull( nameof(source) );
-            if ( size < 1 )
-                throw new ArgumentOutOfRangeException( nameof(size), size, $"{nameof(size)} is out of range. Size must be > 1." );
+            source.ThrowIfNull(nameof(source));
+            if (size < 1)
+                throw new ArgumentOutOfRangeException(nameof(size), size,
+                    $"{nameof(size)} is out of range. Size must be > 1.");
 
             return source
                 .WithIndex()
-                .GroupBy( x => x.Index / size )
-                .Select( x => x.WithoutIndex() );
+                .GroupBy(x => x.Index / size)
+                .Select(x => x.WithoutIndex());
         }
-        
+
         /// <summary>
         ///     Creates a specification with the given condition and message.
         /// </summary>
@@ -465,13 +487,14 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static ISpecification<T> SpecificationForItems<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
-                                                                  [NotNull] Func<T, bool> expression,
-                                                                  [CanBeNull] string message = null )
+        public static ISpecification<T> SpecificationForItems<T>(
+            [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] Func<T, bool> expression,
+            [CanBeNull] string message = null)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return new ExpressionSpecification<T>( expression, message );
+            return new ExpressionSpecification<T>(expression, message);
         }
 
         /// <summary>
@@ -492,14 +515,15 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static string StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, string> selector, string separator = "" )
+        public static string StringJoin<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] Func<T, string> selector, string separator = "")
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            selector.ThrowIfNull( nameof(selector) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            selector.ThrowIfNull(nameof(selector));
 
-            return string.Join( separator, enumerable.Select( selector ) );
+            return string.Join(separator, enumerable.Select(selector));
         }
-        
+
         /// <summary>
         ///     Converts the IEnumerable containing the groupings into a Dictionary of those groupings.
         /// </summary>
@@ -515,12 +539,13 @@ namespace HSNXT
         [PublicAPI]
         [NotNull]
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(
-            [NotNull] [ItemNotNull] this IEnumerable<IGrouping<TKey, TValue>> groupings )
+            [NotNull] [ItemNotNull] this IEnumerable<IGrouping<TKey, TValue>> groupings)
         {
-            groupings.ThrowIfNull( nameof(groupings) );
+            groupings.ThrowIfNull(nameof(groupings));
 
-            return groupings.ToDictionary( x => x.Key, x => x.ToList() );
+            return groupings.ToDictionary(x => x.Key, x => x.ToList());
         }
+
         /// <summary>
         ///     Builds a tree node collection containing the items of the given collection.
         /// </summary>
@@ -548,48 +573,49 @@ namespace HSNXT
             [NotNull] Func<TItem, TKey> idSelector,
             [NotNull] Func<TItem, TKey> parentIdSelector,
             [CanBeNull] TKey rootId,
-            [CanBeNull] IEqualityComparer<TKey> equalityComparer = null )
+            [CanBeNull] IEqualityComparer<TKey> equalityComparer = null)
         {
-            collection.ThrowIfNull( nameof(collection) );
-            idSelector.ThrowIfNull( nameof(idSelector) );
-            parentIdSelector.ThrowIfNull( nameof(parentIdSelector) );
+            collection.ThrowIfNull(nameof(collection));
+            idSelector.ThrowIfNull(nameof(idSelector));
+            parentIdSelector.ThrowIfNull(nameof(parentIdSelector));
 
             var enumerable = collection as IList<TItem> ?? collection.ToList();
             equalityComparer = equalityComparer ?? EqualityComparer<TKey>.Default;
 
             // Get all items without a unique id
             var itemsWithSameKey = enumerable
-                .Where( x => enumerable.Count( y => equalityComparer.Equals( idSelector( x ), idSelector( y ) ) ) > 1 )
+                .Where(x => enumerable.Count(y => equalityComparer.Equals(idSelector(x), idSelector(y))) > 1)
                 .ToList();
-            if ( itemsWithSameKey.Any() )
+            if (itemsWithSameKey.Any())
             {
                 // Found items without a unique id => throw exception
                 var sb = new StringBuilder();
-                sb.AppendLine( "The following items do not have a unique id:" );
-                itemsWithSameKey.ForEach( x => sb.AppendLine( $"\t {x}" ) );
+                sb.AppendLine("The following items do not have a unique id:");
+                itemsWithSameKey.ForEach(x => sb.AppendLine($"\t {x}"));
 
-                throw new InvalidOperationException( sb.ToString() );
+                throw new InvalidOperationException(sb.ToString());
             }
 
             // Get all items without a matching parent
-            var itemsWithNoParent = enumerable.Where( x => enumerable
-                                                               .Where( y => !y.RefEquals( x ) )
-                                                               .All( y => !equalityComparer.Equals( idSelector( y ), parentIdSelector( x ) ) )
-                                                           && !equalityComparer.Equals( parentIdSelector( x ), rootId ) )
-                                              .ToList();
+            var itemsWithNoParent = enumerable.Where(x => enumerable
+                                                              .Where(y => !y.RefEquals(x))
+                                                              .All(y => !equalityComparer.Equals(idSelector(y),
+                                                                  parentIdSelector(x)))
+                                                          && !equalityComparer.Equals(parentIdSelector(x), rootId))
+                .ToList();
 
             // ReSharper disable once InvertIf
-            if ( itemsWithNoParent.Any() )
+            if (itemsWithNoParent.Any())
             {
                 // Found items without a marching parent => throw exception
                 var sb = new StringBuilder();
-                sb.AppendLine( "Could not find a matching parent for the following items:" );
-                itemsWithNoParent.ForEach( x => sb.AppendLine( $"\t {x}" ) );
+                sb.AppendLine("Could not find a matching parent for the following items:");
+                itemsWithNoParent.ForEach(x => sb.AppendLine($"\t {x}"));
 
-                throw new InvalidOperationException( sb.ToString() );
+                throw new InvalidOperationException(sb.ToString());
             }
 
-            return ToTreeNodeCollectionInternal( enumerable, idSelector, parentIdSelector, rootId, equalityComparer );
+            return ToTreeNodeCollectionInternal(enumerable, idSelector, parentIdSelector, rootId, equalityComparer);
         }
 
         /// <summary>
@@ -611,17 +637,20 @@ namespace HSNXT
             [NotNull] Func<TItem, TKey> idSelector,
             [NotNull] Func<TItem, TKey> parentIdSelector,
             [CanBeNull] TKey rootId,
-            [NotNull] IEqualityComparer<TKey> equalityComparer )
+            [NotNull] IEqualityComparer<TKey> equalityComparer)
         {
-            var rootNodes = new TreeNodeCollection<TItem>( null );
+            var rootNodes = new TreeNodeCollection<TItem>(null);
             rootNodes.AddRange(
                 collection
                     // ReSharper disable once ImplicitlyCapturedClosure
-                    .Where( x => equalityComparer.Equals( parentIdSelector( x ), rootId ) )
-                    .Select( x => new TreeNode<TItem>( x, null, ToTreeNodeCollectionInternal( collection, idSelector, parentIdSelector, idSelector( x ), equalityComparer ) ) ) );
+                    .Where(x => equalityComparer.Equals(parentIdSelector(x), rootId))
+                    .Select(x => new TreeNode<TItem>(x, null,
+                        ToTreeNodeCollectionInternal(collection, idSelector, parentIdSelector, idSelector(x),
+                            equalityComparer))));
 
             return rootNodes;
         }
+
         /// <summary>
         ///     Returns all items of the given enumerable which satisfy the given specification.
         /// </summary>
@@ -634,12 +663,13 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> Where<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] ISpecification<T> specification )
+        public static IEnumerable<T> Where<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] ISpecification<T> specification)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            specification.ThrowIfNull( nameof(specification) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            specification.ThrowIfNull(nameof(specification));
 
-            return enumerable.Where( specification.IsSatisfiedBy );
+            return enumerable.Where(specification.IsSatisfiedBy);
         }
 
         /// <summary>
@@ -654,13 +684,15 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> WhereNot<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] ISpecification<T> specification )
+        public static IEnumerable<T> WhereNot<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable,
+            [NotNull] ISpecification<T> specification)
         {
-            enumerable.ThrowIfNull( nameof(enumerable) );
-            specification.ThrowIfNull( nameof(specification) );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            specification.ThrowIfNull(nameof(specification));
 
-            return enumerable.Where( x => !specification.IsSatisfiedBy( x ) );
+            return enumerable.Where(x => !specification.IsSatisfiedBy(x));
         }
+
         /// <summary>
         ///     Associates an index to each element of the source IEnumerable.
         /// </summary>
@@ -671,12 +703,13 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<IIndexedItem<T>> WithIndex<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source )
+        public static IEnumerable<IIndexedItem<T>> WithIndex<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> source)
         {
-            source.ThrowIfNull( nameof(source) );
+            source.ThrowIfNull(nameof(source));
 
-            return source.Select( ( item, index ) => new IndexedItem<T>( index, item ) );
+            return source.Select((item, index) => new IndexedItem<T>(index, item));
         }
+
         /// <summary>
         ///     Removes the indexes from a IEnumerable of indexed elements, returning only the elements themselves.
         /// </summary>
@@ -687,11 +720,11 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEnumerable<T> WithoutIndex<T>( [NotNull] [ItemNotNull] this IEnumerable<IIndexedItem<T>> source )
+        public static IEnumerable<T> WithoutIndex<T>([NotNull] [ItemNotNull] this IEnumerable<IIndexedItem<T>> source)
         {
-            source.ThrowIfNull( nameof(source) );
+            source.ThrowIfNull(nameof(source));
 
-            return source.Select( indexed => indexed.Item );
+            return source.Select(indexed => indexed.Item);
         }
     }
 }

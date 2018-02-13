@@ -16,11 +16,11 @@ namespace HSNXT
         /// <param name="c">character to replace any found characters with.</param>
         /// <returns></returns>
 #if (NET47)
-		public static string ReplaceEach(this string text, IEnumerable<char> chars, char c)
-		{
-			return string.Join(c.ToString(System.Globalization.CultureInfo.InvariantCulture),
-				text.Split(chars.ToArray()));
-		}
+        public static string ReplaceEach(this string text, IEnumerable<char> chars, char c)
+        {
+            return string.Join(c.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                text.Split(chars.ToArray()));
+        }
 #else
         public static string ReplaceEach(this string text, IEnumerable<char> chars, char c)
         {

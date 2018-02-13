@@ -14,6 +14,6 @@ namespace HSNXT
         /// <param name="rules">A collection of rules.</param>
         /// <param name="memberInformation">The member information to check.</param>
         /// <returns>Returns the inspection result.</returns>
-        MemberSelectionResult Inspect( IEnumerable<IMemberSelectionRule> rules, IMemberInformation memberInformation );
+        MemberSelectionResult Inspect(IEnumerable<IMemberSelectionRule> rules, IMemberInformation memberInformation);
     }
 }

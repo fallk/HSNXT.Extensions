@@ -20,7 +20,7 @@ namespace HSNXT
         [CanBeNull]
         [PublicAPI]
         [Pure]
-        public static T Coalesce<T>( [CanBeNull] this T value, [CanBeNull] T value0 ) where T : class
+        public static T Coalesce<T>([CanBeNull] this T value, [CanBeNull] T value0) where T : class
             => value ?? value0;
 
         /// <summary>
@@ -37,16 +37,17 @@ namespace HSNXT
         [NotNull]
         [PublicAPI]
         [Pure]
-        public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] T defaultValue, [NotNull] [ItemCanBeNull] params T[] values ) where T : class
+        public static T CoalesceOrDefault<T>([CanBeNull] this T value, [NotNull] T defaultValue,
+            [NotNull] [ItemCanBeNull] params T[] values) where T : class
         {
-            defaultValue.ThrowIfNull( nameof(defaultValue) );
-            values.ThrowIfNull( nameof(values) );
+            defaultValue.ThrowIfNull(nameof(defaultValue));
+            values.ThrowIfNull(nameof(values));
 
-            if ( value != null )
+            if (value != null)
                 return value;
 
             var notNullValues = values
-                .Where( x => x != null )
+                .Where(x => x != null)
                 .ToList();
 
             return notNullValues.Any() ? notNullValues.First() : defaultValue;
@@ -63,20 +64,21 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IExecutionResult<T> ExecuteSafe<T>( [CanBeNull] this T value, [NotNull] Action<T> action )
+        public static IExecutionResult<T> ExecuteSafe<T>([CanBeNull] this T value, [NotNull] Action<T> action)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
             var result = new ExecutionResult<T>();
             try
             {
-                action( value );
+                action(value);
                 result.Result = value;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 result.Exception = ex;
             }
+
             return result;
         }
 
@@ -92,19 +94,21 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( [CanBeNull] this T value, [NotNull] Func<T, TResult> func )
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([CanBeNull] this T value,
+            [NotNull] Func<T, TResult> func)
         {
-            func.ThrowIfNull( nameof(func) );
+            func.ThrowIfNull(nameof(func));
 
             var result = new ExecutionResult<TResult>();
             try
             {
-                result.Result = func( value );
+                result.Result = func(value);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
                 result.Exception = ex;
             }
+
             return result;
         }
 
@@ -124,11 +128,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetName<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
+        public static string GetName<TObject, TMember>([CanBeNull] this TObject obj,
+            [NotNull] Expression<Func<TObject, TMember>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return GetName( expression.Body );
+            return GetName(expression.Body);
         }
 
         /// <summary>
@@ -147,11 +152,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetName<TObject, TMember>( [CanBeNull] [NoEnumeration] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
+        public static string GetName<TObject, TMember>([CanBeNull] [NoEnumeration] this TObject obj,
+            [NotNull] Expression<Func<TMember>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return GetName( expression.Body );
+            return GetName(expression.Body);
         }
 
         /// <summary>
@@ -166,10 +172,10 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static string GetName( [NotNull] Expression expression )
+        private static string GetName([NotNull] Expression expression)
         {
-            if ( !expression.TryGetMemberExpression( out var memberExpression ) )
-                throw new ArgumentException( "The given expression was not valid." );
+            if (!expression.TryGetMemberExpression(out var memberExpression))
+                throw new ArgumentException("The given expression was not valid.");
 
             return memberExpression.Member.Name;
         }
@@ -190,11 +196,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
+        public static string GetNameChain<TObject, TMember>([CanBeNull] this TObject obj,
+            [NotNull] Expression<Func<TObject, TMember>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return GetNameChain( expression.Body );
+            return GetNameChain(expression.Body);
         }
 
         /// <summary>
@@ -213,11 +220,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
+        public static string GetNameChain<TObject, TMember>([CanBeNull] this TObject obj,
+            [NotNull] Expression<Func<TMember>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return GetNameChain( expression.Body );
+            return GetNameChain(expression.Body);
         }
 
         /// <summary>
@@ -233,32 +241,32 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        private static string GetNameChain( [NotNull] this Expression expression )
+        private static string GetNameChain([NotNull] this Expression expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            if ( !expression.TryGetMemberExpression( out var memberExpression ) )
-                throw new ArgumentException( "The given expression is not valid." );
+            if (!expression.TryGetMemberExpression(out var memberExpression))
+                throw new ArgumentException("The given expression is not valid.");
 
             var memberNames = new Stack<string>();
             do
             {
                 // Check if the 'inner' expression as a constant expression, if so, break the loop
-                if ( memberExpression.Expression.NodeType == ExpressionType.Constant )
+                if (memberExpression.Expression.NodeType == ExpressionType.Constant)
                 {
-                    if ( memberNames.NotAny() )
-                        memberNames.Push( memberExpression.Member.Name );
+                    if (memberNames.NotAny())
+                        memberNames.Push(memberExpression.Member.Name);
                     break;
                 }
 
-                memberNames.Push( memberExpression.Member.Name );
+                memberNames.Push(memberExpression.Member.Name);
 
                 // Check if expression is pointing to lambda parameter e.g. x (x => x)
-                if ( memberExpression.Expression.NodeType == ExpressionType.Parameter )
+                if (memberExpression.Expression.NodeType == ExpressionType.Parameter)
                     break;
-            } while ( memberExpression.Expression.TryGetMemberExpression( out memberExpression ) );
+            } while (memberExpression.Expression.TryGetMemberExpression(out memberExpression));
 
-            return memberNames.StringJoin( "." );
+            return memberNames.StringJoin(".");
         }
 
         /// <summary>
@@ -271,7 +279,7 @@ namespace HSNXT
         [CanBeNull]
         [Pure]
         [PublicAPI]
-        public static T IfNull<T>( [CanBeNull] this T value, [CanBeNull] T alternativeValue ) where T : class
+        public static T IfNull<T>([CanBeNull] this T value, [CanBeNull] T alternativeValue) where T : class
             => value ?? alternativeValue;
 
         /// <summary>
@@ -284,11 +292,11 @@ namespace HSNXT
         /// <returns>>Returns true if the value is present in the array.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
+        public static bool IsIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
-            return Array.IndexOf( values, value ) != -1;
+            return Array.IndexOf(values, value) != -1;
         }
 
         /// <summary>
@@ -301,8 +309,8 @@ namespace HSNXT
         /// <returns>>Returns true if the value is not present in the array.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsNotIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
-            => !IsIn( value, values );
+        public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
+            => !IsIn(value, values);
 
         /// <summary>
         ///     Returns the maximum value.
@@ -315,12 +323,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static TSource Maximum<TSource>( [CanBeNull] this TSource value, [NotNull] params TSource[] values )
+        public static TSource Maximum<TSource>([CanBeNull] this TSource value, [NotNull] params TSource[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Max();
         }
 
@@ -338,16 +346,16 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static TResult Maximum<TSource, TResult>( [CanBeNull] this TSource value,
-                                                         [NotNull] Func<TSource, TResult> selector,
-                                                         [NotNull] params TSource[] values )
+        public static TResult Maximum<TSource, TResult>([CanBeNull] this TSource value,
+            [NotNull] Func<TSource, TResult> selector,
+            [NotNull] params TSource[] values)
         {
-            values.ThrowIfNull( nameof(values) );
-            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull(nameof(values));
+            selector.ThrowIfNull(nameof(selector));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Max( selector );
+            list.Add(value);
+            return list.Max(selector);
         }
 
         /// <summary>
@@ -361,12 +369,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static TSource Minimum<TSource>( [CanBeNull] this TSource value, [NotNull] params TSource[] values )
+        public static TSource Minimum<TSource>([CanBeNull] this TSource value, [NotNull] params TSource[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Min();
         }
 
@@ -384,16 +392,16 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static TResult Minimum<TSource, TResult>( [CanBeNull] this TSource value,
-                                                         [NotNull] Func<TSource, TResult> selector,
-                                                         [NotNull] params TSource[] values )
+        public static TResult Minimum<TSource, TResult>([CanBeNull] this TSource value,
+            [NotNull] Func<TSource, TResult> selector,
+            [NotNull] params TSource[] values)
         {
-            values.ThrowIfNull( nameof(values) );
-            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull(nameof(values));
+            selector.ThrowIfNull(nameof(selector));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Min( selector );
+            list.Add(value);
+            return list.Min(selector);
         }
 
         /// <summary>
@@ -406,11 +414,11 @@ namespace HSNXT
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool Satisfies<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
+        public static bool Satisfies<T>([CanBeNull] this T obj, [NotNull] ISpecification<T> specification)
         {
-            specification.ThrowIfNull( nameof(specification) );
+            specification.ThrowIfNull(nameof(specification));
 
-            return specification.IsSatisfiedBy( obj );
+            return specification.IsSatisfiedBy(obj);
         }
 
         /// <summary>
@@ -424,11 +432,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<string> SatisfiesWithMessages<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
+        public static IEnumerable<string> SatisfiesWithMessages<T>([CanBeNull] this T obj,
+            [NotNull] ISpecification<T> specification)
         {
-            specification.ThrowIfNull( nameof(specification) );
+            specification.ThrowIfNull(nameof(specification));
 
-            return specification.IsSatisfiedByWithMessages( obj );
+            return specification.IsSatisfiedByWithMessages(obj);
         }
 
         /// <summary>
@@ -443,11 +452,12 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static ISpecification<T> Specification<T>( [CanBeNull] this T obj, [NotNull] Func<T, bool> expression, [CanBeNull] string message = null )
+        public static ISpecification<T> Specification<T>([CanBeNull] this T obj, [NotNull] Func<T, bool> expression,
+            [CanBeNull] string message = null)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return new ExpressionSpecification<T>( expression, message );
+            return new ExpressionSpecification<T>(expression, message);
         }
 
         /// <summary>
@@ -458,7 +468,7 @@ namespace HSNXT
         /// <param name="value0">The first value.</param>
         /// <param name="value1">The second value.</param>
         [PublicAPI]
-        public static void Swap<T>( [CanBeNull] this object obj, ref T value0, ref T value1 )
+        public static void Swap<T>([CanBeNull] this object obj, ref T value0, ref T value1)
         {
             var temp = value0;
             value0 = value1;
@@ -480,15 +490,15 @@ namespace HSNXT
         /// </param>
         [PublicAPI]
         [DebuggerStepThrough]
-        public static void ThrowIfNull<TObject>( [NoEnumeration] [CanBeNull] this TObject obj,
-                                                 [NotNull] string parameterName,
-                                                 [CanBeNull] string errorMessage = null )
+        public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject obj,
+            [NotNull] string parameterName,
+            [CanBeNull] string errorMessage = null)
         {
-            if ( obj != null )
+            if (obj != null)
                 return;
 
-            throw new ArgumentNullException( parameterName,
-                                             errorMessage ?? $"{parameterName} can not be null." );
+            throw new ArgumentNullException(parameterName,
+                errorMessage ?? $"{parameterName} can not be null.");
         }
 
         /// <summary>
@@ -501,7 +511,7 @@ namespace HSNXT
         [ItemCanBeNull]
         [Pure]
         [PublicAPI]
-        public static T[] ToSingleItemArray<T>( [CanBeNull] this T value )
+        public static T[] ToSingleItemArray<T>([CanBeNull] this T value)
             => new[]
             {
                 value

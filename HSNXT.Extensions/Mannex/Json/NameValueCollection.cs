@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,13 +37,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="NameValueCollection"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Formats collection as JSON text.
         /// </summary>
-
         public static string ToJsonString(this NameValueCollection collection)
         {
             return WriteJsonStringToImpl(collection, new StringWriter()).ToString();
@@ -50,7 +50,6 @@ namespace HSNXT
         /// <summary>
         /// Formats collection as JSON text, sending output to <paramref name="writer"/>.
         /// </summary>
-
         public static void WriteJsonStringTo(this NameValueCollection collection, TextWriter writer)
         {
             if (writer == null) throw new ArgumentNullException("writer");

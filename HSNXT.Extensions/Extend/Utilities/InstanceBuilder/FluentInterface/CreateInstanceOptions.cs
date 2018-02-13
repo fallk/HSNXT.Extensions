@@ -42,23 +42,23 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberSelectionRule">The member selection rule to add.</param>
         /// <returns>Returns the current instance.</returns>
-        private CreateInstanceOptions<T> AddMemberSlectionRule( IMemberSelectionRule memberSelectionRule )
+        private CreateInstanceOptions<T> AddMemberSlectionRule(IMemberSelectionRule memberSelectionRule)
         {
-            switch ( _currentMemberSelectionTarget )
+            switch (_currentMemberSelectionTarget)
             {
                 case MemberSelectionRuleTarget.Member:
-                    MemberSelectionRules.Add( memberSelectionRule );
+                    MemberSelectionRules.Add(memberSelectionRule);
                     break;
                 case MemberSelectionRuleTarget.MemberChildren:
-                    MemberChildrenSelectionRules.Add( memberSelectionRule );
+                    MemberChildrenSelectionRules.Add(memberSelectionRule);
                     break;
                 case MemberSelectionRuleTarget.Factory:
-                    _currentFactory?.AddSelectionRule( memberSelectionRule );
+                    _currentFactory?.AddSelectionRule(memberSelectionRule);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException( nameof(_currentMemberSelectionTarget),
-                                                           _currentMemberSelectionTarget,
-                                                           $"The member selection target '{_currentMemberSelectionTarget}' is not supported." );
+                    throw new ArgumentOutOfRangeException(nameof(_currentMemberSelectionTarget),
+                        _currentMemberSelectionTarget,
+                        $"The member selection target '{_currentMemberSelectionTarget}' is not supported.");
             }
 
             return this;
@@ -74,13 +74,14 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> Including( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
+        public ICreateInstanceOptions<T> Including(
+            Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc)
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             _currentMemberSelectionMode = MemberSelectionMode.Include;
-            configurationFunc( this );
+            configurationFunc(this);
 
             return this;
         }
@@ -91,12 +92,12 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> Including( Func<IMemberInformation, bool> predicate )
+        public ICreateInstanceOptions<T> Including(Func<IMemberInformation, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
-            return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
+            return AddMemberSlectionRule(new ExpressionMemberSelectionRule(predicate, MemberSelectionMode.Include));
         }
 
         /// <summary>
@@ -105,13 +106,14 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> Excluding( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
+        public ICreateInstanceOptions<T> Excluding(
+            Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc)
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
-            configurationFunc( this );
+            configurationFunc(this);
 
             return this;
         }
@@ -122,12 +124,12 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> Excluding( Func<IMemberInformation, bool> predicate )
+        public ICreateInstanceOptions<T> Excluding(Func<IMemberInformation, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
-            return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
+            return AddMemberSlectionRule(new ExpressionMemberSelectionRule(predicate, MemberSelectionMode.Exclude));
         }
 
         /// <summary>
@@ -136,12 +138,12 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IMemberInformation, bool> predicate )
+        public ICreateInstanceOptions<T> IncludingChildrenOf(Func<IMemberInformation, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
-            return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
+            return AddMemberSlectionRule(new ExpressionMemberSelectionRule(predicate, MemberSelectionMode.Include));
         }
 
         /// <summary>
@@ -150,13 +152,14 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
+        public ICreateInstanceOptions<T> IncludingChildrenOf(
+            Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc)
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             _currentMemberSelectionMode = MemberSelectionMode.Include;
-            configurationFunc( this );
+            configurationFunc(this);
 
             return this;
         }
@@ -168,13 +171,14 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
+        public ICreateInstanceOptions<T> ExcludingChildrenOf(
+            Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc)
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
-            configurationFunc( this );
+            configurationFunc(this);
 
             return this;
         }
@@ -186,12 +190,12 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IMemberInformation, bool> predicate )
+        public ICreateInstanceOptions<T> ExcludingChildrenOf(Func<IMemberInformation, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
-            return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
+            return AddMemberSlectionRule(new ExpressionMemberSelectionRule(predicate, MemberSelectionMode.Exclude));
         }
 
         /// <summary>
@@ -201,10 +205,10 @@ namespace HSNXT
         /// <param name="min">The minimum number of items to create.</param>
         /// <param name="max">The maximum number of items to create.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> PopulateCollectionItemCount( int? min, int? max )
+        public ICreateInstanceOptions<T> PopulateCollectionItemCount(int? min, int? max)
         {
-            if ( min.HasValue && max.HasValue && min > max )
-                throw new ArgumentException( "Maximum must be greater than the minimum count.", nameof(max) );
+            if (min.HasValue && max.HasValue && min > max)
+                throw new ArgumentException("Maximum must be greater than the minimum count.", nameof(max));
 
             PopulateCollectionsMinCount = min;
             PopulateCollectionsMaxCount = max;
@@ -220,7 +224,7 @@ namespace HSNXT
         ///     means use default configuration.
         /// </param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> PopulateCollectionMembers( bool? populateCollections )
+        public ICreateInstanceOptions<T> PopulateCollectionMembers(bool? populateCollections)
         {
             PopulateCollections = populateCollections;
 
@@ -232,7 +236,7 @@ namespace HSNXT
         /// </summary>
         /// <param name="anonymousItemName">The name used for anonymous items, or null to use global configuration.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public ICreateInstanceOptions<T> SetAnonymousItemName( string anonymousItemName )
+        public ICreateInstanceOptions<T> SetAnonymousItemName(string anonymousItemName)
         {
             AnonymousItemName = anonymousItemName;
             return this;
@@ -244,13 +248,13 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">factory can not be null.</exception>
         /// <param name="factory">The factory to add.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsInconsistent<T> WithFactory( Func<IMemberInformation, object> factory )
+        public IFactoryOptionsInconsistent<T> WithFactory(Func<IMemberInformation, object> factory)
         {
-            factory.ThrowIfNull( nameof(factory) );
+            factory.ThrowIfNull(nameof(factory));
 
             // Create and add factory
-            _currentFactory = new ExpressionInstanceFactory( factory );
-            Factories.Add( _currentFactory );
+            _currentFactory = new ExpressionInstanceFactory(factory);
+            Factories.Add(_currentFactory);
 
             // Set target to factory
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Factory;
@@ -275,7 +279,8 @@ namespace HSNXT
         /// <typeparam name="TTarget">The type to match.</typeparam>
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> IsTypeOf<TTarget>()
-            => AddMemberSlectionRule( new TypeMemberSelectionRule( typeof(TTarget), _currentMemberSelectionMode, CompareMode.Is ) );
+            => AddMemberSlectionRule(new TypeMemberSelectionRule(typeof(TTarget), _currentMemberSelectionMode,
+                CompareMode.Is));
 
         /// <summary>
         ///     Matches for members which have a matching path.
@@ -283,11 +288,12 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">expression can no the null.</exception>
         /// <param name="expression">Expression representing the member path.</param>
         /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> ByPath( Expression<Func<T, object>> expression )
+        public IIncludeExcludeOptions<T> ByPath(Expression<Func<T, object>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            return AddMemberSlectionRule( new PathMemberSelectionRule( expression.GetMemberPath(), _currentMemberSelectionMode ) );
+            return AddMemberSlectionRule(new PathMemberSelectionRule(expression.GetMemberPath(),
+                _currentMemberSelectionMode));
         }
 
         /// <summary>
@@ -296,11 +302,11 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">path can no the null.</exception>
         /// <param name="path">The member path.</param>
         /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> ByPath( string path )
+        public IIncludeExcludeOptions<T> ByPath(string path)
         {
-            path.ThrowIfNull( nameof(path) );
+            path.ThrowIfNull(nameof(path));
 
-            return AddMemberSlectionRule( new PathMemberSelectionRule( path, _currentMemberSelectionMode ) );
+            return AddMemberSlectionRule(new PathMemberSelectionRule(path, _currentMemberSelectionMode));
         }
 
         /// <summary>
@@ -309,14 +315,15 @@ namespace HSNXT
         /// <typeparam name="TTarget">The type to match.</typeparam>
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> IsNotTypeOf<TTarget>()
-            => AddMemberSlectionRule( new TypeMemberSelectionRule( typeof(TTarget), _currentMemberSelectionMode, CompareMode.IsNot ) );
+            => AddMemberSlectionRule(new TypeMemberSelectionRule(typeof(TTarget), _currentMemberSelectionMode,
+                CompareMode.IsNot));
 
         /// <summary>
         ///     Matches all members.
         /// </summary>
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> AllMembers()
-            => AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
+            => AddMemberSlectionRule(new AllMemberSelectionRule(_currentMemberSelectionMode));
 
         #endregion
 
@@ -328,16 +335,17 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsConstistent<T> For( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
+        public IFactoryOptionsConstistent<T> For(
+            Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc)
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
 
             //Check if target is factory.
-            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifying a factory first.");
 
             _currentMemberSelectionMode = MemberSelectionMode.Include;
-            configurationFunc( this );
+            configurationFunc(this);
 
             return this;
         }
@@ -348,15 +356,15 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members which should get created by the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsConstistent<T> For( Func<IMemberInformation, bool> predicate )
+        public IFactoryOptionsConstistent<T> For(Func<IMemberInformation, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             //Check if target is factory.
-            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifying a factory first.");
 
-            return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
+            return AddMemberSlectionRule(new ExpressionMemberSelectionRule(predicate, MemberSelectionMode.Include));
         }
 
         /// <summary>
@@ -365,16 +373,17 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsConstistent<T> NotFor( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
+        public IFactoryOptionsConstistent<T> NotFor(
+            Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc)
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
 
             //Check if target is factory.
-            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifying a factory first.");
 
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
-            configurationFunc( this );
+            configurationFunc(this);
 
             return this;
         }
@@ -385,15 +394,15 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members which should NOT get created by the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        public IFactoryOptionsConstistent<T> NotFor( Func<IMemberInformation, bool> predicate )
+        public IFactoryOptionsConstistent<T> NotFor(Func<IMemberInformation, bool> predicate)
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull(nameof(predicate));
 
             //Check if target is factory.
-            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifying a factory first.");
 
-            return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
+            return AddMemberSlectionRule(new ExpressionMemberSelectionRule(predicate, MemberSelectionMode.Exclude));
         }
 
         #endregion

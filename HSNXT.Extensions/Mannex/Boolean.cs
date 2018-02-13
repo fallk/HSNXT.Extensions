@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -32,14 +34,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="bool"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Converts a <see cref="bool"/> to a value of type <typeparamref name="T"/> 
         /// with a values for true and false states.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T To<T>(this bool value, T trueValue, T falseValue)
         {

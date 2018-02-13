@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,7 +37,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="double"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -44,13 +45,12 @@ namespace HSNXT
         /// the null state. Otherwise the <see cref="Nullable{T}"/> of 
         /// <see cref="double"/> retured holds the original input value.
         /// </summary>
-
         [DebuggerStepThrough]
         public static double? NullNaN(this double value)
         {
             return double.IsNaN(value) ? (double?) null : value;
         }
- 
+
         /// <summary>
         /// Generates a sequence of given count of values between two values 
         /// (inclusive).
@@ -58,7 +58,6 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred semantics.
         /// </remarks>
-
         public static IEnumerable<double> To(this double first, double last, int count)
         {
             if (count < 0) throw new ArgumentOutOfRangeException("count", count, null);

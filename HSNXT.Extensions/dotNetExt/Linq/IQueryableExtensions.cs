@@ -33,7 +33,8 @@ namespace HSNXT
         /// <param name="pageSize"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IQueryable<T> query, int pageIndex, int pageSize, int totalCount)
+        public static DNX.PaginatedList<T> ToPaginatedList<T>(this IQueryable<T> query, int pageIndex, int pageSize,
+            int totalCount)
         {
             return new DNX.PaginatedList<T>(query, pageIndex, pageSize, totalCount);
         }

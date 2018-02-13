@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -40,19 +42,18 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IDataRecord"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Gets an ordered sequence of field ordinals of this record.
         /// </summary>
-
         public static IEnumerable<int> GetOrdinals(this IDataRecord record)
         {
             return Enumerable.Range(0, record.FieldCount);
         }
 
-        static IEnumerable<TResult> Ordinally<TRecord, TResult>(TRecord record, Func<TRecord, IEnumerable<int>, IEnumerable<TResult>> selector) 
+        static IEnumerable<TResult> Ordinally<TRecord, TResult>(TRecord record,
+            Func<TRecord, IEnumerable<int>, IEnumerable<TResult>> selector)
             where TRecord : IDataRecord
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
@@ -70,7 +71,6 @@ namespace HSNXT
         /// <see cref="IDataRecord"/> is an <see cref="IDataReader"/> and 
         /// deferred in all other cases.
         /// </remarks>
-
         public static IEnumerable<string> GetNames(this IDataRecord record)
         {
             if (record == null) throw new ArgumentNullException("record");
@@ -85,7 +85,6 @@ namespace HSNXT
         /// <see cref="IDataRecord"/> is an <see cref="IDataReader"/> and 
         /// deferred in all other cases.
         /// </remarks>
-
         public static IEnumerable<object> GetValues(this IDataRecord record)
         {
             if (record == null) throw new ArgumentNullException("record");
@@ -101,12 +100,11 @@ namespace HSNXT
         /// <see cref="IDataRecord"/> is an <see cref="IDataReader"/> and 
         /// deferred in all other cases.
         /// </remarks>
-
         public static IEnumerable<KeyValuePair<string, object>> GetFields(this IDataRecord record)
         {
             if (record == null) throw new ArgumentNullException("record");
-            return Ordinally(record, (r, ords) => from i in ords 
-                                                  select r.GetName(i).AsKeyTo(r.GetValue(i)));
+            return Ordinally(record, (r, ords) => from i in ords
+                select r.GetName(i).AsKeyTo(r.GetValue(i)));
         }
 
         /// <summary>
@@ -121,7 +119,6 @@ namespace HSNXT
         /// <see cref="InvalidCastException"/> is raised unless 
         /// <typeparamref name="T"/> is nullable (<see cref="Nullable{T}"/>).
         /// </remarks>
-
         public static T GetValue<T>(this IDataRecord record, string name)
         {
             if (record == null) throw new ArgumentNullException("record");
@@ -140,7 +137,6 @@ namespace HSNXT
         /// <see cref="InvalidCastException"/> is raised unless 
         /// <typeparamref name="T"/> is nullable (<see cref="Nullable{T}"/>).
         /// </remarks>
-
         public static T GetValue<T>(this IDataRecord record, int i)
         {
             if (record == null) throw new ArgumentNullException("record");
@@ -155,10 +151,10 @@ namespace HSNXT
             {
                 var type = typeof(T);
                 Impl = !type.IsValueType
-                     ? ReferenceImpl
-                     : type.IsConstructionOfNullable()
-                     ? MakeNullableImpl()
-                     : ValueImpl;
+                    ? ReferenceImpl
+                    : type.IsConstructionOfNullable()
+                        ? MakeNullableImpl()
+                        : ValueImpl;
             }
 
             static T ReferenceImpl(object value)
@@ -169,11 +165,12 @@ namespace HSNXT
             static T ValueImpl(object value)
             {
                 if (Convert.IsDBNull(value))
-                { 
+                {
                     throw new InvalidCastException(string.Format(
-                        @"Cannot cast DBNull to type '{0}'. Use '{1}' instead.", 
+                        @"Cannot cast DBNull to type '{0}'. Use '{1}' instead.",
                         typeof(T), typeof(Nullable<>).MakeGenericType(typeof(T))));
                 }
+
                 return (T) value;
             }
 
@@ -188,9 +185,9 @@ namespace HSNXT
 
             static TValue? NullableImpl<TValue>(object value) where TValue : struct
             {
-                return !Convert.IsDBNull(value) 
-                     ? new TValue?((TValue) value) 
-                     : new TValue?();
+                return !Convert.IsDBNull(value)
+                    ? new TValue?((TValue) value)
+                    : new TValue?();
             }
         }
 
@@ -200,7 +197,6 @@ namespace HSNXT
         /// <see cref="ExpandoObject"/>) where each field and its
         /// value become member of the object.
         /// </summary>
-
         public static ExpandoObject ToDynamicObject(this IDataRecord record)
         {
             return ToDynamicObject(record, f => f, (f, v) => v);
@@ -214,7 +210,6 @@ namespace HSNXT
         /// map field names to member names on the dynamic object
         /// as well as their values.
         /// </summary>
-
         public static ExpandoObject ToDynamicObject(
             this IDataRecord record,
             Func<string, string> nameMapper,

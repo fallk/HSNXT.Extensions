@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -30,6 +32,7 @@ using System.Reflection;
 using Newtonsoft.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
+
 #endif
 
 namespace Newtonsoft.Json.Utilities
@@ -553,7 +556,7 @@ namespace Newtonsoft.Json.Utilities
             return type.GetTypeInfo().IsValueType;
 #endif
         }
-        
+
         public static bool IsPrimitive(this Type type)
         {
 #if HAVE_FULL_REFLECTION
@@ -563,7 +566,8 @@ namespace Newtonsoft.Json.Utilities
 #endif
         }
 
-        public static bool AssignableToTypeName(this Type type, string fullTypeName, bool searchInterfaces, out Type match)
+        public static bool AssignableToTypeName(this Type type, string fullTypeName, bool searchInterfaces,
+            out Type match)
         {
             var current = type;
 

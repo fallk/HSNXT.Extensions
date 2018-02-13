@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="StringBuilder"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Appends the string representation of a specified Unicode 
         /// character to this instance if it is not <c>null</c>.
         /// </summary>
-
         public static StringBuilder Append(this StringBuilder sb, char? value)
         {
             if (sb == null) throw new ArgumentNullException("sb");

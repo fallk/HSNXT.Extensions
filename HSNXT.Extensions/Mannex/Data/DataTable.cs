@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="DataTable"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -54,7 +55,6 @@ namespace HSNXT
         /// This method uses deferred execution. The column names are 
         /// sought without regard to case sensitivity.
         /// </remarks>
-
         public static IEnumerable<DataColumn> FindColumns(this DataTable table, params string[] names)
         {
             if (table == null) throw new ArgumentNullException("table");
@@ -65,7 +65,6 @@ namespace HSNXT
         /// Moves the columns of the <see cref="DataTable"/> based on a
         /// given order.
         /// </summary>
-
         public static void SetColumnsOrder(this DataTable table, IEnumerable<DataColumn> columns)
         {
             table.SetColumnsOrder(columns != null ? columns.ToArray() : null);
@@ -77,29 +76,30 @@ namespace HSNXT
         /// </summary>
 
         // Inspiration & credit: http://stackoverflow.com/a/3758041/6682
-
         public static void SetColumnsOrder(this DataTable table, params DataColumn[] columns)
         {
             if (table == null) throw new ArgumentNullException("table");
-            
+
             if (columns == null || columns.Length == 0)
                 return;
-            
+
             foreach (var e in columns.Select((col, ord) => ord.AsKeyTo(col)))
             {
                 var column = e.Value;
                 if (column == null)
                 {
-                    var message = string.Format(@"Column in position {0} not set to a {1} instance.", e.
-                                                Key, typeof(DataColumn).Name);
+                    var message = string.Format(@"Column in position {0} not set to a {1} instance.", e.Key,
+                        typeof(DataColumn).Name);
                     throw new ArgumentException(message, "columns");
                 }
+
                 if (column.Table != table)
                 {
-                    var message = string.Format(@"Column '{0}' does not belong to the table.", 
-                                                column.ColumnName);
+                    var message = string.Format(@"Column '{0}' does not belong to the table.",
+                        column.ColumnName);
                     throw new ArgumentException(message, "columns");
                 }
+
                 column.SetOrdinal(e.Key);
             }
         }
@@ -110,13 +110,12 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
         public static IEnumerable<IDataRecord> GetRecords(this DataTable table)
         {
             if (table == null) throw new ArgumentNullException("table");
             return GetRecordsImpl(table);
         }
-        
+
         static IEnumerable<IDataRecord> GetRecordsImpl(DataTable table)
         {
             using (var reader = new DataTableReader(table))

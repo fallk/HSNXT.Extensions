@@ -21,13 +21,14 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static object GetValueWithoutIndex( [NotNull] this PropertyInfo propertyInfo, [NotNull] object source )
+        public static object GetValueWithoutIndex([NotNull] this PropertyInfo propertyInfo, [NotNull] object source)
         {
-            propertyInfo.ThrowIfNull( nameof(propertyInfo) );
-            source.ThrowIfNull( nameof(source) );
+            propertyInfo.ThrowIfNull(nameof(propertyInfo));
+            source.ThrowIfNull(nameof(source));
 
-            return propertyInfo.GetValue( source );
+            return propertyInfo.GetValue(source);
         }
+
         /// <summary>
         ///     Creates a <see cref="IMemberInformation" /> based on the given <see cref="PropertyInfo" /> and parent information.
         /// </summary>
@@ -38,9 +39,10 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IMemberInformation ToMemberInformation( [NotNull] this PropertyInfo propertyInfo, [CanBeNull] IMemberInformation parentMemberInformation )
+        public static IMemberInformation ToMemberInformation([NotNull] this PropertyInfo propertyInfo,
+            [CanBeNull] IMemberInformation parentMemberInformation)
         {
-            propertyInfo.ThrowIfNull( nameof(propertyInfo) );
+            propertyInfo.ThrowIfNull(nameof(propertyInfo));
 
             var path = parentMemberInformation?.MemberPath ?? parentMemberInformation?.MemberName;
 

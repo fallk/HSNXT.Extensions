@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,7 +31,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IDisposable"/> objects.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -42,7 +43,6 @@ namespace HSNXT
         /// type binding to <see cref="IDisposable"/> in order to be able to
         /// just call <see cref="IDisposable.Dispose"/>.
         /// </remarks>
-
         [DebuggerStepThrough]
         public static void Dispose(this IDisposable disposable)
         {

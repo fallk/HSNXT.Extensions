@@ -25,26 +25,17 @@ namespace HSNXT.dotNetExt
 
         public int PageIndex
         {
-            get
-            {
-                return this.Data.PageIndex;
-            }
+            get { return this.Data.PageIndex; }
         }
 
         public int TotalCount
         {
-            get
-            {
-                return this.Data.TotalCount;
-            }
+            get { return this.Data.TotalCount; }
         }
 
         public int TotalPages
         {
-            get
-            {
-                return this.Data.TotalPages;
-            }
+            get { return this.Data.TotalPages; }
         }
     }
 
@@ -63,26 +54,17 @@ namespace HSNXT.dotNetExt
 
         public int PageIndex
         {
-            get
-            {
-                return this.Data.PageIndex;
-            }
+            get { return this.Data.PageIndex; }
         }
 
         public int TotalCount
         {
-            get
-            {
-                return this.Data.TotalCount;
-            }
+            get { return this.Data.TotalCount; }
         }
 
         public int TotalPages
         {
-            get
-            {
-                return this.Data.TotalPages;
-            }
+            get { return this.Data.TotalPages; }
         }
     }
 }

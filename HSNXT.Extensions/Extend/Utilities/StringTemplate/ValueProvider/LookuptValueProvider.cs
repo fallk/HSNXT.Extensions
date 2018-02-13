@@ -26,9 +26,9 @@ namespace HSNXT.Internal
         /// </summary>
         /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="values">The value to use.</param>
-        public LookuptValueProvider( [NotNull] IDictionary<string, object> values )
+        public LookuptValueProvider([NotNull] IDictionary<string, object> values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             _values = values;
         }
@@ -42,19 +42,19 @@ namespace HSNXT.Internal
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        public override string GetValue( string expression )
+        public override string GetValue(string expression)
         {
             try
             {
-                var formatInformation = ParsExpression( expression );
+                var formatInformation = ParsExpression(expression);
                 return formatInformation.Format.IsNullOrEmpty()
                     ? _values[formatInformation.ValueName]
                         ?.ToString()
-                    : formatInformation.Format.F( _values[formatInformation.ValueName] );
+                    : formatInformation.Format.F(_values[formatInformation.ValueName]);
             }
-            catch ( KeyNotFoundException ex )
+            catch (KeyNotFoundException ex)
             {
-                throw new FormatException( $"Could not found value for expression: '{expression}'.", ex );
+                throw new FormatException($"Could not found value for expression: '{expression}'.", ex);
             }
         }
 

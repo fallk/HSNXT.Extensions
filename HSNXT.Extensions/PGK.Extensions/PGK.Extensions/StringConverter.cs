@@ -38,7 +38,7 @@ namespace HSNXT
         public static int ToInt32(this IConverter<string> value, int defaultValue, bool ignoreException)
         {
             if (!ignoreException) return int.Parse(value.Value);
-            
+
             try
             {
                 return ToInt32(value, defaultValue, false);
@@ -48,7 +48,6 @@ namespace HSNXT
             }
 
             return defaultValue;
-
         }
 
 

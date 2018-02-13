@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,13 +35,12 @@ namespace HSNXT
     /// </summary>
     public static partial class Extensions
     {
-        #if NET4
+#if NET4
 
         /// <summary>
         /// Determines whether any of the given bit fields are set in the 
         /// current instance.
         /// </summary>
-
         public static bool HasEitherFlag(this Enum value, Enum flag1, Enum flag2)
         {
             return value.HasFlag(flag1) || value.HasFlag(flag2);
@@ -49,7 +50,6 @@ namespace HSNXT
         /// Determines whether any of the given bit fields are set in the 
         /// current instance.
         /// </summary>
-
         public static bool HasEitherFlag(this Enum value, Enum flag1, Enum flag2, Enum flag3)
         {
             return value.HasEitherFlag(flag1, flag2) || value.HasFlag(flag3);
@@ -59,7 +59,6 @@ namespace HSNXT
         /// Determines whether any of the given bit fields are set in the 
         /// current instance.
         /// </summary>
-
         public static bool HasEitherFlag(this Enum value, Enum flag1, Enum flag2, Enum flag3, Enum flag4)
         {
             return value.HasEitherFlag(flag1, flag2, flag3) || value.HasFlag(flag4);
@@ -69,14 +68,14 @@ namespace HSNXT
         /// Determines whether any of the given bit fields are set in the 
         /// current instance.
         /// </summary>
-
-        public static bool HasEitherFlag(this Enum value, Enum flag1, Enum flag2, Enum flag3, Enum flag4, Enum flag5, params Enum[] others)
+        public static bool HasEitherFlag(this Enum value, Enum flag1, Enum flag2, Enum flag3, Enum flag4, Enum flag5,
+            params Enum[] others)
         {
-            return value.HasEitherFlag(flag1, flag2, flag3, flag4) 
-                || value.HasFlag(flag5) 
-                || others.Any(value.HasFlag);
+            return value.HasEitherFlag(flag1, flag2, flag3, flag4)
+                   || value.HasFlag(flag5)
+                   || others.Any(value.HasFlag);
         }
 
-        #endif
+#endif
     }
 }

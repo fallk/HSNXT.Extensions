@@ -27,10 +27,11 @@ namespace HSNXT
         /// <param name="factory">The factory.</param>
         /// <param name="name">The name of the factory.</param>
         /// <param name="description">The description of the factory.</param>
-        public ExpressionInstanceFactory( [NotNull] Func<IMemberInformation, object> factory, string name = null, string description = null )
-            : base( name, description )
+        public ExpressionInstanceFactory([NotNull] Func<IMemberInformation, object> factory, string name = null,
+            string description = null)
+            : base(name, description)
         {
-            factory.ThrowIfNull( nameof(factory) );
+            factory.ThrowIfNull(nameof(factory));
 
             _factory = factory;
         }
@@ -44,8 +45,8 @@ namespace HSNXT
         /// </summary>
         /// <param name="memberInformation">Information about the member to create a value for.</param>
         /// <returns>Returns the created value.</returns>
-        public override object CreateValue( IMemberInformation memberInformation )
-            => _factory( memberInformation );
+        public override object CreateValue(IMemberInformation memberInformation)
+            => _factory(memberInformation);
 
         #endregion
     }

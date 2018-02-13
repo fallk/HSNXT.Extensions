@@ -15,13 +15,14 @@ namespace HSNXT
         internal static IEnumerable<IMemberSelectionRule> GetDefaultMemberChildreSelectionRules()
         {
             //Include all children
-            yield return new AllMemberSelectionRule( MemberSelectionMode.Include, "Include all child members", "Includes all child members." );
+            yield return new AllMemberSelectionRule(MemberSelectionMode.Include, "Include all child members",
+                "Includes all child members.");
 
             //Exclude Microsoft (FX) types
-            yield return new ExpressionMemberSelectionRule( x => x.MemberType.IsMicrosoftType(),
-                                                            MemberSelectionMode.Exclude,
-                                                            "Microsoft Type Filter",
-                                                            "Excludes all types from Microsoft (Framework types)." );
+            yield return new ExpressionMemberSelectionRule(x => x.MemberType.IsMicrosoftType(),
+                MemberSelectionMode.Exclude,
+                "Microsoft Type Filter",
+                "Excludes all types from Microsoft (Framework types).");
         }
 
         /// <summary>
@@ -30,7 +31,8 @@ namespace HSNXT
         /// <returns>Returns the member selection rules.</returns>
         internal static IEnumerable<IMemberSelectionRule> GetDefaultMemberSelectionRules()
         {
-            yield return new AllMemberSelectionRule( MemberSelectionMode.Include, "Include all members", "Includes all members." );
+            yield return new AllMemberSelectionRule(MemberSelectionMode.Include, "Include all members",
+                "Includes all members.");
         }
     }
 }

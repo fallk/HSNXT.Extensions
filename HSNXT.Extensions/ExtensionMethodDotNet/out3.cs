@@ -1910,7 +1910,7 @@ a.Shuffle();
 
         public static bool IsLeapDay(this DateTime date)
         {
-            return(date.Month == 2 && date.Day == 29);
+            return (date.Month == 2 && date.Day == 29);
         }
 
 

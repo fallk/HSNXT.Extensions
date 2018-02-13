@@ -20,11 +20,12 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         [NotNull]
-        public static IEqualityComparer<TSource> By<TSource, TKey>( [NotNull] Func<TSource, TKey> keySelector, [CanBeNull] IEqualityComparer<TKey> comparer = null )
+        public static IEqualityComparer<TSource> By<TSource, TKey>([NotNull] Func<TSource, TKey> keySelector,
+            [CanBeNull] IEqualityComparer<TKey> comparer = null)
         {
-            keySelector.ThrowIfNull( nameof(keySelector) );
+            keySelector.ThrowIfNull(nameof(keySelector));
 
-            return new KeyEqualityComparer<TSource, TKey>( keySelector, comparer );
+            return new KeyEqualityComparer<TSource, TKey>(keySelector, comparer);
         }
     }
 }

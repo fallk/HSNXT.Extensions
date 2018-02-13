@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -28,7 +30,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IComparable{T}"/> objects.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -36,7 +37,6 @@ namespace HSNXT
         /// exceeds either bound otherwise returns the value unmodified.
         /// </summary>
         /// <exception cref="ArgumentNullException"><paramref name="value"/> is a null reference.</exception>
-
         public static T MinMax<T>(this T value, T min, T max)
             where T : IComparable<T>
         {
@@ -49,7 +49,6 @@ namespace HSNXT
         /// exceeds either bound otherwise returns the value unmodified.
         /// If the value is null then the result is also null.
         /// </summary>
-
         public static T? MinMax<T>(this T? value, T min, T max)
             where T : struct, IComparable<T>
         {
@@ -61,7 +60,6 @@ namespace HSNXT
         /// (inclusive) and upper (inclusive) bounds. If the value is <c>null</c>
         /// then so is the result.
         /// </summary>
-
         public static bool? IsBetween<T>(this T? value, T lower, T upper)
             where T : struct, IComparable<T>
         {
@@ -72,7 +70,6 @@ namespace HSNXT
         /// Determines if the value lies within a range, given the lower
         /// (exclusive) and upper (exclusive) bounds.
         /// </summary>
-
         public static bool IsInBetween<T>(this T value, T lower, T upper)
             where T : IComparable<T>
         {
@@ -85,11 +82,10 @@ namespace HSNXT
         /// (exclusive) and upper (exclusive) bounds. If the value is <c>null</c>
         /// then so is the result.
         /// </summary>
-
         public static bool? IsInBetween<T>(this T? value, T lower, T upper)
             where T : struct, IComparable<T>
         {
-            return value != null ? value.Value.IsInBetween(lower, upper) : (bool?)null;
+            return value != null ? value.Value.IsInBetween(lower, upper) : (bool?) null;
         }
     }
 }

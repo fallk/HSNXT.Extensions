@@ -36,8 +36,8 @@ namespace HSNXT
         ///     Initializes a new instance of the <see cref="CreateInstanceException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
-        public CreateInstanceException( string message )
-            : base( message )
+        public CreateInstanceException(string message)
+            : base(message)
         {
         }
 
@@ -48,8 +48,8 @@ namespace HSNXT
         /// <param name="innerException">
         ///     The exception that is the cause of the current exception, or a null reference  if no inner exception is specified.
         /// </param>
-        public CreateInstanceException( string message, Exception innerException )
-            : base( message, innerException )
+        public CreateInstanceException(string message, Exception innerException)
+            : base(message, innerException)
         {
         }
 
@@ -63,8 +63,9 @@ namespace HSNXT
         /// <param name="factoryInformation">Information about the factories.</param>
         /// <param name="selectionRuleInformation">Information about selection rules.</param>
         /// <param name="memberInformation">The current member.</param>
-        public CreateInstanceException( string message, Exception innerException, string factoryInformation, string selectionRuleInformation, IMemberInformation memberInformation )
-            : base( message, innerException )
+        public CreateInstanceException(string message, Exception innerException, string factoryInformation,
+            string selectionRuleInformation, IMemberInformation memberInformation)
+            : base(message, innerException)
         {
             FactoryInformation = factoryInformation;
             SelectionRuleRuleInformation = selectionRuleInformation;
@@ -80,7 +81,8 @@ namespace HSNXT
         /// </summary>
         /// <returns>A string representation of the current exception.</returns>
         public override string ToString()
-            => this.FormatException( description => description.AppendFormat( "Member Information='{1}'{0}{0}", Environment.NewLine, MemberInformation ) );
+            => this.FormatException(description =>
+                description.AppendFormat("Member Information='{1}'{0}{0}", Environment.NewLine, MemberInformation));
 
         #endregion
     }

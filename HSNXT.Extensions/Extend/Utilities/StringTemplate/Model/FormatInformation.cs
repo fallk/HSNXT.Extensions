@@ -33,9 +33,9 @@ namespace HSNXT.Internal
         /// <exception cref="ArgumentNullException">valueName can not be null.</exception>
         /// <param name="valueName">The name of the value.</param>
         /// <param name="format">The format.</param>
-        public FormatInformation( [NotNull] string valueName, [CanBeNull] string format )
+        public FormatInformation([NotNull] string valueName, [CanBeNull] string format)
         {
-            valueName.ThrowIfNull( nameof(valueName) );
+            valueName.ThrowIfNull(nameof(valueName));
 
             Format = format;
             ValueName = valueName;

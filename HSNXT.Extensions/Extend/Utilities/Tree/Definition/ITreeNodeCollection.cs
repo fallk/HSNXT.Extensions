@@ -30,7 +30,7 @@ namespace HSNXT
         /// <returns>Returns the new added node.</returns>
         [NotNull]
         [PublicAPI]
-        ITreeNode<T> Add( [CanBeNull] T value );
+        ITreeNode<T> Add([CanBeNull] T value);
 
         /// <summary>
         ///     Adds the given item to the list and sets it's parent to the parent of the list.
@@ -42,7 +42,7 @@ namespace HSNXT
         ///     collection or not.
         /// </param>
         [PublicAPI]
-        void Add( [NotNull] ITreeNode<T> item, bool setParent );
+        void Add([NotNull] ITreeNode<T> item, bool setParent);
 
         /// <summary>
         ///     Removes the given item form the list and sets it's parent to null.
@@ -55,7 +55,7 @@ namespace HSNXT
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
         [PublicAPI]
-        bool Remove( [NotNull] ITreeNode<T> item, bool setParent );
+        bool Remove([NotNull] ITreeNode<T> item, bool setParent);
 
         /// <summary>
         ///     Detaches the collection and all it's items form it's current parent.

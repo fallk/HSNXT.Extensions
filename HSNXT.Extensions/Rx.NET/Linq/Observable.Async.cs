@@ -5,7 +5,6 @@
 using HSNXT.Reactive.Concurrency;
 using System.Threading;
 using System.Threading.Tasks;
-
 using System;
 
 namespace HSNXT.Reactive.Linq
@@ -28,7 +27,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<IObservable<TResult>> FromAsyncPattern<TResult>(Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<IObservable<TResult>> FromAsyncPattern<TResult>(
+            Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -51,7 +51,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, IObservable<TResult>> FromAsyncPattern<TArg1, TResult>(Func<TArg1, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, IObservable<TResult>> FromAsyncPattern<TArg1, TResult>(
+            Func<TArg1, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -75,7 +76,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TResult>(Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TResult>(
+            Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -100,7 +102,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TResult>(Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TResult>(
+            Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -126,7 +129,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TResult>(Func<TArg1, TArg2, TArg3, TArg4, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, AsyncCallback, object, IAsyncResult> begin,
+                Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -153,7 +159,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, AsyncCallback, object, IAsyncResult> begin,
+                Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -181,7 +190,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, AsyncCallback, object, IAsyncResult> begin,
+                Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -210,7 +222,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, AsyncCallback, object, IAsyncResult> begin,
+                Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -240,7 +255,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, AsyncCallback, object, IAsyncResult> begin,
+                Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -271,14 +289,18 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, AsyncCallback, object, IAsyncResult>
+                    begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(begin, end);
+            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(
+                begin, end);
         }
 
         /// <summary>
@@ -303,14 +325,19 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, AsyncCallback, object,
+                    IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(begin,
+                    end);
         }
 
         /// <summary>
@@ -336,14 +363,20 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<TResult>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, AsyncCallback,
+                    object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult
+                >(begin, end);
         }
 
         /// <summary>
@@ -370,14 +403,21 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TResult>(begin, end);
         }
 
         /// <summary>
@@ -405,14 +445,21 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TResult>(begin, end);
         }
 
         /// <summary>
@@ -441,14 +488,21 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                IObservable<TResult>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, TResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14, TResult>(begin, end);
         }
 
         #endregion
@@ -466,7 +520,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<IObservable<Unit>> FromAsyncPattern(Func<AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<IObservable<Unit>> FromAsyncPattern(Func<AsyncCallback, object, IAsyncResult> begin,
+            Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -488,7 +543,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, IObservable<Unit>> FromAsyncPattern<TArg1>(Func<TArg1, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, IObservable<Unit>> FromAsyncPattern<TArg1>(
+            Func<TArg1, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -511,7 +567,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2>(Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2>(
+            Func<TArg1, TArg2, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -535,7 +592,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3>(Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3>(
+            Func<TArg1, TArg2, TArg3, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -560,7 +618,8 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4>(Func<TArg1, TArg2, TArg3, TArg4, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4>(
+            Func<TArg1, TArg2, TArg3, TArg4, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -586,7 +645,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, AsyncCallback, object, IAsyncResult> begin,
+                Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -613,7 +675,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, AsyncCallback, object, IAsyncResult> begin,
+                Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -641,7 +706,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, AsyncCallback, object, IAsyncResult> begin,
+                Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -670,7 +738,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, AsyncCallback, object, IAsyncResult> begin,
+                Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -700,7 +771,10 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, AsyncCallback, object, IAsyncResult>
+                    begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
@@ -731,14 +805,18 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, AsyncCallback, object,
+                    IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(begin, end);
+            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(begin,
+                end);
         }
 
         /// <summary>
@@ -763,14 +841,20 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<Unit>>
+            FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, AsyncCallback,
+                    object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(begin,
+                    end);
         }
 
         /// <summary>
@@ -796,14 +880,21 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12
+                >(begin, end);
         }
 
         /// <summary>
@@ -830,14 +921,21 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13>(begin, end);
         }
 
         /// <summary>
@@ -865,14 +963,21 @@ namespace HSNXT.Reactive.Linq
 #if PREFER_ASYNC
         [Obsolete(Constants_Linq.USE_TASK_FROMASYNCPATTERN)]
 #endif
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>(Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                IObservable<Unit>> FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TArg14>(
+                Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, AsyncCallback, object, IAsyncResult> begin, Action<IAsyncResult> end)
         {
             if (begin == null)
                 throw new ArgumentNullException(nameof(begin));
             if (end == null)
                 throw new ArgumentNullException(nameof(end));
 
-            return s_impl.FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>(begin, end);
+            return s_impl
+                .FromAsyncPattern<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14>(begin, end);
         }
 
         #endregion
@@ -1024,7 +1129,8 @@ namespace HSNXT.Reactive.Linq
         /// </description></item>
         /// </list>
         /// </remarks>
-        public static IObservable<TResult> StartAsync<TResult>(Func<CancellationToken, Task<TResult>> functionAsync, IScheduler scheduler)
+        public static IObservable<TResult> StartAsync<TResult>(Func<CancellationToken, Task<TResult>> functionAsync,
+            IScheduler scheduler)
         {
             if (functionAsync == null)
                 throw new ArgumentNullException(nameof(functionAsync));
@@ -1189,7 +1295,6 @@ namespace HSNXT.Reactive.Linq
 
         #region FromAsync
 
-
         #region Func
 
         /// <summary>
@@ -1252,7 +1357,8 @@ namespace HSNXT.Reactive.Linq
         /// <returns>An observable sequence exposing the result of invoking the function, or an exception.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="functionAsync"/> is null or <paramref name="scheduler"/> is null.</exception>
         /// <remarks>When a subscription to the resulting sequence is disposed, the CancellationToken that was fed to the asynchronous function will be signaled.</remarks>
-        public static IObservable<TResult> FromAsync<TResult>(Func<CancellationToken, Task<TResult>> functionAsync, IScheduler scheduler)
+        public static IObservable<TResult> FromAsync<TResult>(Func<CancellationToken, Task<TResult>> functionAsync,
+            IScheduler scheduler)
         {
             if (functionAsync == null)
                 throw new ArgumentNullException(nameof(functionAsync));
@@ -1334,8 +1440,6 @@ namespace HSNXT.Reactive.Linq
 
         #endregion
 
-
-
         #endregion
 
         #region ToAsync
@@ -1400,7 +1504,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, IObservable<TResult>> ToAsync<TArg1, TResult>(this Func<TArg1, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, IObservable<TResult>> ToAsync<TArg1, TResult>(this Func<TArg1, TResult> function,
+            IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1419,7 +1524,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, IObservable<TResult>> ToAsync<TArg1, TArg2, TResult>(this Func<TArg1, TArg2, TResult> function)
+        public static Func<TArg1, TArg2, IObservable<TResult>> ToAsync<TArg1, TArg2, TResult>(
+            this Func<TArg1, TArg2, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1437,7 +1543,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, IObservable<TResult>> ToAsync<TArg1, TArg2, TResult>(this Func<TArg1, TArg2, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, IObservable<TResult>> ToAsync<TArg1, TArg2, TResult>(
+            this Func<TArg1, TArg2, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1457,7 +1564,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TResult>(this Func<TArg1, TArg2, TArg3, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TResult>(
+            this Func<TArg1, TArg2, TArg3, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1476,7 +1584,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TResult>(this Func<TArg1, TArg2, TArg3, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TResult>(
+            this Func<TArg1, TArg2, TArg3, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1497,7 +1606,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4,
+            TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1517,7 +1627,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<TResult>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TResult> function,
+                IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1539,7 +1651,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4,
+            TArg5, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1560,7 +1673,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4,
+            TArg5, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1583,7 +1697,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3,
+            TArg4, TArg5, TArg6, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1605,7 +1720,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3,
+            TArg4, TArg5, TArg6, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> function,
+            IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1629,7 +1746,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<TResult>> ToAsync<TArg1, TArg2,
+            TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(
+            this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1652,7 +1771,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<TResult>> ToAsync<TArg1, TArg2,
+            TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(
+            this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1677,7 +1798,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<TResult>> ToAsync<TArg1,
+            TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(
+            this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1701,7 +1824,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<TResult>> ToAsync<TArg1,
+            TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(
+            this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1727,7 +1852,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<TResult>> ToAsync<
+            TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(
+            this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
@@ -1752,14 +1879,18 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<TResult>> ToAsync<
+            TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(
+            this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> function,
+            IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(function, scheduler);
+            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(function,
+                scheduler);
         }
 
         /// <summary>
@@ -1779,12 +1910,15 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> function)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<TResult>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(function);
+            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(
+                function);
         }
 
         /// <summary>
@@ -1805,14 +1939,18 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> function, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<TResult>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> function,
+                IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(function, scheduler);
+            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(
+                function, scheduler);
         }
 
         /// <summary>
@@ -1833,12 +1971,18 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult> function)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<TResult>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>
+                    function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(function);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(
+                    function);
         }
 
         /// <summary>
@@ -1860,14 +2004,20 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult> function, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<TResult>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>
+                    function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(function, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(
+                    function, scheduler);
         }
 
         /// <summary>
@@ -1889,12 +2039,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult> function)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult
+                > function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(function);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult
+                >(function);
         }
 
         /// <summary>
@@ -1917,14 +2074,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult> function, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult
+                > function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(function, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult
+                >(function, scheduler);
         }
 
         /// <summary>
@@ -1947,12 +2111,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult> function)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(function);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TResult>(function);
         }
 
         /// <summary>
@@ -1976,14 +2147,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult> function, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(function, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TResult>(function, scheduler);
         }
 
         /// <summary>
@@ -2007,12 +2185,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult> function)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13, TArg14, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(function);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TResult>(function);
         }
 
         /// <summary>
@@ -2037,14 +2222,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult> function, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13, TArg14, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(function, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TResult>(function, scheduler);
         }
 
         /// <summary>
@@ -2069,12 +2261,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult> function)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(function);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TResult>(function);
         }
 
         /// <summary>
@@ -2100,14 +2299,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult> function, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(function, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TResult>(function, scheduler);
         }
 
         /// <summary>
@@ -2133,12 +2339,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="function">Function to convert to an asynchronous function.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult> function)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, TArg16, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8,
+                TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TArg16, TResult> function)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult>(function);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TArg16, TResult>(function);
         }
 
         /// <summary>
@@ -2165,14 +2378,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original function on.</param>
         /// <returns>Asynchronous function.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="function"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult>(this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult> function, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, TArg16, IObservable<TResult>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8,
+                TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult>(
+                this Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TArg16, TResult> function, IScheduler scheduler)
         {
             if (function == null)
                 throw new ArgumentNullException(nameof(function));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, TResult>(function, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TArg16, TResult>(function, scheduler);
         }
 
         #endregion
@@ -2268,7 +2488,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, IObservable<Unit>> ToAsync<TArg1, TArg2>(this Action<TArg1, TArg2> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, IObservable<Unit>> ToAsync<TArg1, TArg2>(this Action<TArg1, TArg2> action,
+            IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2287,7 +2508,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3>(this Action<TArg1, TArg2, TArg3> action)
+        public static Func<TArg1, TArg2, TArg3, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3>(
+            this Action<TArg1, TArg2, TArg3> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2305,7 +2527,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3>(this Action<TArg1, TArg2, TArg3> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3>(
+            this Action<TArg1, TArg2, TArg3> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2325,7 +2548,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4>(this Action<TArg1, TArg2, TArg3, TArg4> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4>(
+            this Action<TArg1, TArg2, TArg3, TArg4> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2344,7 +2568,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4>(this Action<TArg1, TArg2, TArg3, TArg4> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4>(
+            this Action<TArg1, TArg2, TArg3, TArg4> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2365,7 +2590,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4,
+            TArg5>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2385,7 +2611,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5> action,
+                IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2407,7 +2635,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3,
+            TArg4, TArg5, TArg6>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2428,7 +2657,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2451,7 +2682,8 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<Unit>> ToAsync<TArg1, TArg2,
+            TArg3, TArg4, TArg5, TArg6, TArg7>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2473,7 +2705,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, IObservable<Unit>> ToAsync<TArg1, TArg2,
+            TArg3, TArg4, TArg5, TArg6, TArg7>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7> action,
+            IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2497,7 +2731,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<Unit>> ToAsync<TArg1,
+            TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(
+            this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2520,7 +2756,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, IObservable<Unit>> ToAsync<TArg1,
+            TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8>(
+            this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2545,7 +2783,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<Unit>> ToAsync<
+            TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(
+            this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2569,7 +2809,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2595,7 +2837,9 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> action)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -2620,14 +2864,18 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> action, IScheduler scheduler)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10> action,
+                IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(action, scheduler);
+            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10>(action,
+                scheduler);
         }
 
         /// <summary>
@@ -2647,12 +2895,16 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11> action)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(action);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(action);
         }
 
         /// <summary>
@@ -2673,14 +2925,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11> action, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, IObservable<Unit>>
+            ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11> action,
+                IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(action, scheduler);
+            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11>(action,
+                scheduler);
         }
 
         /// <summary>
@@ -2701,12 +2958,18 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12> action)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>
+                    action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(action);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(action);
         }
 
         /// <summary>
@@ -2728,14 +2991,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12> action, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>
+                    action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(action, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12>(action,
+                    scheduler);
         }
 
         /// <summary>
@@ -2757,12 +3027,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13> action)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(action);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13
+                >(action);
         }
 
         /// <summary>
@@ -2785,14 +3062,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13> action, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(action, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13>(
+                    action, scheduler);
         }
 
         /// <summary>
@@ -2815,12 +3099,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14> action)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13, TArg14>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>(action);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14>(action);
         }
 
         /// <summary>
@@ -2844,14 +3135,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14> action, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10,
+                TArg11, TArg12, TArg13, TArg14>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14>(action, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14>(action, scheduler);
         }
 
         /// <summary>
@@ -2875,12 +3173,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15> action)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14, TArg15> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>(action);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15>(action);
         }
 
         /// <summary>
@@ -2905,14 +3210,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15> action, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9,
+                TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14, TArg15> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15>(action, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15>(action, scheduler);
         }
 
         /// <summary>
@@ -2937,12 +3249,19 @@ namespace HSNXT.Reactive.Linq
         /// <param name="action">Action to convert to an asynchronous action.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16> action)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, TArg16, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8,
+                TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14, TArg15, TArg16> action)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>(action);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TArg16>(action);
         }
 
         /// <summary>
@@ -2968,14 +3287,21 @@ namespace HSNXT.Reactive.Linq
         /// <param name="scheduler">Scheduler to invoke the original action on.</param>
         /// <returns>Asynchronous action.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="action"/> or <paramref name="scheduler"/> is null.</exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>(this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16> action, IScheduler scheduler)
+        public static
+            Func<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14,
+                TArg15, TArg16, IObservable<Unit>> ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8,
+                TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>(
+                this Action<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12,
+                    TArg13, TArg14, TArg15, TArg16> action, IScheduler scheduler)
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             if (scheduler == null)
                 throw new ArgumentNullException(nameof(scheduler));
 
-            return s_impl.ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TArg16>(action, scheduler);
+            return s_impl
+                .ToAsync<TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13,
+                    TArg14, TArg15, TArg16>(action, scheduler);
         }
 
         #endregion

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,14 +36,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for types implementing <see cref="IEnumerator{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates an array containing the remaining items of an enumerator
         /// and then disposes the enumerator.
         /// </summary>
-
         public static T[] ToArray<T>(this IEnumerator enumerator)
         {
             return enumerator.ToList().ToArray<T>();
@@ -52,7 +52,6 @@ namespace HSNXT
         /// and then disposes the enumerator if it implements
         /// <see cref="IDisposable"/>.
         /// </summary>
-
         public static ArrayList ToList(this IEnumerator enumerator)
         {
             if (enumerator == null) throw new ArgumentNullException("enumerator");

@@ -2,9 +2,9 @@
 using System;
 using System.IO;
 using System.Threading;
-
 #if (NET47)
 using System.Threading.Tasks;
+
 #endif
 
 namespace HSNXT
@@ -38,7 +38,7 @@ namespace HSNXT
             "CA2000:Dispose objects before losing scope",
             Justification = "'result' is used asynchronously")]
 #if (NET47)
-		[Obsolete("Prefer Stream.ReadAsync")]
+        [Obsolete("Prefer Stream.ReadAsync")]
 #endif
         public static IAsyncResult BeginReadToEnd(this Stream stream, byte[] buffer, int offset, int count,
             AsyncCallback callback, object state)
@@ -77,7 +77,7 @@ namespace HSNXT
         /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
         /// <exception cref="T:System.NotSupportedException">The current Stream implementation does not support the read operation. </exception>
 #if (NET47)
-		[Obsolete("Prefer Stream.ReadAsync")]
+        [Obsolete("Prefer Stream.ReadAsync")]
 #endif
         public static void BeginReadToEnd(this Stream stream, byte[] buffer, int offset, int count,
             AsyncCallback callback)
@@ -106,7 +106,7 @@ namespace HSNXT
         /// <exception cref="T:System.NotSupportedException">The current Stream implementation does not support the read operation. </exception>
         /// <returns>An <see cref="T:System.IAsyncResult"/> that represents the asynchronous read, which could still be pending.</returns>
 #if (NET47)
-		[Obsolete("Prefer Stream.ReadAsync")]
+        [Obsolete("Prefer Stream.ReadAsync")]
 #endif
         public static IAsyncResult BeginReadToEnd(this Stream stream, byte[] buffer, AsyncCallback callback)
         {
@@ -128,7 +128,7 @@ namespace HSNXT
             MessageId = "stream",
             Justification = "'stream' is required for this to be an extension method")]
 #if (NET47)
-		[Obsolete("Prefer Stream.ReadAsync")]
+        [Obsolete("Prefer Stream.ReadAsync")]
 #endif
         public static int EndReadToEnd(this Stream stream, IAsyncResult ar)
         {

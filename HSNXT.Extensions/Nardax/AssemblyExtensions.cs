@@ -5,7 +5,7 @@ using System.Reflection;
 namespace HSNXT
 {
     public static partial class Extensions
-	{
+    {
         public static string GetAppSettingsValue(this Assembly assembly, string key)
         {
             var configuration = ConfigurationManager.OpenExeConfiguration(assembly.Location);

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,14 +38,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="List{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Returns the index of the last item in the list or -1 if the
         /// list is empty.
         /// </summary>
-
         [DebuggerStepThrough]
         public static int LastIndex<T>(this IList<T> list)
         {
@@ -60,7 +60,6 @@ namespace HSNXT
         /// on to the list; in other words adding it to the end of 
         /// the list.
         /// </summary>
-
         [DebuggerStepThrough]
         public static void Push<T>(this IList<T> list, T value)
         {
@@ -75,7 +74,6 @@ namespace HSNXT
         /// <exception cref="InvalidOperationException">
         /// Thrown if list is empty.
         /// </exception>
-
         [DebuggerStepThrough]
         public static T Pop<T>(this IList<T> list)
         {
@@ -92,7 +90,6 @@ namespace HSNXT
         /// the last value on the list. If the list is empty, then
         /// the default value for <typeparamref name="T"/> is returned.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryPop<T>(this IList<T> list)
         {
@@ -104,7 +101,6 @@ namespace HSNXT
         /// the last value on the list. If the list is empty, then
         /// <paramref name="emptyValue"/> is returned instead.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryPop<T>(this IList<T> list, T emptyValue)
         {
@@ -119,7 +115,6 @@ namespace HSNXT
         /// <exception cref="InvalidOperationException">
         /// Thrown if list is empty.
         /// </exception>
-
         [DebuggerStepThrough]
         public static T Peek<T>(this IList<T> list)
         {
@@ -132,7 +127,6 @@ namespace HSNXT
         /// value on the list. If the list is empty, then
         /// the default value for <typeparamref name="T"/> is returned.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryPeek<T>(this IList<T> list)
         {
@@ -144,7 +138,6 @@ namespace HSNXT
         /// value on the list. If the list is empty, then
         /// <paramref name="emptyValue"/> is returned instead.
         /// </summary>
-
         public static T TryPeek<T>(this IList<T> list, T emptyValue)
         {
             if (list == null) throw new ArgumentNullException("list");
@@ -158,7 +151,6 @@ namespace HSNXT
         /// <summary>
         /// Adds <paramref name="value"/> to beginning of the list.
         /// </summary>
-
         [DebuggerStepThrough]
         public static void Unshift<T>(this IList<T> list, T value)
         {
@@ -172,7 +164,6 @@ namespace HSNXT
         /// <exception cref="InvalidOperationException">
         /// Thrown if list is empty.
         /// </exception>
-
         [DebuggerStepThrough]
         public static T Shift<T>(this IList<T> list)
         {
@@ -187,7 +178,6 @@ namespace HSNXT
         /// the default value for <typeparamref name="T"/> if the
         /// list is empty.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryShift<T>(this IList<T> list)
         {
@@ -199,7 +189,6 @@ namespace HSNXT
         /// Removes and returns the first value of the list, returning
         /// <paramref name="emptyValue"/> if the list is empty.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryShift<T>(this IList<T> list, T emptyValue)
         {
@@ -214,7 +203,6 @@ namespace HSNXT
         /// <summary>
         /// Treats list like a queue, appending <paramref name="value"/>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static void Enqueue<T>(this IList<T> list, T value)
         {
@@ -228,7 +216,6 @@ namespace HSNXT
         /// <exception cref="InvalidOperationException">
         /// Thrown if list is empty.
         /// </exception>
-
         [DebuggerStepThrough]
         public static T Dequeue<T>(this IList<T> list)
         {
@@ -240,7 +227,6 @@ namespace HSNXT
         /// first value or the default value for <typeparamref name="T"/>
         /// if the list is empty.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryDequeue<T>(this IList<T> list)
         {
@@ -252,7 +238,6 @@ namespace HSNXT
         /// first value or <paramref name="emptyValue"/> if the 
         /// list is empty.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryDequeue<T>(this IList<T> list, T emptyValue)
         {
@@ -274,7 +259,6 @@ namespace HSNXT
         /// <para>
         /// This method uses defered semantics.</para>
         /// </remarks>
-
         [DebuggerStepThrough]
         public static IEnumerable<T> Slice<T>(this IList<T> list, int start)
         {
@@ -299,7 +283,6 @@ namespace HSNXT
         /// <para>
         /// This method uses defered semantics.</para>
         /// </remarks>
-
         [DebuggerStepThrough]
         public static IEnumerable<T> Slice<T>(this IList<T> list, int start, int end /* exclusive */)
         {
@@ -335,7 +318,6 @@ namespace HSNXT
         /// the <see cref="IComparable{T}"/> implemented by each element 
         /// of the list and by the specified object. 
         /// </summary>
-
         public static int BinarySearch<T>(this IList<T> list, T value)
         {
             return list.BinarySearch(0, list.Count, value, null);
@@ -346,7 +328,6 @@ namespace HSNXT
         /// the <see cref="IComparable{T}"/> implemented by each element of 
         /// the list and by the specified value. 
         /// </summary>
-
         public static int BinarySearch<T>(this IList<T> list, int index, int length, T value)
         {
             return list.BinarySearch(index, length, value, null);
@@ -356,28 +337,27 @@ namespace HSNXT
         /// Searches a range of elements in the sorted list for a value, 
         /// using the specified <see cref="IComparer{T}"/> implementation. 
         /// </summary>
-
         public static int BinarySearch<T>(this IList<T> list, int index, int length, T value, IComparer<T> comparer)
         {
             if (list == null) throw new ArgumentNullException("list");
-            
+
             comparer = comparer ?? Comparer<T>.Default;
 
-            var first = index; 
-            var last = (index + length) - 1; 
-            
+            var first = index;
+            var last = (index + length) - 1;
+
             while (first <= last)
             {
-                var middle = first + ((last - first) / 2); 
+                var middle = first + ((last - first) / 2);
                 var comparison = comparer.Compare(list[middle], value);
                 if (comparison == 0)
-                    return middle; 
+                    return middle;
                 if (comparison < 0)
                     first = middle + 1;
-                else             
-                    last = middle - 1; 
-            } 
-            
+                else
+                    last = middle - 1;
+            }
+
             return ~first;
         }
 
@@ -386,7 +366,6 @@ namespace HSNXT
         /// list itself if its <see cref="ICollection{T}.IsReadOnly"/> is 
         /// <c>true</c>.
         /// </summary>
-
         [DebuggerStepThrough]
         public static IList<T> AsReadOnly<T>(this IList<T> list)
         {
@@ -397,7 +376,6 @@ namespace HSNXT
         /// <summary>
         /// Removes and returns the item at a given index of the list.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T PopAt<T>(this IList<T> list, int index)
         {
@@ -412,7 +390,6 @@ namespace HSNXT
         /// list has fewer items then the default value of <typeparamref name="T"/>
         /// is returned instead.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryPopAt<T>(this IList<T> list, int index)
         {
@@ -424,7 +401,6 @@ namespace HSNXT
         /// list has fewer items then a user-supplied value of
         /// <typeparamref name="T"/> is returned instead.
         /// </summary>
-
         [DebuggerStepThrough]
         public static T TryPopAt<T>(this IList<T> list, int index, T emptyValue)
         {

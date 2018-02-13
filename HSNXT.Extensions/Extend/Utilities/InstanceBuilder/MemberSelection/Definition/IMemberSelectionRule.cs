@@ -30,6 +30,6 @@ namespace HSNXT
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
         [PublicAPI]
-        MemberSelectionResult GetSelectionResult( IMemberInformation member );
+        MemberSelectionResult GetSelectionResult(IMemberInformation member);
     }
 }

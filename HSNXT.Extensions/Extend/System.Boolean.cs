@@ -17,11 +17,12 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfFalse( this bool value, [NotNull] Action action, [CanBeNull] Action alternativeAction = null )
+        public static bool IfFalse(this bool value, [NotNull] Action action,
+            [CanBeNull] Action alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( !value )
+            if (!value)
                 action();
             else
                 alternativeAction?.Invoke();
@@ -42,14 +43,15 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfFalse<T>( this bool value, [CanBeNull] T parameter, [NotNull] Action<T> action, [CanBeNull] Action<T> alternativeAction = null )
+        public static bool IfFalse<T>(this bool value, [CanBeNull] T parameter, [NotNull] Action<T> action,
+            [CanBeNull] Action<T> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( !value )
-                action( parameter );
+            if (!value)
+                action(parameter);
             else
-                alternativeAction?.Invoke( parameter );
+                alternativeAction?.Invoke(parameter);
 
             return value;
         }
@@ -69,18 +71,18 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfFalse<T1, T2>( this bool value,
-                                               [CanBeNull] T1 parameter1,
-                                               [CanBeNull] T2 parameter2,
-                                               [NotNull] Action<T1, T2> action,
-                                               [CanBeNull] Action<T1, T2> alternativeAction = null )
+        public static bool IfFalse<T1, T2>(this bool value,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [NotNull] Action<T1, T2> action,
+            [CanBeNull] Action<T1, T2> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( !value )
-                action( parameter1, parameter2 );
+            if (!value)
+                action(parameter1, parameter2);
             else
-                alternativeAction?.Invoke( parameter1, parameter2 );
+                alternativeAction?.Invoke(parameter1, parameter2);
 
             return value;
         }
@@ -102,19 +104,19 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfFalse<T1, T2, T3>( this bool value,
-                                                   [CanBeNull] T1 parameter1,
-                                                   [CanBeNull] T2 parameter2,
-                                                   [CanBeNull] T3 parameter3,
-                                                   [NotNull] Action<T1, T2, T3> action,
-                                                   [CanBeNull] Action<T1, T2, T3> alternativeAction = null )
+        public static bool IfFalse<T1, T2, T3>(this bool value,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [CanBeNull] T3 parameter3,
+            [NotNull] Action<T1, T2, T3> action,
+            [CanBeNull] Action<T1, T2, T3> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( !value )
-                action( parameter1, parameter2, parameter3 );
+            if (!value)
+                action(parameter1, parameter2, parameter3);
             else
-                alternativeAction?.Invoke( parameter1, parameter2, parameter3 );
+                alternativeAction?.Invoke(parameter1, parameter2, parameter3);
 
             return value;
         }
@@ -138,23 +140,24 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfFalse<T1, T2, T3, T4>( this bool value,
-                                                       [CanBeNull] T1 parameter1,
-                                                       [CanBeNull] T2 parameter2,
-                                                       [CanBeNull] T3 parameter3,
-                                                       [CanBeNull] T4 parameter4,
-                                                       [NotNull] Action<T1, T2, T3, T4> action,
-                                                       [CanBeNull] Action<T1, T2, T3, T4> alternativeAction = null )
+        public static bool IfFalse<T1, T2, T3, T4>(this bool value,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [CanBeNull] T3 parameter3,
+            [CanBeNull] T4 parameter4,
+            [NotNull] Action<T1, T2, T3, T4> action,
+            [CanBeNull] Action<T1, T2, T3, T4> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( value )
-                alternativeAction?.Invoke( parameter1, parameter2, parameter3, parameter4 );
+            if (value)
+                alternativeAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
             else
-                action( parameter1, parameter2, parameter3, parameter4 );
+                action(parameter1, parameter2, parameter3, parameter4);
 
             return value;
         }
+
         /// <summary>
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
@@ -166,11 +169,11 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfTrue( this bool value, [NotNull] Action action, [CanBeNull] Action alternativeAction = null )
+        public static bool IfTrue(this bool value, [NotNull] Action action, [CanBeNull] Action alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( value )
+            if (value)
                 action();
             else
                 alternativeAction?.Invoke();
@@ -191,17 +194,17 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfTrue<T>( this bool value,
-                                         [CanBeNull] T parameter,
-                                         [NotNull] Action<T> action,
-                                         [CanBeNull] Action<T> alternativeAction = null )
+        public static bool IfTrue<T>(this bool value,
+            [CanBeNull] T parameter,
+            [NotNull] Action<T> action,
+            [CanBeNull] Action<T> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( value )
-                action( parameter );
+            if (value)
+                action(parameter);
             else
-                alternativeAction?.Invoke( parameter );
+                alternativeAction?.Invoke(parameter);
 
             return value;
         }
@@ -221,18 +224,18 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfTrue<T1, T2>( this bool value,
-                                              [CanBeNull] T1 parameter1,
-                                              [CanBeNull] T2 parameter2,
-                                              [NotNull] Action<T1, T2> action,
-                                              [CanBeNull] Action<T1, T2> alternativeAction = null )
+        public static bool IfTrue<T1, T2>(this bool value,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [NotNull] Action<T1, T2> action,
+            [CanBeNull] Action<T1, T2> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( value )
-                action( parameter1, parameter2 );
+            if (value)
+                action(parameter1, parameter2);
             else
-                alternativeAction?.Invoke( parameter1, parameter2 );
+                alternativeAction?.Invoke(parameter1, parameter2);
 
             return value;
         }
@@ -254,19 +257,19 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfTrue<T1, T2, T3>( this bool value,
-                                                  [CanBeNull] T1 parameter1,
-                                                  [CanBeNull] T2 parameter2,
-                                                  [CanBeNull] T3 parameter3,
-                                                  [NotNull] Action<T1, T2, T3> action,
-                                                  [CanBeNull] Action<T1, T2, T3> alternativeAction = null )
+        public static bool IfTrue<T1, T2, T3>(this bool value,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [CanBeNull] T3 parameter3,
+            [NotNull] Action<T1, T2, T3> action,
+            [CanBeNull] Action<T1, T2, T3> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( value )
-                action( parameter1, parameter2, parameter3 );
+            if (value)
+                action(parameter1, parameter2, parameter3);
             else
-                alternativeAction?.Invoke( parameter1, parameter2, parameter3 );
+                alternativeAction?.Invoke(parameter1, parameter2, parameter3);
 
             return value;
         }
@@ -290,23 +293,24 @@ namespace HSNXT
         /// <returns>Returns the given boolean value.</returns>
         [PublicAPI]
         [Pure]
-        public static bool IfTrue<T1, T2, T3, T4>( this bool value,
-                                                      [CanBeNull] T1 parameter1,
-                                                      [CanBeNull] T2 parameter2,
-                                                      [CanBeNull] T3 parameter3,
-                                                      [CanBeNull] T4 parameter4,
-                                                      [NotNull] Action<T1, T2, T3, T4> action,
-                                                      [CanBeNull] Action<T1, T2, T3, T4> alternativeAction = null )
+        public static bool IfTrue<T1, T2, T3, T4>(this bool value,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [CanBeNull] T3 parameter3,
+            [CanBeNull] T4 parameter4,
+            [NotNull] Action<T1, T2, T3, T4> action,
+            [CanBeNull] Action<T1, T2, T3, T4> alternativeAction = null)
         {
-            action.ThrowIfNull( nameof(action) );
+            action.ThrowIfNull(nameof(action));
 
-            if ( value )
-                action( parameter1, parameter2, parameter3, parameter4 );
+            if (value)
+                action(parameter1, parameter2, parameter3, parameter4);
             else
-                alternativeAction?.Invoke( parameter1, parameter2, parameter3, parameter4 );
+                alternativeAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
 
             return value;
         }
+
         /// <summary>
         ///     Returns the true or false value based on the given Boolean value.
         /// </summary>
@@ -317,7 +321,7 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static T SelectValue<T>( this bool value, [CanBeNull] T trueValue, [CanBeNull] T falseValue )
+        public static T SelectValue<T>(this bool value, [CanBeNull] T trueValue, [CanBeNull] T falseValue)
             => value ? trueValue : falseValue;
     }
 }

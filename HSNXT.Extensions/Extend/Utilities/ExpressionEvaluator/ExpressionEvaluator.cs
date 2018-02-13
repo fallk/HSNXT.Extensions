@@ -24,23 +24,24 @@ namespace HSNXT
         /// <summary>
         ///     The characters used to separate expressions.
         /// </summary>
-        private static readonly char[] ExpressionPartSeparator = { '.' };
+        private static readonly char[] ExpressionPartSeparator = {'.'};
 
         /// <summary>
         ///     Characters used to mark the end of an index.
         /// </summary>
-        private static readonly char[] IndexExprEndChars = { ']', ')' };
+        private static readonly char[] IndexExprEndChars = {']', ')'};
 
         /// <summary>
         ///     Characters used to mark the start of an index.
         /// </summary>
-        private static readonly char[] IndexExprStartChars = { '[', '(' };
+        private static readonly char[] IndexExprStartChars = {'[', '('};
 
         /// <summary>
         ///     Gets or sets the cached property descriptors.
         /// </summary>
         /// <value>The cached property descriptors.</value>
-        private static readonly ConcurrentDictionary<Type, List<PropertyInfo>> PropertyCache = new ConcurrentDictionary<Type, List<PropertyInfo>>();
+        private static readonly ConcurrentDictionary<Type, List<PropertyInfo>> PropertyCache =
+            new ConcurrentDictionary<Type, List<PropertyInfo>>();
 
         #endregion
 
@@ -57,7 +58,7 @@ namespace HSNXT
             set
             {
                 _enableCaching = value;
-                if ( !value )
+                if (!value)
                     PropertyCache.Clear();
             }
         }
@@ -74,16 +75,16 @@ namespace HSNXT
         /// <param name="expression">An expression matching a property name.</param>
         /// <param name="source">The source object.</param>
         /// <returns>Returns the value represented by the specified expression.</returns>
-        public static object GetValue( string expression, object source )
+        public static object GetValue(string expression, object source)
         {
-            if ( source == null )
+            if (source == null)
                 return null;
 
-            if ( expression.IsEmpty() )
-                throw new ArgumentNullException( nameof(expression), $"{nameof(expression)} can not be null." );
+            if (expression.IsEmpty())
+                throw new ArgumentNullException(nameof(expression), $"{nameof(expression)} can not be null.");
 
             // Evaluate the expression
-            return Evaluate( source, expression.Split( ExpressionPartSeparator ) );
+            return Evaluate(source, expression.Split(ExpressionPartSeparator));
         }
 
         #endregion
@@ -97,21 +98,21 @@ namespace HSNXT
         /// <param name="source">The source object.</param>
         /// <param name="expressionParts">The expression parts to evaluate.</param>
         /// <returns>Returns the value represented by the specified expression.</returns>
-        private static object Evaluate( object source, IList<string> expressionParts )
+        private static object Evaluate(object source, IList<string> expressionParts)
         {
             object value;
             int i;
 
             // Iterate through all expression parts
-            for ( value = source, i = 0; i < expressionParts.Count && value != null; i++ )
+            for (value = source, i = 0; i < expressionParts.Count && value != null; i++)
             {
                 var expression = expressionParts[i];
-                var indexExpression = expression.IndexOfAny( IndexExprStartChars ) >= 0;
+                var indexExpression = expression.IndexOfAny(IndexExprStartChars) >= 0;
 
                 // Get the value represented by the current expression
                 value = indexExpression == false
-                    ? GetPropertyValue( value, expression )
-                    : GetIndexedPropertyValue( value, expression );
+                    ? GetPropertyValue(value, expression)
+                    : GetIndexedPropertyValue(value, expression);
             }
 
             return value;
@@ -124,19 +125,20 @@ namespace HSNXT
         /// <param name="source">The source object.</param>
         /// <param name="propertyName">Returns the property name.</param>
         /// <returns>Returns the value of the property with the given name.</returns>
-        private static object GetPropertyValue( object source, string propertyName )
+        private static object GetPropertyValue(object source, string propertyName)
         {
             object property;
 
             // Find the matching property information
-            var propertyInfo = GetPropertiesFromCache( source )
-                .Find( x => x.Name.CompareOrdinalIgnoreCase( propertyName ) );
+            var propertyInfo = GetPropertiesFromCache(source)
+                .Find(x => x.Name.CompareOrdinalIgnoreCase(propertyName));
 
             // Get the value of the property
-            if ( propertyInfo != null )
-                property = propertyInfo.GetValueWithoutIndex( source );
+            if (propertyInfo != null)
+                property = propertyInfo.GetValueWithoutIndex(source);
             else
-                throw new ArgumentException( $"Could not find a property with name '{propertyName}'.", nameof(propertyInfo) );
+                throw new ArgumentException($"Could not find a property with name '{propertyName}'.",
+                    nameof(propertyInfo));
 
             return property;
         }
@@ -148,41 +150,42 @@ namespace HSNXT
         /// <param name="source">The source object.</param>
         /// <param name="expression">The expression to evaluate.</param>
         /// <returns>Returns the value of the property represented by the given expression.</returns>
-        private static object GetIndexedPropertyValue( object source, string expression )
+        private static object GetIndexedPropertyValue(object source, string expression)
         {
             object propertyValue;
             var intIndex = false;
 
             // Get the index expression and validate it
-            var indexExpressionStart = expression.IndexOfAny( IndexExprStartChars );
-            var indexExpressionEnd = expression.IndexOfAny( IndexExprEndChars, indexExpressionStart + 1 );
-            if ( indexExpressionStart < 0 || indexExpressionEnd < 0 || indexExpressionEnd == indexExpressionStart + 1 )
-                throw new ArgumentException( $"Invalid index in expression '{expression}'." );
+            var indexExpressionStart = expression.IndexOfAny(IndexExprStartChars);
+            var indexExpressionEnd = expression.IndexOfAny(IndexExprEndChars, indexExpressionStart + 1);
+            if (indexExpressionStart < 0 || indexExpressionEnd < 0 || indexExpressionEnd == indexExpressionStart + 1)
+                throw new ArgumentException($"Invalid index in expression '{expression}'.");
 
             // Get the index
-            var index = expression.Substring( indexExpressionStart + 1, indexExpressionEnd - indexExpressionStart - 1 )
-                                  .Trim();
+            var index = expression.Substring(indexExpressionStart + 1, indexExpressionEnd - indexExpressionStart - 1)
+                .Trim();
 
             // Can be nameless if the expression only contains an index expression and no property name (valid in case source is a collection)
             string propertyName = null;
-            if ( indexExpressionStart != 0 )
-                propertyName = expression.Substring( 0, indexExpressionStart );
+            if (indexExpressionStart != 0)
+                propertyName = expression.Substring(0, indexExpressionStart);
 
             // Get the index value (the value can be a int or a string)
             object indexValue = null;
             var parsedIndex = -1;
-            if ( index.Length != 0 )
-                if ( index[0] == '"' && index[index.Length - 1] == '"' || index[0] == '\'' && index[index.Length - 1] == '\'' )
+            if (index.Length != 0)
+                if (index[0] == '"' && index[index.Length - 1] == '"' ||
+                    index[0] == '\'' && index[index.Length - 1] == '\'')
                     // Must be a string value => remove the quotes
-                    indexValue = index.Substring( 1, index.Length - 2 );
+                    indexValue = index.Substring(1, index.Length - 2);
                 else
                 {
                     // Check if is int or not
-                    if ( char.IsDigit( index[0] ) )
+                    if (char.IsDigit(index[0]))
                     {
                         // Treat it as a number
-                        intIndex = index.TryParsInt32( out parsedIndex );
-                        if ( intIndex )
+                        intIndex = index.TryParsInt32(out parsedIndex);
+                        if (intIndex)
                             indexValue = parsedIndex;
                         else
                             indexValue = index;
@@ -194,26 +197,27 @@ namespace HSNXT
 
             // Get the collection of which we should access the index
             var collectionProperty = propertyName.IsNotEmpty()
-                ? GetPropertyValue( source, propertyName )
+                ? GetPropertyValue(source, propertyName)
                 : source;
 
             // Check if we are working with an array or a list
             IList listProperty;
-            if ( collectionProperty is Array arrayProperty && intIndex )
-                propertyValue = arrayProperty.GetValue( parsedIndex );
-            else if ( ( listProperty = collectionProperty as IList ) != null && intIndex )
+            if (collectionProperty is Array arrayProperty && intIndex)
+                propertyValue = arrayProperty.GetValue(parsedIndex);
+            else if ((listProperty = collectionProperty as IList) != null && intIndex)
                 propertyValue = listProperty[(int) indexValue];
             else
             {
                 // Get the Item property
                 var propertyInfo = collectionProperty.GetType()
-                                                     .GetRuntimeProperty( "Item" );
+                    .GetRuntimeProperty("Item");
 
                 // Get the value from the property
-                if ( propertyInfo != null )
-                    propertyValue = propertyInfo.GetValue( collectionProperty, new[] { indexValue } );
+                if (propertyInfo != null)
+                    propertyValue = propertyInfo.GetValue(collectionProperty, new[] {indexValue});
                 else
-                    throw new ArgumentException( $"Unable to access index represented by '{expression}', could not find a 'Item' method." );
+                    throw new ArgumentException(
+                        $"Unable to access index represented by '{expression}', could not find a 'Item' method.");
             }
 
             return propertyValue;
@@ -227,24 +231,24 @@ namespace HSNXT
         /// </remarks>
         /// <param name="source">The object.</param>
         /// <returns>Returns the properties of the given object.</returns>
-        private static List<PropertyInfo> GetPropertiesFromCache( object source )
+        private static List<PropertyInfo> GetPropertiesFromCache(object source)
         {
             var containerType = source.GetType();
 
             // Check if we should cache the properties or not
-            if ( !EnableCaching )
+            if (!EnableCaching)
                 return containerType
                     .GetPublicProperties()
                     .ToList();
 
-            if ( PropertyCache.TryGetValue( containerType, out var properties ) )
+            if (PropertyCache.TryGetValue(containerType, out var properties))
                 return properties;
 
             properties = containerType.GetPublicProperties()
-                                      .ToList();
+                .ToList();
 
             // Update the cache
-            PropertyCache.TryAdd( containerType, properties );
+            PropertyCache.TryAdd(containerType, properties);
 
             return properties;
         }

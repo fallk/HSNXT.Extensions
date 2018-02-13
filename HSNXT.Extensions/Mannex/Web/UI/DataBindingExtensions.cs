@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,9 +31,10 @@ namespace HSNXT
     using System.Diagnostics;
     using System.Globalization;
     using System.Web;
-    #if NetFX
+#if NetFX
     using System.Web.UI;
-    #endif
+
+#endif
 
     #endregion
 
@@ -39,7 +42,6 @@ namespace HSNXT
     /// Provides data expression evaluation facilites similar to 
     /// <see cref="DataBinder"/> in ASP.NET.
     /// </summary>
-
     public static partial class Extensions
     {
 #if NetFX
@@ -56,7 +58,6 @@ namespace HSNXT
         /// In addition to <see cref="DataBinder.Eval(object,string)"/>, this
         /// method converts <see cref="DBNull"/> values to a null reference.</para>
         /// </remarks>
-
         public static T DataBind<T>(this object obj, string expression)
         {
             if (obj == null) throw new ArgumentNullException("obj");
@@ -81,7 +82,6 @@ namespace HSNXT
         /// In addition to <see cref="DataBinder.Eval(object,string)"/>, this
         /// method converts <see cref="DBNull"/> values to a null reference.</para>
         /// </remarks>
-
         public static object DataBind(this object obj, string expression)
         {
             if (obj == null) throw new ArgumentNullException("obj");
@@ -98,7 +98,7 @@ namespace HSNXT
             return Convert.IsDBNull(value) ? null : value;
         }
 #endif
-        
+
 #if NetFX
         static string FormatTokenBinder(string token, object[] args, IFormatProvider provider)
         {
@@ -107,7 +107,8 @@ namespace HSNXT
             var source = args[0];
             var dotIndex = token.IndexOf('.');
             int sourceIndex;
-            if (dotIndex > 0 && int.TryParse(token.Substring(0, dotIndex), NumberStyles.None, CultureInfo.InvariantCulture, out sourceIndex))
+            if (dotIndex > 0 && int.TryParse(token.Substring(0, dotIndex), NumberStyles.None,
+                    CultureInfo.InvariantCulture, out sourceIndex))
             {
                 source = args[sourceIndex];
                 token = token.Substring(dotIndex + 1);
@@ -140,8 +141,8 @@ namespace HSNXT
             }
 
             return !string.IsNullOrEmpty(format)
-                 ? string.Format(provider, format, result)
-                 : result.ToString();
+                ? string.Format(provider, format, result)
+                : result.ToString();
         }
 #endif
     }

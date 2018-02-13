@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,13 +35,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IServiceContainer"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Adds the specified service to the service container.
         /// </summary>
-
         public static void AddService<T>(this IServiceContainer container, T service)
         {
             if (container == null) throw new ArgumentNullException("container");

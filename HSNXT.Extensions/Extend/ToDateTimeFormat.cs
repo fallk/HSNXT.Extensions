@@ -17,11 +17,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToFullDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToFullDateTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "F", formatInfo );
+            return dateTime.ToString("F", formatInfo);
         }
 
         /// <summary>
@@ -34,11 +34,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToLongDateShortTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToLongDateShortTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "f", formatInfo );
+            return dateTime.ToString("f", formatInfo);
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToLongDateString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToLongDateString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "D", formatInfo );
+            return dateTime.ToString("D", formatInfo);
         }
 
         /// <summary>
@@ -68,11 +68,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToLongTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToLongTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "T", formatInfo );
+            return dateTime.ToString("T", formatInfo);
         }
 
         /// <summary>
@@ -85,11 +85,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToMonthDayString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToMonthDayString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "m", formatInfo );
+            return dateTime.ToString("m", formatInfo);
         }
 
         /// <summary>
@@ -100,8 +100,8 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToMonthString( this DateTime dateTime )
-            => dateTime.ToString( "MMMM", DateTimeFormatInfo.CurrentInfo );
+        public static string ToMonthString(this DateTime dateTime)
+            => dateTime.ToString("MMMM", DateTimeFormatInfo.CurrentInfo);
 
         /// <summary>
         ///     Converts the DateTime value to a month string.
@@ -113,11 +113,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToMonthString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToMonthString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "MMMM", formatInfo );
+            return dateTime.ToString("MMMM", formatInfo);
         }
 
         /// <summary>
@@ -130,11 +130,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToMonthString( this DateTime dateTime, [NotNull] CultureInfo culture )
+        public static string ToMonthString(this DateTime dateTime, [NotNull] CultureInfo culture)
         {
-            culture.ThrowIfNull( nameof(culture) );
+            culture.ThrowIfNull(nameof(culture));
 
-            return dateTime.ToString( "MMMM", culture );
+            return dateTime.ToString("MMMM", culture);
         }
 
         /// <summary>
@@ -147,11 +147,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToShortDateLongTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToShortDateLongTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "G", formatInfo );
+            return dateTime.ToString("G", formatInfo);
         }
 
         /// <summary>
@@ -164,12 +164,12 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToShortDateString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToShortDateString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            dateTime.ThrowIfNull( nameof(dateTime) );
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            dateTime.ThrowIfNull(nameof(dateTime));
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "d", formatInfo );
+            return dateTime.ToString("d", formatInfo);
         }
 
         /// <summary>
@@ -182,11 +182,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToShortDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToShortDateTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "g", formatInfo );
+            return dateTime.ToString("g", formatInfo);
         }
 
         /// <summary>
@@ -199,11 +199,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToShortTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToShortTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "t", formatInfo );
+            return dateTime.ToString("t", formatInfo);
         }
 
         /// <summary>
@@ -216,11 +216,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToSortableDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToSortableDateTimeString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "s", formatInfo );
+            return dateTime.ToString("s", formatInfo);
         }
 
         /// <summary>
@@ -233,11 +233,12 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToUniversalSortableDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToUniversalSortableDateTimeString(this DateTime dateTime,
+            [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "u", formatInfo );
+            return dateTime.ToString("u", formatInfo);
         }
 
         /// <summary>
@@ -250,11 +251,12 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToUniversalSortableLongDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToUniversalSortableLongDateTimeString(this DateTime dateTime,
+            [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "U", formatInfo );
+            return dateTime.ToString("U", formatInfo);
         }
 
         /// <summary>
@@ -267,11 +269,11 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [NotNull]
-        public static string ToYearMonthString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
+        public static string ToYearMonthString(this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo)
         {
-            formatInfo.ThrowIfNull( nameof(formatInfo) );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
-            return dateTime.ToString( "y", formatInfo );
+            return dateTime.ToString("y", formatInfo);
         }
     }
 }

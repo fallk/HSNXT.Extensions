@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 #if NET4
@@ -39,7 +41,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="TimeSpan"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -47,7 +48,6 @@ namespace HSNXT
         /// separate formats, one for zero and positive values and another
         /// for negative values.
         /// </summary>
-
         [DebuggerStepThrough]
         public static string ToString(this TimeSpan span,
             string format,
@@ -61,7 +61,6 @@ namespace HSNXT
         /// separate formats, one for zero and positive values and another
         /// for negative values, and culture-specific formatting information.
         /// </summary>
-
         [DebuggerStepThrough]
         public static string ToString(this TimeSpan span,
             string format,
@@ -75,7 +74,6 @@ namespace HSNXT
         /// Converts the object to a string representation defined by
         /// separate formats for positive and negative values and zero.
         /// </summary>
-
         [DebuggerStepThrough]
         public static string ToString(this TimeSpan span,
             string positiveFormat,
@@ -91,7 +89,6 @@ namespace HSNXT
         /// additional parameter supplies culture-specific formatting
         /// information.
         /// </summary>
-
         [DebuggerStepThrough]
         public static string ToString(this TimeSpan span,
             string positiveFormat,
@@ -99,10 +96,10 @@ namespace HSNXT
             string zeroFormat,
             IFormatProvider formatProvider)
         {
-            return span.ToString(  span < TimeSpan.Zero ? negativeFormat
-                                 : span > TimeSpan.Zero ? positiveFormat
-                                 : zeroFormat,
-                                 formatProvider);
+            return span.ToString(span < TimeSpan.Zero ? negativeFormat
+                : span > TimeSpan.Zero ? positiveFormat
+                : zeroFormat,
+                formatProvider);
         }
     }
 }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -28,13 +30,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="ICloneable"/> objects.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates a new object that is a copy of the current instance.
         /// </summary>
-
         public static T CloneObject<T>(this T source) where T : class, ICloneable
         {
             if (source == null) throw new ArgumentNullException("source");

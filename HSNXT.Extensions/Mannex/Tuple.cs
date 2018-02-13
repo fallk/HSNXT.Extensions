@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -30,12 +32,11 @@ namespace HSNXT
 
     #endregion
 
-    #if NET4
+#if NET4
 
     /// <summary>
     /// Extension methods for <see cref="Tuple"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -43,7 +44,6 @@ namespace HSNXT
         /// whose elements are the items of a given <see cref="Tuple{T}" />.
         /// </summary>
         /// <typeparam name="T">The type of the tuple's only component.</typeparam>
-
         public static IEnumerable<T> AsEnumerable<T>(this Tuple<T> tuple)
         {
             if (tuple == null) throw new ArgumentNullException("tuple");
@@ -68,8 +68,7 @@ namespace HSNXT
             if (selector == null) throw new ArgumentNullException("selector");
             return selector(tuple.Item1);
         }
-
     }
-    
-    #endif // NET4
+
+#endif // NET4
 }

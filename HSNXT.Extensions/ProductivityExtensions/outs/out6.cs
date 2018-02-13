@@ -49,7 +49,6 @@ using System.IO.MemoryMappedFiles;
 using System.Threading.Tasks;
 using Microsoft.SqlServer.Server;
 using System.Collections.ObjectModel;
-
 #if NetFX
 using System.Windows.Forms;
 using System.Runtime.Remoting.Messaging;
@@ -57,6 +56,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms.Layout;
+
 #endif
 
 namespace HSNXT
@@ -146,7 +146,7 @@ namespace HSNXT
                     Directory.SetCurrentDirectory(Path.GetDirectoryName(f));
                     loadFrom = Assembly.Load(new AssemblyName(Path.GetFileNameWithoutExtension(f)));
 #elif (!NETSTANDARD1_0 && ! NETSTANDARD1_1 && !NETSTANDARD1_2)
-					loadFrom = Assembly.LoadFrom(f);
+                    loadFrom = Assembly.LoadFrom(f);
 #endif
                 }
                 catch (BadImageFormatException)
@@ -547,200 +547,207 @@ namespace HSNXT
         }
 
 #if (NET47)
-/// <summary>
-/// 
-/// </summary>
-/// <param name="udpClient"></param>
-/// <param name="dgram"></param>
-/// <param name="endPoint"></param>
-/// <returns></returns>
-		public static int Send(this UdpClient udpClient, byte[] dgram, IPEndPoint endPoint)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.Send(dgram, dgram.Length, endPoint);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="dgram"></param>
+        /// <param name="endPoint"></param>
+        /// <returns></returns>
+        public static int Send(this UdpClient udpClient, byte[] dgram, IPEndPoint endPoint)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.Send(dgram, dgram.Length, endPoint);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="dgram"></param>
-		/// <returns></returns>
-		public static int Send(this UdpClient udpClient, byte[] dgram)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.Send(dgram, dgram.Length);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="dgram"></param>
+        /// <returns></returns>
+        public static int Send(this UdpClient udpClient, byte[] dgram)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.Send(dgram, dgram.Length);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="dgram"></param>
-		/// <param name="hostname"></param>
-		/// <param name="port"></param>
-		/// <returns></returns>
-		public static int Send(this UdpClient udpClient, byte[] dgram, string hostname, int port)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.Send(dgram, dgram.Length, hostname, port);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="dgram"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <returns></returns>
+        public static int Send(this UdpClient udpClient, byte[] dgram, string hostname, int port)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.Send(dgram, dgram.Length, hostname, port);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="hostname"></param>
-		/// <param name="port"></param>
-		/// <param name="asyncCallback"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, string hostname, int port, AsyncCallback asyncCallback)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, datagram.Length, hostname, port, asyncCallback, null);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <param name="asyncCallback"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, string hostname, int port,
+            AsyncCallback asyncCallback)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, datagram.Length, hostname, port, asyncCallback, null);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="hostname"></param>
-		/// <param name="port"></param>
-		/// <param name="asyncCallback"></param>
-		/// <param name="state"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, string hostname, int port, AsyncCallback asyncCallback, object state)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, datagram.Length, hostname, port, asyncCallback, state);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <param name="asyncCallback"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, string hostname, int port,
+            AsyncCallback asyncCallback, object state)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, datagram.Length, hostname, port, asyncCallback, state);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="bytes"></param>
-		/// <param name="hostname"></param>
-		/// <param name="port"></param>
-		/// <param name="asyncCallback"></param>
-		/// <param name="state"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, int bytes, string hostname, int port, AsyncCallback asyncCallback, object state)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, bytes, hostname, port, asyncCallback, state);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="bytes"></param>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <param name="asyncCallback"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, int bytes, string hostname,
+            int port, AsyncCallback asyncCallback, object state)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, bytes, hostname, port, asyncCallback, state);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="asyncCallback"></param>
-		/// <param name="state"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, AsyncCallback asyncCallback, object state)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, datagram.Length, asyncCallback, state);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="asyncCallback"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, AsyncCallback asyncCallback,
+            object state)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, datagram.Length, asyncCallback, state);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="bytes"></param>
-		/// <param name="asyncCallback"></param>
-		/// <param name="state"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, int bytes, AsyncCallback asyncCallback, object state)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, bytes, asyncCallback, state);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="bytes"></param>
+        /// <param name="asyncCallback"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, int bytes,
+            AsyncCallback asyncCallback, object state)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, bytes, asyncCallback, state);
+        }
 
 #pragma warning disable CS1572 // XML comment has a param tag for 'bytes', but there is no parameter by that name
 #pragma warning disable CS1573 // Parameter 'endPoint' has no matching param tag in the XML comment for 'UdpClientable.BeginSend(UdpClient, byte[], IPEndPoint, AsyncCallback)' (but other parameters do)
 #pragma warning disable CS1572 // XML comment has a param tag for 'state', but there is no parameter by that name
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="bytes"></param>
-		/// <param name="asyncCallback"></param>
-		/// <param name="state"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, IPEndPoint endPoint, AsyncCallback asyncCallback)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="bytes"></param>
+        /// <param name="asyncCallback"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, IPEndPoint endPoint,
+            AsyncCallback asyncCallback)
 #pragma warning restore CS1572 // XML comment has a param tag for 'state', but there is no parameter by that name
 #pragma warning restore CS1573 // Parameter 'endPoint' has no matching param tag in the XML comment for 'UdpClientable.BeginSend(UdpClient, byte[], IPEndPoint, AsyncCallback)' (but other parameters do)
 #pragma warning restore CS1572 // XML comment has a param tag for 'bytes', but there is no parameter by that name
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, datagram.Length, endPoint, asyncCallback, null);
-		}
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, datagram.Length, endPoint, asyncCallback, null);
+        }
 
 #pragma warning disable CS1572 // XML comment has a param tag for 'bytes', but there is no parameter by that name
 #pragma warning disable CS1573 // Parameter 'endPoint' has no matching param tag in the XML comment for 'UdpClientable.BeginSend(UdpClient, byte[], IPEndPoint, AsyncCallback, object)' (but other parameters do)
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="bytes"></param>
-		/// <param name="asyncCallback"></param>
-		/// <param name="state"></param>
-		/// <returns></returns>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, IPEndPoint endPoint, AsyncCallback asyncCallback, object state)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="bytes"></param>
+        /// <param name="asyncCallback"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, IPEndPoint endPoint,
+            AsyncCallback asyncCallback, object state)
 #pragma warning restore CS1573 // Parameter 'endPoint' has no matching param tag in the XML comment for 'UdpClientable.BeginSend(UdpClient, byte[], IPEndPoint, AsyncCallback, object)' (but other parameters do)
 #pragma warning restore CS1572 // XML comment has a param tag for 'bytes', but there is no parameter by that name
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, datagram.Length, endPoint, asyncCallback, state);
-		}
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, datagram.Length, endPoint, asyncCallback, state);
+        }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="udpClient"></param>
-		/// <param name="datagram"></param>
-		/// <param name="asyncCallback"></param>
-		/// <returns></returns>
-		/// <exception cref="ArgumentNullException"></exception>
-		public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, AsyncCallback asyncCallback)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.BeginSend(datagram, datagram.Length, asyncCallback);
-		}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="udpClient"></param>
+        /// <param name="datagram"></param>
+        /// <param name="asyncCallback"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static IAsyncResult BeginSend(this UdpClient udpClient, byte[] datagram, AsyncCallback asyncCallback)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.BeginSend(datagram, datagram.Length, asyncCallback);
+        }
 #if (NET47)
-		public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.SendAsync(datagram, datagram.Length);
-		}
+        public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.SendAsync(datagram, datagram.Length);
+        }
 
-		public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram, IPEndPoint endPoint)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.SendAsync(datagram, datagram.Length, endPoint);
-		}
+        public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram, IPEndPoint endPoint)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.SendAsync(datagram, datagram.Length, endPoint);
+        }
 
-		public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram, string hostname, int port)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			return udpClient.SendAsync(datagram, datagram.Length, hostname, port);
-		}
+        public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram, string hostname, int port)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            return udpClient.SendAsync(datagram, datagram.Length, hostname, port);
+        }
 
-		public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram, DnsEndPoint dnsEndPoint)
-		{
-			if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
-			if (dnsEndPoint == null) throw new ArgumentNullException(nameof(dnsEndPoint));
-			return udpClient.SendAsync(datagram, datagram.Length, dnsEndPoint.Host, dnsEndPoint.Port);
-		}
+        public static Task<int> SendAsync(this UdpClient udpClient, byte[] datagram, DnsEndPoint dnsEndPoint)
+        {
+            if (udpClient == null) throw new ArgumentNullException(nameof(udpClient));
+            if (dnsEndPoint == null) throw new ArgumentNullException(nameof(dnsEndPoint));
+            return udpClient.SendAsync(datagram, datagram.Length, dnsEndPoint.Host, dnsEndPoint.Port);
+        }
 #endif
 #endif
 #if (NETSTANDARD2_0 || NET47)

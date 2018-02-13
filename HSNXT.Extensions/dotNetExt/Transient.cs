@@ -13,7 +13,7 @@ namespace HSNXT
         const int defaultRetryCount = 2;
 
         #region Retry
-        
+
         /// <summary>
         /// Execute the specified Action and retry (up to 2 times) if an Exception is encountered.
         /// </summary>
@@ -55,7 +55,7 @@ namespace HSNXT
         public static void Retry<TException>(int maxRetryCount, Action codeBlockToTry,
             Func<TException, int, bool> catchExceptionBeforeRetry = null,
             Action<TException, int> catchExceptionAfterFinalRetryAttempt = null
-            )
+        )
             where TException : Exception
         {
             codeBlockToTry.RequireArgument("codeBlockToTry").NotNull();
@@ -68,9 +68,10 @@ namespace HSNXT
             }
             catch (TException ex)
             {
-                if (retryCount < maxRetryCount){
+                if (retryCount < maxRetryCount)
+                {
                     retryCount++;
-                    
+
                     var shouldRetry = true;
                     if (catchExceptionBeforeRetry != null)
                     {
@@ -108,9 +109,10 @@ namespace HSNXT
             SqlRetry(maxRetryCount, codeBlockToTry, null);
         }
 
-        public static void SqlRetry(int maxRetryCount, Action codeBlockToTry, Func<SqlException, int, bool> catchExceptionBeforeRetry,
+        public static void SqlRetry(int maxRetryCount, Action codeBlockToTry,
+            Func<SqlException, int, bool> catchExceptionBeforeRetry,
             Action<SqlException, int> catchExceptionAfterFinalRetryAttempt = null
-            )
+        )
         {
             Retry<SqlException>(maxRetryCount, codeBlockToTry,
                 (ex, i) => // Before Retry
@@ -124,6 +126,7 @@ namespace HSNXT
                     {
                         retry = IsSqlTransientException(ex);
                     }
+
                     return retry;
                 },
                 (ex, i) => // After final Retry
@@ -139,17 +142,22 @@ namespace HSNXT
         {
             switch (ex.Number)
             {
-                case -2:    // Timeout Expired. The timeout period elapsed prior to completion of the operation or the server is not responding
-                case 20:    // The instance of SQL Server you attempted to connect to does not support encryption
-                case 64:    // A connection was successfully established with the server, but then an error occurred during the login process
-                case 233:   // The client was unable to establish a connection because of an error during connection initialization process before login
+                case -2
+                    : // Timeout Expired. The timeout period elapsed prior to completion of the operation or the server is not responding
+                case 20: // The instance of SQL Server you attempted to connect to does not support encryption
+                case 64
+                    : // A connection was successfully established with the server, but then an error occurred during the login process
+                case 233
+                    : // The client was unable to establish a connection because of an error during connection initialization process before login
                 case 10053: // A transport-level error has occurred when receiving results from the server
                 case 10054: // A transport-level error has occurred when sending the request to the server.
-                case 10060: // A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible
+                case 10060
+                    : // A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible
                 case 40143: // The service has encountered an error processing your request. Please try again.
                 case 40197: // The service has encountered an error processing your request. Please try again.
                 case 40501: // The service is currently busy. Retry the request after 10 seconds.
-                case 40613: // Database '%.*ls' on server '%.*ls' is not currently available. Please retry the connection later.
+                case 40613
+                    : // Database '%.*ls' on server '%.*ls' is not currently available. Please retry the connection later.
 
                     return true;
 

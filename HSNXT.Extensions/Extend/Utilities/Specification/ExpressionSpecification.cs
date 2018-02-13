@@ -33,9 +33,9 @@ namespace HSNXT
         /// <exception cref="ArgumentNullException">expression can not be null.</exception>
         /// <param name="expression">The validation expression.</param>
         /// <param name="message">The validation error message.</param>
-        public ExpressionSpecification( [NotNull] Func<T, bool> expression, [CanBeNull] string message = null )
+        public ExpressionSpecification([NotNull] Func<T, bool> expression, [CanBeNull] string message = null)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
             _expression = expression;
             _message = message;
@@ -51,8 +51,8 @@ namespace HSNXT
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
         [PublicAPI]
-        public override bool IsSatisfiedBy( T obj )
-            => _expression( obj );
+        public override bool IsSatisfiedBy(T obj)
+            => _expression(obj);
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.
@@ -60,13 +60,13 @@ namespace HSNXT
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
         [PublicAPI]
-        public override IEnumerable<string> IsSatisfiedByWithMessages( T obj )
+        public override IEnumerable<string> IsSatisfiedByWithMessages(T obj)
         {
-            var result = _expression( obj );
-            if ( result )
+            var result = _expression(obj);
+            if (result)
                 return new string[0];
 
-            return new List<string> { _message };
+            return new List<string> {_message};
         }
 
         #endregion

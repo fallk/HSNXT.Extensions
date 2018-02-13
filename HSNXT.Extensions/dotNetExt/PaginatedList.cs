@@ -22,7 +22,7 @@ namespace HSNXT.dotNetExt
             this.PageIndex = pageIndex;
             this.PageSize = pageSize;
             this.TotalCount = source.Count();
-            this.TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
+            this.TotalPages = (int) Math.Ceiling(TotalCount / (double) PageSize);
 
             this.AddRange(source.Skip(PageIndex * PageSize).Take(PageSize));
         }
@@ -32,25 +32,19 @@ namespace HSNXT.dotNetExt
             this.PageIndex = pageIndex;
             this.PageSize = pageSize;
             this.TotalCount = totalCount;
-            this.TotalPages = (int)Math.Ceiling(totalCount / (double)PageSize);
+            this.TotalPages = (int) Math.Ceiling(totalCount / (double) PageSize);
 
             this.AddRange(source);
         }
 
         public bool HasPreviousPage
         {
-            get
-            {
-                return (PageIndex > 0);
-            }
+            get { return (PageIndex > 0); }
         }
 
         public bool HasNextPage
         {
-            get
-            {
-                return (PageIndex + 1 < TotalPages);
-            }
+            get { return (PageIndex + 1 < TotalPages); }
         }
     }
 
@@ -66,7 +60,7 @@ namespace HSNXT.dotNetExt
             this.PageIndex = pageIndex;
             this.PageSize = pageSize;
             this.TotalCount = source.Count();
-            this.TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
+            this.TotalPages = (int) Math.Ceiling(TotalCount / (double) PageSize);
 
             this.AddRange(source.Skip(PageIndex * PageSize).Take(PageSize));
         }
@@ -76,25 +70,19 @@ namespace HSNXT.dotNetExt
             this.PageIndex = pageIndex;
             this.PageSize = pageSize;
             this.TotalCount = totalCount;
-            this.TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
+            this.TotalPages = (int) Math.Ceiling(TotalCount / (double) PageSize);
 
             source.Each(item => this.Add(item));
         }
 
         public bool HasPreviousPage
         {
-            get
-            {
-                return (PageIndex > 0);
-            }
+            get { return (PageIndex > 0); }
         }
 
         public bool HasNextPage
         {
-            get
-            {
-                return (PageIndex + 1 < TotalPages);
-            }
+            get { return (PageIndex + 1 < TotalPages); }
         }
     }
 }

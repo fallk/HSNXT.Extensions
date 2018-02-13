@@ -21,7 +21,7 @@
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        public abstract string GetValue( string expression );
+        public abstract string GetValue(string expression);
 
         #endregion
 
@@ -30,13 +30,14 @@
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the format information.</returns>
-        protected static FormatInformation ParsExpression( string expression )
+        protected static FormatInformation ParsExpression(string expression)
         {
-            var colonIndex = expression.IndexOf( FormatSeperator );
+            var colonIndex = expression.IndexOf(FormatSeperator);
 
             return colonIndex <= 0
-                ? new FormatInformation( expression, null )
-                : new FormatInformation( expression.Substring( 0, colonIndex ), "{0:" + expression.Substring( colonIndex + 1 ) + "}" );
+                ? new FormatInformation(expression, null)
+                : new FormatInformation(expression.Substring(0, colonIndex),
+                    "{0:" + expression.Substring(colonIndex + 1) + "}");
         }
     }
 }

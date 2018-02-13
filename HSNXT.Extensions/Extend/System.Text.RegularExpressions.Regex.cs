@@ -7,7 +7,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-
         /// <summary>
         ///     Gets whether a <see cref="Regex" /> with the specified pattern finds a match in the specified input
         ///     <see cref="String" />.
@@ -21,12 +20,13 @@ namespace HSNXT
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsMatch( [NotNull] this string input, [NotNull] string pattern, RegexOptions options, TimeSpan timeOut )
+        public static bool IsMatch([NotNull] this string input, [NotNull] string pattern, RegexOptions options,
+            TimeSpan timeOut)
         {
-            input.ThrowIfNull( nameof(input) );
-            pattern.ThrowIfNull( nameof(pattern) );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
 
-            return Regex.IsMatch( input, pattern, options, timeOut );
+            return Regex.IsMatch(input, pattern, options, timeOut);
         }
 
         /// <summary>
@@ -40,12 +40,12 @@ namespace HSNXT
         /// <returns>A value of true if the regular expression doesn't find a match, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsNotMatch( [NotNull] this string input, [NotNull] string pattern )
+        public static bool IsNotMatch([NotNull] this string input, [NotNull] string pattern)
         {
-            input.ThrowIfNull( nameof(input) );
-            pattern.ThrowIfNull( nameof(pattern) );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
 
-            return !IsMatch( input, pattern );
+            return !IsMatch(input, pattern);
         }
 
         /// <summary>
@@ -60,12 +60,12 @@ namespace HSNXT
         /// <returns>A value of true if the regular expression doesn't find a match, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsNotMatch( [NotNull] this string input, [NotNull] string pattern, RegexOptions options )
+        public static bool IsNotMatch([NotNull] this string input, [NotNull] string pattern, RegexOptions options)
         {
-            input.ThrowIfNull( nameof(input) );
-            pattern.ThrowIfNull( nameof(pattern) );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
 
-            return !IsMatch( input, pattern, options );
+            return !IsMatch(input, pattern, options);
         }
 
         /// <summary>
@@ -81,12 +81,13 @@ namespace HSNXT
         /// <returns>A value of true if the regular expression doesn't find a match, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static bool IsNotMatch( [NotNull] this string input, [NotNull] string pattern, RegexOptions options, TimeSpan timeOut )
+        public static bool IsNotMatch([NotNull] this string input, [NotNull] string pattern, RegexOptions options,
+            TimeSpan timeOut)
         {
-            input.ThrowIfNull( nameof(input) );
-            pattern.ThrowIfNull( nameof(pattern) );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
 
-            return !IsMatch( input, pattern, options, timeOut );
+            return !IsMatch(input, pattern, options, timeOut);
         }
 
         /// <summary>
@@ -103,13 +104,14 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static Match Match( [NotNull] this string input, [NotNull] string pattern, RegexOptions options, TimeSpan timeOut )
+        public static Match Match([NotNull] this string input, [NotNull] string pattern, RegexOptions options,
+            TimeSpan timeOut)
         {
-            input.ThrowIfNull( nameof(input) );
-            input.ThrowIfNull( nameof(pattern) );
-            timeOut.ThrowIfNull( nameof(timeOut) );
+            input.ThrowIfNull(nameof(input));
+            input.ThrowIfNull(nameof(pattern));
+            timeOut.ThrowIfNull(nameof(timeOut));
 
-            return Regex.Match( input, pattern, options, timeOut );
+            return Regex.Match(input, pattern, options, timeOut);
         }
 
         /// <summary>
@@ -129,13 +131,14 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static MatchCollection Matches( [NotNull] this string input, [NotNull] string pattern, RegexOptions options, TimeSpan timeOut )
+        public static MatchCollection Matches([NotNull] this string input, [NotNull] string pattern,
+            RegexOptions options, TimeSpan timeOut)
         {
-            input.ThrowIfNull( nameof(input) );
-            pattern.ThrowIfNull( nameof(pattern) );
-            timeOut.ThrowIfNull( nameof(timeOut) );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
+            timeOut.ThrowIfNull(nameof(timeOut));
 
-            return Regex.Matches( input, pattern, options, timeOut );
+            return Regex.Matches(input, pattern, options, timeOut);
         }
     }
 }

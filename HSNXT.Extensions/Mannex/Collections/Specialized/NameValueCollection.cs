@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,7 +37,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="NameValueCollection"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -45,7 +46,6 @@ namespace HSNXT
         /// into a value of the return type. If the key is not found then
         /// the result is the default value of the return type.
         /// </summary>
-
         public static T TryGetValue<T>(this NameValueCollection collection, string key, Func<string, T> selector)
         {
             return collection.TryGetValue(key, default(T), selector);
@@ -58,8 +58,8 @@ namespace HSNXT
         /// into a value of the return type. An additional parameter 
         /// specifies the default value to return instead.
         /// </summary>
-
-        public static T TryGetValue<T>(this NameValueCollection collection, string key, T defaultValue, Func<string, T> selector)
+        public static T TryGetValue<T>(this NameValueCollection collection, string key, T defaultValue,
+            Func<string, T> selector)
         {
             if (selector == null) throw new ArgumentNullException("selector");
             var value = collection[key];
@@ -70,7 +70,6 @@ namespace HSNXT
         /// Create a <see cref="NameValueCollection"/> from a sequence of
         /// <see cref="KeyValuePair{String,String}"/>.
         /// </summary>
-
         public static NameValueCollection ToNameValueCollection(
             this IEnumerable<KeyValuePair<string, string>> source)
         {
@@ -86,7 +85,6 @@ namespace HSNXT
         /// given a function to select the name and value of each <typeparamref name="T"/>
         /// in the source sequence.
         /// </summary>
-
         public static NameValueCollection ToNameValueCollection<T>(
             this IEnumerable<T> source,
             Func<T, string> nameSelector,
@@ -106,7 +104,6 @@ namespace HSNXT
         /// given a function to select the name and value of each <typeparamref name="T"/>
         /// in the source sequence.
         /// </summary>
-
         public static void Add<T>(
             this NameValueCollection collection,
             IEnumerable<T> source,
@@ -119,8 +116,8 @@ namespace HSNXT
             if (valuesSelector == null) throw new ArgumentNullException("valuesSelector");
 
             var items = from item in source
-                        from value in valuesSelector(item)
-                        select nameSelector(item).AsKeyTo(value);
+                from value in valuesSelector(item)
+                select nameSelector(item).AsKeyTo(value);
 
             collection.Add(items);
         }
@@ -129,7 +126,6 @@ namespace HSNXT
         /// Adds items from a sequence of 
         /// <see cref="KeyValuePair{String,String}"/>.
         /// </summary>
-
         public static void Add(
             this NameValueCollection collection,
             IEnumerable<KeyValuePair<string, string>> source)
@@ -143,16 +139,15 @@ namespace HSNXT
 
         static NameValueCollection CreateCollection<T>(ICollection<T> collection)
         {
-            return collection != null 
-                 ? new NameValueCollection(collection.Count) 
-                 : new NameValueCollection();
+            return collection != null
+                ? new NameValueCollection(collection.Count)
+                : new NameValueCollection();
         }
 
         /// <summary>
         /// Returns a new collection with only those entries where keys
         /// match a given predicate.
         /// </summary>
-
         public static T Filter<T>(this T collection, Func<string, bool> predicate)
             where T : NameValueCollection, new()
         {
@@ -166,7 +161,6 @@ namespace HSNXT
         /// match a given predicate. An additional function provides 
         /// the keys projected in the new collection.
         /// </summary>
-
         public static T Filter<T>(this T collection, Func<string, bool> predicate, Func<string, string> keySelector)
             where T : NameValueCollection, new()
         {
@@ -189,15 +183,14 @@ namespace HSNXT
         /// Returns a new collection where the keys are prefixed by a given
         /// string. The keys in new collection are without the prefix.
         /// </summary>
-
         public static T FilterByPrefix<T>(this T collection, string prefix)
             where T : NameValueCollection, new()
         {
             if (collection == null) throw new ArgumentNullException("collection");
             return string.IsNullOrEmpty(prefix)
-                 ? new T { collection }
-                 : collection.Filter(key => key != null && key.StartsWith(prefix, StringComparison.OrdinalIgnoreCase), 
-                                     key => key.Length == prefix.Length ? null : key.Substring(prefix.Length));
+                ? new T {collection}
+                : collection.Filter(key => key != null && key.StartsWith(prefix, StringComparison.OrdinalIgnoreCase),
+                    key => key.Length == prefix.Length ? null : key.Substring(prefix.Length));
         }
 
         /// <summary>
@@ -205,31 +198,29 @@ namespace HSNXT
         /// If all the values under a key are blank, then the entry is 
         /// entirely omitted.
         /// </summary>
-
         public static IEnumerable<KeyValuePair<string, string[]>> NonBlanks(this NameValueCollection collection)
         {
             if (collection == null) throw new ArgumentNullException("collection");
 
             return from e in collection.AsEnumerable()
-                   let vs = e.Value.Length > 1
+                let vs = e.Value.Length > 1
 #if NET40 || NET45
                           ? e.Value.Where(v => !string.IsNullOrWhiteSpace(v)).ToArray()
                           : string.IsNullOrWhiteSpace(e.Value[0])
 #else
-                          ? e.Value.Where(v => !string.IsNullOrEmpty(v) && v.Trim().Length > 0).ToArray()
-                          : string.IsNullOrEmpty(e.Value[0]) || e.Value[0].Trim().Length == 0
+                    ? e.Value.Where(v => !string.IsNullOrEmpty(v) && v.Trim().Length > 0).ToArray()
+                    : string.IsNullOrEmpty(e.Value[0]) || e.Value[0].Trim().Length == 0
 #endif
-                          ? null
-                          : e.Value
-                   where vs != null && vs.Length > 0
-                   select e.Key.AsKeyTo(vs);
+                        ? null
+                        : e.Value
+                where vs != null && vs.Length > 0
+                select e.Key.AsKeyTo(vs);
         }
 
         /// <summary>
         /// Updates this collection with another where values of existing
         /// keys are replaced but those of new ones added.
         /// </summary>
-
         public static void Update(this NameValueCollection collection, NameValueCollection source)
         {
             if (collection == null) throw new ArgumentNullException("collection");
@@ -260,7 +251,6 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
         public static IEnumerable<KeyValuePair<string, string[]>> AsEnumerable(this NameValueCollection collection)
         {
             if (collection == null) throw new ArgumentNullException("collection");
@@ -276,23 +266,23 @@ namespace HSNXT
         /// <remarks>
         /// This method uses deferred execution.
         /// </remarks>
-
-        public static IEnumerable<TResult> AsEnumerable<T, TResult>(this T collection, Func<T, string, int, TResult> selector) 
+        public static IEnumerable<TResult> AsEnumerable<T, TResult>(this T collection,
+            Func<T, string, int, TResult> selector)
             where T : NameValueCollection
         {
             if (collection == null) throw new ArgumentNullException("collection");
             if (selector == null) throw new ArgumentNullException("selector");
-            
+
             return from i in Enumerable.Range(0, collection.Count)
-                   select collection.GetKey(i).AsKeyTo(i) into e
-                   select selector(collection, e.Key, e.Value);
+                select collection.GetKey(i).AsKeyTo(i)
+                into e
+                select selector(collection, e.Key, e.Value);
         }
 
         /// <summary>
         /// Determines whether a key exists in the <see cref="NameObjectCollectionBase.Keys"/>
         /// or not. The check is made without regard to case of the key.
         /// </summary>
-    
         public static bool ContainsKey(this NameValueCollection collection, string name)
         {
             if (collection == null) throw new ArgumentNullException("collection");
@@ -305,7 +295,6 @@ namespace HSNXT
         /// to use to compare keys (where <c>null</c> is allowed and defaults 
         /// to same as <see cref="StringComparer.OrdinalIgnoreCase"/>).
         /// </summary>
-
         public static bool ContainsKey(this NameValueCollection collection, string name, StringComparer comparer)
         {
             if (collection == null) throw new ArgumentNullException("collection");

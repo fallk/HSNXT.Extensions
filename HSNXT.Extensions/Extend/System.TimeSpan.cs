@@ -13,8 +13,9 @@ namespace HSNXT
         /// <returns>Returns the current date time with the specified time span added to it.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime Future( this TimeSpan timeSpan )
-            => DateTime.Now.Add( timeSpan );
+        public static DateTime Future(this TimeSpan timeSpan)
+            => DateTime.Now.Add(timeSpan);
+
         /// <summary>
         ///     Subtracts the specified time span to the current date time.
         /// </summary>
@@ -22,7 +23,7 @@ namespace HSNXT
         /// <returns>Returns the current date time with the specified time span subtracted from it.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime Past( this TimeSpan timeSpan )
-            => DateTime.Now.Subtract( timeSpan );
+        public static DateTime Past(this TimeSpan timeSpan)
+            => DateTime.Now.Subtract(timeSpan);
     }
 }

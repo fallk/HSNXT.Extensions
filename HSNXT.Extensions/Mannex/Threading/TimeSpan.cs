@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="TimeSpan"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Converts <see cref="TimeSpan"/> to milliseconds as expected by
         /// most of the <see cref="System.Threading"/> API.
         /// </summary>
-
         public static int ToTimeout(this TimeSpan timeout)
         {
             return (int) timeout.TotalMilliseconds;
@@ -52,12 +52,11 @@ namespace HSNXT
         /// <see cref="TimeSpan"/> value is <c>null</c> then the result is 
         /// same as <see cref="Timeout.Infinite"/>.
         /// </summary>
-
         public static int ToTimeout(this TimeSpan? timeout)
         {
-            return timeout == null 
-                 ? Timeout.Infinite 
-                 : timeout.Value.ToTimeout();
+            return timeout == null
+                ? Timeout.Infinite
+                : timeout.Value.ToTimeout();
         }
     }
 }

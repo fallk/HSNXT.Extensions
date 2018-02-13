@@ -3608,7 +3608,6 @@
         <e p="Program.cs" t="Include" />
       </e>
       <e p="HSNXT.Extensions" t="IncludeRecursive">
-        <e p="__Assembly.cs" t="Include" />
         <e p="aHSNXT" t="Include">
           <e p="Conversions.cs" t="Include" />
           <e p="Enumerations.cs" t="Include" />
@@ -3637,6 +3636,7 @@
           <e p="Strings.Designer.cs" t="Include" />
           <e p="Strings.resx" t="Include" />
         </e>
+        <e p="Assembly.cs" t="Include" />
         <e p="BCLExtensions" t="Include">
           <e p="ArgumentVerifier.cs" t="Include" />
           <e p="DbConnectionExtensionMethods.cs" t="Include" />
@@ -3734,7 +3734,6 @@
             <e p="ICache.cs" t="Include" />
             <e p="InMemoryCache.cs" t="Include" />
           </e>
-          <e p="changes.txt" t="Include" />
           <e p="DateTime" t="Include">
             <e p="DayExtensions.cs" t="Include" />
             <e p="TimeExtensions.cs" t="Include" />
@@ -4392,7 +4391,7 @@
           <e p="DoExtensions.cs" t="Include" />
           <e p="EnumerableExtensions.cs" t="Include" />
           <e p="NullCheckExtensions.cs" t="Include" />
-          <e p="NumeircExtensions.cs" t="Include" />
+          <e p="NumericExtensions.cs" t="Include" />
           <e p="StringDateTimeExtensions.cs" t="Include" />
           <e p="StringEqualityExtensions.cs" t="Include" />
           <e p="StringExtensions.cs" t="Include" />
@@ -6091,7 +6090,6 @@
         <e p="StaticConstructor.cs" t="Include" />
         <e p="SuccincT" t="Include">
           <e p=".gitignore" t="Include" />
-          <e p="Directory.Build.props" t="Include" />
           <e p="Functional" t="Include">
             <e p="ActionExtensions.cs" t="Include" />
             <e p="ConsEnumerable.cs" t="Include" />
@@ -6257,20 +6255,17 @@
           </e>
         </e>
         <e p="SuccincT.JSON" t="Include">
-          <e p="Directory.Build.props" t="Include" />
-          <e p="JSON" t="Include">
-            <e p="EitherConverter.cs" t="Include" />
-            <e p="NoneAndUnitConverter.cs" t="Include" />
-            <e p="OptionConverter.cs" t="Include" />
-            <e p="packages.config" t="Include" />
-            <e p="SuccessConverter.cs" t="Include" />
-            <e p="SuccinctContractResolver.cs" t="Include" />
-            <e p="TypeExtensions.cs" t="Include" />
-            <e p="UnionOf2Converter.cs" t="Include" />
-            <e p="UnionOf3Converter.cs" t="Include" />
-            <e p="UnionOf4Converter.cs" t="Include" />
-            <e p="ValueOrErrorConverter.cs" t="Include" />
-          </e>
+          <e p="EitherConverter.cs" t="Include" />
+          <e p="NoneAndUnitConverter.cs" t="Include" />
+          <e p="OptionConverter.cs" t="Include" />
+          <e p="packages.config" t="Include" />
+          <e p="SuccessConverter.cs" t="Include" />
+          <e p="SuccinctContractResolver.cs" t="Include" />
+          <e p="TypeExtensions.cs" t="Include" />
+          <e p="UnionOf2Converter.cs" t="Include" />
+          <e p="UnionOf3Converter.cs" t="Include" />
+          <e p="UnionOf4Converter.cs" t="Include" />
+          <e p="ValueOrErrorConverter.cs" t="Include" />
         </e>
         <e p="TextTemplate1.cs" t="Include" />
         <e p="TextTemplate1.tt" t="Include" />
@@ -6906,13 +6901,11 @@
             <e p="DateAssertionExtensions.cs" t="Include" />
             <e p="DoubleAssertionExtensions.cs" t="Include" />
             <e p="ObjectAssertExtensions.cs" t="Include" />
-            <e p="Should.csproj.orig" t="Include" />
             <e p="StringAssertionExtensions.cs" t="Include" />
           </e>
           <e p="Should.Core" t="Include">
             <e p="Assertions" t="Include">
               <e p="Assert.cs" t="Include" />
-              <e p="Assert.cs.orig" t="Include" />
               <e p="AssertComparer.cs" t="Include" />
               <e p="AssertEqualityComparer.cs" t="Include" />
               <e p="Assertions.cs" t="Include" />
@@ -6953,7 +6946,6 @@
               <e p="TraceAssertException.cs" t="Include" />
               <e p="TrueException.cs" t="Include" />
             </e>
-            <e p="Should.Core.csproj.orig" t="Include" />
           </e>
           <e p="should.Facts" t="Include">
             <e p="ActionAssertionExtension_Facts.cs" t="Include" />
@@ -6990,7 +6982,6 @@
             <e p="DoubleAssertionExtension_Facts.cs" t="Include" />
             <e p="EqualTests.cs" t="Include" />
             <e p="ObjectAssertionExtension_Facts.cs" t="Include" />
-            <e p="Should.Facts.csproj.orig" t="Include" />
             <e p="StringAssertionExtensions_Facts.cs" t="Include" />
             <e p="ThrowsTests.cs" t="Include" />
           </e>
@@ -7005,7 +6996,6 @@
             <e p="BeNullableDateTimeExtensions.cs" t="Include" />
             <e p="BeStringExtensions.cs" t="Include" />
             <e p="IAssertProvider.cs" t="Include" />
-            <e p="IAssertProvider.cs.orig" t="Include" />
             <e p="Model" t="Include">
               <e p="Be.cs" t="Include" />
               <e p="BeBase.cs" t="Include" />
@@ -7034,13 +7024,10 @@
               <e p="ShouldEnumerable.cs" t="Include" />
               <e p="ShouldString.cs" t="Include" />
             </e>
-            <e p="Should.Fluent.csproj.orig" t="Include" />
             <e p="ShouldCoreAssertProvider.cs" t="Include" />
-            <e p="ShouldCoreAssertProvider.cs.orig" t="Include" />
             <e p="ShouldDateTimeExtensions.cs" t="Include" />
             <e p="ShouldDoubleExtensions.cs" t="Include" />
             <e p="ShouldExtensions.cs" t="Include" />
-            <e p="ShouldExtensions.cs.orig" t="Include" />
             <e p="ShouldStringExtensions.cs" t="Include" />
           </e>
         </e>
@@ -7089,7 +7076,6 @@
             <e p="OrEmptyIfNullTests.cs" t="Include" />
             <e p="OrNullIfEmptyTests.cs" t="Include" />
           </e>
-          <e p="BCLExtensions.Tests.v2.ncrunchproject" t="Include" />
           <e p="FuncExtensions" t="Include">
             <e p="AsActionTests.cs" t="Include" />
             <e p="AsActionUsingTests.cs" t="Include" />
@@ -7210,7 +7196,6 @@
           <e p="Int128Facts.cs" t="Include" />
           <e p="Int256Facts.cs" t="Include" />
           <e p="MathUtilsFacts.cs" t="Include" />
-          <e p="packages.config" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="C5" t="Include">
@@ -7288,7 +7273,6 @@
           <e p="EnumIteratorTests.cs" t="Include" />
           <e p="IniFileTests.cs" t="Include" />
           <e p="OrderCollectionTests.cs" t="Include" />
-          <e p="packages.config" t="Include" />
           <e p="PasswordGeneratorTests.cs" t="Include" />
           <e p="SaltedHashTests.cs" t="Include" />
           <e p="UniqueItemGeneratorTests.cs" t="Include" />
@@ -7456,7 +7440,6 @@
           </e>
           <e p="LongExtensionsTest.cs" t="Include" />
           <e p="ObjectExtensionsTest.cs" t="Include" />
-          <e p="packages.config" t="Include" />
           <e p="PaginatedListTest.cs" t="Include" />
           <e p="SqlExceptionHelper.cs" t="Include" />
           <e p="StringExtensionsTest.cs" t="Include" />
@@ -8064,11 +8047,9 @@
           <e p="DateTimeExtensionTests.cs" t="Include" />
           <e p="DecimalExtensionTests.cs" t="Include" />
           <e p="DoubleExtensionTests.cs" t="Include" />
-          <e p="ExtensionOverflowTests.csproj.vspscc" t="Include" />
           <e p="IntExtensionTests.cs" t="Include" />
           <e p="LinqExtensionsTest.cs" t="Include" />
           <e p="LongExtensionTests.cs" t="Include" />
-          <e p="packages.config" t="Include" />
           <e p="StringExtensionTests.cs" t="Include" />
         </e>
         <e p="HSNXT.Extensions.Tests.csproj" t="IncludeRecursive" />
@@ -8123,7 +8104,6 @@
             </e>
             <e p="WebHeaderCollectionTests.cs" t="Include" />
           </e>
-          <e p="packages.config" t="Include" />
           <e p="PredicateTests.cs" t="Include" />
           <e p="Reflection" t="Include">
             <e p="ICustomAttributeProviderTests.cs" t="Include" />
@@ -8668,7 +8648,6 @@
           <e p="PGK.Extensions.Test4" t="Include">
             <e p="ConcurrentExtensionsTest.cs" t="Include" />
             <e p="ObjectCacheExtensionsTest.cs" t="Include" />
-            <e p="PGK.Extensions.Test4.csproj.vspscc" t="Include" />
             <e p="StringExtensionsTest.cs" t="Include" />
           </e>
           <e p="PGK.Extensions.Tests" t="Include">
@@ -8697,9 +8676,6 @@
             <e p="ListExtensionTest.cs" t="Include" />
             <e p="LongExtensionsTest.cs" t="Include" />
             <e p="ObjectExtensionsTest.cs" t="Include" />
-            <e p="packages.config" t="Include" />
-            <e p="PGK.Extensions.Tests.csproj.vspscc" t="Include" />
-            <e p="PGK.Extensions.Tests.snk" t="Include" />
             <e p="StringBuilderExtensionsTests.cs" t="Include" />
             <e p="StringExtensionsTest.cs" t="Include" />
             <e p="TestObjects" t="Include">
@@ -9231,7 +9207,6 @@
             </e>
           </e>
           <e p="Z.Data.Test" t="Include">
-            <e p="App.config" t="Include" />
             <e p="My.cs" t="Include" />
             <e p="System.Data.DataColumnCollection" t="Include">
               <e p="DataColumnCollection.AddRange.cs" t="Include" />
@@ -9312,7 +9287,6 @@
             </e>
           </e>
           <e p="Z.Net.Test" t="Include">
-            <e p="App.config" t="Include" />
             <e p="System.Net.WebResponse" t="Include">
               <e p="WebResponse.ReadToEnd.cs" t="Include" />
               <e p="WebResponse.ReadToEndAndDispose.cs" t="Include" />

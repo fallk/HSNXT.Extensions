@@ -24,9 +24,9 @@ namespace HSNXT.Internal
         /// </summary>
         /// <exception cref="ArgumentNullException">source can not be null.</exception>
         /// <param name="source">The source object.</param>
-        public ObjectValueProvider( object source )
+        public ObjectValueProvider(object source)
         {
-            source.ThrowIfNull( nameof(source) );
+            source.ThrowIfNull(nameof(source));
 
             _source = source;
         }
@@ -40,20 +40,20 @@ namespace HSNXT.Internal
         /// </summary>
         /// <param name="expression">The name of a property optionally combined with a string format compatible expression.</param>
         /// <returns>Returns the value represented by the given expression.</returns>
-        public override string GetValue( string expression )
+        public override string GetValue(string expression)
         {
             try
             {
-                var formatInformation = ParsExpression( expression );
-                var value = ExpressionEvaluator.GetValue( formatInformation.ValueName, _source );
+                var formatInformation = ParsExpression(expression);
+                var value = ExpressionEvaluator.GetValue(formatInformation.ValueName, _source);
 
                 return formatInformation.Format.IsNullOrEmpty()
                     ? value?.ToString()
-                    : formatInformation.Format.F( value );
+                    : formatInformation.Format.F(value);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw new FormatException( $"Invalid format, invalid formatted expression: '{expression}'", ex );
+                throw new FormatException($"Invalid format, invalid formatted expression: '{expression}'", ex);
             }
         }
 

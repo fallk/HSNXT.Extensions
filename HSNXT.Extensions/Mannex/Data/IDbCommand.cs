@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="IDbCommand"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -50,7 +51,6 @@ namespace HSNXT
         /// has fewer argument than parameters then the remaining parameters 
         /// are assigned <see cref="DBNull.Value"/>.
         /// </remarks>
-
         public static IEnumerable<int> ExecuteForEach<T>(this IDbCommand command, IEnumerable<IEnumerable<T>> rows)
         {
             return ExecuteForEach(command, 0, rows);
@@ -69,8 +69,8 @@ namespace HSNXT
         /// has fewer argument than parameters then the remaining parameters 
         /// are assigned <see cref="DBNull.Value"/>.
         /// </remarks>
-
-        public static IEnumerable<int> ExecuteForEach<T>(this IDbCommand command, int startIndex, IEnumerable<IEnumerable<T>> rows)
+        public static IEnumerable<int> ExecuteForEach<T>(this IDbCommand command, int startIndex,
+            IEnumerable<IEnumerable<T>> rows)
         {
             if (command == null) throw new ArgumentNullException("command");
             if (rows == null) throw new ArgumentNullException("rows");
@@ -78,7 +78,8 @@ namespace HSNXT
             return ExecuteForEachImpl(command, startIndex, rows);
         }
 
-        static IEnumerable<int> ExecuteForEachImpl<T>(IDbCommand command, int startIndex, IEnumerable<IEnumerable<T>> rows)
+        static IEnumerable<int> ExecuteForEachImpl<T>(IDbCommand command, int startIndex,
+            IEnumerable<IEnumerable<T>> rows)
         {
             Debug.Assert(command != null);
             Debug.Assert(rows != null);

@@ -8,7 +8,7 @@ namespace HSNXT
     {
         public static Type GetFieldOrPropertyType(this MemberInfo m)
         {
-            return m is FieldInfo info ? info.FieldType : ((PropertyInfo)m).PropertyType;
+            return m is FieldInfo info ? info.FieldType : ((PropertyInfo) m).PropertyType;
         }
 
         public static object GetFieldOrPropertyValue<T>(this MemberInfo memberInfo, T instance)
@@ -30,7 +30,9 @@ namespace HSNXT
                     }
                     catch (Exception)
                     {
-                        Debug.WriteLine(string.Format("NBuilder warning: {0} threw an exception when attempting to read its current value", memberInfo.Name));
+                        Debug.WriteLine(string.Format(
+                            "NBuilder warning: {0} threw an exception when attempting to read its current value",
+                            memberInfo.Name));
                     }
 
                     break;

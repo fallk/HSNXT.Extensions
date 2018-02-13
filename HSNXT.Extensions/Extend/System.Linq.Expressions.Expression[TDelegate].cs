@@ -26,13 +26,14 @@ namespace HSNXT
         [Pure]
         [PublicAPI]
         public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
-            [NotNull] this Expression<Func<TDeclairingType, TMember>> expression )
+            [NotNull] this Expression<Func<TDeclairingType, TMember>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
-            expression.TryGetMemberExpression( out var memberExpression );
+            expression.TryGetMemberExpression(out var memberExpression);
             return memberExpression.Member;
         }
+
         /// <summary>
         ///     Gets a dotted path of property names representing the property expression. E.g. Parent.Child.Sibling.Name.
         /// </summary>
@@ -41,19 +42,20 @@ namespace HSNXT
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static string GetMemberPath<TDeclaringType, TMember>( [NotNull] this Expression<Func<TDeclaringType, TMember>> expression )
+        public static string GetMemberPath<TDeclaringType, TMember>(
+            [NotNull] this Expression<Func<TDeclaringType, TMember>> expression)
         {
-            expression.ThrowIfNull( nameof(expression) );
+            expression.ThrowIfNull(nameof(expression));
 
             var result = new List<string>();
             Expression node = expression;
 
-            while ( node != null )
+            while (node != null)
                 // ReSharper disable once SwitchStatementMissingSomeCases
-                switch ( node.NodeType )
+                switch (node.NodeType)
                 {
                     case ExpressionType.Lambda:
-                        node = ( (LambdaExpression) node ).Body;
+                        node = ((LambdaExpression) node).Body;
                         break;
 
                     case ExpressionType.Convert:
@@ -64,14 +66,14 @@ namespace HSNXT
                     case ExpressionType.MemberAccess:
                         var memberExpression = (MemberExpression) node;
                         node = memberExpression.Expression;
-                        result.Add( memberExpression.Member.Name );
+                        result.Add(memberExpression.Member.Name);
                         break;
 
                     case ExpressionType.ArrayIndex:
                         var binaryExpression = (BinaryExpression) node;
                         var constantExpression = (ConstantExpression) binaryExpression.Right;
                         node = binaryExpression.Left;
-                        result.Add( "[" + constantExpression.Value + "]" );
+                        result.Add("[" + constantExpression.Value + "]");
                         break;
 
                     case ExpressionType.Parameter:
@@ -79,16 +81,16 @@ namespace HSNXT
                         break;
 
                     default:
-                        throw new ArgumentOutOfRangeException( nameof(expression.Body),
-                                                               expression.Body,
-                                                               $"Expression '{expression.Body}' cannot be used to select a member." );
+                        throw new ArgumentOutOfRangeException(nameof(expression.Body),
+                            expression.Body,
+                            $"Expression '{expression.Body}' cannot be used to select a member.");
                 }
 
             return result
                 .AsEnumerable()
                 .Reverse()
-                .StringJoin( "." )
-                .Replace( ".[", "[" );
+                .StringJoin(".")
+                .Replace(".[", "[");
         }
     }
 }

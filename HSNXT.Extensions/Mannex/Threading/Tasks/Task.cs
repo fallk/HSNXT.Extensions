@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 #if NET4
@@ -36,7 +38,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Task"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -48,7 +49,6 @@ namespace HSNXT
         /// when the supplied task concludes (fails, cancels or completes
         /// successfully).
         /// </summary>
-
         public static Task<T> Apmize<T>(this Task<T> task, AsyncCallback callback, object state)
         {
             return Apmize(task, callback, state, null);
@@ -63,8 +63,8 @@ namespace HSNXT
         /// when the supplied task concludes (fails, cancels or completes
         /// successfully).
         /// </summary>
-
-        public static Task<T> Apmize<T>(this Task<T> task, AsyncCallback callback, object state, TaskScheduler scheduler)
+        public static Task<T> Apmize<T>(this Task<T> task, AsyncCallback callback, object state,
+            TaskScheduler scheduler)
         {
             var result = task;
 
@@ -79,17 +79,18 @@ namespace HSNXT
             if (tcs != null)
             {
                 t = t.ContinueWith(delegate { tcs.TryConcludeFrom(task); },
-                                   CancellationToken.None,
-                                   TaskContinuationOptions.ExecuteSynchronously,
-                                   TaskScheduler.Default);
+                    CancellationToken.None,
+                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskScheduler.Default);
             }
+
             if (callback != null)
             {
                 // ReSharper disable RedundantAssignment
                 t = t.ContinueWith(delegate { callback(result); }, // ReSharper restore RedundantAssignment
-                                   CancellationToken.None,
-                                   TaskContinuationOptions.None,
-                                   scheduler ?? TaskScheduler.Default);
+                    CancellationToken.None,
+                    TaskContinuationOptions.None,
+                    scheduler ?? TaskScheduler.Default);
             }
 
             return result;
@@ -104,7 +105,6 @@ namespace HSNXT
         /// when the supplied task concludes (fails, cancels or completes
         /// successfully).
         /// </summary>
-
         public static Task Apmize(this Task task, AsyncCallback callback, object state, TaskScheduler scheduler)
         {
             var result = task;
@@ -120,17 +120,18 @@ namespace HSNXT
             if (tcs != null)
             {
                 t = t.ContinueWith(delegate { tcs.TryConcludeFrom(task, delegate { return null; }); },
-                                   CancellationToken.None,
-                                   TaskContinuationOptions.ExecuteSynchronously,
-                                   TaskScheduler.Default);
+                    CancellationToken.None,
+                    TaskContinuationOptions.ExecuteSynchronously,
+                    TaskScheduler.Default);
             }
+
             if (callback != null)
             {
                 // ReSharper disable RedundantAssignment
                 t = t.ContinueWith(delegate { callback(result); }, // ReSharper restore RedundantAssignment
-                                   CancellationToken.None,
-                                   TaskContinuationOptions.None,
-                                   scheduler ?? TaskScheduler.Default);
+                    CancellationToken.None,
+                    TaskContinuationOptions.None,
+                    scheduler ?? TaskScheduler.Default);
             }
 
             return result;
@@ -157,7 +158,6 @@ namespace HSNXT
         /// Specifies whether an awaiter used to wait this
         /// <see cref="Task"/> continues on the captured context.
         /// </summary>
-
         public static ConfiguredTaskAwaitable<T> ContinueOnCapturedContext<T>(this Task<T> task, bool value)
         {
             return task.ConfigureAwait(value);
@@ -173,7 +173,6 @@ namespace HSNXT
         /// in that it completes irrespective of whether the tasks succeeded,
         /// failed or cancelled.
         /// </remarks>
-
         public static Task<T[]> WhenAllCompleted<T>(this IEnumerable<T> tasks)
             where T : Task
         {
@@ -191,7 +190,6 @@ namespace HSNXT
         /// in that it completes irrespective of whether the tasks succeeded,
         /// failed or cancelled.
         /// </remarks>
-
         public static async Task<T[]> WhenAllCompleted<T>(this IEnumerable<T> tasks,
             CancellationToken cancellationToken)
             where T : Task
@@ -206,6 +204,7 @@ namespace HSNXT
                 var task = await Task.WhenAny(pending).ConfigureAwait(false);
                 pending.Remove((T) task);
             }
+
             return result;
         }
     }

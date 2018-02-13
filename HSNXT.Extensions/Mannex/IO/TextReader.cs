@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -29,23 +31,22 @@ namespace HSNXT
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    #if NetFX
+#if NetFX
     using TextFieldParser = Microsoft.VisualBasic.FileIO.TextFieldParser;
     using FieldType = Microsoft.VisualBasic.FileIO.FieldType;
-    #endif
+
+#endif
 
     #endregion
 
     /// <summary>
     /// Extension methods for <see cref="TextReader"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Reads all lines from reader using deferred semantics.
         /// </summary>
-
         public static IEnumerator<string> ReadLines(this TextReader reader)
         {
             if (reader == null) throw new ArgumentNullException("reader");
@@ -72,7 +73,6 @@ namespace HSNXT
         /// If any of the <see cref="TextReader"/> objects is <c>null</c>
         /// then it is treated as being empty; no exception is thrown.
         /// </remarks>
-
         public static TextReader Concat(this TextReader first, IEnumerable<TextReader> others)
         {
             if (first == null) throw new ArgumentNullException("first");
@@ -89,12 +89,11 @@ namespace HSNXT
         /// If any of the <see cref="TextReader"/> objects is <c>null</c>
         /// then it is treated as being empty; no exception is thrown.
         /// </remarks>
-
         public static TextReader Concat(this TextReader first, params TextReader[] others)
         {
             if (first == null) throw new ArgumentNullException("first");
             if (others == null) throw new ArgumentNullException("others");
-            return new ChainedTextReader(new[] { first }.Concat(others));
+            return new ChainedTextReader(new[] {first}.Concat(others));
         }
 
         sealed class ChainedTextReader : TextReader
@@ -106,8 +105,8 @@ namespace HSNXT
                 if (readers == null) throw new ArgumentNullException("readers");
 
                 _readers = readers.Select(r => r ?? Null)
-                    /*sentinel */ .Concat(new TextReader[] { null })
-                                  .ToArray();
+                    /*sentinel */.Concat(new TextReader[] {null})
+                    .ToArray();
             }
 
             TextReader GetReader()
@@ -176,18 +175,18 @@ namespace HSNXT
         /// Parses delimited text like CSV (command-separated values) and
         /// returns each row of data as a sequence of items.
         /// </summary>
-
         public static IEnumerator<KeyValuePair<string, string>[]> ParseXsv(
             this TextReader reader, string delimiter, bool quoted)
         {
-            return reader.ParseXsv(delimiter, quoted, hs => hs, (hs, vs) => Enumerable.Range(0, hs.Length).Select(i => hs[i].AsKeyTo(i < vs.Length ? vs[i] : null)).ToArray());
+            return reader.ParseXsv(delimiter, quoted, hs => hs,
+                (hs, vs) => Enumerable.Range(0, hs.Length).Select(i => hs[i].AsKeyTo(i < vs.Length ? vs[i] : null))
+                    .ToArray());
         }
 
         /// <summary>
         /// Parses delimited text like CSV (command-separated values) and
         /// returns each row of data as a sequence of items.
         /// </summary>
-
         public static IEnumerator<TResult> ParseXsv<TResult>(
             this TextReader reader, string delimiter, bool quoted,
             Func<string[], string[], TResult> resultSelector)
@@ -199,7 +198,6 @@ namespace HSNXT
         /// Parses delimited text like CSV (command-separated values) and
         /// returns each row of data as a sequence of items.
         /// </summary>
-
         public static IEnumerator<TResult> ParseXsv<TResult>(
             this TextReader reader, string delimiter, bool quoted,
             Func<long, string[], string[], TResult> resultSelector)
@@ -211,7 +209,6 @@ namespace HSNXT
         /// Parses delimited text like CSV (command-separated values) and
         /// returns each row of data as a sequence of items.
         /// </summary>
-
         public static IEnumerator<TResult> ParseXsv<THeader, TResult>(
             this TextReader reader, string delimiter, bool quoted,
             Func<string[], THeader> headerSelector,
@@ -221,15 +218,14 @@ namespace HSNXT
             if (resultSelector == null) throw new ArgumentNullException("resultSelector");
 
             return reader.ParseXsv(delimiter, quoted,
-                                   (_, hs) => headerSelector(hs),
-                                   (_, hs, vs) => resultSelector(hs, vs));
+                (_, hs) => headerSelector(hs),
+                (_, hs, vs) => resultSelector(hs, vs));
         }
 
         /// <summary>
         /// Parses delimited text like CSV (command-separated values) and
         /// returns each row of data as a sequence of items.
         /// </summary>
-
         public static IEnumerator<TResult> ParseXsv<THeader, TResult>(
             this TextReader reader, string delimiter, bool quoted,
             Func<long, string[], THeader> headerSelector,
@@ -242,7 +238,7 @@ namespace HSNXT
             using (var parser = new TextFieldParser(reader)
             {
                 TextFieldType = FieldType.Delimited,
-                Delimiters = new[] { delimiter },
+                Delimiters = new[] {delimiter},
                 HasFieldsEnclosedInQuotes = quoted,
                 TrimWhiteSpace = false,
             })

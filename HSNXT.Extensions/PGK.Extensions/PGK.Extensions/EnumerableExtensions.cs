@@ -312,6 +312,7 @@ namespace HSNXT
 
                     break;
             }
+
             return defaultValue;
         }
 

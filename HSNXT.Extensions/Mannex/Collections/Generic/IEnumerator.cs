@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -33,14 +35,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for types implementing <see cref="IEnumerator{T}"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Creates an array containing the remaining items of an enumerator
         /// and then disposes the enumerator.
         /// </summary>
-
         public static T[] ToArray<T>(this IEnumerator<T> enumerator)
         {
             return enumerator.ToList().ToArray();
@@ -50,7 +50,6 @@ namespace HSNXT
         /// Creates a list containing the remaining items of an enumerator
         /// and then disposes the enumerator.
         /// </summary>
-
         public static List<T> ToList<T>(this IEnumerator<T> enumerator)
         {
             if (enumerator == null) throw new ArgumentNullException("enumerator");
@@ -60,6 +59,7 @@ namespace HSNXT
                 while (enumerator.MoveNext())
                     list.Add(enumerator.Current);
             }
+
             return list;
         }
 
@@ -67,7 +67,6 @@ namespace HSNXT
         /// Reads the next value from the enumerator otherwise throws
         /// <see cref="InvalidOperationException"/>.
         /// </summary>
-
         public static T Read<T>(this IEnumerator<T> enumerator)
         {
             if (enumerator == null) throw new ArgumentNullException("enumerator");
@@ -80,7 +79,6 @@ namespace HSNXT
         /// enumerator has no more values then returns the default value of
         /// <typeparamref name="T"/> instead.
         /// </summary>
-
         public static T TryRead<T>(this IEnumerator<T> enumerator)
         {
             return TryRead(enumerator, default(T));
@@ -91,7 +89,6 @@ namespace HSNXT
         /// enumerator has no more values then returns a given sentinel value
         /// instead.
         /// </summary>
-
         public static T TryRead<T>(this IEnumerator<T> enumerator, T sentinel)
         {
             if (enumerator == null) throw new ArgumentNullException("enumerator");

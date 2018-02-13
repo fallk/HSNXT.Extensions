@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -34,7 +36,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="NameValueCollection"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
@@ -47,7 +48,6 @@ namespace HSNXT
         /// but which can throw <see cref="UriFormatException"/> for very 
         /// large values.
         /// </remarks>
-
         public static string ToW3FormEncoded(this NameValueCollection collection)
         {
             return collection.ToW3FormEncoded(null);
@@ -65,7 +65,6 @@ namespace HSNXT
         /// default. However, <see cref="Uri.EscapeDataString"/> may throw 
         /// <see cref="UriFormatException"/> for very large values.
         /// </remarks>
-
         public static string ToW3FormEncoded(this NameValueCollection collection, Func<string, string> encoder)
         {
             return W3FormEncode(collection, null, encoder);
@@ -90,7 +89,7 @@ namespace HSNXT
 
                 if (values == null)
                     continue;
-                
+
                 foreach (var value in values)
                 {
                     if (sb.Length > 0)
@@ -99,9 +98,9 @@ namespace HSNXT
                     if (!string.IsNullOrEmpty(name))
                         sb.Append(name).Append('=');
 
-                    sb.Append(string.IsNullOrEmpty(value) 
-                              ? string.Empty
-                              : (encoder ?? UriEscapeDataString)(value));
+                    sb.Append(string.IsNullOrEmpty(value)
+                        ? string.Empty
+                        : (encoder ?? UriEscapeDataString)(value));
                 }
             }
 

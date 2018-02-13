@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -38,14 +40,12 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Uri"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Parses <see cref="Uri.Query"/> into a <see cref="NameValueCollection"/> 
         /// using UTF-8 encoding.
         /// </summary>
-
         [DebuggerStepThrough]
         public static NameValueCollection ParseQuery(this Uri uri)
         {
@@ -57,7 +57,6 @@ namespace HSNXT
         /// using the specified encoding or UTF-8 is a <c>null</c> reference is
         /// supplied for encoding.
         /// </summary>
-
         [DebuggerStepThrough]
         public static NameValueCollection ParseQuery(this Uri uri, Encoding encoding)
         {
@@ -70,7 +69,6 @@ namespace HSNXT
         /// and merges with another <see cref="NameValueCollection"/> to form
         /// the final and resulting URI with the new query.
         /// </summary>
-
         public static Uri MergeQuery(this Uri uri, NameValueCollection updates)
         {
             if (uri == null) throw new ArgumentNullException("uri");
@@ -94,6 +92,7 @@ namespace HSNXT
                 {
                     values = query.GetValues(i);
                 }
+
                 if (values == null)
                     continue;
                 foreach (var value in values)
@@ -110,19 +109,18 @@ namespace HSNXT
             }
 
             var qs = merge.ToQueryString();
-            return new UriBuilder(uri) { Query = qs.TryCharAt(0) == '?' ? qs.Substring(1) : qs }.Uri;
+            return new UriBuilder(uri) {Query = qs.TryCharAt(0) == '?' ? qs.Substring(1) : qs}.Uri;
         }
 
         /// <summary>
         /// Determines if <see cref="Uri.Scheme"/> is HTTP or HTTPS.
         /// </summary>
-
         [DebuggerStepThrough]
         public static bool IsHttpOrHttps(this Uri uri)
         {
             if (uri == null) throw new ArgumentNullException("uri");
             return uri.Scheme == Uri.UriSchemeHttp
-                || uri.Scheme == Uri.UriSchemeHttps;
+                   || uri.Scheme == Uri.UriSchemeHttps;
         }
 
         /// <summary>
@@ -134,8 +132,7 @@ namespace HSNXT
         /// <exception cref="ArgumentException">
         /// URI does not at least identify the user.
         /// </exception>
-
-        public static T SplitUserNamePassword<T>(this Uri url, 
+        public static T SplitUserNamePassword<T>(this Uri url,
             Func<Uri, NetworkCredential, T> resultFunc)
         {
             if (url == null) throw new ArgumentNullException("url");
@@ -149,8 +146,7 @@ namespace HSNXT
         /// user-defined aggregate of the two where the resulting URI has 
         /// the <see cref="Uri.UserInfo"/> portion removed.
         /// </summary>
-
-        public static T TrySplitUserNamePassword<T>(this Uri url, 
+        public static T TrySplitUserNamePassword<T>(this Uri url,
             Func<Uri, NetworkCredential, T> resultFunc)
         {
             if (url == null) throw new ArgumentNullException("url");
@@ -163,13 +159,13 @@ namespace HSNXT
         /// <see cref="Uri.UserInfo"/> (using the <c>USER ":" PASSWORD</c> 
         /// syntax) portion removed, whether initially present or not.
         /// </summary>
-        
         public static Uri RemoveUserNamePassword(this Uri url)
         {
             if (url == null) throw new ArgumentNullException("url");
 
-            return url.UserInfo.Length == 0 ? url 
-                 : new UriBuilder(url) { UserName = null, Password = null }.Uri;
+            return url.UserInfo.Length == 0
+                ? url
+                : new UriBuilder(url) {UserName = null, Password = null}.Uri;
         }
 
         /// <summary>
@@ -180,7 +176,6 @@ namespace HSNXT
         /// <exception cref="ArgumentException">
         /// URI does not at least identify the user.
         /// </exception>
-
         public static NetworkCredential GetUserNamePassword(this Uri url)
         {
             var credentials = TryGetUserNamePassword(url);
@@ -199,15 +194,14 @@ namespace HSNXT
         /// or <c>null</c> when <see cref="Uri.UserInfo"/> is missing 
         /// the user name.
         /// </returns>
-
         public static NetworkCredential TryGetUserNamePassword(this Uri url)
         {
             if (url == null) throw new ArgumentNullException("url");
-            
-            return url.UserInfo.Split(':', (uid, pwd) 
-                => uid.Length != 0 
-                 ? new NetworkCredential(Uri.UnescapeDataString(uid), Uri.UnescapeDataString(pwd)) 
-                 : null);
+
+            return url.UserInfo.Split(':', (uid, pwd)
+                => uid.Length != 0
+                    ? new NetworkCredential(Uri.UnescapeDataString(uid), Uri.UnescapeDataString(pwd))
+                    : null);
         }
     }
 }

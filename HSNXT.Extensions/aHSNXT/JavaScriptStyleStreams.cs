@@ -48,7 +48,7 @@ namespace HSNXT
 
             return arr;
         }
-        
+
         /// <summary>
         /// The fill() method fills all the elements of a list from a start index to an end index with a static value.
         /// </summary>
@@ -78,9 +78,9 @@ namespace HSNXT
         public static int FindIndex<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
-                throw new ArgumentNullException(nameof (source));
+                throw new ArgumentNullException(nameof(source));
             if (predicate == null)
-                throw new ArgumentNullException(nameof (predicate));
+                throw new ArgumentNullException(nameof(predicate));
 
             var i = 0;
             foreach (var source1 in source)
@@ -89,6 +89,7 @@ namespace HSNXT
                     return i;
                 i++;
             }
+
             return -1;
         }
 
@@ -127,6 +128,5 @@ namespace HSNXT
         /// <exception cref="T:System.ArgumentNullException">
         /// <paramref name="self" /> or <paramref name="predicate" /> is <see langword="null" />.</exception>
         public static bool Some<T>(this IEnumerable<T> self, Func<T, bool> predicate) => self.Any(predicate);
-
     }
 }

@@ -12,7 +12,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-
         /// <summary>
         /// Returns an MD5 Hash from the specified string
         /// </summary>

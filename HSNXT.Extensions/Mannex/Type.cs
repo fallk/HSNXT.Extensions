@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -37,13 +39,11 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="Type"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         /// <summary>
         /// Determines if type is a constructed type of <see cref="System.Nullable{T}"/>.
         /// </summary>
-
         public static bool IsConstructionOfNullable(this Type type)
         {
             return type.IsConstructionOfGenericTypeDefinition(typeof(Nullable<>));
@@ -63,18 +63,19 @@ namespace HSNXT
         /// The type identified by <paramref name="genericTypeDefinition"/> is not
         /// a generic type definition.
         /// </exception>
-
         public static bool IsConstructionOfGenericTypeDefinition(this Type type, Type genericTypeDefinition)
         {
             if (type == null) throw new ArgumentNullException("type");
             if (genericTypeDefinition == null) throw new ArgumentNullException("genericTypeDefinition");
 
             if (!genericTypeDefinition.IsGenericTypeDefinition)
-                throw new ArgumentException(string.Format("{0} is not a generic type definition.", genericTypeDefinition), "genericTypeDefinition");
-            
+                throw new ArgumentException(
+                    string.Format("{0} is not a generic type definition.", genericTypeDefinition),
+                    "genericTypeDefinition");
+
             return type.IsGenericType
-                && !type.IsGenericTypeDefinition
-                && type.GetGenericTypeDefinition() == genericTypeDefinition;
+                   && !type.IsGenericTypeDefinition
+                   && type.GetGenericTypeDefinition() == genericTypeDefinition;
         }
 
         /// <summary>
@@ -84,15 +85,15 @@ namespace HSNXT
         /// respectively, and return a value of the same type as represented
         /// by this object.
         /// </summary>
-
         public static MethodInfo FindParseMethod(this Type type)
         {
             if (type == null) throw new ArgumentNullException("type");
-            var method = type.GetMethod("Parse", BindingFlags.Public | BindingFlags.Static, null, ParseParameterTypes, null);
+            var method = type.GetMethod("Parse", BindingFlags.Public | BindingFlags.Static, null, ParseParameterTypes,
+                null);
             return method != null && method.ReturnType == type ? method : null;
         }
 
-        static readonly Type[] ParseParameterTypes = { typeof (string), typeof (IFormatProvider) };
+        static readonly Type[] ParseParameterTypes = {typeof(string), typeof(IFormatProvider)};
 
         /// <summary>
         /// Returns a function capable of parsing a string into a value of
@@ -104,7 +105,6 @@ namespace HSNXT
         /// <see cref="IFormatProvider"/>, respectively, and returns a value
         /// of the same type as represented by this object.
         /// </remarks>
-
         public static Func<string, IFormatProvider, object> GetParser(this Type type)
         {
             return type.GetParseExpression().Compile();
@@ -121,7 +121,6 @@ namespace HSNXT
         /// <see cref="IFormatProvider"/>, respectively, and returns a value
         /// of the same type as represented by this object.
         /// </remarks>
-
         public static Func<string, IFormatProvider, object> TryGetParser(this Type type)
         {
             var expression = type.TryGetParseExpression();
@@ -138,7 +137,6 @@ namespace HSNXT
         /// <see cref="IFormatProvider"/>, respectively, and returns a value
         /// of the same type as represented by this object.
         /// </remarks>
-
         public static Expression<Func<string, IFormatProvider, object>> GetParseExpression(this Type type)
         {
             var expression = type.TryGetParseExpression();
@@ -157,7 +155,6 @@ namespace HSNXT
         /// <see cref="IFormatProvider"/>, respectively, and returns a value
         /// of the same type as represented by this object.
         /// </remarks>
-
         public static Expression<Func<string, IFormatProvider, object>> TryGetParseExpression(this Type type)
         {
             var method = FindParseMethod(type);
@@ -165,13 +162,14 @@ namespace HSNXT
                 return null;
             var input = Expression.Parameter(typeof(string), "input");
             var formatProvider = Expression.Parameter(typeof(IFormatProvider), "formatProvider");
-            return Expression.Lambda<Func<string, IFormatProvider, object>>(Expression.Convert(Expression.Call(method, input, formatProvider), typeof(object)), input, formatProvider);
+            return Expression.Lambda<Func<string, IFormatProvider, object>>(
+                Expression.Convert(Expression.Call(method, input, formatProvider), typeof(object)), input,
+                formatProvider);
         }
 
         /// <summary>
         /// Gets the default value for the type.
         /// </summary>
-
         public static object GetDefaultValue(this Type type)
         {
             if (type == null) throw new ArgumentNullException("type");

@@ -7,7 +7,6 @@ namespace HSNXT
 {
     public static partial class Extensions
     {
-        
         /// <summary>
         ///     Computes the sum of a sequence of the given values.
         /// </summary>
@@ -18,12 +17,12 @@ namespace HSNXT
         /// <returns>Returns the sum of the values.</returns>
         [PublicAPI]
         [Pure]
-        public static double Sum( this double value, [NotNull] params double[] values )
+        public static double Sum(this double value, [NotNull] params double[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Sum();
         }
 
@@ -38,12 +37,12 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static double? Sum( [CanBeNull] this double? value, [NotNull] params double?[] values )
+        public static double? Sum([CanBeNull] this double? value, [NotNull] params double?[] values)
         {
-            values.ThrowIfNull( nameof(values) );
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
+            list.Add(value);
             return list.Sum();
         }
 
@@ -60,14 +59,15 @@ namespace HSNXT
         /// <returns>Returns the sum of the projected values.</returns>
         [PublicAPI]
         [Pure]
-        public static double Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, double> selector, [NotNull] params TSource[] values )
+        public static double Sum<TSource>([CanBeNull] this TSource value, [NotNull] Func<TSource, double> selector,
+            [NotNull] params TSource[] values)
         {
-            selector.ThrowIfNull( nameof(selector) );
-            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Sum( selector );
+            list.Add(value);
+            return list.Sum(selector);
         }
 
         /// <summary>
@@ -84,14 +84,15 @@ namespace HSNXT
         [PublicAPI]
         [Pure]
         [CanBeNull]
-        public static double? Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, double?> selector, [NotNull] params TSource[] values )
+        public static double? Sum<TSource>([CanBeNull] this TSource value, [NotNull] Func<TSource, double?> selector,
+            [NotNull] params TSource[] values)
         {
-            selector.ThrowIfNull( nameof(selector) );
-            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull(nameof(values));
 
             var list = values.ToList();
-            list.Add( value );
-            return list.Sum( selector );
+            list.Add(value);
+            return list.Sum(selector);
         }
     }
 }

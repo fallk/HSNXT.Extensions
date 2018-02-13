@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace HSNXT
@@ -35,7 +37,6 @@ namespace HSNXT
     /// <summary>
     /// Extension methods for <see cref="DirectoryInfo"/>.
     /// </summary>
-
     public static partial class Extensions
     {
         const string DefaultSearchPattern = "*";
@@ -47,7 +48,6 @@ namespace HSNXT
         /// This method uses deferred execution. In addition, it does not
         /// check for the existence of the directory or its parents.
         /// </remarks>
-
         public static IEnumerable<DirectoryInfo> Parents(this DirectoryInfo dir)
         {
             return dir.SelfAndParents().Skip(1);
@@ -60,7 +60,6 @@ namespace HSNXT
         /// This method uses deferred execution. In addition, it does not
         /// check for the existence of the directory or its parents.
         /// </remarks>
-
         public static IEnumerable<DirectoryInfo> SelfAndParents(this DirectoryInfo dir)
         {
             if (dir == null) throw new ArgumentNullException("dir");
@@ -78,7 +77,6 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.GetFiles()"/>
         /// except filters hidden and system files.
         /// </summary>
-
         public static FileInfo[] GetVisibleFiles(this DirectoryInfo dir)
         {
             return GetVisibleFiles(dir, DefaultSearchPattern);
@@ -88,7 +86,6 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.GetFiles(String)"/>
         /// except filters hidden and system files.
         /// </summary>
-
         public static FileInfo[] GetVisibleFiles(this DirectoryInfo dir, string searchPattern)
         {
             return GetVisibleFiles(dir, searchPattern, SearchOption.TopDirectoryOnly);
@@ -98,19 +95,18 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.GetFiles(String,SearchOption)"/>
         /// except filters hidden and system files.
         /// </summary>
-
-        public static FileInfo[] GetVisibleFiles(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static FileInfo[] GetVisibleFiles(this DirectoryInfo dir, string searchPattern,
+            SearchOption searchOption)
         {
             return dir.GetFiles(searchPattern, searchOption)
-                      .Where(e => e.IsUserVisible())
-                      .ToArray();
+                .Where(e => e.IsUserVisible())
+                .ToArray();
         }
 
         /// <summary>
         /// Same as <see cref="DirectoryInfo.GetDirectories()"/>
         /// except filters hidden and system files.
         /// </summary>
-
         public static DirectoryInfo[] GetVisibleDirectories(this DirectoryInfo dir)
         {
             return GetVisibleDirectories(dir, DefaultSearchPattern);
@@ -120,7 +116,6 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.GetDirectories(String)"/>
         /// except filters hidden and system directories.
         /// </summary>
-
         public static DirectoryInfo[] GetVisibleDirectories(this DirectoryInfo dir, string searchPattern)
         {
             return GetVisibleDirectories(dir, searchPattern, SearchOption.TopDirectoryOnly);
@@ -130,19 +125,18 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.GetDirectories(String,SearchOption)"/>
         /// except filters hidden and system directories.
         /// </summary>
-
-        public static DirectoryInfo[] GetVisibleDirectories(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static DirectoryInfo[] GetVisibleDirectories(this DirectoryInfo dir, string searchPattern,
+            SearchOption searchOption)
         {
             return dir.GetDirectories(searchPattern, searchOption)
-                      .Where(e => e.IsUserVisible())
-                      .ToArray();
+                .Where(e => e.IsUserVisible())
+                .ToArray();
         }
 
         /// <summary>
         /// Same as <see cref="DirectoryInfo.GetFileSystemInfos()"/>
         /// except filters hidden and system entries.
         /// </summary>
-
         public static FileSystemInfo[] GetVisibleFileSystemInfo(this DirectoryInfo dir)
         {
             return GetVisibleFileSystemInfo(dir, DefaultSearchPattern);
@@ -152,33 +146,31 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.GetFileSystemInfos(String)"/>
         /// except filters hidden and system entries.
         /// </summary>
-
         public static FileSystemInfo[] GetVisibleFileSystemInfo(this DirectoryInfo dir, string searchPattern)
         {
             return dir.GetFileSystemInfos(searchPattern)
-                      .Where(e => e.IsUserVisible())
-                      .ToArray();
+                .Where(e => e.IsUserVisible())
+                .ToArray();
         }
 
-        #if NET4
+#if NET4
 
         /// <summary>
         /// Same as <see cref="DirectoryInfo.GetFileSystemInfos(String,SearchOption)"/>
         /// except filters hidden and system entries.
         /// </summary>
-
-        public static FileSystemInfo[] GetVisibleFileSystemInfo(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static FileSystemInfo[] GetVisibleFileSystemInfo(this DirectoryInfo dir, string searchPattern,
+            SearchOption searchOption)
         {
             return dir.GetFileSystemInfos(searchPattern, searchOption)
-                      .Where(e => e.IsUserVisible())
-                      .ToArray();
+                .Where(e => e.IsUserVisible())
+                .ToArray();
         }
 
         /// <summary>
         /// Same as <see cref="DirectoryInfo.EnumerateFiles()"/>
         /// except filters hidden and system files.
         /// </summary>
-
         public static IEnumerable<FileInfo> EnumerateVisibleFiles(this DirectoryInfo dir)
         {
             return EnumerateVisibleFiles(dir, DefaultSearchPattern);
@@ -188,7 +180,6 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFiles(String)"/>
         /// except filters hidden and system files.
         /// </summary>
-
         public static IEnumerable<FileInfo> EnumerateVisibleFiles(this DirectoryInfo dir, string searchPattern)
         {
             return EnumerateVisibleFiles(dir, searchPattern, SearchOption.TopDirectoryOnly);
@@ -198,19 +189,18 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFiles(String,SearchOption)"/>
         /// except filters hidden and system files.
         /// </summary>
-
-        public static IEnumerable<FileInfo> EnumerateVisibleFiles(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static IEnumerable<FileInfo> EnumerateVisibleFiles(this DirectoryInfo dir, string searchPattern,
+            SearchOption searchOption)
         {
             return from e in dir.EnumerateFiles(searchPattern, searchOption)
-                   where e.IsUserVisible()
-                   select e;
+                where e.IsUserVisible()
+                select e;
         }
 
         /// <summary>
         /// Same as <see cref="DirectoryInfo.EnumerateDirectories()"/>
         /// except filters hidden and system directories.
         /// </summary>
-
         public static IEnumerable<DirectoryInfo> EnumerateVisibleDirectories(this DirectoryInfo dir)
         {
             return EnumerateVisibleDirectories(dir, DefaultSearchPattern);
@@ -220,8 +210,8 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateDirectories(String)"/>
         /// except filters hidden and system directories.
         /// </summary>
-
-        public static IEnumerable<DirectoryInfo> EnumerateVisibleDirectories(this DirectoryInfo dir, string searchPattern)
+        public static IEnumerable<DirectoryInfo> EnumerateVisibleDirectories(this DirectoryInfo dir,
+            string searchPattern)
         {
             return EnumerateVisibleDirectories(dir, searchPattern, SearchOption.TopDirectoryOnly);
         }
@@ -230,19 +220,18 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateDirectories(String,SearchOption)"/>
         /// except filters hidden and system directories.
         /// </summary>
-
-        public static IEnumerable<DirectoryInfo> EnumerateVisibleDirectories(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static IEnumerable<DirectoryInfo> EnumerateVisibleDirectories(this DirectoryInfo dir,
+            string searchPattern, SearchOption searchOption)
         {
             return from e in dir.EnumerateDirectories(searchPattern, searchOption)
-                   where e.IsUserVisible()
-                   select e;
+                where e.IsUserVisible()
+                select e;
         }
 
         /// <summary>
         /// Same as <see cref="DirectoryInfo.EnumerateFileSystemInfos()"/>
         /// except filters hidden and system entries.
         /// </summary>
-
         [Obsolete("Use EnumerateVisibleFileSystemInfos instead.")]
         public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfo(this DirectoryInfo dir)
         {
@@ -253,9 +242,9 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFileSystemInfos(String)"/>
         /// except filters hidden and system entries.
         /// </summary>
-
         [Obsolete("Use EnumerateVisibleFileSystemInfos instead.")]
-        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfo(this DirectoryInfo dir, string searchPattern)
+        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfo(this DirectoryInfo dir,
+            string searchPattern)
         {
             return dir.EnumerateVisibleFileSystemInfos(searchPattern);
         }
@@ -264,9 +253,9 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFileSystemInfos(String,SearchOption)"/>
         /// except filters hidden and system entries.
         /// </summary>
-
         [Obsolete("Use EnumerateVisibleFileSystemInfos instead.")]
-        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfo(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfo(this DirectoryInfo dir,
+            string searchPattern, SearchOption searchOption)
         {
             return dir.EnumerateFileSystemInfos(searchPattern, searchOption);
         }
@@ -275,7 +264,6 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFileSystemInfos()"/>
         /// except filters hidden and system entries.
         /// </summary>
-
         public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfos(this DirectoryInfo dir)
         {
             return EnumerateVisibleFileSystemInfos(dir, DefaultSearchPattern);
@@ -285,8 +273,8 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFileSystemInfos(String)"/>
         /// except filters hidden and system entries.
         /// </summary>
-
-        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfos(this DirectoryInfo dir, string searchPattern)
+        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfos(this DirectoryInfo dir,
+            string searchPattern)
         {
             return EnumerateVisibleFileSystemInfos(dir, searchPattern, SearchOption.TopDirectoryOnly);
         }
@@ -295,14 +283,14 @@ namespace HSNXT
         /// Same as <see cref="DirectoryInfo.EnumerateFileSystemInfos(String,SearchOption)"/>
         /// except filters hidden and system entries.
         /// </summary>
-
-        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfos(this DirectoryInfo dir, string searchPattern, SearchOption searchOption)
+        public static IEnumerable<FileSystemInfo> EnumerateVisibleFileSystemInfos(this DirectoryInfo dir,
+            string searchPattern, SearchOption searchOption)
         {
             return from e in dir.EnumerateFileSystemInfos(searchPattern, searchOption)
-                   where e.IsUserVisible()
-                   select e;
+                where e.IsUserVisible()
+                select e;
         }
 
-        #endif
+#endif
     }
 }
