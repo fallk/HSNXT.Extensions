@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 namespace Newtonsoft.Json.Tests.TestObjects
@@ -36,7 +38,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public static implicit operator DictionaryKey(string value)
         {
-            return new DictionaryKey() { Value = value };
+            return new DictionaryKey() {Value = value};
         }
     }
 }

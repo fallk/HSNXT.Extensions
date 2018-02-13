@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using Xunit;
@@ -15,28 +15,28 @@ namespace Extend.Testing
         public void ToShortDateLongTimeStringTest()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "G" );
+            var expected = dateTime.ToString("G");
             var actual = dateTime.ToShortDateLongTimeString();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void ToShortDateLongTimeStringTest1()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "G", DateTimeFormatInfo.CurrentInfo );
+            var expected = dateTime.ToString("G", DateTimeFormatInfo.CurrentInfo);
             // ReSharper disable once AssignNullToNotNullAttribute
-            var actual = dateTime.ToShortDateLongTimeString( DateTimeFormatInfo.CurrentInfo );
-            Assert.Equal( expected, actual );
+            var actual = dateTime.ToShortDateLongTimeString(DateTimeFormatInfo.CurrentInfo);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void ToShortDateLongTimeStringTest2()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "G", CultureInfo.InvariantCulture );
-            var actual = dateTime.ToShortDateLongTimeString( CultureInfo.InvariantCulture );
-            Assert.Equal( expected, actual );
+            var expected = dateTime.ToString("G", CultureInfo.InvariantCulture);
+            var actual = dateTime.ToShortDateLongTimeString(CultureInfo.InvariantCulture);
+            Assert.Equal(expected, actual);
         }
     }
 }

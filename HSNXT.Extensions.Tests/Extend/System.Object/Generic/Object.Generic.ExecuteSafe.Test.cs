@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -16,40 +16,40 @@ namespace Extend.Testing
         public void ExecuteSafeTest()
         {
             var expectedValue = Extensions.GetRandomString();
-            var actual = expectedValue.ExecuteSafe( x => throw new InvalidOperationException( expectedValue ) );
+            var actual = expectedValue.ExecuteSafe(x => throw new InvalidOperationException(expectedValue));
 
-            Assert.Null( actual.Result );
-            Assert.NotNull( actual.Exception );
-            Assert.Equal( expectedValue, actual.Exception.Message );
+            Assert.Null(actual.Result);
+            Assert.NotNull(actual.Exception);
+            Assert.Equal(expectedValue, actual.Exception.Message);
 
             var list = new List<String>();
-            Assert.True( list.NotAny() );
-            actual = expectedValue.ExecuteSafe( list.Add );
+            Assert.True(list.NotAny());
+            actual = expectedValue.ExecuteSafe(list.Add);
 
-            Assert.Null( actual.Exception );
-            Assert.Equal( expectedValue, actual.Result );
-            Assert.Equal( list[0], expectedValue );
+            Assert.Null(actual.Exception);
+            Assert.Equal(expectedValue, actual.Result);
+            Assert.Equal(list[0], expectedValue);
         }
 
         [Fact]
         public void ExecuteSafeTest1()
         {
             var expectedValue = Extensions.GetRandomString();
-            var actual = expectedValue.ExecuteSafe( x =>
+            var actual = expectedValue.ExecuteSafe(x =>
             {
-                if ( expectedValue.Length > 0 )
-                    throw new InvalidOperationException( expectedValue );
+                if (expectedValue.Length > 0)
+                    throw new InvalidOperationException(expectedValue);
                 return expectedValue;
-            } );
+            });
 
-            Assert.Null( actual.Result );
-            Assert.NotNull( actual.Exception );
-            Assert.Equal( expectedValue, actual.Exception.Message );
+            Assert.Null(actual.Result);
+            Assert.NotNull(actual.Exception);
+            Assert.Equal(expectedValue, actual.Exception.Message);
 
-            actual = expectedValue.ExecuteSafe( x => expectedValue );
+            actual = expectedValue.ExecuteSafe(x => expectedValue);
 
-            Assert.Null( actual.Exception );
-            Assert.Equal( actual.Result, expectedValue );
+            Assert.Null(actual.Exception);
+            Assert.Equal(actual.Result, expectedValue);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".ExecuteSafe( func );
+            Action test = () => "".ExecuteSafe(func);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -70,7 +70,7 @@ namespace Extend.Testing
             Action<String> action = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".ExecuteSafe( action );
+            Action test = () => "".ExecuteSafe(action);
 
             test.ShouldThrow<ArgumentNullException>();
         }

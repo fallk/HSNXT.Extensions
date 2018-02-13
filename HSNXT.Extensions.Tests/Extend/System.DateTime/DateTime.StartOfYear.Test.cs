@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -14,10 +14,10 @@ namespace Extend.Testing
         public void StartOfYearTest()
         {
             var dateTime = DateTime.Today;
-            var expected = new DateTime( dateTime.Year, 1, 1 );
+            var expected = new DateTime(dateTime.Year, 1, 1);
             var actual = dateTime.StartOfYear();
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

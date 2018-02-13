@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -47,11 +47,11 @@ namespace Extend.Testing
         {
             const Byte value = (Byte) 1;
             var actual = value.ToString()
-                              .ToByte();
+                .ToByte();
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "1".ToByte( null );
+            Action test = () => "1".ToByte(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -68,7 +68,7 @@ namespace Extend.Testing
         public void ToByteWithFormatInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".ToByte( CultureInfo.InvariantCulture );
+            Action test = () => "test".ToByte(CultureInfo.InvariantCulture);
 
             test.ShouldThrow<FormatException>();
         }
@@ -77,7 +77,7 @@ namespace Extend.Testing
         public void ToByteWithFormatOverflowTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "300".ToByte( CultureInfo.InvariantCulture );
+            Action test = () => "300".ToByte(CultureInfo.InvariantCulture);
 
             test.ShouldThrow<OverflowException>();
         }
@@ -87,11 +87,11 @@ namespace Extend.Testing
         {
             const Byte value = (Byte) 1;
             var actual = value.ToString()
-                              .ToByte( CultureInfo.InvariantCulture );
+                .ToByte(CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]
@@ -101,7 +101,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToByte( CultureInfo.InvariantCulture );
+            Action test = () => value.ToByte(CultureInfo.InvariantCulture);
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,11 +13,11 @@ namespace Extend.Testing
         [Fact]
         public void IsLeapYearTest()
         {
-            var year = Extensions.GetRandomInt32( 1990, 2015 );
+            var year = Extensions.GetRandomInt32(1990, 2015);
 
-            var expected = DateTime.IsLeapYear( year );
-            var actual = ( (Int16) year ).IsLeapYear();
-            Assert.Equal( expected, actual );
+            var expected = DateTime.IsLeapYear(year);
+            var actual = ((Int16) year).IsLeapYear();
+            Assert.Equal(expected, actual);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -15,10 +15,10 @@ namespace Extend.Testing
         [Fact]
         public void ToBooleanFormatNullTest()
         {
-            var actual = "true".ToBoolean( null );
+            var actual = "true".ToBoolean(null);
             actual
                 .Should()
-                .Be( true );
+                .Be(true);
         }
 
         [Fact]
@@ -27,7 +27,7 @@ namespace Extend.Testing
             var value = new TestModel();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToBoolean( CultureInfo.CurrentCulture );
+            Action test = () => value.ToBoolean(CultureInfo.CurrentCulture);
             test.ShouldThrow<InvalidCastException>();
         }
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToBoolean( CultureInfo.CurrentCulture );
+            Action test = () => value.ToBoolean(CultureInfo.CurrentCulture);
             test.ShouldThrow<FormatException>();
         }
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToBoolean( value );
+            Action test = () => Extensions.ToBoolean(value);
             test.ShouldNotThrow();
         }
 
@@ -65,13 +65,13 @@ namespace Extend.Testing
         public void ToBooleanTest()
         {
             var value = "false";
-            var actual = Extensions.ToBoolean( value );
+            var actual = Extensions.ToBoolean(value);
             actual
                 .Should()
                 .BeFalse();
 
             value = "true";
-            actual = Extensions.ToBoolean( value );
+            actual = Extensions.ToBoolean(value);
             actual
                 .Should()
                 .BeTrue();
@@ -81,13 +81,13 @@ namespace Extend.Testing
         public void ToBooleanTest1()
         {
             var value = "false";
-            var actual = value.ToBoolean( CultureInfo.InvariantCulture );
+            var actual = value.ToBoolean(CultureInfo.InvariantCulture);
             actual
                 .Should()
                 .BeFalse();
 
             value = "true";
-            actual = value.ToBoolean( CultureInfo.InvariantCulture );
+            actual = value.ToBoolean(CultureInfo.InvariantCulture);
             actual
                 .Should()
                 .BeTrue();
@@ -96,10 +96,10 @@ namespace Extend.Testing
         [Fact]
         public void ToBooleanValueNullTest()
         {
-            var actual = Extensions.ToBoolean( null, CultureInfo.InvariantCulture );
+            var actual = Extensions.ToBoolean(null, CultureInfo.InvariantCulture);
             actual
                 .Should()
-                .Be( false );
+                .Be(false);
         }
     }
 }

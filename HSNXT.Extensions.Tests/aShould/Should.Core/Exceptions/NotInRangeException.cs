@@ -16,8 +16,8 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="low">The low value of the range</param>
         /// <param name="high">The high value of the range</param>
         public NotInRangeException(object actual,
-                                   object low,
-                                   object high)
+            object low,
+            object high)
             : base("Assert.NotInRange() Failure")
         {
             this.low = low == null ? null : low.ToString();
@@ -58,7 +58,7 @@ namespace erichexter.Should.Core.Exceptions
             get
             {
                 return string.Format("{0}\r\nRange:  ({1} - {2})\r\nActual: {3}",
-                                     base.Message, Low, High, Actual ?? "(null)");
+                    base.Message, Low, High, Actual ?? "(null)");
             }
         }
     }

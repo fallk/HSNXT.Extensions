@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -17,22 +17,22 @@ namespace Extend.Testing
         public void NotAnyTest()
         {
             var list = new List<String>();
-            Assert.True( list.NotAny() );
+            Assert.True(list.NotAny());
 
-            list.Add( Extensions.GetRandomString() );
-            Assert.False( list.NotAny() );
+            list.Add(Extensions.GetRandomString());
+            Assert.False(list.NotAny());
         }
 
         [Fact]
         public void NotAnyTest1()
         {
             var list = new List<String>();
-            Assert.True( list.NotAny( x => true ) );
-            Assert.True( list.NotAny( x => false ) );
+            Assert.True(list.NotAny(x => true));
+            Assert.True(list.NotAny(x => false));
 
-            list.Add( Extensions.GetRandomString() );
-            Assert.False( list.NotAny( x => true ) );
-            Assert.True( list.NotAny( x => false ) );
+            list.Add(Extensions.GetRandomString());
+            Assert.False(list.NotAny(x => true));
+            Assert.True(list.NotAny(x => false));
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.NotAny( x => true );
+            Action test = () => list.NotAny(x => true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -52,7 +52,7 @@ namespace Extend.Testing
             Func<Object, Boolean> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().NotAny( func );
+            Action test = () => new List<Object>().NotAny(func);
 
             test.ShouldThrow<ArgumentNullException>();
         }

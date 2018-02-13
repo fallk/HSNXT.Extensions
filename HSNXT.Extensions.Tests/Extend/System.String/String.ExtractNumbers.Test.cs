@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void ExtractNumbersTest()
         {
             var actual = "1a2b3c4".ExtractNumbers();
-            Assert.Equal( "1234", actual );
+            Assert.Equal("1234", actual);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractNumbers( null );
+            Action test = () => Extensions.ExtractNumbers(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

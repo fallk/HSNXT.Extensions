@@ -2,7 +2,9 @@ namespace erichexter.Should.Fluent.Model
 {
     public class ShouldDouble : ShouldBase<ShouldDouble, double, BeDouble>
     {
-        public ShouldDouble(double target, IAssertProvider assertProvider) : base(target, assertProvider) { }
+        public ShouldDouble(double target, IAssertProvider assertProvider) : base(target, assertProvider)
+        {
+        }
 
         public double Equal(double expected, double tolerance)
         {
@@ -14,6 +16,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(expected, Target, tolerance);
             }
+
             return Target;
         }
     }

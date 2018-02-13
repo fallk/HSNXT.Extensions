@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,15 +13,15 @@ namespace Extend.Testing
         [Fact]
         public void LastDayOfWeekTest()
         {
-            var dateTime = new DateTime( 2014, 3, 30 );
+            var dateTime = new DateTime(2014, 3, 30);
             var actual = dateTime.LastDayOfWeek2();
 
-            Assert.Equal( dateTime, actual );
+            Assert.Equal(dateTime, actual);
 
-            dateTime = new DateTime( 2014, 3, 28 );
+            dateTime = new DateTime(2014, 3, 28);
             actual = dateTime.LastDayOfWeek2();
 
-            Assert.Equal( new DateTime( 2014, 3, 30 ), actual );
+            Assert.Equal(new DateTime(2014, 3, 30), actual);
         }
     }
 }

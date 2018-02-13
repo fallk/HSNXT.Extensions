@@ -10,7 +10,7 @@ namespace TestProject
 {
     using System;
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -21,9 +21,9 @@ using HSNXT.dotNetExt;
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
         }
-        
+
         #region IsOdd Tests
-        
+
         [TestMethod]
         public void IntTest_IsOdd_001()
         {
@@ -99,30 +99,35 @@ using HSNXT.dotNetExt;
             var day = 2.WeekdayName();
             Assert.AreEqual("Monday", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest005()
         {
             var day = 3.WeekdayName();
             Assert.AreEqual("Tuesday", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest006()
         {
             var day = 4.WeekdayName();
             Assert.AreEqual("Wednesday", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest007()
         {
             var day = 5.WeekdayName();
             Assert.AreEqual("Thursday", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest008()
         {
             var day = 6.WeekdayName();
             Assert.AreEqual("Friday", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest009()
         {
@@ -143,37 +148,42 @@ using HSNXT.dotNetExt;
             var day = 2.WeekdayName(true);
             Assert.AreEqual("Mon", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest012()
         {
             var day = 3.WeekdayName(true);
             Assert.AreEqual("Tue", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest013()
         {
             var day = 4.WeekdayName(true);
             Assert.AreEqual("Wed", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest0014()
         {
             var day = 5.WeekdayName(true);
             Assert.AreEqual("Thu", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest015()
         {
             var day = 6.WeekdayName(true);
             Assert.AreEqual("Fri", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest016()
         {
             var day = 7.WeekdayName(true);
             Assert.AreEqual("Sat", day);
         }
-        
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest017()
         {
@@ -187,30 +197,35 @@ using HSNXT.dotNetExt;
             var day = 2.WeekdayName(true, DayOfWeek.Monday);
             Assert.AreEqual("Tue", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest019()
         {
             var day = 3.WeekdayName(true, DayOfWeek.Monday);
             Assert.AreEqual("Wed", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest020()
         {
             var day = 4.WeekdayName(true, DayOfWeek.Monday);
             Assert.AreEqual("Thu", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest021()
         {
             var day = 5.WeekdayName(true, DayOfWeek.Monday);
             Assert.AreEqual("Fri", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest022()
         {
             var day = 6.WeekdayName(true, DayOfWeek.Monday);
             Assert.AreEqual("Sat", day);
         }
+
         [TestMethod]
         public void IntExtensionsTest_WeekdayNameTest023()
         {

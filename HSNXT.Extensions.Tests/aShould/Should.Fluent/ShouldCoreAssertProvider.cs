@@ -189,9 +189,12 @@ namespace erichexter.Should.Fluent
             try
             {
                 Assert.IsAssignableFrom(expectedType, target);
-                throw new AssertException(string.Format("Expected {0} to NOT be assignable from {1}, but it is.", target.GetType(), expectedType));
+                throw new AssertException(string.Format("Expected {0} to NOT be assignable from {1}, but it is.",
+                    target.GetType(), expectedType));
             }
-            catch (IsAssignableFromException) { }
+            catch (IsAssignableFromException)
+            {
+            }
         }
     }
 }

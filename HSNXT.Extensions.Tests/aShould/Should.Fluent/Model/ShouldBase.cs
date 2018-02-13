@@ -19,23 +19,24 @@ namespace erichexter.Should.Fluent.Model
             get
             {
                 Negate = !Negate;
-                return (T)this;
+                return (T) this;
             }
         }
 
         public TBe Be
         {
-            get { return (TBe)Activator.CreateInstance(typeof(TBe), this); }
+            get { return (TBe) Activator.CreateInstance(typeof(TBe), this); }
         }
 
         public TTarget Equal(TTarget expected)
         {
-            return ((IShould<TTarget>)this).Apply(
+            return ((IShould<TTarget>) this).Apply(
                 (t, a) => a.AreEqual(expected, t),
                 (t, a) => a.AreNotEqual(expected, Target));
         }
 
-        TTarget IShould<TTarget>.Apply(Action<TTarget, IAssertProvider> positiveCase, Action<TTarget, IAssertProvider> negativeCase)
+        TTarget IShould<TTarget>.Apply(Action<TTarget, IAssertProvider> positiveCase,
+            Action<TTarget, IAssertProvider> negativeCase)
         {
             if (Negate)
             {
@@ -45,13 +46,15 @@ namespace erichexter.Should.Fluent.Model
             {
                 positiveCase(Target, assertProvider);
             }
+
             return Target;
         }
 
-        object IShould<TTarget>.Apply(Func<TTarget, IAssertProvider, object> positiveCase, Func<TTarget, IAssertProvider, object> negativeCase)
+        object IShould<TTarget>.Apply(Func<TTarget, IAssertProvider, object> positiveCase,
+            Func<TTarget, IAssertProvider, object> negativeCase)
         {
-            return Negate 
-                ? negativeCase(Target, assertProvider) 
+            return Negate
+                ? negativeCase(Target, assertProvider)
                 : positiveCase(Target, assertProvider);
         }
 

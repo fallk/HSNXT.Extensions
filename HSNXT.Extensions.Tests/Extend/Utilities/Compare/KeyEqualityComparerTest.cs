@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -19,26 +19,26 @@ namespace Extend.Testing
             // ReSharper disable once ObjectCreationAsStatement
             // ReSharper disable once ExpressionIsAlwaysNull
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new KeyEqualityComparer<String, String>( keySelector, new StringLengthComparer() );
+            Action test = () => new KeyEqualityComparer<String, String>(keySelector, new StringLengthComparer());
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Fact]
         public void ByTest()
         {
-            var actual = new KeyEqualityComparer<String, Int32>( x => x.Length, null );
-            var equals = actual.Equals( "test", "1234" );
+            var actual = new KeyEqualityComparer<String, Int32>(x => x.Length, null);
+            var equals = actual.Equals("test", "1234");
             equals.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
         public void ByTest1()
         {
-            var actual = new KeyEqualityComparer<String, String>( x => x, new StringLengthComparer() );
-            var equals = actual.Equals( "test", "1234" );
+            var actual = new KeyEqualityComparer<String, String>(x => x, new StringLengthComparer());
+            var equals = actual.Equals("test", "1234");
             equals.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         #region Nested Types
@@ -55,7 +55,7 @@ namespace Extend.Testing
             /// </returns>
             /// <param name="x">The first object to compare.</param>
             /// <param name="y">The second object to compare.</param>
-            public Boolean Equals( String x, String y )
+            public Boolean Equals(String x, String y)
                 => x.Length == y.Length;
 
             /// <summary>
@@ -69,7 +69,7 @@ namespace Extend.Testing
             ///     The type of <paramref name="obj" /> is a reference type and
             ///     <paramref name="obj" /> is null.
             /// </exception>
-            public Int32 GetHashCode( String obj )
+            public Int32 GetHashCode(String obj)
                 => obj.Length.GetHashCode();
 
             #endregion

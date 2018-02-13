@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -43,18 +45,22 @@ namespace Newtonsoft.Json.Tests.TestObjects
             {
                 return this;
             }
+
             if (conversionType == typeof(int))
             {
-                return (int)Value;
+                return (int) Value;
             }
+
             if (conversionType == typeof(long))
             {
-                return (long)Value;
+                return (long) Value;
             }
+
             if (conversionType == typeof(string))
             {
                 return Value.ToString(CultureInfo.InvariantCulture);
             }
+
             throw new InvalidCastException();
         }
 
@@ -90,7 +96,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         short IConvertible.ToInt16(IFormatProvider provider)
         {
-            return (short)Value;
+            return (short) Value;
         }
 
         int IConvertible.ToInt32(IFormatProvider provider)
@@ -100,7 +106,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         long IConvertible.ToInt64(IFormatProvider provider)
         {
-            return (long)Value;
+            return (long) Value;
         }
 
         sbyte IConvertible.ToSByte(IFormatProvider provider)

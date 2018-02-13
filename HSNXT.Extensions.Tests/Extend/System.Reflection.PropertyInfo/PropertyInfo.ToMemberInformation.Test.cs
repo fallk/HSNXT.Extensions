@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -19,7 +19,7 @@ namespace Extend.Testing
             PropertyInfo t = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => t.ToMemberInformation( null );
+            Action test = () => t.ToMemberInformation(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -28,39 +28,39 @@ namespace Extend.Testing
         public void ToMemberInformationTest()
         {
             var property = typeof(TestModel).GetPublicSettableProperties()
-                                            .First();
-            var actual = property.ToMemberInformation( null );
+                .First();
+            var actual = property.ToMemberInformation(null);
             actual.MemberName.Should()
-                  .Be( "MyString" );
+                .Be("MyString");
             actual.MemberObject.Should()
-                  .BeNull();
+                .BeNull();
             actual.MemberPath.Should()
-                  .Be( ".MyString" );
+                .Be(".MyString");
             actual.MemberType.Should()
-                  .Be( typeof(String) );
+                .Be(typeof(String));
             actual.PropertyInfo.Should()
-                  .BeSameAs( property );
+                .BeSameAs(property);
         }
 
         [Fact]
         public void ToMemberInformationTest1()
         {
             var property = typeof(TestModel).GetPublicSettableProperties()
-                                            .First();
-            var actual = property.ToMemberInformation( new MemberInformation
+                .First();
+            var actual = property.ToMemberInformation(new MemberInformation
             {
                 MemberName = "Parent"
-            } );
+            });
             actual.MemberName.Should()
-                  .Be( "MyString" );
+                .Be("MyString");
             actual.MemberObject.Should()
-                  .BeNull();
+                .BeNull();
             actual.MemberPath.Should()
-                  .Be( "Parent.MyString" );
+                .Be("Parent.MyString");
             actual.MemberType.Should()
-                  .Be( typeof(String) );
+                .Be(typeof(String));
             actual.PropertyInfo.Should()
-                  .BeSameAs( property );
+                .BeSameAs(property);
         }
 
         #region Nested Types

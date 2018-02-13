@@ -16,8 +16,28 @@ namespace TestProject
     {
         private static IQueryable<string> GetStringQuery()
         {
-            return (new List<string> {
-                "Chris","John","Steve","Katie","Sara","Susan","Scott","Kara","Michelle","Mitchel","Bob","Allen","Tim","Tom","Zeo","Chelsea","Sue","Tod","Joe","Bill"
+            return (new List<string>
+            {
+                "Chris",
+                "John",
+                "Steve",
+                "Katie",
+                "Sara",
+                "Susan",
+                "Scott",
+                "Kara",
+                "Michelle",
+                "Mitchel",
+                "Bob",
+                "Allen",
+                "Tim",
+                "Tom",
+                "Zeo",
+                "Chelsea",
+                "Sue",
+                "Tod",
+                "Joe",
+                "Bill"
             }).AsQueryable();
         }
 
@@ -25,7 +45,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_001()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)new PaginatedList(query, 1, 3);
+            var page = (IPaginatedList) new PaginatedList(query, 1, 3);
 
             Assert.AreEqual(20, page.TotalCount);
             Assert.AreEqual(7, page.TotalPages);
@@ -41,7 +61,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_002()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)new PaginatedList(query, 0, 3);
+            var page = (IPaginatedList) new PaginatedList(query, 0, 3);
 
             Assert.AreEqual(20, page.TotalCount);
             Assert.AreEqual(7, page.TotalPages);
@@ -58,7 +78,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_003()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)new PaginatedList(query, 6, 3);
+            var page = (IPaginatedList) new PaginatedList(query, 6, 3);
 
             Assert.AreEqual(20, page.TotalCount);
             Assert.AreEqual(7, page.TotalPages);
@@ -73,7 +93,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_004()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)new PaginatedList(query, 1, query.Count(), 100);
+            var page = (IPaginatedList) new PaginatedList(query, 1, query.Count(), 100);
 
             Assert.AreEqual(100, page.TotalCount);
             Assert.AreEqual(5, page.TotalPages);
@@ -88,7 +108,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_005()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)new PaginatedList(query, 0, query.Count(), 100);
+            var page = (IPaginatedList) new PaginatedList(query, 0, query.Count(), 100);
 
             Assert.AreEqual(100, page.TotalCount);
             Assert.AreEqual(5, page.TotalPages);
@@ -104,7 +124,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_006()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)query.ToPaginatedList(4, query.Count(), 100);
+            var page = (IPaginatedList) query.ToPaginatedList(4, query.Count(), 100);
 
             Assert.AreEqual(100, page.TotalCount);
             Assert.AreEqual(5, page.TotalPages);
@@ -119,7 +139,7 @@ namespace TestProject
         public void PaginatedList_ConstructorTest_007()
         {
             var query = GetStringQuery();
-            var page = (IPaginatedList)query.ToPaginatedList(4, 25, 120);
+            var page = (IPaginatedList) query.ToPaginatedList(4, 25, 120);
 
             Assert.AreEqual(120, page.TotalCount);
             Assert.AreEqual(5, page.TotalPages);

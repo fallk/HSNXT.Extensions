@@ -25,7 +25,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void Two_is_not_less_than_or_equal_to_one_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<LessThanOrEqualException>(() => Should.Core.Assertions.Assert.LessThanOrEqual(2, 1));
+            Should.Core.Assertions.Assert.Throws<LessThanOrEqualException>(() =>
+                Should.Core.Assertions.Assert.LessThanOrEqual(2, 1));
         }
 
         [Fact]
@@ -43,7 +44,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void Tomorrow_is_not_less_than_or_equal_to_today_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<LessThanOrEqualException>(() => Should.Core.Assertions.Assert.LessThanOrEqual(tomorrow, today));
+            Should.Core.Assertions.Assert.Throws<LessThanOrEqualException>(() =>
+                Should.Core.Assertions.Assert.LessThanOrEqual(tomorrow, today));
         }
 
         [Fact]
@@ -55,7 +57,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void b_is_not_less_than_or_equal_to_a_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<LessThanOrEqualException>(() => Should.Core.Assertions.Assert.LessThanOrEqual("b", "a"));
+            Should.Core.Assertions.Assert.Throws<LessThanOrEqualException>(() =>
+                Should.Core.Assertions.Assert.LessThanOrEqual("b", "a"));
         }
 
         [Fact]

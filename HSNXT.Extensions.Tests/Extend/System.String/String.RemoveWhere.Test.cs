@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,8 +14,8 @@ namespace Extend.Testing
         [Fact]
         public void RemoveWhereTest()
         {
-            var actual = "a1-b2.c3".RemoveWhere( x => x.IsNumber() );
-            Assert.Equal( "a-b.c", actual );
+            var actual = "a1-b2.c3".RemoveWhere(x => x.IsNumber());
+            Assert.Equal("a-b.c", actual);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.RemoveWhere( null, x => false );
+            Action test = () => Extensions.RemoveWhere(null, x => false);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -33,7 +33,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".RemoveWhere( null );
+            Action test = () => "".RemoveWhere(null);
 
             test.ShouldNotThrow();
         }

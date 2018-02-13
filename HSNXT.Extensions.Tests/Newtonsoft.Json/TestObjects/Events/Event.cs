@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -69,6 +71,7 @@ namespace Newtonsoft.Json.Tests.TestObjects.Events
             {
                 _userId = GetCurrentUserId();
             }
+
             //This call only works at top level for now.
             //If _stackTrace = Nothing Then _stackTrace = Environment.StackTrace
             if (_sublocation == null)
@@ -77,7 +80,8 @@ namespace Newtonsoft.Json.Tests.TestObjects.Events
             }
         }
 
-        public Event(string sublocation, int userId, EventType type, string summary, string details, string stackTrace, string tag)
+        public Event(string sublocation, int userId, EventType type, string summary, string details, string stackTrace,
+            string tag)
         {
             _sublocation = sublocation;
             _userId = userId;
@@ -92,6 +96,7 @@ namespace Newtonsoft.Json.Tests.TestObjects.Events
             {
                 _userId = GetCurrentUserId();
             }
+
             //If _stackTrace = Nothing Then _stackTrace = Environment.StackTrace
             if (_sublocation == null)
             {
@@ -101,7 +106,9 @@ namespace Newtonsoft.Json.Tests.TestObjects.Events
 
         public override string ToString()
         {
-            return string.Format("{{ sublocation = {0}, userId = {1}, type = {2}, summary = {3}, details = {4}, stackTrace = {5}, tag = {6} }}", _sublocation, _userId, _type, _summary, _details, _stackTrace, _tag);
+            return string.Format(
+                "{{ sublocation = {0}, userId = {1}, type = {2}, summary = {3}, details = {4}, stackTrace = {5}, tag = {6} }}",
+                _sublocation, _userId, _type, _summary, _details, _stackTrace, _tag);
         }
 
         public string sublocation

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -16,17 +16,17 @@ namespace Extend.Testing
             var number = 10.5;
             var actual = number.IsPositiveInfinity();
 
-            Assert.False( actual );
+            Assert.False(actual);
 
             number = Double.NegativeInfinity;
             actual = number.IsPositiveInfinity();
 
-            Assert.False( actual );
+            Assert.False(actual);
 
             number = Double.PositiveInfinity;
             actual = number.IsPositiveInfinity();
 
-            Assert.True( actual );
+            Assert.True(actual);
         }
     }
 }

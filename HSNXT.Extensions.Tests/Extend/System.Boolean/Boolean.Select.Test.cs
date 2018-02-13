@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -16,11 +16,11 @@ namespace Extend.Testing
             const String trueValue = "true";
             const String falseValue = "false";
 
-            var actual = false.SelectValue( trueValue, falseValue );
-            Assert.Equal( falseValue, actual );
+            var actual = false.SelectValue(trueValue, falseValue);
+            Assert.Equal(falseValue, actual);
 
-            actual = true.SelectValue( trueValue, falseValue );
-            Assert.Equal( trueValue, actual );
+            actual = true.SelectValue(trueValue, falseValue);
+            Assert.Equal(trueValue, actual);
         }
     }
 }

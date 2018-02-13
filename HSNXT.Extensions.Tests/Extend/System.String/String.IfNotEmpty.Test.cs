@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -12,17 +12,17 @@ namespace Extend.Testing
         [Fact]
         public void IfEmptyTest()
         {
-            var actual = Extensions.IfNotEmpty( null, "test" );
-            Assert.Null( actual );
+            var actual = Extensions.IfNotEmpty(null, "test");
+            Assert.Null(actual);
 
-            actual = "".IfNotEmpty( "test" );
-            Assert.Equal( "test", actual );
+            actual = "".IfNotEmpty("test");
+            Assert.Equal("test", actual);
 
-            actual = "   ".IfNotEmpty( "test" );
-            Assert.Equal( "   ", actual );
+            actual = "   ".IfNotEmpty("test");
+            Assert.Equal("   ", actual);
 
-            actual = "abc".IfNotEmpty( "test" );
-            Assert.Equal( "abc", actual );
+            actual = "abc".IfNotEmpty("test");
+            Assert.Equal("abc", actual);
         }
     }
 }

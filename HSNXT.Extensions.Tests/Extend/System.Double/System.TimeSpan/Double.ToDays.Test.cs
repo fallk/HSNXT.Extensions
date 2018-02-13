@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -14,10 +14,10 @@ namespace Extend.Testing
         public void ToDaysTest()
         {
             const Double number = 10.5;
-            var expected = TimeSpan.FromDays( number );
+            var expected = TimeSpan.FromDays(number);
             var actual = number.ToDays();
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

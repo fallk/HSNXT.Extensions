@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Json
@@ -35,7 +37,7 @@ namespace Mannex.Tests.Json
         [Fact]
         public void ToJsonStringWithNullThisReturnJsonNull()
         {
-            Assert.Equal("null", Extensions.ToJsonString((string)null));
+            Assert.Equal("null", Extensions.ToJsonString((string) null));
         }
 
         [Fact]

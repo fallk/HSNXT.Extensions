@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void GetBetweenArgumentOutOfRangeTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( "1", "2", 20 );
+            Action test = () => "121test2".GetBetween("1", "2", 20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -24,7 +24,7 @@ namespace Extend.Testing
         public void GetBetweenArgumentOutOfRangeTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "1test2".GetBetween( "1", "2", 20, 2 );
+            Action test = () => "1test2".GetBetween("1", "2", 20, 2);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -33,7 +33,7 @@ namespace Extend.Testing
         public void GetBetweenArgumentOutOfRangeTest2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( "1", "2", 2, 60 );
+            Action test = () => "121test2".GetBetween("1", "2", 2, 60);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -42,7 +42,7 @@ namespace Extend.Testing
         public void GetBetweenArgumentOutOfRangeTest3()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( "1", "2", -2, 60 );
+            Action test = () => "121test2".GetBetween("1", "2", -2, 60);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -51,7 +51,7 @@ namespace Extend.Testing
         public void GetBetweenArgumentOutOfRangeTest4()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( "1", "2", 2, -60 );
+            Action test = () => "121test2".GetBetween("1", "2", 2, -60);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
         public void GetBetweenCharArgumentOutOfRangeTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( '1', '2', 20 );
+            Action test = () => "121test2".GetBetween('1', '2', 20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -69,7 +69,7 @@ namespace Extend.Testing
         public void GetBetweenCharArgumentOutOfRangeTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "1test2".GetBetween( '1', '2', 20, 2 );
+            Action test = () => "1test2".GetBetween('1', '2', 20, 2);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -78,7 +78,7 @@ namespace Extend.Testing
         public void GetBetweenCharArgumentOutOfRangeTest2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( '1', '2', 2, 60 );
+            Action test = () => "121test2".GetBetween('1', '2', 2, 60);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -87,7 +87,7 @@ namespace Extend.Testing
         public void GetBetweenCharArgumentOutOfRangeTest3()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( '1', '2', -2, 60 );
+            Action test = () => "121test2".GetBetween('1', '2', -2, 60);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -96,7 +96,7 @@ namespace Extend.Testing
         public void GetBetweenCharArgumentOutOfRangeTest4()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "121test2".GetBetween( '1', '2', 2, -60 );
+            Action test = () => "121test2".GetBetween('1', '2', 2, -60);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -104,21 +104,21 @@ namespace Extend.Testing
         [Fact]
         public void GetBetweenCharTest()
         {
-            var actual = "1test2".GetBetween( '1', '2' );
-            Assert.Equal( "test", actual );
+            var actual = "1test2".GetBetween('1', '2');
+            Assert.Equal("test", actual);
 
-            actual = "121test2".GetBetween( '1', '2', 2 );
-            Assert.Equal( "test", actual );
+            actual = "121test2".GetBetween('1', '2', 2);
+            Assert.Equal("test", actual);
         }
 
         [Fact]
         public void GetBetweenCharTest1()
         {
-            var actual = "1test2".GetBetween( '1', '2', 0, 6 );
-            Assert.Equal( "test", actual );
+            var actual = "1test2".GetBetween('1', '2', 0, 6);
+            Assert.Equal("test", actual);
 
-            actual = "121test2".GetBetween( '1', '2', 2, 6 );
-            Assert.Equal( "test", actual );
+            actual = "121test2".GetBetween('1', '2', 2, 6);
+            Assert.Equal("test", actual);
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBetween( null, 't', 't' );
+            Action test = () => Extensions.GetBetween(null, 't', 't');
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -134,15 +134,15 @@ namespace Extend.Testing
         [Fact]
         public void GetBetweenCharTest2()
         {
-            var actual = "1test2".GetBetween( 'a', '2' );
-            Assert.Equal( String.Empty, actual );
+            var actual = "1test2".GetBetween('a', '2');
+            Assert.Equal(String.Empty, actual);
         }
 
         [Fact]
         public void GetBetweenCharTest3()
         {
-            var actual = "1test2".GetBetween( 't', 'b' );
-            Assert.Equal( String.Empty, actual );
+            var actual = "1test2".GetBetween('t', 'b');
+            Assert.Equal(String.Empty, actual);
         }
 
         [Fact]
@@ -150,7 +150,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBetween( null, 't', 't' );
+            Action test = () => Extensions.GetBetween(null, 't', 't');
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -158,21 +158,21 @@ namespace Extend.Testing
         [Fact]
         public void GetBetweenTest()
         {
-            var actual = "1test2".GetBetween( "1", "2" );
-            Assert.Equal( "test", actual );
+            var actual = "1test2".GetBetween("1", "2");
+            Assert.Equal("test", actual);
 
-            actual = "121test2".GetBetween( "1", "2", 2 );
-            Assert.Equal( "test", actual );
+            actual = "121test2".GetBetween("1", "2", 2);
+            Assert.Equal("test", actual);
         }
 
         [Fact]
         public void GetBetweenTest1()
         {
-            var actual = "1test2".GetBetween( "1", "2", 0, 6 );
-            Assert.Equal( "test", actual );
+            var actual = "1test2".GetBetween("1", "2", 0, 6);
+            Assert.Equal("test", actual);
 
-            actual = "121test2".GetBetween( "1", "2", 2, 6 );
-            Assert.Equal( "test", actual );
+            actual = "121test2".GetBetween("1", "2", 2, 6);
+            Assert.Equal("test", actual);
         }
 
         [Fact]
@@ -180,7 +180,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBetween( null, "", "" );
+            Action test = () => Extensions.GetBetween(null, "", "");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -190,7 +190,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetBetween( null, "" );
+            Action test = () => "".GetBetween(null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -200,7 +200,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetBetween( "", null );
+            Action test = () => "".GetBetween("", null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -208,15 +208,15 @@ namespace Extend.Testing
         [Fact]
         public void GetBetweenTest2()
         {
-            var actual = "1test2".GetBetween( "1", "a" );
-            Assert.Equal( String.Empty, actual );
+            var actual = "1test2".GetBetween("1", "a");
+            Assert.Equal(String.Empty, actual);
         }
 
         [Fact]
         public void GetBetweenTest3()
         {
-            var actual = "1test2".GetBetween( "a", "t" );
-            Assert.Equal( String.Empty, actual );
+            var actual = "1test2".GetBetween("a", "t");
+            Assert.Equal(String.Empty, actual);
         }
 
         [Fact]
@@ -224,7 +224,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBetween( null, "", "" );
+            Action test = () => Extensions.GetBetween(null, "", "");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -234,7 +234,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetBetween( null, "" );
+            Action test = () => "".GetBetween(null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -244,7 +244,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetBetween( "", null );
+            Action test = () => "".GetBetween("", null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

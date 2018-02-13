@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -17,18 +17,18 @@ namespace Extend.Testing
         {
             var type = typeof(TestModel);
             var actual = type.GetPublicSettableProperties()
-                             .ToList();
+                .ToList();
 
             actual.Count.Should()
-                  .Be( 2 );
+                .Be(2);
 
-            actual.Count( x => x.Name == "MyString" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "MyString")
+                .Should()
+                .Be(1);
 
-            actual.Count( x => x.Name == "MyInt32" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "MyInt32")
+                .Should()
+                .Be(1);
         }
 
         [Fact]
@@ -36,10 +36,10 @@ namespace Extend.Testing
         {
             var type = typeof(TestModelNoProperties);
             var actual = type.GetPublicSettableProperties()
-                             .ToList();
+                .ToList();
 
             actual.Count.Should()
-                  .Be( 0 );
+                .Be(0);
         }
 
         #region Nested Types

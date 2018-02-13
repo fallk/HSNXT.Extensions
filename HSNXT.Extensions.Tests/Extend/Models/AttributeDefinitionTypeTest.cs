@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -18,13 +18,13 @@ namespace Extend.Testing
             var target = new AttributeDefinitionType<ObsoleteAttribute>();
 
             target.Attributes.Should()
-                  .BeNull();
+                .BeNull();
 
             var expected = new List<ObsoleteAttribute>();
             target.Attributes = expected;
 
             target.Attributes.Should()
-                  .BeSameAs( expected );
+                .BeSameAs(expected);
         }
 
         [Fact]
@@ -33,13 +33,13 @@ namespace Extend.Testing
             var target = new AttributeDefinitionType<ObsoleteAttribute>();
 
             target.Type.Should()
-                  .BeNull();
+                .BeNull();
 
             var expected = GetType();
             target.Type = expected;
 
             target.Type.Should()
-                  .Be( expected );
+                .Be(expected);
         }
     }
 }

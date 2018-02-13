@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Xml.Linq
@@ -38,11 +40,11 @@ namespace Mannex.Tests.Xml.Linq
         [Fact]
         public void GetNamespacesInScopeFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => 
+            var e = Assert.Throws<ArgumentNullException>(() =>
                 HSNXT.Extensions.GetNamespacesInScope(null));
             Assert.Equal("element", e.ParamName);
         }
-        
+
         [Fact]
         public void GetNamespacesInScope()
         {

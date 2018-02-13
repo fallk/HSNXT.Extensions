@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -223,11 +225,12 @@ namespace Newtonsoft.Json.Tests
         protected string GetOffset(DateTime d, DateFormatHandling dateFormatHandling)
         {
             char[] chars = new char[8];
-            int pos = WriteDateTimeOffset(chars, 0, DateTime.SpecifyKind(d, DateTimeKind.Local).GetUtcOffset(), dateFormatHandling);
+            int pos = WriteDateTimeOffset(chars, 0, DateTime.SpecifyKind(d, DateTimeKind.Local).GetUtcOffset(),
+                dateFormatHandling);
 
             return new string(chars, 0, pos);
         }
-        
+
         internal static int WriteDateTimeOffset(char[] chars, int start, TimeSpan offset, DateFormatHandling format)
         {
             chars[start++] = offset.Ticks >= 0L ? '+' : '-';
@@ -241,7 +244,7 @@ namespace Newtonsoft.Json.Tests
             start += 2;
             return start;
         }
-        
+
         private static void CopyIntToCharArray(char[] chars, int start, int value, int digits)
         {
             while (digits-- != 0)
@@ -288,8 +291,9 @@ namespace Newtonsoft.Json.Tests
                 {
                     b -= 7;
                 }
+
                 // store nibble (4 bits) in byte array
-                bytes[offset] |= (byte)(b << shift);
+                bytes[offset] |= (byte) (b << shift);
                 // toggle the shift variable between 0 and 4
                 shift ^= 4;
                 // move to next byte
@@ -298,6 +302,7 @@ namespace Newtonsoft.Json.Tests
                     offset++;
                 }
             }
+
             return bytes;
         }
 
@@ -316,7 +321,7 @@ namespace Newtonsoft.Json.Tests
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
 #else
-            // suppress writing to console with dotnet test to keep build log size small
+// suppress writing to console with dotnet test to keep build log size small
             Console.SetOut(new StringWriter());
 #endif
 
@@ -408,6 +413,7 @@ namespace Newtonsoft.Json.Tests
                 {
                     return ex;
                 }
+
                 foreach (string possibleMessage in possibleMessages)
                 {
                     if (StringAssert.Equals(possibleMessage, ex.Message))
@@ -416,16 +422,21 @@ namespace Newtonsoft.Json.Tests
                     }
                 }
 
-                throw new Exception("Unexpected exception message." + Environment.NewLine + "Expected one of: " + string.Join(Environment.NewLine, possibleMessages) + Environment.NewLine + "Got: " + ex.Message + Environment.NewLine + Environment.NewLine + ex);
+                throw new Exception("Unexpected exception message." + Environment.NewLine + "Expected one of: " +
+                                    string.Join(Environment.NewLine, possibleMessages) + Environment.NewLine + "Got: " +
+                                    ex.Message + Environment.NewLine + Environment.NewLine + ex);
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Exception of type {0} expected; got exception of type {1}.", typeof(TException).Name, ex.GetType().Name), ex);
+                throw new Exception(
+                    string.Format("Exception of type {0} expected; got exception of type {1}.", typeof(TException).Name,
+                        ex.GetType().Name), ex);
             }
         }
 
 #if !(NET20 || NET35 || NET40 || PORTABLE40)
-        public static async Task<TException> ThrowsAsync<TException>(Func<Task> action, params string[] possibleMessages)
+        public static async Task<TException> ThrowsAsync<TException>(Func<Task> action,
+            params string[] possibleMessages)
             where TException : Exception
         {
             try
@@ -441,6 +452,7 @@ namespace Newtonsoft.Json.Tests
                 {
                     return ex;
                 }
+
                 foreach (string possibleMessage in possibleMessages)
                 {
                     if (StringAssert.Equals(possibleMessage, ex.Message))
@@ -449,14 +461,17 @@ namespace Newtonsoft.Json.Tests
                     }
                 }
 
-                throw new Exception("Unexpected exception message." + Environment.NewLine + "Expected one of: " + string.Join(Environment.NewLine, possibleMessages) + Environment.NewLine + "Got: " + ex.Message + Environment.NewLine + Environment.NewLine + ex);
+                throw new Exception("Unexpected exception message." + Environment.NewLine + "Expected one of: " +
+                                    string.Join(Environment.NewLine, possibleMessages) + Environment.NewLine + "Got: " +
+                                    ex.Message + Environment.NewLine + Environment.NewLine + ex);
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Exception of type {0} expected; got exception of type {1}.", typeof(TException).Name, ex.GetType().Name), ex);
+                throw new Exception(
+                    string.Format("Exception of type {0} expected; got exception of type {1}.", typeof(TException).Name,
+                        ex.GetType().Name), ex);
             }
         }
 #endif
-
     }
 }

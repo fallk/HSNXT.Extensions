@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -54,20 +56,20 @@ namespace Mannex.Tests
         public void ToHexFailsWithInvalidRanges()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new byte[] { 1, 2, 3 }.ToHex(-1, 0, new StringBuilder()));
+                new byte[] {1, 2, 3}.ToHex(-1, 0, new StringBuilder()));
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new byte[] { 1, 2, 3 }.ToHex(4, 0, new StringBuilder()));
+                new byte[] {1, 2, 3}.ToHex(4, 0, new StringBuilder()));
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new byte[] { 1, 2, 3 }.ToHex(1, 3, new StringBuilder()));
+                new byte[] {1, 2, 3}.ToHex(1, 3, new StringBuilder()));
         }
 
         [Fact]
         public void ToHex()
         {
             var result = Enumerable.Range(0, 256)
-                                   .Select(n => (byte) n)
-                                   .ToArray()
-                                   .ToHex();
+                .Select(n => (byte) n)
+                .ToArray()
+                .ToHex();
 
             Assert.Equal(
                 "00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10 11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20 21 " +
@@ -78,16 +80,16 @@ namespace Mannex.Tests
                 "AA AB AC AD AE AF B0 B1 B2 B3 B4 B5 B6 B7 B8 B9 BA BB BC BD BE BF C0 C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB " +
                 "CC CD CE CF D0 D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF E0 E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED " +
                 "EE EF F0 F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FB FC FD FE FF",
-                        result);
+                result);
         }
 
         [Fact]
         public void ToHexOnSubrange()
         {
             var result = Enumerable.Range(0, 256)
-                                   .Select(n => (byte)n)
-                                   .ToArray()
-                                   .ToHex(10 * 16, 16);
+                .Select(n => (byte) n)
+                .ToArray()
+                .ToHex(10 * 16, 16);
 
             Assert.Equal("a0a1a2a3a4a5a6a7a8a9aaabacadaeaf", result);
         }
@@ -111,9 +113,9 @@ namespace Mannex.Tests
         [Fact]
         public void Rotate()
         {
-            var array = new [] { 1, 2, 3 };
+            var array = new[] {1, 2, 3};
             array.Rotate();
-            Assert.Equal(new[] { 2, 3, 1 }, array);
+            Assert.Equal(new[] {2, 3, 1}, array);
         }
 
         [Fact]
@@ -136,11 +138,11 @@ namespace Mannex.Tests
             ArgumentNullException e1, e2;
 
             e1 = Assert.Throws<ArgumentNullException>(() =>
-                     new object[0].Update(new object[0], (Func<object, object, int, object>) null));
+                new object[0].Update(new object[0], (Func<object, object, int, object>) null));
             Assert.Equal("function", e1.ParamName);
 
             e2 = Assert.Throws<ArgumentNullException>(() =>
-                     new object[0].Update(new object[0], (Func<object, object, object>) null));
+                new object[0].Update(new object[0], (Func<object, object, object>) null));
             Assert.Equal("function", e2.ParamName);
         }
 
@@ -150,72 +152,78 @@ namespace Mannex.Tests
             ArgumentNullException e1, e2;
 
             e1 = Assert.Throws<ArgumentNullException>(() =>
-                     new object[0].Update((object[]) null, (t, s, i) => null));
+                new object[0].Update((object[]) null, (t, s, i) => null));
             Assert.Equal("source", e1.ParamName);
 
             e2 = Assert.Throws<ArgumentNullException>(() =>
-                     new object[0].Update((object[]) null, (t, s) => null));
+                new object[0].Update((object[]) null, (t, s) => null));
             Assert.Equal("source", e2.ParamName);
         }
 
         [Fact]
         public void Update()
         {
-            var xs = new[] { 4, 5, 6 };
-            var ys = new[] { 7, 8, 9 };
+            var xs = new[] {4, 5, 6};
+            var ys = new[] {7, 8, 9};
             xs.Update(ys, (x, y, i) => (i + 1) * 100 + x * 10 + y);
-            Assert.Equal(new[] { 147, 258, 369 }, xs);
+            Assert.Equal(new[] {147, 258, 369}, xs);
         }
 
         [Fact]
         public void UpdateShort()
         {
-            var xs = new[] { 4, 5,   };
-            var ys = new[] { 7, 8, 9 };
+            var xs = new[] {4, 5,};
+            var ys = new[] {7, 8, 9};
             xs.Update(ys, (x, y, i) => (i + 1) * 100 + x * 10 + y);
-            Assert.Equal(new[] { 147, 258 }, xs);
+            Assert.Equal(new[] {147, 258}, xs);
         }
 
         [Fact]
         public void UpdateLong()
         {
-            var xs = new[] { 4, 5, 6 };
-            var ys = new[] { 7, 8,   };
+            var xs = new[] {4, 5, 6};
+            var ys = new[] {7, 8,};
             xs.Update(ys, (x, y, i) => (i + 1) * 100 + x * 10 + y);
-            Assert.Equal(new[] { 147, 258, 6 }, xs);
+            Assert.Equal(new[] {147, 258, 6}, xs);
         }
 
         [Fact]
         public void RemoveFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                Extensions.Remove((int[])null, 0));
+                Extensions.Remove((int[]) null, 0));
             Assert.Equal("array", e.ParamName);
         }
 
         [Fact]
         public void RemoveWhenNonExistingReturnsOriginal()
         {
-            var ns = new[] { 1, 2, 3 };
+            var ns = new[] {1, 2, 3};
             Assert.True(ReferenceEquals(ns, ns.Remove(42)));
         }
 
         [Fact]
         public void Remove()
         {
-            var ns = new[] { 123, 456, 789 };
-            Assert.Equal(new[] { 456, 789 }, ns.Remove(123));
-            Assert.Equal(new[] { 123, 789 }, ns.Remove(456));
-            Assert.Equal(new[] { 123, 456 }, ns.Remove(789));
+            var ns = new[] {123, 456, 789};
+            Assert.Equal(new[] {456, 789}, ns.Remove(123));
+            Assert.Equal(new[] {123, 789}, ns.Remove(456));
+            Assert.Equal(new[] {123, 456}, ns.Remove(789));
         }
 
         [Fact]
         public void RemoveRemovesFirstOccurenceOnly()
         {
-            var ns = new[] { 123, 456, 789,
-                             123, 456, 789 };
-            Assert.Equal(new[] { 123,      789,
-                                 123, 456, 789 }, ns.Remove(456));
+            var ns = new[]
+            {
+                123, 456, 789,
+                123, 456, 789
+            };
+            Assert.Equal(new[]
+            {
+                123, 789,
+                123, 456, 789
+            }, ns.Remove(456));
         }
 
         [Fact]
@@ -224,21 +232,27 @@ namespace Mannex.Tests
             const string foo = "foo";
             const string bar = "bar";
             const string baz = "baz";
-            var ns = new[] { foo, bar, baz };
+            var ns = new[] {foo, bar, baz};
             var comparer = StringComparer.OrdinalIgnoreCase;
-            Assert.Equal(new[] { bar, baz }, ns.Remove("FoO", comparer));
-            Assert.Equal(new[] { foo, baz }, ns.Remove("bAr", comparer));
-            Assert.Equal(new[] { foo, bar }, ns.Remove("BAZ", comparer));
+            Assert.Equal(new[] {bar, baz}, ns.Remove("FoO", comparer));
+            Assert.Equal(new[] {foo, baz}, ns.Remove("bAr", comparer));
+            Assert.Equal(new[] {foo, bar}, ns.Remove("BAZ", comparer));
         }
 
         [Fact]
         public void RemoveUsingComparerRemovesFirstOccurenceOnly()
         {
-            var ns = new[] { "foo", "bar", "baz",
-                             "foo", "bar", "baz" };
+            var ns = new[]
+            {
+                "foo", "bar", "baz",
+                "foo", "bar", "baz"
+            };
             var comparer = StringComparer.OrdinalIgnoreCase;
-            Assert.Equal(new[] { "foo",        "baz",
-                                 "foo", "bar", "baz" }, ns.Remove("BaR", comparer));
+            Assert.Equal(new[]
+            {
+                "foo", "baz",
+                "foo", "bar", "baz"
+            }, ns.Remove("BaR", comparer));
         }
 
         [Fact]
@@ -262,7 +276,7 @@ namespace Mannex.Tests
         {
             const int minus1 = -1;
             var e = Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new object[0].Partition(minus1, (lhs, rhs) => new { Left = lhs, Right = rhs }));
+                new object[0].Partition(minus1, (lhs, rhs) => new {Left = lhs, Right = rhs}));
             Assert.Equal("index", e.ParamName);
             Assert.Equal(minus1, e.ActualValue);
         }
@@ -271,16 +285,16 @@ namespace Mannex.Tests
         [InlineData(0, new int[0], new int[0], new int[0])]
         [InlineData(1, new int[0], new int[0], new int[0])]
         [InlineData(2, new int[0], new int[0], new int[0])]
-        [InlineData(0, new[] { 1, 2, 3, 4, 5 }, new int[0], new[] { 1, 2, 3, 4, 5 })]
-        [InlineData(1, new[] { 1, 2, 3, 4, 5 }, new[] { 1 }, new[] { 2, 3, 4, 5 })]
-        [InlineData(2, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2 }, new[] { 3, 4, 5 })]
-        [InlineData(3, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3 }, new[] { 4, 5 })]
-        [InlineData(4, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3, 4 }, new[] { 5 })]
-        [InlineData(5, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3, 4, 5 }, new int[0])]
-        [InlineData(6, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3, 4, 5 }, new int[0])]
+        [InlineData(0, new[] {1, 2, 3, 4, 5}, new int[0], new[] {1, 2, 3, 4, 5})]
+        [InlineData(1, new[] {1, 2, 3, 4, 5}, new[] {1}, new[] {2, 3, 4, 5})]
+        [InlineData(2, new[] {1, 2, 3, 4, 5}, new[] {1, 2}, new[] {3, 4, 5})]
+        [InlineData(3, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3}, new[] {4, 5})]
+        [InlineData(4, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3, 4}, new[] {5})]
+        [InlineData(5, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3, 4, 5}, new int[0])]
+        [InlineData(6, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3, 4, 5}, new int[0])]
         public void Partition(int index, int[] array, int[] left, int[] right)
         {
-            var result = array.Partition(index, (lhs, rhs) => new { Left = lhs, Right = rhs });
+            var result = array.Partition(index, (lhs, rhs) => new {Left = lhs, Right = rhs});
             Assert.Equal(left, result.Left);
             Assert.Equal(right, result.Right);
         }
@@ -307,22 +321,22 @@ namespace Mannex.Tests
         public void PartitionStrictlyFailsWithOutOfBoundIndex(int index)
         {
             var e = Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new object[0].PartitionStrictly(index, (lhs, rhs) => new { Left = lhs, Right = rhs }));
+                new object[0].PartitionStrictly(index, (lhs, rhs) => new {Left = lhs, Right = rhs}));
             Assert.Equal("index", e.ParamName);
             Assert.Equal(index, e.ActualValue);
         }
 
         [Theory]
         [InlineData(0, new int[0], new int[0], new int[0])]
-        [InlineData(0, new[] { 1, 2, 3, 4, 5 }, new int[0], new[] { 1, 2, 3, 4, 5 })]
-        [InlineData(1, new[] { 1, 2, 3, 4, 5 }, new[] { 1 }, new[] { 2, 3, 4, 5 })]
-        [InlineData(2, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2 }, new[] { 3, 4, 5 })]
-        [InlineData(3, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3 }, new[] { 4, 5 })]
-        [InlineData(4, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3, 4 }, new[] { 5 })]
-        [InlineData(5, new[] { 1, 2, 3, 4, 5 }, new[] { 1, 2, 3, 4, 5 }, new int[0])]
+        [InlineData(0, new[] {1, 2, 3, 4, 5}, new int[0], new[] {1, 2, 3, 4, 5})]
+        [InlineData(1, new[] {1, 2, 3, 4, 5}, new[] {1}, new[] {2, 3, 4, 5})]
+        [InlineData(2, new[] {1, 2, 3, 4, 5}, new[] {1, 2}, new[] {3, 4, 5})]
+        [InlineData(3, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3}, new[] {4, 5})]
+        [InlineData(4, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3, 4}, new[] {5})]
+        [InlineData(5, new[] {1, 2, 3, 4, 5}, new[] {1, 2, 3, 4, 5}, new int[0])]
         public void PartitionStrictly(int index, int[] array, int[] left, int[] right)
         {
-            var result = array.PartitionStrictly(index, (lhs, rhs) => new { Left = lhs, Right = rhs });
+            var result = array.PartitionStrictly(index, (lhs, rhs) => new {Left = lhs, Right = rhs});
             Assert.Equal(left, result.Left);
             Assert.Equal(right, result.Right);
         }

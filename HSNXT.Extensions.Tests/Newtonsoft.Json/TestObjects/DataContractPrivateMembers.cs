@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 #if !NET20
@@ -43,14 +45,11 @@ namespace Newtonsoft.Json.Tests.TestObjects
             Title = title;
         }
 
-        [DataMember]
-        private string _name;
+        [DataMember] private string _name;
 
-        [DataMember(Name = "_age")]
-        private int Age { get; set; }
+        [DataMember(Name = "_age")] private int Age { get; set; }
 
-        [JsonProperty]
-        private int Rank { get; set; }
+        [JsonProperty] private int Rank { get; set; }
 
         [JsonProperty(PropertyName = "JsonTitle")]
         [DataMember(Name = "DataTitle")]

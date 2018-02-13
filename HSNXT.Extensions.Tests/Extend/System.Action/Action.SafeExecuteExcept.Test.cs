@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,17 +14,17 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest()
         {
-            var actual = Extensions.SafeExecuteExcept<ArgumentException>( () => { } );
-            Assert.True( actual );
+            var actual = Extensions.SafeExecuteExcept<ArgumentException>(() => { });
+            Assert.True(actual);
 
-            actual = Extensions.SafeExecuteExcept<ArgumentException>( () => throw new InvalidCastException() );
-            Assert.False( actual );
+            actual = Extensions.SafeExecuteExcept<ArgumentException>(() => throw new InvalidCastException());
+            Assert.False(actual);
         }
 
         [Fact]
         public void SafeExecuteExceptTest_1()
         {
-            Action test = () => Extensions.SafeExecuteExcept<ArgumentException>( () => throw new ArgumentException() );
+            Action test = () => Extensions.SafeExecuteExcept<ArgumentException>(() => throw new ArgumentException());
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -32,20 +32,20 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest1()
         {
-            var actual = Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException>( () => { } );
-            Assert.True( actual );
+            var actual = Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException>(() => { });
+            Assert.True(actual);
 
             actual =
                 Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException>(
-                    () => throw new InvalidCastException() );
-            Assert.False( actual );
+                    () => throw new InvalidCastException());
+            Assert.False(actual);
         }
 
         [Fact]
         public void SafeExecuteExceptTest1_1()
         {
             Action test = () => Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException>(
-                () => throw new ArgumentException() );
+                () => throw new ArgumentException());
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -54,7 +54,7 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest1_2()
         {
             Action test = () => Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException>(
-                () => throw new NullReferenceException() );
+                () => throw new NullReferenceException());
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -74,20 +74,21 @@ namespace Extend.Testing
         {
             var actual =
                 Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
-                    () => { } );
-            Assert.True( actual );
+                    () => { });
+            Assert.True(actual);
 
             actual =
                 Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
-                    () => throw new InvalidCastException() );
-            Assert.False( actual );
+                    () => throw new InvalidCastException());
+            Assert.False(actual);
         }
 
         [Fact]
         public void SafeExecuteExceptTest2_1()
         {
-            Action test = () => Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
-                () => throw new ArgumentException() );
+            Action test = () =>
+                Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
+                    () => throw new ArgumentException());
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -95,8 +96,9 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest2_2()
         {
-            Action test = () => Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
-                () => throw new NullReferenceException() );
+            Action test = () =>
+                Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
+                    () => throw new NullReferenceException());
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -104,8 +106,9 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest2_3()
         {
-            Action test = () => Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
-                () => throw new InvalidOperationException() );
+            Action test = () =>
+                Extensions.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
+                    () => throw new InvalidOperationException());
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -115,7 +118,8 @@ namespace Extend.Testing
         {
             Action action = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => action.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>();
+            Action test = () =>
+                action.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>();
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -126,16 +130,16 @@ namespace Extend.Testing
             var actual =
                 Extensions
                     .SafeExecuteExcept
-                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                        () => { } );
-            Assert.True( actual );
+                        <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                            () => { });
+            Assert.True(actual);
 
             actual =
                 Extensions
                     .SafeExecuteExcept
-                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                        () => throw new InvalidCastException() );
-            Assert.False( actual );
+                        <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                            () => throw new InvalidCastException());
+            Assert.False(actual);
         }
 
         [Fact]
@@ -143,8 +147,8 @@ namespace Extend.Testing
         {
             Action test = () => Extensions
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new ArgumentException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new ArgumentException());
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -154,8 +158,8 @@ namespace Extend.Testing
         {
             Action test = () => Extensions
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new NullReferenceException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new NullReferenceException());
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -165,8 +169,8 @@ namespace Extend.Testing
         {
             Action test = () => Extensions
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new InvalidOperationException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new InvalidOperationException());
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -176,8 +180,8 @@ namespace Extend.Testing
         {
             Action test = () => Extensions
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new ArithmeticException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new ArithmeticException());
 
             test.ShouldThrow<ArithmeticException>();
         }
@@ -189,7 +193,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>();
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>();
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -197,29 +201,29 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest4()
         {
-            var actual = Extensions.SafeExecuteExcept( () => { },
-                                                     typeof(ArgumentException),
-                                                     typeof(NullReferenceException),
-                                                     typeof(InvalidOperationException),
-                                                     typeof(ArithmeticException) );
-            Assert.True( actual );
+            var actual = Extensions.SafeExecuteExcept(() => { },
+                typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
+            Assert.True(actual);
 
-            actual = Extensions.SafeExecuteExcept( () => throw new InvalidCastException(),
-                                                 typeof(ArgumentException),
-                                                 typeof(NullReferenceException),
-                                                 typeof(InvalidOperationException),
-                                                 typeof(ArithmeticException) );
-            Assert.False( actual );
+            actual = Extensions.SafeExecuteExcept(() => throw new InvalidCastException(),
+                typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
+            Assert.False(actual);
         }
 
         [Fact]
         public void SafeExecuteExceptTest4_1()
         {
-            Action test = () => Extensions.SafeExecuteExcept( () => throw new ArgumentException(),
-                                                            typeof(ArgumentException),
-                                                            typeof(NullReferenceException),
-                                                            typeof(InvalidOperationException),
-                                                            typeof(ArithmeticException) );
+            Action test = () => Extensions.SafeExecuteExcept(() => throw new ArgumentException(),
+                typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -227,11 +231,11 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest4_2()
         {
-            Action test = () => Extensions.SafeExecuteExcept( () => throw new NullReferenceException(),
-                                                            typeof(ArgumentException),
-                                                            typeof(NullReferenceException),
-                                                            typeof(InvalidOperationException),
-                                                            typeof(ArithmeticException) );
+            Action test = () => Extensions.SafeExecuteExcept(() => throw new NullReferenceException(),
+                typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -239,11 +243,11 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest4_3()
         {
-            Action test = () => Extensions.SafeExecuteExcept( () => throw new InvalidOperationException(),
-                                                            typeof(ArgumentException),
-                                                            typeof(NullReferenceException),
-                                                            typeof(InvalidOperationException),
-                                                            typeof(ArithmeticException) );
+            Action test = () => Extensions.SafeExecuteExcept(() => throw new InvalidOperationException(),
+                typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -251,11 +255,11 @@ namespace Extend.Testing
         [Fact]
         public void SafeExecuteExceptTest4_4()
         {
-            Action test = () => Extensions.SafeExecuteExcept( () => throw new ArithmeticException(),
-                                                            typeof(ArgumentException),
-                                                            typeof(NullReferenceException),
-                                                            typeof(InvalidOperationException),
-                                                            typeof(ArithmeticException) );
+            Action test = () => Extensions.SafeExecuteExcept(() => throw new ArithmeticException(),
+                typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
 
             test.ShouldThrow<ArithmeticException>();
         }
@@ -265,10 +269,10 @@ namespace Extend.Testing
         {
             Action action = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => action.SafeExecuteExcept( typeof(ArgumentException),
-                                                          typeof(NullReferenceException),
-                                                          typeof(InvalidOperationException),
-                                                          typeof(ArithmeticException) );
+            Action test = () => action.SafeExecuteExcept(typeof(ArgumentException),
+                typeof(NullReferenceException),
+                typeof(InvalidOperationException),
+                typeof(ArithmeticException));
 
             test.ShouldThrow<ArgumentNullException>();
         }

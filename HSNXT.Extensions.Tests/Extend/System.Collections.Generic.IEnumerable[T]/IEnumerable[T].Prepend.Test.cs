@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace Extend.Testing
             List<String> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.Prepend( "d" );
+            Action test = () => list.Prepend("d");
 
             test.ShouldNotThrow();
         }
@@ -28,18 +28,18 @@ namespace Extend.Testing
         [Fact]
         public void PrependTest()
         {
-            var list = new List<String> { "a", "b", "c" };
-            var actual = list.Prepend( "d" );
+            var list = new List<String> {"a", "b", "c"};
+            var actual = list.Prepend("d");
 
             list.Should()
-                .HaveCount( 3 );
+                .HaveCount(3);
             // ReSharper disable once PossibleMultipleEnumeration
             actual.Should()
-                  .Contain( "d" );
+                .Contain("d");
             // ReSharper disable once PossibleMultipleEnumeration
-            actual.ElementAt( 0 )
-                  .Should()
-                  .Be( "d" );
+            actual.ElementAt(0)
+                .Should()
+                .Be("d");
         }
     }
 }

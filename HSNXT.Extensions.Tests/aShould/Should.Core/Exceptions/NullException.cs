@@ -10,6 +10,8 @@ namespace erichexter.Should.Core.Exceptions
         /// </summary>
         /// <param name="actual"></param>
         public NullException(object actual)
-            : base(null, actual, "Assert.Null() Failure") { }
+            : base(null, actual, "Assert.Null() Failure")
+        {
+        }
     }
 }

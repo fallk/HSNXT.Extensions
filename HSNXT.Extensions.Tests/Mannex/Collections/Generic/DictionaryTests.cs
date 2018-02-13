@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Collections.Generic
@@ -37,7 +39,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void FindFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
                 Extensions.Find<object, object>(null, null));
         }
 
@@ -56,14 +58,15 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void FindReturnsValueOfPresentKey()
         {
-            var dict = new Dictionary<int, string> { { 42, "fourty two" } };
+            var dict = new Dictionary<int, string> {{42, "fourty two"}};
             Assert.Equal("fourty two", dict.Find(42));
         }
 
         [Fact]
         public void GetFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.GetValue<object, object>(null, "foo", delegate { return null; }));
+            var e = Assert.Throws<ArgumentNullException>(() =>
+                Extensions.GetValue<object, object>(null, "foo", delegate { return null; }));
             Assert.Equal(e.ParamName, "dictionary");
         }
 
@@ -85,14 +88,15 @@ namespace Mannex.Tests.Collections.Generic
         public void GetWithErrorSelectorReturningApplicationException()
         {
             var dict = new Dictionary<string, object>();
-            var e = Assert.Throws<ApplicationException>(() => dict.GetValue("foo", key => new ApplicationException("`" + key + "` not found.")));
+            var e = Assert.Throws<ApplicationException>(() =>
+                dict.GetValue("foo", key => new ApplicationException("`" + key + "` not found.")));
             Assert.Equal("`foo` not found.", e.Message);
         }
 
         [Fact]
         public void GetWithExistingKeyAndErrorSelector()
         {
-            var dict = new Dictionary<string, int> { { "foo", 42 } };
+            var dict = new Dictionary<string, int> {{"foo", 42}};
             Assert.Equal(42, dict.GetValue("foo", null));
         }
 
@@ -116,7 +120,7 @@ namespace Mannex.Tests.Collections.Generic
         {
             var k = new object();
             var v = new object();
-            var map = new Dictionary<object, object> { { k, v } };
+            var map = new Dictionary<object, object> {{k, v}};
             Assert.Equal(v, map.Pop(k));
             Assert.Equal(0, map.Count);
         }

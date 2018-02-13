@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void RemoveLettersTest()
         {
             var actual = "a1-b2.c3".RemoveLetters();
-            Assert.Equal( "1-2.3", actual );
+            Assert.Equal("1-2.3", actual);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.RemoveLetters( null );
+            Action test = () => Extensions.RemoveLetters(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

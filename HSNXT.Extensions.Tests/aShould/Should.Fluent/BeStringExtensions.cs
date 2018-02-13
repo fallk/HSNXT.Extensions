@@ -33,12 +33,13 @@ namespace erichexter.Should.Fluent
                 try
                 {
                     var converter = TypeDescriptor.GetConverter(typeof(T));
-                    return (T)converter.ConvertFrom(t);
+                    return (T) converter.ConvertFrom(t);
                 }
                 catch (Exception ex)
                 {
                     a.Fail("Could not convert '{0}' to {1}.  {3}", t, typeof(T), ex.ToString());
                 }
+
                 return default(T);
             };
             Func<string, IAssertProvider, object> negativeCase = (t, a) =>
@@ -48,10 +49,13 @@ namespace erichexter.Should.Fluent
                     TypeDescriptor.GetConverter(typeof(T));
                     a.Fail("Could convert '{0}' to {1}.  Expected not covertable.", t, typeof(T));
                 }
-                catch { }
+                catch
+                {
+                }
+
                 return default(T);
             };
-            return (T)be.Should.Apply(positiveCase, negativeCase);
+            return (T) be.Should.Apply(positiveCase, negativeCase);
         }
 
         public static string GreaterThan(this IBe<string> be, string value)
@@ -94,4 +98,4 @@ namespace erichexter.Should.Fluent
             return Check.LessThanOrEqual(be.Should, value, comparer);
         }
     }
- }
+}

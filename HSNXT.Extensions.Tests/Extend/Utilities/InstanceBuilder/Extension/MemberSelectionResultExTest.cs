@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using FluentAssertions;
 using Xunit;
 
@@ -14,14 +14,14 @@ namespace Extend.Testing
         public void AsBooleanTest()
         {
             MemberSelectionResult.IncludeMember.AsBoolean()
-                                 .Should()
-                                 .BeTrue();
+                .Should()
+                .BeTrue();
             MemberSelectionResult.ExcludeMember.AsBoolean()
-                                 .Should()
-                                 .BeFalse();
+                .Should()
+                .BeFalse();
             MemberSelectionResult.Neutral.AsBoolean()
-                                 .Should()
-                                 .Be( null );
+                .Should()
+                .Be(null);
         }
     }
 }

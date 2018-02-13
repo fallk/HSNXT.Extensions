@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -19,9 +19,9 @@ namespace Extend.Testing
             var list = Extensions.GetRandomStrings();
             var actual = list.ToObservableCollection();
 
-            Assert.Equal( list.Count, actual.Count );
-            for ( var i = 0; i < list.Count; i++ )
-                Assert.Equal( list[i], actual[i] );
+            Assert.Equal(list.Count, actual.Count);
+            for (var i = 0; i < list.Count; i++)
+                Assert.Equal(list[i], actual[i]);
         }
 
         [Fact]

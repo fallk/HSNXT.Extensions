@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 namespace Newtonsoft.Json.Tests.TestObjects
@@ -30,8 +32,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
     {
         public int? NonAttributeProperty { get; set; }
 
-        [JsonProperty]
-        public int? UnsetProperty { get; set; }
+        [JsonProperty] public int? UnsetProperty { get; set; }
 
         [JsonProperty(Required = Required.Default)]
         public int? DefaultProperty { get; set; }

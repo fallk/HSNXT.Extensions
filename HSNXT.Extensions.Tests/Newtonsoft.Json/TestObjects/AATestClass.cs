@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,28 +22,24 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 namespace Newtonsoft.Json.Tests.TestObjects
 {
     public class AATestClass
     {
-        [JsonProperty]
-        protected int AA_field1;
+        [JsonProperty] protected int AA_field1;
 
         protected int AA_field2;
 
-        [JsonProperty]
-        protected int AA_property1 { get; set; }
+        [JsonProperty] protected int AA_property1 { get; set; }
 
-        [JsonProperty]
-        protected int AA_property2 { get; private set; }
+        [JsonProperty] protected int AA_property2 { get; private set; }
 
-        [JsonProperty]
-        protected int AA_property3 { private get; set; }
+        [JsonProperty] protected int AA_property3 { private get; set; }
 
-        [JsonProperty]
-        private int AA_property4 { get; set; }
+        [JsonProperty] private int AA_property4 { get; set; }
 
         protected int AA_property5 { get; private set; }
         protected int AA_property6 { private get; set; }

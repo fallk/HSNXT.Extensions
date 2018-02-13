@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -16,24 +16,24 @@ namespace Extend.Testing
         public void ToInt16FormatProviderNullTest()
         {
             const Int16 expected = 666;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToInt16( null );
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
+            var actual = value.ToInt16(null);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToInt16FormatProviderTest()
         {
             const Int16 expected = 666;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToInt16( CultureInfo.CurrentCulture );
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
+            var actual = value.ToInt16(CultureInfo.CurrentCulture);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Extend.Testing
             var value = new TestModel();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToInt16( CultureInfo.CurrentCulture );
+            Action test = () => value.ToInt16(CultureInfo.CurrentCulture);
             test.ShouldThrow<InvalidCastException>();
         }
 
@@ -62,7 +62,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToInt16( value, CultureInfo.CurrentCulture );
+            Action test = () => Extensions.ToInt16(value, CultureInfo.CurrentCulture);
             test.ShouldThrow<FormatException>();
         }
 
@@ -72,7 +72,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToInt16( value );
+            Action test = () => Extensions.ToInt16(value);
             test.ShouldThrow<FormatException>();
         }
 
@@ -81,11 +81,11 @@ namespace Extend.Testing
         {
             Object value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToInt16( CultureInfo.CurrentCulture );
+            var actual = value.ToInt16(CultureInfo.CurrentCulture);
 
             actual
                 .Should()
-                .Be( 0 );
+                .Be(0);
         }
 
         [Fact]
@@ -97,35 +97,35 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( 0 );
+                .Be(0);
         }
 
         [Fact]
         public void ToInt16Test()
         {
             const Int16 expected = 666;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
             var actual = value.ToInt16();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToInt16TooLargeFormatProviderTest()
         {
-            var value = Int16.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Int16.MaxValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToInt16( CultureInfo.CurrentCulture );
+            Action test = () => value.ToInt16(CultureInfo.CurrentCulture);
             test.ShouldThrow<OverflowException>();
         }
 
         [Fact]
         public void ToInt16TooLargeTest()
         {
-            var value = Int16.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Int16.MaxValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToInt16();
@@ -135,17 +135,17 @@ namespace Extend.Testing
         [Fact]
         public void ToInt16TooSmallFormatProviderTest()
         {
-            var value = Int16.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Int16.MinValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToInt16( CultureInfo.CurrentCulture );
+            Action test = () => value.ToInt16(CultureInfo.CurrentCulture);
             test.ShouldThrow<OverflowException>();
         }
 
         [Fact]
         public void ToInt16TooSmallTest()
         {
-            var value = Int16.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Int16.MinValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToInt16();

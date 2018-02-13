@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -53,17 +55,17 @@ namespace Mannex.Tests
         [Fact]
         public void MinMaxNullable()
         {
-            Assert.Equal(42,   ((int?) 042).MinMax(10, 50));
-            Assert.Equal(10,   ((int?) 000).MinMax(10, 50));
-            Assert.Equal(50,   ((int?) 100).MinMax(10, 50));
+            Assert.Equal(42, ((int?) 042).MinMax(10, 50));
+            Assert.Equal(10, ((int?) 000).MinMax(10, 50));
+            Assert.Equal(50, ((int?) 100).MinMax(10, 50));
             Assert.Equal(null, ((int?) null).MinMax(10, 50));
         }
 
         [Theory]
-        [InlineData(true , -5,   0, 5)]
-        [InlineData(false, -5,  10, 5)]
-        [InlineData(false, -5,  -5, 5)]
-        [InlineData(false, -5,   5, 5)]
+        [InlineData(true, -5, 0, 5)]
+        [InlineData(false, -5, 10, 5)]
+        [InlineData(false, -5, -5, 5)]
+        [InlineData(false, -5, 5, 5)]
         [InlineData(false, -5, -10, 5)]
         public void IsBetween(bool expected, int lower, int test, int upper)
         {
@@ -71,12 +73,12 @@ namespace Mannex.Tests
         }
 
         [Theory]
-        [InlineData(true , -5,    0, 5)]
-        [InlineData(false, -5,   10, 5)]
-        [InlineData(false , -5,   -5, 5)]
-        [InlineData(false , -5,    5, 5)]
-        [InlineData(false, -5,  -10, 5)]
-        [InlineData(null , -5, null, 5)]
+        [InlineData(true, -5, 0, 5)]
+        [InlineData(false, -5, 10, 5)]
+        [InlineData(false, -5, -5, 5)]
+        [InlineData(false, -5, 5, 5)]
+        [InlineData(false, -5, -10, 5)]
+        [InlineData(null, -5, null, 5)]
         public void IsBetweenNullable(bool? expected, int lower, int? test, int upper)
         {
             Assert.Equal(expected, test.IsBetween(lower, upper));
@@ -85,15 +87,16 @@ namespace Mannex.Tests
         [Fact]
         public void IsInBetweenFailsWithNullReferenceForThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsInBetween(null, new Version(), new Version()));
+            var e = Assert.Throws<ArgumentNullException>(() =>
+                Extensions.IsInBetween(null, new Version(), new Version()));
             Assert.Equal("value", e.ParamName);
         }
 
         [Theory]
-        [InlineData(true , -5,   0, 5)]
-        [InlineData(false, -5,  10, 5)]
-        [InlineData(false, -5,  -5, 5)]
-        [InlineData(false, -5,   5, 5)]
+        [InlineData(true, -5, 0, 5)]
+        [InlineData(false, -5, 10, 5)]
+        [InlineData(false, -5, -5, 5)]
+        [InlineData(false, -5, 5, 5)]
         [InlineData(false, -5, -10, 5)]
         public void IsInBetween(bool expected, int lower, int test, int upper)
         {
@@ -101,12 +104,12 @@ namespace Mannex.Tests
         }
 
         [Theory]
-        [InlineData(true , -5,    0, 5)]
-        [InlineData(false, -5,   10, 5)]
-        [InlineData(false, -5,   -5, 5)]
-        [InlineData(false, -5,    5, 5)]
-        [InlineData(false, -5,  -10, 5)]
-        [InlineData(null , -5, null, 5)]
+        [InlineData(true, -5, 0, 5)]
+        [InlineData(false, -5, 10, 5)]
+        [InlineData(false, -5, -5, 5)]
+        [InlineData(false, -5, 5, 5)]
+        [InlineData(false, -5, -10, 5)]
+        [InlineData(null, -5, null, 5)]
         public void IsInBetweenNullable(bool? expected, int lower, int? test, int upper)
         {
             Assert.Equal(expected, test.IsInBetween(lower, upper));

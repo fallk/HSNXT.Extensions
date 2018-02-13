@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -17,13 +17,13 @@ namespace Extend.Testing
         {
             var c = new List<String>();
 
-            var result = c.AddIf( x => true, Extensions.GetRandomString() );
-            Assert.Single( c );
-            Assert.True( result );
+            var result = c.AddIf(x => true, Extensions.GetRandomString());
+            Assert.Single(c);
+            Assert.True(result);
 
-            result = c.AddIf( x => false, Extensions.GetRandomString() );
-            Assert.Single( c );
-            Assert.False( result );
+            result = c.AddIf(x => false, Extensions.GetRandomString());
+            Assert.Single(c);
+            Assert.False(result);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Extend.Testing
         {
             List<String> c = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => c.AddIf( x => true, Extensions.GetRandomString() );
+            Action test = () => c.AddIf(x => true, Extensions.GetRandomString());
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -41,7 +41,7 @@ namespace Extend.Testing
         {
             var c = new List<String>();
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => c.AddIf( null, Extensions.GetRandomString() );
+            Action test = () => c.AddIf(null, Extensions.GetRandomString());
 
             test.ShouldThrow<NullReferenceException>();
         }

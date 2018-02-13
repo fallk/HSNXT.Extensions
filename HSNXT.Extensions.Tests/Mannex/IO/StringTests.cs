@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.IO
@@ -40,7 +42,7 @@ namespace Mannex.Tests.IO
         {
             var e = Assert.Throws<ArgumentNullException>(() => Extensions.ToFileNameSafe(null));
             Assert.Equal("str", e.ParamName);
-            
+
             e = Assert.Throws<ArgumentNullException>(() => Extensions.ToFileNameSafe(null, string.Empty));
             Assert.Equal("str", e.ParamName);
         }
@@ -72,8 +74,8 @@ namespace Mannex.Tests.IO
         public void ToFileNameSafeFailsWithReplacementCarryingInvalidFileNameChars()
         {
             foreach (var e in Path.GetInvalidFileNameChars()
-                                  .Select(ch => Assert.Throws<ArgumentException>(()
-                                             => "foo".ToFileNameSafe(ch.ToString()))))
+                .Select(ch => Assert.Throws<ArgumentException>(()
+                    => "foo".ToFileNameSafe(ch.ToString()))))
             {
                 Assert.Equal("replacement", e.ParamName);
             }
@@ -123,8 +125,8 @@ namespace Mannex.Tests.IO
         public void ToPathNameSafeFailsWithReplacementCarryingInvalidPathNameChars()
         {
             foreach (var e in Path.GetInvalidPathChars()
-                                  .Select(ch => Assert.Throws<ArgumentException>(()
-                                             => "foo".ToPathNameSafe(ch.ToString()))))
+                .Select(ch => Assert.Throws<ArgumentException>(()
+                    => "foo".ToPathNameSafe(ch.ToString()))))
             {
                 Assert.Equal("replacement", e.ParamName);
             }

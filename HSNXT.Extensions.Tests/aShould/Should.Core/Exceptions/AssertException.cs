@@ -16,7 +16,9 @@ namespace erichexter.Should.Core.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="AssertException"/> class.
         /// </summary>
-        public AssertException() { }
+        public AssertException()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AssertException"/> class.
@@ -34,7 +36,9 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="userMessage">The user message to be displayed</param>
         /// <param name="innerException">The inner exception</param>
         protected AssertException(string userMessage, Exception innerException)
-            : base(userMessage, innerException) { }
+            : base(userMessage, innerException)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AssertException"/> class.
@@ -76,7 +80,7 @@ namespace erichexter.Should.Core.Exceptions
             foreach (string line in SplitLines(stackTrace))
             {
                 string trimmedLine = line.TrimStart();
-                if (!trimmedLine.StartsWith( "at " + FilterStackTraceAssemblyPrefix) )
+                if (!trimmedLine.StartsWith("at " + FilterStackTraceAssemblyPrefix))
                     results.Add(line);
             }
 

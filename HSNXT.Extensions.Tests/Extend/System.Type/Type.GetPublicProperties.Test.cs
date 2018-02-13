@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -16,30 +16,30 @@ namespace Extend.Testing
         {
             var type = typeof(TestModel);
             var actual = type.GetPublicProperties()
-                             .ToList();
+                .ToList();
 
             actual.Count.Should()
-                  .Be( 5 );
+                .Be(5);
 
-            actual.Count( x => x.Name == "MyString" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "MyString")
+                .Should()
+                .Be(1);
 
-            actual.Count( x => x.Name == "MyInt32" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "MyInt32")
+                .Should()
+                .Be(1);
 
-            actual.Count( x => x.Name == "MyReadonlyInt32" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "MyReadonlyInt32")
+                .Should()
+                .Be(1);
 
-            actual.Count( x => x.Name == "MyReadonlyString" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "MyReadonlyString")
+                .Should()
+                .Be(1);
 
-            actual.Count( x => x.Name == "ReadonlyString" )
-                  .Should()
-                  .Be( 1 );
+            actual.Count(x => x.Name == "ReadonlyString")
+                .Should()
+                .Be(1);
         }
 
         [Fact]
@@ -47,10 +47,10 @@ namespace Extend.Testing
         {
             var type = typeof(TestModelNoProperties);
             var actual = type.GetPublicProperties()
-                             .ToList();
+                .ToList();
 
             actual.Count.Should()
-                  .Be( 0 );
+                .Be(0);
         }
     }
 }

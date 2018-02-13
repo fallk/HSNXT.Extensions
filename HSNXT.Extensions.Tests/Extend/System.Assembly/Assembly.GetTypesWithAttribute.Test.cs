@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -17,7 +17,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetTypesWithAttribute<FooAttribute>( null );
+            Action test = () => Extensions.GetTypesWithAttribute<FooAttribute>(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -25,163 +25,163 @@ namespace Extend.Testing
         [Fact]
         public void GetTypesWithAttributeBaseTypeTest()
         {
-            var actual = Extensions.GetTypesWithAttribute<FooAttribute>( true,
-                                                                         typeof(BaseTestClass),
-                                                                         GetType()
-                                                                             .GetDeclaringAssembly() )
-                                   .ToList();
+            var actual = Extensions.GetTypesWithAttribute<FooAttribute>(true,
+                    typeof(BaseTestClass),
+                    GetType()
+                        .GetDeclaringAssembly())
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 3 );
+                .HaveCount(3);
 
             // TestClassA
-            var attributes = actual.First( x => x.Type == typeof(TestClassA) )
-                                   .Attributes.ToList();
+            var attributes = actual.First(x => x.Type == typeof(TestClassA))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 2 );
+                .HaveCount(2);
             attributes.Should()
-                      .Contain( x => x.Value == "A" );
+                .Contain(x => x.Value == "A");
             attributes.Should()
-                      .Contain( x => x.Value == "base" );
+                .Contain(x => x.Value == "base");
 
             // TestClassB
-            attributes = actual.First( x => x.Type == typeof(TestClassB) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassB))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.First()
-                      .Value.Should()
-                      .Be( "base" );
+                .Value.Should()
+                .Be("base");
 
             // TestClassD
-            attributes = actual.First( x => x.Type == typeof(TestClassD) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassD))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 3 );
+                .HaveCount(3);
             attributes.Should()
-                      .Contain( x => x.Value == "D1" );
+                .Contain(x => x.Value == "D1");
             attributes.Should()
-                      .Contain( x => x.Value == "base" );
+                .Contain(x => x.Value == "base");
             attributes.Should()
-                      .Contain( x => x.Value == "D2" );
+                .Contain(x => x.Value == "D2");
         }
 
         [Fact]
         public void GetTypesWithAttributeInheriteTest()
         {
-            var actual = Extensions.GetTypesWithAttribute<FooAttribute>( true,
-                                                                         GetType()
-                                                                             .GetDeclaringAssembly() )
-                                   .ToList();
+            var actual = Extensions.GetTypesWithAttribute<FooAttribute>(true,
+                    GetType()
+                        .GetDeclaringAssembly())
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 5 );
+                .HaveCount(5);
 
             //BaseTextClass
-            var attributes = actual.First( x => x.Type == typeof(BaseTestClass) )
-                                   .Attributes.ToList();
+            var attributes = actual.First(x => x.Type == typeof(BaseTestClass))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.First()
-                      .Value.Should()
-                      .Be( "base" );
+                .Value.Should()
+                .Be("base");
 
             // TestClassA
-            attributes = actual.First( x => x.Type == typeof(TestClassA) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassA))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 2 );
+                .HaveCount(2);
             attributes.Should()
-                      .Contain( x => x.Value == "A" );
+                .Contain(x => x.Value == "A");
             attributes.Should()
-                      .Contain( x => x.Value == "base" );
+                .Contain(x => x.Value == "base");
 
             // TestClassB
-            attributes = actual.First( x => x.Type == typeof(TestClassB) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassB))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.First()
-                      .Value.Should()
-                      .Be( "base" );
+                .Value.Should()
+                .Be("base");
 
             // TestClassC
-            attributes = actual.First( x => x.Type == typeof(TestClassC) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassC))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.Should()
-                      .Contain( x => x.Value == "C" );
+                .Contain(x => x.Value == "C");
 
             // TestClassD
-            attributes = actual.First( x => x.Type == typeof(TestClassD) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassD))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 3 );
+                .HaveCount(3);
             attributes.Should()
-                      .Contain( x => x.Value == "D1" );
+                .Contain(x => x.Value == "D1");
             attributes.Should()
-                      .Contain( x => x.Value == "base" );
+                .Contain(x => x.Value == "base");
             attributes.Should()
-                      .Contain( x => x.Value == "D2" );
+                .Contain(x => x.Value == "D2");
         }
 
         [Fact]
         public void GetTypesWithAttributeTest()
         {
-            var actual = Extensions.GetTypesWithAttribute<FooAttribute>( GetType()
-                                                                             .GetDeclaringAssembly() )
-                                   .ToList();
+            var actual = Extensions.GetTypesWithAttribute<FooAttribute>(GetType()
+                    .GetDeclaringAssembly())
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 4 );
+                .HaveCount(4);
 
             //BaseTextClass
-            var attributes = actual.First( x => x.Type == typeof(BaseTestClass) )
-                                   .Attributes.ToList();
+            var attributes = actual.First(x => x.Type == typeof(BaseTestClass))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.First()
-                      .Value.Should()
-                      .Be( "base" );
+                .Value.Should()
+                .Be("base");
 
             // TestClassA
-            attributes = actual.First( x => x.Type == typeof(TestClassA) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassA))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.First()
-                      .Value.Should()
-                      .Be( "A" );
+                .Value.Should()
+                .Be("A");
 
             // TestClassC
-            attributes = actual.First( x => x.Type == typeof(TestClassC) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassC))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 1 );
+                .HaveCount(1);
             attributes.First()
-                      .Value.Should()
-                      .Be( "C" );
+                .Value.Should()
+                .Be("C");
 
             // TestClassD
-            attributes = actual.First( x => x.Type == typeof(TestClassD) )
-                               .Attributes.ToList();
+            attributes = actual.First(x => x.Type == typeof(TestClassD))
+                .Attributes.ToList();
             attributes.Should()
-                      .HaveCount( 2 );
+                .HaveCount(2);
             attributes.Should()
-                      .Contain( x => x.Value == "D1" );
+                .Contain(x => x.Value == "D1");
             attributes.Should()
-                      .Contain( x => x.Value == "D2" );
+                .Contain(x => x.Value == "D2");
         }
 
         #region Nested Types
 
-        [Foo( Value = "base" )]
+        [Foo(Value = "base")]
         private class BaseTestClass
         {
         }
 
-        [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
+        [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
         private class FooAttribute : Attribute
         {
             #region Properties
@@ -191,7 +191,7 @@ namespace Extend.Testing
             #endregion
         }
 
-        [Foo( Value = "A" )]
+        [Foo(Value = "A")]
         private class TestClassA : BaseTestClass
         {
         }
@@ -200,13 +200,13 @@ namespace Extend.Testing
         {
         }
 
-        [Foo( Value = "C" )]
+        [Foo(Value = "C")]
         private class TestClassC
         {
         }
 
-        [Foo( Value = "D1" )]
-        [Foo( Value = "D2" )]
+        [Foo(Value = "D1")]
+        [Foo(Value = "D2")]
         private class TestClassD : BaseTestClass
         {
         }

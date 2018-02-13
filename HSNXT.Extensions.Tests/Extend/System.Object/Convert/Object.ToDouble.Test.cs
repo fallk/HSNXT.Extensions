@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -17,24 +17,24 @@ namespace Extend.Testing
         public void ToDoubleFormatProviderNullTest()
         {
             const Double expected = 100.12;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToDouble( null );
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
+            var actual = value.ToDouble(null);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToDoubleFormatProviderTest()
         {
             const Double expected = 100.12;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToDouble( CultureInfo.InvariantCulture );
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
+            var actual = value.ToDouble(CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Extend.Testing
             var value = new TestModel();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDouble( CultureInfo.InvariantCulture );
+            Action test = () => value.ToDouble(CultureInfo.InvariantCulture);
             test.ShouldThrow<InvalidCastException>();
         }
 
@@ -63,7 +63,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDouble( value, CultureInfo.InvariantCulture );
+            Action test = () => Extensions.ToDouble(value, CultureInfo.InvariantCulture);
             test.ShouldThrow<FormatException>();
         }
 
@@ -73,7 +73,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDouble( value );
+            Action test = () => Extensions.ToDouble(value);
             test.ShouldNotThrow();
         }
 
@@ -82,11 +82,11 @@ namespace Extend.Testing
         {
             Object value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToDouble( CultureInfo.InvariantCulture );
+            var actual = value.ToDouble(CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( 0 );
+                .Be(0);
         }
 
         [Fact]
@@ -94,28 +94,28 @@ namespace Extend.Testing
         public void ToDoubleTest()
         {
             const Double expected = 100.12;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
             var actual = value.ToDouble();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToDoubleTooLargeFormatProviderTest()
         {
-            var value = Double.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Double.MaxValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDouble( CultureInfo.InvariantCulture );
+            Action test = () => value.ToDouble(CultureInfo.InvariantCulture);
             test.ShouldThrow<OverflowException>();
         }
 
         [Fact]
         public void ToDoubleTooLargeTest()
         {
-            var value = Double.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Double.MaxValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDouble();
@@ -125,17 +125,17 @@ namespace Extend.Testing
         [Fact]
         public void ToDoubleTooSmallFormatProviderTest()
         {
-            var value = Double.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Double.MinValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDouble( CultureInfo.InvariantCulture );
+            Action test = () => value.ToDouble(CultureInfo.InvariantCulture);
             test.ShouldThrow<OverflowException>();
         }
 
         [Fact]
         public void ToDoubleTooSmallTest()
         {
-            var value = Double.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Double.MinValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDouble();

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -15,21 +15,21 @@ namespace Extend.Testing
         [Fact]
         public void MinimumTest()
         {
-            var actual = 1.Minimum( 2, 3, 4, 5, 6 );
-            Assert.Equal( 1, actual );
+            var actual = 1.Minimum(2, 3, 4, 5, 6);
+            Assert.Equal(1, actual);
 
-            actual = 100.Minimum( 2, 3, 4, 5, 6 );
-            Assert.Equal( 2, actual );
+            actual = 100.Minimum(2, 3, 4, 5, 6);
+            Assert.Equal(2, actual);
         }
 
         [Fact]
         public void MinimumTest1()
         {
-            var actual = 1.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
-            Assert.Equal( "1", actual );
+            var actual = 1.Minimum(x => x.ToString(CultureInfo.InvariantCulture), 2, 3, 4, 5, 6);
+            Assert.Equal("1", actual);
 
-            actual = 100.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
-            Assert.Equal( "100", actual );
+            actual = 100.Minimum(x => x.ToString(CultureInfo.InvariantCulture), 2, 3, 4, 5, 6);
+            Assert.Equal("100", actual);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => 10.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), null );
+            Action test = () => 10.Minimum(x => x.ToString(CultureInfo.InvariantCulture), null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -48,7 +48,7 @@ namespace Extend.Testing
             Func<Int32, Object> func = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => 10.Minimum( func, 1, 2, 3, 4, 5 );
+            Action test = () => 10.Minimum(func, 1, 2, 3, 4, 5);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => 10.Minimum( null );
+            Action test = () => 10.Minimum(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

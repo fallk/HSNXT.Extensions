@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,21 +19,21 @@ namespace Extend.Testing
         {
             var list = new List<String>();
             var result = list.Randomize();
-            Assert.Equal( list.Count, result.Count() );
+            Assert.Equal(list.Count, result.Count());
 
-            list = Extensions.GetRandomStrings( 100 );
+            list = Extensions.GetRandomStrings(100);
             result = list.Randomize();
             // ReSharper disable once PossibleMultipleEnumeration
-            Assert.Equal( list.Count, result.Count() );
+            Assert.Equal(list.Count, result.Count());
             // ReSharper disable once PossibleMultipleEnumeration
-            Assert.True( list.All( x => result.Contains( x ) ) );
+            Assert.True(list.All(x => result.Contains(x)));
 
             // ReSharper disable once PossibleMultipleEnumeration
             var resultList = result.ToList();
-            if ( list.Where( ( t, i ) => t != resultList[i] )
-                     .Any() )
+            if (list.Where((t, i) => t != resultList[i])
+                .Any())
                 return;
-            Assert.True( false, "The items are in the same order in both collections." );
+            Assert.True(false, "The items are in the same order in both collections.");
         }
 
         [Fact]

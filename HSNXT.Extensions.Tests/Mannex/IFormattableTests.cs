@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using System;
@@ -42,7 +44,7 @@ namespace Mannex.Tests
             IFormattable num = 1234;
             Assert.Equal("1234", WhileInFrance(() => num.ToInvariantString()));
         }
- 
+
         [Fact]
         public void ToInvariantStringWithSpecificFormat()
         {

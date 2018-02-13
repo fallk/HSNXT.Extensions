@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -16,23 +16,23 @@ namespace Extend.Testing
         [Fact]
         public void ContainAnyTest()
         {
-            var list = new List<String> { "test", "test1" };
+            var list = new List<String> {"test", "test1"};
 
-            Assert.True( list.ContainAny( "test" ) );
-            Assert.True( list.ContainAny( "test", "test1" ) );
-            Assert.True( list.ContainAny( "test", "test1", "test2" ) );
-            Assert.False( list.ContainAny( "asdasd" ) );
+            Assert.True(list.ContainAny("test"));
+            Assert.True(list.ContainAny("test", "test1"));
+            Assert.True(list.ContainAny("test", "test1", "test2"));
+            Assert.False(list.ContainAny("asdasd"));
         }
 
         [Fact]
         public void ContainAnyTest1()
         {
-            var list = new List<String> { "test", "test1" };
+            var list = new List<String> {"test", "test1"};
 
-            Assert.True( list.ContainAny( new List<String> { "test" } ) );
-            Assert.True( list.ContainAny( new List<String> { "test", "test1" } ) );
-            Assert.True( list.ContainAny( new List<String> { "test", "test1", "test2" } ) );
-            Assert.False( list.ContainAny( new List<String> { "asdasd" } ) );
+            Assert.True(list.ContainAny(new List<String> {"test"}));
+            Assert.True(list.ContainAny(new List<String> {"test", "test1"}));
+            Assert.True(list.ContainAny(new List<String> {"test", "test1", "test2"}));
+            Assert.False(list.ContainAny(new List<String> {"asdasd"}));
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ContainAny( null, new List<Object>() );
+            Action test = () => Extensions.ContainAny(null, new List<Object>());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -51,7 +51,7 @@ namespace Extend.Testing
             IEnumerable<Object> enumerable = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<String>().ContainAny( enumerable );
+            Action test = () => new List<String>().ContainAny(enumerable);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -61,7 +61,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ContainAny( null, new Object(), new Object() );
+            Action test = () => Extensions.ContainAny(null, new Object(), new Object());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -72,7 +72,7 @@ namespace Extend.Testing
             Object[] array = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<String>().ContainAny( array );
+            Action test = () => new List<String>().ContainAny(array);
 
             test.ShouldThrow<ArgumentNullException>();
         }

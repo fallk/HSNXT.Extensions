@@ -41,7 +41,10 @@ namespace erichexter.Should.Facts.Core
             {
                 try
                 {
-                    Should.Core.Assertions.Assert.Throws<Exception>(delegate { throw new InvalidOperationException(); });
+                    Should.Core.Assertions.Assert.Throws<Exception>(delegate
+                    {
+                        throw new InvalidOperationException();
+                    });
                 }
                 catch (AssertException exception)
                 {
@@ -59,7 +62,10 @@ namespace erichexter.Should.Facts.Core
             public void GotExpectedException()
             {
                 ArgumentException ex =
-                    Should.Core.Assertions.Assert.Throws<ArgumentException>(delegate { throw new ArgumentException(); });
+                    Should.Core.Assertions.Assert.Throws<ArgumentException>(delegate
+                    {
+                        throw new ArgumentException();
+                    });
 
                 Should.Core.Assertions.Assert.NotNull(ex);
             }
@@ -129,7 +135,8 @@ namespace erichexter.Should.Facts.Core
             {
                 try
                 {
-                    Should.Core.Assertions.Assert.Throws(typeof(Exception), delegate { throw new InvalidOperationException(); });
+                    Should.Core.Assertions.Assert.Throws(typeof(Exception),
+                        delegate { throw new InvalidOperationException(); });
                 }
                 catch (AssertException exception)
                 {
@@ -141,7 +148,8 @@ namespace erichexter.Should.Facts.Core
             public void GotExpectedException()
             {
                 Exception ex =
-                    Should.Core.Assertions.Assert.Throws(typeof(ArgumentException), delegate { throw new ArgumentException(); });
+                    Should.Core.Assertions.Assert.Throws(typeof(ArgumentException),
+                        delegate { throw new ArgumentException(); });
 
                 Should.Core.Assertions.Assert.NotNull(ex);
                 Should.Core.Assertions.Assert.IsType<ArgumentException>(ex);
@@ -186,7 +194,8 @@ namespace erichexter.Should.Facts.Core
                 StubAccessor accessor = new StubAccessor();
 
                 Exception ex =
-                    Should.Core.Assertions.Assert.Throws(typeof(InvalidOperationException), () => accessor.FailingProperty);
+                    Should.Core.Assertions.Assert.Throws(typeof(InvalidOperationException),
+                        () => accessor.FailingProperty);
 
                 Should.Core.Assertions.Assert.NotNull(ex);
                 Should.Core.Assertions.Assert.IsType<InvalidOperationException>(ex);

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,31 +13,31 @@ namespace Extend.Testing
         [Fact]
         public void PercentageOfTest()
         {
-            var number = new Decimal( 1000 );
+            var number = new Decimal(1000);
             const Int32 expected = 500;
-            var actual = number.PercentageOf( 50 );
+            var actual = number.PercentageOf(50);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PercentageOfTest1()
         {
-            var number = new Decimal( 1000 );
+            var number = new Decimal(1000);
             const Int32 expected = 500;
-            var actual = number.PercentageOf( new Decimal( 50 ) );
+            var actual = number.PercentageOf(new Decimal(50));
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PercentageOfTest2()
         {
-            var number = new Decimal( 1000 );
+            var number = new Decimal(1000);
             const Int32 expected = 500;
-            var actual = number.PercentageOf( (Int64) 50 );
+            var actual = number.PercentageOf((Int64) 50);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

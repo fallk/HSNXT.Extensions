@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,9 +17,9 @@ namespace Extend.Testing
             var target = new ExecutionResult<String>();
 
             target.Exception.Should()
-                  .BeNull();
+                .BeNull();
             target.Result.Should()
-                  .BeNull();
+                .BeNull();
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Extend.Testing
             target.Exception = expected;
 
             target.Exception.Should()
-                  .BeSameAs( expected );
+                .BeSameAs(expected);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
             target.Result = expected;
 
             target.Result.Should()
-                  .Be( expected );
+                .Be(expected);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -38,7 +38,7 @@ namespace Extend.Testing
             CultureInfo formatProvider = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".ToInt16( formatProvider );
+            Action test = () => "".ToInt16(formatProvider);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -47,7 +47,7 @@ namespace Extend.Testing
         public void ToInt16OverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "InvalidFormat".ToInt16( new CultureInfo( "de-CH" ) );
+            Action test = () => "InvalidFormat".ToInt16(new CultureInfo("de-CH"));
 
             test.ShouldThrow<FormatException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToInt16( new CultureInfo( "de-CH" ) );
+            Action test = () => value.ToInt16(new CultureInfo("de-CH"));
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -66,21 +66,21 @@ namespace Extend.Testing
         [Fact]
         public void ToInt16OverloadTest()
         {
-            var culture = new CultureInfo( "de-CH" );
+            var culture = new CultureInfo("de-CH");
             var value = Extensions.GetRandomInt16();
-            var actual = value.ToString( culture )
-                              .ToInt16( culture );
+            var actual = value.ToString(culture)
+                .ToInt16(culture);
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]
         public void ToInt16OverloadValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "123123123123".ToInt16( new CultureInfo( "de-CH" ) );
+            Action test = () => "123123123123".ToInt16(new CultureInfo("de-CH"));
 
             test.ShouldThrow<OverflowException>();
         }
@@ -89,7 +89,7 @@ namespace Extend.Testing
         public void ToInt16OverloadValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "-123123123123".ToInt16( new CultureInfo( "de-CH" ) );
+            Action test = () => "-123123123123".ToInt16(new CultureInfo("de-CH"));
 
             test.ShouldThrow<OverflowException>();
         }
@@ -99,11 +99,11 @@ namespace Extend.Testing
         {
             var value = Extensions.GetRandomInt16();
             var actual = value.ToString()
-                              .ToInt16();
+                .ToInt16();
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]

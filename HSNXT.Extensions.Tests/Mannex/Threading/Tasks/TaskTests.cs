@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Threading.Tasks
@@ -80,7 +82,7 @@ namespace Mannex.Tests.Threading.Tasks
             var task = tcs.Task;
             IAsyncResult actualResult = null;
             var state = new object();
-            var isCompletedDuringCallback = (bool?)null;
+            var isCompletedDuringCallback = (bool?) null;
             var resultCell = new Task<object>[1];
             var result = resultCell[0] = task.Apmize(ar =>
             {
@@ -93,14 +95,14 @@ namespace Mannex.Tests.Threading.Tasks
             Assert.NotNull(actualResult);
             Assert.Same(result, actualResult);
             Assert.NotNull(isCompletedDuringCallback);
-            Assert.True((bool)isCompletedDuringCallback);
+            Assert.True((bool) isCompletedDuringCallback);
         }
 
         [Fact]
         public async void WhenAllCompletedFailsWithNullThis()
         {
             var e = await Assert.ThrowsAsync<ArgumentNullException>(() =>
-                Extensions.WhenAllCompleted((IEnumerable<Task>)null));
+                Extensions.WhenAllCompleted((IEnumerable<Task>) null));
             Assert.Equal("tasks", e.ParamName);
         }
 
@@ -117,15 +119,15 @@ namespace Mannex.Tests.Threading.Tasks
             tcs3.SetCanceled();
             var t3 = tcs3.Task;
 
-            var result = await new[] { t1, t2, t3 }.WhenAllCompleted();
+            var result = await new[] {t1, t2, t3}.WhenAllCompleted();
 
             Assert.Equal(t1, result[0]); // Returns in same order
             Assert.Equal(t2, result[1]);
             Assert.Equal(t3, result[2]);
 
             Assert.Equal(TaskStatus.RanToCompletion, t1.Status);
-            Assert.Equal(TaskStatus.Faulted        , t2.Status);
-            Assert.Equal(TaskStatus.Canceled       , t3.Status);
+            Assert.Equal(TaskStatus.Faulted, t2.Status);
+            Assert.Equal(TaskStatus.Canceled, t3.Status);
         }
     }
 }

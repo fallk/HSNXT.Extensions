@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -15,9 +15,9 @@ namespace Extend.Testing
         {
             var dateTime = Extensions.GetRandomDateTime();
             var expected =
-                new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( -(Int32) dateTime.DayOfWeek );
+                new DateTime(dateTime.Year, dateTime.Month, dateTime.Day).AddDays(-(Int32) dateTime.DayOfWeek);
             var actual = dateTime.FirstDayOfWeek();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

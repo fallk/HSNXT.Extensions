@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -40,7 +42,7 @@ namespace Mannex.Tests
         [Fact]
         public void FireFailsWithNullSender()
         {
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
                 EventT.Fire(null, EventArgs.Empty));
         }
 
@@ -149,7 +151,7 @@ namespace Mannex.Tests
         {
             var counter = 0;
             EventHandler handler = delegate
-            { 
+            {
                 if (++counter == 1) throw new ApplicationException();
             };
             handler.Once(h => Event += h, h => Event -= h);
@@ -157,7 +159,10 @@ namespace Mannex.Tests
             {
                 Event.Fire(this, EventArgs.Empty);
             }
-            catch (ApplicationException) { }
+            catch (ApplicationException)
+            {
+            }
+
             Assert.Equal(1, counter);
             Event.Fire(this, EventArgs.Empty);
             Assert.Equal(1, counter);
@@ -176,7 +181,10 @@ namespace Mannex.Tests
             {
                 EventT.Fire(this, EventArgs.Empty);
             }
-            catch (ApplicationException) { }
+            catch (ApplicationException)
+            {
+            }
+
             Assert.Equal(1, counter);
             EventT.Fire(this, EventArgs.Empty);
             Assert.Equal(1, counter);

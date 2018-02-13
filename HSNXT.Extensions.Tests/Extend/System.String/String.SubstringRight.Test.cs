@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,8 +14,8 @@ namespace Extend.Testing
         [Fact]
         public void SubstringRightTest()
         {
-            var actual = "testabc".SubstringRight( 3 );
-            Assert.Equal( "abc", actual );
+            var actual = "testabc".SubstringRight(3);
+            Assert.Equal("abc", actual);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.SubstringRight( null, 5 );
+            Action test = () => Extensions.SubstringRight(null, 5);
 
             test.ShouldThrow<NullReferenceException>();
         }

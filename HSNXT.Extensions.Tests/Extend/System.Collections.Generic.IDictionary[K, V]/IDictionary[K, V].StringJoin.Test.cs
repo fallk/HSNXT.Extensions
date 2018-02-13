@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,31 +19,31 @@ namespace Extend.Testing
         {
             var dictionary = new Dictionary<String, String>
             {
-                { Extensions.GetRandomString(), Extensions.GetRandomString() },
-                { Extensions.GetRandomString(), Extensions.GetRandomString() }
+                {Extensions.GetRandomString(), Extensions.GetRandomString()},
+                {Extensions.GetRandomString(), Extensions.GetRandomString()}
             };
 
             var actual = dictionary.StringJoin();
-            var expected = "{0}={1}{2}={3}".F( dictionary.First()
-                                                         .Key,
-                                               dictionary.First()
-                                                         .Value,
-                                               dictionary.Last()
-                                                         .Key,
-                                               dictionary.Last()
-                                                         .Value );
-            Assert.Equal( expected, actual );
+            var expected = "{0}={1}{2}={3}".F(dictionary.First()
+                    .Key,
+                dictionary.First()
+                    .Value,
+                dictionary.Last()
+                    .Key,
+                dictionary.Last()
+                    .Value);
+            Assert.Equal(expected, actual);
 
-            actual = dictionary.StringJoin( ",", ";" );
-            expected = "{0},{1};{2},{3}".F( dictionary.First()
-                                                      .Key,
-                                            dictionary.First()
-                                                      .Value,
-                                            dictionary.Last()
-                                                      .Key,
-                                            dictionary.Last()
-                                                      .Value );
-            Assert.Equal( expected, actual );
+            actual = dictionary.StringJoin(",", ";");
+            expected = "{0},{1};{2},{3}".F(dictionary.First()
+                    .Key,
+                dictionary.First()
+                    .Value,
+                dictionary.Last()
+                    .Key,
+                dictionary.Last()
+                    .Value);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
             Dictionary<String, String> dictionary = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => dictionary.StringJoin( "" );
+            Action test = () => dictionary.StringJoin("");
 
             test.ShouldThrow<ArgumentNullException>();
         }

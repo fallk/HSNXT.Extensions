@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -16,8 +16,8 @@ namespace Extend.Testing
 
             var actual = item.ToSingleItemArray();
 
-            Assert.Single( actual );
-            Assert.Equal( item, actual[0] );
+            Assert.Single(actual);
+            Assert.Equal(item, actual[0]);
         }
     }
 }

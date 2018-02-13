@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -14,10 +14,10 @@ namespace Extend.Testing
         public void EndOfMonthTest()
         {
             var dateTime = DateTime.Now;
-            var expected = new DateTime( dateTime.Year, dateTime.Month, 1 ).AddMonths( 1 )
-                                                                           .Subtract( 1.ToMilliseconds() );
+            var expected = new DateTime(dateTime.Year, dateTime.Month, 1).AddMonths(1)
+                .Subtract(1.ToMilliseconds());
             var actual = dateTime.EndOfMonth();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

@@ -19,7 +19,8 @@ namespace TestProject
         [TestMethod]
         public void IPaginatedListExtensions_ToDataPage_001()
         {
-            var arr = new string[]{
+            var arr = new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
             IPaginatedList<string> page = Extensions.ToPaginatedList(arr, 0, 5, 100);
@@ -32,7 +33,8 @@ namespace TestProject
         [TestMethod]
         public void IPaginatedListExtensions_ToDataPage_002()
         {
-            var arr = new string[]{
+            var arr = new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
             IPaginatedList page = Extensions.ToPaginatedList(arr, 0, 5, 100);
@@ -45,12 +47,13 @@ namespace TestProject
         [TestMethod]
         public void IPaginatedListExtensions_ToDataPage_003()
         {
-            var arr = new string[]{
+            var arr = new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
             IPaginatedList<string> page = Extensions.ToPaginatedList(arr, 0, 5, 100);
 
-            var actual = ((IPaginatedList)page).ToDataPage();
+            var actual = ((IPaginatedList) page).ToDataPage();
 
             Assert.AreEqual(page, actual.Data);
         }

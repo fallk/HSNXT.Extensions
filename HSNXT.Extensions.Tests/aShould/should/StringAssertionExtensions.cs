@@ -16,7 +16,7 @@ namespace erichexter.Should
         /// <param name="expectedSubString">The sub-string expected to be in the string</param>
         /// <exception cref="ContainsException">Thrown when the sub-string is not present inside the string</exception>
         public static int ShouldContain(this string actualString,
-                                         string expectedSubString)
+            string expectedSubString)
         {
             return Assert.Contains(expectedSubString, actualString);
         }
@@ -29,8 +29,8 @@ namespace erichexter.Should
         /// <param name="comparisonType">The type of string comparison to perform</param>
         /// <exception cref="ContainsException">Thrown when the sub-string is not present inside the string</exception>
         public static void ShouldContain(this string actualString,
-                                         string expectedSubString,
-                                         StringComparison comparisonType)
+            string expectedSubString,
+            StringComparison comparisonType)
         {
             Assert.Contains(expectedSubString, actualString, comparisonType);
         }
@@ -42,7 +42,7 @@ namespace erichexter.Should
         /// <param name="expectedSubString">The sub-string which is expected not to be in the string</param>
         /// <exception cref="DoesNotContainException">Thrown when the sub-string is present inside the string</exception>
         public static void ShouldNotContain(this string actualString,
-                                            string expectedSubString)
+            string expectedSubString)
         {
             Assert.DoesNotContain(expectedSubString, actualString);
         }
@@ -55,14 +55,14 @@ namespace erichexter.Should
         /// <param name="comparisonType">The type of string comparison to perform</param>
         /// <exception cref="DoesNotContainException">Thrown when the sub-string is present inside the given string</exception>
         public static void ShouldNotContain(this string actualString,
-                                            string expectedSubString,
-                                            StringComparison comparisonType)
+            string expectedSubString,
+            StringComparison comparisonType)
         {
             Assert.DoesNotContain(expectedSubString, actualString, comparisonType);
         }
 
         public static void ShouldStartWith(this string actualString,
-                                           string expectedStartString)
+            string expectedStartString)
         {
             Assert.StartsWith(expectedStartString, actualString);
         }

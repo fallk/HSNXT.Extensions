@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,22 +17,22 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
             var otherList = new List<String>();
 
-            var actual = Extensions.ForEach( list, otherList.Add );
-            Assert.Equal( list, actual );
-            Assert.Equal( list.Count, otherList.Count );
-            Assert.True( list.All( otherList.Contains ) );
+            var actual = Extensions.ForEach(list, otherList.Add);
+            Assert.Equal(list, actual);
+            Assert.Equal(list.Count, otherList.Count);
+            Assert.True(list.All(otherList.Contains));
         }
 
         [Fact]
         public void ForEachTest1()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ForEach( list, x => list.Remove( x ) );
+            Action test = () => Extensions.ForEach(list, x => list.Remove(x));
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -43,7 +43,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.ForEach( ( x, i ) => { } );
+            Action test = () => list.ForEach((x, i) => { });
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -54,7 +54,7 @@ namespace Extend.Testing
             Action<Object, Int32> action = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().ForEach( action );
+            Action test = () => new List<Object>().ForEach(action);
 
             test.ShouldNotThrow();
         }
@@ -62,22 +62,22 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest2()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
             var otherList = new List<String>();
 
-            var actual = Extensions.ForEach( list, otherList.Add );
-            Assert.Equal( list, actual );
-            Assert.Equal( list.Count, otherList.Count );
-            Assert.True( list.All( otherList.Contains ) );
+            var actual = Extensions.ForEach(list, otherList.Add);
+            Assert.Equal(list, actual);
+            Assert.Equal(list.Count, otherList.Count);
+            Assert.True(list.All(otherList.Contains));
         }
 
         [Fact]
         public void ForEachTest3()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.ForEach( ( x, i ) => list.Remove( x ) );
+            Action test = () => list.ForEach((x, i) => list.Remove(x));
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -85,12 +85,12 @@ namespace Extend.Testing
         [Fact]
         public void ForEachTest4()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
             var total = 0;
-            var actual = list.ForEach( ( x, i ) => total += i );
+            var actual = list.ForEach((x, i) => total += i);
 
-            Assert.Equal( list, actual );
-            Assert.Equal( 45, total );
+            Assert.Equal(list, actual);
+            Assert.Equal(45, total);
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ForEach( list, Console.WriteLine );
+            Action test = () => Extensions.ForEach(list, Console.WriteLine);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -110,7 +110,7 @@ namespace Extend.Testing
             Action<Object> action = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ForEach( new List<Object>(), action );
+            Action test = () => Extensions.ForEach(new List<Object>(), action);
 
             test.ShouldNotThrow();
         }

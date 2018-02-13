@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Collections
@@ -38,14 +40,14 @@ namespace Mannex.Tests.Collections
         [Fact]
         public void AsEnumerableFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.AsEnumerable((BitArray)null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.AsEnumerable((BitArray) null));
             Assert.Equal("array", e.ParamName);
         }
 
         [Fact]
         public void AsEnumerable()
         {
-            var bools = new[] { true, false, true };
+            var bools = new[] {true, false, true};
             Assert.True(bools.SequenceEqual(new BitArray(bools).AsEnumerable()));
         }
     }

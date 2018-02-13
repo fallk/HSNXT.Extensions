@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Threading
@@ -42,9 +44,11 @@ namespace Mannex.Tests.Threading
         static IEnumerable<Task<ArgumentNullException>> WaitOneAsyncWithNullThis()
         {
             yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null));
-            yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null, CancellationToken.None));
+            yield return Assert.ThrowsAsync<ArgumentNullException>(() =>
+                Extensions.WaitOneAsync(null, CancellationToken.None));
             yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null, TimeSpan.Zero));
-            yield return Assert.ThrowsAsync<ArgumentNullException>(() => Extensions.WaitOneAsync(null, TimeSpan.Zero, CancellationToken.None));
+            yield return Assert.ThrowsAsync<ArgumentNullException>(() =>
+                Extensions.WaitOneAsync(null, TimeSpan.Zero, CancellationToken.None));
         }
 
         [Fact]

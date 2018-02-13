@@ -11,7 +11,8 @@ namespace erichexter.Should.Core.Assertions
             Type type = typeof(T);
 
             // Null?
-            if (!type.IsValueType || (type.IsGenericType && type.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
+            if (!type.IsValueType ||
+                (type.IsGenericType && type.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
                 if (Object.Equals(x, default(T)))
                     return Object.Equals(y, default(T));
@@ -23,12 +24,12 @@ namespace erichexter.Should.Core.Assertions
             //x implements IEquitable<T> and is assignable from y?
             var xIsAssignableFromY = x.GetType().IsAssignableFrom(y.GetType());
             if (xIsAssignableFromY && x is IEquatable<T>)
-                return ((IEquatable<T>)x).Equals(y);
+                return ((IEquatable<T>) x).Equals(y);
 
             //y implements IEquitable<T> and is assignable from x?
             var yIsAssignableFromX = y.GetType().IsAssignableFrom(x.GetType());
             if (yIsAssignableFromX && y is IEquatable<T>)
-                return ((IEquatable<T>)y).Equals(x);
+                return ((IEquatable<T>) y).Equals(x);
 
             // Enumerable?
             IEnumerable enumerableX = x as IEnumerable;

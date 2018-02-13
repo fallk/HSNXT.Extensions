@@ -21,6 +21,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.GreaterThan(0, should.Target);
             }
+
             return should.Target;
         }
 
@@ -34,6 +35,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.LessThan(0, should.Target);
             }
+
             return should.Target;
         }
     }

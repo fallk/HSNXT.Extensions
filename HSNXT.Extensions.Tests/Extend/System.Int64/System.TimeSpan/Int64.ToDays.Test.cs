@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,20 +14,20 @@ namespace Extend.Testing
         [Fact]
         public void ToDaysTest()
         {
-            var value = Extensions.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32(1, 100);
 
-            var expected = TimeSpan.FromDays( value );
-            var actual = ( (Int64) value ).ToDays();
+            var expected = TimeSpan.FromDays(value);
+            var actual = ((Int64) value).ToDays();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToDaysTooLargeTest()
         {
-            var value = (Int64) ( TimeSpan.MaxValue.Days + 1 );
+            var value = (Int64) (TimeSpan.MaxValue.Days + 1);
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDays();
 
@@ -37,7 +37,7 @@ namespace Extend.Testing
         [Fact]
         public void ToDaysTooSmallTest()
         {
-            var value = (Int64) ( TimeSpan.MinValue.Days - 1 );
+            var value = (Int64) (TimeSpan.MinValue.Days - 1);
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDays();
 

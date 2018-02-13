@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,25 +14,26 @@ namespace Extend.Testing
         [Fact]
         public void FormatExceptionInnerExceptionTest()
         {
-            var exception = new Exception( "some exception message", new InvalidOperationException( "inner exception" ) );
-            var actual = exception.FormatException( x =>
+            var exception = new Exception("some exception message", new InvalidOperationException("inner exception"));
+            var actual = exception.FormatException(x =>
             {
-                x.AppendLine( "A new line" );
-                x.AppendLine( "Another line" );
-            } );
+                x.AppendLine("A new line");
+                x.AppendLine("Another line");
+            });
 
             actual.Should()
-                  .Be( "Exception: some exception message\r\nA new line\r\nAnother line\r\n\r\n ---> System.InvalidOperationException: inner exception\r\n   --- End of inner exception stack trace ---\r\n" );
+                .Be(
+                    "Exception: some exception message\r\nA new line\r\nAnother line\r\n\r\n ---> System.InvalidOperationException: inner exception\r\n   --- End of inner exception stack trace ---\r\n");
         }
 
         [Fact]
         public void FormatExceptionNoActionTest()
         {
-            var exception = new InvalidOperationException( "some exception message" );
+            var exception = new InvalidOperationException("some exception message");
             var actual = exception.FormatException();
 
             actual.Should()
-                  .Be( "InvalidOperationException: some exception message\r\n" );
+                .Be("InvalidOperationException: some exception message\r\n");
         }
 
         [Fact]
@@ -49,11 +50,11 @@ namespace Extend.Testing
         [Fact]
         public void FormatExceptionTest()
         {
-            var exception = new InvalidOperationException( "some exception message" );
-            var actual = exception.FormatException( x => x.AppendLine( "A new line" ) );
+            var exception = new InvalidOperationException("some exception message");
+            var actual = exception.FormatException(x => x.AppendLine("A new line"));
 
             actual.Should()
-                  .Be( "InvalidOperationException: some exception message\r\nA new line\r\n" );
+                .Be("InvalidOperationException: some exception message\r\nA new line\r\n");
         }
     }
 }

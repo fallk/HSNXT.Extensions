@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -38,7 +38,7 @@ namespace Extend.Testing
             CultureInfo formatProvider = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action text = () => "1".ToDouble( formatProvider );
+            Action text = () => "1".ToDouble(formatProvider);
 
             text.ShouldThrow<ArgumentNullException>();
         }
@@ -47,7 +47,7 @@ namespace Extend.Testing
         public void ToDoubleOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "invalidFormat".ToDouble( new CultureInfo( "de-CH" ) );
+            Action text = () => "invalidFormat".ToDouble(new CultureInfo("de-CH"));
 
             text.ShouldThrow<FormatException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action text = () => value.ToDouble( new CultureInfo( "de-CH" ) );
+            Action text = () => value.ToDouble(new CultureInfo("de-CH"));
 
             text.ShouldThrow<ArgumentNullException>();
         }
@@ -66,21 +66,21 @@ namespace Extend.Testing
         [Fact]
         public void ToDoubleOverloadTest()
         {
-            var culture = new CultureInfo( "de-CH" );
+            var culture = new CultureInfo("de-CH");
             const Double value = 122223.456;
-            var actual = value.ToString( culture )
-                              .ToDouble( culture );
+            var actual = value.ToString(culture)
+                .ToDouble(culture);
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]
         public void ToDoubleOverloadValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "2.7976931348623157E+308".ToDouble( new CultureInfo( "de-CH" ) );
+            Action text = () => "2.7976931348623157E+308".ToDouble(new CultureInfo("de-CH"));
 
             text.ShouldThrow<OverflowException>();
         }
@@ -89,7 +89,7 @@ namespace Extend.Testing
         public void ToDoubleOverloadValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "-2.7976931348623157E+308".ToDouble( new CultureInfo( "de-CH" ) );
+            Action text = () => "-2.7976931348623157E+308".ToDouble(new CultureInfo("de-CH"));
 
             text.ShouldThrow<OverflowException>();
         }
@@ -98,12 +98,12 @@ namespace Extend.Testing
         public void ToDoubleTest()
         {
             const Double value = 123.456;
-            var actual = value.ToString( CultureInfo.CurrentCulture )
-                              .ToDouble();
+            var actual = value.ToString(CultureInfo.CurrentCulture)
+                .ToDouble();
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]

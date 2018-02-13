@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -25,7 +25,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToBoolean( null );
+            Action test = () => Extensions.ToBoolean(null);
 
             test.ShouldNotThrow();
         }
@@ -35,11 +35,11 @@ namespace Extend.Testing
         {
             var value = Extensions.GetRandomBoolean();
             var actual = value.ToString()
-                              .ToBoolean();
+                .ToBoolean();
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
     }
 }

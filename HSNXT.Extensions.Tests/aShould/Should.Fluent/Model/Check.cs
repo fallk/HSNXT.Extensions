@@ -31,7 +31,7 @@ namespace erichexter.Should.Fluent.Model
         {
             return should.Apply(
                 (t, a) => a.GreaterThan(t, value, comparer),
-                (t, a) => a.LessThanOrEqual(t, value,comparer));
+                (t, a) => a.LessThanOrEqual(t, value, comparer));
         }
 
         public static TTarget GreaterThanOrEqual<TTarget>(IShould<TTarget> should, TTarget value)
@@ -41,7 +41,8 @@ namespace erichexter.Should.Fluent.Model
                 (t, a) => a.LessThan(t, value));
         }
 
-        public static TTarget GreaterThanOrEqual<TTarget>(IShould<TTarget> should, TTarget value, IComparer<TTarget> comparer)
+        public static TTarget GreaterThanOrEqual<TTarget>(IShould<TTarget> should, TTarget value,
+            IComparer<TTarget> comparer)
         {
             return should.Apply(
                 (t, a) => a.GreaterThanOrEqual(t, value, comparer),
@@ -69,7 +70,8 @@ namespace erichexter.Should.Fluent.Model
                 (t, a) => a.GreaterThan(t, value));
         }
 
-        public static TTarget LessThanOrEqual<TTarget>(IShould<TTarget> should, TTarget value, IComparer<TTarget> comparer)
+        public static TTarget LessThanOrEqual<TTarget>(IShould<TTarget> should, TTarget value,
+            IComparer<TTarget> comparer)
         {
             return should.Apply(
                 (t, a) => a.LessThanOrEqual(t, value, comparer),

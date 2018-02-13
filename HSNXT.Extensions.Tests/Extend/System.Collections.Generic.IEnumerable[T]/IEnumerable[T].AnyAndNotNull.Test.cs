@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -18,7 +18,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new List<String>().AnyAndNotNull( null );
+            Action test = () => new List<String>().AnyAndNotNull(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -27,29 +27,29 @@ namespace Extend.Testing
         public void PathCombineTest()
         {
             List<String> list = null;
-            Assert.False( list.AnyAndNotNull() );
+            Assert.False(list.AnyAndNotNull());
 
             list = new List<String>();
-            Assert.False( list.AnyAndNotNull() );
+            Assert.False(list.AnyAndNotNull());
 
-            list.Add( Extensions.GetRandomString() );
-            Assert.True( list.AnyAndNotNull() );
+            list.Add(Extensions.GetRandomString());
+            Assert.True(list.AnyAndNotNull());
         }
 
         [Fact]
         public void PathCombineTest1()
         {
             List<String> list = null;
-            Assert.False( list.AnyAndNotNull( x => true ) );
+            Assert.False(list.AnyAndNotNull(x => true));
 
             list = new List<String>();
-            Assert.False( list.AnyAndNotNull( x => true ) );
+            Assert.False(list.AnyAndNotNull(x => true));
 
-            list.Add( Extensions.GetRandomString() );
-            Assert.False( list.AnyAndNotNull( x => false ) );
+            list.Add(Extensions.GetRandomString());
+            Assert.False(list.AnyAndNotNull(x => false));
 
-            list.Add( Extensions.GetRandomString() );
-            Assert.True( list.AnyAndNotNull( x => true ) );
+            list.Add(Extensions.GetRandomString());
+            Assert.True(list.AnyAndNotNull(x => true));
         }
     }
 }

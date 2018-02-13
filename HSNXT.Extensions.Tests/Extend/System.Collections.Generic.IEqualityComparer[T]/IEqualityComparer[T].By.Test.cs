@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -19,7 +19,7 @@ namespace Extend.Testing
             Func<String, String> keySelector = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.By( keySelector, new StringLengthComparer() );
+            Action test = () => Extensions.By(keySelector, new StringLengthComparer());
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -27,19 +27,19 @@ namespace Extend.Testing
         public void ByTest()
         {
             // ReSharper disable once RedundantArgumentDefaultValue
-            var actual = Extensions.By<String, Int32>( x => x.Length, null );
-            var equals = actual.Equals( "test", "1234" );
+            var actual = Extensions.By<String, Int32>(x => x.Length, null);
+            var equals = actual.Equals("test", "1234");
             equals.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
         public void ByTest1()
         {
-            var actual = Extensions.By<String, String>( x => x, new StringLengthComparer() );
-            var equals = actual.Equals( "test", "1234" );
+            var actual = Extensions.By<String, String>(x => x, new StringLengthComparer());
+            var equals = actual.Equals("test", "1234");
             equals.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         #region Nested Types
@@ -54,7 +54,7 @@ namespace Extend.Testing
             /// <returns>
             ///     true if the specified objects are equal; otherwise, false.
             /// </returns>
-            public Boolean Equals( String x, String y ) => x.Length == y.Length;
+            public Boolean Equals(String x, String y) => x.Length == y.Length;
 
             /// <summary>
             ///     Returns a hash code for the specified object.
@@ -67,7 +67,7 @@ namespace Extend.Testing
             ///     The type of <paramref name="obj" /> is a reference type and
             ///     <paramref name="obj" /> is null.
             /// </exception>
-            public Int32 GetHashCode( String obj ) => obj.GetHashCode();
+            public Int32 GetHashCode(String obj) => obj.GetHashCode();
 
             #endregion
         }

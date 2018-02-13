@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,7 +18,7 @@ namespace Extend.Testing
             String right = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = left.CompareOrdinalIgnoreCase( right );
+            var actual = left.CompareOrdinalIgnoreCase(right);
 
             actual
                 .Should()
@@ -32,7 +32,7 @@ namespace Extend.Testing
             var right = Extensions.GetRandomString();
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = left.CompareOrdinalIgnoreCase( right );
+            var actual = left.CompareOrdinalIgnoreCase(right);
 
             actual
                 .Should()
@@ -45,16 +45,16 @@ namespace Extend.Testing
             var value1 = Extensions.GetRandomString();
             var value2 = value1;
 
-            var actual = value1.CompareOrdinalIgnoreCase( value2 );
-            Assert.True( actual );
+            var actual = value1.CompareOrdinalIgnoreCase(value2);
+            Assert.True(actual);
 
             value2 = value1.ToUpper();
-            actual = value1.CompareOrdinalIgnoreCase( value2 );
-            Assert.True( actual );
+            actual = value1.CompareOrdinalIgnoreCase(value2);
+            Assert.True(actual);
 
             value2 = Extensions.GetRandomString();
-            actual = value1.CompareOrdinalIgnoreCase( value2 );
-            Assert.False( actual );
+            actual = value1.CompareOrdinalIgnoreCase(value2);
+            Assert.False(actual);
         }
     }
 }

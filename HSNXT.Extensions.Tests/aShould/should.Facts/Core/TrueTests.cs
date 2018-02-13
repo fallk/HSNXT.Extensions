@@ -15,7 +15,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void AssertTrueThrowsExceptionWhenFalse()
         {
-            TrueException exception = Should.Core.Assertions.Assert.Throws<TrueException>(() => Should.Core.Assertions.Assert.True(false));
+            TrueException exception =
+                Should.Core.Assertions.Assert.Throws<TrueException>(() => Should.Core.Assertions.Assert.True(false));
 
             Should.Core.Assertions.Assert.Equal("Assert.True() Failure", exception.UserMessage);
         }

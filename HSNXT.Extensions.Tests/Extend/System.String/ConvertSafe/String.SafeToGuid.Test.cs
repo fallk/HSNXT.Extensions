@@ -1,6 +1,6 @@
 #region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,18 +18,18 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Guid) );
+                .Be(default(Guid));
         }
 
         [Fact]
         public void SafeToGuidInvalidValueWithDefaultTest()
         {
             var expected = Guid.NewGuid();
-            var actual = "InvalidValue".SafeToGuid( expected );
+            var actual = "InvalidValue".SafeToGuid(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Guid) );
+                .Be(default(Guid));
         }
 
         [Fact]
@@ -50,11 +50,11 @@ namespace Extend.Testing
             var expected = Guid.NewGuid();
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToGuid( expected );
+            var actual = value.SafeToGuid(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -62,11 +62,11 @@ namespace Extend.Testing
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
-                                 .SafeToGuid();
+                .SafeToGuid();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -74,11 +74,11 @@ namespace Extend.Testing
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
-                                 .SafeToGuid( Guid.NewGuid() );
+                .SafeToGuid(Guid.NewGuid());
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
     }
 }

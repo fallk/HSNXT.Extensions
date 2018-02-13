@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -16,11 +16,11 @@ namespace Extend.Testing
         {
             const DayOfWeek expected = DayOfWeek.Monday;
             var actual = expected.ToString()
-                                 .ToEnum<DayOfWeek>();
+                .ToEnum<DayOfWeek>();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToEnum<DayOfWeek>( null );
+            Action test = () => Extensions.ToEnum<DayOfWeek>(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

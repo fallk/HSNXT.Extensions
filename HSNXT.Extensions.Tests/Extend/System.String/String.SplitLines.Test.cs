@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -16,31 +16,31 @@ namespace Extend.Testing
         {
             const String value = "test";
 
-            var actual = value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
-            Assert.Single( actual );
-            Assert.Equal( value, actual[0] );
+            var actual = value.SplitLines(StringSplitOptions.RemoveEmptyEntries);
+            Assert.Single(actual);
+            Assert.Equal(value, actual[0]);
 
-            actual = value.SplitLines( StringSplitOptions.None );
-            Assert.Single( actual );
-            Assert.Equal( value, actual[0] );
+            actual = value.SplitLines(StringSplitOptions.None);
+            Assert.Single(actual);
+            Assert.Equal(value, actual[0]);
         }
 
         [Fact]
         public void SplitLinesTest1()
         {
-            var value = "test{0}test{0}{0}".F( Environment.NewLine );
+            var value = "test{0}test{0}{0}".F(Environment.NewLine);
 
-            var actual = value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
-            Assert.Equal( 2, actual.Length );
-            Assert.Equal( "test", actual[0] );
-            Assert.Equal( "test", actual[1] );
+            var actual = value.SplitLines(StringSplitOptions.RemoveEmptyEntries);
+            Assert.Equal(2, actual.Length);
+            Assert.Equal("test", actual[0]);
+            Assert.Equal("test", actual[1]);
 
-            actual = value.SplitLines( StringSplitOptions.None );
-            Assert.Equal( 4, actual.Length );
-            Assert.Equal( "test", actual[0] );
-            Assert.Equal( "test", actual[1] );
-            Assert.Equal( String.Empty, actual[2] );
-            Assert.Equal( String.Empty, actual[3] );
+            actual = value.SplitLines(StringSplitOptions.None);
+            Assert.Equal(4, actual.Length);
+            Assert.Equal("test", actual[0]);
+            Assert.Equal("test", actual[1]);
+            Assert.Equal(String.Empty, actual[2]);
+            Assert.Equal(String.Empty, actual[3]);
         }
 
         [Fact]
@@ -49,8 +49,8 @@ namespace Extend.Testing
             const String value = "test";
 
             var actual = value.SplitLines();
-            Assert.Single( actual );
-            Assert.Equal( value, actual[0] );
+            Assert.Single(actual);
+            Assert.Equal(value, actual[0]);
         }
 
         [Fact]
@@ -67,12 +67,12 @@ namespace Extend.Testing
         [Fact]
         public void SplitLinesTest3()
         {
-            var value = "test{0}test{0}{0}".F( Environment.NewLine );
+            var value = "test{0}test{0}{0}".F(Environment.NewLine);
 
             var actual = value.SplitLines();
-            Assert.Equal( 2, actual.Length );
-            Assert.Equal( "test", actual[0] );
-            Assert.Equal( "test", actual[1] );
+            Assert.Equal(2, actual.Length);
+            Assert.Equal("test", actual[0]);
+            Assert.Equal("test", actual[1]);
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
+            Action test = () => value.SplitLines(StringSplitOptions.RemoveEmptyEntries);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -92,7 +92,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.SplitLines( StringSplitOptions.None );
+            Action test = () => value.SplitLines(StringSplitOptions.None);
 
             test.ShouldThrow<ArgumentNullException>();
         }

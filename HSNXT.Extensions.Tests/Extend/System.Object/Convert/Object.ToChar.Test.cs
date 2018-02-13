@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -17,11 +17,11 @@ namespace Extend.Testing
         {
             const Char expected = 'a';
             var value = expected.ToString();
-            var actual = value.ToChar( null );
+            var actual = value.ToChar(null);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Extend.Testing
             var value = new TestModel();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToChar( CultureInfo.CurrentCulture );
+            Action test = () => value.ToChar(CultureInfo.CurrentCulture);
             test.ShouldThrow<InvalidCastException>();
         }
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToChar( CultureInfo.CurrentCulture );
+            Action test = () => value.ToChar(CultureInfo.CurrentCulture);
             test.ShouldThrow<FormatException>();
         }
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToChar( value );
+            Action test = () => Extensions.ToChar(value);
             test.ShouldThrow<FormatException>();
         }
 
@@ -70,11 +70,11 @@ namespace Extend.Testing
             Object value = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToChar( CultureInfo.CurrentCulture );
+            var actual = value.ToChar(CultureInfo.CurrentCulture);
 
             actual
                 .Should()
-                .Be( (Char) 0 );
+                .Be((Char) 0);
         }
 
         [Fact]
@@ -87,7 +87,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( (Char) 0 );
+                .Be((Char) 0);
         }
 
         [Fact]
@@ -95,11 +95,11 @@ namespace Extend.Testing
         {
             const Char expected = 'a';
             var value = expected.ToString();
-            var actual = Extensions.ToChar( value );
+            var actual = Extensions.ToChar(value);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -108,7 +108,7 @@ namespace Extend.Testing
             const Int32 value = (Int32) Char.MaxValue + 1;
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToChar( CultureInfo.CurrentCulture );
+            Action test = () => value.ToChar(CultureInfo.CurrentCulture);
             test.ShouldThrow<OverflowException>();
         }
 
@@ -128,7 +128,7 @@ namespace Extend.Testing
             const Int32 value = (Int32) Char.MinValue - 1;
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToChar( CultureInfo.CurrentCulture );
+            Action test = () => value.ToChar(CultureInfo.CurrentCulture);
             test.ShouldThrow<OverflowException>();
         }
 

@@ -1,4 +1,5 @@
 ﻿#region Usings
+
 using HSNXT;
 
 // ReSharper disable once RedundantUsingDirective
@@ -23,7 +24,7 @@ namespace Extend.Testing
             target.Attributes = expected;
 
             target.Attributes.Should()
-                  .BeSameAs( expected );
+                .BeSameAs(expected);
         }
 
         [Fact]
@@ -32,7 +33,7 @@ namespace Extend.Testing
             var target = new AttributeDefinitionProperty<MyDisplayAttribute>();
 
             target.Attributes.Should()
-                  .HaveCount( 0 );
+                .HaveCount(0);
         }
 
         [Fact]
@@ -40,16 +41,16 @@ namespace Extend.Testing
         {
             var target = new AttributeDefinitionProperty<MyDisplayAttribute>();
             var expected = typeof(MyDisplayAttribute).GetProperties()
-                                                     .First();
+                .First();
             target.Property = expected;
 
             target.Property.Should()
-                  .BeSameAs( expected );
+                .BeSameAs(expected);
         }
 
         #region Nested Types
 
-        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
+        [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
         private class MyDisplayAttribute : Attribute
         {
             #region Properties

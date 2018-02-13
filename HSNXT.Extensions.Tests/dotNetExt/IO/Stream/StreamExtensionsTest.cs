@@ -28,17 +28,12 @@ namespace TestProject
         ///</summary>
         public TestContext TestContext
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            get { return testContextInstance; }
+            set { testContextInstance = value; }
         }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -66,6 +61,7 @@ namespace TestProject
         //{
         //}
         //
+
         #endregion
 
 
@@ -84,7 +80,8 @@ namespace TestProject
                 stream.Position = 0;
                 actual = stream.ToByteArray();
             }
-            byte[] expected = new byte[] { 116, 101, 115, 116 }; // TODO: Initialize to an appropriate value
+
+            byte[] expected = new byte[] {116, 101, 115, 116}; // TODO: Initialize to an appropriate value
             CollectionAssert.AreEqual(expected, actual);
         }
 
@@ -94,7 +91,8 @@ namespace TestProject
             Stream stream = "test".ToStream();
             byte[] key = "12345678".ToByteArray();
             string expected = "SiQu8unOTKY=";
-            var actual = stream.Encrypt<System.Security.Cryptography.DESCryptoServiceProvider>(key).ToByteArray().ToBase64String();
+            var actual = stream.Encrypt<System.Security.Cryptography.DESCryptoServiceProvider>(key).ToByteArray()
+                .ToBase64String();
             Assert.AreEqual(expected, actual);
         }
 
@@ -105,7 +103,8 @@ namespace TestProject
             byte[] key = "12345678123456781234567812345678".ToByteArray();
             byte[] iv = "1234567812345678".ToByteArray();
             string expected = "zh8PBb14Jbi+dDnpnNOUZg==";
-            var actual = stream.Encrypt<System.Security.Cryptography.AesCryptoServiceProvider>(key, iv).ToByteArray().ToBase64String();
+            var actual = stream.Encrypt<System.Security.Cryptography.AesCryptoServiceProvider>(key, iv).ToByteArray()
+                .ToBase64String();
             Assert.AreEqual(expected, actual);
         }
 

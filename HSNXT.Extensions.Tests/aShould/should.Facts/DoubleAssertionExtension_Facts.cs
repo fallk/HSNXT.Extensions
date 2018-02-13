@@ -17,10 +17,7 @@ namespace erichexter.Should.Facts
         {
             double d = 100.0;
 
-            Assert.Throws<EqualException>(() =>
-            {
-                d.ShouldEqual(100.2, 0.1);
-            });
+            Assert.Throws<EqualException>(() => { d.ShouldEqual(100.2, 0.1); });
         }
 
         [Fact]
@@ -28,10 +25,7 @@ namespace erichexter.Should.Facts
         {
             double d = 1.0;
 
-            var ex = Assert.Throws<EqualException>(() =>
-            {
-                d.ShouldEqual(2.0, 0, "custom failure message");
-            });
+            var ex = Assert.Throws<EqualException>(() => { d.ShouldEqual(2.0, 0, "custom failure message"); });
 
             Assert.Contains(@"custom failure message", ex.Message);
         }
@@ -41,10 +35,7 @@ namespace erichexter.Should.Facts
         {
             double d = 100.0;
 
-            Assert.Throws<NotEqualException>(() =>
-            {
-                d.ShouldNotEqual(100.1, 0.2);
-            });
+            Assert.Throws<NotEqualException>(() => { d.ShouldNotEqual(100.1, 0.2); });
         }
 
         [Fact]
@@ -59,10 +50,7 @@ namespace erichexter.Should.Facts
         {
             double d = 1.0;
 
-            var ex = Assert.Throws<NotEqualException>(() =>
-            {
-                d.ShouldNotEqual(1.0, 0, "custom failure message");
-            });
+            var ex = Assert.Throws<NotEqualException>(() => { d.ShouldNotEqual(1.0, 0, "custom failure message"); });
 
             Assert.Contains(@"custom failure message", ex.Message);
         }

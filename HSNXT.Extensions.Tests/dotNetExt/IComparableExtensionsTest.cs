@@ -99,35 +99,35 @@ namespace TestProject
         [TestMethod]
         public void IComparable_Double_InRange_001()
         {
-            var actual = ((double)3).InRange(1, 5);
+            var actual = ((double) 3).InRange(1, 5);
             Assert.IsTrue(actual);
         }
 
         [TestMethod]
         public void IComparable_Double_InRange_002()
         {
-            var actual = ((double)3).InRange(3, 5);
+            var actual = ((double) 3).InRange(3, 5);
             Assert.IsTrue(actual);
         }
 
         [TestMethod]
         public void IComparable_Double_InRange_003()
         {
-            var actual = ((double)3).InRange(1, 3);
+            var actual = ((double) 3).InRange(1, 3);
             Assert.IsTrue(actual);
         }
 
         [TestMethod]
         public void IComparable_Double_InRange_004()
         {
-            var actual = ((double)3).InRange(4, 5);
+            var actual = ((double) 3).InRange(4, 5);
             Assert.IsFalse(actual);
         }
 
         [TestMethod]
         public void IComparable_Double_InRange_005()
         {
-            var actual = ((double)3).InRange(-4, -1);
+            var actual = ((double) 3).InRange(-4, -1);
             Assert.IsFalse(actual);
         }
     }

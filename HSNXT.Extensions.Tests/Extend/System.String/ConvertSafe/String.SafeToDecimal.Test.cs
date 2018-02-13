@@ -1,6 +1,6 @@
 #region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -17,8 +17,8 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
-                                                .SafeToDouble( NumberStyles.AllowExponent, null );
+            Action test = () => new Decimal(1).ToString(CultureInfo.InvariantCulture)
+                .SafeToDouble(NumberStyles.AllowExponent, null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -28,8 +28,8 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
-                                                .SafeToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture );
+            Action test = () => new Decimal(1).ToString(CultureInfo.InvariantCulture)
+                .SafeToDouble(NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -41,52 +41,52 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Decimal) );
+                .Be(default(Decimal));
         }
 
         [Fact]
         public void SafeToDecimalInvalidValueWithDefaultTest()
         {
-            var expected = new Decimal( Extensions.GetRandomInt32() );
-            var actual = "InvalidValue".SafeToDecimal( expected );
+            var expected = new Decimal(Extensions.GetRandomInt32());
+            var actual = "InvalidValue".SafeToDecimal(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void SafeToDecimalNullTest()
         {
             String value = null;
-            var expected = new Decimal( Extensions.GetRandomInt32() );
+            var expected = new Decimal(Extensions.GetRandomInt32());
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToDecimal( expected );
+            var actual = value.SafeToDecimal(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void SafeToDecimalOverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = "InvalidValue".SafeToDecimal(NumberStyles.Any, CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( default(Decimal) );
+                .Be(default(Decimal));
         }
 
         [Fact]
         public void SafeToDecimalOverloadInvalidValueWithDefaultTest()
         {
-            var expected = new Decimal( Extensions.GetRandomInt32() );
-            var actual = "InvalidValue".SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+            var expected = new Decimal(Extensions.GetRandomInt32());
+            var actual = "InvalidValue".SafeToDecimal(NumberStyles.Any, CultureInfo.InvariantCulture, expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -94,60 +94,60 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = value.SafeToDecimal(NumberStyles.Any, CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( default(Decimal) );
+                .Be(default(Decimal));
         }
 
         [Fact]
         public void SafeToDecimalOverloadTest()
         {
-            var expected = new Decimal( Extensions.GetRandomInt32() );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var expected = new Decimal(Extensions.GetRandomInt32());
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDecimal(NumberStyles.Any, CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void SafeToDecimalOverloadWithDefaultTest()
         {
-            var expected = new Decimal( Extensions.GetRandomInt32() + 0.1523 );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, Decimal.MinValue );
+            var expected = new Decimal(Extensions.GetRandomInt32() + 0.1523);
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDecimal(NumberStyles.Any, CultureInfo.InvariantCulture, Decimal.MinValue);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void SafeToDecimalTest()
         {
-            var expected = new Decimal( Extensions.GetRandomInt32() );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDecimal();
+            var expected = new Decimal(Extensions.GetRandomInt32());
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDecimal();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         [UseCulture("en-US")]
         public void SafeToDecimalWithDefaultTest()
         {
-            var expected = new Decimal( Extensions.GetRandomInt32() + 0.123 );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDecimal( Decimal.MaxValue );
+            var expected = new Decimal(Extensions.GetRandomInt32() + 0.123);
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDecimal(Decimal.MaxValue);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
     }
 }

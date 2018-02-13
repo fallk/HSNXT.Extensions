@@ -19,17 +19,12 @@ namespace DevLib.ExtensionMethods.UnitTest
         ///</summary>
         public TestContext TestContext
         {
-            get
-            {
-                return _testContextInstance;
-            }
-            set
-            {
-                _testContextInstance = value;
-            }
+            get { return _testContextInstance; }
+            set { _testContextInstance = value; }
         }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -57,6 +52,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         //{
         //}
         //
+
         #endregion
 
         /// <summary>
@@ -65,7 +61,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         [TestMethod]
         public void When_JoinBy()
         {
-            IEnumerable<string> source = new List<string> { "a", "bc", "def", "ghij" };
+            IEnumerable<string> source = new List<string> {"a", "bc", "def", "ghij"};
             var expected = "a,bc,def,ghij";
             string actual;
             actual = source.JoinBy(",");

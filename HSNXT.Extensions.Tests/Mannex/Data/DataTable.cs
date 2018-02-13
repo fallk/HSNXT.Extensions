@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Data
@@ -70,7 +72,7 @@ namespace Mannex.Tests.Data
             var table = CreateSampleDataTable();
             var found = table.FindColumns("Baz", "foo", "???", "BAR");
             var cols = table.Columns;
-            Assert.Equal(new[] { cols[2], cols[0], null, cols[1] }, found.ToArray());
+            Assert.Equal(new[] {cols[2], cols[0], null, cols[1]}, found.ToArray());
         }
 
         [Fact]
@@ -90,7 +92,7 @@ namespace Mannex.Tests.Data
         [Fact]
         public void SetColumnsOrderWithNullSequence()
         {
-            CreateSampleDataTable().SetColumnsOrder((IEnumerable<DataColumn>)null);
+            CreateSampleDataTable().SetColumnsOrder((IEnumerable<DataColumn>) null);
         }
 
         [Fact]
@@ -98,16 +100,16 @@ namespace Mannex.Tests.Data
         {
             var table = CreateSampleDataTable();
             var cols = table.Columns;
-            DataColumn foo = cols[0], bar = cols[1], baz = cols[2]; 
+            DataColumn foo = cols[0], bar = cols[1], baz = cols[2];
             table.SetColumnsOrder(baz, bar);
-            Assert.Equal(new[] { baz, bar, foo }, table.Columns.Cast<DataColumn>().ToArray());
+            Assert.Equal(new[] {baz, bar, foo}, table.Columns.Cast<DataColumn>().ToArray());
         }
 
         [Fact]
         public void SetColumnsOrderFailsWithUnrelatedColumn()
         {
             var e = Assert.Throws<ArgumentException>(() =>
-                        CreateSampleDataTable().SetColumnsOrder(new DataColumn()));
+                CreateSampleDataTable().SetColumnsOrder(new DataColumn()));
             Assert.Equal("columns", e.ParamName);
         }
 
@@ -117,7 +119,7 @@ namespace Mannex.Tests.Data
             var table = CreateSampleDataTable();
             var cols = table.Columns;
             var e = Assert.Throws<ArgumentException>(() =>
-                        table.SetColumnsOrder(cols[2], null, cols[0]));
+                table.SetColumnsOrder(cols[2], null, cols[0]));
             Assert.Equal("columns", e.ParamName);
         }
     }

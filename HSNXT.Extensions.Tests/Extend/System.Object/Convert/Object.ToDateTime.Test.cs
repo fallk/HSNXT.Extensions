@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -16,24 +16,24 @@ namespace Extend.Testing
         public void ToDateTimeFormatProviderNullTest()
         {
             var expected = DateTime.Now;
-            var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
-            var actual = value.ToDateTime( null );
+            var value = expected.ToString(CultureInfo.CurrentCulture) as Object;
+            var actual = value.ToDateTime(null);
 
             actual
                 .Should()
-                .BeCloseTo( expected, 1000 );
+                .BeCloseTo(expected, 1000);
         }
 
         [Fact]
         public void ToDateTimeFormatProviderTest()
         {
             var expected = DateTime.Now;
-            var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
-            var actual = value.ToDateTime( CultureInfo.CurrentCulture );
+            var value = expected.ToString(CultureInfo.CurrentCulture) as Object;
+            var actual = value.ToDateTime(CultureInfo.CurrentCulture);
 
             actual
                 .Should()
-                .BeCloseTo( expected, 1000 );
+                .BeCloseTo(expected, 1000);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Extend.Testing
             var value = new TestModel();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDateTime( CultureInfo.CurrentCulture );
+            Action test = () => value.ToDateTime(CultureInfo.CurrentCulture);
             test.ShouldThrow<InvalidCastException>();
         }
 
@@ -62,7 +62,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDateTime( value, CultureInfo.CurrentCulture );
+            Action test = () => Extensions.ToDateTime(value, CultureInfo.CurrentCulture);
             test.ShouldThrow<FormatException>();
         }
 
@@ -72,7 +72,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDateTime( value );
+            Action test = () => Extensions.ToDateTime(value);
             test.ShouldThrow<FormatException>();
         }
 
@@ -81,23 +81,23 @@ namespace Extend.Testing
         {
             Object value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToDateTime( CultureInfo.CurrentCulture );
+            var actual = value.ToDateTime(CultureInfo.CurrentCulture);
 
             actual
                 .Should()
-                .Be( DateTime.MinValue );
+                .Be(DateTime.MinValue);
         }
 
         [Fact]
         public void ToDateTimeTest()
         {
             var expected = DateTime.Now;
-            var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
+            var value = expected.ToString(CultureInfo.CurrentCulture) as Object;
             var actual = value.ToDateTime();
 
             actual
                 .Should()
-                .BeCloseTo( expected, 1000 );
+                .BeCloseTo(expected, 1000);
         }
     }
 }

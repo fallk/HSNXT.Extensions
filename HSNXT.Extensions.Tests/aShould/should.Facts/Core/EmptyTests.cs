@@ -24,7 +24,9 @@ namespace erichexter.Should.Facts.Core
                 List<int> list = new List<int>();
                 list.Add(42);
 
-                EmptyException ex = Should.Core.Assertions.Assert.Throws<EmptyException>(() => Should.Core.Assertions.Assert.Empty(list));
+                EmptyException ex =
+                    Should.Core.Assertions.Assert.Throws<EmptyException>(
+                        () => Should.Core.Assertions.Assert.Empty(list));
 
                 Should.Core.Assertions.Assert.Equal("Assert.Empty() failure", ex.Message);
             }
@@ -32,7 +34,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void NullIsNotEmpty()
             {
-                Should.Core.Assertions.Assert.Throws<ArgumentNullException>(() => Should.Core.Assertions.Assert.Empty(null));
+                Should.Core.Assertions.Assert.Throws<ArgumentNullException>(() =>
+                    Should.Core.Assertions.Assert.Empty(null));
             }
         }
 
@@ -47,7 +50,9 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void IsNotEmpty()
             {
-                EmptyException ex = Should.Core.Assertions.Assert.Throws<EmptyException>(() => Should.Core.Assertions.Assert.Empty("Foo"));
+                EmptyException ex =
+                    Should.Core.Assertions.Assert.Throws<EmptyException>(() =>
+                        Should.Core.Assertions.Assert.Empty("Foo"));
 
                 Should.Core.Assertions.Assert.Equal("Assert.Empty() failure", ex.Message);
             }

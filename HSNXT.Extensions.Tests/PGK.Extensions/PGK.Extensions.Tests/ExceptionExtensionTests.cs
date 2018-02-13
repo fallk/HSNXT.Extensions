@@ -7,24 +7,24 @@ using erichexter.Should.Fluent;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
-	[TestClass]
-	public class ExceptionExtensionTests
-	{
-		[TestMethod]
-		public void TestMessages()
-		{
-			// Arrange
-			var outerException = "outer exception";
-			var innerException = "inner exception";
-			var e = new Exception(outerException, new Exception(innerException));
+    [TestClass]
+    public class ExceptionExtensionTests
+    {
+        [TestMethod]
+        public void TestMessages()
+        {
+            // Arrange
+            var outerException = "outer exception";
+            var innerException = "inner exception";
+            var e = new Exception(outerException, new Exception(innerException));
 
-			// Act
-			var result = e.Messages();
+            // Act
+            var result = e.Messages();
 
-			// Assert
-			result.Should().Count.Exactly(2);
-			result.First().Should().Contain(innerException);
-			result.Last().Should().Contain(outerException);
-		}
-	}
+            // Assert
+            result.Should().Count.Exactly(2);
+            result.First().Should().Contain(innerException);
+            result.Last().Should().Contain(outerException);
+        }
+    }
 }

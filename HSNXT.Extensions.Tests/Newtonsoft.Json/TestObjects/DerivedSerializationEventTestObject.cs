@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System.Runtime.Serialization;
@@ -32,8 +34,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
     {
         // This field is set to null, but populated after deserialization, only
         // in the derived class
-        [JsonIgnore]
-        public string Member7 { get; set; }
+        [JsonIgnore] public string Member7 { get; set; }
 
         // These empty methods exist to make sure we're not covering up the base
         // methods

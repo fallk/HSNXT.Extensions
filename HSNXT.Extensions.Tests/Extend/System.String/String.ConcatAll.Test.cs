@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -16,11 +16,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ConcatAll( "0", "1", "2" );
+            var actual = value.ConcatAll("0", "1", "2");
 
             actual
                 .Should()
-                .Be( "012" );
+                .Be("012");
         }
 
         [Fact]
@@ -28,11 +28,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ConcatAll( null, "1", "2" );
+            var actual = value.ConcatAll(null, "1", "2");
 
             actual
                 .Should()
-                .Be( "12" );
+                .Be("12");
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => value.ConcatAll( null );
+            Action test = () => value.ConcatAll(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -53,21 +53,21 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ConcatAll( null, null, null );
+            var actual = value.ConcatAll(null, null, null);
 
             actual
                 .Should()
-                .Be( "" );
+                .Be("");
         }
 
         [Fact]
         public void ConcatAllTest()
         {
-            var actual = "test".ConcatAll( "0", "1", "2" );
+            var actual = "test".ConcatAll("0", "1", "2");
 
             actual
                 .Should()
-                .Be( "test012" );
+                .Be("test012");
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace Extend.Testing
                 "1",
                 "2"
             }.ConcatAll();
-            Assert.Equal( "test012", actual );
+            Assert.Equal("test012", actual);
         }
 
         [Fact]
@@ -98,13 +98,13 @@ namespace Extend.Testing
         [Fact]
         public void ConcatAllTest2()
         {
-            var actual = "test".ConcatAll( new Object[]
+            var actual = "test".ConcatAll(new Object[]
             {
                 "0",
                 "1",
                 "2"
-            } );
-            Assert.Equal( "test012", actual );
+            });
+            Assert.Equal("test012", actual);
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".ConcatAll( values );
+            Action test = () => "test".ConcatAll(values);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -129,7 +129,7 @@ namespace Extend.Testing
                 "1",
                 "2"
             }.ConcatAll();
-            Assert.Equal( "test012", actual );
+            Assert.Equal("test012", actual);
         }
 
         [Fact]
@@ -151,7 +151,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".ConcatAll( values );
+            Action test = () => "test".ConcatAll(values);
 
             test.ShouldThrow<ArgumentNullException>();
         }

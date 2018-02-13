@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -20,9 +20,9 @@ namespace Extend.Testing
                 "1",
                 "2"
             };
-            var actual = array.IndexOf( "1" );
+            var actual = array.IndexOf("1");
 
-            Assert.Equal( 1, actual );
+            Assert.Equal(1, actual);
         }
 
         [Fact]
@@ -34,9 +34,9 @@ namespace Extend.Testing
                 "1",
                 "2"
             };
-            var actual = array.IndexOf( "1", 2 );
+            var actual = array.IndexOf("1", 2);
 
-            Assert.Equal( -1, actual );
+            Assert.Equal(-1, actual);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.IndexOf( "test", 10 );
+            Action test = () => array.IndexOf("test", 10);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,11 +60,11 @@ namespace Extend.Testing
                 "2"
             };
 
-            var actual = array.IndexOf( "1", 0, 2 );
-            Assert.Equal( 1, actual );
+            var actual = array.IndexOf("1", 0, 2);
+            Assert.Equal(1, actual);
 
-            actual = array.IndexOf( "2", 0, 2 );
-            Assert.Equal( -1, actual );
+            actual = array.IndexOf("2", 0, 2);
+            Assert.Equal(-1, actual);
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.IndexOf( "test", 10, 12 );
+            Action test = () => array.IndexOf("test", 10, 12);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -84,7 +84,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.IndexOf( "test" );
+            Action test = () => array.IndexOf("test");
 
             test.ShouldThrow<ArgumentNullException>();
         }

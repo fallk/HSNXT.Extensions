@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -34,7 +36,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
         public DateTime Establised = new DateTime(2010, 1, 22, 1, 1, 1, DateTimeKind.Utc);
         public double Width = 1.1;
         public int Employees = 999;
-        public int[] RoomsPerFloor = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        public int[] RoomsPerFloor = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         public bool Open = false;
         public char Symbol = '@';
 

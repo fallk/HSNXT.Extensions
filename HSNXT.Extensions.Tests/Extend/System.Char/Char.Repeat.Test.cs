@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -12,8 +12,8 @@ namespace Extend.Testing
         [Fact]
         public void RepeatTest()
         {
-            var actual = 'a'.Repeat( 3 );
-            Assert.Equal( "aaa", actual );
+            var actual = 'a'.Repeat(3);
+            Assert.Equal("aaa", actual);
         }
     }
 }

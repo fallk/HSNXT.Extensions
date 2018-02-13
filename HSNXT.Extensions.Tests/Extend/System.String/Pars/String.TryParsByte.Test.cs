@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -15,11 +15,11 @@ namespace Extend.Testing
         [Fact]
         public void TryParsByteInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsByte( out var result );
+            var actual = "InvalidValue".TryParsByte(out var result);
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be(default(Byte));
 
             actual
                 .Should()
@@ -31,11 +31,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsByte( out var result );
+            var actual = value.TryParsByte(out var result);
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be(default(Byte));
 
             actual
                 .Should()
@@ -48,7 +48,7 @@ namespace Extend.Testing
             var outValue = (Byte) 1;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => outValue.ToString()
-                                        .TryParsByte( NumberStyles.Any, null, out outValue );
+                .TryParsByte(NumberStyles.Any, null, out outValue);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -59,8 +59,8 @@ namespace Extend.Testing
             const Byte expected = (Byte) 10;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString()
-                                        // ReSharper disable once UnusedVariable
-                                        .TryParsByte( NumberStyles.AllowLeadingWhite, null, out var outValue );
+                // ReSharper disable once UnusedVariable
+                .TryParsByte(NumberStyles.AllowLeadingWhite, null, out var outValue);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -68,12 +68,12 @@ namespace Extend.Testing
         [Fact]
         public void TryParsByteOverloadInvalidValueTest()
         {
-            var culture = new CultureInfo( "de-CH" );
-            var actual = "InvalidValue".TryParsByte( NumberStyles.Any, culture, out var result );
+            var culture = new CultureInfo("de-CH");
+            var actual = "InvalidValue".TryParsByte(NumberStyles.Any, culture, out var result);
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be(default(Byte));
 
             actual
                 .Should()
@@ -83,14 +83,14 @@ namespace Extend.Testing
         [Fact]
         public void TryParsByteOverloadNullTest()
         {
-            var culture = new CultureInfo( "de-CH" );
+            var culture = new CultureInfo("de-CH");
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsByte( NumberStyles.Any, culture, out var result );
+            var actual = value.TryParsByte(NumberStyles.Any, culture, out var result);
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be(default(Byte));
 
             actual
                 .Should()
@@ -100,14 +100,14 @@ namespace Extend.Testing
         [Fact]
         public void TryParsByteOverloadTest()
         {
-            var culture = new CultureInfo( "de-CH" );
+            var culture = new CultureInfo("de-CH");
             const Byte expected = (Byte) 1;
-            var actual = expected.ToString( culture )
-                                 .TryParsByte( NumberStyles.Any, culture, out var result );
+            var actual = expected.ToString(culture)
+                .TryParsByte(NumberStyles.Any, culture, out var result);
 
             result
                 .Should()
-                .Be( expected );
+                .Be(expected);
 
             actual
                 .Should()
@@ -118,12 +118,12 @@ namespace Extend.Testing
         public void TryParsByteTest()
         {
             const Byte expected = (Byte) 1;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsByte( out var result );
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .TryParsByte(out var result);
 
             result
                 .Should()
-                .Be( expected );
+                .Be(expected);
 
             actual
                 .Should()

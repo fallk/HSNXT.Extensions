@@ -6,7 +6,7 @@
 namespace TestProject
 {
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
 
@@ -138,7 +138,7 @@ using HSNXT.dotNetExt;
         public void ToStreamTest1()
         {
             string str = "test";
-            var expected = new byte[] { 116, 101, 115, 116 };
+            var expected = new byte[] {116, 101, 115, 116};
             var actual = Extensions.ToStream<System.Text.ASCIIEncoding>(str).ToByteArray();
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -150,7 +150,7 @@ using HSNXT.dotNetExt;
         public void ToStreamTest()
         {
             var str = "test";
-            var expected = new byte[] { 116, 101, 115, 116 };
+            var expected = new byte[] {116, 101, 115, 116};
             var actual = Extensions.ToStream(str).ToByteArray();
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -162,7 +162,7 @@ using HSNXT.dotNetExt;
         public void ToByteArrayTest1()
         {
             string str = "test";
-            byte[] expected = new byte[] { 116, 101, 115, 116 };
+            byte[] expected = new byte[] {116, 101, 115, 116};
             byte[] actual = Extensions.ToByteArray(str);
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -174,7 +174,7 @@ using HSNXT.dotNetExt;
         public void ToByteArrayTest()
         {
             string str = "test";
-            byte[] expected = new byte[] { 116, 101, 115, 116 };
+            byte[] expected = new byte[] {116, 101, 115, 116};
             byte[] actual = Extensions.ToByteArray<System.Text.ASCIIEncoding>(str);
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -287,7 +287,8 @@ using HSNXT.dotNetExt;
         public void EncodeHtmlTest()
         {
             string str = "<div>Some <b>Html</b> String &amp;</div>"; // TODO: Initialize to an appropriate value
-            string expected = "&lt;div&gt;Some &lt;b&gt;Html&lt;/b&gt; String &amp;amp;&lt;/div&gt;"; // TODO: Initialize to an appropriate value
+            string expected =
+                "&lt;div&gt;Some &lt;b&gt;Html&lt;/b&gt; String &amp;amp;&lt;/div&gt;"; // TODO: Initialize to an appropriate value
             string actual = str.EncodeHtml();
             Assert.AreEqual(expected, actual);
         }

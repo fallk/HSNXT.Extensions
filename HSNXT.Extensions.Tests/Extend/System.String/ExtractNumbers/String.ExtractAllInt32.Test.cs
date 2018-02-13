@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -19,26 +19,26 @@ namespace Extend.Testing
             const Int32 value2 = -1100;
             const Int32 value3 = 12300;
 
-            var stringValue = "".ConcatAll( "asd", value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 );
-            var actual = stringValue.ExtractAllInt32( 1 );
+            var stringValue = "".ConcatAll("asd", value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3);
+            var actual = stringValue.ExtractAllInt32(1);
 
-            Assert.Equal( 4, actual.Count );
-            Assert.Equal( value0, actual[0] );
-            Assert.Equal( value1, actual[1] );
-            Assert.Equal( value2, actual[2] );
-            Assert.Equal( value3, actual[3] );
+            Assert.Equal(4, actual.Count);
+            Assert.Equal(value0, actual[0]);
+            Assert.Equal(value1, actual[1]);
+            Assert.Equal(value2, actual[2]);
+            Assert.Equal(value3, actual[3]);
 
-            actual = "310.10".ExtractAllInt32( 1 );
-            Assert.Equal( 2, actual.Count );
-            Assert.Equal( 10, actual[0] );
-            Assert.Equal( 10, actual[1] );
+            actual = "310.10".ExtractAllInt32(1);
+            Assert.Equal(2, actual.Count);
+            Assert.Equal(10, actual[0]);
+            Assert.Equal(10, actual[1]);
         }
 
         [Fact]
         public void ExtractAllInt32TestArgumentOutOfRangeException()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ExtractAllInt32( 1000 );
+            Action test = () => "100".ExtractAllInt32(1000);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -47,7 +47,7 @@ namespace Extend.Testing
         public void ExtractAllInt32TestArgumentOutOfRangeException1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ExtractAllInt32( -1 );
+            Action test = () => "100".ExtractAllInt32(-1);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -57,7 +57,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractAllInt32( null );
+            Action test = () => Extensions.ExtractAllInt32(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -67,7 +67,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractAllInt32( null, 10 );
+            Action test = () => Extensions.ExtractAllInt32(null, 10);
 
             test.ShouldThrow<ArgumentNullException>();
         }

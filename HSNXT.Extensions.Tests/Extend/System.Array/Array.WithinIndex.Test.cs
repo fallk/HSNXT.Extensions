@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -21,14 +21,14 @@ namespace Extend.Testing
                 "2"
             };
 
-            var actual = array.WithinIndex( 2 );
-            Assert.True( actual );
+            var actual = array.WithinIndex(2);
+            Assert.True(actual);
 
-            actual = array.WithinIndex( -1 );
-            Assert.False( actual );
+            actual = array.WithinIndex(-1);
+            Assert.False(actual);
 
-            actual = array.WithinIndex( 5 );
-            Assert.False( actual );
+            actual = array.WithinIndex(5);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.WithinIndex( 10 );
+            Action test = () => array.WithinIndex(10);
 
             test.ShouldThrow<NullReferenceException>();
         }

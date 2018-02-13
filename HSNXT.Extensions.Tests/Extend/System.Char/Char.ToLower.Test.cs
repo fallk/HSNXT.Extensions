@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -12,9 +12,9 @@ namespace Extend.Testing
         [Fact]
         public void ToLowerTest()
         {
-            Assert.Equal( 'a', 'A'.ToLower() );
-            Assert.Equal( 'a', 'a'.ToLower() );
-            Assert.Equal( '1', '1'.ToLower() );
+            Assert.Equal('a', 'A'.ToLower());
+            Assert.Equal('a', 'a'.ToLower());
+            Assert.Equal('1', '1'.ToLower());
         }
     }
 }

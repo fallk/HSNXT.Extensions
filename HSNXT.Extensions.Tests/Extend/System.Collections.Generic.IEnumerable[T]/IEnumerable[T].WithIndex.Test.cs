@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,34 +36,34 @@ namespace Extend.Testing
                 "d"
             };
             var actual = list.WithIndex()
-                             .ToList();
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 4 );
+                .HaveCount(4);
             actual[0]
                 .Item.Should()
-                .Be( "a" );
+                .Be("a");
             actual[0]
                 .Index.Should()
-                .Be( 0 );
+                .Be(0);
             actual[1]
                 .Item.Should()
-                .Be( "b" );
+                .Be("b");
             actual[1]
                 .Index.Should()
-                .Be( 1 );
+                .Be(1);
             actual[2]
                 .Item.Should()
-                .Be( "c" );
+                .Be("c");
             actual[2]
                 .Index.Should()
-                .Be( 2 );
+                .Be(2);
             actual[3]
                 .Item.Should()
-                .Be( "d" );
+                .Be("d");
             actual[3]
                 .Index.Should()
-                .Be( 3 );
+                .Be(3);
         }
     }
 }

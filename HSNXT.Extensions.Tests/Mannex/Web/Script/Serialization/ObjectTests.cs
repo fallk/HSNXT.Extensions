@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Web.Script.Serialization
@@ -46,8 +48,8 @@ namespace Mannex.Tests.Web.Script.Serialization
             Assert.Equal("42", 42.ToJsonString());
             Assert.Equal("true", true.ToJsonString());
             Assert.Equal("false", false.ToJsonString());
-            Assert.Equal("[12,34,56]", new[] { 12, 34, 56 }.ToJsonString());
-            Assert.Equal("{\"x\":12,\"y\":34}", new { x = 12, y = 34 }.ToJsonString());
+            Assert.Equal("[12,34,56]", new[] {12, 34, 56}.ToJsonString());
+            Assert.Equal("{\"x\":12,\"y\":34}", new {x = 12, y = 34}.ToJsonString());
         }
 
         [Fact]

@@ -16,8 +16,28 @@ namespace TestProject.Linq
     {
         private static IQueryable<string> GetStringQuery()
         {
-            return (new List<string> {
-                "Chris","John","Steve","Katie","Sara","Susan","Scott","Kara","Michelle","Mitchel","Bob","Allen","Tim","Tom","Zeo","Chelsea","Sue","Tod","Joe","Bill"
+            return (new List<string>
+            {
+                "Chris",
+                "John",
+                "Steve",
+                "Katie",
+                "Sara",
+                "Susan",
+                "Scott",
+                "Kara",
+                "Michelle",
+                "Mitchel",
+                "Bob",
+                "Allen",
+                "Tim",
+                "Tom",
+                "Zeo",
+                "Chelsea",
+                "Sue",
+                "Tod",
+                "Joe",
+                "Bill"
             }).AsQueryable();
         }
 

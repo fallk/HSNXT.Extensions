@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,23 +14,23 @@ namespace Extend.Testing
         [Fact]
         public void DisposeIfIsValueCreatedTest()
         {
-            var disposable = new Lazy<UnitTestDisposable>( () => new UnitTestDisposable() );
+            var disposable = new Lazy<UnitTestDisposable>(() => new UnitTestDisposable());
             // ReSharper disable once UnusedVariable
             var value = disposable.Value;
 
             disposable.DisposeIfIsValueCreated();
             disposable.Value.IsDispose.Should()
-                      .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
         public void DisposeIfIsValueCreatedValueNotCreatedTest()
         {
-            var disposable = new Lazy<UnitTestDisposable>( () => new UnitTestDisposable() );
+            var disposable = new Lazy<UnitTestDisposable>(() => new UnitTestDisposable());
 
             disposable.DisposeIfIsValueCreated();
             disposable.Value.IsDispose.Should()
-                      .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Extend.Testing
             disposable.DisposeIfIsValueCreated();
             // ReSharper disable once ExpressionIsAlwaysNull
             disposable.Should()
-                      .BeNull();
+                .BeNull();
         }
 
         #region Nested Types

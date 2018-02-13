@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,10 +17,10 @@ namespace Extend.Testing
         [Fact]
         public void PathCombineTest()
         {
-            var list = new List<String> { @"C:\", "Temp", "Test", "test.xml" };
-            var expected = Path.Combine( list.ToArray() );
+            var list = new List<String> {@"C:\", "Temp", "Test", "test.xml"};
+            var expected = Path.Combine(list.ToArray());
             var actual = list.PathCombine();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -28,7 +28,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ((IEnumerable<string>)null).PathCombine();
+            Action test = () => ((IEnumerable<string>) null).PathCombine();
 
             test.ShouldThrow<ArgumentNullException>();
         }

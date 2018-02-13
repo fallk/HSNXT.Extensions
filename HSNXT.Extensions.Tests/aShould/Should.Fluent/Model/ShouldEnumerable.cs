@@ -2,9 +2,13 @@ using System.Collections.Generic;
 
 namespace erichexter.Should.Fluent.Model
 {
-    public class ShouldEnumerableBase<T, TShould> : ShouldBase<TShould, IEnumerable<T>, BeBase<IEnumerable<T>>> where TShould : ShouldEnumerableBase<T, TShould>
+    public class ShouldEnumerableBase<T, TShould> : ShouldBase<TShould, IEnumerable<T>, BeBase<IEnumerable<T>>>
+        where TShould : ShouldEnumerableBase<T, TShould>
     {
-        public ShouldEnumerableBase(IEnumerable<T> target, IAssertProvider assertProvider) : base(target, assertProvider) { }
+        public ShouldEnumerableBase(IEnumerable<T> target, IAssertProvider assertProvider) : base(target,
+            assertProvider)
+        {
+        }
 
         public Contain<T> Contain
         {
@@ -19,6 +23,8 @@ namespace erichexter.Should.Fluent.Model
 
     public class ShouldEnumerable<T> : ShouldEnumerableBase<T, ShouldEnumerable<T>>
     {
-        public ShouldEnumerable(IEnumerable<T> target, IAssertProvider assertProvider) : base(target, assertProvider) { }
+        public ShouldEnumerable(IEnumerable<T> target, IAssertProvider assertProvider) : base(target, assertProvider)
+        {
+        }
     }
 }

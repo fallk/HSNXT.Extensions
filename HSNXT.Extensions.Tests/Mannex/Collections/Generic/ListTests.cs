@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using System.Collections;
@@ -46,9 +48,9 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void LastIndexReturnsIndexOfLastItem()
         {
-            Assert.Equal(0, new[] { "foo" }.LastIndex());
-            Assert.Equal(1, new[] { "foo", "bar" }.LastIndex());
-            Assert.Equal(2, new[] { "foo", "bar", "baz" }.LastIndex());
+            Assert.Equal(0, new[] {"foo"}.LastIndex());
+            Assert.Equal(1, new[] {"foo", "bar"}.LastIndex());
+            Assert.Equal(2, new[] {"foo", "bar", "baz"}.LastIndex());
         }
 
         [Fact]
@@ -88,7 +90,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PopReturnsAndRemovesLastValue()
         {
-            var list = new List<int>(new[]{ 12, 34, 56 });
+            var list = new List<int>(new[] {12, 34, 56});
             Assert.Equal(3, list.Count);
             Assert.Equal(56, list.Pop());
             Assert.Equal(2, list.Count);
@@ -115,7 +117,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryPopReturnsAndRemovesLastValue()
         {
-            var list = new List<int>(new[] { 12, 34, 56 });
+            var list = new List<int>(new[] {12, 34, 56});
             Assert.Equal(3, list.Count);
             Assert.Equal(56, list.TryPop());
             Assert.Equal(2, list.Count);
@@ -140,7 +142,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void PeekReturnsFirstValue()
         {
-            Assert.Equal(12, new[] { 12, 34, 56 }.Peek());
+            Assert.Equal(12, new[] {12, 34, 56}.Peek());
         }
 
         [Fact]
@@ -160,7 +162,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryPeekReturnsFirstValue()
         {
-            Assert.Equal(12, new[] { 12, 34, 56 }.TryPeek());
+            Assert.Equal(12, new[] {12, 34, 56}.TryPeek());
         }
 
         [Fact]
@@ -195,7 +197,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void ShiftReturnsAndRemovesFirstValue()
         {
-            var list = new List<int>(new[] { 12, 34, 56 });
+            var list = new List<int>(new[] {12, 34, 56});
             Assert.Equal(3, list.Count);
             Assert.Equal(12, list.Shift());
             Assert.Equal(2, list.Count);
@@ -222,7 +224,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void TryShiftReturnsAndRemovesFirstValue()
         {
-            var list = new List<int>(new[] { 12, 34, 56 });
+            var list = new List<int>(new[] {12, 34, 56});
             Assert.Equal(3, list.Count);
             Assert.Equal(12, list.TryShift());
             Assert.Equal(2, list.Count);
@@ -292,14 +294,14 @@ namespace Mannex.Tests.Collections.Generic
         {
             Assert.Throws<NullReferenceException>(() => Extensions.BinarySearch(null, "foo"));
             Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo"));
-            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch((IList)null, "foo", null));
+            Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch((IList) null, "foo", null));
             Assert.Throws<ArgumentNullException>(() => Extensions.BinarySearch(null, 0, 10, "foo", null));
         }
- 
+
         [Fact]
         public void BinarySearchReturnsIndexBitwiseComplementFirstElementThatIsLargerThanValueWhenValueNotFound()
         {
-            IList<string> items = new[] { "bravo", "delta" };
+            IList<string> items = new[] {"bravo", "delta"};
             Assert.Equal(-1, items.BinarySearch("alpha"));
             Assert.Equal(-2, items.BinarySearch("charlie"));
             Assert.Equal(-3, items.BinarySearch("echo"));
@@ -308,16 +310,17 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void BinarySearchReturnsIndexWhenValueFound()
         {
-            IList<string> items = new[] { "alpha", "bravo", "charlie" };
+            IList<string> items = new[] {"alpha", "bravo", "charlie"};
             Assert.Equal(0, items.BinarySearch("alpha"));
             Assert.Equal(1, items.BinarySearch("bravo"));
             Assert.Equal(2, items.BinarySearch("charlie"));
-       }
- 
+        }
+
         [Fact]
-        public void BinarySearchWithComparerReturnsIndexBitwiseComplementFirstElementThatIsLargerThanValueWhenValueNotFound()
+        public void
+            BinarySearchWithComparerReturnsIndexBitwiseComplementFirstElementThatIsLargerThanValueWhenValueNotFound()
         {
-            IList<string> items = new[] { "BRAVO", "DELTA" };
+            IList<string> items = new[] {"BRAVO", "DELTA"};
             var comparer = StringComparer.InvariantCultureIgnoreCase;
             Assert.Equal(-1, items.BinarySearch("alpha", comparer));
             Assert.Equal(-2, items.BinarySearch("charlie", comparer));
@@ -327,7 +330,7 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void BinarySearchWithComparerReturnsIndexWhenValueFound()
         {
-            IList<string> items = new[] { "ALPHA", "BRAVO", "CHARLIE" };
+            IList<string> items = new[] {"ALPHA", "BRAVO", "CHARLIE"};
             var comparer = StringComparer.InvariantCultureIgnoreCase;
             Assert.Equal(0, items.BinarySearch("alpha", comparer));
             Assert.Equal(1, items.BinarySearch("bravo", comparer));
@@ -337,16 +340,16 @@ namespace Mannex.Tests.Collections.Generic
         [Fact]
         public void AsReadOnly()
         {
-            var list = (IList<int>) new [] { 1, 2, 3 }.ToList();
+            var list = (IList<int>) new[] {1, 2, 3}.ToList();
             Assert.False(list.IsReadOnly);
             var roList = list.AsReadOnly();
             Assert.True(roList.IsReadOnly);
         }
- 
+
         [Fact]
         public void AsReadOnlyOnReadOnlyListReturnsSameListReference()
         {
-            var list = (IList<int>) new [] { 1, 2, 3 }.ToList();
+            var list = (IList<int>) new[] {1, 2, 3}.ToList();
             Assert.False(list.IsReadOnly);
             var roList = list.AsReadOnly();
             Assert.True(roList.IsReadOnly);
@@ -373,7 +376,7 @@ namespace Mannex.Tests.Collections.Generic
             const int a = 123;
             const int b = 456;
             const int c = 789;
-            var list = new[] { a, b, c }.ToList();
+            var list = new[] {a, b, c}.ToList();
             Assert.Equal(b, list.PopAt(1));
             Assert.Equal(2, list.Count);
             Assert.Equal(a, list[0]);
@@ -405,7 +408,7 @@ namespace Mannex.Tests.Collections.Generic
             const int a = 123;
             const int b = 456;
             const int c = 789;
-            var list = new[] { a, b, c }.ToList();
+            var list = new[] {a, b, c}.ToList();
             Assert.Equal(b, list.TryPopAt(1));
             Assert.Equal(2, list.Count);
             Assert.Equal(a, list[0]);

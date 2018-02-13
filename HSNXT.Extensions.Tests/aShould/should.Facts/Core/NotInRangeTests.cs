@@ -17,7 +17,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void DoubleWithinRange()
             {
-                Should.Core.Assertions.Assert.Throws<NotInRangeException>(() => Should.Core.Assertions.Assert.NotInRange(1.0, .75, 1.25));
+                Should.Core.Assertions.Assert.Throws<NotInRangeException>(() =>
+                    Should.Core.Assertions.Assert.NotInRange(1.0, .75, 1.25));
             }
         }
 
@@ -32,7 +33,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void IntWithinRange()
             {
-                Should.Core.Assertions.Assert.Throws<NotInRangeException>(() => Should.Core.Assertions.Assert.NotInRange(2, 1, 3));
+                Should.Core.Assertions.Assert.Throws<NotInRangeException>(() =>
+                    Should.Core.Assertions.Assert.NotInRange(2, 1, 3));
             }
         }
 
@@ -47,7 +49,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void StringWithNotInRange()
             {
-                Should.Core.Assertions.Assert.Throws<NotInRangeException>(() => Should.Core.Assertions.Assert.NotInRange("bob", "adam", "scott"));
+                Should.Core.Assertions.Assert.Throws<NotInRangeException>(() =>
+                    Should.Core.Assertions.Assert.NotInRange("bob", "adam", "scott"));
             }
         }
     }

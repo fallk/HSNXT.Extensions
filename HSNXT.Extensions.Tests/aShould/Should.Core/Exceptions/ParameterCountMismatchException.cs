@@ -11,10 +11,14 @@ namespace erichexter.Should.Core.Exceptions
     public class ParamterCountMismatchException : Exception
     {
         /// <summary/>
-        public ParamterCountMismatchException() { }
+        public ParamterCountMismatchException()
+        {
+        }
 
         /// <summary/>
         protected ParamterCountMismatchException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
+            : base(info, context)
+        {
+        }
     }
 }

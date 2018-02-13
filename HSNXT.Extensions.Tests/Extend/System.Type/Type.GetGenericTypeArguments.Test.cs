@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace Extend.Testing
         {
             var actual = typeof(String).GetGenericTypeArguments();
             actual.Should()
-                  .HaveCount( 0 );
+                .HaveCount(0);
         }
 
         [Fact]
@@ -37,10 +37,10 @@ namespace Extend.Testing
         {
             var actual = typeof(List<String>).GetGenericTypeArguments();
             actual.Should()
-                  .HaveCount( 1 );
+                .HaveCount(1);
             actual.First()
-                  .Should()
-                  .Be( typeof(String) );
+                .Should()
+                .Be(typeof(String));
         }
 
         [Fact]
@@ -48,13 +48,13 @@ namespace Extend.Testing
         {
             var actual = typeof(Dictionary<Int32, String>).GetGenericTypeArguments();
             actual.Should()
-                  .HaveCount( 2 );
+                .HaveCount(2);
             actual.First()
-                  .Should()
-                  .Be( typeof(Int32) );
+                .Should()
+                .Be(typeof(Int32));
             actual.Last()
-                  .Should()
-                  .Be( typeof(String) );
+                .Should()
+                .Be(typeof(String));
         }
     }
 }

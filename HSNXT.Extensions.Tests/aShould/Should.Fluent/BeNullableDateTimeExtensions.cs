@@ -21,7 +21,7 @@ namespace erichexter.Should.Fluent
                 }
                 else
                 {
-                    a.AreEqual(DateTime.Today, t.Value.Date);                    
+                    a.AreEqual(DateTime.Today, t.Value.Date);
                 }
             };
             Action<DateTime?, IAssertProvider> negativeCase = (t, a) =>
@@ -49,7 +49,8 @@ namespace erichexter.Should.Fluent
             return Check.GreaterThanOrEqual(be.Should, value);
         }
 
-        public static DateTime? GreaterThanOrEqualTo(this IBe<DateTime?> be, DateTime? value, IComparer<DateTime?> comparer)
+        public static DateTime? GreaterThanOrEqualTo(this IBe<DateTime?> be, DateTime? value,
+            IComparer<DateTime?> comparer)
         {
             return Check.GreaterThanOrEqual(be.Should, value, comparer);
         }
@@ -69,7 +70,8 @@ namespace erichexter.Should.Fluent
             return Check.LessThanOrEqual(be.Should, value);
         }
 
-        public static DateTime? LessThanOrEqualTo(this IBe<DateTime?> be, DateTime? value, IComparer<DateTime?> comparer)
+        public static DateTime? LessThanOrEqualTo(this IBe<DateTime?> be, DateTime? value,
+            IComparer<DateTime?> comparer)
         {
             return Check.LessThanOrEqual(be.Should, value, comparer);
         }

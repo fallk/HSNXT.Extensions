@@ -29,6 +29,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(string.Empty, should.Target);
             }
+
             return should.Target;
         }
 
@@ -43,6 +44,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.IsTrue(targetNullOrEmpty);
             }
+
             return should.Target;
         }
 
@@ -53,22 +55,27 @@ namespace erichexter.Should.Fluent.Model
                 try
                 {
                     TypeDescriptor.GetConverter(typeof(T));
-                    assertProvider.Fail("Could convert '{0}' to {1}.  Expected not covertable.", should.Target, typeof(T));
+                    assertProvider.Fail("Could convert '{0}' to {1}.  Expected not covertable.", should.Target,
+                        typeof(T));
                 }
-                catch { }
+                catch
+                {
+                }
             }
             else
             {
                 try
                 {
                     var converter = TypeDescriptor.GetConverter(typeof(T));
-                    return (T)converter.ConvertFrom(should.Target);
+                    return (T) converter.ConvertFrom(should.Target);
                 }
                 catch (Exception ex)
                 {
-                    assertProvider.Fail("Could not convert '{0}' to {1}.  {3}", should.Target, typeof(T), ex.ToString());
+                    assertProvider.Fail("Could not convert '{0}' to {1}.  {3}", should.Target, typeof(T),
+                        ex.ToString());
                 }
             }
+
             return default(T);
         }
     }

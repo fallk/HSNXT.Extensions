@@ -12,10 +12,7 @@ namespace erichexter.Should.Facts
         {
             String s = null;
 
-            var ex = Assert.Throws<NotNullException>(() =>
-            {
-                s.ShouldNotBeNull("custom failure message");
-            });
+            var ex = Assert.Throws<NotNullException>(() => { s.ShouldNotBeNull("custom failure message"); });
 
             Assert.Equal(ex.Message, "custom failure message");
         }
@@ -39,6 +36,5 @@ namespace erichexter.Should.Facts
 
             Assert.IsAssignableFrom<String>(sut);
         }
-
     }
 }

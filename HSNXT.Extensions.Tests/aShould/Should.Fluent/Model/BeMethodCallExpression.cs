@@ -27,7 +27,8 @@ namespace erichexter.Should.Fluent.Model
         {
             var bothNull = target == null && expectedCall == null;
             return !bothNull &&
-                   (target == null || expectedCall == null || !target.Method.Equals(expectedCall.Method) || !AllArgsAreEqual(expectedCall, target));
+                   (target == null || expectedCall == null || !target.Method.Equals(expectedCall.Method) ||
+                    !AllArgsAreEqual(expectedCall, target));
         }
 
         private static bool AllArgsAreEqual(MethodCallExpression expectedCall, MethodCallExpression target)
@@ -37,11 +38,13 @@ namespace erichexter.Should.Fluent.Model
                 var targetArgValue = Expression.Lambda(target.Arguments[i]).Compile().DynamicInvoke();
                 var expectedArgValue = Expression.Lambda(expectedCall.Arguments[i]).Compile().DynamicInvoke();
                 var bothNull = targetArgValue == null && expectedArgValue == null;
-                if (!bothNull && (targetArgValue == null ||  expectedArgValue == null || !targetArgValue.Equals(expectedArgValue)))
+                if (!bothNull && (targetArgValue == null || expectedArgValue == null ||
+                                  !targetArgValue.Equals(expectedArgValue)))
                 {
                     return false;
                 }
             }
+
             return true;
         }
     }

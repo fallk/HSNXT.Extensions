@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using FluentAssertions;
 using Xunit;
 
@@ -14,24 +14,24 @@ namespace Extend.Testing
         public void IsNumberTest()
         {
             '0'.IsNumber()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
             '9'.IsNumber()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
 
             'a'.IsNumber()
-               .Should()
-               .BeFalse();
+                .Should()
+                .BeFalse();
             'A'.IsNumber()
-               .Should()
-               .BeFalse();
+                .Should()
+                .BeFalse();
             'z'.IsNumber()
-               .Should()
-               .BeFalse();
+                .Should()
+                .BeFalse();
             '-'.IsNumber()
-               .Should()
-               .BeFalse();
+                .Should()
+                .BeFalse();
         }
     }
 }

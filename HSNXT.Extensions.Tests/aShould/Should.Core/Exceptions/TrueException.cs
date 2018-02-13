@@ -10,6 +10,8 @@ namespace erichexter.Should.Core.Exceptions
         /// </summary>
         /// <param name="userMessage">The user message to be displayed, or null for the default message</param>
         public TrueException(string userMessage)
-            : base(userMessage ?? "Assert.True() Failure") { }
+            : base(userMessage ?? "Assert.True() Failure")
+        {
+        }
     }
 }

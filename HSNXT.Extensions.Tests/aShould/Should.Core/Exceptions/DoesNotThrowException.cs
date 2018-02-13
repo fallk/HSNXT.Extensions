@@ -15,9 +15,9 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="actual">Actual exception</param>
         public DoesNotThrowException(Exception actual)
             : base("(No exception)",
-                   actual.GetType().FullName + (actual.Message == null ? "" : ": " + actual.Message),
-                   "Assert.DoesNotThrow() failure",
-                   true)
+                actual.GetType().FullName + (actual.Message == null ? "" : ": " + actual.Message),
+                "Assert.DoesNotThrow() failure",
+                true)
         {
             stackTrace = actual.StackTrace;
         }

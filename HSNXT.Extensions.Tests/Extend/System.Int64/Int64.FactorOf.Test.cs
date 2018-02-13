@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void FactorOfDivideByZeroTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.FactorOf( 0, 100 );
+            Action test = () => Extensions.FactorOf(0, 100);
             test.ShouldThrow<DivideByZeroException>();
         }
 
@@ -26,25 +26,25 @@ namespace Extend.Testing
             var factorNumer = Extensions.GetRandomInt32();
 
             var expected = factorNumer % value == 0;
-            var actual = Extensions.FactorOf( value, factorNumer );
+            var actual = Extensions.FactorOf(value, factorNumer);
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
 
-            actual = Extensions.FactorOf( 10, 100 );
+            actual = Extensions.FactorOf(10, 100);
             actual
                 .Should()
-                .Be( true );
+                .Be(true);
 
-            actual = Extensions.FactorOf( 100, 10 );
+            actual = Extensions.FactorOf(100, 10);
             actual
                 .Should()
-                .Be( false );
+                .Be(false);
 
-            actual = Extensions.FactorOf( 11, 100 );
+            actual = Extensions.FactorOf(11, 100);
             actual
                 .Should()
-                .Be( false );
+                .Be(false);
         }
     }
 }

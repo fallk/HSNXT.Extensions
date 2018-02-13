@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using FluentAssertions;
 using Xunit;
 
@@ -14,24 +14,24 @@ namespace Extend.Testing
         public void IsLetterOrDigitTest()
         {
             '0'.IsLetterOrDigit()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
             '9'.IsLetterOrDigit()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
 
             'a'.IsLetterOrDigit()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
             'A'.IsLetterOrDigit()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
             'z'.IsLetterOrDigit()
-               .Should()
-               .BeTrue();
+                .Should()
+                .BeTrue();
             '-'.IsLetterOrDigit()
-               .Should()
-               .BeFalse();
+                .Should()
+                .BeFalse();
         }
     }
 }

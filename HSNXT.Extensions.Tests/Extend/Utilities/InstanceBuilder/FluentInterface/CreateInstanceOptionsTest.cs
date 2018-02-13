@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -19,14 +19,14 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             var actual = target.AllMembers();
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             target.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = target.MemberSelectionRules.First() as AllMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Expression<Func<String, Object>> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.ByPath( expression );
+            Action test = () => target.ByPath(expression);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -43,16 +43,16 @@ namespace Extend.Testing
         public void ByPathExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.ByPath( x => x.Length );
+            var actual = target.ByPath(x => x.Length);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             target.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = target.MemberSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             String expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.ByPath( expression );
+            Action test = () => target.ByPath(expression);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -69,16 +69,16 @@ namespace Extend.Testing
         public void ByPathStringTest()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.ByPath( "test" );
+            var actual = target.ByPath("test");
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             target.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = target.MemberSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace Extend.Testing
             var actual = target.Complete();
 
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
         }
 
         [Fact]
@@ -96,22 +96,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Excluding( x =>
+            target.Excluding(x =>
             {
                 functionCalled = true;
                 return x.AllMembers();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as AllMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -119,37 +119,37 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.ExcludingChildrenOf( x =>
+            target.ExcludingChildrenOf(x =>
             {
                 functionCalled = true;
                 return x.AllMembers();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as AllMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
         public void ExcludingChildrenOfExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.ExcludingChildrenOf( x => true );
+            target.ExcludingChildrenOf(x => true);
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as ExpressionMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -158,7 +158,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.ExcludingChildrenOf( configurationFunc );
+            Action test = () => target.ExcludingChildrenOf(configurationFunc);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -167,22 +167,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.ExcludingChildrenOf( x =>
+            target.ExcludingChildrenOf(x =>
             {
                 functionCalled = true;
                 return x.IsNotTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -190,22 +190,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.ExcludingChildrenOf( x =>
+            target.ExcludingChildrenOf(x =>
             {
                 functionCalled = true;
                 return x.IsTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -213,22 +213,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.ExcludingChildrenOf( x =>
+            target.ExcludingChildrenOf(x =>
             {
                 functionCalled = true;
-                return x.ByPath( y => y.Length );
-            } );
+                return x.ByPath(y => y.Length);
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -236,22 +236,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.ExcludingChildrenOf( x =>
+            target.ExcludingChildrenOf(x =>
             {
                 functionCalled = true;
-                return x.ByPath( "Test" );
-            } );
+                return x.ByPath("Test");
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -260,7 +260,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.ExcludingChildrenOf( predicate );
+            Action test = () => target.ExcludingChildrenOf(predicate);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -268,15 +268,15 @@ namespace Extend.Testing
         public void ExcludingExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.Excluding( x => true );
+            target.Excluding(x => true);
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as ExpressionMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -285,7 +285,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.Excluding( configurationFunc );
+            Action test = () => target.Excluding(configurationFunc);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -294,22 +294,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Excluding( x =>
+            target.Excluding(x =>
             {
                 functionCalled = true;
                 return x.IsNotTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -317,22 +317,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Excluding( x =>
+            target.Excluding(x =>
             {
                 functionCalled = true;
                 return x.IsTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -340,22 +340,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Excluding( x =>
+            target.Excluding(x =>
             {
                 functionCalled = true;
-                return x.ByPath( y => y.Length );
-            } );
+                return x.ByPath(y => y.Length);
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -363,22 +363,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Excluding( x =>
+            target.Excluding(x =>
             {
                 functionCalled = true;
-                return x.ByPath( "Test" );
-            } );
+                return x.ByPath("Test");
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -387,7 +387,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.Excluding( predicate );
+            Action test = () => target.Excluding(predicate);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -395,10 +395,10 @@ namespace Extend.Testing
         public void ForFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => "test" );
+            target.WithFactory(x => "test");
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.For( configurationFunc );
+            Action test = () => target.For(configurationFunc);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -406,7 +406,7 @@ namespace Extend.Testing
         public void ForFuncInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            Action test = () => target.For( x => x.AllMembers() );
+            Action test = () => target.For(x => x.AllMembers());
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -416,22 +416,22 @@ namespace Extend.Testing
         {
             var funcCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => "test" );
-            var actual = target.For( x =>
+            target.WithFactory(x => "test");
+            var actual = target.For(x =>
             {
                 funcCalled = true;
                 return x.AllMembers();
-            } );
+            });
 
             funcCalled.Should()
-                      .BeTrue();
+                .BeTrue();
 
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             var factory = target.Factories.First();
             factory.SelectionRules.Count.Should()
-                   .Be( 1 );
+                .Be(1);
             var rule = factory.SelectionRules.First() as AllMemberSelectionRule;
             rule.Should()
                 .NotBeNull();
@@ -441,10 +441,10 @@ namespace Extend.Testing
         public void ForPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => "test" );
+            target.WithFactory(x => "test");
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.For( predicate );
+            Action test = () => target.For(predicate);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -452,7 +452,7 @@ namespace Extend.Testing
         public void ForPredicateInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            Action test = () => target.For( x => true );
+            Action test = () => target.For(x => true);
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -461,15 +461,15 @@ namespace Extend.Testing
         public void ForPredicateTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => true );
-            var actual = target.For( x => true );
+            target.WithFactory(x => true);
+            var actual = target.For(x => true);
 
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             var factory = target.Factories.First();
             factory.SelectionRules.Count.Should()
-                   .Be( 1 );
+                .Be(1);
             var rule = factory.SelectionRules.First() as ExpressionMemberSelectionRule;
             rule.Should()
                 .NotBeNull();
@@ -480,22 +480,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Including( x =>
+            target.Including(x =>
             {
                 functionCalled = true;
                 return x.AllMembers();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as AllMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -503,37 +503,37 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.IncludingChildrenOf( x =>
+            target.IncludingChildrenOf(x =>
             {
                 functionCalled = true;
                 return x.AllMembers();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as AllMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
         public void IncludingChildrenOfExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.IncludingChildrenOf( x => true );
+            target.IncludingChildrenOf(x => true);
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as ExpressionMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -542,7 +542,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.IncludingChildrenOf( configurationFunc );
+            Action test = () => target.IncludingChildrenOf(configurationFunc);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -551,22 +551,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.IncludingChildrenOf( x =>
+            target.IncludingChildrenOf(x =>
             {
                 functionCalled = true;
                 return x.IsNotTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -574,22 +574,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.IncludingChildrenOf( x =>
+            target.IncludingChildrenOf(x =>
             {
                 functionCalled = true;
                 return x.IsTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -597,22 +597,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.IncludingChildrenOf( x =>
+            target.IncludingChildrenOf(x =>
             {
                 functionCalled = true;
-                return x.ByPath( y => y.Length );
-            } );
+                return x.ByPath(y => y.Length);
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -620,22 +620,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.IncludingChildrenOf( x =>
+            target.IncludingChildrenOf(x =>
             {
                 functionCalled = true;
-                return x.ByPath( "Test" );
-            } );
+                return x.ByPath("Test");
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberChildrenSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberChildrenSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -644,7 +644,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.IncludingChildrenOf( predicate );
+            Action test = () => target.IncludingChildrenOf(predicate);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -652,15 +652,15 @@ namespace Extend.Testing
         public void IncludingExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.Including( x => true );
+            target.Including(x => true);
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as ExpressionMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -669,7 +669,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.Including( configurationFunc );
+            Action test = () => target.Including(configurationFunc);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -678,22 +678,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Including( x =>
+            target.Including(x =>
             {
                 functionCalled = true;
                 return x.IsNotTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -701,22 +701,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Including( x =>
+            target.Including(x =>
             {
                 functionCalled = true;
                 return x.IsTypeOf<String>();
-            } );
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -724,22 +724,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Including( x =>
+            target.Including(x =>
             {
                 functionCalled = true;
-                return x.ByPath( y => y.Length );
-            } );
+                return x.ByPath(y => y.Length);
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -747,22 +747,22 @@ namespace Extend.Testing
         {
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.Including( x =>
+            target.Including(x =>
             {
                 functionCalled = true;
-                return x.ByPath( "Test" );
-            } );
+                return x.ByPath("Test");
+            });
 
             functionCalled.Should()
-                          .BeTrue();
+                .BeTrue();
 
             var actual = target.Complete();
             actual.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = actual.MemberSelectionRules.First() as PathMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -771,7 +771,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.Including( predicate );
+            Action test = () => target.Including(predicate);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -781,14 +781,14 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             var actual = target.IsNotTypeOf<String>();
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             target.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = target.MemberSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
@@ -797,24 +797,24 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             var actual = target.IsTypeOf<String>();
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             target.MemberSelectionRules.Count.Should()
-                  .Be( 1 );
+                .Be(1);
 
             var actualRule = target.MemberSelectionRules.First() as TypeMemberSelectionRule;
             actualRule.Should()
-                      .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
         public void NotForFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => "test" );
+            target.WithFactory(x => "test");
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.NotFor( configurationFunc );
+            Action test = () => target.NotFor(configurationFunc);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -822,7 +822,7 @@ namespace Extend.Testing
         public void NotForFuncInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            Action test = () => target.NotFor( x => x.AllMembers() );
+            Action test = () => target.NotFor(x => x.AllMembers());
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -832,22 +832,22 @@ namespace Extend.Testing
         {
             var funcCalled = false;
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => "test" );
-            var actual = target.NotFor( x =>
+            target.WithFactory(x => "test");
+            var actual = target.NotFor(x =>
             {
                 funcCalled = true;
                 return x.AllMembers();
-            } );
+            });
 
             funcCalled.Should()
-                      .BeTrue();
+                .BeTrue();
 
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             var factory = target.Factories.First();
             factory.SelectionRules.Count.Should()
-                   .Be( 1 );
+                .Be(1);
             var rule = factory.SelectionRules.First() as AllMemberSelectionRule;
             rule.Should()
                 .NotBeNull();
@@ -857,10 +857,10 @@ namespace Extend.Testing
         public void NotForPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => "test" );
+            target.WithFactory(x => "test");
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.NotFor( predicate );
+            Action test = () => target.NotFor(predicate);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -868,7 +868,7 @@ namespace Extend.Testing
         public void NotForPredicateInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            Action test = () => target.NotFor( x => true );
+            Action test = () => target.NotFor(x => true);
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -877,15 +877,15 @@ namespace Extend.Testing
         public void NotForPredicateTest()
         {
             var target = new CreateInstanceOptions<String>();
-            target.WithFactory( x => true );
-            var actual = target.NotFor( x => true );
+            target.WithFactory(x => true);
+            var actual = target.NotFor(x => true);
 
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
 
             var factory = target.Factories.First();
             factory.SelectionRules.Count.Should()
-                   .Be( 1 );
+                .Be(1);
             var rule = factory.SelectionRules.First() as ExpressionMemberSelectionRule;
             rule.Should()
                 .NotBeNull();
@@ -895,7 +895,7 @@ namespace Extend.Testing
         public void PopulateCollectionItemCountArgumentExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
-            Action test = () => target.PopulateCollectionItemCount( 400, 300 );
+            Action test = () => target.PopulateCollectionItemCount(400, 300);
             test.ShouldThrow<ArgumentException>();
         }
 
@@ -903,83 +903,83 @@ namespace Extend.Testing
         public void PopulateCollectionItemCountTest()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.PopulateCollectionItemCount( 100, 200 );
+            var actual = target.PopulateCollectionItemCount(100, 200);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.PopulateCollectionsMinCount.Should()
-                  .Be( 100 );
+                .Be(100);
             target.PopulateCollectionsMaxCount.Should()
-                  .Be( 200 );
+                .Be(200);
         }
 
         [Fact]
         public void PopulateCollectionItemCountTest1()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.PopulateCollectionItemCount( 100, null );
+            var actual = target.PopulateCollectionItemCount(100, null);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.PopulateCollectionsMinCount.Should()
-                  .Be( 100 );
+                .Be(100);
             target.PopulateCollectionsMaxCount.Should()
-                  .Be( null );
+                .Be(null);
         }
 
         [Fact]
         public void PopulateCollectionItemCountTest2()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.PopulateCollectionItemCount( null, 200 );
+            var actual = target.PopulateCollectionItemCount(null, 200);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.PopulateCollectionsMinCount.Should()
-                  .Be( null );
+                .Be(null);
             target.PopulateCollectionsMaxCount.Should()
-                  .Be( 200 );
+                .Be(200);
         }
 
         [Fact]
         public void PopulateCollectionMembersTest()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.PopulateCollectionMembers( false );
+            var actual = target.PopulateCollectionMembers(false);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.PopulateCollections.Should()
-                  .Be( false );
+                .Be(false);
         }
 
         [Fact]
         public void PopulateCollectionMembersTest1()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.PopulateCollectionMembers( null );
+            var actual = target.PopulateCollectionMembers(null);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.PopulateCollections.Should()
-                  .Be( null );
+                .Be(null);
         }
 
         [Fact]
         public void SetAnonymousItemNameTest()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.SetAnonymousItemName( null );
+            var actual = target.SetAnonymousItemName(null);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.AnonymousItemName.Should()
-                  .Be( null );
+                .Be(null);
         }
 
         [Fact]
         public void SetAnonymousItemNameTest1()
         {
             var target = new CreateInstanceOptions<String>();
-            var actual = target.SetAnonymousItemName( "name" );
+            var actual = target.SetAnonymousItemName("name");
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.AnonymousItemName.Should()
-                  .Be( "name" );
+                .Be("name");
         }
 
         [Fact]
@@ -988,7 +988,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Func<IMemberInformation, Object> factory = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => target.WithFactory( factory );
+            Action test = () => target.WithFactory(factory);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -997,16 +997,16 @@ namespace Extend.Testing
         {
             var target = new CreateInstanceOptions<String>();
             Func<IMemberInformation, Object> factory = x => "test";
-            var actual = target.WithFactory( factory );
+            var actual = target.WithFactory(factory);
             actual.Should()
-                  .BeSameAs( target );
+                .BeSameAs(target);
             target.Factories.Count.Should()
-                  .Be( 1 );
+                .Be(1);
             // ReSharper disable once PossibleNullReferenceException
             // ReSharper disable once AssignNullToNotNullAttribute
-            var actualFactoryResult = ( target.Factories.First() as ExpressionInstanceFactory ).CreateValue( null );
+            var actualFactoryResult = (target.Factories.First() as ExpressionInstanceFactory).CreateValue(null);
             actualFactoryResult.Should()
-                               .Be( "test" );
+                .Be("test");
         }
     }
 }

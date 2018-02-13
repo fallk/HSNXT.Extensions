@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using System;
@@ -50,14 +52,14 @@ namespace Mannex.Tests
         [Fact]
         public void DivRem()
         {
-            Assert.Equal(new[] { 1L, 4L }, 10L.DivRem(6L, (q, r) => new[] { q, r }));
+            Assert.Equal(new[] {1L, 4L}, 10L.DivRem(6L, (q, r) => new[] {q, r}));
         }
 
         [Fact]
         public void DivRemFailsWithZeroDivisor()
         {
             Assert.Throws<DivideByZeroException>(() =>
-               10L.DivRem<object>(0L, delegate { throw new NotImplementedException(); }));
+                10L.DivRem<object>(0L, delegate { throw new NotImplementedException(); }));
         }
     }
 }

@@ -5,7 +5,9 @@ namespace erichexter.Should.Fluent.Model
 {
     public class ShouldDateTime : ShouldBase<ShouldDateTime, DateTime, BeDateTime>
     {
-        public ShouldDateTime(DateTime target, IAssertProvider assertProvider) : base(target, assertProvider) { }
+        public ShouldDateTime(DateTime target, IAssertProvider assertProvider) : base(target, assertProvider)
+        {
+        }
 
         public DateTime Equal(DateTime expected, TimeSpan tolerance)
         {
@@ -17,6 +19,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(expected, Target, tolerance);
             }
+
             return Target;
         }
 
@@ -30,6 +33,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(expected, Target, precision);
             }
+
             return Target;
         }
     }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using Xunit;
@@ -17,7 +17,7 @@ namespace Extend.Testing
             const String culture = "en";
             var actual = culture.SafeToCultureInfo();
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Extend.Testing
             const String culture = "de-CH";
             var actual = culture.SafeToCultureInfo();
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             var actual = culture.SafeToCultureInfo();
 
-            Assert.Null( actual );
+            Assert.Null(actual);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Extend.Testing
             var culture = String.Empty;
             var actual = culture.SafeToCultureInfo();
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
@@ -54,25 +54,25 @@ namespace Extend.Testing
             const String culture = "invalidCultureName";
             var actual = culture.SafeToCultureInfo();
 
-            Assert.Null( actual );
+            Assert.Null(actual);
         }
 
         [Fact]
         public void SafeToCultureInfoTest5()
         {
             const String culture = "en";
-            var actual = culture.SafeToCultureInfo( new CultureInfo( "it-CH" ) );
+            var actual = culture.SafeToCultureInfo(new CultureInfo("it-CH"));
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
         public void SafeToCultureInfoTest6()
         {
             const String culture = "de-CH";
-            var actual = culture.SafeToCultureInfo( new CultureInfo( "fr-CH" ) );
+            var actual = culture.SafeToCultureInfo(new CultureInfo("fr-CH"));
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
@@ -80,27 +80,27 @@ namespace Extend.Testing
         {
             const String culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            var actual = culture.SafeToCultureInfo( new CultureInfo( "de-CH" ) );
+            var actual = culture.SafeToCultureInfo(new CultureInfo("de-CH"));
 
-            Assert.Equal( "de-CH", actual.Name );
+            Assert.Equal("de-CH", actual.Name);
         }
 
         [Fact]
         public void SafeToCultureInfoTest8()
         {
             var culture = String.Empty;
-            var actual = culture.SafeToCultureInfo( new CultureInfo( "en-GB" ) );
+            var actual = culture.SafeToCultureInfo(new CultureInfo("en-GB"));
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
         public void SafeToCultureInfoTest9()
         {
             const String culture = "invalidCultureName";
-            var actual = culture.SafeToCultureInfo( new CultureInfo( "es" ) );
+            var actual = culture.SafeToCultureInfo(new CultureInfo("es"));
 
-            Assert.Equal( "es", actual.Name );
+            Assert.Equal("es", actual.Name);
         }
     }
 }

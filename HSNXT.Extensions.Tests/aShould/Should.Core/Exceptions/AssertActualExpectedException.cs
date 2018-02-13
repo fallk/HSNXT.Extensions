@@ -21,9 +21,11 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="actual">The actual value</param>
         /// <param name="userMessage">The user message to be shown</param>
         public AssertActualExpectedException(object expected,
-                                             object actual,
-                                             string userMessage)
-            : this(expected, actual, userMessage, false) { }
+            object actual,
+            string userMessage)
+            : this(expected, actual, userMessage, false)
+        {
+        }
 
         /// <summary>
         /// Creates a new instance of the <see href="AssertActualExpectedException"/> class.
@@ -33,9 +35,9 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="userMessage">The user message to be shown</param>
         /// <param name="skipPositionCheck">Set to true to skip the check for difference position</param>
         public AssertActualExpectedException(object expected,
-                                             object actual,
-                                             string userMessage,
-                                             bool skipPositionCheck)
+            object actual,
+            string userMessage,
+            bool skipPositionCheck)
             : base(userMessage)
         {
             if (!skipPositionCheck)
@@ -48,7 +50,8 @@ namespace erichexter.Should.Core.Exceptions
                     var comparer = new EnumerableEqualityComparer();
                     comparer.Equals(enumerableActual, enumerableExpected);
 
-                    differencePosition = "Position: First difference is at position " + comparer.Position + Environment.NewLine;
+                    differencePosition = "Position: First difference is at position " + comparer.Position +
+                                         Environment.NewLine;
                 }
             }
 
@@ -91,11 +94,11 @@ namespace erichexter.Should.Core.Exceptions
             get
             {
                 return string.Format("{0}{4}{1}Expected: {2}{4}Actual:   {3}",
-                                     base.Message,
-                                     differencePosition,
-                                     FormatMultiLine(Expected ?? "(null)"),
-                                     FormatMultiLine(Actual ?? "(null)"),
-                                     Environment.NewLine);
+                    base.Message,
+                    differencePosition,
+                    FormatMultiLine(Expected ?? "(null)"),
+                    FormatMultiLine(Actual ?? "(null)"),
+                    Environment.NewLine);
             }
         }
 

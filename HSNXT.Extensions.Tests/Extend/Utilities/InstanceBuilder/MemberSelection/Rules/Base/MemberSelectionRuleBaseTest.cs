@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,25 +14,25 @@ namespace Extend.Testing
         [Fact]
         public void GetSelectionResultTest()
         {
-            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
-            Action test = () => target.GetSelectionResult( new MemberInformation() );
+            var target = new MemberSelectionRuleBaseAccessor("Name", "Description");
+            Action test = () => target.GetSelectionResult(new MemberInformation());
             test.ShouldThrow<NotImplementedException>();
         }
 
         [Fact]
         public void RuleDescriptionNameTest()
         {
-            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
+            var target = new MemberSelectionRuleBaseAccessor("Name", "Description");
             target.RuleDescription.Should()
-                  .Be( "Description" );
+                .Be("Description");
         }
 
         [Fact]
         public void RuleNameTest()
         {
-            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
+            var target = new MemberSelectionRuleBaseAccessor("Name", "Description");
             target.RuleName.Should()
-                  .Be( "Name" );
+                .Be("Name");
         }
 
         #region Nested Types
@@ -46,8 +46,8 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="name">The name of the rule.</param>
             /// <param name="description">The description of the rule.</param>
-            public MemberSelectionRuleBaseAccessor( String name, String description )
-                : base( name, description )
+            public MemberSelectionRuleBaseAccessor(String name, String description)
+                : base(name, description)
             {
             }
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="member">The member to get the selection result for.</param>
             /// <returns>Returns the selection result for the given member.</returns>
-            public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
+            public override MemberSelectionResult GetSelectionResult(IMemberInformation member)
                 => throw new NotImplementedException();
 
             #endregion

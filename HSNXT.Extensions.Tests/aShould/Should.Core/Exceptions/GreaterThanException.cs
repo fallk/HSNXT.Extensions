@@ -6,15 +6,17 @@
         /// <summary>Initializes a new instance of the <see cref="GreaterThanException"/> class.</summary>
         /// <param name="left">The value being tested.</param>
         /// <param name="right">The exclusive minimum allowed value.</param>
-        public GreaterThanException(object left, object right) 
+        public GreaterThanException(object left, object right)
             : base(right, left, "GreaterThan", ">")
-        { }
+        {
+        }
 
         /// <summary>Initializes a new instance of the <see cref="GreaterThanException"/> class.</summary>
         /// <param name="left">The value being tested.</param>
         /// <param name="right">The exclusive minimum allowed value.</param>
         public GreaterThanException(object left, object right, string message)
             : base(left, right, message)
-        { }
+        {
+        }
     }
 }

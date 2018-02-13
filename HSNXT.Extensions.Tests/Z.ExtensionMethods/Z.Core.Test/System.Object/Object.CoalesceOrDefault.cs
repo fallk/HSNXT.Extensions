@@ -24,10 +24,11 @@ namespace HSNXT.Z.Core.Test
             object @thisNotNull = "Fizz";
 
             // Exemples
-            var result1 = @thisNull.CoalesceOrDefault((Func<string>)nullObject, nullObject, "Buzz"); // return "Buzz";
+            var result1 = @thisNull.CoalesceOrDefault((Func<string>) nullObject, nullObject, "Buzz"); // return "Buzz";
             var result2 = @thisNull.CoalesceOrDefault(() => "Buzz", null, null); // return "Buzz";
             var result3 = @thisNull.CoalesceOrDefault(x => "Buzz", null, null); // return "Buzz";
-            var result4 = @thisNotNull.CoalesceOrDefault((Func<string>)nullObject, nullObject, "Buzz"); // return "Fizz";
+            var result4 =
+                @thisNotNull.CoalesceOrDefault((Func<string>) nullObject, nullObject, "Buzz"); // return "Fizz";
 
             // Unit Test
             Assert.AreEqual("Buzz", result1);

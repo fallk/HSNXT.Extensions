@@ -7,7 +7,7 @@ namespace TestProject
 {
     using System;
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

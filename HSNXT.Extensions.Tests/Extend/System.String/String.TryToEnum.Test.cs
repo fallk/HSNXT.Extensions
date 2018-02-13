@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,11 +15,11 @@ namespace Extend.Testing
         public void TryToEnumTest()
         {
             const DayOfWeek expected = DayOfWeek.Monday;
-            var result = Extensions.TryToEnum( expected.ToString(), out DayOfWeek actual );
+            var result = Extensions.TryToEnum(expected.ToString(), out DayOfWeek actual);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
             result
                 .Should()
                 .BeTrue();
@@ -28,14 +28,14 @@ namespace Extend.Testing
         [Fact]
         public void TryToEnumTestNullCheck()
         {
-            var actual = Extensions.TryToEnum( null, out DayOfWeek day );
+            var actual = Extensions.TryToEnum(null, out DayOfWeek day);
 
             actual
                 .Should()
                 .BeFalse();
             day
                 .Should()
-                .Be( default(DayOfWeek) );
+                .Be(default(DayOfWeek));
         }
     }
 }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -41,21 +43,24 @@ namespace Mannex.Tests
         [Fact]
         public void IsConstructionOfGenericTypeDefinitionWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.IsConstructionOfGenericTypeDefinition(null, typeof(Nullable<>)));
+            var e = Assert.Throws<ArgumentNullException>(() =>
+                Extensions.IsConstructionOfGenericTypeDefinition(null, typeof(Nullable<>)));
             Assert.Equal("type", e.ParamName);
         }
 
         [Fact]
         public void IsConstructionOfGenericTypeDefinitionWithNullGenericTypeDefinition()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => typeof(int?).IsConstructionOfGenericTypeDefinition(null));
+            var e = Assert.Throws<ArgumentNullException>(() =>
+                typeof(int?).IsConstructionOfGenericTypeDefinition(null));
             Assert.Equal("genericTypeDefinition", e.ParamName);
         }
 
         [Fact]
         public void IsConstructionOfGenericTypeDefinitionWithNonGenericTypeDefinition()
         {
-            var e = Assert.Throws<ArgumentException>(() => typeof(int?).IsConstructionOfGenericTypeDefinition(typeof(int)));
+            var e = Assert.Throws<ArgumentException>(() =>
+                typeof(int?).IsConstructionOfGenericTypeDefinition(typeof(int)));
             Assert.Equal("genericTypeDefinition", e.ParamName);
         }
 
@@ -111,9 +116,13 @@ namespace Mannex.Tests
         }
 
         class Unparseable
-        {   // ReSharper disable once UnusedMember.Local
+        {
+            // ReSharper disable once UnusedMember.Local
             // ReSharper disable UnusedParameter.Local
-            public static object Parse(string s, IFormatProvider fp) { return null; }
+            public static object Parse(string s, IFormatProvider fp)
+            {
+                return null;
+            }
             // ReSharper restore UnusedParameter.Local
         }
 
@@ -145,7 +154,8 @@ namespace Mannex.Tests
         [Fact]
         public void GetDefaultValueWithGenericParameterType()
         {
-            var e = Assert.Throws<ArgumentException>(() => typeof(Func<>).GetGenericArguments().First().GetDefaultValue());
+            var e = Assert.Throws<ArgumentException>(() =>
+                typeof(Func<>).GetGenericArguments().First().GetDefaultValue());
             Assert.Equal("type", e.ParamName);
         }
 
@@ -157,15 +167,15 @@ namespace Mannex.Tests
 
         public static readonly object[][] GetDefaultValueData =
         {
-            new object[] { default(int), typeof(int) },
-            new object[] { default(int?), typeof(int?) },
-            new object[] { default(DateTime), typeof(DateTime) },
-            new object[] { default(DateTimeOffset), typeof(DateTimeOffset) },
-            new object[] { default(Guid), typeof(Guid) },
-            new object[] { StringSplitOptions.None, typeof(StringSplitOptions) },
-            new object[] { default(string), typeof(string) },
-            new object[] { default(object), typeof(object) },
-            new object[] { default(Func<int, int>), typeof(Func<int, int>) },
+            new object[] {default(int), typeof(int)},
+            new object[] {default(int?), typeof(int?)},
+            new object[] {default(DateTime), typeof(DateTime)},
+            new object[] {default(DateTimeOffset), typeof(DateTimeOffset)},
+            new object[] {default(Guid), typeof(Guid)},
+            new object[] {StringSplitOptions.None, typeof(StringSplitOptions)},
+            new object[] {default(string), typeof(string)},
+            new object[] {default(object), typeof(object)},
+            new object[] {default(Func<int, int>), typeof(Func<int, int>)},
         };
     }
 }

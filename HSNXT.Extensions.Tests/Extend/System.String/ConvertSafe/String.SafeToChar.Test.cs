@@ -1,6 +1,6 @@
 #region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,18 +18,18 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Char) );
+                .Be(default(Char));
         }
 
         [Fact]
         public void SafeToCharInvalidValueWithDefaultTest()
         {
             const Char expected = 'a';
-            var actual = "InvalidValue".SafeToChar( expected );
+            var actual = "InvalidValue".SafeToChar(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -38,11 +38,11 @@ namespace Extend.Testing
             String value = null;
             const Char expected = 'y';
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToChar( expected );
+            var actual = value.SafeToChar(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -50,11 +50,11 @@ namespace Extend.Testing
         {
             const Char expected = 'c';
             var actual = expected.ToString()
-                                 .SafeToChar();
+                .SafeToChar();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -62,11 +62,11 @@ namespace Extend.Testing
         {
             const Char expected = 'c';
             var actual = expected.ToString()
-                                 .SafeToChar( 'e' );
+                .SafeToChar('e');
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
     }
 }

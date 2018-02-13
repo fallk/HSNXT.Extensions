@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -58,7 +60,7 @@ namespace Mannex.Tests
             var b = AccumulateWithInvocationNotice(ref all, calls.Add, delegate { throw new Exception(); });
             var c = AccumulateWithInvocationNotice(ref all, calls.Add, delegate { });
             all.InvokeAsEventHandlerWhileIgnoringErrors(null, EventArgs.Empty);
-            Assert.Equal(new[] { a, b, c }, calls);
+            Assert.Equal(new[] {a, b, c}, calls);
         }
 
         static EventHandler<T> AccumulateWithInvocationNotice<T>(

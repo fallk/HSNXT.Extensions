@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,15 +14,15 @@ namespace Extend.Testing
         [Fact]
         public void ContainsAnyTest()
         {
-            var actual = "test012".ContainsAny( "0", "1", "2", "abcd" );
-            Assert.True( actual );
+            var actual = "test012".ContainsAny("0", "1", "2", "abcd");
+            Assert.True(actual);
         }
 
         [Fact]
         public void ContainsAnyTest1()
         {
-            var actual = "ABC".ContainsAny( StringComparison.OrdinalIgnoreCase, "a", "b", "c", "abcd" );
-            Assert.True( actual );
+            var actual = "ABC".ContainsAny(StringComparison.OrdinalIgnoreCase, "a", "b", "c", "abcd");
+            Assert.True(actual);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ContainsAny( null, StringComparison.CurrentCulture, "" );
+            Action test = () => Extensions.ContainsAny(null, StringComparison.CurrentCulture, "");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -40,7 +40,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".ContainsAny( StringComparison.CurrentCulture, null );
+            Action test = () => "".ContainsAny(StringComparison.CurrentCulture, null);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -50,7 +50,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ContainsAny( null, "" );
+            Action test = () => Extensions.ContainsAny(null, "");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".ContainsAny( (string)null );
+            Action test = () => "".ContainsAny((string) null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

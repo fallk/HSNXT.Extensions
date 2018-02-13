@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Threading.Tasks
@@ -89,8 +91,9 @@ namespace Mannex.Tests.Threading.Tasks
             var e = new Exception();
             subject.That.TrySetException(e);
             Assert.True(subject.This.TryConcludeFrom(subject.That.Task));
-            Assert.True(subject.This.Task.IsFaulted);                   // ReSharper disable PossibleNullReferenceException
-            Assert.Same(e, subject.This.Task.Exception.InnerException); // ReSharper restore PossibleNullReferenceException
+            Assert.True(subject.This.Task.IsFaulted); // ReSharper disable PossibleNullReferenceException
+            Assert.Same(e,
+                subject.This.Task.Exception.InnerException); // ReSharper restore PossibleNullReferenceException
         }
 
         [Fact]

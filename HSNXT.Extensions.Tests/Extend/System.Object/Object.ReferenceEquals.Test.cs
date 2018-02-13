@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -18,11 +18,11 @@ namespace Extend.Testing
             var list = new List<String>();
             var list1 = new List<String>();
 
-            var actual = list.RefEquals( list );
-            Assert.True( actual );
+            var actual = list.RefEquals(list);
+            Assert.True(actual);
 
-            actual = list.RefEquals( list1 );
-            Assert.False( actual );
+            actual = list.RefEquals(list1);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.RefEquals( null, "" );
+            Action test = () => Extensions.RefEquals(null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -40,7 +40,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".RefEquals( null );
+            Action test = () => "".RefEquals(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

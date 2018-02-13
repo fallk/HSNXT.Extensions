@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -20,8 +20,8 @@ namespace Extend.Testing
                 "test2",
                 "test2"
             };
-            var actual = array.LastIndexOf( "test2" );
-            Assert.Equal( 2, actual );
+            var actual = array.LastIndexOf("test2");
+            Assert.Equal(2, actual);
         }
 
         [Fact]
@@ -33,8 +33,8 @@ namespace Extend.Testing
                 "test2",
                 "test2"
             };
-            var actual = array.LastIndexOf( "test2", 2 );
-            Assert.Equal( 2, actual );
+            var actual = array.LastIndexOf("test2", 2);
+            Assert.Equal(2, actual);
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.LastIndexOf( "test2", 1 );
+            Action test = () => array.LastIndexOf("test2", 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -57,8 +57,8 @@ namespace Extend.Testing
                 "test2",
                 "test2"
             };
-            var actual = array.LastIndexOf( "test2", 1, 2 );
-            Assert.Equal( 1, actual );
+            var actual = array.LastIndexOf("test2", 1, 2);
+            Assert.Equal(1, actual);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.LastIndexOf( "test2", 0, 2 );
+            Action test = () => array.LastIndexOf("test2", 0, 2);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -78,7 +78,7 @@ namespace Extend.Testing
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.LastIndexOf( "test2" );
+            Action test = () => array.LastIndexOf("test2");
 
             test.ShouldThrow<ArgumentNullException>();
         }

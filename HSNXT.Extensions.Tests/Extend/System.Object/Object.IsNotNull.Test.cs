@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -15,13 +15,13 @@ namespace Extend.Testing
             var value = Extensions.GetRandomString();
             var actual = value.IsNotNull();
 
-            Assert.True( actual );
+            Assert.True(actual);
 
             value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             actual = value.IsNotNull();
 
-            Assert.False( actual );
+            Assert.False(actual);
         }
     }
 }

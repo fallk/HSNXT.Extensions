@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq.Expressions;
 using FluentAssertions;
@@ -21,7 +21,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -93,7 +93,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -105,7 +105,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -117,7 +117,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -138,7 +138,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -149,7 +149,7 @@ namespace Extend.Testing
             var actual = expression.GetMemberPath();
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -157,7 +157,7 @@ namespace Extend.Testing
         {
             Expression<Func<String>> func = () => null;
             Expression<Func<String>> func1 = () => "test";
-            Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce( func, func1 );
+            Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce(func, func1);
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => expression.GetMemberPath();

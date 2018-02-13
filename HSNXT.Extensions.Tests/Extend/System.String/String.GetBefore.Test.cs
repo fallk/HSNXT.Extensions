@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void GetBeforeArgumentOutOfRangeTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test1".GetBefore( "test1", 20, 2 );
+            Action test = () => "test test1".GetBefore("test1", 20, 2);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -24,7 +24,7 @@ namespace Extend.Testing
         public void GetBeforeArgumentOutOfRangeTest2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test test".GetBefore( "test", 2, 20 );
+            Action test = () => "test test test".GetBefore("test", 2, 20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -33,7 +33,7 @@ namespace Extend.Testing
         public void GetBeforeArgumentOutOfRangeTest3()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test test".GetBefore( "test", -2, 20 );
+            Action test = () => "test test test".GetBefore("test", -2, 20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -42,7 +42,7 @@ namespace Extend.Testing
         public void GetBeforeArgumentOutOfRangeTest4()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test test".GetBefore( "test", 2, -20 );
+            Action test = () => "test test test".GetBefore("test", 2, -20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -51,7 +51,7 @@ namespace Extend.Testing
         public void GetBeforeArgumentOutOfRangExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test".GetBefore( "test", 15 );
+            Action test = () => "test test".GetBefore("test", 15);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
         public void GetBeforeCharArgumentOutOfRangeTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test1".GetBefore( 't', 20, 2 );
+            Action test = () => "test test1".GetBefore('t', 20, 2);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -69,7 +69,7 @@ namespace Extend.Testing
         public void GetBeforeCharArgumentOutOfRangeTest2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test test".GetBefore( 't', 2, 20 );
+            Action test = () => "test test test".GetBefore('t', 2, 20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -78,7 +78,7 @@ namespace Extend.Testing
         public void GetBeforeCharArgumentOutOfRangeTest3()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test test".GetBefore( 't', -2, 20 );
+            Action test = () => "test test test".GetBefore('t', -2, 20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -87,7 +87,7 @@ namespace Extend.Testing
         public void GetBeforeCharArgumentOutOfRangeTest4()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test test".GetBefore( 't', 2, -20 );
+            Action test = () => "test test test".GetBefore('t', 2, -20);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -96,7 +96,7 @@ namespace Extend.Testing
         public void GetBeforeCharArgumentOutOfRangExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test test".GetBefore( 't', 15 );
+            Action test = () => "test test".GetBefore('t', 15);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -104,21 +104,21 @@ namespace Extend.Testing
         [Fact]
         public void GetBeforeCharTest()
         {
-            var actual = "test test1".GetBefore( 's' );
-            Assert.Equal( "te", actual );
+            var actual = "test test1".GetBefore('s');
+            Assert.Equal("te", actual);
 
-            actual = "test test test".GetBefore( 's', 5 );
-            Assert.Equal( "te", actual );
+            actual = "test test test".GetBefore('s', 5);
+            Assert.Equal("te", actual);
         }
 
         [Fact]
         public void GetBeforeCharTest1()
         {
-            var actual = "test test1".GetBefore( 'e', 0, 4 );
-            Assert.Equal( "t", actual );
+            var actual = "test test1".GetBefore('e', 0, 4);
+            Assert.Equal("t", actual);
 
-            actual = "test test test".GetBefore( 'e', 3, 5 );
-            Assert.Equal( "t t", actual );
+            actual = "test test test".GetBefore('e', 3, 5);
+            Assert.Equal("t t", actual);
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBefore( null, 't', 1, 1 );
+            Action test = () => Extensions.GetBefore(null, 't', 1, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -134,8 +134,8 @@ namespace Extend.Testing
         [Fact]
         public void GetBeforeCharTest2()
         {
-            var actual = "test test1".GetBefore( 'a' );
-            Assert.Equal( String.Empty, actual );
+            var actual = "test test1".GetBefore('a');
+            Assert.Equal(String.Empty, actual);
         }
 
         [Fact]
@@ -143,7 +143,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBefore( null, 't' );
+            Action test = () => Extensions.GetBefore(null, 't');
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -151,21 +151,21 @@ namespace Extend.Testing
         [Fact]
         public void GetBeforeTest()
         {
-            var actual = "test test1".GetBefore( "test1" );
-            Assert.Equal( "test ", actual );
+            var actual = "test test1".GetBefore("test1");
+            Assert.Equal("test ", actual);
 
-            actual = "test test test".GetBefore( "test", 8 );
-            Assert.Equal( "t ", actual );
+            actual = "test test test".GetBefore("test", 8);
+            Assert.Equal("t ", actual);
         }
 
         [Fact]
         public void GetBeforeTest1()
         {
-            var actual = "test test1".GetBefore( "test1", 0, 10 );
-            Assert.Equal( "test ", actual );
+            var actual = "test test1".GetBefore("test1", 0, 10);
+            Assert.Equal("test ", actual);
 
-            actual = "test test test".GetBefore( "test", 8, 6 );
-            Assert.Equal( "t ", actual );
+            actual = "test test test".GetBefore("test", 8, 6);
+            Assert.Equal("t ", actual);
         }
 
         [Fact]
@@ -173,7 +173,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         {
-            Action test = () => Extensions.GetBefore( null, "", 1, 1 );
+            Action test = () => Extensions.GetBefore(null, "", 1, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -183,7 +183,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetBefore( null, 1, 1 );
+            Action test = () => "".GetBefore(null, 1, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -191,8 +191,8 @@ namespace Extend.Testing
         [Fact]
         public void GetBeforeTest2()
         {
-            var actual = "test test1".GetBefore( "a", 0, 10 );
-            Assert.Equal( String.Empty, actual );
+            var actual = "test test1".GetBefore("a", 0, 10);
+            Assert.Equal(String.Empty, actual);
         }
 
         [Fact]
@@ -200,7 +200,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetBefore( null, "" );
+            Action test = () => Extensions.GetBefore(null, "");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -209,7 +209,7 @@ namespace Extend.Testing
         public void GetBeforeTestNullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetBefore( null );
+            Action test = () => "".GetBefore(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

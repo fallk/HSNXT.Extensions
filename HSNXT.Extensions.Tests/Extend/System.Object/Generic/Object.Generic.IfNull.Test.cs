@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -14,11 +14,11 @@ namespace Extend.Testing
         {
             var expected = Extensions.GetRandomString();
 
-            var actual = Extensions.IfNull( null, expected );
-            Assert.Equal( expected, actual );
+            var actual = Extensions.IfNull(null, expected);
+            Assert.Equal(expected, actual);
 
-            actual = expected.IfNull( (string) null );
-            Assert.Equal( expected, actual );
+            actual = expected.IfNull((string) null);
+            Assert.Equal(expected, actual);
         }
     }
 }

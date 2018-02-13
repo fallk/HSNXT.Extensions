@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -20,7 +20,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => propertyInfo.GetValueWithoutIndex( new TestModel() );
+            Action test = () => propertyInfo.GetValueWithoutIndex(new TestModel());
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -28,11 +28,11 @@ namespace Extend.Testing
         public void GetValueWithoutIndexSourceNullTest()
         {
             var property = typeof(TestModel).GetPublicSettableProperties()
-                                            .First();
+                .First();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => property.GetValueWithoutIndex( null );
+            Action test = () => property.GetValueWithoutIndex(null);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -44,12 +44,12 @@ namespace Extend.Testing
                 MyString = Extensions.GetRandomString()
             };
             var property = typeof(TestModel).GetPublicSettableProperties()
-                                            .First();
+                .First();
 
-            var actual = property.GetValueWithoutIndex( actualModel );
+            var actual = property.GetValueWithoutIndex(actualModel);
 
             actual.Should()
-                  .Be( actualModel.MyString );
+                .Be(actualModel.MyString);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -22,11 +22,11 @@ namespace Extend.Testing
                 .ToList();
 
             actual.Count
-                  .Should()
-                  .Be( 1 );
+                .Should()
+                .Be(1);
             actual.First()
-                  .Company.Should()
-                  .Be( "Microsoft Corporation" );
+                .Company.Should()
+                .Be("Microsoft Corporation");
         }
     }
 }

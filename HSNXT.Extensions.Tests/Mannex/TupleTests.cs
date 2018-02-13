@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -40,14 +42,18 @@ namespace Mannex.Tests
         public void AsEnumerableWithNullThis()
         {
             // ReSharper disable InvokeAsExtensionMethod
-            
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object>)null));
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object>)null));
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object, object>)null));
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object, object, object>)null));
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object, object, object, object>)null));
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object, object, object, object, object>)null));
-            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object, object, object, object, object, object>)null));
+
+            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object>) null));
+            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object>) null));
+            AssertArgumentNullExceptionForNullThis(() => Extensions.AsEnumerable((Tuple<object, object, object>) null));
+            AssertArgumentNullExceptionForNullThis(() =>
+                Extensions.AsEnumerable((Tuple<object, object, object, object>) null));
+            AssertArgumentNullExceptionForNullThis(() =>
+                Extensions.AsEnumerable((Tuple<object, object, object, object, object>) null));
+            AssertArgumentNullExceptionForNullThis(() =>
+                Extensions.AsEnumerable((Tuple<object, object, object, object, object, object>) null));
+            AssertArgumentNullExceptionForNullThis(() =>
+                Extensions.AsEnumerable((Tuple<object, object, object, object, object, object, object>) null));
 
             // ReSharper restore InvokeAsExtensionMethod
         }

@@ -6,7 +6,7 @@
 namespace TestProject.Validation
 {
     using HSNXT;
-using HSNXT.dotNetExt.Validation;
+    using HSNXT.dotNetExt.Validation;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

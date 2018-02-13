@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,22 +14,22 @@ namespace Extend.Testing
         [Fact]
         public void SplitTest()
         {
-            var actual = "1,2,3".Split( "," );
-            Assert.Equal( 3, actual.Length );
-            Assert.Equal( "1", actual[0] );
-            Assert.Equal( "2", actual[1] );
-            Assert.Equal( "3", actual[2] );
+            var actual = "1,2,3".Split(",");
+            Assert.Equal(3, actual.Length);
+            Assert.Equal("1", actual[0]);
+            Assert.Equal("2", actual[1]);
+            Assert.Equal("3", actual[2]);
         }
 
         [Fact]
         public void SplitTest1()
         {
-            var actual = "1,2,,3.4".Split( StringSplitOptions.RemoveEmptyEntries, ",", "." );
-            Assert.Equal( 4, actual.Length );
-            Assert.Equal( "1", actual[0] );
-            Assert.Equal( "2", actual[1] );
-            Assert.Equal( "3", actual[2] );
-            Assert.Equal( "4", actual[3] );
+            var actual = "1,2,,3.4".Split(StringSplitOptions.RemoveEmptyEntries, ",", ".");
+            Assert.Equal(4, actual.Length);
+            Assert.Equal("1", actual[0]);
+            Assert.Equal("2", actual[1]);
+            Assert.Equal("3", actual[2]);
+            Assert.Equal("4", actual[3]);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
+            Action test = () => Extensions.Split(null, StringSplitOptions.RemoveEmptyEntries, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -47,7 +47,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Split( StringSplitOptions.RemoveEmptyEntries, null );
+            Action test = () => "".Split(StringSplitOptions.RemoveEmptyEntries, null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -57,7 +57,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Split( (string)null, "" );
+            Action test = () => Extensions.Split((string) null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -67,7 +67,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Split( "", null );
+            Action test = () => Extensions.Split("", null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

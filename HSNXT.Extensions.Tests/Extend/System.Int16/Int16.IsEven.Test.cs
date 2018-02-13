@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -16,7 +16,7 @@ namespace Extend.Testing
 
             var expected = value % 2 == 0;
             var actual = value.IsEven();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

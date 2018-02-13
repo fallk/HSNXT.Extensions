@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -15,9 +15,9 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 500;
-            var actual = number.PercentageOf( 50 );
+            var actual = number.PercentageOf(50);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -25,9 +25,9 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 500;
-            var actual = number.PercentageOf( (Double) 50 );
+            var actual = number.PercentageOf((Double) 50);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -35,9 +35,9 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 500;
-            var actual = number.PercentageOf( (Int64) 50 );
+            var actual = number.PercentageOf((Int64) 50);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -45,9 +45,9 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 500;
-            var actual = number.PercentageOf( new Decimal( 50 ) );
+            var actual = number.PercentageOf(new Decimal(50));
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

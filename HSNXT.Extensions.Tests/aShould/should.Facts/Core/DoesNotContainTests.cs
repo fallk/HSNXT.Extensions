@@ -11,7 +11,7 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void CanSearchForNullInContainer()
         {
-            List<object> list = new List<object> { 16, "Hi there" };
+            List<object> list = new List<object> {16, "Hi there"};
 
             Should.Core.Assertions.Assert.DoesNotContain(null, list);
         }
@@ -26,7 +26,8 @@ namespace erichexter.Should.Facts.Core
         public void CanSearchForSubstringsCaseInsensitive()
         {
             Should.Core.Assertions.Assert.Throws<DoesNotContainException>(
-                () => Should.Core.Assertions.Assert.DoesNotContain("WORLD", "Hello, world!", StringComparison.InvariantCultureIgnoreCase));
+                () => Should.Core.Assertions.Assert.DoesNotContain("WORLD", "Hello, world!",
+                    StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
@@ -41,10 +42,11 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void ItemInContainer()
         {
-            List<int> list = new List<int> { 42 };
+            List<int> list = new List<int> {42};
 
             DoesNotContainException ex =
-                Should.Core.Assertions.Assert.Throws<DoesNotContainException>(() => Should.Core.Assertions.Assert.DoesNotContain(42, list));
+                Should.Core.Assertions.Assert.Throws<DoesNotContainException>(() =>
+                    Should.Core.Assertions.Assert.DoesNotContain(42, list));
 
             Should.Core.Assertions.Assert.Equal("Assert.DoesNotContain() failure: Found: 42", ex.Message);
         }
@@ -60,7 +62,7 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void NullsAllowedInContainer()
         {
-            List<object> list = new List<object> { null, 16, "Hi there" };
+            List<object> list = new List<object> {null, 16, "Hi there"};
 
             Should.Core.Assertions.Assert.DoesNotContain(42, list);
         }
@@ -74,7 +76,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void SubstringFound()
         {
-            Should.Core.Assertions.Assert.Throws<DoesNotContainException>(() => Should.Core.Assertions.Assert.DoesNotContain("world", "Hello, world!"));
+            Should.Core.Assertions.Assert.Throws<DoesNotContainException>(() =>
+                Should.Core.Assertions.Assert.DoesNotContain("world", "Hello, world!"));
         }
 
         class MyComparer : IEqualityComparer<int>

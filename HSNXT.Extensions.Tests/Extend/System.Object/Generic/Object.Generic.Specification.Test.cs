@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,14 +15,14 @@ namespace Extend.Testing
         public void SpecificationTest()
         {
             var target = 11;
-            var actual = target.Specification( x => x > 10 && x < 200 );
+            var actual = target.Specification(x => x > 10 && x < 200);
 
-            var result = actual.IsSatisfiedBy( target );
-            Assert.True( result );
+            var result = actual.IsSatisfiedBy(target);
+            Assert.True(result);
 
             target = 200;
-            result = actual.IsSatisfiedBy( target );
-            Assert.False( result );
+            result = actual.IsSatisfiedBy(target);
+            Assert.False(result);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Extend.Testing
             Func<Int32, Boolean> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => 11.Specification( expression );
+            Action test = () => 11.Specification(expression);
 
             test.ShouldThrow<ArgumentNullException>();
         }

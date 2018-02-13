@@ -21,17 +21,12 @@ namespace DevLib.ExtensionMethods.UnitTest
         ///</summary>
         public TestContext TestContext
         {
-            get
-            {
-                return _testContextInstance;
-            }
-            set
-            {
-                _testContextInstance = value;
-            }
+            get { return _testContextInstance; }
+            set { _testContextInstance = value; }
         }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -59,6 +54,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         //{
         //}
         //
+
         #endregion
 
         /// <summary>
@@ -68,7 +64,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public void When_FindAllIndex()
         {
             var source = "abcdefgabcdefg";
-            var expected = new List<int> { 0, 5, 7, 12 };
+            var expected = new List<int> {0, 5, 7, 12};
             List<int> actual;
             actual = source.FindAllIndex(i => i == 'a' || i == 'f');
 
@@ -78,8 +74,8 @@ namespace DevLib.ExtensionMethods.UnitTest
         [TestMethod]
         public void When_FindAllIndex1()
         {
-            var source = new List<string> { "abc", "def", "ghi", "abcde" };
-            var expected = new List<int> { 0, 3 };
+            var source = new List<string> {"abc", "def", "ghi", "abcde"};
+            var expected = new List<int> {0, 3};
             List<int> actual;
             actual = source.FindAllIndex(i => i.Contains("a"));
 
@@ -204,7 +200,7 @@ namespace DevLib.ExtensionMethods.UnitTest
 
             var expected = "c";
             source.Update(2, "c");
-            var actual=source[2];
+            var actual = source[2];
 
             Assert.AreEqual(expected, actual);
         }

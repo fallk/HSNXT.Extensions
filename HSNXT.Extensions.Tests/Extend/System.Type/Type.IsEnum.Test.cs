@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -28,7 +28,7 @@ namespace Extend.Testing
         {
             var actual = typeof(String).IsEnum();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Extend.Testing
         {
             var actual = typeof(List<String>).IsEnum();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Extend.Testing
         {
             var actual = typeof(Dictionary<Int32, String>).IsEnum();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
         {
             var actual = typeof(Tuple<Int32>).IsEnum();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Extend.Testing
         {
             var actual = typeof(DayOfWeek).IsEnum();
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
     }
 }

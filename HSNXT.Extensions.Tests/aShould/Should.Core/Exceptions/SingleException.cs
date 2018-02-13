@@ -12,6 +12,8 @@ namespace erichexter.Should.Core.Exceptions
         /// </summary>
         /// <param name="count">The numbers of items in the collection.</param>
         public SingleException(int count)
-            : base(String.Format("The collection contained {0} elements instead of 1.", count)) { }
+            : base(String.Format("The collection contained {0} elements instead of 1.", count))
+        {
+        }
     }
 }

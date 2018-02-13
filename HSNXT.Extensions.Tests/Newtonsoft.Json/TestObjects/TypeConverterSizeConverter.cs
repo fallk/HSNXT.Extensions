@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -48,22 +50,26 @@ namespace Newtonsoft.Json.Tests.TestObjects
             {
                 return base.ConvertFrom(context, culture, value);
             }
+
             string str2 = str.Trim();
             if (str2.Length == 0)
             {
                 return null;
             }
+
             if (culture == null)
             {
                 culture = CultureInfo.CurrentCulture;
             }
+
             string[] strArray = str2.Split(',');
             int[] numArray = new int[strArray.Length];
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
             for (int i = 0; i < numArray.Length; i++)
             {
-                numArray[i] = (int)converter.ConvertFromString(context, culture, strArray[i]);
+                numArray[i] = (int) converter.ConvertFromString(context, culture, strArray[i]);
             }
+
             if (numArray.Length == 2)
             {
                 return new TypeConverterSize(numArray[0], numArray[1]);
@@ -72,21 +78,24 @@ namespace Newtonsoft.Json.Tests.TestObjects
             throw new ArgumentException("Bad format.");
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destinationType)
         {
             if (destinationType == null)
             {
                 throw new ArgumentNullException("destinationType");
             }
+
             if (value is TypeConverterSize)
             {
                 if (destinationType == typeof(string))
                 {
-                    TypeConverterSize size = (TypeConverterSize)value;
+                    TypeConverterSize size = (TypeConverterSize) value;
                     if (culture == null)
                     {
                         culture = CultureInfo.CurrentCulture;
                     }
+
                     TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
                     string[] strArray = new string[2];
                     int num = 0;
@@ -95,6 +104,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
                     return string.Join(", ", strArray);
                 }
             }
+
             return base.ConvertTo(context, culture, value, destinationType);
         }
     }

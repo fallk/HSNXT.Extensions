@@ -49,6 +49,7 @@ namespace erichexter.Should.Core.Assertions
                         return false;
                     }
                 }
+
                 Position++;
             }
         }
@@ -62,8 +63,8 @@ namespace erichexter.Should.Core.Assertions
         {
             var assertComparerType = typeof(AssertEqualityComparer<>).MakeGenericType(baseType);
             var assertComparer = Activator.CreateInstance(assertComparerType);
-            var compareMethod = assertComparerType.GetMethod("Equals", new [] { baseType, baseType });
-            return (bool)compareMethod.Invoke(assertComparer, new[] { a, b });
+            var compareMethod = assertComparerType.GetMethod("Equals", new[] {baseType, baseType});
+            return (bool) compareMethod.Invoke(assertComparer, new[] {a, b});
         }
     }
 }

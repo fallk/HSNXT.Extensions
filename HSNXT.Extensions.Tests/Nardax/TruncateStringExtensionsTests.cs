@@ -20,7 +20,7 @@ namespace HSNXT.Nardax.Tests
             var expected = "9";
 
             var result = _value.TruncateLeft(1);
-            
+
             Assert.AreEqual(expected, result);
         }
 

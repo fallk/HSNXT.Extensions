@@ -43,7 +43,7 @@ namespace HSNXT.PGK.Extensions.Tests
             for (int i = 0; i < block.Length; i++)
             {
                 if (i < 5)
-                    Assert.AreEqual(string.Format("string {0}", i+10), block[i]);
+                    Assert.AreEqual(string.Format("string {0}", i + 10), block[i]);
                 else
                     Assert.AreEqual(null, block[i]);
             }
@@ -65,7 +65,7 @@ namespace HSNXT.PGK.Extensions.Tests
             for (int i = 0; i < block.Length; i++)
             {
                 if (i < 5)
-                    Assert.AreEqual(string.Format("string {0}", i+10), block[i]);
+                    Assert.AreEqual(string.Format("string {0}", i + 10), block[i]);
                 else // should never get here
                     Assert.AreEqual(null, block[i]);
             }

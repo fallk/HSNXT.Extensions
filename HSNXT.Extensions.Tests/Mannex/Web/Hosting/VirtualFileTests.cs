@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Web.Hosting
@@ -40,7 +42,7 @@ namespace Mannex.Tests.Web.Hosting
         [Fact]
         public void ReadAllTextFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadAllText((VirtualFile)null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadAllText((VirtualFile) null));
             Assert.Equal("file", e.ParamName);
         }
 
@@ -69,7 +71,7 @@ namespace Mannex.Tests.Web.Hosting
         [Fact]
         public void ReadLinesFailsWithNullThis()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadLines((VirtualFile)null));
+            var e = Assert.Throws<ArgumentNullException>(() => Extensions.ReadLines((VirtualFile) null));
             Assert.Equal("file", e.ParamName);
         }
 
@@ -88,7 +90,8 @@ namespace Mannex.Tests.Web.Hosting
                 @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
                 @"Sed quis pretium enim. Nulla porttitor aliquet mi ut cursus.",
             };
-            var file = TestVirtualFile.Create("foo", string.Join(Environment.NewLine, inputs), Encoding.BigEndianUnicode);
+            var file = TestVirtualFile.Create("foo", string.Join(Environment.NewLine, inputs),
+                Encoding.BigEndianUnicode);
             Assert.Equal(inputs, file.ReadLines().ToArray());
         }
 
@@ -101,7 +104,8 @@ namespace Mannex.Tests.Web.Hosting
                 @"Sed quis pretium enim. Nulla porttitor aliquet mi ut cursus.",
             };
             var encoding = Encoding.BigEndianUnicode;
-            var file = TestVirtualFile.Create("foo", string.Join(Environment.NewLine, inputs), Encoding.BigEndianUnicode);
+            var file = TestVirtualFile.Create("foo", string.Join(Environment.NewLine, inputs),
+                Encoding.BigEndianUnicode);
             Assert.Equal(inputs, file.ReadLines(encoding).ToArray());
         }
 
@@ -109,7 +113,7 @@ namespace Mannex.Tests.Web.Hosting
         {
             readonly byte[] _content;
 
-            TestVirtualFile(string virtualPath, byte[] content) : 
+            TestVirtualFile(string virtualPath, byte[] content) :
                 base(virtualPath)
             {
                 _content = content ?? new byte[0];
@@ -119,7 +123,7 @@ namespace Mannex.Tests.Web.Hosting
             {
                 return new MemoryStream(_content);
             }
- 
+
             public static VirtualFile Create(string virtualPath, string text, Encoding encoding)
             {
                 var bytes = encoding.GetPreamble().Concat(encoding.GetBytes(text));

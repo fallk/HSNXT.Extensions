@@ -7,45 +7,47 @@ using System.IO;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
-	[TestClass]
-	public class TextReaderExtensionsTest
-	{
+    [TestClass]
+    public class TextReaderExtensionsTest
+    {
+        TextReader reader;
 
-		TextReader reader;
+        [TestInitialize]
+        public void Initialize()
+        {
+            reader = File.OpenText(@".\..\..\..\PGK.Extensions\PGK.Extensions.Tests\used_for_testing.txt");
+        }
 
-		[TestInitialize]
-		public void Initialize()
-		{
-			reader = File.OpenText(@".\..\..\..\PGK.Extensions\PGK.Extensions.Tests\used_for_testing.txt");
-		}
+        [TestCleanup]
+        public void Shutdown()
+        {
+            reader.Close();
+            reader.Dispose();
+        }
 
-		[TestCleanup]
-		public void Shutdown()
-		{
-			reader.Close();
-			reader.Dispose();
-		}
+        [TestMethod]
+        public void IterateLines_strings()
+        {
+            var iter = reader.IterateLines().GetEnumerator();
+            iter.MoveNext();
+            iter.MoveNext();
+            Assert.AreEqual("123456789a123456789b123456789c12", iter.Current);
+            iter.MoveNext();
+            Assert.IsTrue(iter.Current.StartsWith("Each line"));
+        }
 
-		[TestMethod]
-		public void IterateLines_strings()
-		{
-			var iter = reader.IterateLines().GetEnumerator();
-			iter.MoveNext();
-			iter.MoveNext();
-			Assert.AreEqual("123456789a123456789b123456789c12", iter.Current);
-			iter.MoveNext();
-			Assert.IsTrue(iter.Current.StartsWith("Each line"));
-		}
-
-		[TestMethod]
-		public void IterateLines_Action()
-		{
-			var sb = new StringBuilder();
-			int c = 0;
-			reader.IterateLines(lin => { ++c;  sb.AppendLine(lin); });
-			Assert.AreEqual(136, sb.Length);		// 136 = (32 line  + CRLF)*4 
-			Assert.AreEqual(4, c);
-			
-		}
-	}
+        [TestMethod]
+        public void IterateLines_Action()
+        {
+            var sb = new StringBuilder();
+            int c = 0;
+            reader.IterateLines(lin =>
+            {
+                ++c;
+                sb.AppendLine(lin);
+            });
+            Assert.AreEqual(136, sb.Length); // 136 = (32 line  + CRLF)*4 
+            Assert.AreEqual(4, c);
+        }
+    }
 }

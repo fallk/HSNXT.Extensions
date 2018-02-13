@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,18 +30,18 @@ namespace Extend.Testing
         {
             var list = new List<IIndexedItem<String>>
             {
-                new IndexedItem<String>( 0, "a" ),
-                new IndexedItem<String>( 1, "b" ),
-                new IndexedItem<String>( 2, "c" ),
-                new IndexedItem<String>( 3, "d" )
+                new IndexedItem<String>(0, "a"),
+                new IndexedItem<String>(1, "b"),
+                new IndexedItem<String>(2, "c"),
+                new IndexedItem<String>(3, "d")
             };
 
             var actual = list.WithoutIndex()
-                             .ToList();
+                .ToList();
             actual.Should()
-                  .HaveCount( 4 );
+                .HaveCount(4);
             actual.Should()
-                  .ContainInOrder( "a", "b", "c", "d" );
+                .ContainInOrder("a", "b", "c", "d");
         }
     }
 }

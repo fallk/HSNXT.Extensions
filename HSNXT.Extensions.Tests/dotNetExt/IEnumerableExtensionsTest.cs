@@ -7,7 +7,7 @@ namespace TestProject
 {
     using System;
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
     using System.Collections;
@@ -24,8 +24,28 @@ using HSNXT.dotNetExt;
 
         private static IList<string> GetStringQuery()
         {
-            return (new List<string> {
-                "Chris","John","Steve","Katie","Sara","Susan","Scott","Kara","Michelle","Mitchel","Bob","Allen","Tim","Tom","Zeo","Chelsea","Sue","Tod","Joe","Bill"
+            return (new List<string>
+            {
+                "Chris",
+                "John",
+                "Steve",
+                "Katie",
+                "Sara",
+                "Susan",
+                "Scott",
+                "Kara",
+                "Michelle",
+                "Mitchel",
+                "Bob",
+                "Allen",
+                "Tim",
+                "Tom",
+                "Zeo",
+                "Chelsea",
+                "Sue",
+                "Tod",
+                "Joe",
+                "Bill"
             });
         }
 
@@ -161,7 +181,8 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void EachTest001()
         {
-            var arr = new string[] {
+            var arr = new string[]
+            {
                 "Chris", "Steve", "John"
             };
 
@@ -175,14 +196,15 @@ using HSNXT.dotNetExt;
         [TestMethod, ExpectedException(typeof(NullReferenceException))]
         public void EachTest003()
         {
-            var arr = new int[] { 1, 2, 3 };
+            var arr = new int[] {1, 2, 3};
             arr.Each(null);
         }
 
         [TestMethod]
         public void EachTest004()
         {
-            IEnumerable arr = new string[] {
+            IEnumerable arr = new string[]
+            {
                 "Chris", "Steve", "John"
             };
 
@@ -204,7 +226,7 @@ using HSNXT.dotNetExt;
         [TestMethod, ExpectedException(typeof(ArgumentNullException))]
         public void EachTest006()
         {
-            IEnumerable arr = new string[] { "1", "2", "3" };
+            IEnumerable arr = new string[] {"1", "2", "3"};
             arr.Each(null);
         }
 
@@ -237,9 +259,9 @@ using HSNXT.dotNetExt;
         {
             IEnumerable<ContainsTestObject> arr = new List<ContainsTestObject>
             {
-                new ContainsTestObject { FirstName = "Chris", LastName = "Pietschmann", Age = 30 },
-                new ContainsTestObject { FirstName = "John", LastName = "Doe", Age = 54 },
-                new ContainsTestObject { FirstName = "Steve", LastName = "Johnson", Age = 28 }
+                new ContainsTestObject {FirstName = "Chris", LastName = "Pietschmann", Age = 30},
+                new ContainsTestObject {FirstName = "John", LastName = "Doe", Age = 54},
+                new ContainsTestObject {FirstName = "Steve", LastName = "Johnson", Age = 28}
             };
             Assert.IsTrue(arr.Contains(d => d.FirstName == "Chris"));
             Assert.IsTrue(arr.Contains(d => d.Age <= 30));
@@ -261,7 +283,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void IsEmptyTest02()
         {
-            var arr = new string[] { "Chris", "John" };
+            var arr = new string[] {"Chris", "John"};
             Assert.IsFalse(arr.IsEmpty());
         }
 
@@ -276,7 +298,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void IsEmptyTest04()
         {
-            System.Collections.IEnumerable v = new int[] { 1, 2, 3 };
+            System.Collections.IEnumerable v = new int[] {1, 2, 3};
             var actual = v.IsEmpty();
             Assert.AreEqual(false, actual);
         }
@@ -303,7 +325,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void IsNullOrEmptyTest02()
         {
-            var arr = new string[] { "Chris", "John" };
+            var arr = new string[] {"Chris", "John"};
             Assert.IsFalse(arr.IsNullOrEmpty());
         }
 

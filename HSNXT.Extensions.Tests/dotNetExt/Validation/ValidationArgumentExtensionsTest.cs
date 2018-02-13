@@ -8,14 +8,14 @@ namespace TestProject.Validation
     using System;
     using System.Collections.Generic;
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class ValidationArgumentExtensionsTest
     {
         #region RequireArgument
-        
+
         [TestMethod]
         public void ValidationArgumentExtensionsTest_RequireArgument_001()
         {
@@ -59,7 +59,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void ValidationArgumentExtensionsTest_NotEmpty_002()
         {
-            int[] v = new int[] { 1, 2, 3 };
+            int[] v = new int[] {1, 2, 3};
             v.RequireArgument("Name").NotEmpty();
         }
 
@@ -73,7 +73,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void ValidationArgumentExtensionsTest_NotEmpty_004()
         {
-            List<double> v = new List<double> { 1, 2, 3 };
+            List<double> v = new List<double> {1, 2, 3};
             v.RequireArgument("Name").NotEmpty();
         }
 
@@ -96,8 +96,8 @@ using HSNXT.dotNetExt;
         {
             string v = string.Empty;
             v.RequireArgument("Name").NotEmpty();
-
         }
+
         [TestMethod]
         public void ValidationArgumentExtensionsTest_NotEmpty_008()
         {
@@ -1104,7 +1104,8 @@ using HSNXT.dotNetExt;
 
         #region IsMatch
 
-        private const string emailRegEx = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+        private const string emailRegEx =
+            @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
         [TestMethod]
         public void ValidationArgumentExtensionsTest_IsMatch_001()

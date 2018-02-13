@@ -6,8 +6,6 @@ using erichexter.Should.Fluent;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
-    
-    
     /// <summary>
     ///This is a test class for ExtensionMethodSettingTest and is intended
     ///to contain all ExtensionMethodSettingTest Unit Tests
@@ -15,8 +13,6 @@ namespace HSNXT.PGK.Extensions.Tests
     [TestClass()]
     public class ExtensionMethodSettingTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -25,17 +21,12 @@ namespace HSNXT.PGK.Extensions.Tests
         ///</summary>
         public TestContext TestContext
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            get { return testContextInstance; }
+            set { testContextInstance = value; }
         }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -63,6 +54,7 @@ namespace HSNXT.PGK.Extensions.Tests
         //{
         //}
         //
+
         #endregion
 
         /// <summary>
@@ -76,14 +68,16 @@ namespace HSNXT.PGK.Extensions.Tests
 
             //result should be equal to the Current Thread Culture.
             ExtensionMethodSetting.DefaultCulture.Name.Should().Equal(CultureInfo.CurrentCulture.Name);
-            ExtensionMethodSetting.DefaultCulture.ThreeLetterISOLanguageName.Should().Equal(CultureInfo.CurrentCulture.ThreeLetterISOLanguageName);
+            ExtensionMethodSetting.DefaultCulture.ThreeLetterISOLanguageName.Should()
+                .Equal(CultureInfo.CurrentCulture.ThreeLetterISOLanguageName);
 
             //Change the default culture to French Canadian
             ExtensionMethodSetting.DefaultCulture = new CultureInfo(Cultures.French_Canada.DisplayString());
 
             //Unless your system is set to French Canadian, the current thread culture should not be fr-CA
             ExtensionMethodSetting.DefaultCulture.Name.Should().Not.Equal(CultureInfo.CurrentCulture.Name);
-            ExtensionMethodSetting.DefaultCulture.Name.Should().Not.Equal(CultureInfo.CurrentCulture.ThreeLetterISOLanguageName);
+            ExtensionMethodSetting.DefaultCulture.Name.Should().Not
+                .Equal(CultureInfo.CurrentCulture.ThreeLetterISOLanguageName);
         }
 
         /// <summary>
@@ -92,7 +86,6 @@ namespace HSNXT.PGK.Extensions.Tests
         [TestMethod()]
         public void DefaultEncodingTest()
         {
-            
             //REset it to default UTF-8 just in case something has changed it.
             ExtensionMethodSetting.DefaultEncoding = Encoding.Default;
 
@@ -102,7 +95,6 @@ namespace HSNXT.PGK.Extensions.Tests
             //Set it to ASCII
             ExtensionMethodSetting.DefaultEncoding = Encoding.ASCII;
             ExtensionMethodSetting.DefaultEncoding.EncodingName.Should().Not.Equal(Encoding.Default.EncodingName);
-
         }
     }
 }

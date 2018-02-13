@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -27,12 +27,12 @@ namespace Extend.Testing
         [Fact]
         public void StringJoinNullSeperatorTest()
         {
-            var list = new List<String> { "1", "2", "3" };
-            var actual = list.StringJoin( null );
+            var list = new List<String> {"1", "2", "3"};
+            var actual = list.StringJoin(null);
 
             actual
                 .Should()
-                .Be( "123" );
+                .Be("123");
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.StringJoin( x => x.ToString() );
+            Action test = () => list.StringJoin(x => x.ToString());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -49,21 +49,21 @@ namespace Extend.Testing
         [Fact]
         public void StringJoinSelectorNullSeperatorTest()
         {
-            var list = new List<Int32> { 1, 2, 3 };
-            var actual = list.StringJoin( x => x.ToString() + "!", null );
+            var list = new List<Int32> {1, 2, 3};
+            var actual = list.StringJoin(x => x.ToString() + "!", null);
 
             actual
                 .Should()
-                .Be( "1!2!3!" );
+                .Be("1!2!3!");
         }
 
         [Fact]
         public void StringJoinSelectorNullTest()
         {
-            var list = new List<Int32> { 1, 2, 3 };
+            var list = new List<Int32> {1, 2, 3};
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.StringJoin( null, null );
+            Action test = () => list.StringJoin(null, null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -71,32 +71,32 @@ namespace Extend.Testing
         [Fact]
         public void StringJoinSelectorTest()
         {
-            var list = new List<Int32> { 1, 2, 3 };
-            var actual = list.StringJoin( x => x.ToString() + "!", "," );
+            var list = new List<Int32> {1, 2, 3};
+            var actual = list.StringJoin(x => x.ToString() + "!", ",");
 
             actual
                 .Should()
-                .Be( "1!,2!,3!" );
+                .Be("1!,2!,3!");
         }
 
         [Fact]
         public void StringJoinTest()
         {
             var list = new List<String>();
-            var actual = list.StringJoin( "," );
-            Assert.Equal( String.Empty, actual );
+            var actual = list.StringJoin(",");
+            Assert.Equal(String.Empty, actual);
 
             actual = list.StringJoin();
-            Assert.Equal( String.Empty, actual );
+            Assert.Equal(String.Empty, actual);
 
             list = Extensions.GetRandomStrings();
-            actual = list.StringJoin( "," );
-            var expected = String.Join( ",", list );
-            Assert.Equal( expected, actual );
+            actual = list.StringJoin(",");
+            var expected = String.Join(",", list);
+            Assert.Equal(expected, actual);
 
             actual = list.StringJoin();
-            expected = String.Join( "", list );
-            Assert.Equal( expected, actual );
+            expected = String.Join("", list);
+            Assert.Equal(expected, actual);
         }
     }
 }

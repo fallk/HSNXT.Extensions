@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -32,19 +32,19 @@ namespace Extend.Testing
             var actual = new List<Int32>().ToHashSet();
 
             actual.Should()
-                  .HaveCount( 0 );
+                .HaveCount(0);
         }
 
         [Fact]
         public void ToHashSetTest()
         {
-            var collection = new List<Int32> { 1, 3, 5, 7 };
+            var collection = new List<Int32> {1, 3, 5, 7};
             var actual = collection.ToHashSet();
 
             actual.Should()
-                  .HaveCount( 4 );
+                .HaveCount(4);
             actual.Should()
-                  .ContainInOrder( new List<Int32> { 1, 3, 5, 7 } );
+                .ContainInOrder(new List<Int32> {1, 3, 5, 7});
         }
     }
 }

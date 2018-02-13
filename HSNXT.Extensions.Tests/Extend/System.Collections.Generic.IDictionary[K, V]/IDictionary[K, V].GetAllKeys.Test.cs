@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +19,13 @@ namespace Extend.Testing
         {
             var dictionary = new Dictionary<String, String>
             {
-                { Extensions.GetRandomString(), Extensions.GetRandomString() },
-                { Extensions.GetRandomString(), Extensions.GetRandomString() }
+                {Extensions.GetRandomString(), Extensions.GetRandomString()},
+                {Extensions.GetRandomString(), Extensions.GetRandomString()}
             };
 
             var allKeys = dictionary.GetAllKeys()
-                                    .ToList();
-            Assert.True( dictionary.All( x => allKeys.Contains( x.Key ) ) );
+                .ToList();
+            Assert.True(dictionary.All(x => allKeys.Contains(x.Key)));
         }
 
         [Fact]

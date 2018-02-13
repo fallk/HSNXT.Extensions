@@ -23,8 +23,7 @@ namespace HSNXT.PGK.Extensions.Test4
             {
                 tasks[i] = Task.Factory.StartNew(() =>
                 {
-
-                    string s = cd.AddOrUpdate(5000, 
+                    string s = cd.AddOrUpdate(5000,
                         (k) =>
                         {
                             Debug.WriteLine("Print once (task {0}): value added", i);
@@ -32,7 +31,7 @@ namespace HSNXT.PGK.Extensions.Test4
                             Interlocked.Exchange(ref x, i);
                             Thread.Sleep(1000);
                             return "string " + i.ToString();
-                        }, 
+                        },
                         (k, v) =>
                         {
                             Debug.WriteLine("Print each (task {0}): value updated", i);

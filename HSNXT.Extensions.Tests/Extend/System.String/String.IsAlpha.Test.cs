@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,10 +15,10 @@ namespace Extend.Testing
         public void IsAlphaTest()
         {
             var actual = "test".IsAlpha();
-            Assert.True( actual );
+            Assert.True(actual);
 
             actual = "1test".IsAlpha();
-            Assert.False( actual );
+            Assert.False(actual);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.IsAlpha( null );
+            Action test = () => Extensions.IsAlpha(null);
 
             test.ShouldNotThrow();
         }

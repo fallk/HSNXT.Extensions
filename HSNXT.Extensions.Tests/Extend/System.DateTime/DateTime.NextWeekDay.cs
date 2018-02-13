@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,18 +13,18 @@ namespace Extend.Testing
         [Fact]
         public void NextWeekDayTest()
         {
-            var friday = new DateTime( 2014, 8, 8 );
-            var saturday = new DateTime( 2014, 8, 9 );
-            var sunday = new DateTime( 2014, 8, 10 );
+            var friday = new DateTime(2014, 8, 8);
+            var saturday = new DateTime(2014, 8, 9);
+            var sunday = new DateTime(2014, 8, 10);
 
             var actual = friday.NextWeekDay();
-            Assert.Equal( friday, actual );
+            Assert.Equal(friday, actual);
 
             actual = saturday.NextWeekDay();
-            Assert.Equal( new DateTime( 2014, 8, 11 ), actual );
+            Assert.Equal(new DateTime(2014, 8, 11), actual);
 
             actual = sunday.NextWeekDay();
-            Assert.Equal( new DateTime( 2014, 8, 11 ), actual );
+            Assert.Equal(new DateTime(2014, 8, 11), actual);
         }
     }
 }

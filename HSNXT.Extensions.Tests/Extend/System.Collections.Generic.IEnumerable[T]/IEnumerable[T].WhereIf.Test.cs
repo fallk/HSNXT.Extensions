@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,25 +19,25 @@ namespace Extend.Testing
         {
             var list = new List<String>();
 
-            var actual = list.WhereIf( true, x => true );
-            Assert.Empty( actual );
+            var actual = list.WhereIf(true, x => true);
+            Assert.Empty(actual);
 
-            actual = list.WhereIf( true, x => false );
-            Assert.Empty( actual );
+            actual = list.WhereIf(true, x => false);
+            Assert.Empty(actual);
 
-            actual = list.WhereIf( false, x => true );
-            Assert.Empty( actual );
+            actual = list.WhereIf(false, x => true);
+            Assert.Empty(actual);
 
             list = Extensions.GetRandomStrings();
 
-            actual = list.WhereIf( true, x => true );
-            Assert.Equal( list.Count, actual.Count() );
+            actual = list.WhereIf(true, x => true);
+            Assert.Equal(list.Count, actual.Count());
 
-            actual = list.WhereIf( true, x => false );
-            Assert.Empty( actual );
+            actual = list.WhereIf(true, x => false);
+            Assert.Empty(actual);
 
-            actual = list.WhereIf( false, x => true );
-            Assert.Same( list, actual );
+            actual = list.WhereIf(false, x => true);
+            Assert.Same(list, actual);
         }
 
         [Fact]
@@ -45,25 +45,25 @@ namespace Extend.Testing
         {
             var list = new List<String>();
 
-            var actual = list.WhereIf( true, ( x, i ) => true );
-            Assert.Empty( actual );
+            var actual = list.WhereIf(true, (x, i) => true);
+            Assert.Empty(actual);
 
-            actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.Empty( actual );
+            actual = list.WhereIf(true, (x, i) => false);
+            Assert.Empty(actual);
 
-            actual = list.WhereIf( false, ( x, i ) => true );
-            Assert.Empty( actual );
+            actual = list.WhereIf(false, (x, i) => true);
+            Assert.Empty(actual);
 
             list = Extensions.GetRandomStrings();
 
-            actual = list.WhereIf( true, ( x, i ) => true );
-            Assert.Equal( list.Count, actual.Count() );
+            actual = list.WhereIf(true, (x, i) => true);
+            Assert.Equal(list.Count, actual.Count());
 
-            actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.Empty( actual );
+            actual = list.WhereIf(true, (x, i) => false);
+            Assert.Empty(actual);
 
-            actual = list.WhereIf( false, ( x, i ) => true );
-            Assert.Same( list, actual );
+            actual = list.WhereIf(false, (x, i) => true);
+            Assert.Same(list, actual);
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.WhereIf( true, ( x, i ) => true );
+            Action test = () => list.WhereIf(true, (x, i) => true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -83,7 +83,7 @@ namespace Extend.Testing
             Func<Object, Int32, Boolean> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().WhereIf( true, func );
+            Action test = () => new List<Object>().WhereIf(true, func);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -94,7 +94,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.WhereIf( true, x => true );
+            Action test = () => list.WhereIf(true, x => true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -105,7 +105,7 @@ namespace Extend.Testing
             Func<Object, Boolean> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().WhereIf( true, func );
+            Action test = () => new List<Object>().WhereIf(true, func);
 
             test.ShouldThrow<ArgumentNullException>();
         }

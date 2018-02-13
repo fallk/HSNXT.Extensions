@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -37,11 +37,11 @@ namespace Extend.Testing
         {
             var value = Guid.NewGuid();
             var actual = value.ToString()
-                              .ToGuid();
+                .ToGuid();
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
     }
 }

@@ -15,7 +15,9 @@ namespace erichexter.Should.Core.Exceptions
         /// </summary>
         /// <param name="expectedType">The type of the exception that was expected</param>
         public ThrowsException(Type expectedType)
-            : this(expectedType, "(No exception was thrown)", null, null) { }
+            : this(expectedType, "(No exception was thrown)", null, null)
+        {
+        }
 
         /// <summary>
         /// Creates a new instance of the <see cref="ThrowsException"/> class. Call this constructor
@@ -24,16 +26,18 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="expectedType">The type of the exception that was expected</param>
         /// <param name="actual">The actual exception that was thrown</param>
         public ThrowsException(Type expectedType,
-                               Exception actual)
-            : this(expectedType, actual.GetType().FullName, actual.Message, actual.StackTrace) { }
+            Exception actual)
+            : this(expectedType, actual.GetType().FullName, actual.Message, actual.StackTrace)
+        {
+        }
 
         ThrowsException(Type expected,
-                        string actual,
-                        string actualMessage,
-                        string stackTrace)
+            string actual,
+            string actualMessage,
+            string stackTrace)
             : base(expected,
-                   actual + (actualMessage == null ? "" : ": " + actualMessage),
-                   "Assert.Throws() Failure")
+                actual + (actualMessage == null ? "" : ": " + actualMessage),
+                "Assert.Throws() Failure")
         {
             this.stackTrace = stackTrace;
         }

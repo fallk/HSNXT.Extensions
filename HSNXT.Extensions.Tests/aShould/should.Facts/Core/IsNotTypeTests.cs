@@ -19,7 +19,8 @@ namespace erichexter.Should.Facts.Core
         public void IsNotTypeThrowsExceptionWhenWrongType()
         {
             AssertException exception =
-                Should.Core.Assertions.Assert.Throws<IsNotTypeException>(() => Should.Core.Assertions.Assert.IsNotType<InvalidCastException>(new InvalidCastException()));
+                Should.Core.Assertions.Assert.Throws<IsNotTypeException>(() =>
+                    Should.Core.Assertions.Assert.IsNotType<InvalidCastException>(new InvalidCastException()));
 
             Should.Core.Assertions.Assert.Equal("Assert.IsNotType() Failure", exception.UserMessage);
         }

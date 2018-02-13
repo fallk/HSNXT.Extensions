@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -16,25 +16,25 @@ namespace Extend.Testing
         [UseCulture("en-US")]
         public void ToDecimalFormatProviderNullTest()
         {
-            var expected = new Decimal( 100.12 );
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToDecimal( null );
+            var expected = new Decimal(100.12);
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
+            var actual = value.ToDecimal(null);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToDecimalFormatProviderTest()
         {
-            var expected = new Decimal( 100.12 );
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToDecimal( CultureInfo.InvariantCulture );
+            var expected = new Decimal(100.12);
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
+            var actual = value.ToDecimal(CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Extend.Testing
             var value = new TestModel();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
+            Action test = () => value.ToDecimal(CultureInfo.InvariantCulture);
             test.ShouldThrow<InvalidCastException>();
         }
 
@@ -63,7 +63,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDecimal( value, CultureInfo.InvariantCulture );
+            Action test = () => Extensions.ToDecimal(value, CultureInfo.InvariantCulture);
             test.ShouldThrow<FormatException>();
         }
 
@@ -73,7 +73,7 @@ namespace Extend.Testing
             const String value = "invalidFormat";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDecimal( value );
+            Action test = () => Extensions.ToDecimal(value);
             test.ShouldThrow<Exception>();
         }
 
@@ -82,34 +82,34 @@ namespace Extend.Testing
         {
             Object value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.ToDecimal( CultureInfo.InvariantCulture );
+            var actual = value.ToDecimal(CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( 0 );
+                .Be(0);
         }
 
         [Fact]
         [UseCulture("en-US")]
         public void ToDecimalTest()
         {
-            var expected = new Decimal( 100.12 );
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var expected = new Decimal(100.12);
+            var value = expected.ToString(CultureInfo.InvariantCulture) as Object;
             var actual = value.ToDecimal();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ToDecimalTooLargeFormatProviderTest()
         {
             // ReSharper disable once ImpureMethodCallOnReadonlyValueField
-            var value = Decimal.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Decimal.MaxValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
+            Action test = () => value.ToDecimal(CultureInfo.InvariantCulture);
             test.ShouldThrow<OverflowException>();
         }
 
@@ -117,7 +117,7 @@ namespace Extend.Testing
         public void ToDecimalTooLargeTest()
         {
             // ReSharper disable once ImpureMethodCallOnReadonlyValueField
-            var value = Decimal.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Decimal.MaxValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
@@ -128,10 +128,10 @@ namespace Extend.Testing
         public void ToDecimalTooSmallFormatProviderTest()
         {
             // ReSharper disable once ImpureMethodCallOnReadonlyValueField
-            var value = Decimal.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Decimal.MinValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
+            Action test = () => value.ToDecimal(CultureInfo.InvariantCulture);
             test.ShouldThrow<OverflowException>();
         }
 
@@ -139,7 +139,7 @@ namespace Extend.Testing
         public void ToDecimalTooSmallTest()
         {
             // ReSharper disable once ImpureMethodCallOnReadonlyValueField
-            var value = Decimal.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+            var value = Decimal.MinValue.ToString(CultureInfo.InvariantCulture) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.CharAt( 1 );
+            Action test = () => value.CharAt(1);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -26,7 +26,7 @@ namespace Extend.Testing
         public void CharAtArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".CharAt( 0 );
+            Action test = () => "".CharAt(0);
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
@@ -34,7 +34,7 @@ namespace Extend.Testing
         public void CharAtArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".CharAt( -1 );
+            Action test = () => "test".CharAt(-1);
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
@@ -42,35 +42,35 @@ namespace Extend.Testing
         public void CharAtArgumentOutOfRangeExceptionTest2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".CharAt( 4 );
+            Action test = () => "test".CharAt(4);
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Fact]
         public void CharAtTest()
         {
-            var actual = "test".CharAt( 0 );
+            var actual = "test".CharAt(0);
 
             actual.Should()
-                  .Be( 't' );
+                .Be('t');
         }
 
         [Fact]
         public void CharAtTest1()
         {
-            var actual = "bar".CharAt( 1 );
+            var actual = "bar".CharAt(1);
 
             actual.Should()
-                  .Be( 'a' );
+                .Be('a');
         }
 
         [Fact]
         public void CharAtTest2()
         {
-            var actual = "bar".CharAt( 2 );
+            var actual = "bar".CharAt(2);
 
             actual.Should()
-                  .Be( 'r' );
+                .Be('r');
         }
     }
 }

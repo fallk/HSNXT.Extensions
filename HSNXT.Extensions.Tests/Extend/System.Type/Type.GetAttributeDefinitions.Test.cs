@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -27,57 +27,57 @@ namespace Extend.Testing
         public void GetAttributeDefinitionsTest()
         {
             var actual = typeof(TestPerson).GetAttributeDefinitions<MyDisplayAttribute>()
-                                           .ToList();
-            Assert.Equal( 2, actual.Count );
+                .ToList();
+            Assert.Equal(2, actual.Count);
 
-            var actualItem = actual.Single( x => x.Property.Name == "FirstName" );
-            Assert.Single( actualItem.Attributes );
-            Assert.Equal( "FirstName-DisplayName",
-                          actualItem.Attributes.Single()
-                                    .Name );
+            var actualItem = actual.Single(x => x.Property.Name == "FirstName");
+            Assert.Single(actualItem.Attributes);
+            Assert.Equal("FirstName-DisplayName",
+                actualItem.Attributes.Single()
+                    .Name);
 
-            actualItem = actual.Single( x => x.Property.Name == "LastName" );
-            Assert.Single( actualItem.Attributes );
-            Assert.Equal( "LastName-DisplayName",
-                          actualItem.Attributes.Single()
-                                    .Name );
+            actualItem = actual.Single(x => x.Property.Name == "LastName");
+            Assert.Single(actualItem.Attributes);
+            Assert.Equal("LastName-DisplayName",
+                actualItem.Attributes.Single()
+                    .Name);
         }
 
         [Fact]
         public void GetAttributeDefinitionsTest1()
         {
             var actual = typeof(TestPerson).GetAttributeDefinitions<MyTestAttribute>()
-                                           .ToList();
-            Assert.Single( actual );
+                .ToList();
+            Assert.Single(actual);
 
-            var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
-            Assert.Equal( 2, actualItem.Attributes.Count() );
-            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
-            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
+            var actualItem = actual.Single(x => x.Property.Name == "DateOfBirth");
+            Assert.Equal(2, actualItem.Attributes.Count());
+            Assert.Equal(1, actualItem.Attributes.Count(x => x.Value == "1"));
+            Assert.Equal(1, actualItem.Attributes.Count(x => x.Value == "2"));
         }
 
         [Fact]
         public void GetAttributeDefinitionsTest2()
         {
             var actual = typeof(TestPersonInherit).GetAttributeDefinitions<MyTestAttribute>()
-                                                  .ToList();
-            Assert.Equal( 2, actual.Count );
+                .ToList();
+            Assert.Equal(2, actual.Count);
 
-            var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
-            Assert.Equal( 2, actualItem.Attributes.Count() );
-            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
-            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
+            var actualItem = actual.Single(x => x.Property.Name == "DateOfBirth");
+            Assert.Equal(2, actualItem.Attributes.Count());
+            Assert.Equal(1, actualItem.Attributes.Count(x => x.Value == "1"));
+            Assert.Equal(1, actualItem.Attributes.Count(x => x.Value == "2"));
 
-            actualItem = actual.Single( x => x.Property.Name == "Weight" );
-            Assert.Single( actualItem.Attributes );
-            Assert.Equal( "10000",
-                          actualItem.Attributes.Single()
-                                    .Value );
+            actualItem = actual.Single(x => x.Property.Name == "Weight");
+            Assert.Single(actualItem.Attributes);
+            Assert.Equal("10000",
+                actualItem.Attributes.Single()
+                    .Value);
         }
 
         #region Nested Types
 
-        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
+        [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
         private class MyDisplayAttribute : Attribute
         {
             #region Properties
@@ -87,7 +87,7 @@ namespace Extend.Testing
             #endregion
         }
 
-        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
+        [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
         private class MyTestAttribute : Attribute
         {
             #region Properties
@@ -101,16 +101,16 @@ namespace Extend.Testing
         {
             #region Properties
 
-            [MyDisplay( Name = "FirstName-DisplayName" )]
+            [MyDisplay(Name = "FirstName-DisplayName")]
             // ReSharper disable once UnusedMember.Local
             public String FirstName { get; set; } = "Name";
 
-            [MyDisplay( Name = "LastName-DisplayName" )]
+            [MyDisplay(Name = "LastName-DisplayName")]
             // ReSharper disable once UnusedMember.Local
             public String LastName { get; set; } = "LastName";
 
-            [MyTest( Value = "1" )]
-            [MyTest( Value = "2" )]
+            [MyTest(Value = "1")]
+            [MyTest(Value = "2")]
             // ReSharper disable once UnusedMember.Local
             public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
@@ -121,7 +121,7 @@ namespace Extend.Testing
         {
             #region Properties
 
-            [MyTest( Value = "10000" )]
+            [MyTest(Value = "10000")]
             // ReSharper disable once UnusedMember.Local
             public Double Weight { get; set; } = 100;
 

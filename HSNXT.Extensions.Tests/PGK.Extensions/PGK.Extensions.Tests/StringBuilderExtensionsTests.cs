@@ -5,39 +5,40 @@ using erichexter.Should.Fluent;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
-	[TestClass]
+    [TestClass]
     public class StringBuilderExtensionsTests
-	{
-		[TestMethod]
-		public void AppendLineWithFormat()
-		{
-		    var builder = new StringBuilder();
-		    string result;
+    {
+        [TestMethod]
+        public void AppendLineWithFormat()
+        {
+            var builder = new StringBuilder();
+            string result;
 
             // Arrange
-		    builder.AppendLine("Something to format ({0}.{1}) with a new line after", "String", "Format");
-		    // Act
+            builder.AppendLine("Something to format ({0}.{1}) with a new line after", "String", "Format");
+            // Act
             result = builder.ToString();
-		    // Assert
+            // Assert
             result.Should().Not.Be.NullOrEmpty();
-		    result.Split(Environment.NewLine).Should().Count.Exactly(2);
-            result.Split(Environment.NewLine)[0].Should().Equal("Something to format (String.Format) with a new line after");
+            result.Split(Environment.NewLine).Should().Count.Exactly(2);
+            result.Split(Environment.NewLine)[0].Should()
+                .Equal("Something to format (String.Format) with a new line after");
             result.Split(Environment.NewLine)[1].Should().Be.Empty();
-		}
+        }
 
         [TestMethod]
         public void AppendIfTest()
         {
             string test = "abc123xyz456";
 
-            StringBuilder sb = new StringBuilder(); 
-            Char c; 
-            for (int i = 0; i < test.Length; i++) 
+            StringBuilder sb = new StringBuilder();
+            Char c;
+            for (int i = 0; i < test.Length; i++)
             {
                 c = test[i];
                 sb.AppendIf(Char.IsDigit(c), c);
             }
-            
+
             Assert.IsTrue(sb.ToString() == "123456");
         }
 
@@ -71,5 +72,5 @@ namespace HSNXT.PGK.Extensions.Tests
 
             Assert.IsTrue(sb.ToString() == "TrueTrue");
         }
-	}
+    }
 }

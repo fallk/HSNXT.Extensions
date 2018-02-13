@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Text.RegularExpressions
@@ -34,15 +36,14 @@ namespace Mannex.Tests.Text.RegularExpressions
 
     public class MatchTests
     {
-
         [Fact]
         public void MatchBinds3()
         {
             var result = Regexes.Date.Match("Dec 4, 2000").Bind((d, mo, y) => new
             {
-                Day   = d.Value,
+                Day = d.Value,
                 Month = mo.Value,
-                Year  = y.Value
+                Year = y.Value
             });
             Assert.Equal("4", result.Day);
             Assert.Equal("Dec", result.Month);
@@ -54,9 +55,9 @@ namespace Mannex.Tests.Text.RegularExpressions
         {
             var result = Regexes.Date.Match("Dec 4, 2000").BindNum((mo, d, y) => new
             {
-                Day   = d.Value,
+                Day = d.Value,
                 Month = mo.Value,
-                Year  = y.Value
+                Year = y.Value
             });
             Assert.Equal("4", result.Day);
             Assert.Equal("Dec", result.Month);
@@ -69,9 +70,9 @@ namespace Mannex.Tests.Text.RegularExpressions
             var result = Regexes.DateWithWeekday.Match("Mon, Dec 4, 2000").Bind((d, mo, y, wd) => new
             {
                 Weekday = wd.Value,
-                Day     = d.Value,
-                Month   = mo.Value,
-                Year    = y.Value
+                Day = d.Value,
+                Month = mo.Value,
+                Year = y.Value
             });
             Assert.Equal("Mon", result.Weekday);
             Assert.Equal("4", result.Day);
@@ -85,9 +86,9 @@ namespace Mannex.Tests.Text.RegularExpressions
             var result = Regexes.DateWithWeekday.Match("Mon, Dec 4, 2000").BindNum((wd, mo, d, y) => new
             {
                 Weekday = wd.Value,
-                Day     = d.Value,
-                Month   = mo.Value,
-                Year    = y.Value
+                Day = d.Value,
+                Month = mo.Value,
+                Year = y.Value
             });
             Assert.Equal("Mon", result.Weekday);
             Assert.Equal("4", result.Day);
@@ -111,7 +112,7 @@ namespace Mannex.Tests.Text.RegularExpressions
             static Regex Regex(string pattern)
             {
                 return new Regex(pattern, RegexOptions.IgnorePatternWhitespace
-                                        | RegexOptions.CultureInvariant);
+                                          | RegexOptions.CultureInvariant);
             }
         }
     }

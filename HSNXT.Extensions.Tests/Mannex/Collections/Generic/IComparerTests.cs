@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Collections.Generic
@@ -44,18 +46,18 @@ namespace Mannex.Tests.Collections.Generic
         public void InvertInvertsComparison()
         {
             var comparer = Comparer<int>.Default.Invert();
-            Assert.True(0 <  comparer.Compare(42, 43));
+            Assert.True(0 < comparer.Compare(42, 43));
             Assert.True(0 == comparer.Compare(42, 42));
-            Assert.True(0 >  comparer.Compare(42, 41));
+            Assert.True(0 > comparer.Compare(42, 41));
         }
 
         [Fact]
         public void InvertOnInvertRestoresComparison()
         {
             var comparer = Comparer<int>.Default.Invert().Invert();
-            Assert.True(0 >  comparer.Compare(42, 43));
+            Assert.True(0 > comparer.Compare(42, 43));
             Assert.True(0 == comparer.Compare(42, 42));
-            Assert.True(0 <  comparer.Compare(42, 41));
+            Assert.True(0 < comparer.Compare(42, 41));
         }
     }
 }

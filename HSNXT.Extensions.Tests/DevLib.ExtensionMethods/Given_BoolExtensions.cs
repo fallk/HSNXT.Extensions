@@ -17,6 +17,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public TestContext TestContext { get; set; }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -44,6 +45,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         //{
         //}
         //
+
         #endregion
 
         /// <summary>

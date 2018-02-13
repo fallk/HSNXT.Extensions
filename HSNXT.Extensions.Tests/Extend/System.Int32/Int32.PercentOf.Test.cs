@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -16,9 +16,9 @@ namespace Extend.Testing
         {
             const Int32 number = 1000;
             const Int32 expected = 200;
-            var actual = number.PercentOf( 500 );
+            var actual = number.PercentOf(500);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -26,16 +26,16 @@ namespace Extend.Testing
         {
             const Int32 number = 1000;
             const Int32 expected = 200;
-            var actual = number.PercentOf( (Double) 500 );
+            var actual = number.PercentOf((Double) 500);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PercentOfTest1DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => 0.PercentOf( (Double) 100 );
+            Action test = () => 0.PercentOf((Double) 100);
 
             test.ShouldNotThrow();
         }
@@ -45,16 +45,16 @@ namespace Extend.Testing
         {
             const Int32 number = 1000;
             const Int32 expected = 200;
-            var actual = number.PercentOf( (Int64) 500 );
+            var actual = number.PercentOf((Int64) 500);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PercentOfTest2DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => 0.PercentOf( (Int64) 100 );
+            Action test = () => 0.PercentOf((Int64) 100);
 
             test.ShouldNotThrow();
         }
@@ -63,7 +63,7 @@ namespace Extend.Testing
         public void PercentOfTestDivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => 0.PercentOf( 100 );
+            Action test = () => 0.PercentOf(100);
 
             test.ShouldNotThrow();
         }

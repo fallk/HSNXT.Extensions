@@ -16,7 +16,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Constructor_001()
         {
-            var arr = new string[]{
+            var arr = new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             };
             var page = arr.ToPaginatedList(0, 5, 100);
@@ -27,7 +28,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_PageIndex_001()
         {
-            var page = new PaginatedList(new string[]{
+            var page = new PaginatedList(new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }, 0, 5, 100);
             var target = new DataPage(page);
@@ -37,7 +39,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_TotalCount_001()
         {
-            var page = new PaginatedList(new string[]{
+            var page = new PaginatedList(new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }, 0, 5, 100);
             var target = new DataPage(page);
@@ -47,7 +50,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_TotalPages_001()
         {
-            var page = new PaginatedList(new string[]{
+            var page = new PaginatedList(new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }, 0, 5, 100);
             var target = new DataPage(page);
@@ -57,7 +61,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_Constructor_001()
         {
-            var arr = (new string[]{
+            var arr = (new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable();
             var page = arr.ToPaginatedList(0, 5, 100);
@@ -68,18 +73,20 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_Constructor_002()
         {
-            var arr = (new string[]{
+            var arr = (new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable();
             var page = arr.ToPaginatedList(0, 5, 100);
             var target = new DataPage<string>(page);
-            Assert.AreEqual(page, ((IDataPage)target).Data);
+            Assert.AreEqual(page, ((IDataPage) target).Data);
         }
 
         [TestMethod]
         public void DataPage_Generic_PageIndex_001()
         {
-            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]{
+            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable(), 0, 5, 100);
             var target = new DataPage<string>(page);
@@ -89,7 +96,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_TotalCount_001()
         {
-            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]{
+            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable(), 0, 5, 100);
             var target = new DataPage<string>(page);
@@ -99,7 +107,8 @@ namespace TestProject
         [TestMethod]
         public void DataPage_Generic_TotalPages_001()
         {
-            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]{
+            var page = new HSNXT.dotNetExt.PaginatedList<string>((new string[]
+            {
                 "ONE", "TWO", "THREE", "FOUR", "FIVE"
             }).AsQueryable(), 0, 5, 100);
             var target = new DataPage<string>(page);

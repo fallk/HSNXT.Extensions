@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
@@ -17,27 +17,27 @@ namespace Extend.Testing
         public void GetNameOverloadTest()
         {
             var model = new TestModel();
-            var actual = model.Age.GetName( () => model.Age );
+            var actual = model.Age.GetName(() => model.Age);
 
-            Assert.Equal( "Age", actual );
+            Assert.Equal("Age", actual);
         }
 
         [Fact]
         public void GetNameOverloadTest1()
         {
             var model = new TestModel();
-            var actual = model.Name.GetName( () => model.Name );
+            var actual = model.Name.GetName(() => model.Name);
 
-            Assert.Equal( "Name", actual );
+            Assert.Equal("Name", actual);
         }
 
         [Fact]
         public void GetNameOverloadTest2()
         {
-            var actual = PropertyChanged.GetName( () => PropertyChanged );
+            var actual = PropertyChanged.GetName(() => PropertyChanged);
 
             actual.Should()
-                  .Be( "PropertyChanged" );
+                .Be("PropertyChanged");
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Extend.Testing
         {
             const String myString = "";
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => myString.GetName( () => myString );
+            Action test = () => myString.GetName(() => myString);
             test.ShouldThrow<ArgumentException>();
         }
 
@@ -56,9 +56,9 @@ namespace Extend.Testing
             {
                 SubModel = new SubModel()
             };
-            var actual = model.SubModel.Foo.GetName( () => model.SubModel.Foo );
+            var actual = model.SubModel.Foo.GetName(() => model.SubModel.Foo);
 
-            Assert.Equal( "Foo", actual );
+            Assert.Equal("Foo", actual);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Extend.Testing
             Expression<Func<Object>> fieldName = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".GetName( fieldName );
+            Action test = () => "".GetName(fieldName);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -76,27 +76,27 @@ namespace Extend.Testing
         public void GetNameTest()
         {
             var model = new TestModel();
-            var actual = model.GetName( x => x.Age );
+            var actual = model.GetName(x => x.Age);
 
-            Assert.Equal( "Age", actual );
+            Assert.Equal("Age", actual);
         }
 
         [Fact]
         public void GetNameTest1()
         {
             var model = new TestModel();
-            var actual = model.GetName( x => x.Name );
+            var actual = model.GetName(x => x.Name);
 
-            Assert.Equal( "Name", actual );
+            Assert.Equal("Name", actual);
         }
 
         [Fact]
         public void GetNameTest2()
         {
-            var actual = this.GetName( x => x.PropertyChanged );
+            var actual = this.GetName(x => x.PropertyChanged);
 
             actual.Should()
-                  .Be( "PropertyChanged" );
+                .Be("PropertyChanged");
         }
 
         [Fact]
@@ -104,18 +104,18 @@ namespace Extend.Testing
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.Age;
-            var actual = model.GetName( expression1 );
+            var actual = model.GetName(expression1);
 
-            Assert.Equal( "Age", actual );
+            Assert.Equal("Age", actual);
         }
 
         [Fact]
         public void GetNameTest4()
         {
             var model = new TestModel();
-            var actual = model.GetName( x => x.SubModel.Foo );
+            var actual = model.GetName(x => x.SubModel.Foo);
 
-            Assert.Equal( "Foo", actual );
+            Assert.Equal("Foo", actual);
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace Extend.Testing
         {
             const String myString = "";
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => myString.GetName( x => myString );
+            Action test = () => myString.GetName(x => myString);
             test.ShouldThrow<ArgumentException>();
         }
 
@@ -133,7 +133,7 @@ namespace Extend.Testing
             Expression<Func<Object, Object>> fieldName = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".GetName( fieldName );
+            Action test = () => "".GetName(fieldName);
 
             test.ShouldThrow<ArgumentNullException>();
         }

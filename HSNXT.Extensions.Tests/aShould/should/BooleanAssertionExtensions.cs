@@ -26,7 +26,7 @@ namespace erichexter.Should
         /// <param name="userMessage">The message to show when the condition is not false</param>
         /// <exception cref="FalseException">Thrown if the condition is not false</exception>
         public static void ShouldBeFalse(this bool condition,
-                                         string userMessage)
+            string userMessage)
         {
             Assert.False(condition, userMessage);
         }
@@ -48,7 +48,7 @@ namespace erichexter.Should
         /// <param name="userMessage">The message to be shown when the condition is false</param>
         /// <exception cref="TrueException">Thrown when the condition is false</exception>
         public static void ShouldBeTrue(this bool condition,
-                                        string userMessage)
+            string userMessage)
         {
             Assert.True(condition, userMessage);
         }

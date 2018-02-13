@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,13 +22,13 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 namespace Newtonsoft.Json.Tests.TestObjects
 {
     public class DerivedWithPrivate : BaseWithPrivate
     {
-        [JsonProperty]
-        public string DerivedProperty { get; private set; }
+        [JsonProperty] public string DerivedProperty { get; private set; }
     }
 }

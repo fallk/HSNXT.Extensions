@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -12,11 +12,11 @@ namespace Extend.Testing
         [Fact]
         public void IsWhiteSpaceTest()
         {
-            Assert.False( 'a'.IsWhiteSpace() );
-            Assert.False( 'A'.IsWhiteSpace() );
-            Assert.False( 'z'.IsWhiteSpace() );
-            Assert.False( '-'.IsWhiteSpace() );
-            Assert.True( ' '.IsWhiteSpace() );
+            Assert.False('a'.IsWhiteSpace());
+            Assert.False('A'.IsWhiteSpace());
+            Assert.False('z'.IsWhiteSpace());
+            Assert.False('-'.IsWhiteSpace());
+            Assert.True(' '.IsWhiteSpace());
         }
     }
 }

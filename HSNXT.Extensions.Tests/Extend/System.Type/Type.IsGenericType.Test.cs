@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -28,7 +28,7 @@ namespace Extend.Testing
         {
             var actual = typeof(String).IsGenericType();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Extend.Testing
         {
             var actual = typeof(List<String>).IsGenericType();
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Extend.Testing
         {
             var actual = typeof(Dictionary<Int32, String>).IsGenericType();
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
         {
             var actual = typeof(Tuple<Int32>).IsGenericType();
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Extend.Testing
         {
             var actual = typeof(DayOfWeek).IsGenericType();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
     }
 }

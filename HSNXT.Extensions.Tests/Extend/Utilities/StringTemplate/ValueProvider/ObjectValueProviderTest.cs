@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,7 +13,7 @@ using Xunit;
 
 namespace Extend.Testing.Internal
 {
-    [Collection( "InstanceCreator" )]
+    [Collection("InstanceCreator")]
     public class ObjectValueProviderTest
     {
         [Fact]
@@ -21,7 +21,7 @@ namespace Extend.Testing.Internal
         {
             // ReSharper disable once ObjectCreationAsStatement
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new ObjectValueProvider( null );
+            Action test = () => new ObjectValueProvider(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -29,18 +29,18 @@ namespace Extend.Testing.Internal
         [Fact]
         public void CtorTest()
         {
-            var actual = new ObjectValueProvider( new TestModel() );
+            var actual = new ObjectValueProvider(new TestModel());
             actual.Should()
-                  .NotBeNull();
+                .NotBeNull();
         }
 
         [Fact]
         public void GetValueInvalidExpressionTest()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            Action test = () => target.GetValue( "DOESNotExist" );
+            Action test = () => target.GetValue("DOESNotExist");
             test.ShouldThrow<FormatException>();
         }
 
@@ -48,35 +48,36 @@ namespace Extend.Testing.Internal
         public void GetValueTest()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyString" );
+            var actual = target.GetValue("MyString");
             actual.Should()
-                  .Be( model.MyString );
+                .Be(model.MyString);
         }
 
         [Fact]
         public void GetValueTest1()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyInt32" );
+            var actual = target.GetValue("MyInt32");
             actual.Should()
-                  .Be( model.MyInt32.ToString() );
+                .Be(model.MyInt32.ToString());
         }
 
         [Fact]
         public void GetValueTest10()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "SubModel.MyDictionaryStringSub[" + model.SubModel.MyDictionaryStringSub.First()
-                                                                                   .Key + "]" );
+            var actual = target.GetValue("SubModel.MyDictionaryStringSub[" + model.SubModel.MyDictionaryStringSub
+                                             .First()
+                                             .Key + "]");
             actual.Should()
-                  .Be( model.SubModel.MyDictionaryStringSub[model.SubModel.MyDictionaryStringSub.First()
-                                                                 .Key] );
+                .Be(model.SubModel.MyDictionaryStringSub[model.SubModel.MyDictionaryStringSub.First()
+                    .Key]);
         }
 
         [Fact]
@@ -84,45 +85,45 @@ namespace Extend.Testing.Internal
         public void GetValueTest2()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyDouble" );
+            var actual = target.GetValue("MyDouble");
             actual.Should()
-                  .Be( model.MyDouble.ToString( CultureInfo.InvariantCulture ) );
+                .Be(model.MyDouble.ToString(CultureInfo.InvariantCulture));
         }
 
         [Fact]
         public void GetValueTest3()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyStringArray[0]" );
+            var actual = target.GetValue("MyStringArray[0]");
             actual.Should()
-                  .Be( model.MyStringArray[0] );
+                .Be(model.MyStringArray[0]);
         }
 
         [Fact]
         public void GetValueTest4()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyInt32Array[0]" );
+            var actual = target.GetValue("MyInt32Array[0]");
             actual.Should()
-                  .Be( model.MyInt32Array[0]
-                            .ToString() );
+                .Be(model.MyInt32Array[0]
+                    .ToString());
         }
 
         [Fact]
         public void GetValueTest5()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyListString[0]" );
+            var actual = target.GetValue("MyListString[0]");
             actual.Should()
-                  .Be( model.MyListString[0] );
+                .Be(model.MyListString[0]);
         }
 
         [Fact]
@@ -137,47 +138,47 @@ namespace Extend.Testing.Internal
                     Extensions.GetRandomInt32()
                 }
             };
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyListInt[0]" );
+            var actual = target.GetValue("MyListInt[0]");
             actual.Should()
-                  .Be( model.MyListInt[0]
-                            .ToString() );
+                .Be(model.MyListInt[0]
+                    .ToString());
         }
 
         [Fact]
         public void GetValueTest7()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "MyDictionaryString[" + model.MyDictionaryString.First()
-                                                                       .Key + "]" );
+            var actual = target.GetValue("MyDictionaryString[" + model.MyDictionaryString.First()
+                                             .Key + "]");
             actual.Should()
-                  .Be( model.MyDictionaryString[model.MyDictionaryString.First()
-                                                     .Key] );
+                .Be(model.MyDictionaryString[model.MyDictionaryString.First()
+                    .Key]);
         }
 
         [Fact]
         public void GetValueTest8()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "SubModel.MyStringSub" );
+            var actual = target.GetValue("SubModel.MyStringSub");
             actual.Should()
-                  .Be( model.SubModel.MyStringSub );
+                .Be(model.SubModel.MyStringSub);
         }
 
         [Fact]
         public void GetValueTest9()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider( model );
+            var target = new ObjectValueProvider(model);
 
-            var actual = target.GetValue( "SubModel.MyStringArraySub[0]" );
+            var actual = target.GetValue("SubModel.MyStringArraySub[0]");
             actual.Should()
-                  .Be( model.SubModel.MyStringArraySub[0] );
+                .Be(model.SubModel.MyStringArraySub[0]);
         }
 
         #region Nested Types

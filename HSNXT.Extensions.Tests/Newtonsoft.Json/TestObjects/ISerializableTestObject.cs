@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -51,7 +53,8 @@ namespace Newtonsoft.Json.Tests.TestObjects
         internal uint _uintValue;
         internal ulong _ulongValue;
 
-        public ISerializableTestObject(string stringValue, int intValue, DateTimeOffset dateTimeOffset, Person personValue)
+        public ISerializableTestObject(string stringValue, int intValue, DateTimeOffset dateTimeOffset,
+            Person personValue)
         {
             _stringValue = stringValue;
             _intValue = intValue;
@@ -64,10 +67,10 @@ namespace Newtonsoft.Json.Tests.TestObjects
         {
             _stringValue = info.GetString("stringValue");
             _intValue = info.GetInt32("intValue");
-            _dateTimeOffsetValue = (DateTimeOffset)info.GetValue("dateTimeOffsetValue", typeof(DateTimeOffset));
-            _personValue = (Person)info.GetValue("personValue", typeof(Person));
-            _nullPersonValue = (Person)info.GetValue("nullPersonValue", typeof(Person));
-            _nullableInt = (int?)info.GetValue("nullableInt", typeof(int?));
+            _dateTimeOffsetValue = (DateTimeOffset) info.GetValue("dateTimeOffsetValue", typeof(DateTimeOffset));
+            _personValue = (Person) info.GetValue("personValue", typeof(Person));
+            _nullPersonValue = (Person) info.GetValue("nullPersonValue", typeof(Person));
+            _nullableInt = (int?) info.GetValue("nullableInt", typeof(int?));
 
             _booleanValue = info.GetBoolean("booleanValue");
             _byteValue = info.GetByte("byteValue");
@@ -85,25 +88,25 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue((string)"stringValue", (object)_stringValue);
-            info.AddValue((string)"intValue", (int)_intValue);
-            info.AddValue((string)"dateTimeOffsetValue", (object)_dateTimeOffsetValue);
-            info.AddValue((string)"personValue", (object)_personValue);
-            info.AddValue((string)"nullPersonValue", (object)_nullPersonValue);
+            info.AddValue((string) "stringValue", (object) _stringValue);
+            info.AddValue((string) "intValue", (int) _intValue);
+            info.AddValue((string) "dateTimeOffsetValue", (object) _dateTimeOffsetValue);
+            info.AddValue((string) "personValue", (object) _personValue);
+            info.AddValue((string) "nullPersonValue", (object) _nullPersonValue);
             info.AddValue("nullableInt", null);
 
-            info.AddValue((string)"booleanValue", (bool)_booleanValue);
-            info.AddValue((string)"byteValue", (byte)_byteValue);
-            info.AddValue((string)"charValue", (char)_charValue);
-            info.AddValue((string)"dateTimeValue", (DateTime)_dateTimeValue);
-            info.AddValue((string)"decimalValue", (decimal)_decimalValue);
-            info.AddValue((string)"shortValue", (short)_shortValue);
-            info.AddValue((string)"longValue", (long)_longValue);
-            info.AddValue((string)"sbyteValue", (sbyte)_sbyteValue);
-            info.AddValue((string)"floatValue", (float)_floatValue);
-            info.AddValue((string)"ushortValue", (ushort)_ushortValue);
-            info.AddValue((string)"uintValue", (uint)_uintValue);
-            info.AddValue((string)"ulongValue", (ulong)_ulongValue);
+            info.AddValue((string) "booleanValue", (bool) _booleanValue);
+            info.AddValue((string) "byteValue", (byte) _byteValue);
+            info.AddValue((string) "charValue", (char) _charValue);
+            info.AddValue((string) "dateTimeValue", (DateTime) _dateTimeValue);
+            info.AddValue((string) "decimalValue", (decimal) _decimalValue);
+            info.AddValue((string) "shortValue", (short) _shortValue);
+            info.AddValue((string) "longValue", (long) _longValue);
+            info.AddValue((string) "sbyteValue", (sbyte) _sbyteValue);
+            info.AddValue((string) "floatValue", (float) _floatValue);
+            info.AddValue((string) "ushortValue", (ushort) _ushortValue);
+            info.AddValue((string) "uintValue", (uint) _uintValue);
+            info.AddValue((string) "ulongValue", (ulong) _ulongValue);
         }
     }
 }

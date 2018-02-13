@@ -4,131 +4,132 @@ using HSNXT;
 
 namespace Tests
 {
-	[TestFixture]
-	class when_closing_dbconnection
-	{
-		private class DbConnectionSpy: IDbConnection
-		{
-			public DbConnectionSpy()
-			{
-				State = ConnectionState.Closed;
-			}
+    [TestFixture]
+    class when_closing_dbconnection
+    {
+        private class DbConnectionSpy : IDbConnection
+        {
+            public DbConnectionSpy()
+            {
+                State = ConnectionState.Closed;
+            }
 
-			public bool DisposeCalled { get; private set; }
-			public void Dispose()
-			{
-				DisposeCalled = true;
-			}
+            public bool DisposeCalled { get; private set; }
 
-			public IDbTransaction BeginTransaction()
-			{
-				throw new System.NotImplementedException();
-			}
+            public void Dispose()
+            {
+                DisposeCalled = true;
+            }
 
-			public IDbTransaction BeginTransaction(IsolationLevel il)
-			{
-				throw new System.NotImplementedException();
-			}
+            public IDbTransaction BeginTransaction()
+            {
+                throw new System.NotImplementedException();
+            }
 
-			public void Close()
-			{
-				CloseCalled = true;
-			}
+            public IDbTransaction BeginTransaction(IsolationLevel il)
+            {
+                throw new System.NotImplementedException();
+            }
 
-			public bool CloseCalled { get; private set; }
+            public void Close()
+            {
+                CloseCalled = true;
+            }
 
-			public void ChangeDatabase(string databaseName)
-			{
-				throw new System.NotImplementedException();
-			}
+            public bool CloseCalled { get; private set; }
 
-			public IDbCommand CreateCommand()
-			{
-				throw new System.NotImplementedException();
-			}
+            public void ChangeDatabase(string databaseName)
+            {
+                throw new System.NotImplementedException();
+            }
 
-			public void Open()
-			{
-				throw new System.NotImplementedException();
-			}
+            public IDbCommand CreateCommand()
+            {
+                throw new System.NotImplementedException();
+            }
 
-			public string ConnectionString
-			{
-				get { throw new System.NotImplementedException(); }
-				set { throw new System.NotImplementedException(); }
-			}
+            public void Open()
+            {
+                throw new System.NotImplementedException();
+            }
 
-			public int ConnectionTimeout
-			{
-				get { throw new System.NotImplementedException(); }
-			}
+            public string ConnectionString
+            {
+                get { throw new System.NotImplementedException(); }
+                set { throw new System.NotImplementedException(); }
+            }
 
-			public string Database
-			{
-				get { throw new System.NotImplementedException(); }
-			}
+            public int ConnectionTimeout
+            {
+                get { throw new System.NotImplementedException(); }
+            }
 
-			public ConnectionState State { get; set; }
-		}
+            public string Database
+            {
+                get { throw new System.NotImplementedException(); }
+            }
 
-		[Test]
-		public void then_already_closed_connection_is_not_closed()
-		{
-			var dbConnection = new DbConnectionSpy {State = ConnectionState.Closed};
+            public ConnectionState State { get; set; }
+        }
 
-			dbConnection.SafeClose();
+        [Test]
+        public void then_already_closed_connection_is_not_closed()
+        {
+            var dbConnection = new DbConnectionSpy {State = ConnectionState.Closed};
 
-			Assert.IsFalse(dbConnection.CloseCalled);
-		}
+            dbConnection.SafeClose();
 
-		[Test]
-		public void then_already_closed_connection_is_not_disposed()
-		{
-			var dbConnection = new DbConnectionSpy { State = ConnectionState.Closed };
+            Assert.IsFalse(dbConnection.CloseCalled);
+        }
 
-			dbConnection.SafeClose();
+        [Test]
+        public void then_already_closed_connection_is_not_disposed()
+        {
+            var dbConnection = new DbConnectionSpy {State = ConnectionState.Closed};
 
-			Assert.IsFalse(dbConnection.DisposeCalled);
-		}
+            dbConnection.SafeClose();
 
-		[Test]
-		public void then_open_connection_is_closed()
-		{
-			var dbConnection = new DbConnectionSpy { State = ConnectionState.Open };
+            Assert.IsFalse(dbConnection.DisposeCalled);
+        }
 
-			dbConnection.SafeClose();
+        [Test]
+        public void then_open_connection_is_closed()
+        {
+            var dbConnection = new DbConnectionSpy {State = ConnectionState.Open};
 
-			Assert.IsTrue(dbConnection.CloseCalled);
-		}
+            dbConnection.SafeClose();
 
-		[Test]
-		public void then_open_connection_is_not_disposed()
-		{
-			var dbConnection = new DbConnectionSpy { State = ConnectionState.Open };
+            Assert.IsTrue(dbConnection.CloseCalled);
+        }
 
-			dbConnection.SafeClose();
+        [Test]
+        public void then_open_connection_is_not_disposed()
+        {
+            var dbConnection = new DbConnectionSpy {State = ConnectionState.Open};
 
-			Assert.IsFalse(dbConnection.DisposeCalled);
-		}
+            dbConnection.SafeClose();
 
-		[Test]
-		public void then_open_connection_is_disposed_when_requested()
-		{
-			var dbConnection = new DbConnectionSpy { State = ConnectionState.Open };
+            Assert.IsFalse(dbConnection.DisposeCalled);
+        }
 
-			dbConnection.SafeClose(true);
+        [Test]
+        public void then_open_connection_is_disposed_when_requested()
+        {
+            var dbConnection = new DbConnectionSpy {State = ConnectionState.Open};
 
-			Assert.IsTrue(dbConnection.DisposeCalled);
-		}
+            dbConnection.SafeClose(true);
 
-		[Test]
-		public void then_already_closed_connection_is_disposed_when_requested()
-		{
-			var dbConnection = new DbConnectionSpy { State = ConnectionState.Closed };
+            Assert.IsTrue(dbConnection.DisposeCalled);
+        }
 
-			dbConnection.SafeClose(true);
+        [Test]
+        public void then_already_closed_connection_is_disposed_when_requested()
+        {
+            var dbConnection = new DbConnectionSpy {State = ConnectionState.Closed};
 
-			Assert.IsTrue(dbConnection.DisposeCalled);
-		}
-	}
+            dbConnection.SafeClose(true);
+
+            Assert.IsTrue(dbConnection.DisposeCalled);
+        }
+    }
 }

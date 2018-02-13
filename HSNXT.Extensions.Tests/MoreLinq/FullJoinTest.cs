@@ -114,12 +114,12 @@ namespace HSNXT.Test
 
             result.AssertSequenceEqual(
                 (Left, foo, missing),
-                (Both, bar1, bar2 ),
-                (Both, bar1, bar3 ),
+                (Both, bar1, bar2),
+                (Both, bar1, bar3),
                 (Left, qux, missing),
-                (Right, missing, quux ),
-                (Right, missing, baz ),
-                (Right, missing, quuz ));
+                (Right, missing, quux),
+                (Right, missing, baz),
+                (Right, missing, quuz));
         }
 
         [Test]
@@ -150,12 +150,12 @@ namespace HSNXT.Test
 
             result.AssertSequenceEqual(
                 (Left, foo, missing),
-                (Both, bar1, bar2 ),
-                (Both, bar1, bar3 ),
+                (Both, bar1, bar2),
+                (Both, bar1, bar3),
                 (Left, qux, missing),
-                (Right, missing, quux ),
-                (Right, missing, baz ),
-                (Right, missing, quuz ));
+                (Right, missing, quux),
+                (Right, missing, baz),
+                (Right, missing, quuz));
         }
 
         [Test]

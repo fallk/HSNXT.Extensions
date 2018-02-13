@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,52 +18,52 @@ namespace Extend.Testing
         {
             var actual = typeof(Dictionary<Int32, String>).GetImplementedInterfaces();
             actual.Should()
-                  .HaveCount( 10 );
+                .HaveCount(10);
         }
 
         [Fact]
         public void GetImplementedInterfaces1()
         {
             var actual = typeof(TestType).GetImplementedInterfaces()
-                                         .ToList();
+                .ToList();
             actual.Should()
-                  .HaveCount( 1 );
+                .HaveCount(1);
             actual[0]
                 .Should()
-                .Be( typeof(ITest) );
+                .Be(typeof(ITest));
         }
 
         [Fact]
         public void GetImplementedInterfaces2()
         {
             var actual = typeof(SecondTest).GetImplementedInterfaces()
-                                           .ToList();
+                .ToList();
             actual.Should()
-                  .HaveCount( 2 );
+                .HaveCount(2);
             actual[0]
                 .Should()
-                .Be( typeof(ISecondTest) );
+                .Be(typeof(ISecondTest));
             actual[1]
                 .Should()
-                .Be( typeof(ITest) );
+                .Be(typeof(ITest));
         }
 
         [Fact]
         public void GetImplementedInterfaces3()
         {
             var actual = typeof(ThirdTest).GetImplementedInterfaces()
-                                          .ToList();
+                .ToList();
             actual.Should()
-                  .HaveCount( 3 );
-            actual.Count( x => x == typeof(ITest) )
-                  .Should()
-                  .Be( 1 );
-            actual.Count( x => x == typeof(ISecondTest) )
-                  .Should()
-                  .Be( 1 );
-            actual.Count( x => x == typeof(IThirdTest) )
-                  .Should()
-                  .Be( 1 );
+                .HaveCount(3);
+            actual.Count(x => x == typeof(ITest))
+                .Should()
+                .Be(1);
+            actual.Count(x => x == typeof(ISecondTest))
+                .Should()
+                .Be(1);
+            actual.Count(x => x == typeof(IThirdTest))
+                .Should()
+                .Be(1);
         }
 
         [Fact]

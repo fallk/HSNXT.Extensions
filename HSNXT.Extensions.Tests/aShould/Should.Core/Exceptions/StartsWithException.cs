@@ -11,6 +11,9 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="expectedStartString">The expected object value</param>
         /// <param name="actual">The actual object value</param>
         public StartsWithException(object expectedStartString, object actual)
-            : base(string.Format("Assert.StartsWith() failure: '{0}' not found at the beginning of '{1}'", expectedStartString, actual)) { }
+            : base(string.Format("Assert.StartsWith() failure: '{0}' not found at the beginning of '{1}'",
+                expectedStartString, actual))
+        {
+        }
     }
 }

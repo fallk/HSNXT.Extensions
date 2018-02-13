@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -28,7 +28,7 @@ namespace Extend.Testing
         {
             var actual = typeof(String).GetGenericTypeArgument();
             actual.Should()
-                  .BeNull();
+                .BeNull();
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Extend.Testing
         {
             var actual = typeof(List<String>).GetGenericTypeArgument();
             actual.Should()
-                  .Be( typeof(String) );
+                .Be(typeof(String));
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Extend.Testing
         {
             var actual = typeof(Dictionary<Int32, String>).GetGenericTypeArgument();
             actual.Should()
-                  .Be( typeof(Int32) );
+                .Be(typeof(Int32));
         }
     }
 }

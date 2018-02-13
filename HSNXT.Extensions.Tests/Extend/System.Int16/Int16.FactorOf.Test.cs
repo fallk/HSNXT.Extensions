@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -16,22 +16,22 @@ namespace Extend.Testing
             var factorNumer = Extensions.GetRandomInt16();
 
             var expected = factorNumer % value == 0;
-            var actual = value.FactorOf( factorNumer );
-            Assert.Equal( expected, actual );
+            var actual = value.FactorOf(factorNumer);
+            Assert.Equal(expected, actual);
 
             value = 10;
             factorNumer = 100;
             expected = true;
-            actual = value.FactorOf( factorNumer );
+            actual = value.FactorOf(factorNumer);
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
 
             value = 11;
             factorNumer = 100;
             expected = false;
-            actual = value.FactorOf( factorNumer );
+            actual = value.FactorOf(factorNumer);
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

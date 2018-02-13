@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -16,142 +16,142 @@ namespace Extend.Testing
         [Fact]
         public void AndTest()
         {
-            var left = new ExpressionSpecification<String>( x => true );
-            var target = left.And( x => true );
+            var left = new ExpressionSpecification<String>(x => true);
+            var target = left.And(x => true);
 
-            var actual = target.IsSatisfiedBy( String.Empty );
+            var actual = target.IsSatisfiedBy(String.Empty);
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
         public void AndTest1()
         {
-            var left = new ExpressionSpecification<String>( x => true );
-            var target = left.And( x => false );
+            var left = new ExpressionSpecification<String>(x => true);
+            var target = left.And(x => false);
 
-            var actual = target.IsSatisfiedBy( String.Empty );
+            var actual = target.IsSatisfiedBy(String.Empty);
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
         public void AndTest10()
         {
-            var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
-            var target = left.And( x => true, "msgRight" );
+            var left = new ExpressionSpecification<String>(x => false, "msgLeft");
+            var target = left.And(x => true, "msgRight");
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
+            var actual = target.IsSatisfiedByWithMessages(String.Empty)
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 1 );
+                .HaveCount(1);
             actual.Should()
-                  .Contain( "msgLeft" );
+                .Contain("msgLeft");
         }
 
         [Fact]
         public void AndTest11()
         {
-            var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
-            var target = left.And( x => false, "msgRight" );
+            var left = new ExpressionSpecification<String>(x => false, "msgLeft");
+            var target = left.And(x => false, "msgRight");
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
+            var actual = target.IsSatisfiedByWithMessages(String.Empty)
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 2 );
+                .HaveCount(2);
             actual.Should()
-                  .Contain( "msgLeft", "msgRight" );
+                .Contain("msgLeft", "msgRight");
         }
 
         [Fact]
         public void AndTest2()
         {
-            var left = new ExpressionSpecification<String>( x => false );
-            var target = left.And( x => true );
+            var left = new ExpressionSpecification<String>(x => false);
+            var target = left.And(x => true);
 
-            var actual = target.IsSatisfiedBy( String.Empty );
-            Assert.False( actual );
+            var actual = target.IsSatisfiedBy(String.Empty);
+            Assert.False(actual);
         }
 
         [Fact]
         public void AndTest3()
         {
-            var left = new ExpressionSpecification<String>( x => false );
-            var target = left.And( x => false );
+            var left = new ExpressionSpecification<String>(x => false);
+            var target = left.And(x => false);
 
-            var actual = target.IsSatisfiedBy( String.Empty );
-            Assert.False( actual );
+            var actual = target.IsSatisfiedBy(String.Empty);
+            Assert.False(actual);
         }
 
         [Fact]
         public void AndTest4()
         {
-            var left = new ExpressionSpecification<String>( x => true );
-            var target = left.And( x => true );
+            var left = new ExpressionSpecification<String>(x => true);
+            var target = left.And(x => true);
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty );
-            Assert.Empty( actual );
+            var actual = target.IsSatisfiedByWithMessages(String.Empty);
+            Assert.Empty(actual);
         }
 
         [Fact]
         public void AndTest5()
         {
-            var left = new ExpressionSpecification<String>( x => true );
-            var target = left.And( x => false );
+            var left = new ExpressionSpecification<String>(x => true);
+            var target = left.And(x => false);
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.Single( actual );
-            Assert.Null( actual[0] );
+            var actual = target.IsSatisfiedByWithMessages(String.Empty)
+                .ToList();
+            Assert.Single(actual);
+            Assert.Null(actual[0]);
         }
 
         [Fact]
         public void AndTest6()
         {
-            var left = new ExpressionSpecification<String>( x => false );
-            var target = left.And( x => true );
+            var left = new ExpressionSpecification<String>(x => false);
+            var target = left.And(x => true);
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.Single( actual );
-            Assert.Null( actual[0] );
+            var actual = target.IsSatisfiedByWithMessages(String.Empty)
+                .ToList();
+            Assert.Single(actual);
+            Assert.Null(actual[0]);
         }
 
         [Fact]
         public void AndTest7()
         {
-            var left = new ExpressionSpecification<String>( x => false );
-            var target = left.And( x => false );
+            var left = new ExpressionSpecification<String>(x => false);
+            var target = left.And(x => false);
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.Equal( 2, actual.Count );
-            Assert.Null( actual[0] );
-            Assert.Null( actual[1] );
+            var actual = target.IsSatisfiedByWithMessages(String.Empty)
+                .ToList();
+            Assert.Equal(2, actual.Count);
+            Assert.Null(actual[0]);
+            Assert.Null(actual[1]);
         }
 
         [Fact]
         public void AndTest8()
         {
-            var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
-            var target = left.And( x => true, "msgRight" );
+            var left = new ExpressionSpecification<String>(x => true, "msgLeft");
+            var target = left.And(x => true, "msgRight");
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty );
-            Assert.Empty( actual );
+            var actual = target.IsSatisfiedByWithMessages(String.Empty);
+            Assert.Empty(actual);
         }
 
         [Fact]
         public void AndTest9()
         {
-            var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
-            var target = left.And( x => false, "msgRight" );
+            var left = new ExpressionSpecification<String>(x => true, "msgLeft");
+            var target = left.And(x => false, "msgRight");
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.Single( actual );
-            Assert.Equal( "msgRight", actual[0] );
+            var actual = target.IsSatisfiedByWithMessages(String.Empty)
+                .ToList();
+            Assert.Single(actual);
+            Assert.Equal("msgRight", actual[0]);
         }
 
         [Fact]
@@ -159,17 +159,17 @@ namespace Extend.Testing
         {
             ISpecification<String> left = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => left.And( x => true );
+            Action test = () => left.And(x => true);
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Fact]
         public void AndTestNullCheck1()
         {
-            var left = new ExpressionSpecification<String>( x => true );
+            var left = new ExpressionSpecification<String>(x => true);
             Func<String, Boolean> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => left.And( expression );
+            Action test = () => left.And(expression);
             test.ShouldThrow<ArgumentNullException>();
         }
     }

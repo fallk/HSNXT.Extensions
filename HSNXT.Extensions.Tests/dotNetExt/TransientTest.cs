@@ -20,16 +20,14 @@ namespace TestProject
     public class TransientTest
     {
         public class RetryTestException : Exception
-        { }
+        {
+        }
 
         [TestMethod]
         public void RetryTest_001()
         {
             var i = 0;
-            Transient.Retry(() =>
-            {
-                i++;
-            });
+            Transient.Retry(() => { i++; });
             Assert.AreEqual(1, i);
         }
 
@@ -73,10 +71,7 @@ namespace TestProject
         public void RetryTest_006()
         {
             var i = 0;
-            Transient.Retry<Exception>(() =>
-            {
-                i++;
-            });
+            Transient.Retry<Exception>(() => { i++; });
             Assert.AreEqual(1, i);
         }
 
@@ -107,28 +102,19 @@ namespace TestProject
         [TestMethod, ExpectedException(typeof(RetryTestException))]
         public void RetryTest_009()
         {
-            Transient.Retry<RetryTestException>(() =>
-            {
-                throw new RetryTestException();
-            });
+            Transient.Retry<RetryTestException>(() => { throw new RetryTestException(); });
         }
 
         [TestMethod, ExpectedException(typeof(RetryTestException))]
         public void RetryTest_010()
         {
-            Transient.Retry<RetryTestException>(5, () =>
-            {
-                throw new RetryTestException();
-            });
+            Transient.Retry<RetryTestException>(5, () => { throw new RetryTestException(); });
         }
 
         [TestMethod, ExpectedException(typeof(Exception))]
         public void RetryTest_011()
         {
-            Transient.Retry<RetryTestException>(() =>
-            {
-                throw new Exception();
-            });
+            Transient.Retry<RetryTestException>(() => { throw new Exception(); });
         }
 
         [TestMethod, ExpectedException(typeof(Exception))]
@@ -149,21 +135,21 @@ namespace TestProject
             var retries = 0;
             var beforeRetryCount = 0;
             Transient.Retry<Exception>(4,
-            () => // Code Block to Try
-            {
-                retries++;
-                if (retries <= 4) throw new Exception();
-            },
-            (ex, i) => // Catch Exception Before Retry
-            {
-                beforeRetryCount++;
-                Assert.AreEqual(i, beforeRetryCount);
-                return true; // Yes Retry
-            },
-            (ex, i) => // Catch Exception After Final Retry
-            {
-                Assert.AreEqual(5, i);
-            }
+                () => // Code Block to Try
+                {
+                    retries++;
+                    if (retries <= 4) throw new Exception();
+                },
+                (ex, i) => // Catch Exception Before Retry
+                {
+                    beforeRetryCount++;
+                    Assert.AreEqual(i, beforeRetryCount);
+                    return true; // Yes Retry
+                },
+                (ex, i) => // Catch Exception After Final Retry
+                {
+                    Assert.AreEqual(5, i);
+                }
             );
 
             Assert.AreEqual(5, retries);
@@ -175,17 +161,17 @@ namespace TestProject
             var retries = 0;
             var beforeRetryCount = 0;
             Transient.Retry<Exception>(4,
-            () => // Code Block to Try
-            {
-                retries++;
-                if (retries <= 4) throw new Exception();
-            },
-            (ex, i) => // Catch Exception Before Retry
-            {
-                beforeRetryCount++;
-                Assert.AreEqual(i, beforeRetryCount);
-                return true; // Yes Retry
-            }
+                () => // Code Block to Try
+                {
+                    retries++;
+                    if (retries <= 4) throw new Exception();
+                },
+                (ex, i) => // Catch Exception Before Retry
+                {
+                    beforeRetryCount++;
+                    Assert.AreEqual(i, beforeRetryCount);
+                    return true; // Yes Retry
+                }
             );
 
             Assert.AreEqual(5, retries);
@@ -197,17 +183,17 @@ namespace TestProject
             var retries = 0;
             var beforeRetryCount = 0;
             Transient.Retry<Exception>(4,
-            () => // Code Block to Try
-            {
-                retries++;
-                if (retries <= 4) throw new Exception();
-            },
-            catchExceptionBeforeRetry: (ex, i) => // Catch Exception Before Retry
-            {
-                beforeRetryCount++;
-                Assert.AreEqual(i, beforeRetryCount);
-                return true; // Yes Retry
-            }
+                () => // Code Block to Try
+                {
+                    retries++;
+                    if (retries <= 4) throw new Exception();
+                },
+                catchExceptionBeforeRetry: (ex, i) => // Catch Exception Before Retry
+                {
+                    beforeRetryCount++;
+                    Assert.AreEqual(i, beforeRetryCount);
+                    return true; // Yes Retry
+                }
             );
 
             Assert.AreEqual(5, retries);
@@ -219,21 +205,21 @@ namespace TestProject
             var retries = 0;
             var beforeRetryCount = 0;
             Transient.Retry<Exception>(4,
-            () => // Code Block to Try
-            {
-                retries++;
-                if (retries <= 4) throw new Exception();
-            },
-            catchExceptionBeforeRetry: (ex, i) => // Catch Exception Before Retry
-            {
-                beforeRetryCount++;
-                Assert.AreEqual(i, beforeRetryCount);
-                return true; // Yes Retry
-            },
-            catchExceptionAfterFinalRetryAttempt: (ex, i) => // Catch Exception After Final Retry
-            {
-                Assert.AreEqual(5, i);
-            }
+                () => // Code Block to Try
+                {
+                    retries++;
+                    if (retries <= 4) throw new Exception();
+                },
+                catchExceptionBeforeRetry: (ex, i) => // Catch Exception Before Retry
+                {
+                    beforeRetryCount++;
+                    Assert.AreEqual(i, beforeRetryCount);
+                    return true; // Yes Retry
+                },
+                catchExceptionAfterFinalRetryAttempt: (ex, i) => // Catch Exception After Final Retry
+                {
+                    Assert.AreEqual(5, i);
+                }
             );
 
             Assert.AreEqual(5, retries);
@@ -243,13 +229,13 @@ namespace TestProject
         public void RetryTest_017()
         {
             Transient.Retry<Exception>(4, () => // Code Block to Try
-            { 
-                throw new Exception();
-            },
-            (ex, i) => // Catch Exception Before Retry
-            {
-                return false; // No, Do Not Retry
-            }
+                {
+                    throw new Exception();
+                },
+                (ex, i) => // Catch Exception Before Retry
+                {
+                    return false; // No, Do Not Retry
+                }
             );
         }
 
@@ -257,9 +243,7 @@ namespace TestProject
         public void SqlRetryTest_001()
         {
             var tries = 0;
-            Transient.SqlRetry(() => {
-                tries++;
-            });
+            Transient.SqlRetry(() => { tries++; });
             Assert.AreEqual(1, tries);
         }
 

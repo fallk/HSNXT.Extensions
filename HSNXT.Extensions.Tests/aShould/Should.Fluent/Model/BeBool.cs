@@ -21,6 +21,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.IsTrue(should.Target);
             }
+
             return should.Target;
         }
 
@@ -34,6 +35,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.IsFalse(should.Target);
             }
+
             return should.Target;
         }
     }

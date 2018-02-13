@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,9 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = list.EnsureNotNull();
 
-            Assert.NotNull( actual );
-            Assert.Empty( actual );
-            Assert.Null( list );
+            Assert.NotNull(actual);
+            Assert.Empty(actual);
+            Assert.Null(list);
         }
 
         [Fact]
@@ -37,11 +37,11 @@ namespace Extend.Testing
             var actual = list.EnsureNotNull();
             var actualList = actual.ToList();
 
-            Assert.Equal( 3, actualList.Count );
-            Assert.Equal( "1", actualList.ElementAt( 0 ) );
-            Assert.Equal( "2", actualList.ElementAt( 1 ) );
-            Assert.Equal( "3", actualList.ElementAt( 2 ) );
-            Assert.Same( list, actual );
+            Assert.Equal(3, actualList.Count);
+            Assert.Equal("1", actualList.ElementAt(0));
+            Assert.Equal("2", actualList.ElementAt(1));
+            Assert.Equal("3", actualList.ElementAt(2));
+            Assert.Same(list, actual);
         }
     }
 }

@@ -6,7 +6,7 @@
 namespace TestProject
 {
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
 
@@ -36,6 +36,7 @@ using HSNXT.dotNetExt;
         //}
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -63,6 +64,7 @@ using HSNXT.dotNetExt;
         //{
         //}
         //
+
         #endregion
 
 
@@ -76,7 +78,6 @@ using HSNXT.dotNetExt;
         {
             this.EventHandler_Raise_001_Event.Raise(this, EventArgs.Empty);
         }
-
 
 
         public event EventHandler<EventArgs> EventHandler_Raise_003_Event;
@@ -107,6 +108,5 @@ using HSNXT.dotNetExt;
             Assert.AreEqual(this, sender);
             Assert.AreEqual(e, EventArgs.Empty);
         }
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -21,8 +21,8 @@ namespace Extend.Testing
             };
             array.ClearAll();
 
-            Assert.Null( array[0] );
-            Assert.Null( array[1] );
+            Assert.Null(array[0]);
+            Assert.Null(array[1]);
         }
 
         [Fact]

@@ -75,9 +75,9 @@ namespace Eloquent.Tests.Strings
             [TestInitialize]
             public void Init()
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); 
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             }
-            
+
             [TestMethod]
             public void Can_Convert_String_To_DateTime_Extended()
             {
@@ -91,7 +91,7 @@ namespace Eloquent.Tests.Strings
             public void Can_Convert_String_To_DateTime()
             {
                 DateTime dt = new DateTime(2014, 04, 23, 10, 56, 10, 30);
-                
+
                 Assert.AreEqual(dt.ToString(), "23-Apr-2014 10:56:10.30".ToDateTime().ToString());
             }
         }
@@ -102,9 +102,9 @@ namespace Eloquent.Tests.Strings
             [TestInitialize]
             public void Init()
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); 
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             }
-            
+
             [TestMethod]
             public void Can_Convert_String_To_Decimal()
             {
@@ -119,9 +119,9 @@ namespace Eloquent.Tests.Strings
             [TestInitialize]
             public void Init()
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); 
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             }
-            
+
             [TestMethod]
             public void Can_Convert_String_To_Double()
             {
@@ -224,9 +224,9 @@ namespace Eloquent.Tests.Strings
             [TestInitialize]
             public void Init()
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); 
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             }
-            
+
             [TestMethod]
             public void Can_Parse_DateTime_Extended()
             {
@@ -239,9 +239,7 @@ namespace Eloquent.Tests.Strings
             {
                 string st = "01/01/2015 12:10:10.200";
                 var dt = st.ParseDateTime();
-
             }
         }
-
     }
 }

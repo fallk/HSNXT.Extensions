@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,9 +13,9 @@ namespace Extend.Testing
         [Fact]
         public void JuneTest()
         {
-            var expected = new DateTime( 2000, 6, 10 );
-            var actual = Extensions.June( 10, 2000 );
-            Assert.Equal( expected, actual );
+            var expected = new DateTime(2000, 6, 10);
+            var actual = Extensions.June(10, 2000);
+            Assert.Equal(expected, actual);
         }
     }
 }

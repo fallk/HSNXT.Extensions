@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -17,27 +17,27 @@ namespace Extend.Testing
         public void ManyTest()
         {
             var list = new List<String>();
-            Assert.False( list.Many() );
+            Assert.False(list.Many());
 
-            list = Extensions.GetRandomStrings( 1 );
-            Assert.False( list.Many() );
+            list = Extensions.GetRandomStrings(1);
+            Assert.False(list.Many());
 
-            list = Extensions.GetRandomStrings( 10 );
-            Assert.True( list.Many() );
+            list = Extensions.GetRandomStrings(10);
+            Assert.True(list.Many());
         }
 
         [Fact]
         public void ManyTest1()
         {
             var list = new List<String>();
-            Assert.False( list.Many( x => true ) );
+            Assert.False(list.Many(x => true));
 
-            list = Extensions.GetRandomStrings( 1 );
-            Assert.False( list.Many( x => true ) );
+            list = Extensions.GetRandomStrings(1);
+            Assert.False(list.Many(x => true));
 
-            list = Extensions.GetRandomStrings( 10 );
-            Assert.False( list.Many( x => false ) );
-            Assert.True( list.Many( x => true ) );
+            list = Extensions.GetRandomStrings(10);
+            Assert.False(list.Many(x => false));
+            Assert.True(list.Many(x => true));
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.Many( x => true );
+            Action test = () => list.Many(x => true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -56,7 +56,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().Many( null );
+            Action test = () => new List<Object>().Many(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests
@@ -48,10 +50,12 @@ namespace Mannex.Tests
         [InlineData(" 00:00", +0, 0, @"\+hh\:mm", @"\-hh\:mm", @"\ \0\0\:\0\0")]
         [InlineData("+01:00", +1, 0, @"\+hh\:mm", @"\-hh\:mm", @"\ \0\0\:\0\0")]
         [InlineData("+02:00", +2, 0, @"\+hh\:mm", @"\-hh\:mm", @"\ \0\0\:\0\0")]
-        public void ToStringThreeFormats(string expected, int hours, int minutes, string positiveFormat, string negativeFormat, string zeroFormat)
+        public void ToStringThreeFormats(string expected, int hours, int minutes, string positiveFormat,
+            string negativeFormat, string zeroFormat)
         {
             var ts = new TimeSpan(0, hours, minutes, 0);
-            Assert.Equal(expected, ts.ToString(positiveFormat, negativeFormat, zeroFormat, CultureInfo.InvariantCulture));
+            Assert.Equal(expected,
+                ts.ToString(positiveFormat, negativeFormat, zeroFormat, CultureInfo.InvariantCulture));
         }
     }
 }

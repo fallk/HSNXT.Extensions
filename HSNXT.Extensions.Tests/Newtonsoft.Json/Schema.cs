@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 #pragma warning disable 618
@@ -184,20 +186,22 @@ namespace Newtonsoft.Json.Tests.Schema
 
             if (errors.Count > 0)
             {
-                Assert.Fail("Schema generated for type '{0}' is not valid." + Environment.NewLine + string.Join(Environment.NewLine, errors.ToArray()), typeof(T));
+                Assert.Fail(
+                    "Schema generated for type '{0}' is not valid." + Environment.NewLine +
+                    string.Join(Environment.NewLine, errors.ToArray()), typeof(T));
             }
         }
 
         [Test]
         public void GenerateSchemaAndSerializeFromTypeTests()
         {
-            GenerateSchemaAndSerializeFromType(new List<string> { "1", "Two", "III" });
-            GenerateSchemaAndSerializeFromType(new List<int> { 1 });
+            GenerateSchemaAndSerializeFromType(new List<string> {"1", "Two", "III"});
+            GenerateSchemaAndSerializeFromType(new List<int> {1});
             GenerateSchemaAndSerializeFromType(new Version("1.2.3.4"));
             GenerateSchemaAndSerializeFromType(new Store());
             GenerateSchemaAndSerializeFromType(new Person());
             GenerateSchemaAndSerializeFromType(new PersonRaw());
-            GenerateSchemaAndSerializeFromType(new CircularReferenceClass() { Name = "I'm required" });
+            GenerateSchemaAndSerializeFromType(new CircularReferenceClass() {Name = "I'm required"});
             GenerateSchemaAndSerializeFromType(new CircularReferenceWithIdClass());
             GenerateSchemaAndSerializeFromType(new ClassWithArray());
             GenerateSchemaAndSerializeFromType(new ClassWithGuid());
@@ -235,7 +239,9 @@ namespace Newtonsoft.Json.Tests.Schema
             o.Validate(schema, (sender, args) => errors.Add(args.Message));
 
             Assert.AreEqual(1, errors.Count);
-            Assert.AreEqual("Property 'g' has not been defined and the schema does not allow additional properties. Line 1, position 5.", errors[0]);
+            Assert.AreEqual(
+                "Property 'g' has not been defined and the schema does not allow additional properties. Line 1, position 5.",
+                errors[0]);
         }
 
         [Test]
@@ -347,7 +353,8 @@ namespace Newtonsoft.Json.Tests.Schema
             JsonSchema schema = new JsonSchema();
             schema.UniqueItems = true;
 
-            JArray a = new JArray(1, new JObject(new JProperty("value", "value!")), 3, 2, new JObject(new JProperty("value", "value!")), 4, 2, new JObject(new JProperty("value", "value!")));
+            JArray a = new JArray(1, new JObject(new JProperty("value", "value!")), 3, 2,
+                new JObject(new JProperty("value", "value!")), 4, 2, new JObject(new JProperty("value", "value!")));
             IList<string> errorMessages;
             Assert.IsFalse(a.IsValid(schema, out errorMessages));
             Assert.AreEqual(3, errorMessages.Count);
@@ -376,7 +383,7 @@ namespace Newtonsoft.Json.Tests.Schema
                 new JArray(3, 4),
                 new JArray(1, 2),
                 new JArray(1, 1)
-                );
+            );
             IList<string> errorMessages;
             Assert.IsFalse(a.IsValid(schema, out errorMessages));
             Assert.AreEqual(4, errorMessages.Count);
@@ -407,14 +414,14 @@ namespace Newtonsoft.Json.Tests.Schema
 
             JObject o = new JObject(
                 new JProperty("bar", 1)
-                );
+            );
             IList<string> errorMessages;
             Assert.IsTrue(o.IsValid(schema, out errorMessages));
             Assert.AreEqual(0, errorMessages.Count);
 
             o = new JObject(
                 new JProperty("bar", 3)
-                );
+            );
             Assert.IsFalse(o.IsValid(schema, out errorMessages));
             Assert.AreEqual(1, errorMessages.Count);
         }
@@ -436,7 +443,7 @@ namespace Newtonsoft.Json.Tests.Schema
 
             JObject o = new JObject(
                 new JProperty("bar", new JArray(1, 2, 3, 3))
-                );
+            );
             IList<string> errorMessages;
             Assert.IsFalse(o.IsValid(schema, out errorMessages));
             Assert.AreEqual(1, errorMessages.Count);
@@ -448,8 +455,8 @@ namespace Newtonsoft.Json.Tests.Schema
             JsonSchema schema = new JsonSchema();
             schema.Items = new List<JsonSchema>
             {
-                new JsonSchema { Type = JsonSchemaType.Object },
-                new JsonSchema { Type = JsonSchemaType.Integer }
+                new JsonSchema {Type = JsonSchemaType.Object},
+                new JsonSchema {Type = JsonSchemaType.Integer}
             };
             schema.PositionalItemsValidation = true;
 

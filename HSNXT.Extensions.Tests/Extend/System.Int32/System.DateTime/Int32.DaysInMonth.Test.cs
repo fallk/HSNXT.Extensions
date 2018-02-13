@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,12 +13,12 @@ namespace Extend.Testing
         [Fact]
         public void DaysInMonthTest()
         {
-            var year = Extensions.GetRandomInt32( 1990, 2015 );
-            var month = Extensions.GetRandomInt32( 1, 12 );
+            var year = Extensions.GetRandomInt32(1990, 2015);
+            var month = Extensions.GetRandomInt32(1, 12);
 
-            var expected = DateTime.DaysInMonth( year, month );
-            var actual = year.DaysInMonth( month );
-            Assert.Equal( expected, actual );
+            var expected = DateTime.DaysInMonth(year, month);
+            var actual = year.DaysInMonth(month);
+            Assert.Equal(expected, actual);
         }
     }
 }

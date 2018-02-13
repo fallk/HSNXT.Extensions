@@ -14,7 +14,8 @@ namespace Eloquent.Tests.DateTimes
             [TestMethod]
             public void Can_Count()
             {
-                Assert.AreEqual(DateTime.Now.Subtract(10.Seconds()).ToShortTimeString(), 10.Seconds().Ago().ToShortTimeString());
+                Assert.AreEqual(DateTime.Now.Subtract(10.Seconds()).ToShortTimeString(),
+                    10.Seconds().Ago().ToShortTimeString());
             }
         }
 
@@ -24,7 +25,8 @@ namespace Eloquent.Tests.DateTimes
             [TestMethod]
             public void Can_Count()
             {
-                Assert.AreEqual(DateTime.UtcNow.Subtract(10.Seconds()).ToShortTimeString(), 10.Seconds().AgoUtc().ToShortTimeString());
+                Assert.AreEqual(DateTime.UtcNow.Subtract(10.Seconds()).ToShortTimeString(),
+                    10.Seconds().AgoUtc().ToShortTimeString());
             }
         }
 
@@ -34,7 +36,8 @@ namespace Eloquent.Tests.DateTimes
             [TestMethod]
             public void Can_Count()
             {
-                Assert.AreEqual(DateTime.Now.Add(10.Seconds()).ToShortTimeString(), 10.Seconds().FromNow().ToShortTimeString());
+                Assert.AreEqual(DateTime.Now.Add(10.Seconds()).ToShortTimeString(),
+                    10.Seconds().FromNow().ToShortTimeString());
             }
         }
 
@@ -44,7 +47,8 @@ namespace Eloquent.Tests.DateTimes
             [TestMethod]
             public void Can_Count()
             {
-                Assert.AreEqual(DateTime.UtcNow.Add(10.Seconds()).ToShortTimeString(), 10.Seconds().FromNowUtc().ToShortTimeString());
+                Assert.AreEqual(DateTime.UtcNow.Add(10.Seconds()).ToShortTimeString(),
+                    10.Seconds().FromNowUtc().ToShortTimeString());
             }
         }
     }

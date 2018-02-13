@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -51,21 +53,21 @@ namespace Mannex.Tests
         public void ToIncreasing()
         {
             var expectations = new[]
-            { 
-                -12.500, 
-                -09.778, 
-                -07.056, 
-                -04.333, 
-                -01.611, 
-                +01.111, 
-                +03.833, 
-                +06.556, 
-                +09.278, 
+            {
+                -12.500,
+                -09.778,
+                -07.056,
+                -04.333,
+                -01.611,
+                +01.111,
+                +03.833,
+                +06.556,
+                +09.278,
                 +12.000,
             };
 
             var ns = from n in (-12.5).To(12, 10)
-                     select Math.Round(n, 3);
+                select Math.Round(n, 3);
             Assert.Equal(expectations, ns.ToArray());
         }
 
@@ -73,15 +75,15 @@ namespace Mannex.Tests
         public void ToEdgeCase()
         {
             var expectations = new[]
-            { 
-                1.000, 
-                2.333, 
-                3.667, 
+            {
+                1.000,
+                2.333,
+                3.667,
                 5.000,
             };
 
             var ns = from n in (1.0).To(5.0, 4)
-                     select Math.Round(n, 3);
+                select Math.Round(n, 3);
             Assert.Equal(expectations, ns.ToArray());
         }
 
@@ -89,21 +91,21 @@ namespace Mannex.Tests
         public void ToDecreasing()
         {
             var expectations = new[]
-            { 
+            {
                 +12.000,
                 +09.278,
                 +06.556,
                 +03.833,
                 +01.111,
-                -01.611, 
-                -04.333, 
-                -07.056, 
-                -09.778, 
+                -01.611,
+                -04.333,
+                -07.056,
+                -09.778,
                 -12.500,
             };
 
             var ns = from n in (12.0).To(-12.5, 10)
-                     select Math.Round(n, 3);
+                select Math.Round(n, 3);
             Assert.Equal(expectations, ns.ToArray());
         }
 

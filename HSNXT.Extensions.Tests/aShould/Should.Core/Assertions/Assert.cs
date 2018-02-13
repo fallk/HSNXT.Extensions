@@ -24,7 +24,9 @@ namespace erichexter.Should.Core.Assertions
         /// <summary>
         /// Initializes a new instance of the <see cref="Assert"/> class.
         /// </summary>
-        protected Assert() { }
+        protected Assert()
+        {
+        }
 
         /// <summary>
         /// Verifies that a collection contains a given object.
@@ -34,7 +36,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="collection">The collection to be inspected</param>
         /// <exception cref="ContainsException">Thrown when the object is not present in the collection</exception>
         public static void Contains<T>(T expected,
-                                       IEnumerable<T> collection)
+            IEnumerable<T> collection)
         {
             Contains(expected, collection, GetEqualityComparer<T>());
         }
@@ -63,7 +65,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="actualString">The string to be inspected</param>
         /// <exception cref="ContainsException">Thrown when the sub-string is not present inside the string</exception>
         public static int Contains(string expectedSubString,
-                                    string actualString)
+            string actualString)
         {
             return Contains(expectedSubString, actualString, StringComparison.CurrentCulture);
         }
@@ -76,8 +78,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparisonType">The type of string comparison to perform</param>
         /// <exception cref="ContainsException">Thrown when the sub-string is not present inside the string</exception>
         public static int Contains(string expectedSubString,
-                                    string actualString,
-                                    StringComparison comparisonType)
+            string actualString,
+            StringComparison comparisonType)
         {
             int indexOf = actualString.IndexOf(expectedSubString, comparisonType);
 
@@ -107,7 +109,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="collection">The collection to be inspected</param>
         /// <exception cref="DoesNotContainException">Thrown when the object is present inside the container</exception>
         public static void DoesNotContain<T>(T expected,
-                                             IEnumerable<T> collection)
+            IEnumerable<T> collection)
         {
             DoesNotContain(expected, collection, GetEqualityComparer<T>());
         }
@@ -134,7 +136,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="actualString">The string to be inspected</param>
         /// <exception cref="DoesNotContainException">Thrown when the sub-string is present inside the string</exception>
         public static void DoesNotContain(string expectedSubString,
-                                          string actualString)
+            string actualString)
         {
             DoesNotContain(expectedSubString, actualString, StringComparison.CurrentCulture);
         }
@@ -147,8 +149,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparisonType">The type of string comparison to perform</param>
         /// <exception cref="DoesNotContainException">Thrown when the sub-string is present inside the given string</exception>
         public static void DoesNotContain(string expectedSubString,
-                                          string actualString,
-                                          StringComparison comparisonType)
+            string actualString,
+            StringComparison comparisonType)
         {
             if (actualString.IndexOf(expectedSubString, comparisonType) >= 0)
                 throw new DoesNotContainException(expectedSubString);
@@ -190,7 +192,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="actual">The value to be compared against</param>
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
         public static void Equal<T>(T expected,
-                                    T actual)
+            T actual)
         {
             Equal(expected, actual, GetEqualityComparer<T>());
         }
@@ -204,8 +206,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="userMessage">The user message to be shown on failure</param>
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
         public static void Equal<T>(T expected,
-                                    T actual,
-                                    string userMessage)
+            T actual,
+            string userMessage)
         {
             Equal(expected, actual, GetEqualityComparer<T>(), userMessage);
         }
@@ -219,8 +221,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparer">The comparer used to compare the two objects</param>
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
         public static void Equal<T>(T expected,
-                                    T actual,
-                                    IEqualityComparer<T> comparer)
+            T actual,
+            IEqualityComparer<T> comparer)
         {
             if (!comparer.Equals(expected, actual))
                 throw new EqualException(expected, actual);
@@ -235,9 +237,9 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparer">The comparer used to compare the two objects</param>
         /// <exception cref="EqualException">Thrown when the objects are not equal</exception>
         public static void Equal<T>(T expected,
-                                    T actual,
-                                    IEqualityComparer<T> comparer,
-                                    string userMessage)
+            T actual,
+            IEqualityComparer<T> comparer,
+            string userMessage)
         {
             if (!comparer.Equals(expected, actual))
                 throw new EqualException(expected, actual, userMessage);
@@ -352,7 +354,7 @@ namespace erichexter.Should.Core.Assertions
         /// <summary>Do not call this method.</summary>
         [Obsolete("This is an override of Object.Equals(). Call Assert.Equal() instead.", true)]
         public new static bool Equals(object a,
-                                      object b)
+            object b)
         {
             throw new InvalidOperationException("Assert.Equals should not be used");
         }
@@ -374,7 +376,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="userMessage">The message to show when the condition is not false</param>
         /// <exception cref="FalseException">Thrown if the condition is not false</exception>
         public static void False(bool condition,
-                                 string userMessage)
+            string userMessage)
         {
             if (condition)
                 throw new FalseException(userMessage);
@@ -439,8 +441,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="high">The (inclusive) high value of the range</param>
         /// <exception cref="InRangeException">Thrown when the value is not in the given range</exception>
         public static void InRange<T>(T actual,
-                                      T low,
-                                      T high)
+            T low,
+            T high)
         {
             InRange(actual, low, high, GetComparer<T>());
         }
@@ -455,9 +457,9 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparer">The comparer used to evaluate the value's range</param>
         /// <exception cref="InRangeException">Thrown when the value is not in the given range</exception>
         public static void InRange<T>(T actual,
-                                      T low,
-                                      T high,
-                                      IComparer<T> comparer)
+            T low,
+            T high,
+            IComparer<T> comparer)
         {
             if (comparer.Compare(low, actual) > 0 || comparer.Compare(actual, high) > 0)
                 throw new InRangeException(actual, low, high);
@@ -473,7 +475,7 @@ namespace erichexter.Should.Core.Assertions
         public static T IsAssignableFrom<T>(object @object)
         {
             IsAssignableFrom(typeof(T), @object);
-            return (T)@object;
+            return (T) @object;
         }
 
         /// <summary>
@@ -499,7 +501,7 @@ namespace erichexter.Should.Core.Assertions
         public static T IsAssignableFrom<T>(object @object, string userMessage)
         {
             IsAssignableFrom(typeof(T), @object, userMessage);
-            return (T)@object;
+            return (T) @object;
         }
 
         /// <summary>
@@ -533,7 +535,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="object">The object to be evaluated</param>
         /// <exception cref="IsNotTypeException">Thrown when the object is the given type</exception>
         public static void IsNotType(Type expectedType,
-                                     object @object)
+            object @object)
         {
             if (expectedType.Equals(@object.GetType()))
                 throw new IsNotTypeException(expectedType, @object);
@@ -549,7 +551,7 @@ namespace erichexter.Should.Core.Assertions
         public static T IsType<T>(object @object)
         {
             IsType(typeof(T), @object);
-            return (T)@object;
+            return (T) @object;
         }
 
         /// <summary>
@@ -559,7 +561,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="object">The object to be evaluated</param>
         /// <exception cref="IsTypeException">Thrown when the object is not the given type</exception>
         public static void IsType(Type expectedType,
-                                  object @object)
+            object @object)
         {
             if (@object == null || !expectedType.Equals(@object.GetType()))
                 throw new IsTypeException(expectedType, @object);
@@ -631,7 +633,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="actual">The actual object</param>
         /// <exception cref="NotEqualException">Thrown when the objects are equal</exception>
         public static void NotEqual<T>(T expected,
-                                       T actual)
+            T actual)
         {
             NotEqual(expected, actual, GetEqualityComparer<T>());
         }
@@ -645,8 +647,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparer">The comparer used to examine the objects</param>
         /// <exception cref="NotEqualException">Thrown when the objects are equal</exception>
         public static void NotEqual<T>(T expected,
-                                       T actual,
-                                       IEqualityComparer<T> comparer)
+            T actual,
+            IEqualityComparer<T> comparer)
         {
             if (comparer.Equals(expected, actual))
                 throw new NotEqualException(expected, actual);
@@ -661,8 +663,8 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="high">The (inclusive) high value of the range</param>
         /// <exception cref="NotInRangeException">Thrown when the value is in the given range</exception>
         public static void NotInRange<T>(T actual,
-                                         T low,
-                                         T high)
+            T low,
+            T high)
         {
             NotInRange(actual, low, high, GetComparer<T>());
         }
@@ -677,9 +679,9 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="comparer">The comparer used to evaluate the value's range</param>
         /// <exception cref="NotInRangeException">Thrown when the value is in the given range</exception>
         public static void NotInRange<T>(T actual,
-                                         T low,
-                                         T high,
-                                         IComparer<T> comparer)
+            T low,
+            T high,
+            IComparer<T> comparer)
         {
             if (comparer.Compare(low, actual) <= 0 && comparer.Compare(actual, high) <= 0)
                 throw new NotInRangeException(actual, low, high);
@@ -714,7 +716,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="actual">The actual object instance</param>
         /// <exception cref="NotSameException">Thrown when the objects are the same instance</exception>
         public static void NotSame(object expected,
-                                   object actual)
+            object actual)
         {
             if (object.ReferenceEquals(expected, actual))
                 throw new NotSameException();
@@ -738,7 +740,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="actual">The actual object instance</param>
         /// <exception cref="SameException">Thrown when the objects are not the same instance</exception>
         public static void Same(object expected,
-                                object actual)
+            object actual)
         {
             if (!object.ReferenceEquals(expected, actual))
                 throw new SameException(expected, actual);
@@ -811,7 +813,7 @@ namespace erichexter.Should.Core.Assertions
         public static T Throws<T>(ThrowsDelegate testCode)
             where T : Exception
         {
-            return (T)Throws(typeof(T), testCode);
+            return (T) Throws(typeof(T), testCode);
         }
 
         /// <summary>
@@ -823,10 +825,10 @@ namespace erichexter.Should.Core.Assertions
         /// <returns>The exception that was thrown, when successful</returns>
         /// <exception cref="ThrowsException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown</exception>
         public static T Throws<T>(string userMessage,
-                                  ThrowsDelegate testCode)
+            ThrowsDelegate testCode)
             where T : Exception
         {
-            return (T)Throws(typeof(T), testCode);
+            return (T) Throws(typeof(T), testCode);
         }
 
         /// <summary>
@@ -840,7 +842,7 @@ namespace erichexter.Should.Core.Assertions
         public static T Throws<T>(ThrowsDelegateWithReturn testCode)
             where T : Exception
         {
-            return (T)Throws(typeof(T), testCode);
+            return (T) Throws(typeof(T), testCode);
         }
 
         /// <summary>
@@ -853,10 +855,10 @@ namespace erichexter.Should.Core.Assertions
         /// <returns>The exception that was thrown, when successful</returns>
         /// <exception cref="ThrowsException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown</exception>
         public static T Throws<T>(string userMessage,
-                                  ThrowsDelegateWithReturn testCode)
+            ThrowsDelegateWithReturn testCode)
             where T : Exception
         {
-            return (T)Throws(typeof(T), testCode);
+            return (T) Throws(typeof(T), testCode);
         }
 
         /// <summary>
@@ -867,7 +869,7 @@ namespace erichexter.Should.Core.Assertions
         /// <returns>The exception that was thrown, when successful</returns>
         /// <exception cref="ThrowsException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown</exception>
         public static Exception Throws(Type exceptionType,
-                                       ThrowsDelegate testCode)
+            ThrowsDelegate testCode)
         {
             Exception exception = Record.Exception(testCode);
 
@@ -889,7 +891,7 @@ namespace erichexter.Should.Core.Assertions
         /// <returns>The exception that was thrown, when successful</returns>
         /// <exception cref="ThrowsException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown</exception>
         public static Exception Throws(Type exceptionType,
-                                       ThrowsDelegateWithReturn testCode)
+            ThrowsDelegateWithReturn testCode)
         {
             Exception exception = Record.Exception(testCode);
 
@@ -931,7 +933,7 @@ namespace erichexter.Should.Core.Assertions
         /// <param name="userMessage">The message to be shown when the condition is false</param>
         /// <exception cref="TrueException">Thrown when the condition is false</exception>
         public static void True(bool condition,
-                                string userMessage)
+            string userMessage)
         {
             if (!condition)
                 throw new TrueException(userMessage);

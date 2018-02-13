@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,20 +17,20 @@ namespace Extend.Testing
             var value = 1000;
             var value1 = 900;
 
-            var actual = value.GreaterOrEquals( value1 );
-            Assert.True( actual );
+            var actual = value.GreaterOrEquals(value1);
+            Assert.True(actual);
 
             value = 10;
             value1 = 900;
 
-            actual = value.GreaterOrEquals( value1 );
-            Assert.False( actual );
+            actual = value.GreaterOrEquals(value1);
+            Assert.False(actual);
 
             value = 10;
             value1 = 10;
 
-            actual = value.GreaterOrEquals( value1 );
-            Assert.True( actual );
+            actual = value.GreaterOrEquals(value1);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GreaterOrEquals( null, "" );
+            Action test = () => Extensions.GreaterOrEquals(null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -48,7 +48,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".GreaterOrEquals( null );
+            Action test = () => "".GreaterOrEquals(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

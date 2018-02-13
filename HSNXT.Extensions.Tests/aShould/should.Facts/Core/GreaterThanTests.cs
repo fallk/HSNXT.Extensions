@@ -19,7 +19,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void One_is_not_greater_than_two_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() => Should.Core.Assertions.Assert.GreaterThan(1, 2));
+            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() =>
+                Should.Core.Assertions.Assert.GreaterThan(1, 2));
         }
 
         [Fact]
@@ -31,7 +32,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void Today_is_not_greater_than_tomorrow_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() => Should.Core.Assertions.Assert.GreaterThan(today, tomorrow));
+            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() =>
+                Should.Core.Assertions.Assert.GreaterThan(today, tomorrow));
         }
 
         [Fact]
@@ -43,7 +45,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void a_is_not_greater_than_b_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() => Should.Core.Assertions.Assert.GreaterThan("a", "b"));
+            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() =>
+                Should.Core.Assertions.Assert.GreaterThan("a", "b"));
         }
 
         [Fact]
@@ -55,8 +58,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void a_is_not_greater_than_A_using_case_insensitive_ordinal_comparer_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() => Should.Core.Assertions.Assert.GreaterThan("a", "A", StringComparer.OrdinalIgnoreCase));
+            Should.Core.Assertions.Assert.Throws<GreaterThanException>(() =>
+                Should.Core.Assertions.Assert.GreaterThan("a", "A", StringComparer.OrdinalIgnoreCase));
         }
-
     }
 }

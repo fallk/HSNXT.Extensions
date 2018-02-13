@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -16,33 +16,33 @@ namespace Extend.Testing
         public void RemoveRangeTest()
         {
             var list = new List<String>();
-            var values = Extensions.GetRandomStrings( 10 );
-            list.AddRange( values );
-            Assert.Equal( values.Count, list.Count );
+            var values = Extensions.GetRandomStrings(10);
+            list.AddRange(values);
+            Assert.Equal(values.Count, list.Count);
 
-            var result = list.RemoveRange( values.ToArray() );
-            Assert.Empty( list );
-            Assert.Same( list, result );
+            var result = list.RemoveRange(values.ToArray());
+            Assert.Empty(list);
+            Assert.Same(list, result);
         }
 
         [Fact]
         public void RemoveRangeTest1()
         {
             var list = new List<String>();
-            var values = Extensions.GetRandomStrings( 10 );
-            list.AddRange( values );
-            Assert.Equal( values.Count, list.Count );
+            var values = Extensions.GetRandomStrings(10);
+            list.AddRange(values);
+            Assert.Equal(values.Count, list.Count);
 
-            var result = list.RemoveRange( values );
-            Assert.Empty( list );
-            Assert.Same( list, result );
+            var result = list.RemoveRange(values);
+            Assert.Empty(list);
+            Assert.Same(list, result);
         }
 
         [Fact]
         public void RemoveRangeTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.RemoveRange( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => Extensions.RemoveRange(null, new List<String> {"test0", "test1", "test2"});
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -51,7 +51,7 @@ namespace Extend.Testing
         public void RemoveRangeTest1NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<String>().RemoveRange( null );
+            Action test = () => new List<String>().RemoveRange(null);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
         public void RemoveRangeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.RemoveRange( null, "test0", "test1", "test2" );
+            Action test = () => Extensions.RemoveRange(null, "test0", "test1", "test2");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -69,7 +69,7 @@ namespace Extend.Testing
         public void RemoveRangeTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<String>().RemoveRange( null );
+            Action test = () => new List<String>().RemoveRange(null);
 
             test.ShouldThrow<NullReferenceException>();
         }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -15,15 +15,15 @@ namespace Extend.Testing
         [Fact]
         public void ChangeTypeTest()
         {
-            var actual = "100".ChangeType( typeof(Int32) );
-            Assert.Equal( 100, actual );
+            var actual = "100".ChangeType(typeof(Int32));
+            Assert.Equal(100, actual);
         }
 
         [Fact]
         public void ChangeTypeTest1()
         {
-            var actual = "100".ChangeType( typeof(Int32), CultureInfo.InvariantCulture );
-            Assert.Equal( 100, actual );
+            var actual = "100".ChangeType(typeof(Int32), CultureInfo.InvariantCulture);
+            Assert.Equal(100, actual);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ChangeType( null, CultureInfo.InvariantCulture );
+            Action test = () => "100".ChangeType(null, CultureInfo.InvariantCulture);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -41,7 +41,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ChangeType( typeof(Int32), null );
+            Action test = () => "100".ChangeType(typeof(Int32), null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -50,14 +50,14 @@ namespace Extend.Testing
         public void ChangeTypeTest2()
         {
             var actual = "100".ChangeType<Int32>();
-            Assert.Equal( 100, actual );
+            Assert.Equal(100, actual);
         }
 
         [Fact]
         public void ChangeTypeTest3()
         {
-            var actual = "100".ChangeType<Int32>( CultureInfo.InvariantCulture );
-            Assert.Equal( 100, actual );
+            var actual = "100".ChangeType<Int32>(CultureInfo.InvariantCulture);
+            Assert.Equal(100, actual);
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ChangeType( null );
+            Action test = () => "100".ChangeType(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -75,7 +75,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ChangeType( null );
+            Action test = () => "100".ChangeType(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

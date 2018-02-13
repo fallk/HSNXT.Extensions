@@ -27,7 +27,8 @@ namespace erichexter.Should.Facts.Core
         public void IsTypeThrowsExceptionWhenWrongType()
         {
             AssertException exception =
-                Should.Core.Assertions.Assert.Throws<IsTypeException>(() => Should.Core.Assertions.Assert.IsType<InvalidCastException>(new InvalidOperationException()));
+                Should.Core.Assertions.Assert.Throws<IsTypeException>(() =>
+                    Should.Core.Assertions.Assert.IsType<InvalidCastException>(new InvalidOperationException()));
 
             Should.Core.Assertions.Assert.Equal("Assert.IsType() Failure", exception.UserMessage);
         }
@@ -35,7 +36,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void IsTypeThrowsExceptionWhenPassedNull()
         {
-            Should.Core.Assertions.Assert.Throws<IsTypeException>(() => Should.Core.Assertions.Assert.IsType<object>(null));
+            Should.Core.Assertions.Assert.Throws<IsTypeException>(() =>
+                Should.Core.Assertions.Assert.IsType<object>(null));
         }
     }
 }

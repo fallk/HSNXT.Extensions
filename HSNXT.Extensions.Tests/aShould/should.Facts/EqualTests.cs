@@ -14,33 +14,35 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void Array()
             {
-                string[] expected = { "@", "a", "ab", "b" };
-                string[] actual = { "@", "a", "ab", "b" };
+                string[] expected = {"@", "a", "ab", "b"};
+                string[] actual = {"@", "a", "ab", "b"};
 
                 Should.Core.Assertions.Assert.Equal(expected, actual);
-                Should.Core.Assertions.Assert.Throws<NotEqualException>(() => Should.Core.Assertions.Assert.NotEqual(expected, actual));
+                Should.Core.Assertions.Assert.Throws<NotEqualException>(() =>
+                    Should.Core.Assertions.Assert.NotEqual(expected, actual));
             }
 
             [Fact]
             public void ArraysOfDifferentLengthsAreNotEqual()
             {
-                string[] expected = { "@", "a", "ab", "b", "c" };
-                string[] actual = { "@", "a", "ab", "b" };
+                string[] expected = {"@", "a", "ab", "b", "c"};
+                string[] actual = {"@", "a", "ab", "b"};
 
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(expected, actual));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(expected, actual));
                 Should.Core.Assertions.Assert.NotEqual(expected, actual);
             }
 
             [Fact]
             public void ArrayValuesAreDifferentNotEqual()
             {
-                string[] expected = { "@", "d", "v", "d" };
-                string[] actual = { "@", "a", "ab", "b" };
+                string[] expected = {"@", "d", "v", "d"};
+                string[] actual = {"@", "a", "ab", "b"};
 
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(expected, actual));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(expected, actual));
                 Should.Core.Assertions.Assert.NotEqual(expected, actual);
             }
-
         }
 
         public class DoubleInfinityTests
@@ -54,7 +56,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void DoubleNegativeInfinityNotEquals()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(1.23, Double.NegativeInfinity));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(1.23, Double.NegativeInfinity));
             }
 
             [Fact]
@@ -66,13 +69,15 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void DoublePositiveInfinityNotEquals()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(1.23, Double.PositiveInfinity));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(1.23, Double.PositiveInfinity));
             }
 
             [Fact]
             public void DoublePositiveInfinityNotEqualsNegativeInfinity()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(Double.NegativeInfinity, Double.PositiveInfinity));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(Double.NegativeInfinity, Double.PositiveInfinity));
             }
         }
 
@@ -92,11 +97,11 @@ namespace erichexter.Should.Facts.Core
             {
                 var obj1 = new EquatableObject();
                 var obj2 = new EquatableObject();
-                var list1 = new List<EquatableObject> { obj1, obj2 };
+                var list1 = new List<EquatableObject> {obj1, obj2};
 
                 var obj3 = new EquatableObject();
                 var obj4 = new EquatableObject();
-                var list2 = new List<EquatableObject> { obj3, obj4 };
+                var list2 = new List<EquatableObject> {obj3, obj4};
 
                 Record.Exception(() => Should.Core.Assertions.Assert.Equal(list1, list2));
 
@@ -107,15 +112,16 @@ namespace erichexter.Should.Facts.Core
             }
 
             [Fact]
-            public void When_comparing_enumerables_of_custom_equality_objects_Should_use_custom_equals_on_the_base_object_for_each_item()
+            public void
+                When_comparing_enumerables_of_custom_equality_objects_Should_use_custom_equals_on_the_base_object_for_each_item()
             {
                 var obj1 = new CustomEqualityObject();
                 var obj2 = new DerivedCustomEqualityObject();
-                var list1 = new List<CustomEqualityObject> { obj1, obj2 };
+                var list1 = new List<CustomEqualityObject> {obj1, obj2};
 
                 var obj3 = new DerivedCustomEqualityObject();
                 var obj4 = new CustomEqualityObject();
-                var list2 = new List<CustomEqualityObject> { obj3, obj4 };
+                var list2 = new List<CustomEqualityObject> {obj3, obj4};
 
                 Record.Exception(() => Should.Core.Assertions.Assert.Equal(list1, list2));
 
@@ -186,7 +192,6 @@ namespace erichexter.Should.Facts.Core
                 Should.Core.Assertions.Assert.Equal(derivedObj, baseObj);
                 Should.Core.Assertions.Assert.True(baseObj.Equals__Called);
             }
-
         }
 
         public class NaNTests
@@ -194,13 +199,15 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void EqualsNaNFails()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(Double.NaN, 1.234));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(Double.NaN, 1.234));
             }
 
             [Fact]
             public void NanEqualsFails()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(1.234, Double.NaN));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(1.234, Double.NaN));
             }
 
             [Fact]
@@ -221,13 +228,15 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void FailsWhenActualIsNullExpectedIsNot()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(new object(), null));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(new object(), null));
             }
 
             [Fact]
             public void FailsWhenExpectedIsNullActualIsNot()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(null, new object()));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(null, new object()));
             }
         }
 
@@ -255,7 +264,7 @@ namespace erichexter.Should.Facts.Core
             public void Equal_UserMessageIsInTheExceptionMessage()
             {
                 string userMessage = "my message";
-                
+
                 var ex = Xunit.Assert.Throws<EqualException>(() =>
                 {
                     Should.Core.Assertions.Assert.Equal(1.1, 1.3, 0.1, userMessage);
@@ -273,7 +282,7 @@ namespace erichexter.Should.Facts.Core
                 {
                     Should.Core.Assertions.Assert.Equal(1.1, 1.3, tolerance);
                 });
-                
+
                 Xunit.Assert.Contains("+/- " + tolerance, exception.Message);
             }
 
@@ -330,7 +339,8 @@ namespace erichexter.Should.Facts.Core
                 decimal expected = 25;
                 decimal actual = 42;
 
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(expected, actual));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(expected, actual));
             }
 
             [Fact]
@@ -339,7 +349,8 @@ namespace erichexter.Should.Facts.Core
                 double expected = 25.3;
                 double actual = 42.0;
 
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(expected, actual));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(expected, actual));
             }
 
             [Fact]
@@ -484,7 +495,8 @@ namespace erichexter.Should.Facts.Core
                 UInt64 expected = 25;
                 UInt64 actual = 42;
 
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(expected, actual));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(expected, actual));
             }
         }
 
@@ -499,13 +511,15 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleNumberNotEqualNegativeInfinity()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(1.23f, Single.NegativeInfinity));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(1.23f, Single.NegativeInfinity));
             }
 
             [Fact]
             public void SingleNumberNotEqualPositiiveInfinity()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(1.23f, Single.PositiveInfinity));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(1.23f, Single.PositiveInfinity));
             }
 
             [Fact]
@@ -517,7 +531,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SinglePositiveInfinityNotEqualNegativeInfinity()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal(Single.NegativeInfinity, Single.PositiveInfinity));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal(Single.NegativeInfinity, Single.PositiveInfinity));
             }
         }
 
@@ -526,7 +541,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void EqualsFail()
             {
-                Should.Core.Assertions.Assert.Throws<EqualException>(() => Should.Core.Assertions.Assert.Equal("expected", "actual"));
+                Should.Core.Assertions.Assert.Throws<EqualException>(() =>
+                    Should.Core.Assertions.Assert.Equal("expected", "actual"));
             }
 
             [Fact]
@@ -585,7 +601,8 @@ namespace erichexter.Should.Facts.Core
         public class DerivedTypeTests
         {
             [Fact]
-            public void When_comparing_object_with_overriden_equality_behavior_to_derived_object_Should_use_overriden_behavior()
+            public void
+                When_comparing_object_with_overriden_equality_behavior_to_derived_object_Should_use_overriden_behavior()
             {
                 var obj = new CustomEqualityObject();
                 var derivedObj = new DerivedCustomEqualityObject();

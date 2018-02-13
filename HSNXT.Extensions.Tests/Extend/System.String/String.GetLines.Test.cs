@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -19,7 +19,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.GetLines()
-                                     .ToList();
+                .ToList();
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -27,62 +27,64 @@ namespace Extend.Testing
         [Fact]
         public void GetLinesTest()
         {
-            var text = "Line1" + Environment.NewLine + "Line2" + Environment.NewLine + "Line3" + Environment.NewLine + "Line4" + Environment.NewLine;
+            var text = "Line1" + Environment.NewLine + "Line2" + Environment.NewLine + "Line3" + Environment.NewLine +
+                       "Line4" + Environment.NewLine;
 
             var actual = text.GetLines()
-                             .ToList();
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 4 );
+                .HaveCount(4);
             actual[0]
                 .Should()
-                .Be( "Line1" );
+                .Be("Line1");
             actual[1]
                 .Should()
-                .Be( "Line2" );
+                .Be("Line2");
             actual[2]
                 .Should()
-                .Be( "Line3" );
+                .Be("Line3");
             actual[3]
                 .Should()
-                .Be( "Line4" );
+                .Be("Line4");
         }
 
         [Fact]
         public void GetLinesTest1()
         {
-            var text = "Line1" + Environment.NewLine + Environment.NewLine + "Line2" + Environment.NewLine + "Line3" + Environment.NewLine + "Line4" + Environment.NewLine;
+            var text = "Line1" + Environment.NewLine + Environment.NewLine + "Line2" + Environment.NewLine + "Line3" +
+                       Environment.NewLine + "Line4" + Environment.NewLine;
 
             var actual = text.GetLines()
-                             .ToList();
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 5 );
+                .HaveCount(5);
             actual[0]
                 .Should()
-                .Be( "Line1" );
+                .Be("Line1");
             actual[1]
                 .Should()
-                .Be( "" );
+                .Be("");
             actual[2]
                 .Should()
-                .Be( "Line2" );
+                .Be("Line2");
             actual[3]
                 .Should()
-                .Be( "Line3" );
+                .Be("Line3");
             actual[4]
                 .Should()
-                .Be( "Line4" );
+                .Be("Line4");
         }
 
         [Fact]
         public void GetLinesTest2()
         {
             var actual = "".GetLines()
-                           .ToList();
+                .ToList();
 
             actual.Should()
-                  .HaveCount( 0 );
+                .HaveCount(0);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             var actual = value.IsOdd();
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
@@ -27,8 +27,8 @@ namespace Extend.Testing
             var value = Extensions.GetRandomInt32();
 
             var expected = value % 2 != 0;
-            var actual = Extensions.IsOdd( value );
-            Assert.Equal( expected, actual );
+            var actual = Extensions.IsOdd(value);
+            Assert.Equal(expected, actual);
         }
     }
 }

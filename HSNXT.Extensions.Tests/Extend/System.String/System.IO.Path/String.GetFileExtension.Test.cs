@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.IO;
 using FluentAssertions;
@@ -16,10 +16,10 @@ namespace Extend.Testing
         public void GetFileExtensionTest()
         {
             const String fielName = "test.txt";
-            var expected = Path.GetExtension( fielName );
+            var expected = Path.GetExtension(fielName);
             var actual = fielName.GetFileExtension();
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -27,7 +27,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetFileExtension( null );
+            Action test = () => Extensions.GetFileExtension(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

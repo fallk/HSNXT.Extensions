@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,30 +13,30 @@ namespace Extend.Testing
         [Fact]
         public void EndOfYearTest()
         {
-            var dateTime = Extensions.GetRandomDateTime( DateTime.Now, new DateTime( 3000, 1, 1 ) );
-            var expected = new DateTime( dateTime.Year, 1, 1 ).AddYears( 1 )
-                                                              .Subtract( 1.ToMilliseconds() );
+            var dateTime = Extensions.GetRandomDateTime(DateTime.Now, new DateTime(3000, 1, 1));
+            var expected = new DateTime(dateTime.Year, 1, 1).AddYears(1)
+                .Subtract(1.ToMilliseconds());
             var actual = dateTime.EndOfYear();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void EndOfYearTest1()
         {
-            var dateTime = new DateTime( 1, 1, 1 );
-            var expected = new DateTime( dateTime.Year, 1, 1 ).AddYears( 1 )
-                                                              .Subtract( 1.ToMilliseconds() );
+            var dateTime = new DateTime(1, 1, 1);
+            var expected = new DateTime(dateTime.Year, 1, 1).AddYears(1)
+                .Subtract(1.ToMilliseconds());
             var actual = dateTime.EndOfYear();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void EndOfYearTest2()
         {
-            var dateTime = new DateTime( 9999, 12, 31 );
-            var expected = new DateTime( 9999, 12, 31, 23, 59, 59, 999 );
+            var dateTime = new DateTime(9999, 12, 31);
+            var expected = new DateTime(9999, 12, 31, 23, 59, 59, 999);
             var actual = dateTime.EndOfYear2();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

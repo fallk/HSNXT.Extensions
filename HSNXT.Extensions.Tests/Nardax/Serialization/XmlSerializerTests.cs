@@ -13,7 +13,7 @@ namespace HSNXT.Nardax.Tests.Serialization
         [TestMethod]
         public void Serialize_ValidObject_RoundTripSuccessful()
         {
-            var person = new Person { FirstName = "Ryan", Lastname = "Pedersen" };
+            var person = new Person {FirstName = "Ryan", Lastname = "Pedersen"};
             var serializer = new XmlSerializer<Person>();
             var serializedPerson = serializer.Serialize(person);
 

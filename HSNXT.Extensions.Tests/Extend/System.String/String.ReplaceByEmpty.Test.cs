@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,8 +14,8 @@ namespace Extend.Testing
         [Fact]
         public void ReplaceByEmptyTest()
         {
-            var actual = "abcd".ReplaceByEmpty( "a", "c" );
-            Assert.Equal( "bd", actual );
+            var actual = "abcd".ReplaceByEmpty("a", "c");
+            Assert.Equal("bd", actual);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ReplaceByEmpty( null, "a", "c" );
+            Action test = () => Extensions.ReplaceByEmpty(null, "a", "c");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -33,7 +33,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".ReplaceByEmpty( null );
+            Action test = () => "".ReplaceByEmpty(null);
 
             test.ShouldThrow<NullReferenceException>();
         }

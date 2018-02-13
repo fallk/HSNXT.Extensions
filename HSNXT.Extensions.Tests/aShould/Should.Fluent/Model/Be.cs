@@ -5,7 +5,9 @@ namespace erichexter.Should.Fluent.Model
 {
     public class Be<T> : BeBase<T>
     {
-        public Be(IShould<T> should) : base(should) { }
+        public Be(IShould<T> should) : base(should)
+        {
+        }
 
         public T Null()
         {
@@ -33,7 +35,7 @@ namespace erichexter.Should.Fluent.Model
 
         public T AssignableFrom<TExpected>()
         {
-            return AssignableFrom(typeof (TExpected));
+            return AssignableFrom(typeof(TExpected));
         }
 
         public T AssignableFrom(Type expectedType)

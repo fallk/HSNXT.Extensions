@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Threading.Tasks
@@ -36,7 +38,6 @@ namespace Mannex.Tests.Threading.Tasks
     /// for testing purposes and which immediately executes 
     /// <see cref="Task"/> objects as they are queued.
     /// </summary>
-
     sealed class ImmediateTaskScheduler : TaskScheduler
     {
         protected override void QueueTask(Task task)

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -16,9 +16,9 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 50;
-            var actual = number.PercentOf( 500 );
+            var actual = number.PercentOf(500);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -26,16 +26,16 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 50;
-            var actual = number.PercentOf( (Double) 500 );
+            var actual = number.PercentOf((Double) 500);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PercentOfTest1DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.PercentOf( 0, (Double) 100 );
+            Action test = () => Extensions.PercentOf(0, (Double) 100);
 
             test.ShouldNotThrow();
         }
@@ -45,16 +45,16 @@ namespace Extend.Testing
         {
             const Int16 number = 1000;
             const Int32 expected = 50;
-            var actual = number.PercentOf( (Int64) 500 );
+            var actual = number.PercentOf((Int64) 500);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PercentOfTest2DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.PercentOf( 0, (Int64) 100 );
+            Action test = () => Extensions.PercentOf(0, (Int64) 100);
 
             test.ShouldNotThrow();
         }
@@ -63,7 +63,7 @@ namespace Extend.Testing
         public void PercentOfTestDivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.PercentOf( 0, 100 );
+            Action test = () => Extensions.PercentOf(0, 100);
 
             test.ShouldNotThrow();
         }

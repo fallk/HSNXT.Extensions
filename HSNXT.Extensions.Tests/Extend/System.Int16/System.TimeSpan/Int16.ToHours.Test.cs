@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,11 +13,11 @@ namespace Extend.Testing
         [Fact]
         public void ToHoursTest()
         {
-            var value = Extensions.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32(1, 100);
 
-            var expected = TimeSpan.FromHours( value );
-            var actual = ( (Int16) value ).ToHours();
-            Assert.Equal( expected, actual );
+            var expected = TimeSpan.FromHours(value);
+            var actual = ((Int16) value).ToHours();
+            Assert.Equal(expected, actual);
         }
     }
 }

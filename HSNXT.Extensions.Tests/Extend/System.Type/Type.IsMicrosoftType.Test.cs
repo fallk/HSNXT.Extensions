@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -28,7 +28,7 @@ namespace Extend.Testing
             var type = typeof(String);
             var actual = type.IsMicrosoftType();
 
-            Assert.True( actual );
+            Assert.True(actual);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Extend.Testing
             var type = typeof(TypeExTest);
             var actual = type.IsMicrosoftType();
 
-            Assert.False( actual );
+            Assert.False(actual);
         }
     }
 }

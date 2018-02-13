@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -30,7 +30,7 @@ namespace Extend.Testing
             var actual = type.GetTypeFromNullable();
 
             actual.Should()
-                  .Be( typeof(Int32) );
+                .Be(typeof(Int32));
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing
             var actual = type.GetTypeFromNullable();
 
             actual.Should()
-                  .Be( typeof(Double) );
+                .Be(typeof(Double));
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Extend.Testing
             var actual = type.GetTypeFromNullable();
 
             actual.Should()
-                  .BeNull();
+                .BeNull();
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Extend.Testing
             var actual = type.GetTypeFromNullable();
 
             actual.Should()
-                  .BeNull();
+                .BeNull();
         }
     }
 }

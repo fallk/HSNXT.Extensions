@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,7 +18,7 @@ namespace Extend.Testing
             var actual = random.CoinToss();
 
             actual.Should()
-                  .Be( actual );
+                .Be(actual);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.CoinToss( null );
+            Action test = () => Extensions.CoinToss(null);
 
             test.ShouldThrow<NullReferenceException>();
         }

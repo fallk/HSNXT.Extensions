@@ -6,8 +6,6 @@ using System.IO;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
-
-
     /// <summary>
     ///This is a test class for FileInfoExtensionsTest and is intended
     ///to contain all FileInfoExtensionsTest Unit Tests
@@ -18,6 +16,7 @@ namespace HSNXT.PGK.Extensions.Tests
         private const string TestDir = "C:\\PGTestFolder\\";
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -37,6 +36,7 @@ namespace HSNXT.PGK.Extensions.Tests
             if (Directory.Exists(TestDir))
                 Directory.Delete(TestDir, true);
         }
+
         //
         //Use TestInitialize to run code before running each test
         //[TestInitialize()]
@@ -50,6 +50,7 @@ namespace HSNXT.PGK.Extensions.Tests
         //{
         //}
         //
+
         #endregion
 
         /// <summary>
@@ -91,6 +92,7 @@ namespace HSNXT.PGK.Extensions.Tests
                 fileNames.Add(TestDir + name);
                 File.Create(TestDir + name).Close();
             }
+
             var fileInfos = new List<FileInfo>();
             foreach (var fileName in fileNames)
                 fileInfos.Add(new FileInfo(fileName));
@@ -123,6 +125,7 @@ namespace HSNXT.PGK.Extensions.Tests
                 fileNames.Add(TestDir + name);
                 File.Create(TestDir + name).Close();
             }
+
             var fileInfos = new List<FileInfo>();
             foreach (var fileName in fileNames)
                 fileInfos.Add(new FileInfo(fileName));
@@ -148,6 +151,7 @@ namespace HSNXT.PGK.Extensions.Tests
                 fileNames.Add(TestDir + name);
                 File.Create(TestDir + name).Close();
             }
+
             var fileInfos = new List<FileInfo>();
             foreach (var fileName in fileNames)
                 fileInfos.Add(new FileInfo(fileName));
@@ -174,14 +178,13 @@ namespace HSNXT.PGK.Extensions.Tests
         public void RenameFileWithoutExtensionTest()
         {
             var name = "test_" + MethodBase.GetCurrentMethod().Name + ".txt";
-            File.Create(TestDir+name).Close();
+            File.Create(TestDir + name).Close();
             var newName = "renamedTest";
 
             var fileInfo = new FileInfo(TestDir + name);
             fileInfo.RenameFileWithoutExtension(newName);
 
-            Assert.AreEqual(newName+".txt",fileInfo.Name);
+            Assert.AreEqual(newName + ".txt", fileInfo.Name);
         }
-
     }
 }

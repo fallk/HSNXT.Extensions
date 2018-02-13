@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,10 +15,10 @@ namespace Extend.Testing
         public void FormatFileExtensionTest()
         {
             var actual = "xml".FormatFileExtension();
-            Assert.Equal( ".xml", actual );
+            Assert.Equal(".xml", actual);
 
             actual = ".xml".FormatFileExtension();
-            Assert.Equal( ".xml", actual );
+            Assert.Equal(".xml", actual);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.FormatFileExtension( null );
+            Action test = () => Extensions.FormatFileExtension(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

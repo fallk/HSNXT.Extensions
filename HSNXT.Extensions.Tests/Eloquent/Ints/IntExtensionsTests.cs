@@ -95,7 +95,8 @@ namespace Eloquent.Tests.Ints
             [TestMethod]
             public void Can_Add_Exabytes_All()
             {
-                var result = 1.Exabytes() + 1.Petabytes() + 1.Terabytes() + 1.Gigabytes() + 1.Megabytes() + 1.Kilobytes() + 1.Bytes();
+                var result = 1.Exabytes() + 1.Petabytes() + 1.Terabytes() + 1.Gigabytes() + 1.Megabytes() +
+                             1.Kilobytes() + 1.Bytes();
                 Assert.AreEqual(1154048505100108801, result);
             }
         }

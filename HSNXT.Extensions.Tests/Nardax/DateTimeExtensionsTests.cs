@@ -82,7 +82,8 @@ namespace HSNXT.Nardax.Tests
         public void MillisecondsOfDay_DateTimeWithFourtyTwoHundredMilliseconds_ReturnsFourtyTwoHundredMilliseconds()
         {
             var expectedMilliseconds = 4200;
-            var datetimeWithFourtyTwoHundredMilliseconds = new DateTime(1974, 7, 3).AddMilliseconds(expectedMilliseconds);
+            var datetimeWithFourtyTwoHundredMilliseconds =
+                new DateTime(1974, 7, 3).AddMilliseconds(expectedMilliseconds);
 
             var actualMilliseconds = datetimeWithFourtyTwoHundredMilliseconds.MillisecondOfDay();
 

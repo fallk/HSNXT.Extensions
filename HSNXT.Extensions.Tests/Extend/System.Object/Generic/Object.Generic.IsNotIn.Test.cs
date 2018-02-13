@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -16,15 +16,15 @@ namespace Extend.Testing
         public void IsNotInTest()
         {
             var array = Extensions.GetRandomStrings()
-                                     .ToArray();
+                .ToArray();
             var value = array[0];
 
-            var actual = value.IsNotIn( array );
-            Assert.False( actual );
+            var actual = value.IsNotIn(array);
+            Assert.False(actual);
 
             value = Extensions.GetRandomString();
-            actual = value.IsNotIn( array );
-            Assert.True( actual );
+            actual = value.IsNotIn(array);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -33,12 +33,12 @@ namespace Extend.Testing
             var list = Extensions.GetRandomStrings();
             var value = list[0];
 
-            var actual = value.IsNotIn( list );
-            Assert.False( actual );
+            var actual = value.IsNotIn(list);
+            Assert.False(actual);
 
             value = Extensions.GetRandomString();
-            actual = value.IsNotIn( list );
-            Assert.True( actual );
+            actual = value.IsNotIn(list);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace Extend.Testing
             IEnumerable<String> enumerable = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".IsNotIn( enumerable );
+            Action test = () => "".IsNotIn(enumerable);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
             String[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".IsNotIn( array );
+            Action test = () => "".IsNotIn(array);
 
             test.ShouldThrow<ArgumentNullException>();
         }

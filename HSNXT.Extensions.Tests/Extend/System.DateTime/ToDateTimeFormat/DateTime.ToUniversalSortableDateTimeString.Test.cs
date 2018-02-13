@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using Xunit;
@@ -15,28 +15,28 @@ namespace Extend.Testing
         public void ToUniversalSortableDateTimeStringTest()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "u" );
+            var expected = dateTime.ToString("u");
             var actual = dateTime.ToUniversalSortableDateTimeString();
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void ToUniversalSortableDateTimeStringTest1()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "u", DateTimeFormatInfo.CurrentInfo );
+            var expected = dateTime.ToString("u", DateTimeFormatInfo.CurrentInfo);
             // ReSharper disable once AssignNullToNotNullAttribute
-            var actual = dateTime.ToUniversalSortableDateTimeString( DateTimeFormatInfo.CurrentInfo );
-            Assert.Equal( expected, actual );
+            var actual = dateTime.ToUniversalSortableDateTimeString(DateTimeFormatInfo.CurrentInfo);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void ToUniversalSortableDateTimeStringTest2()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "u", CultureInfo.InvariantCulture );
-            var actual = dateTime.ToUniversalSortableDateTimeString( CultureInfo.InvariantCulture );
-            Assert.Equal( expected, actual );
+            var expected = dateTime.ToString("u", CultureInfo.InvariantCulture);
+            var actual = dateTime.ToUniversalSortableDateTimeString(CultureInfo.InvariantCulture);
+            Assert.Equal(expected, actual);
         }
     }
 }

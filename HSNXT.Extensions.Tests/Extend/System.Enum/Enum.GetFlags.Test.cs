@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -16,15 +16,22 @@ namespace Extend.Testing
         [Fact]
         public void GetFlagsTest()
         {
-            const RegexOptions enumValue = RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.None;
+            const RegexOptions enumValue = RegexOptions.Compiled | RegexOptions.CultureInvariant |
+                                           RegexOptions.Multiline | RegexOptions.None;
             var actual = enumValue
                 .GetFlags<RegexOptions>()
                 .ToList();
 
             actual.Should()
-                  .HaveCount( 4 );
+                .HaveCount(4);
             actual.Should()
-                  .Contain( new List<RegexOptions> { RegexOptions.Compiled, RegexOptions.CultureInvariant, RegexOptions.Multiline, RegexOptions.None } );
+                .Contain(new List<RegexOptions>
+                {
+                    RegexOptions.Compiled,
+                    RegexOptions.CultureInvariant,
+                    RegexOptions.Multiline,
+                    RegexOptions.None
+                });
         }
     }
 }

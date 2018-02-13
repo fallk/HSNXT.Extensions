@@ -21,11 +21,12 @@ namespace erichexter.Should.Facts.Core
         {
             Should.Core.Assertions.Assert.GreaterThanOrEqual(2, 1);
         }
-        
+
         [Fact]
         public void One_is_not_greater_than_or_equal_to_two_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanOrEqualException>(() => Should.Core.Assertions.Assert.GreaterThanOrEqual(1, 2));
+            Should.Core.Assertions.Assert.Throws<GreaterThanOrEqualException>(() =>
+                Should.Core.Assertions.Assert.GreaterThanOrEqual(1, 2));
         }
 
         [Fact]
@@ -33,7 +34,7 @@ namespace erichexter.Should.Facts.Core
         {
             Should.Core.Assertions.Assert.GreaterThanOrEqual(today, today);
         }
-        
+
         [Fact]
         public void Tomorrow_is_greater_than_or_equal_to_today_should_pass()
         {
@@ -43,7 +44,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void Today_is_not_greater_than_or_equal_to_tomorrow_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanOrEqualException>(() => Should.Core.Assertions.Assert.GreaterThanOrEqual(today, tomorrow));
+            Should.Core.Assertions.Assert.Throws<GreaterThanOrEqualException>(() =>
+                Should.Core.Assertions.Assert.GreaterThanOrEqual(today, tomorrow));
         }
 
         [Fact]
@@ -55,7 +57,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void a_is_not_greater_than_or_equal_to_b_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<GreaterThanOrEqualException>(() => Should.Core.Assertions.Assert.GreaterThanOrEqual("a", "b"));
+            Should.Core.Assertions.Assert.Throws<GreaterThanOrEqualException>(() =>
+                Should.Core.Assertions.Assert.GreaterThanOrEqual("a", "b"));
         }
 
         [Fact]

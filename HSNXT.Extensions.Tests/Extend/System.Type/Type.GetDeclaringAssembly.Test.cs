@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -27,10 +27,10 @@ namespace Extend.Testing
         {
             var actual = typeof(Extensions).GetDeclaringAssembly();
             var expectedVersion = typeof(Extensions).GetDeclaringAssembly()
-                                                  .GetName()
-                                                  .Version.ToString();
+                .GetName()
+                .Version.ToString();
             actual.FullName.Should()
-                  .Be( $"HSNXT.Extensions, Version={expectedVersion}, Culture=neutral, PublicKeyToken=null" );
+                .Be($"HSNXT.Extensions, Version={expectedVersion}, Culture=neutral, PublicKeyToken=null");
         }
     }
 }

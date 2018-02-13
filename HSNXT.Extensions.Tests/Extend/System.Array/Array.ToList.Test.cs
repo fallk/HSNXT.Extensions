@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -20,11 +20,11 @@ namespace Extend.Testing
                 "1",
                 "2"
             };
-            var list = array.ToList( x => "test" + x );
+            var list = array.ToList(x => "test" + x);
 
-            Assert.Equal( "test0", list[0] );
-            Assert.Equal( "test1", list[1] );
-            Assert.Equal( "test2", list[2] );
+            Assert.Equal("test0", list[0]);
+            Assert.Equal("test1", list[1]);
+            Assert.Equal("test2", list[2]);
         }
     }
 }

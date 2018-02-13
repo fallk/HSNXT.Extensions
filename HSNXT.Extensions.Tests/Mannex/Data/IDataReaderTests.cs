@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Data
@@ -40,7 +42,7 @@ namespace Mannex.Tests.Data
         public void SelectFailsWithNullSelector()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        new DataReaderDummy().Select<object>(null));
+                new DataReaderDummy().Select<object>(null));
             Assert.Equal("selector", e.ParamName);
         }
 
@@ -52,7 +54,7 @@ namespace Mannex.Tests.Data
             var disposed = false;
             reader.Disposed += delegate { disposed = true; };
 
-            using (var e = reader.Select(r => (int)r[0]))
+            using (var e = reader.Select(r => (int) r[0]))
             {
                 Assert.NotNull(e);
                 Assert.NotNull(e);
@@ -65,7 +67,7 @@ namespace Mannex.Tests.Data
                 Assert.True(e.MoveNext());
                 Assert.Equal(78, e.Current);
                 Assert.False(e.MoveNext());
-                Assert.True(disposed);                
+                Assert.True(disposed);
             }
         }
 
@@ -453,6 +455,7 @@ namespace Mannex.Tests.Data
 
             #endregion
         }
+
         /*
                 [Fact]
                 public void FindReturnsDefaultWhenKeyKeyNotPresent()

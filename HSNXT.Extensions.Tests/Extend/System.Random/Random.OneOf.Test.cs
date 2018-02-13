@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -17,10 +17,10 @@ namespace Extend.Testing
         {
             var random = new Random();
             var list = Extensions.GetRandomStrings()
-                                    .ToArray();
+                .ToArray();
 
-            var actual = random.RandomOne( list );
-            Assert.Contains( actual, list );
+            var actual = random.RandomOne(list);
+            Assert.Contains(actual, list);
         }
 
         [Fact]
@@ -29,8 +29,8 @@ namespace Extend.Testing
             var random = new Random();
             var list = Extensions.GetRandomStrings();
 
-            var actual = random.RandomOne<String>( list );
-            Assert.Contains( actual, list );
+            var actual = random.RandomOne<String>(list);
+            Assert.Contains(actual, list);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.RandomOne( null, "", "" );
+            Action test = () => Extensions.RandomOne(null, "", "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -49,7 +49,7 @@ namespace Extend.Testing
             List<String> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new Random().RandomOne<String>( list );
+            Action test = () => new Random().RandomOne<String>(list);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -59,7 +59,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.RandomOne( null, "", "" );
+            Action test = () => Extensions.RandomOne(null, "", "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -70,7 +70,7 @@ namespace Extend.Testing
             String[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new Random().RandomOne( array );
+            Action test = () => new Random().RandomOne(array);
 
             test.ShouldThrow<ArgumentNullException>();
         }

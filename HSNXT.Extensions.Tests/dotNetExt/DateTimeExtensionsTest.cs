@@ -7,7 +7,7 @@ namespace TestProject
 {
     using System;
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -18,7 +18,7 @@ using HSNXT.dotNetExt;
     public class DateTimeExtensionsTest
     {
         #region RoundToNearest
-        
+
         [TestMethod]
         public void DateTime_RoundToNearest_001()
         {
@@ -214,7 +214,7 @@ using HSNXT.dotNetExt;
         #endregion
 
         #region IsWeekend
-        
+
         /// <summary>
         ///A test for IsWeekend
         ///</summary>
@@ -304,7 +304,7 @@ using HSNXT.dotNetExt;
         #endregion
 
         #region StartOfDay
-        
+
         [TestMethod]
         public void DateTime_StartOfDayTest_001()
         {
@@ -333,7 +333,7 @@ using HSNXT.dotNetExt;
         #endregion
 
         #region EndOfMonth
-        
+
         [TestMethod]
         public void DateTime_EndOfMonth_001()
         {
@@ -346,7 +346,7 @@ using HSNXT.dotNetExt;
         #endregion
 
         #region StartOfYear
-        
+
         [TestMethod]
         public void DateTime_StartOfYear_001()
         {

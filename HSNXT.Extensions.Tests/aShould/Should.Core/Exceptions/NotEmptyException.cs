@@ -9,6 +9,8 @@ namespace erichexter.Should.Core.Exceptions
         /// Creates a new instance of the <see cref="NotEmptyException"/> class.
         /// </summary>
         public NotEmptyException()
-            : base("Assert.NotEmpty() failure") { }
+            : base("Assert.NotEmpty() failure")
+        {
+        }
     }
 }

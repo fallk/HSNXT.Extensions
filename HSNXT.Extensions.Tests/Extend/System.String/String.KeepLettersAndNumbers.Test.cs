@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,10 +15,10 @@ namespace Extend.Testing
         public void KeepLettersAndNumbersTest()
         {
             var actual = "a1b2c3".KeepLettersAndNumbers();
-            Assert.Equal( "a1b2c3", actual );
+            Assert.Equal("a1b2c3", actual);
 
             actual = "a1.b2-c3".KeepLettersAndNumbers();
-            Assert.Equal( "a1b2c3", actual );
+            Assert.Equal("a1b2c3", actual);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.KeepLettersAndNumbers( null );
+            Action test = () => Extensions.KeepLettersAndNumbers(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

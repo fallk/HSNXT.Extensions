@@ -58,9 +58,9 @@ namespace Eloquent.Tests.Objects
             [TestInitialize]
             public void Init()
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); 
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             }
-            
+
             [TestMethod]
             public void Can_Convert_Object_To_Decimal()
             {
@@ -75,9 +75,9 @@ namespace Eloquent.Tests.Objects
             [TestInitialize]
             public void Init()
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); 
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             }
-            
+
             [TestMethod]
             public void Can_Convert_Object_To_Double()
             {

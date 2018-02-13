@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Web
@@ -53,7 +55,7 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "key", "value" },
+                {"key", "value"},
             };
             Assert.Equal("key=value", collection.ToQueryString());
         }
@@ -63,9 +65,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "ka", "v1" },
-                { "kb", "v2" },
-                { "kc", "v3" },
+                {"ka", "v1"},
+                {"kb", "v2"},
+                {"kc", "v3"},
             };
             Assert.Equal("ka=v1&kb=v2&kc=v3", collection.ToQueryString());
         }
@@ -75,15 +77,15 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "a", "a1" },
-                { "c", "c1" },
-                { "b", "b1" },
-                { "a", "a2" },
-                { "c", "c2" },
-                { "b", "b2" },
-                { "a", "a3" },
-                { "c", "c3" },
-                { "b", "b3" },
+                {"a", "a1"},
+                {"c", "c1"},
+                {"b", "b1"},
+                {"a", "a2"},
+                {"c", "c2"},
+                {"b", "b2"},
+                {"a", "a3"},
+                {"c", "c3"},
+                {"b", "b3"},
             };
             Assert.Equal("a=a1%2ca2%2ca3&c=c1%2cc2%2cc3&b=b1%2cb2%2cb3", collection.ToQueryString());
         }
@@ -93,9 +95,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { null, "v1" },
-                { null, "v2" },
-                { null, "v3" },
+                {null, "v1"},
+                {null, "v2"},
+                {null, "v3"},
             };
             Assert.Equal("=v1%2cv2%2cv3", collection.ToQueryString());
         }
@@ -105,9 +107,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { null, string.Empty },
-                { null, string.Empty },
-                { null, string.Empty },
+                {null, string.Empty},
+                {null, string.Empty},
+                {null, string.Empty},
             };
             Assert.Equal("=%2c%2c", collection.ToQueryString());
         }
@@ -117,9 +119,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "key", string.Empty },
-                { "key", string.Empty },
-                { "key", string.Empty },
+                {"key", string.Empty},
+                {"key", string.Empty},
+                {"key", string.Empty},
             };
             Assert.Equal("key=%2c%2c", collection.ToQueryString());
         }
@@ -129,9 +131,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { string.Empty, string.Empty },
-                { string.Empty, string.Empty },
-                { string.Empty, string.Empty },
+                {string.Empty, string.Empty},
+                {string.Empty, string.Empty},
+                {string.Empty, string.Empty},
             };
             Assert.Equal("=%2c%2c", collection.ToQueryString());
         }
@@ -141,7 +143,7 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "msg", "hello world" },
+                {"msg", "hello world"},
             };
             Assert.Equal("msg=hello+world", collection.ToQueryString());
         }
@@ -164,7 +166,7 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "key", "value" },
+                {"key", "value"},
             };
             Assert.Equal("key=value", collection.ToW3FormEncoded());
         }
@@ -174,9 +176,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "ka", "v1" },
-                { "kb", "v2" },
-                { "kc", "v3" },
+                {"ka", "v1"},
+                {"kb", "v2"},
+                {"kc", "v3"},
             };
             Assert.Equal("ka=v1&kb=v2&kc=v3", collection.ToW3FormEncoded());
         }
@@ -186,15 +188,15 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "a", "a1" },
-                { "c", "c1" },
-                { "b", "b1" },
-                { "a", "a2" },
-                { "c", "c2" },
-                { "b", "b2" },
-                { "a", "a3" },
-                { "c", "c3" },
-                { "b", "b3" },
+                {"a", "a1"},
+                {"c", "c1"},
+                {"b", "b1"},
+                {"a", "a2"},
+                {"c", "c2"},
+                {"b", "b2"},
+                {"a", "a3"},
+                {"c", "c3"},
+                {"b", "b3"},
             };
             Assert.Equal("a=a1&a=a2&a=a3&c=c1&c=c2&c=c3&b=b1&b=b2&b=b3", collection.ToW3FormEncoded());
         }
@@ -204,9 +206,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { null, "v1" },
-                { null, "v2" },
-                { null, "v3" },
+                {null, "v1"},
+                {null, "v2"},
+                {null, "v3"},
             };
             Assert.Equal("v1&v2&v3", collection.ToW3FormEncoded());
         }
@@ -216,9 +218,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { null, string.Empty },
-                { null, string.Empty },
-                { null, string.Empty },
+                {null, string.Empty},
+                {null, string.Empty},
+                {null, string.Empty},
             };
             Assert.Equal(string.Empty, collection.ToW3FormEncoded());
         }
@@ -228,9 +230,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "key", string.Empty },
-                { "key", string.Empty },
-                { "key", string.Empty },
+                {"key", string.Empty},
+                {"key", string.Empty},
+                {"key", string.Empty},
             };
             Assert.Equal("key=&key=&key=", collection.ToW3FormEncoded());
         }
@@ -240,9 +242,9 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { string.Empty, string.Empty },
-                { string.Empty, string.Empty },
-                { string.Empty, string.Empty },
+                {string.Empty, string.Empty},
+                {string.Empty, string.Empty},
+                {string.Empty, string.Empty},
             };
             Assert.Equal(string.Empty, collection.ToW3FormEncoded());
         }
@@ -252,7 +254,7 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "msg", "hello world" },
+                {"msg", "hello world"},
             };
             Assert.Equal("msg=hello%20world", collection.ToW3FormEncoded());
         }
@@ -264,7 +266,7 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "foo", VeryLargeValue },
+                {"foo", VeryLargeValue},
             };
             Assert.Throws<UriFormatException>(() => collection.ToW3FormEncoded());
         }
@@ -274,7 +276,7 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "foo", VeryLargeValue },
+                {"foo", VeryLargeValue},
             };
             Assert.Throws<UriFormatException>(() => collection.ToW3FormEncoded(null));
         }
@@ -284,10 +286,14 @@ namespace Mannex.Tests.Web
         {
             var collection = new NameValueCollection
             {
-                { "msg", "hello world" },
+                {"msg", "hello world"},
             };
             string arg = null;
-            Func<string, string> encoder = s => { arg = s; return Uri.EscapeDataString(s); };
+            Func<string, string> encoder = s =>
+            {
+                arg = s;
+                return Uri.EscapeDataString(s);
+            };
             Assert.Equal("msg=hello%20world", collection.ToW3FormEncoded(encoder));
             Assert.Equal("hello world", arg);
         }

@@ -11,7 +11,9 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="expected">The expected object reference</param>
         /// <param name="actual">The actual object reference</param>
         public SameException(object expected,
-                             object actual)
-            : base(expected, actual, "Assert.Same() Failure", true) { }
+            object actual)
+            : base(expected, actual, "Assert.Same() Failure", true)
+        {
+        }
     }
 }

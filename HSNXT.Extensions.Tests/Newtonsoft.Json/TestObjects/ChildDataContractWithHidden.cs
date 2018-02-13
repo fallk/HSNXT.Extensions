@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 #if !NET20
@@ -30,8 +32,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 {
     public class ChildDataContractWithHidden : BaseDataContractWithHidden
     {
-        [DataMember(Name = "NewMember")]
-        public new virtual string NewMember { get; set; }
+        [DataMember(Name = "NewMember")] public new virtual string NewMember { get; set; }
 
         public override string VirtualMember { get; set; }
         public string AddedMember { get; set; }

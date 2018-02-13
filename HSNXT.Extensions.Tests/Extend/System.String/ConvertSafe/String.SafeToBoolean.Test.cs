@@ -1,6 +1,6 @@
 #region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,9 +15,9 @@ namespace Extend.Testing
         public void SafeToBooleanInvalidValueTest()
         {
             var expected = Extensions.GetRandomBoolean();
-            var actual = "InvalidValue".SafeToBoolean( expected );
+            var actual = "InvalidValue".SafeToBoolean(expected);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Boolean) );
+                .Be(default(Boolean));
         }
 
         [Fact]
@@ -37,11 +37,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToBoolean( !default(Boolean) );
+            var actual = value.SafeToBoolean(!default(Boolean));
 
             actual
                 .Should()
-                .Be( !default(Boolean) );
+                .Be(!default(Boolean));
         }
 
         [Fact]
@@ -49,11 +49,11 @@ namespace Extend.Testing
         {
             var expected = Extensions.GetRandomBoolean();
             var actual = expected.ToString()
-                                 .SafeToBoolean();
+                .SafeToBoolean();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
     }
 }

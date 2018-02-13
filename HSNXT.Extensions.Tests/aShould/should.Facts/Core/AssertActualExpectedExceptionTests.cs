@@ -29,8 +29,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void ArraysShowDifferencePoint()
         {
-            int[] actualValue = new int[] { 1, 2, 3, 4, 5 };
-            int[] expectedValue = new int[] { 1, 2, 5, 7, 9 };
+            int[] actualValue = new int[] {1, 2, 3, 4, 5};
+            int[] expectedValue = new int[] {1, 2, 5, 7, 9};
 
             string expectedMessage =
                 "Message" + Environment.NewLine +

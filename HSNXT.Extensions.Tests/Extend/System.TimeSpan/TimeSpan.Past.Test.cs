@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,11 +13,11 @@ namespace Extend.Testing
         [Fact]
         public void FPastTest()
         {
-            var expected = DateTime.Now.Subtract( TimeSpan.FromDays( 1 ) );
-            var actual = TimeSpan.FromDays( 1 )
-                                 .Past();
+            var expected = DateTime.Now.Subtract(TimeSpan.FromDays(1));
+            var actual = TimeSpan.FromDays(1)
+                .Past();
 
-            Assert.Equal( expected.Day, actual.Day );
+            Assert.Equal(expected.Day, actual.Day);
         }
     }
 }

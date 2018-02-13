@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Reflection
@@ -39,7 +41,7 @@ namespace Mannex.Tests.Reflection
         [Fact]
         public void IsDefinedFailsWithNullThis()
         {
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
                 Extensions.IsDefined<object>(null, true));
         }
 
@@ -48,7 +50,7 @@ namespace Mannex.Tests.Reflection
         {
             Assert.True(typeof(Test).IsDefined<DescriptionAttribute>(true));
         }
-        
+
         [Fact]
         public void IsDefinedReturnsTrueWhenAttributeIsAbsent()
         {
@@ -65,7 +67,7 @@ namespace Mannex.Tests.Reflection
         public void GetCustomAttributesFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                Extensions.GetCustomAttributes<object>((ICustomAttributeProvider)null, true));
+                Extensions.GetCustomAttributes<object>((ICustomAttributeProvider) null, true));
         }
 
         [Fact]
@@ -74,7 +76,7 @@ namespace Mannex.Tests.Reflection
             ICustomAttributeProvider cap = typeof(Test);
             var attributes = cap.GetCustomAttributes<TestAttribute>(true);
             Assert.NotNull(attributes);
-            Assert.Equal(new[] { 12, 34 }, attributes.Select(a => a.Value).OrderBy(x => x).ToArray());
+            Assert.Equal(new[] {12, 34}, attributes.Select(a => a.Value).OrderBy(x => x).ToArray());
         }
 
         [Fact]
@@ -99,7 +101,7 @@ namespace Mannex.Tests.Reflection
         public void GetCustomAttributeFailsWithNullThis()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                Extensions.GetCustomAttribute<object>((ICustomAttributeProvider)null, true));
+                Extensions.GetCustomAttribute<object>((ICustomAttributeProvider) null, true));
         }
 
         [Fact]
@@ -145,8 +147,12 @@ namespace Mannex.Tests.Reflection
         }
 
         [Description("foo"), Test(12), Test(34)]
-        class Test {}
+        class Test
+        {
+        }
 
-        class Subtest { }
+        class Subtest
+        {
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -20,11 +20,11 @@ namespace Extend.Testing
                 2,
                 3
             };
-            var list = array.ToGenericList( x => 10 + x );
+            var list = array.ToGenericList(x => 10 + x);
 
-            Assert.Equal( 11, list[0] );
-            Assert.Equal( 12, list[1] );
-            Assert.Equal( 13, list[2] );
+            Assert.Equal(11, list[0]);
+            Assert.Equal(12, list[1]);
+            Assert.Equal(13, list[2]);
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace Extend.Testing
             String[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => array.ToGenericList( x => x + "Test" );
+            Action test = () => array.ToGenericList(x => x + "Test");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -50,7 +50,7 @@ namespace Extend.Testing
             Func<Int32, Int32> selector = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.ToGenericList( selector );
+            Action test = () => array.ToGenericList(selector);
 
             test.ShouldThrow<ArgumentNullException>();
         }

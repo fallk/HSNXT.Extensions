@@ -13,7 +13,8 @@ namespace erichexter.Should.Facts.Core
             List<int> list = new List<int>();
 
             NotEmptyException ex =
-                Should.Core.Assertions.Assert.Throws<NotEmptyException>(() => Should.Core.Assertions.Assert.NotEmpty(list));
+                Should.Core.Assertions.Assert.Throws<NotEmptyException>(() =>
+                    Should.Core.Assertions.Assert.NotEmpty(list));
 
             Should.Core.Assertions.Assert.Equal("Assert.NotEmpty() failure", ex.Message);
         }

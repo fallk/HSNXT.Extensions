@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Data
@@ -49,7 +51,7 @@ namespace Mannex.Tests.Data
         public void GetValueByNameFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                Extensions.GetValue<object>((IDataRecord)null, string.Empty));
+                Extensions.GetValue<object>((IDataRecord) null, string.Empty));
             Assert.Equal("record", e.ParamName);
         }
 
@@ -67,7 +69,7 @@ namespace Mannex.Tests.Data
             var record = CreateTable(42).GetRecords().Single();
             Assert.Equal(42, record.GetValue<int>(0));
         }
-        
+
         [Fact]
         public void GetValueByIndexForStructsFailsWithDBNull()
         {
@@ -92,15 +94,15 @@ namespace Mannex.Tests.Data
         {
             var table = new DataTable();
             table.Columns.Add("Value", typeof(T));
-            
+
             foreach (var value in from value in values
-                                  select nullPredicate(value)
-                                       ? (object) DBNull.Value
-                                       : value)
+                select nullPredicate(value)
+                    ? (object) DBNull.Value
+                    : value)
             {
                 table.Rows.Add(value);
             }
-            
+
             return table;
         }
 
@@ -144,7 +146,7 @@ namespace Mannex.Tests.Data
         {
             var table = CreateTable(1, 2, 3);
             using (var reader = table.CreateDataReader())
-            { 
+            {
                 if (read) Assert.True(reader.Read());
                 Assert.True(f(reader) is T[]);
             }

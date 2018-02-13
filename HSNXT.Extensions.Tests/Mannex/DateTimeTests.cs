@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests
@@ -36,15 +38,15 @@ namespace Mannex.Tests
         [Fact]
         public void GetQuarter()
         {
-            Assert.Equal(1, new DateTime(2014,  1, 15).GetQuarter());
-            Assert.Equal(1, new DateTime(2014,  2, 15).GetQuarter());
-            Assert.Equal(1, new DateTime(2014,  3, 15).GetQuarter());
-            Assert.Equal(2, new DateTime(2014,  4, 15).GetQuarter());
-            Assert.Equal(2, new DateTime(2014,  5, 15).GetQuarter());
-            Assert.Equal(2, new DateTime(2014,  6, 15).GetQuarter());
-            Assert.Equal(3, new DateTime(2014,  7, 15).GetQuarter());
-            Assert.Equal(3, new DateTime(2014,  8, 15).GetQuarter());
-            Assert.Equal(3, new DateTime(2014,  9, 15).GetQuarter());
+            Assert.Equal(1, new DateTime(2014, 1, 15).GetQuarter());
+            Assert.Equal(1, new DateTime(2014, 2, 15).GetQuarter());
+            Assert.Equal(1, new DateTime(2014, 3, 15).GetQuarter());
+            Assert.Equal(2, new DateTime(2014, 4, 15).GetQuarter());
+            Assert.Equal(2, new DateTime(2014, 5, 15).GetQuarter());
+            Assert.Equal(2, new DateTime(2014, 6, 15).GetQuarter());
+            Assert.Equal(3, new DateTime(2014, 7, 15).GetQuarter());
+            Assert.Equal(3, new DateTime(2014, 8, 15).GetQuarter());
+            Assert.Equal(3, new DateTime(2014, 9, 15).GetQuarter());
             Assert.Equal(4, new DateTime(2014, 10, 15).GetQuarter());
             Assert.Equal(4, new DateTime(2014, 11, 15).GetQuarter());
             Assert.Equal(4, new DateTime(2014, 12, 15).GetQuarter());

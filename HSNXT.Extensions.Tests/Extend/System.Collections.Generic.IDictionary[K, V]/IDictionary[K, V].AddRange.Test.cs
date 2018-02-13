@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -18,31 +18,31 @@ namespace Extend.Testing
         {
             var dictionary = new Dictionary<String, String>
             {
-                { Extensions.GetRandomString(), Extensions.GetRandomString() },
-                { Extensions.GetRandomString(), Extensions.GetRandomString() }
+                {Extensions.GetRandomString(), Extensions.GetRandomString()},
+                {Extensions.GetRandomString(), Extensions.GetRandomString()}
             };
 
             var otherDictionary = new Dictionary<String, String>
             {
-                { Extensions.GetRandomString(), Extensions.GetRandomString() },
-                { Extensions.GetRandomString(), Extensions.GetRandomString() }
+                {Extensions.GetRandomString(), Extensions.GetRandomString()},
+                {Extensions.GetRandomString(), Extensions.GetRandomString()}
             };
 
-            Assert.Equal( 2, dictionary.Count );
+            Assert.Equal(2, dictionary.Count);
 
-            var actual = dictionary.AddRange( otherDictionary );
+            var actual = dictionary.AddRange(otherDictionary);
             actual
                 .Should()
-                .BeSameAs( dictionary );
-            Assert.Equal( 4, dictionary.Count );
-            Assert.True( dictionary.ContainAll( otherDictionary ) );
+                .BeSameAs(dictionary);
+            Assert.Equal(4, dictionary.Count);
+            Assert.True(dictionary.ContainAll(otherDictionary));
         }
 
         [Fact]
         public void AddRangeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.AddRange( null, new Dictionary<Object, Object>() );
+            Action test = () => Extensions.AddRange(null, new Dictionary<Object, Object>());
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -51,7 +51,7 @@ namespace Extend.Testing
         public void AddRangeTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new Dictionary<Object, Object>().AddRange( null );
+            Action test = () => new Dictionary<Object, Object>().AddRange(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

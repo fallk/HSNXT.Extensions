@@ -10,7 +10,8 @@ namespace erichexter.Should.Core.Assertions
             Type type = typeof(T);
 
             // Null?
-            if (!type.IsValueType || (type.IsGenericType && type.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
+            if (!type.IsValueType ||
+                (type.IsGenericType && type.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
                 if (Equals(x, default(T)))
                 {
@@ -25,7 +26,9 @@ namespace erichexter.Should.Core.Assertions
             var yIsAssignableFromX = y.GetType().IsAssignableFrom(x.GetType());
 
             if (!xIsAssignableFromY && !yIsAssignableFromX)
-                throw new InvalidOperationException(string.Format("Cannot compare objects of type {0} and {1} because neither is assignable from the other.", x.GetType().Name, y.GetType().Name));
+                throw new InvalidOperationException(string.Format(
+                    "Cannot compare objects of type {0} and {1} because neither is assignable from the other.",
+                    x.GetType().Name, y.GetType().Name));
 
             // x Implements IComparable<T>?
             IComparable<T> comparable1 = x as IComparable<T>;
@@ -49,7 +52,7 @@ namespace erichexter.Should.Core.Assertions
             IComparable comparable4 = y as IComparable;
 
             if (comparable4 != null && yIsAssignableFromX)
-                return comparable4.CompareTo(x) *-1;
+                return comparable4.CompareTo(x) * -1;
 
             if (new AssertEqualityComparer<T>().Equals(x, y))
             {
@@ -74,7 +77,9 @@ namespace erichexter.Should.Core.Assertions
                 }
             }
 
-            throw new InvalidOperationException(string.Format("Cannot compare objects of type {0} and {1} because neither implements IComparable or IComparable<T> nor overloads comparaison operators.", x.GetType().Name, y.GetType().Name));
+            throw new InvalidOperationException(string.Format(
+                "Cannot compare objects of type {0} and {1} because neither implements IComparable or IComparable<T> nor overloads comparaison operators.",
+                x.GetType().Name, y.GetType().Name));
         }
 
         //Note: Handles edge case of a class where operators are overloaded but niether IComparable or IComparable<T> are implemented
@@ -84,18 +89,22 @@ namespace erichexter.Should.Core.Assertions
             if (greaterThan != null)
             {
                 var lessThan = type.GetMethod("op_LessThan");
-                return (bool)greaterThan.Invoke(null, new object[] { x, y })
+                return (bool) greaterThan.Invoke(null, new object[] {x, y})
                     ? 1
-                    : (bool)lessThan.Invoke(null, new object[] { x, y }) ? -1 : 0;
+                    : (bool) lessThan.Invoke(null, new object[] {x, y})
+                        ? -1
+                        : 0;
             }
+
             var greaterThanOrEqual = type.GetMethod("op_GreaterThanOrEqual");
             if (greaterThanOrEqual != null)
             {
                 var lessThanOrEqual = type.GetMethod("op_LessThanOrEqual");
-                return (bool)greaterThanOrEqual.Invoke(null, new object[] { x, y })
-                    ? (bool)lessThanOrEqual.Invoke(null, new object[] { x, y }) ? 0 : 1
+                return (bool) greaterThanOrEqual.Invoke(null, new object[] {x, y})
+                    ? (bool) lessThanOrEqual.Invoke(null, new object[] {x, y}) ? 0 : 1
                     : -1;
             }
+
             return null;
         }
     }

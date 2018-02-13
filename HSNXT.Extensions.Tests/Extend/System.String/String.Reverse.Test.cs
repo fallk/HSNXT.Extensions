@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,21 +15,21 @@ namespace Extend.Testing
         public void ReverseTest()
         {
             var actual = "abc".Reverse();
-            Assert.Equal( "cba", actual );
+            Assert.Equal("cba", actual);
         }
 
         [Fact]
         public void ReverseTest1()
         {
             var actual = "a".Reverse();
-            Assert.Equal( "a", actual );
+            Assert.Equal("a", actual);
         }
 
         [Fact]
         public void ReverseTest2()
         {
             var actual = "".Reverse();
-            Assert.Equal( "", actual );
+            Assert.Equal("", actual);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Reverse( (string) null );
+            Action test = () => Extensions.Reverse((string) null);
 
             test.ShouldThrow<NullReferenceException>();
         }

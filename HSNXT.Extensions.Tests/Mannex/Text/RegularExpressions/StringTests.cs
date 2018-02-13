@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Text.RegularExpressions
@@ -142,9 +144,9 @@ namespace Mannex.Tests.Text.RegularExpressions
         {
             var e = "(123,456)".Matches(@"[0-9]+").GetEnumerator();
             Assert.True(e.MoveNext());
-            Assert.Equal("123", ((Match)e.Current).Value);
+            Assert.Equal("123", ((Match) e.Current).Value);
             Assert.True(e.MoveNext());
-            Assert.Equal("456", ((Match)e.Current).Value);
+            Assert.Equal("456", ((Match) e.Current).Value);
             Assert.False(e.MoveNext());
         }
 

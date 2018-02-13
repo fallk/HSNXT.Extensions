@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using HSNXT.Internal;
 using FluentAssertions;
 using Xunit;
@@ -15,20 +15,20 @@ namespace Extend.Testing.Internal
         public void FormatTest()
         {
             var expected = Extensions.GetRandomString();
-            var target = new FormatInformation( "name", expected );
+            var target = new FormatInformation("name", expected);
 
             target.Format.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void ValueNameTest()
         {
             var expected = Extensions.GetRandomString();
-            var target = new FormatInformation( expected, null );
+            var target = new FormatInformation(expected, null);
 
             target.ValueName.Should()
-                  .Be( expected );
+                .Be(expected);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,7 +18,7 @@ namespace Extend.Testing
             String s = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.CoalesceOrDefault( s, null, null, "expected", "Test2" );
+            Action test = () => expected.CoalesceOrDefault(s, null, null, "expected", "Test2");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -27,10 +27,10 @@ namespace Extend.Testing
         public void CoalesceOrDefault4Test()
         {
             var expected = Extensions.GetRandomString();
-            var actual = expected.CoalesceOrDefault( "default", null, null );
+            var actual = expected.CoalesceOrDefault("default", null, null);
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -39,10 +39,10 @@ namespace Extend.Testing
             String value = null;
             const String expected = "expected";
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.CoalesceOrDefault( "default", null, null, expected );
+            var actual = value.CoalesceOrDefault("default", null, null, expected);
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -51,10 +51,10 @@ namespace Extend.Testing
             String value = null;
             const String expected = "expected";
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.CoalesceOrDefault( expected, null, null, null );
+            var actual = value.CoalesceOrDefault(expected, null, null, null);
 
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Extend.Testing
             String s = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.CoalesceOrDefault( null, s, null, null, expected, "Test2" );
+            Action test = () => Extensions.CoalesceOrDefault(null, s, null, null, expected, "Test2");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -75,12 +75,12 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             String s = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = Extensions.CoalesceOrDefault( null, () => s, null, null, expected, "Test2" );
+            var actual = Extensions.CoalesceOrDefault(null, () => s, null, null, expected, "Test2");
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
 
-            actual = Extensions.CoalesceOrDefault( null, () => expected, null, null );
-            Assert.Equal( expected, actual );
+            actual = Extensions.CoalesceOrDefault(null, () => expected, null, null);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => s.CoalesceOrDefault( func, null, null );
+            Action test = () => s.CoalesceOrDefault(func, null, null);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -102,9 +102,9 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             String s = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = expected.CoalesceOrDefault( () => s, null, null, "Test2" );
+            var actual = expected.CoalesceOrDefault(() => s, null, null, "Test2");
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => s.CoalesceOrDefault( s1, null, null );
+            Action test = () => s.CoalesceOrDefault(s1, null, null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

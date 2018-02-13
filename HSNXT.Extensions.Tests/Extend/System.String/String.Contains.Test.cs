@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,30 +15,30 @@ namespace Extend.Testing
         public void ContainsTest()
         {
             const String target = "this is my string";
-            var actual = target.Contains( "string", StringComparison.OrdinalIgnoreCase );
+            var actual = target.Contains("string", StringComparison.OrdinalIgnoreCase);
 
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
         public void ContainsTest1()
         {
             const String target = "this is my string";
-            var actual = target.Contains( "String", StringComparison.Ordinal );
+            var actual = target.Contains("String", StringComparison.Ordinal);
 
             actual.Should()
-                  .BeFalse();
+                .BeFalse();
         }
 
         [Fact]
         public void ContainsTest2()
         {
             const String target = "this is my String";
-            var actual = target.Contains( "String", StringComparison.Ordinal );
+            var actual = target.Contains("String", StringComparison.Ordinal);
 
             actual.Should()
-                  .BeTrue();
+                .BeTrue();
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => target.Contains( "String", StringComparison.Ordinal );
+            Action test = () => target.Contains("String", StringComparison.Ordinal);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => target.Contains( null, StringComparison.Ordinal );
+            Action test = () => target.Contains(null, StringComparison.Ordinal);
 
             test.ShouldThrow<ArgumentNullException>();
         }

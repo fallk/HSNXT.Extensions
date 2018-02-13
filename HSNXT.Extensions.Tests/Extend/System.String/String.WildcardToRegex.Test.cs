@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,31 +17,31 @@ namespace Extend.Testing
             var actual = "*.txt".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^.*\\.txt$" );
+                .Be("^.*\\.txt$");
 
-            "test.txt".IsMatch( actual )
-                      .Should()
-                      .BeTrue();
+            "test.txt".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "C:\\Temp\\test.txt".IsMatch( actual )
-                                .Should()
-                                .BeTrue();
+            "C:\\Temp\\test.txt".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "*.txt".IsMatch( actual )
-                   .Should()
-                   .BeTrue();
+            "*.txt".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "*txt".IsMatch( actual )
-                  .Should()
-                  .BeFalse();
+            "*txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "txt".IsMatch( actual )
-                 .Should()
-                 .BeFalse();
+            "txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeFalse();
+            "test".IsMatch(actual)
+                .Should()
+                .BeFalse();
         }
 
         [Fact]
@@ -50,31 +50,31 @@ namespace Extend.Testing
             var actual = "txt".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^txt$" );
+                .Be("^txt$");
 
-            "test.txt".IsMatch( actual )
-                      .Should()
-                      .BeFalse();
+            "test.txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "C:\\Temp\\test.txt".IsMatch( actual )
-                                .Should()
-                                .BeFalse();
+            "C:\\Temp\\test.txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "*.txt".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "*.txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "*txt".IsMatch( actual )
-                  .Should()
-                  .BeFalse();
+            "*txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "txt".IsMatch( actual )
-                 .Should()
-                 .BeTrue();
+            "txt".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeFalse();
+            "test".IsMatch(actual)
+                .Should()
+                .BeFalse();
         }
 
         [Fact]
@@ -83,31 +83,31 @@ namespace Extend.Testing
             var actual = "txt.*".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^txt\\..*$" );
+                .Be("^txt\\..*$");
 
-            "txt.test".IsMatch( actual )
-                      .Should()
-                      .BeTrue();
+            "txt.test".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "txt.*".IsMatch( actual )
-                   .Should()
-                   .BeTrue();
+            "txt.*".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "C:\\Temp\\txt.test".IsMatch( actual )
-                                .Should()
-                                .BeFalse();
+            "C:\\Temp\\txt.test".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "txt*".IsMatch( actual )
-                  .Should()
-                  .BeFalse();
+            "txt*".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "txt".IsMatch( actual )
-                 .Should()
-                 .BeFalse();
+            "txt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeFalse();
+            "test".IsMatch(actual)
+                .Should()
+                .BeFalse();
         }
 
         [Fact]
@@ -116,31 +116,31 @@ namespace Extend.Testing
             var actual = "*".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^.*$" );
+                .Be("^.*$");
 
-            "".IsMatch( actual )
-              .Should()
-              .BeTrue();
+            "".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "test".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "C:\\Temp\\txt.test".IsMatch( actual )
-                                .Should()
-                                .BeTrue();
+            "C:\\Temp\\txt.test".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "txt*".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "txt*".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "txt".IsMatch( actual )
-                 .Should()
-                 .BeTrue();
+            "txt".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "test".IsMatch(actual)
+                .Should()
+                .BeTrue();
         }
 
         [Fact]
@@ -149,31 +149,31 @@ namespace Extend.Testing
             var actual = "t?st".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^t.st$" );
+                .Be("^t.st$");
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "test".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "t?st".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "t?st".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "t*st".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "t*st".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "teest".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "teest".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "".IsMatch( actual )
-              .Should()
-              .BeFalse();
+            "".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "t??st".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "t??st".IsMatch(actual)
+                .Should()
+                .BeFalse();
         }
 
         [Fact]
@@ -182,31 +182,31 @@ namespace Extend.Testing
             var actual = "?est".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^.est$" );
+                .Be("^.est$");
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "test".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "?est".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "?est".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "*est".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "*est".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "ttest".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "ttest".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "".IsMatch( actual )
-              .Should()
-              .BeFalse();
+            "".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "??est".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "??est".IsMatch(actual)
+                .Should()
+                .BeFalse();
         }
 
         [Fact]
@@ -215,31 +215,31 @@ namespace Extend.Testing
             var actual = "tes?".WildcardToRegex();
 
             actual.Should()
-                  .Be( "^tes.$" );
+                .Be("^tes.$");
 
-            "test".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "test".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "tes?".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "tes?".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "tes*".IsMatch( actual )
-                  .Should()
-                  .BeTrue();
+            "tes*".IsMatch(actual)
+                .Should()
+                .BeTrue();
 
-            "testt".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "testt".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "".IsMatch( actual )
-              .Should()
-              .BeFalse();
+            "".IsMatch(actual)
+                .Should()
+                .BeFalse();
 
-            "tes??".IsMatch( actual )
-                   .Should()
-                   .BeFalse();
+            "tes??".IsMatch(actual)
+                .Should()
+                .BeFalse();
         }
 
         [Fact]

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,14 +14,14 @@ namespace Extend.Testing
         [Fact]
         public void ToDaysTest()
         {
-            var value = Extensions.GetRandomInt32( 1, 100 );
+            var value = Extensions.GetRandomInt32(1, 100);
 
-            var expected = TimeSpan.FromDays( value );
+            var expected = TimeSpan.FromDays(value);
             var actual = value.ToDays();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]

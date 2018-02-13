@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -16,35 +16,35 @@ namespace Extend.Testing
         public void GetValuesTest()
         {
             var actual = Extensions.GetValues<DayOfWeek>()
-                               .ToList();
-            Assert.Equal( 7, actual.Count );
-            Assert.Equal( DayOfWeek.Sunday, actual[0] );
-            Assert.Equal( DayOfWeek.Monday, actual[1] );
-            Assert.Equal( DayOfWeek.Tuesday, actual[2] );
-            Assert.Equal( DayOfWeek.Wednesday, actual[3] );
-            Assert.Equal( DayOfWeek.Thursday, actual[4] );
-            Assert.Equal( DayOfWeek.Friday, actual[5] );
-            Assert.Equal( DayOfWeek.Saturday, actual[6] );
+                .ToList();
+            Assert.Equal(7, actual.Count);
+            Assert.Equal(DayOfWeek.Sunday, actual[0]);
+            Assert.Equal(DayOfWeek.Monday, actual[1]);
+            Assert.Equal(DayOfWeek.Tuesday, actual[2]);
+            Assert.Equal(DayOfWeek.Wednesday, actual[3]);
+            Assert.Equal(DayOfWeek.Thursday, actual[4]);
+            Assert.Equal(DayOfWeek.Friday, actual[5]);
+            Assert.Equal(DayOfWeek.Saturday, actual[6]);
         }
 
         [Fact]
         public void GetValuesTest1()
         {
             var type = typeof(DayOfWeek);
-            var actual = Extensions.GetValues( type );
+            var actual = Extensions.GetValues(type);
 
             var casted = actual.Cast<Object>();
-            var list = casted.Select( x => Convert.ChangeType( x, type ) )
-                             .ToList();
+            var list = casted.Select(x => Convert.ChangeType(x, type))
+                .ToList();
 
-            Assert.Equal( 7, list.Count );
-            Assert.Equal( DayOfWeek.Sunday, list[0] );
-            Assert.Equal( DayOfWeek.Monday, list[1] );
-            Assert.Equal( DayOfWeek.Tuesday, list[2] );
-            Assert.Equal( DayOfWeek.Wednesday, list[3] );
-            Assert.Equal( DayOfWeek.Thursday, list[4] );
-            Assert.Equal( DayOfWeek.Friday, list[5] );
-            Assert.Equal( DayOfWeek.Saturday, list[6] );
+            Assert.Equal(7, list.Count);
+            Assert.Equal(DayOfWeek.Sunday, list[0]);
+            Assert.Equal(DayOfWeek.Monday, list[1]);
+            Assert.Equal(DayOfWeek.Tuesday, list[2]);
+            Assert.Equal(DayOfWeek.Wednesday, list[3]);
+            Assert.Equal(DayOfWeek.Thursday, list[4]);
+            Assert.Equal(DayOfWeek.Friday, list[5]);
+            Assert.Equal(DayOfWeek.Saturday, list[6]);
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Extend.Testing
         public void GetValuesTestArgumentExceptionCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.GetValues( typeof(Int32) );
+            Action test = () => Extensions.GetValues(typeof(Int32));
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -71,7 +71,7 @@ namespace Extend.Testing
             Type t = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.GetValues( t );
+            Action test = () => Extensions.GetValues(t);
 
             test.ShouldThrow<ArgumentNullException>();
         }

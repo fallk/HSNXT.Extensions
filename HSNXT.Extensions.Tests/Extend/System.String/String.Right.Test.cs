@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,7 +17,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.Right( 0 );
+            Action test = () => value.Right(0);
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -26,7 +26,7 @@ namespace Extend.Testing
         public void RightArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".Right( -1 );
+            Action test = () => "test".Right(-1);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -35,7 +35,7 @@ namespace Extend.Testing
         public void RightArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".Right( 10 );
+            Action test = () => "test".Right(10);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -43,37 +43,37 @@ namespace Extend.Testing
         [Fact]
         public void RightTest()
         {
-            var actual = "this".Right( 0 );
+            var actual = "this".Right(0);
 
             actual.Should()
-                  .Be( String.Empty );
+                .Be(String.Empty);
         }
 
         [Fact]
         public void RightTest1()
         {
-            var actual = "this".Right( 1 );
+            var actual = "this".Right(1);
 
             actual.Should()
-                  .Be( "s" );
+                .Be("s");
         }
 
         [Fact]
         public void RightTest2()
         {
-            var actual = "this".Right( 2 );
+            var actual = "this".Right(2);
 
             actual.Should()
-                  .Be( "is" );
+                .Be("is");
         }
 
         [Fact]
         public void RightTest3()
         {
-            var actual = "".Right( 0 );
+            var actual = "".Right(0);
 
             actual.Should()
-                  .Be( String.Empty );
+                .Be(String.Empty);
         }
     }
 }

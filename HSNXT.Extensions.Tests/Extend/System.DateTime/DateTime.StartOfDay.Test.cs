@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,15 +13,15 @@ namespace Extend.Testing
         [Fact]
         public void StartOfDaykTest()
         {
-            var dateTime = new DateTime( 2014, 3, 30, 12, 0, 2 );
+            var dateTime = new DateTime(2014, 3, 30, 12, 0, 2);
             var actual = dateTime.StartOfDay();
 
-            Assert.Equal( new DateTime( 2014, 3, 30 ), actual );
+            Assert.Equal(new DateTime(2014, 3, 30), actual);
 
-            dateTime = new DateTime( 2014, 3, 28, 5, 12, 2 );
+            dateTime = new DateTime(2014, 3, 28, 5, 12, 2);
             actual = dateTime.StartOfDay();
 
-            Assert.Equal( new DateTime( 2014, 3, 28 ), actual );
+            Assert.Equal(new DateTime(2014, 3, 28), actual);
         }
     }
 }

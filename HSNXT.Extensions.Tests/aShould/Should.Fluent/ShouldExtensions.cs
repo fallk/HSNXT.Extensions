@@ -7,7 +7,7 @@ namespace erichexter.Should.Fluent
     public static class ShouldExtensions
     {
         private static readonly IAssertProvider defaultAssertProvider;
-        
+
         static ShouldExtensions()
         {
             defaultAssertProvider = new ShouldCoreAssertProvider();
@@ -37,7 +37,8 @@ namespace erichexter.Should.Fluent
             return new ShouldEnumerable<T>(e, AssertProvider);
         }
 
-        public static ShouldDictionary<TKey, TValue> Should<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> d)
+        public static ShouldDictionary<TKey, TValue> Should<TKey, TValue>(
+            this IEnumerable<KeyValuePair<TKey, TValue>> d)
         {
             return new ShouldDictionary<TKey, TValue>(d, AssertProvider);
         }

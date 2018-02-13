@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,36 +15,36 @@ namespace Extend.Testing
         public void CoalesceTest()
         {
             var expected = Extensions.GetRandomString();
-            var actual = Extensions.Coalesce( null, null, null, null, expected, "Test2" );
+            var actual = Extensions.Coalesce(null, null, null, null, expected, "Test2");
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void CoalesceTest1()
         {
             var expected = Extensions.GetRandomString();
-            var actual = Extensions.Coalesce( null, null, null, null, expected, "Test2" );
+            var actual = Extensions.Coalesce(null, null, null, null, expected, "Test2");
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void CoalesceTest2()
         {
             var expected = Extensions.GetRandomString();
-            var actual = expected.Coalesce( null, null, null, expected, "Test2" );
+            var actual = expected.Coalesce(null, null, null, expected, "Test2");
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void CoalesceTest3()
         {
             var expected = Extensions.GetRandomString();
-            var actual = expected.Coalesce( "Test2" );
+            var actual = expected.Coalesce("Test2");
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -53,9 +53,9 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = expected.Coalesce( value );
+            var actual = expected.Coalesce(value);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -64,9 +64,9 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.Coalesce( expected );
+            var actual = value.Coalesce(expected);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace Extend.Testing
             Object[] array = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => Extensions.Coalesce( null, array, null );
+            Action test = () => Extensions.Coalesce(null, array, null);
 
             test.ShouldNotThrow();
         }
@@ -88,7 +88,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => s.Coalesce( array );
+            Action test = () => s.Coalesce(array);
 
             test.ShouldThrow<NullReferenceException>();
         }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,10 +18,10 @@ namespace Extend.Testing
             const String append = null;
             const String newLine = "</br>";
 
-            var actual = target.AppendWithNewLineIfNotEmpty( append, newLine );
+            var actual = target.AppendWithNewLineIfNotEmpty(append, newLine);
 
             actual.Should()
-                  .Be( target + newLine );
+                .Be(target + newLine);
         }
 
         [Fact]
@@ -31,10 +31,10 @@ namespace Extend.Testing
             const String append = "asdf";
             const String newLine = "</br>";
 
-            var actual = target.AppendWithNewLineIfNotEmpty( append, newLine );
+            var actual = target.AppendWithNewLineIfNotEmpty(append, newLine);
 
             actual.Should()
-                  .Be( "</br>"+append );
+                .Be("</br>" + append);
         }
 
         [Fact]
@@ -43,10 +43,10 @@ namespace Extend.Testing
             const String target = "test-";
             const String append = "asdf";
 
-            var actual = target.AppendWithNewLineIfNotEmpty( append );
+            var actual = target.AppendWithNewLineIfNotEmpty(append);
 
             actual.Should()
-                  .Be( target + Environment.NewLine + append );
+                .Be(target + Environment.NewLine + append);
         }
 
         [Fact]
@@ -56,10 +56,10 @@ namespace Extend.Testing
             const String append = "asdf";
             const String newLine = "</br>";
 
-            var actual = target.AppendWithNewLineIfNotEmpty( append, newLine );
+            var actual = target.AppendWithNewLineIfNotEmpty(append, newLine);
 
             actual.Should()
-                  .Be( target + newLine + append );
+                .Be(target + newLine + append);
         }
 
         [Fact]
@@ -68,10 +68,10 @@ namespace Extend.Testing
             const String target = "";
             const String append = "asdf";
 
-            var actual = target.AppendWithNewLineIfNotEmpty( append );
+            var actual = target.AppendWithNewLineIfNotEmpty(append);
 
             actual.Should()
-                  .Be( append );
+                .Be(append);
         }
 
         [Fact]
@@ -81,10 +81,10 @@ namespace Extend.Testing
             const String append = "asdf";
             const String newLine = "</br>";
 
-            var actual = target.AppendWithNewLineIfNotEmpty( append, newLine );
+            var actual = target.AppendWithNewLineIfNotEmpty(append, newLine);
 
             actual.Should()
-                  .Be( append );
+                .Be(append);
         }
     }
 }

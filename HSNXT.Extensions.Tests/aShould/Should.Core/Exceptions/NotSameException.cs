@@ -9,6 +9,8 @@ namespace erichexter.Should.Core.Exceptions
         /// Creates a new instance of the <see cref="NotSameException"/> class.
         /// </summary>
         public NotSameException()
-            : base("Assert.NotSame() Failure") { }
+            : base("Assert.NotSame() Failure")
+        {
+        }
     }
 }

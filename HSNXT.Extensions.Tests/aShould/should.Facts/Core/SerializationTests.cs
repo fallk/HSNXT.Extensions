@@ -9,7 +9,9 @@ namespace erichexter.Should.Facts.Core
     public class SerializationTests
     {
         [Serializable]
-        class SerializableObject { }
+        class SerializableObject
+        {
+        }
 
         [Fact]
         void CanSerializeAndDeserializeObjectsInATest()
@@ -23,7 +25,10 @@ namespace erichexter.Should.Facts.Core
                 object o = bf.Deserialize(ms);
 
                 Should.Core.Assertions.Assert.IsType(typeof(SerializableObject), o);
-                Should.Core.Assertions.Assert.DoesNotThrow(delegate { SerializableObject o2 = (SerializableObject)o; });
+                Should.Core.Assertions.Assert.DoesNotThrow(delegate
+                {
+                    SerializableObject o2 = (SerializableObject) o;
+                });
             }
         }
     }

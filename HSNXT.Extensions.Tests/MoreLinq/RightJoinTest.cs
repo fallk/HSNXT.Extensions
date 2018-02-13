@@ -105,10 +105,10 @@ namespace HSNXT.Test
                     (x, y) => (Both, x, y));
 
             result.AssertSequenceEqual(
-                (Right, missing, foo ),
+                (Right, missing, foo),
                 (Both, bar2, bar1),
                 (Both, bar3, bar1),
-                (Right, missing, qux ));
+                (Right, missing, qux));
         }
 
         [Test]
@@ -135,10 +135,10 @@ namespace HSNXT.Test
                     StringComparer.OrdinalIgnoreCase);
 
             result.AssertSequenceEqual(
-                (Right, missing, foo ),
+                (Right, missing, foo),
                 (Both, bar2, bar1),
                 (Both, bar3, bar1),
-                (Right, missing, qux ));
+                (Right, missing, qux));
         }
 
         [Test]

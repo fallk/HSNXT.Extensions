@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,15 +18,15 @@ namespace Extend.Testing
             var min = 50;
             var max = 300;
 
-            var actual = value.Between( min, max );
-            Assert.True( actual );
+            var actual = value.Between(min, max);
+            Assert.True(actual);
 
             value = 100;
             min = 50;
             max = 100;
 
-            actual = value.Between( min, max );
-            Assert.False( actual );
+            actual = value.Between(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -36,8 +36,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.Between( min, max );
-            Assert.False( actual );
+            var actual = value.Between(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -47,8 +47,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.Between( min, max );
-            Assert.False( actual );
+            var actual = value.Between(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -58,8 +58,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.Between( min, max );
-            Assert.False( actual );
+            var actual = value.Between(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Between( null, "", "" );
+            Action test = () => Extensions.Between(null, "", "");
 
             test.ShouldNotThrow();
         }
@@ -77,7 +77,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".Between( null, "" );
+            Action test = () => "".Between(null, "");
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -87,7 +87,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".Between( "", null );
+            Action test = () => "".Between("", null);
 
             test.ShouldNotThrow();
         }

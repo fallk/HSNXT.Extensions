@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -25,8 +25,8 @@ namespace Extend.Testing
             const String arg7 = "7";
             const String arg8 = "8";
 
-            var actual = "{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}".F( arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 );
-            Assert.Equal( "0-1-2-3-4-5-6-7-8", actual );
+            var actual = "{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}".F(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+            Assert.Equal("0-1-2-3-4-5-6-7-8", actual);
         }
 
         [Fact]
@@ -36,9 +36,9 @@ namespace Extend.Testing
             var value = Extensions.GetRandomString();
 
             var expected = $"Test: {value}";
-            var actual = format.F( value );
+            var actual = format.F(value);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -49,9 +49,9 @@ namespace Extend.Testing
             var value1 = Extensions.GetRandomString();
 
             var expected = $"Test: {value}, {value1}";
-            var actual = format.F( value, value1 );
+            var actual = format.F(value, value1);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.F( null, new Object(), new Object() );
+            Action test = () => Extensions.F(null, new Object(), new Object());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -71,9 +71,9 @@ namespace Extend.Testing
             const String format = "Test: {0}, {1}, {2}";
 
             const String expected = "Test: 1, test, 99.9999";
-            var actual = format.F( 1, "test", 99.9999 );
+            var actual = format.F(1, "test", 99.9999);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.F( null, new Object(), new Object(), new Object() );
+            Action test = () => Extensions.F(null, new Object(), new Object(), new Object());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -92,9 +92,9 @@ namespace Extend.Testing
             const String format = "Test: {0}, {1}, {2}, {3}";
 
             const String expected = "Test: string, 666, string2, 123";
-            var actual = format.F( "string", 666, "string2", 123 );
+            var actual = format.F("string", 666, "string2", 123);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.F( null, new Object(), new Object(), new Object(), new Object() );
+            Action test = () => Extensions.F(null, new Object(), new Object(), new Object(), new Object());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -112,19 +112,19 @@ namespace Extend.Testing
         {
             const String format = "Test: {0}, {1}, {2}";
             var value = Extensions.GetRandomString()
-                                     .Substring( 0, 2 );
+                .Substring(0, 2);
             var value1 = Extensions.GetRandomString()
-                                      .Substring( 0, 2 );
+                .Substring(0, 2);
             var value2 = Extensions.GetRandomString()
-                                      .Substring( 0, 2 );
+                .Substring(0, 2);
             var value3 = Extensions.GetRandomString()
-                                      .Substring( 0, 2 );
+                .Substring(0, 2);
 
-            var expected = String.Format( CultureInfo.InvariantCulture, format, value, value1, value2 );
+            var expected = String.Format(CultureInfo.InvariantCulture, format, value, value1, value2);
             // ReSharper disable once FormatStringProblem
-            var actual = format.F( CultureInfo.InvariantCulture, value, value1, value2, value3 );
+            var actual = format.F(CultureInfo.InvariantCulture, value, value1, value2, value3);
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -132,7 +132,8 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
+            Action test = () => Extensions.F(null, CultureInfo.InvariantCulture, new Object(), new Object(),
+                new Object(), new Object());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -142,7 +143,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.F( null, new Object() );
+            Action test = () => Extensions.F(null, new Object());
 
             test.ShouldThrow<ArgumentNullException>();
         }

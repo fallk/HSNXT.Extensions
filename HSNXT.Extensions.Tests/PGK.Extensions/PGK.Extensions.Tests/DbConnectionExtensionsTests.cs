@@ -5,42 +5,42 @@ using erichexter.Should.Fluent;
 
 namespace HSNXT.PGK.Extensions.Tests
 {
-	[TestClass]
+    [TestClass]
     public class DbConnectionExtensionsTests
-	{
-		[TestMethod]
-		public void StateIsWithin()
-		{
+    {
+        [TestMethod]
+        public void StateIsWithin()
+        {
             var connection = MockRepository.GenerateStub<IDbConnection>();
 
-		    connection.Stub(x => x.State).Return(ConnectionState.Closed);
+            connection.Stub(x => x.State).Return(ConnectionState.Closed);
 
-		    connection.StateIsWithin(ConnectionState.Executing, ConnectionState.Fetching).Should().Be.False();
+            connection.StateIsWithin(ConnectionState.Executing, ConnectionState.Fetching).Should().Be.False();
             connection.StateIsWithin(ConnectionState.Open).Should().Be.False();
-            
+
             connection.StateIsWithin(ConnectionState.Broken, ConnectionState.Closed).Should().Be.True();
             connection.StateIsWithin(ConnectionState.Closed).Should().Be.True();
-		}
+        }
 
-		[TestMethod]
-		public void StateIsWithinReturnsFalseWhenNoStates()
-		{
+        [TestMethod]
+        public void StateIsWithinReturnsFalseWhenNoStates()
+        {
             var connection = MockRepository.GenerateStub<IDbConnection>();
 
-		    connection.StateIsWithin().Should().Be.False();
-		}
+            connection.StateIsWithin().Should().Be.False();
+        }
 
-		[TestMethod]
-		public void StateIsWithinReturnsFalseWhenConnectionIsNull()
-		{
+        [TestMethod]
+        public void StateIsWithinReturnsFalseWhenConnectionIsNull()
+        {
             IDbConnection connection = null;
 
-		    connection.StateIsWithin().Should().Be.False();
-		}
+            connection.StateIsWithin().Should().Be.False();
+        }
 
-		[TestMethod]
+        [TestMethod]
         public void IsInState()
-		{
+        {
             var connection = MockRepository.GenerateStub<IDbConnection>();
 
             connection.Stub(x => x.State).Return(ConnectionState.Fetching);
@@ -49,9 +49,9 @@ namespace HSNXT.PGK.Extensions.Tests
             connection.IsInState(ConnectionState.Fetching).Should().Be.True();
         }
 
-		[TestMethod]
+        [TestMethod]
         public void OpenIfNot()
-		{
+        {
             var openedConnection = MockRepository.GenerateStub<IDbConnection>();
             var closedConnection = MockRepository.GenerateStub<IDbConnection>();
             // Arrange
@@ -64,5 +64,5 @@ namespace HSNXT.PGK.Extensions.Tests
             openedConnection.AssertWasNotCalled(x => x.Open());
             closedConnection.AssertWasCalled(x => x.Open());
         }
-	}
+    }
 }

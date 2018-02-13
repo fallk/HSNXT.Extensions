@@ -23,6 +23,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(0, should.Target.Count);
             }
+
             return should.Target;
         }
 

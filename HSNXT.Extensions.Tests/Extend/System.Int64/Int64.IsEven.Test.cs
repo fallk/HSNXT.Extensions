@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using FluentAssertions;
 using Xunit;
 
@@ -13,9 +13,9 @@ namespace Extend.Testing
         [Fact]
         public void IsEvenOTest()
         {
-            var actual = Extensions.IsEven( 0 );
+            var actual = Extensions.IsEven(0);
             actual.Should()
-                  .Be( true );
+                .Be(true);
         }
 
         [Fact]
@@ -24,9 +24,9 @@ namespace Extend.Testing
             var value = Extensions.GetRandomInt32();
 
             var expected = value % 2 == 0;
-            var actual = Extensions.IsEven( value );
+            var actual = Extensions.IsEven(value);
             actual.Should()
-                  .Be( expected );
+                .Be(expected);
         }
     }
 }

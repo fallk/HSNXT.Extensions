@@ -13,7 +13,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithNullCollectionThrows()
             {
-                Should.Core.Assertions.Assert.Throws<ArgumentNullException>(() => Should.Core.Assertions.Assert.Single(null));
+                Should.Core.Assertions.Assert.Throws<ArgumentNullException>(() =>
+                    Should.Core.Assertions.Assert.Single(null));
             }
 
             [Fact]
@@ -30,7 +31,7 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithMultiItemCollectionThrows()
             {
-                ArrayList collection = new ArrayList { "Hello", "World" };
+                ArrayList collection = new ArrayList {"Hello", "World"};
 
                 Exception ex = Record.Exception(() => Should.Core.Assertions.Assert.Single(collection));
 
@@ -41,7 +42,7 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithSingleItemCollectionDoesNotThrow()
             {
-                ArrayList collection = new ArrayList { "Hello" };
+                ArrayList collection = new ArrayList {"Hello"};
 
                 Exception ex = Record.Exception(() => Should.Core.Assertions.Assert.Single(collection));
 
@@ -51,7 +52,7 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithSingleItemCollectionReturnsTheItem()
             {
-                ArrayList collection = new ArrayList { "Hello" };
+                ArrayList collection = new ArrayList {"Hello"};
 
                 object result = Should.Core.Assertions.Assert.Single(collection);
 
@@ -64,7 +65,8 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithNullCollectionThrows()
             {
-                Should.Core.Assertions.Assert.Throws<ArgumentNullException>(() => Should.Core.Assertions.Assert.Single<object>(null));
+                Should.Core.Assertions.Assert.Throws<ArgumentNullException>(() =>
+                    Should.Core.Assertions.Assert.Single<object>(null));
             }
 
             [Fact]
@@ -81,7 +83,7 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithMultiItemCollectionThrows()
             {
-                string[] collection = new[] { "Hello", "World!" };
+                string[] collection = new[] {"Hello", "World!"};
 
                 Exception ex = Record.Exception(() => Should.Core.Assertions.Assert.Single(collection));
 
@@ -92,7 +94,7 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithSingleItemCollectionDoesNotThrow()
             {
-                string[] collection = new[] { "Hello" };
+                string[] collection = new[] {"Hello"};
 
                 Exception ex = Record.Exception(() => Should.Core.Assertions.Assert.Single(collection));
 
@@ -102,7 +104,7 @@ namespace erichexter.Should.Facts.Core
             [Fact]
             public void SingleWithSingleItemCollectionReturnsTheItem()
             {
-                string[] collection = new[] { "Hello" };
+                string[] collection = new[] {"Hello"};
 
                 string result = Should.Core.Assertions.Assert.Single(collection);
 

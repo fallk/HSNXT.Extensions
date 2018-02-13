@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -18,7 +18,7 @@ namespace Extend.Testing
             const String culture = "en";
             var actual = culture.ToCultureInfo();
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
@@ -27,7 +27,7 @@ namespace Extend.Testing
             const String culture = "de-CH";
             var actual = culture.ToCultureInfo();
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace Extend.Testing
             var culture = String.Empty;
             var actual = culture.ToCultureInfo();
 
-            Assert.Equal( culture, actual.Name );
+            Assert.Equal(culture, actual.Name);
         }
 
         [Fact]

@@ -11,7 +11,7 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void CanFindNullInContainer()
         {
-            List<object> list = new List<object> { 16, null, "Hi there" };
+            List<object> list = new List<object> {16, null, "Hi there"};
 
             Should.Core.Assertions.Assert.Contains(null, list);
         }
@@ -25,13 +25,14 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void CanSearchForSubstringsCaseInsensitive()
         {
-            Should.Core.Assertions.Assert.Contains("WORLD", "Hello, world!", StringComparison.InvariantCultureIgnoreCase);
+            Should.Core.Assertions.Assert.Contains("WORLD", "Hello, world!",
+                StringComparison.InvariantCultureIgnoreCase);
         }
 
         [Fact]
         public void CanUseComparer()
         {
-            List<int> list = new List<int> { 42 };
+            List<int> list = new List<int> {42};
 
             Should.Core.Assertions.Assert.Contains(43, list, new MyComparer());
         }
@@ -39,7 +40,7 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void ItemInContainer()
         {
-            List<int> list = new List<int> { 42 };
+            List<int> list = new List<int> {42};
 
             Should.Core.Assertions.Assert.Contains(42, list);
         }
@@ -49,7 +50,9 @@ namespace erichexter.Should.Facts.Core
         {
             List<int> list = new List<int>();
 
-            ContainsException ex = Should.Core.Assertions.Assert.Throws<ContainsException>(() => Should.Core.Assertions.Assert.Contains(42, list));
+            ContainsException ex =
+                Should.Core.Assertions.Assert.Throws<ContainsException>(() =>
+                    Should.Core.Assertions.Assert.Contains(42, list));
 
             Should.Core.Assertions.Assert.Equal("Assert.Contains() failure: Not found: 42", ex.Message);
         }
@@ -57,7 +60,7 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void NullsAllowedInContainer()
         {
-            List<object> list = new List<object> { null, 16, "Hi there" };
+            List<object> list = new List<object> {null, 16, "Hi there"};
 
             Should.Core.Assertions.Assert.Contains("Hi there", list);
         }
@@ -65,13 +68,15 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void SubstringContainsIsCaseSensitiveByDefault()
         {
-            Should.Core.Assertions.Assert.Throws<ContainsException>(() => Should.Core.Assertions.Assert.Contains("WORLD", "Hello, world!"));
+            Should.Core.Assertions.Assert.Throws<ContainsException>(() =>
+                Should.Core.Assertions.Assert.Contains("WORLD", "Hello, world!"));
         }
 
         [Fact]
         public void SubstringNotFound()
         {
-            Should.Core.Assertions.Assert.Throws<ContainsException>(() => Should.Core.Assertions.Assert.Contains("hey", "Hello, world!"));
+            Should.Core.Assertions.Assert.Throws<ContainsException>(() =>
+                Should.Core.Assertions.Assert.Contains("hey", "Hello, world!"));
         }
 
         class MyComparer : IEqualityComparer<int>

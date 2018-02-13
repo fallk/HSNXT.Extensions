@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 using HSNXT;
@@ -44,7 +46,7 @@ namespace Mannex.Tests
         [Fact]
         public void CloneObjectReturnsCopy()
         {
-            var array = new[] { new object() };
+            var array = new[] {new object()};
             var clone = array.CloneObject();
             Assert.NotSame(array, clone);
             Assert.Equal(array[0], clone[0]);

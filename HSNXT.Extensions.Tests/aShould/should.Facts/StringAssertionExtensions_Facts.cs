@@ -20,12 +20,10 @@ namespace erichexter.Should.Facts
         }
 
         [Fact]
-        public void ShouldStartWith_expectedSubString_fails_with_diagnostics_when_the_sut_does_not_start_with_the_expectedSubString()
+        public void
+            ShouldStartWith_expectedSubString_fails_with_diagnostics_when_the_sut_does_not_start_with_the_expectedSubString()
         {
-            var ex = Assert.Throws<StartsWithException>(() =>
-            {
-                "foobar".ShouldStartWith("car");
-            });
+            var ex = Assert.Throws<StartsWithException>(() => { "foobar".ShouldStartWith("car"); });
 
             Assert.Equal("Assert.StartsWith() failure: 'car' not found at the beginning of 'foobar'", ex.Message);
         }

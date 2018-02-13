@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -28,15 +30,15 @@ using System.ComponentModel;
 
 namespace Newtonsoft.Json.Tests.TestObjects.Organization
 {
-    [JsonObject(Id = "Person", Title = "Title!", Description = "JsonObjectAttribute description!", MemberSerialization = MemberSerialization.OptIn)]
+    [JsonObject(Id = "Person", Title = "Title!", Description = "JsonObjectAttribute description!",
+        MemberSerialization = MemberSerialization.OptIn)]
 #if !(DNXCORE50)
     [Description("DescriptionAttribute description!")]
 #endif
     public class Person
     {
         // "John Smith"
-        [JsonProperty]
-        public string Name { get; set; }
+        [JsonProperty] public string Name { get; set; }
 
         // "2000-12-15T22:11:03"
         [JsonProperty]

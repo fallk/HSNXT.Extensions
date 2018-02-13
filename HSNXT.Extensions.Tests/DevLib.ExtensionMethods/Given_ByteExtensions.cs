@@ -20,17 +20,12 @@ namespace DevLib.ExtensionMethods.UnitTest
         ///</summary>
         public TestContext TestContext
         {
-            get
-            {
-                return _testContextInstance;
-            }
-            set
-            {
-                _testContextInstance = value;
-            }
+            get { return _testContextInstance; }
+            set { _testContextInstance = value; }
         }
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -58,6 +53,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         //{
         //}
         //
+
         #endregion
 
         /// <summary>
@@ -67,7 +63,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public void When_BitStringToBitArray()
         {
             var source = "0101";
-            var expected = new BitArray(new[] { false, true, false, true });
+            var expected = new BitArray(new[] {false, true, false, true});
             BitArray actual;
             actual = source.BitStringToBitArray();
 
@@ -107,7 +103,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public void When_HexToByteArray()
         {
             var source = "00FF";
-            byte[] expected = { 0, 255 };
+            byte[] expected = {0, 255};
             byte[] actual;
             actual = source.HexToByteArray();
 
@@ -120,7 +116,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         [TestMethod]
         public void When_ToBitArray()
         {
-            byte[] source = { 0, 0 };
+            byte[] source = {0, 0};
             var expected = new BitArray(16, false);
             BitArray actual;
             actual = source.ToBitArray();
@@ -163,7 +159,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public void When_ToBitIntArray()
         {
             var source = "11".BitStringToBitArray();
-            int[] expected = { 3, 0 };
+            int[] expected = {3, 0};
             int[] actual;
             actual = source.ToBitIntArray();
 
@@ -191,7 +187,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public void When_ToBoolArray()
         {
             var source = new BitArray(8, true);
-            bool[] expected = { true, true, true, true, true, true, true, true };
+            bool[] expected = {true, true, true, true, true, true, true, true};
             bool[] actual;
             actual = source.ToBoolArray();
 
@@ -205,7 +201,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         public void When_ToByteArray()
         {
             var source = new BitArray(8, false);
-            byte[] expected = { 0 };
+            byte[] expected = {0};
             byte[] actual;
             actual = source.ToByteArray();
 
@@ -246,7 +242,7 @@ namespace DevLib.ExtensionMethods.UnitTest
         [TestMethod]
         public void When_ToHexString1()
         {
-            byte[] source = { 0, 255, 255, 0 };
+            byte[] source = {0, 255, 255, 0};
             const string expected = "00-FF-FF-00";
             string actual;
             actual = source.ToHexString('-');
@@ -263,7 +259,7 @@ namespace DevLib.ExtensionMethods.UnitTest
             var expected = DrawFilledRectangle(Brushes.Blue, 100, 100);
             var source = expected.ImageToByteArray();
             Bitmap actual;
-            actual = (Bitmap)source.ToImage();
+            actual = (Bitmap) source.ToImage();
 
             for (var i = 0; i < 100; i++)
             {

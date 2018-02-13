@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -31,7 +33,8 @@ namespace Newtonsoft.Json.Tests.TestObjects
 {
     public class ModelStateDictionary<T> : IDictionary<string, T>
     {
-        private readonly Dictionary<string, T> _innerDictionary = new Dictionary<string, T>(StringComparer.OrdinalIgnoreCase);
+        private readonly Dictionary<string, T> _innerDictionary =
+            new Dictionary<string, T>(StringComparer.OrdinalIgnoreCase);
 
         public ModelStateDictionary()
         {
@@ -57,7 +60,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public bool IsReadOnly
         {
-            get { return ((IDictionary<string, T>)_innerDictionary).IsReadOnly; }
+            get { return ((IDictionary<string, T>) _innerDictionary).IsReadOnly; }
         }
 
         public ICollection<string> Keys
@@ -83,7 +86,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public void Add(KeyValuePair<string, T> item)
         {
-            ((IDictionary<string, T>)_innerDictionary).Add(item);
+            ((IDictionary<string, T>) _innerDictionary).Add(item);
         }
 
         public void Add(string key, T value)
@@ -98,7 +101,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public bool Contains(KeyValuePair<string, T> item)
         {
-            return ((IDictionary<string, T>)_innerDictionary).Contains(item);
+            return ((IDictionary<string, T>) _innerDictionary).Contains(item);
         }
 
         public bool ContainsKey(string key)
@@ -108,7 +111,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public void CopyTo(KeyValuePair<string, T>[] array, int arrayIndex)
         {
-            ((IDictionary<string, T>)_innerDictionary).CopyTo(array, arrayIndex);
+            ((IDictionary<string, T>) _innerDictionary).CopyTo(array, arrayIndex);
         }
 
         public IEnumerator<KeyValuePair<string, T>> GetEnumerator()
@@ -131,7 +134,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public bool Remove(KeyValuePair<string, T> item)
         {
-            return ((IDictionary<string, T>)_innerDictionary).Remove(item);
+            return ((IDictionary<string, T>) _innerDictionary).Remove(item);
         }
 
         public bool Remove(string key)
@@ -146,7 +149,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable)_innerDictionary).GetEnumerator();
+            return ((IEnumerable) _innerDictionary).GetEnumerator();
         }
     }
 }

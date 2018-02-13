@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -15,11 +15,11 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt16InvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsInt16( out var result );
+            var actual = "InvalidValue".TryParsInt16(out var result);
 
             result
                 .Should()
-                .Be( default(Int16) );
+                .Be(default(Int16));
 
             actual
                 .Should()
@@ -31,11 +31,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsInt16( out var result );
+            var actual = value.TryParsInt16(out var result);
 
             result
                 .Should()
-                .Be( default(Int16) );
+                .Be(default(Int16));
 
             actual
                 .Should()
@@ -48,9 +48,9 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomInt16();
             CultureInfo culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        // ReSharper disable once UnusedVariable
-                                        .TryParsInt16( NumberStyles.Any, culture, out var result );
+            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+                // ReSharper disable once UnusedVariable
+                .TryParsInt16(NumberStyles.Any, culture, out var result);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,9 +60,10 @@ namespace Extend.Testing
         {
             var expected = Extensions.GetRandomInt16();
 
-            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        // ReSharper disable once UnusedVariable
-                                        .TryParsInt16( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var result );
+            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+                // ReSharper disable once UnusedVariable
+                .TryParsInt16(NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture,
+                    out var result);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -70,11 +71,11 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt16OverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsInt16( NumberStyles.Any, new CultureInfo( "de-CH" ), out var result );
+            var actual = "InvalidValue".TryParsInt16(NumberStyles.Any, new CultureInfo("de-CH"), out var result);
 
             result
                 .Should()
-                .Be( default(Int16) );
+                .Be(default(Int16));
 
             actual
                 .Should()
@@ -86,11 +87,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsInt16( NumberStyles.Any, new CultureInfo( "de-CH" ), out var result );
+            var actual = value.TryParsInt16(NumberStyles.Any, new CultureInfo("de-CH"), out var result);
 
             result
                 .Should()
-                .Be( default(Int16) );
+                .Be(default(Int16));
 
             actual
                 .Should()
@@ -100,14 +101,14 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt16OverloadTest()
         {
-            var culture = new CultureInfo( "de-CH" );
+            var culture = new CultureInfo("de-CH");
             var expected = Extensions.GetRandomInt16();
-            var actual = expected.ToString( culture )
-                                 .TryParsInt16( NumberStyles.Any, culture, out var result );
+            var actual = expected.ToString(culture)
+                .TryParsInt16(NumberStyles.Any, culture, out var result);
 
             result
                 .Should()
-                .Be( expected );
+                .Be(expected);
 
             actual
                 .Should()
@@ -118,12 +119,12 @@ namespace Extend.Testing
         public void TryParsInt16Test()
         {
             var expected = Extensions.GetRandomInt16();
-            var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .TryParsInt16( out var result );
+            var actual = expected.ToString(CultureInfo.CurrentCulture)
+                .TryParsInt16(out var result);
 
             result
                 .Should()
-                .Be( expected );
+                .Be(expected);
 
             actual
                 .Should()

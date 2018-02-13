@@ -30,7 +30,7 @@ namespace erichexter.Should
         /// <param name="expected">The object expected to be in the collection</param>
         /// <exception cref="ContainsException">Thrown when the object is not present in the collection</exception>
         public static void ShouldContain<T>(this IEnumerable<T> collection,
-                                            T expected)
+            T expected)
         {
             Assert.Contains(expected, collection);
         }
@@ -44,8 +44,8 @@ namespace erichexter.Should
         /// <param name="comparer">The comparer used to equate objects in the collection with the expected object</param>
         /// <exception cref="ContainsException">Thrown when the object is not present in the collection</exception>
         public static void ShouldContain<T>(this IEnumerable<T> collection,
-                                            T expected,
-                                            IEqualityComparer<T> comparer)
+            T expected,
+            IEqualityComparer<T> comparer)
         {
             Assert.Contains(expected, collection, comparer);
         }
@@ -69,7 +69,7 @@ namespace erichexter.Should
         /// <param name="collection">The collection to be inspected</param>
         /// <exception cref="DoesNotContainException">Thrown when the object is present inside the container</exception>
         public static void ShouldNotContain<T>(this IEnumerable<T> collection,
-                                               T expected)
+            T expected)
         {
             Assert.DoesNotContain(expected, collection);
         }
@@ -83,8 +83,8 @@ namespace erichexter.Should
         /// <param name="comparer">The comparer used to equate objects in the collection with the expected object</param>
         /// <exception cref="DoesNotContainException">Thrown when the object is present inside the container</exception>
         public static void ShouldNotContain<T>(this IEnumerable<T> collection,
-                                               T expected,
-                                               IEqualityComparer<T> comparer)
+            T expected,
+            IEqualityComparer<T> comparer)
         {
             Assert.DoesNotContain(expected, collection, comparer);
         }

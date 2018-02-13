@@ -31,7 +31,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void Tomorrow_is_not_less_than_today_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<LessThanException>(() => Should.Core.Assertions.Assert.LessThan(tomorrow, today));
+            Should.Core.Assertions.Assert.Throws<LessThanException>(() =>
+                Should.Core.Assertions.Assert.LessThan(tomorrow, today));
         }
 
         [Fact]
@@ -43,7 +44,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void b_is_not_less_than_a_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<LessThanException>(() => Should.Core.Assertions.Assert.LessThan("b", "a"));
+            Should.Core.Assertions.Assert.Throws<LessThanException>(() =>
+                Should.Core.Assertions.Assert.LessThan("b", "a"));
         }
 
         [Fact]
@@ -55,7 +57,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void A_is_not_less_than_a_using_case_insensitive_ordinal_comparer_should_fail()
         {
-            Should.Core.Assertions.Assert.Throws<LessThanException>(() => Should.Core.Assertions.Assert.LessThan("A", "a", StringComparer.OrdinalIgnoreCase));
+            Should.Core.Assertions.Assert.Throws<LessThanException>(() =>
+                Should.Core.Assertions.Assert.LessThan("A", "a", StringComparer.OrdinalIgnoreCase));
         }
     }
 }

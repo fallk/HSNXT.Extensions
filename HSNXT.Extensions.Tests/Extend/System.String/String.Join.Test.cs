@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -15,23 +15,23 @@ namespace Extend.Testing
         [Fact]
         public void JoinTest()
         {
-            var actual = ",".Join( new[]
+            var actual = ",".Join(new[]
             {
                 "1",
                 "2"
-            } );
-            Assert.Equal( "1,2", actual );
+            });
+            Assert.Equal("1,2", actual);
         }
 
         [Fact]
         public void JoinTest1()
         {
-            var actual = ",".Join( new Object[]
+            var actual = ",".Join(new Object[]
             {
                 "1",
                 "2"
-            } );
-            Assert.Equal( "1,2", actual );
+            });
+            Assert.Equal("1,2", actual);
         }
 
         [Fact]
@@ -39,10 +39,10 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Join( null,
-                                               new Object[]
-                                               {
-                                               } );
+            Action test = () => Extensions.Join(null,
+                new Object[]
+                {
+                });
 
             test.ShouldNotThrow();
         }
@@ -53,7 +53,7 @@ namespace Extend.Testing
             Object[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Join( array );
+            Action test = () => "".Join(array);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -61,8 +61,8 @@ namespace Extend.Testing
         [Fact]
         public void JoinTest2()
         {
-            var actual = ",".Join( new List<String> { "1", "2" } );
-            Assert.Equal( "1,2", actual );
+            var actual = ",".Join(new List<String> {"1", "2"});
+            Assert.Equal("1,2", actual);
         }
 
         [Fact]
@@ -70,10 +70,10 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Join( null,
-                                               new Object[]
-                                               {
-                                               } );
+            Action test = () => Extensions.Join(null,
+                new Object[]
+                {
+                });
 
             test.ShouldNotThrow();
         }
@@ -84,7 +84,7 @@ namespace Extend.Testing
             List<String> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Join( list );
+            Action test = () => "".Join(list);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -92,8 +92,8 @@ namespace Extend.Testing
         [Fact]
         public void JoinTest3()
         {
-            var actual = ",".Join( new List<Object> { "1", "2" } );
-            Assert.Equal( "1,2", actual );
+            var actual = ",".Join(new List<Object> {"1", "2"});
+            Assert.Equal("1,2", actual);
         }
 
         [Fact]
@@ -101,10 +101,10 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Join( null,
-                                               new Object[]
-                                               {
-                                               } );
+            Action test = () => Extensions.Join(null,
+                new Object[]
+                {
+                });
             test.ShouldNotThrow();
         }
 
@@ -114,7 +114,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Join( list );
+            Action test = () => "".Join(list);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -129,8 +129,8 @@ namespace Extend.Testing
                 "3"
             };
 
-            var actual = ",".Join( array, 1, 2 );
-            Assert.Equal( "2,3", actual );
+            var actual = ",".Join(array, 1, 2);
+            Assert.Equal("2,3", actual);
         }
 
         [Fact]
@@ -146,7 +146,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => seperator.Join( array, 1, 2 );
+            Action test = () => seperator.Join(array, 1, 2);
 
             test.ShouldNotThrow();
         }
@@ -158,7 +158,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ",".Join( array, 1, 2 );
+            Action test = () => ",".Join(array, 1, 2);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -168,10 +168,10 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Join( null,
-                                               new String[]
-                                               {
-                                               } );
+            Action test = () => Extensions.Join(null,
+                new String[]
+                {
+                });
 
             test.ShouldNotThrow();
         }
@@ -182,7 +182,7 @@ namespace Extend.Testing
             String[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Join( array );
+            Action test = () => "".Join(array);
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -22,9 +22,9 @@ namespace Extend.Testing
             };
             array.Reverse();
 
-            Assert.Equal( "2", array.GetValue( 0 ) );
-            Assert.Equal( "1", array.GetValue( 1 ) );
-            Assert.Equal( "0", array.GetValue( 2 ) );
+            Assert.Equal("2", array.GetValue(0));
+            Assert.Equal("1", array.GetValue(1));
+            Assert.Equal("0", array.GetValue(2));
         }
 
         [Fact]
@@ -36,11 +36,11 @@ namespace Extend.Testing
                 "1",
                 "2"
             };
-            array.Reverse( 1, 2 );
+            array.Reverse(1, 2);
 
-            Assert.Equal( "0", array.GetValue( 0 ) );
-            Assert.Equal( "2", array.GetValue( 1 ) );
-            Assert.Equal( "1", array.GetValue( 2 ) );
+            Assert.Equal("0", array.GetValue(0));
+            Assert.Equal("2", array.GetValue(1));
+            Assert.Equal("1", array.GetValue(2));
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Extend.Testing
         {
             Array array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Reverse( 1, 2 );
+            Action test = () => array.Reverse(1, 2);
 
             test.ShouldThrow<ArgumentNullException>();
         }

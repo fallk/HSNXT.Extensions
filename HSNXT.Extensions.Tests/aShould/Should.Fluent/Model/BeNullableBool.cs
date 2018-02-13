@@ -33,6 +33,7 @@ namespace erichexter.Should.Fluent.Model
                     assertProvider.IsTrue(should.Target.Value);
                 }
             }
+
             return should.Target;
         }
 
@@ -51,8 +52,9 @@ namespace erichexter.Should.Fluent.Model
                 else
                 {
                     assertProvider.IsFalse(should.Target.Value);
-                }   
+                }
             }
+
             return should.Target;
         }
     }

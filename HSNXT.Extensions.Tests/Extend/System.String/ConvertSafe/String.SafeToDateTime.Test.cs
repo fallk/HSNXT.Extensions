@@ -1,6 +1,6 @@
 #region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -16,11 +16,11 @@ namespace Extend.Testing
         public void SafeToDateTimeInvalidValueTest()
         {
             var expected = DateTime.Now;
-            var actual = "InvalidValue".SafeToDateTime( expected );
+            var actual = "InvalidValue".SafeToDateTime(expected);
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo(expected, 999);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo(expected, 999);
         }
 
         [Fact]
@@ -43,16 +43,16 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(DateTime) );
+                .Be(default(DateTime));
         }
 
         [Fact]
         public void SafeToDateTimeOverloadFormatProviderNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
-                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                                        .SafeToDateTime( null, DateTimeStyles.AdjustToUniversal );
+            Action test = () => DateTime.Now.ToString(CultureInfo.InvariantCulture)
+                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+                .SafeToDateTime(null, DateTimeStyles.AdjustToUniversal);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -61,9 +61,10 @@ namespace Extend.Testing
         public void SafeToDateTimeOverloadInvalidDateTimeStyleTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
-                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                                        .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal );
+            Action test = () => DateTime.Now.ToString(CultureInfo.InvariantCulture)
+                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+                .SafeToDateTime(CultureInfo.InvariantCulture,
+                    DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -72,22 +73,22 @@ namespace Extend.Testing
         public void SafeToDateTimeOverloadInvalidValueTest()
         {
             var expected = DateTime.Now;
-            var actual = "InvalidValue".SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
+            var actual = "InvalidValue".SafeToDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None, expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void SafeToDateTimeOverloadInvalidValueTest1()
         {
             var expected = default(DateTime);
-            var actual = "InvalidValue".SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+            var actual = "InvalidValue".SafeToDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -96,60 +97,60 @@ namespace Extend.Testing
             String value = null;
             var expected = DateTime.Now;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
+            var actual = value.SafeToDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None, expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
         public void SafeToDateTimeOverloadTest()
         {
             var expected = DateTime.Now;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None);
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo(expected, 999);
         }
 
         [Fact]
         public void SafeToDateTimeOverloadTest1()
         {
             var expected = DateTime.Now;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, DateTime.MinValue );
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None, DateTime.MinValue);
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo(expected, 999);
         }
 
         [Fact]
         public void SafeToDateTimeTest()
         {
             var expected = DateTime.Now;
-            expected = new DateTime( expected.Year, expected.Month, expected.Day, expected.Hour, expected.Second, 10 );
-            var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .SafeToDateTime();
+            expected = new DateTime(expected.Year, expected.Month, expected.Day, expected.Hour, expected.Second, 10);
+            var actual = expected.ToString(CultureInfo.CurrentCulture)
+                .SafeToDateTime();
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo(expected, 999);
         }
 
         [Fact]
         public void SafeToDateTimeWithDefaultTest()
         {
             var expected = DateTime.Now;
-            var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .SafeToDateTime( Extensions.GetRandomDateTime() );
+            var actual = expected.ToString(CultureInfo.CurrentCulture)
+                .SafeToDateTime(Extensions.GetRandomDateTime());
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo(expected, 999);
         }
     }
 }

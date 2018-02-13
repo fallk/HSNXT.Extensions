@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -16,7 +16,7 @@ namespace Extend.Testing
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now;
 
-            Assert.True( dateTime.IsSameDay( otherDateTime ) );
+            Assert.True(dateTime.IsSameDay(otherDateTime));
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace Extend.Testing
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Tomorrow();
 
-            Assert.False( dateTime.IsSameDay( otherDateTime ) );
+            Assert.False(dateTime.IsSameDay(otherDateTime));
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace Extend.Testing
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Yesterday();
 
-            Assert.False( dateTime.IsSameDay( otherDateTime ) );
+            Assert.False(dateTime.IsSameDay(otherDateTime));
         }
     }
 }

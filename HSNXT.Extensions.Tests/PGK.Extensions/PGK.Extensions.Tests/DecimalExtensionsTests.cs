@@ -16,7 +16,7 @@ namespace HSNXT.PGK.Extensions.Tests
         [TestMethod]
         public void IEnumerableAbsTest()
         {
-            decimal[] decimals = new decimal[] { -1000.5M, -2000.5M, 3000.5M, 4000.5M };
+            decimal[] decimals = new decimal[] {-1000.5M, -2000.5M, 3000.5M, 4000.5M};
             foreach (decimal d in decimals.Abs())
             {
                 Assert.IsTrue(d > 0);

@@ -27,7 +27,8 @@ namespace erichexter.Should.Facts.Core
         public void IsAssignableFromReturnsCastObject()
         {
             InvalidCastException expected = new InvalidCastException();
-            InvalidCastException actual = Should.Core.Assertions.Assert.IsAssignableFrom<InvalidCastException>(expected);
+            InvalidCastException actual =
+                Should.Core.Assertions.Assert.IsAssignableFrom<InvalidCastException>(expected);
             Should.Core.Assertions.Assert.Same(expected, actual);
         }
 
@@ -36,7 +37,8 @@ namespace erichexter.Should.Facts.Core
         {
             AssertException exception =
                 Should.Core.Assertions.Assert.Throws<IsAssignableFromException>(
-                    () => Should.Core.Assertions.Assert.IsAssignableFrom<InvalidCastException>(new InvalidOperationException()));
+                    () => Should.Core.Assertions.Assert.IsAssignableFrom<InvalidCastException>(
+                        new InvalidOperationException()));
 
             Should.Core.Assertions.Assert.Equal("Assert.IsAssignableFrom() Failure", exception.UserMessage);
         }
@@ -44,7 +46,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void IsAssignableFromThrowsExceptionWhenPassedNull()
         {
-            Should.Core.Assertions.Assert.Throws<IsAssignableFromException>(() => Should.Core.Assertions.Assert.IsAssignableFrom<object>(null));
+            Should.Core.Assertions.Assert.Throws<IsAssignableFromException>(() =>
+                Should.Core.Assertions.Assert.IsAssignableFrom<object>(null));
         }
     }
 }

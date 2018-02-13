@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -15,12 +15,12 @@ namespace Extend.Testing
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs();
-            helperClass.RaiseEvent( eventArgs );
+            helperClass.RaiseEvent(eventArgs);
 
             EventArgs actual = null;
-            helperClass.MyEvent += ( sender, e ) => actual = e;
-            helperClass.RaiseEvent( eventArgs );
-            Assert.Same( eventArgs, actual );
+            helperClass.MyEvent += (sender, e) => actual = e;
+            helperClass.RaiseEvent(eventArgs);
+            Assert.Same(eventArgs, actual);
         }
 
         [Fact]
@@ -28,12 +28,12 @@ namespace Extend.Testing
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs();
-            helperClass.RaiseGenericEvent( eventArgs );
+            helperClass.RaiseGenericEvent(eventArgs);
 
             SampleEventArgs actual = null;
-            helperClass.MyGenericEvent += ( sender, e ) => actual = e;
-            helperClass.RaiseGenericEvent( eventArgs );
-            Assert.Same( eventArgs, actual );
+            helperClass.MyGenericEvent += (sender, e) => actual = e;
+            helperClass.RaiseGenericEvent(eventArgs);
+            Assert.Same(eventArgs, actual);
         }
 
         #region Nested Types
@@ -44,10 +44,10 @@ namespace Extend.Testing
             public event EventHandler<SampleEventArgs> MyGenericEvent;
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            public void RaiseEvent( EventArgs args ) => MyEvent.Raise( this, args );
+            public void RaiseEvent(EventArgs args) => MyEvent.Raise(this, args);
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            public void RaiseGenericEvent( SampleEventArgs args ) => MyGenericEvent.Raise( this, args );
+            public void RaiseGenericEvent(SampleEventArgs args) => MyGenericEvent.Raise(this, args);
         }
 
         private class SampleEventArgs : EventArgs

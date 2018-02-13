@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -38,7 +38,7 @@ namespace Extend.Testing
             CultureInfo formatProvider = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "10".ToDecimal( formatProvider );
+            Action test = () => "10".ToDecimal(formatProvider);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -47,7 +47,7 @@ namespace Extend.Testing
         public void ToDecimalOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "InvalidFormat".ToDecimal( new CultureInfo( "de-CH" ) );
+            Action test = () => "InvalidFormat".ToDecimal(new CultureInfo("de-CH"));
 
             test.ShouldThrow<FormatException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ToDecimal( new CultureInfo( "de-CH" ) );
+            Action test = () => value.ToDecimal(new CultureInfo("de-CH"));
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -66,21 +66,21 @@ namespace Extend.Testing
         [Fact]
         public void ToDecimalOverloadTest()
         {
-            var culture = new CultureInfo( "de-CH" );
-            var value = new Decimal( 100.123 );
-            var actual = value.ToString( culture )
-                              .ToDecimal( culture );
+            var culture = new CultureInfo("de-CH");
+            var value = new Decimal(100.123);
+            var actual = value.ToString(culture)
+                .ToDecimal(culture);
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]
         public void ToDecimalOverloadValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "79228162514264337593543950335222".ToDecimal( new CultureInfo( "de-CH" ) );
+            Action test = () => "79228162514264337593543950335222".ToDecimal(new CultureInfo("de-CH"));
             test.ShouldThrow<OverflowException>();
         }
 
@@ -88,20 +88,20 @@ namespace Extend.Testing
         public void ToDecimalOverloadValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "-79228162514264337593543950335222".ToDecimal( new CultureInfo( "de-CH" ) );
+            Action test = () => "-79228162514264337593543950335222".ToDecimal(new CultureInfo("de-CH"));
             test.ShouldThrow<OverflowException>();
         }
 
         [Fact]
         public void ToDecimalTest()
         {
-            var value = new Decimal( 100.123 );
-            var actual = value.ToString( CultureInfo.CurrentCulture )
-                              .ToDecimal();
+            var value = new Decimal(100.123);
+            var actual = value.ToString(CultureInfo.CurrentCulture)
+                .ToDecimal();
 
             actual
                 .Should()
-                .Be( value );
+                .Be(value);
         }
 
         [Fact]

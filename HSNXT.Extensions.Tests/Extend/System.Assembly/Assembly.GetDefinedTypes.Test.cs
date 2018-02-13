@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -35,9 +35,9 @@ namespace Extend.Testing
                 .GetDeclaringAssembly()
                 .GetDefinedTypes();
 
-            actual.Any( x => x.Name == typeof(Extensions).Name )
-                  .Should()
-                  .BeTrue();
+            actual.Any(x => x.Name == typeof(Extensions).Name)
+                .Should()
+                .BeTrue();
         }
     }
 }

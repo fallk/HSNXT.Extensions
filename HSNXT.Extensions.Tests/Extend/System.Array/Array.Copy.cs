@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,7 +17,7 @@ namespace Extend.Testing
             Array array = null;
             var destinationArray = new String[10];
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Copy( destinationArray, 1 );
+            Action test = () => array.Copy(destinationArray, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -28,7 +28,7 @@ namespace Extend.Testing
             Array array = new String[10];
             String[] destinationArray = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Copy( destinationArray, 1 );
+            Action test = () => array.Copy(destinationArray, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -43,11 +43,11 @@ namespace Extend.Testing
                 "2"
             };
             var destinationArray = new String[3];
-            array.Copy( destinationArray, 3 );
+            array.Copy(destinationArray, 3);
 
-            Assert.Equal( "0", destinationArray[0] );
-            Assert.Equal( "1", destinationArray[1] );
-            Assert.Equal( "2", destinationArray[2] );
+            Assert.Equal("0", destinationArray[0]);
+            Assert.Equal("1", destinationArray[1]);
+            Assert.Equal("2", destinationArray[2]);
         }
 
         [Fact]
@@ -61,10 +61,10 @@ namespace Extend.Testing
                 "3"
             };
             var destinationArray = new String[2];
-            array.Copy( 1, destinationArray, 0, 2 );
+            array.Copy(1, destinationArray, 0, 2);
 
-            Assert.Equal( "1", destinationArray[0] );
-            Assert.Equal( "2", destinationArray[1] );
+            Assert.Equal("1", destinationArray[0]);
+            Assert.Equal("2", destinationArray[1]);
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace Extend.Testing
                 "3"
             };
             var destinationArray = new String[2];
-            Action test = () => array.Copy( 0, destinationArray, 1, 20 );
+            Action test = () => array.Copy(0, destinationArray, 1, 20);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -94,7 +94,7 @@ namespace Extend.Testing
                 "3"
             };
             var destinationArray = new String[2];
-            Action test = () => array.Copy( -1, destinationArray, 0, 2 );
+            Action test = () => array.Copy(-1, destinationArray, 0, 2);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -110,7 +110,7 @@ namespace Extend.Testing
                 "3"
             };
             var destinationArray = new String[2];
-            Action test = () => array.Copy( 0, destinationArray, -1, 2 );
+            Action test = () => array.Copy(0, destinationArray, -1, 2);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -126,7 +126,7 @@ namespace Extend.Testing
                 "3"
             };
             var destinationArray = new String[2];
-            Action test = () => array.Copy( 0, destinationArray, 1, -1 );
+            Action test = () => array.Copy(0, destinationArray, 1, -1);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -137,7 +137,7 @@ namespace Extend.Testing
             Array array = null;
             var destinationArray = new String[2];
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Copy( 1, destinationArray, 0, 2 );
+            Action test = () => array.Copy(1, destinationArray, 0, 2);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -154,7 +154,7 @@ namespace Extend.Testing
             };
             String[] destinationArray = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Copy( 1, destinationArray, 0, 2 );
+            Action test = () => array.Copy(1, destinationArray, 0, 2);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -169,7 +169,7 @@ namespace Extend.Testing
                 "2"
             };
             var destinationArray = new String[3];
-            Action test = () => array.Copy( destinationArray, 30 );
+            Action test = () => array.Copy(destinationArray, 30);
 
             test.ShouldThrow<ArgumentException>();
         }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsBooleanInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsBoolean( out Boolean _ );
+            var actual = "InvalidValue".TryParsBoolean(out Boolean _);
 
             actual
                 .Should()
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsBoolean( out Boolean _ );
+            var actual = value.TryParsBoolean(out Boolean _);
 
             actual
                 .Should()
@@ -39,7 +39,7 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomBoolean();
             // ReSharper disable once RedundantAssignment
             var actual = expected.ToString()
-                                 .TryParsBoolean( out var outValue );
+                .TryParsBoolean(out var outValue);
 
             actual
                 .Should()
@@ -47,7 +47,7 @@ namespace Extend.Testing
 
             outValue
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
     }
 }

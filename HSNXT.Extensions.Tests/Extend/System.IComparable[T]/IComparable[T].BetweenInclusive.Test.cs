@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -18,8 +18,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 300;
 
-            var actual = value.BetweenInclusive( min, max );
-            Assert.True( actual );
+            var actual = value.BetweenInclusive(min, max);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -29,8 +29,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.BetweenInclusive( min, max );
-            Assert.True( actual );
+            var actual = value.BetweenInclusive(min, max);
+            Assert.True(actual);
         }
 
         [Fact]
@@ -40,8 +40,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 99;
 
-            var actual = value.BetweenInclusive( min, max );
-            Assert.False( actual );
+            var actual = value.BetweenInclusive(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -51,8 +51,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.BetweenInclusive( min, max );
-            Assert.False( actual );
+            var actual = value.BetweenInclusive(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -62,8 +62,8 @@ namespace Extend.Testing
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.BetweenInclusive( min, max );
-            Assert.False( actual );
+            var actual = value.BetweenInclusive(min, max);
+            Assert.False(actual);
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.BetweenInclusive( null, "", "" );
+            Action test = () => Extensions.BetweenInclusive(null, "", "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -81,7 +81,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".BetweenInclusive( null, "" );
+            Action test = () => "".BetweenInclusive(null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -91,7 +91,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".BetweenInclusive( "", null );
+            Action test = () => "".BetweenInclusive("", null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

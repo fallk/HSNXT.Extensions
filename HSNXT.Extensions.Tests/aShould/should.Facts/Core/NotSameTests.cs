@@ -32,7 +32,8 @@ namespace erichexter.Should.Facts.Core
         {
             string jim = "jim";
 
-            Should.Core.Assertions.Assert.Throws<NotSameException>(() => Should.Core.Assertions.Assert.NotSame(jim, jim));
+            Should.Core.Assertions.Assert.Throws<NotSameException>(
+                () => Should.Core.Assertions.Assert.NotSame(jim, jim));
         }
 
         [Fact]

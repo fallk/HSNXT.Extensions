@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,7 +17,7 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.ReplaceAt( 4, '1' );
+            Action test = () => value.ReplaceAt(4, '1');
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -26,7 +26,7 @@ namespace Extend.Testing
         public void ReplaceAtArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".ReplaceAt( -1, '1' );
+            Action test = () => "test".ReplaceAt(-1, '1');
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -35,7 +35,7 @@ namespace Extend.Testing
         public void ReplaceAtArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "test".ReplaceAt( 4, '1' );
+            Action test = () => "test".ReplaceAt(4, '1');
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -43,28 +43,28 @@ namespace Extend.Testing
         [Fact]
         public void ReplaceAtTest()
         {
-            var actual = "test".ReplaceAt( 1, 'X' );
+            var actual = "test".ReplaceAt(1, 'X');
 
             actual.Should()
-                  .Be( "tXst" );
+                .Be("tXst");
         }
 
         [Fact]
         public void ReplaceAtTest1()
         {
-            var actual = "test".ReplaceAt( 0, 'T' );
+            var actual = "test".ReplaceAt(0, 'T');
 
             actual.Should()
-                  .Be( "Test" );
+                .Be("Test");
         }
 
         [Fact]
         public void ReplaceAtTest2()
         {
-            var actual = "test".ReplaceAt( 3, '1' );
+            var actual = "test".ReplaceAt(3, '1');
 
             actual.Should()
-                  .Be( "tes1" );
+                .Be("tes1");
         }
     }
 }

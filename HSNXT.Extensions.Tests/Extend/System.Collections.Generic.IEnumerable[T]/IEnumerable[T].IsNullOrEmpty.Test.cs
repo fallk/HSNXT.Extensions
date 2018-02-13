@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -16,13 +16,13 @@ namespace Extend.Testing
         public void IsNullOrEmptyTest()
         {
             List<String> list = null;
-            Assert.True( list.IsNullOrEmpty() );
+            Assert.True(list.IsNullOrEmpty());
 
             list = new List<String>();
-            Assert.True( list.IsNullOrEmpty() );
+            Assert.True(list.IsNullOrEmpty());
 
-            list.Add( Extensions.GetRandomString() );
-            Assert.False( list.IsNullOrEmpty() );
+            list.Add(Extensions.GetRandomString());
+            Assert.False(list.IsNullOrEmpty());
         }
     }
 }

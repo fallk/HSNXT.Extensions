@@ -10,6 +10,8 @@ namespace erichexter.Should.Core.Exceptions
         /// </summary>
         /// <param name="expected">The expected object value</param>
         public DoesNotContainException(object expected)
-            : base(string.Format("Assert.DoesNotContain() failure: Found: {0}", expected)) { }
+            : base(string.Format("Assert.DoesNotContain() failure: Found: {0}", expected))
+        {
+        }
     }
 }

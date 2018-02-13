@@ -35,6 +35,7 @@ namespace erichexter.Should.Fluent.Model
                     assertProvider.AreEqual(DateTime.Today, should.Target.Value.Date);
                 }
             }
+
             return should.Target;
         }
     }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,11 +14,11 @@ namespace Extend.Testing
         [Fact]
         public void TryParsCharInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsChar( out var result );
+            var actual = "InvalidValue".TryParsChar(out var result);
 
             result
                 .Should()
-                .Be( default(Char) );
+                .Be(default(Char));
 
             actual
                 .Should()
@@ -30,11 +30,11 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsChar( out var result );
+            var actual = value.TryParsChar(out var result);
 
             result
                 .Should()
-                .Be( default(Char) );
+                .Be(default(Char));
 
             actual
                 .Should()
@@ -46,11 +46,11 @@ namespace Extend.Testing
         {
             const Char expected = 'b';
             var actual = expected.ToString()
-                                 .TryParsChar( out var result );
+                .TryParsChar(out var result);
 
             result
                 .Should()
-                .Be( expected );
+                .Be(expected);
 
             actual
                 .Should()

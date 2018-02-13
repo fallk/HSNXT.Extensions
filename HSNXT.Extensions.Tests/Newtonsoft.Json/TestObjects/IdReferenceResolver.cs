@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -45,7 +47,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public string GetReference(object context, object value)
         {
-            PersonReference p = (PersonReference)value;
+            PersonReference p = (PersonReference) value;
             _people[p.Id] = p;
 
             return p.Id.ToString();
@@ -53,7 +55,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public bool IsReferenced(object context, object value)
         {
-            PersonReference p = (PersonReference)value;
+            PersonReference p = (PersonReference) value;
 
             return _people.ContainsKey(p.Id);
         }
@@ -62,7 +64,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
         {
             Guid id = new Guid(reference);
 
-            _people[id] = (PersonReference)value;
+            _people[id] = (PersonReference) value;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -14,10 +14,10 @@ namespace Extend.Testing
         public void ToMillisecondsTest()
         {
             const Double number = 10.5;
-            var expected = TimeSpan.FromMilliseconds( number );
+            var expected = TimeSpan.FromMilliseconds(number);
             var actual = number.ToMilliseconds();
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

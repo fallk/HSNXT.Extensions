@@ -1,6 +1,6 @@
 #region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -18,11 +18,11 @@ namespace Extend.Testing
             String value = null;
             const Double expected = 123.12334d;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToDouble( expected );
+            var actual = value.SafeToDouble(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -32,18 +32,18 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Double) );
+                .Be(default(Double));
         }
 
         [Fact]
         public void SafeToDoubleInvalidValueWithDefaultTest()
         {
             const Double expected = 123.12334d;
-            var actual = "InvalidValue".SafeToDouble( expected );
+            var actual = "InvalidValue".SafeToDouble(expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "123.2".SafeToDouble( NumberStyles.AllowExponent, null );
+            Action test = () => "123.2".SafeToDouble(NumberStyles.AllowExponent, null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,7 +60,7 @@ namespace Extend.Testing
         public void SafeToDoubleOverloadInvalidNumberStyleTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "123.2".SafeToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture );
+            Action test = () => "123.2".SafeToDouble(NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -68,22 +68,22 @@ namespace Extend.Testing
         [Fact]
         public void SafeToDoubleOverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".SafeToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = "InvalidValue".SafeToDouble(NumberStyles.Any, CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( default(Double) );
+                .Be(default(Double));
         }
 
         [Fact]
         public void SafeToDoubleOverloadInvalidValueWithDefaultTest()
         {
             const Double expected = 12345234.1321d;
-            var actual = "InvalidValue".SafeToDouble( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+            var actual = "InvalidValue".SafeToDouble(NumberStyles.Any, CultureInfo.InvariantCulture, expected);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -91,23 +91,23 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SafeToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = value.SafeToDouble(NumberStyles.Any, CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( default(Double) );
+                .Be(default(Double));
         }
 
         [Fact]
         public void SafeToDoubleOverloadTest()
         {
             const Double expected = 12345234.1321d;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDouble(NumberStyles.Any, CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -115,12 +115,12 @@ namespace Extend.Testing
         public void SafeToDoubleTest()
         {
             const Double expected = 100.1d;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDouble();
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDouble();
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -128,12 +128,12 @@ namespace Extend.Testing
         public void SafeToDoubleWithDefaultTest()
         {
             const Double expected = 100.1d;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SafeToDouble( Double.MinValue );
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                .SafeToDouble(Double.MinValue);
 
             actual
                 .Should()
-                .Be( expected );
+                .Be(expected);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -22,15 +22,15 @@ namespace Extend.Testing
             };
             array.ClearAll();
 
-            array.GetValue( 0 )
-                 .Should()
-                 .BeNull();
-            array.GetValue( 1 )
-                 .Should()
-                 .BeNull();
-            array.GetValue( 2 )
-                 .Should()
-                 .BeNull();
+            array.GetValue(0)
+                .Should()
+                .BeNull();
+            array.GetValue(1)
+                .Should()
+                .BeNull();
+            array.GetValue(2)
+                .Should()
+                .BeNull();
         }
 
         [Fact]

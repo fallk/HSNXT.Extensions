@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Reflection
@@ -43,7 +45,7 @@ namespace Mannex.Tests.Reflection
         [Fact]
         public void CompileStaticInvokerFailsWithNonStaticMethod()
         {
-            var e = Assert.Throws<ArgumentException>(() => 
+            var e = Assert.Throws<ArgumentException>(() =>
                 ((Func<string>) 1.ToString).Method.CompileStaticInvoker());
             Assert.Equal("method", e.ParamName);
         }
@@ -59,9 +61,9 @@ namespace Mannex.Tests.Reflection
         [Fact]
         public void CompileStaticInvokerOnMethodWithoutReturnValue()
         {
-            var nums = new[] { 2, 0, 1, 3 };
-            GetArrayReverseInvoker()(new object[] { nums });
-            Assert.Equal(new[] { 3, 1, 0, 2 }, nums);
+            var nums = new[] {2, 0, 1, 3};
+            GetArrayReverseInvoker()(new object[] {nums});
+            Assert.Equal(new[] {3, 1, 0, 2}, nums);
         }
 
         [Fact]
@@ -83,7 +85,7 @@ namespace Mannex.Tests.Reflection
         {
             var d = (Func<int[], Predicate<int>, int>) Array.FindIndex;
             var findIndex = d.Method.CompileStaticInvoker();
-            var index = findIndex(new object[] { new[] { 1, 2, 3 }, new Predicate<int>(x => x % 2 == 0) });
+            var index = findIndex(new object[] {new[] {1, 2, 3}, new Predicate<int>(x => x % 2 == 0)});
             Assert.Equal(1, index);
         }
 
@@ -91,11 +93,14 @@ namespace Mannex.Tests.Reflection
         public void CompileStaticInvokerOnMethodWithOptionalParameters()
         {
             var d = (Func<int, int>) FortyTwoFactor;
-            Assert.Equal(42, d.Method.CompileStaticInvoker()(new[] { Type.Missing }));
+            Assert.Equal(42, d.Method.CompileStaticInvoker()(new[] {Type.Missing}));
         }
 
-        static int FortyTwoFactor(int x = 1) { return 42 * x; }
-        
+        static int FortyTwoFactor(int x = 1)
+        {
+            return 42 * x;
+        }
+
         [Fact]
         public void CompileStaticInvokerOnMethodWithNullForValueTypeParameter()
         {
@@ -103,6 +108,9 @@ namespace Mannex.Tests.Reflection
             Assert.Equal(0, d.Method.CompileStaticInvoker()(new object[1]));
         }
 
-        static int Echo(int x) { return x; }
+        static int Echo(int x)
+        {
+            return x;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,23 +17,23 @@ namespace Extend.Testing
         [Fact]
         public void ForEachReverseTest()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
             var otherList = new List<String>();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            list.ForEachReverse( otherList.Add );
-            Assert.Equal( list.Count, otherList.Count );
-            Assert.True( list.All( x => otherList.Contains( x ) ) );
+            list.ForEachReverse(otherList.Add);
+            Assert.Equal(list.Count, otherList.Count);
+            Assert.True(list.All(x => otherList.Contains(x)));
         }
 
         [Fact]
         public void ForEachReverseTest1()
         {
-            var list = Extensions.GetRandomStrings( 10 );
+            var list = Extensions.GetRandomStrings(10);
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            list.ForEachReverse( x => list.Remove( x ) );
-            Assert.Empty( list );
+            list.ForEachReverse(x => list.Remove(x));
+            Assert.Empty(list);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Extend.Testing
             List<Object> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.ForEachReverse( Console.WriteLine );
+            Action test = () => list.ForEachReverse(Console.WriteLine);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -52,7 +52,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().ForEachReverse( null );
+            Action test = () => new List<Object>().ForEachReverse(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }

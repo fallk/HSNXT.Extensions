@@ -21,7 +21,7 @@ namespace erichexter.Should
         {
             Assert.Equal(expected, actual, tolerance);
         }
-        
+
         /// <summary>
         /// Verifies that two values are not equal within a given tolerance.
         /// </summary>

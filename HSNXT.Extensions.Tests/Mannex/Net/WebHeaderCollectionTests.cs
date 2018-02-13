@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Net
@@ -38,21 +40,26 @@ namespace Mannex.Tests.Net
         [Fact]
         public void MapWithNullThis()
         {
-            Assert.Equal("headers", Assert.Throws<ArgumentNullException>(() => Extensions.Map(null, default(HttpResponseHeader), _ => (object)null)).ParamName);
+            Assert.Equal("headers",
+                Assert.Throws<ArgumentNullException>(() =>
+                    Extensions.Map(null, default(HttpResponseHeader), _ => (object) null)).ParamName);
         }
 
         [Fact]
         public void MapWithNullResultor()
         {
             var headers = new WebHeaderCollection();
-            Assert.Equal("mapper", Assert.Throws<ArgumentNullException>(() => headers.Map<object>(default(HttpResponseHeader), null)).ParamName);
+            Assert.Equal("mapper",
+                Assert.Throws<ArgumentNullException>(() => headers.Map<object>(default(HttpResponseHeader), null))
+                    .ParamName);
         }
 
         [Fact]
         public void MapWhenHeaderMissing()
         {
             var headers = new WebHeaderCollection();
-            Assert.Equal(-1, headers.Map(HttpResponseHeader.ContentType, -1, delegate { throw new InvalidOperationException(); }));
+            Assert.Equal(-1,
+                headers.Map(HttpResponseHeader.ContentType, -1, delegate { throw new InvalidOperationException(); }));
         }
 
         [Fact]
@@ -60,7 +67,7 @@ namespace Mannex.Tests.Net
         {
             var headers = new WebHeaderCollection
             {
-                { HttpResponseHeader.ContentType, "text/plain" }
+                {HttpResponseHeader.ContentType, "text/plain"}
             };
             var contentType = headers.Map(HttpResponseHeader.ContentType, null, h => new ContentType(h));
             Assert.NotNull(contentType);

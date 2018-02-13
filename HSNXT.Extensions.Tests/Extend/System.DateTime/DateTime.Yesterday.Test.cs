@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -14,10 +14,10 @@ namespace Extend.Testing
         public void YesterdayTest()
         {
             var dateTime = DateTime.Today;
-            var expected = dateTime.AddDays( -1 );
+            var expected = dateTime.AddDays(-1);
             var actual = dateTime.Yesterday();
 
-            Assert.Equal( expected, actual );
+            Assert.Equal(expected, actual);
         }
     }
 }

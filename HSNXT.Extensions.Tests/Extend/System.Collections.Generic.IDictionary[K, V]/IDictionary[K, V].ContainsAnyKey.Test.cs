@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +19,20 @@ namespace Extend.Testing
         {
             var dictionary = new Dictionary<String, String>
             {
-                { Extensions.GetRandomString(), Extensions.GetRandomString() },
-                { Extensions.GetRandomString(), Extensions.GetRandomString() }
+                {Extensions.GetRandomString(), Extensions.GetRandomString()},
+                {Extensions.GetRandomString(), Extensions.GetRandomString()}
             };
 
-            Assert.True( dictionary.ContainsAnyKey( dictionary.First()
-                                                              .Key,
-                                                    dictionary.Last()
-                                                              .Key ) );
-            Assert.True( dictionary.ContainsAnyKey( dictionary.First()
-                                                              .Key ) );
-            Assert.True( dictionary.ContainsAnyKey( dictionary.First()
-                                                              .Key,
-                                                    "test" ) );
-            Assert.False( dictionary.ContainsAnyKey( "test" ) );
+            Assert.True(dictionary.ContainsAnyKey(dictionary.First()
+                    .Key,
+                dictionary.Last()
+                    .Key));
+            Assert.True(dictionary.ContainsAnyKey(dictionary.First()
+                .Key));
+            Assert.True(dictionary.ContainsAnyKey(dictionary.First()
+                    .Key,
+                "test"));
+            Assert.False(dictionary.ContainsAnyKey("test"));
         }
 
         [Fact]
@@ -40,18 +40,18 @@ namespace Extend.Testing
         {
             var dictionary = new Dictionary<String, String>
             {
-                { Extensions.GetRandomString(), Extensions.GetRandomString() },
-                { Extensions.GetRandomString(), Extensions.GetRandomString() }
+                {Extensions.GetRandomString(), Extensions.GetRandomString()},
+                {Extensions.GetRandomString(), Extensions.GetRandomString()}
             };
 
             var keys = dictionary.GetAllKeysAsList();
-            Assert.True( dictionary.ContainsAnyKey( keys ) );
+            Assert.True(dictionary.ContainsAnyKey(keys));
 
-            keys.RemoveAt( 0 );
-            keys.Add( "test" );
-            Assert.True( dictionary.ContainsAnyKey( keys ) );
+            keys.RemoveAt(0);
+            keys.Add("test");
+            Assert.True(dictionary.ContainsAnyKey(keys));
 
-            Assert.False( dictionary.ContainsAnyKey( new List<String> { "test", "test2" } ) );
+            Assert.False(dictionary.ContainsAnyKey(new List<String> {"test", "test2"}));
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Extend.Testing
             Dictionary<Object, Object> dictionary = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => dictionary.ContainsAnyKey( new List<Object>() );
+            Action test = () => dictionary.ContainsAnyKey(new List<Object>());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -71,7 +71,7 @@ namespace Extend.Testing
             IEnumerable<Object> keys = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( keys );
+            Action test = () => new Dictionary<Object, Object>().ContainsAnyKey(keys);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -82,7 +82,7 @@ namespace Extend.Testing
             Dictionary<Object, Object> dictionary = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => dictionary.ContainsAnyKey( new Object(), new Object(), new Object() );
+            Action test = () => dictionary.ContainsAnyKey(new Object(), new Object(), new Object());
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -92,7 +92,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( null );
+            Action test = () => new Dictionary<Object, Object>().ContainsAnyKey(null);
 
             test.ShouldThrow<NullReferenceException>();
         }

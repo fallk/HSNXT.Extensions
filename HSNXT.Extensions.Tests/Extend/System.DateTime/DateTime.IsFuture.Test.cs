@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using Xunit;
 
@@ -13,13 +13,13 @@ namespace Extend.Testing
         [Fact]
         public void IsFutureTest()
         {
-            var dateTime = DateTime.Now.Subtract( 1.ToMilliseconds() );
+            var dateTime = DateTime.Now.Subtract(1.ToMilliseconds());
             var actual = dateTime.IsFuture();
-            Assert.False( actual );
+            Assert.False(actual);
 
-            dateTime = DateTime.Now.AddDays( 2 );
+            dateTime = DateTime.Now.AddDays(2);
             actual = dateTime.IsFuture();
-            Assert.True( actual );
+            Assert.True(actual);
         }
     }
 }

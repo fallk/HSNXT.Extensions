@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using Xunit;
 
 #endregion
@@ -13,16 +13,16 @@ namespace Extend.Testing
         public void IsEmptyTest()
         {
             var value = "";
-            Assert.True( value.IsEmpty() );
+            Assert.True(value.IsEmpty());
 
             value = null;
-            Assert.False( value.IsEmpty() );
+            Assert.False(value.IsEmpty());
 
             value = "   ";
-            Assert.False( value.IsEmpty() );
+            Assert.False(value.IsEmpty());
 
             value = Extensions.GetRandomString();
-            Assert.False( value.IsEmpty() );
+            Assert.False(value.IsEmpty());
         }
     }
 }

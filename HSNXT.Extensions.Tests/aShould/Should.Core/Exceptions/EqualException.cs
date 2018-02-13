@@ -11,8 +11,10 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="expected">The expected object value</param>
         /// <param name="actual">The actual object value</param>
         public EqualException(object expected,
-                              object actual)
-            : this(expected, actual, "Assert.Equal() Failure") { }
+            object actual)
+            : this(expected, actual, "Assert.Equal() Failure")
+        {
+        }
 
         /// <summary>
         /// Creates a new instance of the <see cref="EqualException"/> class.
@@ -21,6 +23,8 @@ namespace erichexter.Should.Core.Exceptions
         /// <param name="actual">The actual object value</param>
         /// <param name="userMessage">The user message to be shown on failure</param>
         public EqualException(object expected, object actual, string userMessage)
-            : base(expected, actual, userMessage) { }
+            : base(expected, actual, userMessage)
+        {
+        }
     }
 }

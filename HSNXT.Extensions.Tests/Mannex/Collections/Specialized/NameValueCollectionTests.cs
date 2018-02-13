@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Collections.Specialized
@@ -39,7 +41,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void FilterFailsWithNullThisAndPredicate()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                Extensions.Filter<NameValueCollection>((NameValueCollection)null, delegate { return false; }));
+                Extensions.Filter<NameValueCollection>((NameValueCollection) null, delegate { return false; }));
         }
 
         [Fact]
@@ -54,11 +56,11 @@ namespace Mannex.Tests.Collections.Specialized
         {
             var collection = new NameValueCollection
             {
-                { null,  "NULL" },
-                { "foo", "FOO"  },
-                { "bar", "BAR"  },
-                { "baz", "BAZ1" },
-                { "baz", "BAZ2" },
+                {null, "NULL"},
+                {"foo", "FOO"},
+                {"bar", "BAR"},
+                {"baz", "BAZ1"},
+                {"baz", "BAZ2"},
             };
 
             var result = collection.Filter(k => k != null && k.StartsWith("b", StringComparison.Ordinal));
@@ -66,7 +68,7 @@ namespace Mannex.Tests.Collections.Specialized
             Assert.Equal("bar", result.GetKey(0));
             Assert.Equal("BAR", result[0]);
             Assert.Equal("baz", result.GetKey(1));
-            Assert.Equal(new[]{ "BAZ1", "BAZ2" }, result.GetValues(1));
+            Assert.Equal(new[] {"BAZ1", "BAZ2"}, result.GetValues(1));
         }
 
         [Fact]
@@ -95,19 +97,20 @@ namespace Mannex.Tests.Collections.Specialized
         {
             var collection = new NameValueCollection
             {
-                { null,  "NULL" },
-                { "foo", "FOO"  },
-                { "bar", "BAR"  },
-                { "baz", "BAZ1" },
-                { "baz", "BAZ2" },
+                {null, "NULL"},
+                {"foo", "FOO"},
+                {"bar", "BAR"},
+                {"baz", "BAZ1"},
+                {"baz", "BAZ2"},
             };
 
-            var result = collection.Filter(k => k != null && k.StartsWith("b", StringComparison.Ordinal), k => k.ToUpperInvariant());
+            var result = collection.Filter(k => k != null && k.StartsWith("b", StringComparison.Ordinal),
+                k => k.ToUpperInvariant());
             Assert.Equal(2, result.Count);
             Assert.Equal("BAR", result.GetKey(0));
             Assert.Equal("BAR", result[0]);
             Assert.Equal("BAZ", result.GetKey(1));
-            Assert.Equal(new[] { "BAZ1", "BAZ2" }, result.GetValues(1));
+            Assert.Equal(new[] {"BAZ1", "BAZ2"}, result.GetValues(1));
         }
 
         [Fact]
@@ -122,22 +125,22 @@ namespace Mannex.Tests.Collections.Specialized
         {
             var collection = new NameValueCollection
             {
-                { null,    "NULL" },
-                { "a:foo", "FOO"  },
-                { "b:",    "B"    },
-                { "b:bar", "BAR"  },
-                { "b:baz", "BAZ1" },
-                { "b:baz", "BAZ2" },
+                {null, "NULL"},
+                {"a:foo", "FOO"},
+                {"b:", "B"},
+                {"b:bar", "BAR"},
+                {"b:baz", "BAZ1"},
+                {"b:baz", "BAZ2"},
             };
 
             var result = collection.FilterByPrefix("b:");
             Assert.Equal(3, result.Count);
-            Assert.Null (result.GetKey(0));
+            Assert.Null(result.GetKey(0));
             Assert.Equal("B", result[0]);
             Assert.Equal("bar", result.GetKey(1));
             Assert.Equal("BAR", result[1]);
             Assert.Equal("baz", result.GetKey(2));
-            Assert.Equal(new[] { "BAZ1", "BAZ2" }, result.GetValues(2));
+            Assert.Equal(new[] {"BAZ1", "BAZ2"}, result.GetValues(2));
         }
 
         [Fact]
@@ -145,26 +148,26 @@ namespace Mannex.Tests.Collections.Specialized
         {
             var collection = new NameValueCollection
             {
-                { null,    "NULL" },
-                { "a:foo", "FOO"  },
-                { "b:bar", "BAR"  },
-                { "b:baz", "BAZ1" },
-                { "b:baz", "BAZ2" },
+                {null, "NULL"},
+                {"a:foo", "FOO"},
+                {"b:bar", "BAR"},
+                {"b:baz", "BAZ1"},
+                {"b:baz", "BAZ2"},
             };
 
-            foreach (var prefix in new[] { null, string.Empty })
+            foreach (var prefix in new[] {null, string.Empty})
             {
                 var result = collection.FilterByPrefix(prefix);
                 Assert.NotSame(collection, result);
                 Assert.Equal(4, result.Count);
-                Assert.Null (result.GetKey(0));
+                Assert.Null(result.GetKey(0));
                 Assert.Equal("NULL", result[0]);
                 Assert.Equal("a:foo", result.GetKey(1));
                 Assert.Equal("FOO", result[1]);
                 Assert.Equal("b:bar", result.GetKey(2));
                 Assert.Equal("BAR", result[2]);
                 Assert.Equal("b:baz", result.GetKey(3));
-                Assert.Equal(new[] { "BAZ1", "BAZ2" }, result.GetValues(3));
+                Assert.Equal(new[] {"BAZ1", "BAZ2"}, result.GetValues(3));
             }
         }
 
@@ -180,7 +183,7 @@ namespace Mannex.Tests.Collections.Specialized
         public void UpdateFailsWithNullThat()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                        new NameValueCollection().Update(null));
+                new NameValueCollection().Update(null));
             Assert.Equal("source", e.ParamName);
         }
 
@@ -189,29 +192,29 @@ namespace Mannex.Tests.Collections.Specialized
         {
             var a = new NameValueCollection
             {
-                { "ka", "a" },
-                { "kb", "a" },
-                { "kb", "b" },
+                {"ka", "a"},
+                {"kb", "a"},
+                {"kb", "b"},
             };
             a.Update(new NameValueCollection
             {
-                { "ka", "b" },
-                { "kb", "a" },
-                { "kb", "c" },
-                { "kc", "a" },
+                {"ka", "b"},
+                {"kb", "a"},
+                {"kb", "c"},
+                {"kc", "a"},
             });
             Assert.Equal(3, a.Count);
-            Assert.Equal(new[] { "ka", "kb", "kc" }, a.AllKeys);
-            Assert.Equal(new[] { "b" }, a.GetValues("ka"));
-            Assert.Equal(new[] { "a", "c" }, a.GetValues("kb"));
-            Assert.Equal(new[] { "a" }, a.GetValues("kc"));
+            Assert.Equal(new[] {"ka", "kb", "kc"}, a.AllKeys);
+            Assert.Equal(new[] {"b"}, a.GetValues("ka"));
+            Assert.Equal(new[] {"a", "c"}, a.GetValues("kb"));
+            Assert.Equal(new[] {"a"}, a.GetValues("kc"));
         }
- 
+
         [Fact]
         public void AsEnumerableFailsWithNullThis()
         {
             var e = Assert.Throws<ArgumentNullException>(() =>
-                Extensions.AsEnumerable((NameValueCollection)null));
+                Extensions.AsEnumerable((NameValueCollection) null));
             Assert.Equal("collection", e.ParamName);
         }
 
@@ -228,18 +231,18 @@ namespace Mannex.Tests.Collections.Specialized
         {
             var collection = new NameValueCollection
             {
-                { "goo", "car" },
-                { "foo", "bar" },
-                { "foo", "baz" },
+                {"goo", "car"},
+                {"foo", "bar"},
+                {"foo", "baz"},
             };
             using (var e = collection.AsEnumerable().GetEnumerator())
             {
                 Assert.True(e.MoveNext());
                 Assert.Equal("goo", e.Current.Key);
-                Assert.Equal(new[] { "car" }, e.Current.Value);
+                Assert.Equal(new[] {"car"}, e.Current.Value);
                 Assert.True(e.MoveNext());
                 Assert.Equal("foo", e.Current.Key);
-                Assert.Equal(new[] { "bar", "baz" }, e.Current.Value);
+                Assert.Equal(new[] {"bar", "baz"}, e.Current.Value);
                 Assert.False(e.MoveNext());
             }
         }
@@ -247,7 +250,7 @@ namespace Mannex.Tests.Collections.Specialized
         [Fact]
         public void TryGetValueWhenKeyIsPresent()
         {
-            var collection = new NameValueCollection { { "foo", "42" } };
+            var collection = new NameValueCollection {{"foo", "42"}};
             Assert.Equal(42, collection.TryGetValue("foo", v => int.Parse(v, CultureInfo.InvariantCulture)));
         }
 
@@ -264,11 +267,11 @@ namespace Mannex.Tests.Collections.Specialized
             var collection = new NameValueCollection();
             Assert.Equal(-1, collection.TryGetValue("foo", -1, v => int.Parse(v, CultureInfo.InvariantCulture)));
         }
- 
+
         [Fact]
         public void ContainsKeyFailsWithNullCollection()
         {
-            var e = Assert.Throws<ArgumentNullException>(() => 
+            var e = Assert.Throws<ArgumentNullException>(() =>
                 Extensions.ContainsKey(null, null));
             Assert.Equal("collection", e.ParamName);
         }
@@ -276,7 +279,7 @@ namespace Mannex.Tests.Collections.Specialized
         [Fact]
         public void ContainsKeyWhenKeyIsPresent()
         {
-            var collection = new NameValueCollection { { "foo", "bar" } };
+            var collection = new NameValueCollection {{"foo", "bar"}};
             Assert.True(collection.ContainsKey("foo"), "Same case");
             Assert.True(collection.ContainsKey("FOO"), "Different case");
         }
@@ -286,18 +289,18 @@ namespace Mannex.Tests.Collections.Specialized
         {
             Assert.False(new NameValueCollection().ContainsKey("foo"));
         }
- 
+
         [Fact]
         public void ContainsKeyWhenKeyIsDifferentCaseAndComparerIsCaseSensitive()
         {
-            var collection = new NameValueCollection { { "foo", "bar" } };
+            var collection = new NameValueCollection {{"foo", "bar"}};
             Assert.False(collection.ContainsKey("FOO", StringComparer.Ordinal));
         }
 
         [Fact]
         public void ContainsKeyWithNullStringComparer()
         {
-            var collection = new NameValueCollection { { "foo", "bar" } };
+            var collection = new NameValueCollection {{"foo", "bar"}};
             Assert.True(collection.ContainsKey("FOO", null));
         }
     }

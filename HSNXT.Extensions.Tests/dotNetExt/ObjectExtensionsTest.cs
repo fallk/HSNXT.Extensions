@@ -10,7 +10,7 @@ namespace TestProject
 {
     using System;
     using HSNXT;
-using HSNXT.dotNetExt;
+    using HSNXT.dotNetExt;
     using System.Linq;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Dynamic;
@@ -48,6 +48,7 @@ using HSNXT.dotNetExt;
         //}
 
         #region Additional test attributes
+
         // 
         //You can use the following additional attributes as you write your tests:
         //
@@ -75,6 +76,7 @@ using HSNXT.dotNetExt;
         //{
         //}
         //
+
         #endregion
 
 
@@ -165,6 +167,7 @@ using HSNXT.dotNetExt;
             {
                 v += i.Value;
             }
+
             Assert.AreEqual(6, v);
         }
 
@@ -178,7 +181,9 @@ using HSNXT.dotNetExt;
 
         [Test2(Name = "Highlander")]
         [Test(1), Test(2), Test(3)]
-        public class GetAttributesTestObject { }
+        public class GetAttributesTestObject
+        {
+        }
 
         [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
         public class TestAttribute : Attribute
@@ -204,7 +209,8 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void ToDictionaryTest_001()
         {
-            var a = new {
+            var a = new
+            {
                 One = 1,
                 Two = 2,
                 Name = "Chris"
@@ -236,7 +242,7 @@ using HSNXT.dotNetExt;
         public void ToDictionaryTest_003()
         {
             var a = new ExpandoObject();
-            var ad = (IDictionary<string, object>)a;
+            var ad = (IDictionary<string, object>) a;
             ad["FirstName"] = "Chris";
             ad["Age"] = 0;
             ad["Height"] = 6.16667;
@@ -289,7 +295,8 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void CastAsTest_001()
         {
-            var a = new {
+            var a = new
+            {
                 FirstName = "John",
                 LastName = "Doe",
                 Age = 54,
@@ -301,7 +308,8 @@ using HSNXT.dotNetExt;
         private void CastAsTest_001_Helper(Object obj)
         {
             // Anonymous Type
-            var a = new {
+            var a = new
+            {
                 FirstName = string.Empty,
                 LastName = string.Empty,
                 Age = 0,
@@ -339,7 +347,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void CallMethodByNameTest_001()
         {
-            var v = new CallMethodByNameTestObject { Name = "Chris" };
+            var v = new CallMethodByNameTestObject {Name = "Chris"};
             var actual = v.CallMethodByName("GetName");
             Assert.AreEqual("Chris", actual);
         }
@@ -347,7 +355,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void CallMethodByNameTest_002()
         {
-            var v = new CallMethodByNameTestObject { Name = "Chris" };
+            var v = new CallMethodByNameTestObject {Name = "Chris"};
             var actual = v.CallMethodByName("GetNamePlus", "A", "B");
             Assert.AreEqual("ChrisAB", actual);
         }
@@ -355,7 +363,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void CallMethodByNameTest_003()
         {
-            var v = new CallMethodByNameTestObject { Name = "Chris" };
+            var v = new CallMethodByNameTestObject {Name = "Chris"};
             var actual = v.CallMethodByName<string>("GetName");
             Assert.AreEqual("Chris", actual);
         }
@@ -363,7 +371,7 @@ using HSNXT.dotNetExt;
         [TestMethod]
         public void CallMethodByNameTest_004()
         {
-            var v = new CallMethodByNameTestObject { Name = "Chris" };
+            var v = new CallMethodByNameTestObject {Name = "Chris"};
             var actual = v.CallMethodByName<string>("GetNamePlus", "A", "B");
             Assert.AreEqual("ChrisAB", actual);
         }

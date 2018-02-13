@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Text.RegularExpressions;
 using FluentAssertions;
@@ -19,11 +19,11 @@ namespace Extend.Testing
             const String validEmail = "dave.senn@myDomain.com";
             const String invalidEmail = "dave.senn-myDomain.com";
 
-            var actual = validEmail.Match( emaiLpattern );
-            Assert.True( actual.Success );
+            var actual = validEmail.Match(emaiLpattern);
+            Assert.True(actual.Success);
 
-            actual = invalidEmail.Match( emaiLpattern );
-            Assert.False( actual.Success );
+            actual = invalidEmail.Match(emaiLpattern);
+            Assert.False(actual.Success);
         }
 
         [Fact]
@@ -33,11 +33,11 @@ namespace Extend.Testing
             const String validEmail = "dave.senn@myDomain.com";
             const String invalidEmail = "dave.senn-myDomain.com";
 
-            var actual = validEmail.Match( emaiLpattern, RegexOptions.Compiled );
-            Assert.True( actual.Success );
+            var actual = validEmail.Match(emaiLpattern, RegexOptions.Compiled);
+            Assert.True(actual.Success);
 
-            actual = invalidEmail.Match( emaiLpattern, RegexOptions.Compiled );
-            Assert.False( actual.Success );
+            actual = invalidEmail.Match(emaiLpattern, RegexOptions.Compiled);
+            Assert.False(actual.Success);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Match( null, "", RegexOptions.Compiled );
+            Action test = () => Extensions.Match(null, "", RegexOptions.Compiled);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -55,7 +55,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Match( null, RegexOptions.Compiled );
+            Action test = () => "".Match(null, RegexOptions.Compiled);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -67,11 +67,11 @@ namespace Extend.Testing
             const String validEmail = "firstname.lastname@myDomain.com";
             const String invalidEmail = "firstname.lastname-myDomain.com";
 
-            var actual = validEmail.Match( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
-            Assert.True( actual.Success );
+            var actual = validEmail.Match(emaiLpattern, RegexOptions.Compiled, 100.ToSeconds());
+            Assert.True(actual.Success);
 
-            actual = invalidEmail.Match( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
-            Assert.False( actual.Success );
+            actual = invalidEmail.Match(emaiLpattern, RegexOptions.Compiled, 100.ToSeconds());
+            Assert.False(actual.Success);
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => Extensions.Match(null, "", RegexOptions.Compiled, 100.ToSeconds());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -89,7 +89,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Match( null, RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => "".Match(null, RegexOptions.Compiled, 100.ToSeconds());
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -99,7 +99,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.Match( null, "" );
+            Action test = () => Extensions.Match(null, "");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -109,7 +109,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Match( null );
+            Action test = () => "".Match(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -118,11 +118,11 @@ namespace Extend.Testing
         public void MatchTimeoutTest()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var text = Extensions.GetRandomStrings( 50000 )
-                                    .StringJoin();
+            var text = Extensions.GetRandomStrings(50000)
+                .StringJoin();
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => text.Match( emaiLpattern, RegexOptions.Compiled, 3.ToMilliseconds() );
+            Action test = () => text.Match(emaiLpattern, RegexOptions.Compiled, 3.ToMilliseconds());
 
             test.ShouldThrow<RegexMatchTimeoutException>();
         }

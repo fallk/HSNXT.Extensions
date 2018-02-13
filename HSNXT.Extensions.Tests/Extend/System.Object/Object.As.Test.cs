@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -17,15 +17,15 @@ namespace Extend.Testing
             Object value = 10;
             var actual = value.CastAs<Int32>();
 
-            Assert.Equal( value, actual );
+            Assert.Equal(value, actual);
         }
 
         [Fact]
         public void AsTestNullValue()
         {
-            var res = Extensions.CastAs<String>( null );
+            var res = Extensions.CastAs<String>(null);
             res.Should()
-               .BeNull();
+                .BeNull();
         }
     }
 }

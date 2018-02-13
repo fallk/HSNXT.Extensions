@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -15,14 +15,14 @@ namespace Extend.Testing
         public void PopulateTest()
         {
             var array = new Int32[10];
-            var actual = array.Populate( 100 );
+            var actual = array.Populate(100);
 
-            Assert.Same( array, actual );
-            Assert.Equal( 10, array.Length );
-            for ( var i = 0; i < array.Length; i++ )
+            Assert.Same(array, actual);
+            Assert.Equal(10, array.Length);
+            for (var i = 0; i < array.Length; i++)
             {
-                Assert.Equal( 100, array[i] );
-                Assert.Equal( 100, actual[i] );
+                Assert.Equal(100, array[i]);
+                Assert.Equal(100, actual[i]);
             }
         }
 
@@ -31,7 +31,7 @@ namespace Extend.Testing
         {
             String[] array = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => array.Populate( Extensions.GetRandomString() );
+            Action test = () => array.Populate(Extensions.GetRandomString());
 
             test.ShouldThrow<ArgumentNullException>();
         }

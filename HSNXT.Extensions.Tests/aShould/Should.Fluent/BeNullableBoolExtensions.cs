@@ -43,7 +43,7 @@ namespace erichexter.Should.Fluent
                 }
                 else
                 {
-                    a.IsFalse(t.Value);                        
+                    a.IsFalse(t.Value);
                 }
             };
             Action<bool?, IAssertProvider> negativeCase = (t, a) =>

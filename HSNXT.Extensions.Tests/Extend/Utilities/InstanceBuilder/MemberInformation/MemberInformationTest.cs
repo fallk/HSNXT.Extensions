@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -19,7 +19,7 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             target.MemberName = expected;
             target.MemberName.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             target.MemberObject = expected;
             target.MemberObject.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace Extend.Testing
             var expected = Extensions.GetRandomString();
             target.MemberPath = expected;
             target.MemberPath.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace Extend.Testing
             var expected = typeof(String);
             target.MemberType = expected;
             target.MemberType.Should()
-                  .Be( expected );
+                .Be(expected);
         }
 
         [Fact]
@@ -57,10 +57,10 @@ namespace Extend.Testing
         {
             var target = new MemberInformation();
             var expected = typeof(MemberInformation).GetPublicSettableProperties()
-                                                    .First();
+                .First();
             target.PropertyInfo = expected;
             target.PropertyInfo.Should()
-                  .BeSameAs( expected );
+                .BeSameAs(expected);
         }
     }
 }

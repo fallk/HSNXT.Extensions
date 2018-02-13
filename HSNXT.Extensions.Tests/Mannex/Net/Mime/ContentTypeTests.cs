@@ -1,4 +1,5 @@
 #region License, Terms and Author(s)
+
 //
 // Mannex - Extension methods for .NET
 // Copyright (c) 2009 Atif Aziz. All rights reserved.
@@ -19,6 +20,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+
 #endregion
 
 namespace Mannex.Tests.Net.Mime
@@ -38,12 +40,18 @@ namespace Mannex.Tests.Net.Mime
         [Fact]
         public void EncodingFromCharSetWithNullThis()
         {
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null)).ParamName);
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, (Encoding)null)).ParamName);
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, (Func<string, Encoding>)null)).ParamName);
-            Assert.Equal("contentType", Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, null, null)).ParamName);
+            Assert.Equal("contentType",
+                Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null)).ParamName);
+            Assert.Equal("contentType",
+                Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, (Encoding) null))
+                    .ParamName);
+            Assert.Equal("contentType",
+                Assert.Throws<ArgumentNullException>(() =>
+                    Extensions.EncodingFromCharSet(null, (Func<string, Encoding>) null)).ParamName);
+            Assert.Equal("contentType",
+                Assert.Throws<ArgumentNullException>(() => Extensions.EncodingFromCharSet(null, null, null)).ParamName);
         }
-        
+
         [Fact]
         public void EncodingFromCharSet()
         {
@@ -61,7 +69,7 @@ namespace Mannex.Tests.Net.Mime
         {
             Assert.Equal(Encoding.ASCII, new ContentType("text/plain").EncodingFromCharSet(Encoding.ASCII));
         }
-        
+
         [Fact]
         public void EncodingFromCharSetWithEncodingSelector()
         {

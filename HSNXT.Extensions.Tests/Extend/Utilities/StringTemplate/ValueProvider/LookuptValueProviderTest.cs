@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using HSNXT.Internal;
@@ -18,7 +18,7 @@ namespace Extend.Testing.Internal
         {
             // ReSharper disable once ObjectCreationAsStatement
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new LookuptValueProvider( null );
+            Action test = () => new LookuptValueProvider(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -28,13 +28,13 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyInt", DateTime.Now }
+                {"MyInt", DateTime.Now}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            var actual = target.GetValue( "MyInt:DD" );
+            var actual = target.GetValue("MyInt:DD");
             actual.Should()
-                  .Be( "DD" );
+                .Be("DD");
         }
 
         [Fact]
@@ -42,11 +42,11 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", "asdf" }
+                {"MyString", "asdf"}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            Action test = () => target.GetValue( "MyInt" );
+            Action test = () => target.GetValue("MyInt");
             test.ShouldThrow<FormatException>()
                 .WithInnerException<KeyNotFoundException>();
         }
@@ -56,11 +56,11 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", "asdf" }
+                {"MyString", "asdf"}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            Action test = () => target.GetValue( "MyInt:000" );
+            Action test = () => target.GetValue("MyInt:000");
             test.ShouldThrow<FormatException>()
                 .WithInnerException<KeyNotFoundException>();
         }
@@ -70,14 +70,14 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", "asdf" },
-                { "MyInt", 1234 }
+                {"MyString", "asdf"},
+                {"MyInt", 1234}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            var value = target.GetValue( "MyInt" );
+            var value = target.GetValue("MyInt");
             value.Should()
-                 .Be( "1234" );
+                .Be("1234");
         }
 
         [Fact]
@@ -85,13 +85,13 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", null }
+                {"MyString", null}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            var value = target.GetValue( "MyString" );
+            var value = target.GetValue("MyString");
             value.Should()
-                 .BeNull();
+                .BeNull();
         }
 
         [Fact]
@@ -99,13 +99,13 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", null }
+                {"MyString", null}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            var value = target.GetValue( "MyString:00000" );
+            var value = target.GetValue("MyString:00000");
             value.Should()
-                 .BeEmpty();
+                .BeEmpty();
         }
 
         [Fact]
@@ -113,13 +113,13 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", "asdf" }
+                {"MyString", "asdf"}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            var value = target.GetValue( "MyString" );
+            var value = target.GetValue("MyString");
             value.Should()
-                 .Be( "asdf" );
+                .Be("asdf");
         }
 
         [Fact]
@@ -127,14 +127,14 @@ namespace Extend.Testing.Internal
         {
             var values = new Dictionary<String, Object>
             {
-                { "MyString", "asdf" },
-                { "MyInt", 1234 }
+                {"MyString", "asdf"},
+                {"MyInt", 1234}
             };
-            var target = new LookuptValueProvider( values );
+            var target = new LookuptValueProvider(values);
 
-            var value = target.GetValue( "MyInt:000000" );
+            var value = target.GetValue("MyInt:000000");
             value.Should()
-                 .Be( "001234" );
+                .Be("001234");
         }
     }
 }

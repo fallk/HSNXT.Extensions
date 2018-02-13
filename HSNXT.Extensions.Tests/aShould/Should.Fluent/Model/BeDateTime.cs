@@ -23,6 +23,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(DateTime.Today, should.Target.Date);
             }
+
             return should.Target;
         }
     }

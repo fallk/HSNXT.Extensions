@@ -3,9 +3,14 @@ using System.Linq;
 
 namespace erichexter.Should.Fluent.Model
 {
-    public class ShouldDictionary<TKey, TValue> : ShouldEnumerableBase<KeyValuePair<TKey, TValue>, ShouldDictionary<TKey, TValue>>
+    public class
+        ShouldDictionary<TKey, TValue> : ShouldEnumerableBase<KeyValuePair<TKey, TValue>, ShouldDictionary<TKey, TValue>
+        >
     {
-        public ShouldDictionary(IEnumerable<KeyValuePair<TKey, TValue>> target, IAssertProvider assertProvider) : base(target, assertProvider) { }
+        public ShouldDictionary(IEnumerable<KeyValuePair<TKey, TValue>> target, IAssertProvider assertProvider) : base(
+            target, assertProvider)
+        {
+        }
 
         public IEnumerable<KeyValuePair<TKey, TValue>> ContainKey(TKey key)
         {
@@ -24,6 +29,7 @@ namespace erichexter.Should.Fluent.Model
                     assertProvider.Fail("Expected dictionary to contain key '{0}' but it does not.", key);
                 }
             }
+
             return Target;
         }
     }

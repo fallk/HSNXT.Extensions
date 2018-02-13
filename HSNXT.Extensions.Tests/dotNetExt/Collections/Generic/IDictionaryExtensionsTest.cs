@@ -27,12 +27,12 @@ namespace TestProject.Collections.Generic
             d.Add("LastName", "Pietschmann");
 
             var expando = d.ToExpando();
-            var dyn = (dynamic)expando;
+            var dyn = (dynamic) expando;
 
             Assert.AreEqual(3, expando.Count());
-            Assert.AreEqual(id, (Guid)dyn.ID);
-            Assert.AreEqual("Chris", (string)dyn.FirstName);
-            Assert.AreEqual("Pietschmann", (string)dyn.LastName);
+            Assert.AreEqual(id, (Guid) dyn.ID);
+            Assert.AreEqual("Chris", (string) dyn.FirstName);
+            Assert.AreEqual("Pietschmann", (string) dyn.LastName);
         }
 
         [TestMethod]
@@ -48,35 +48,36 @@ namespace TestProject.Collections.Generic
 
             d.Add("Obj", new Dictionary<string, object>
             {
-                { "ID", 1 },
-                { "Company", "ExpandoCom" },
-                { "Date", dt },
-                { "YearFounded", 2012 }
+                {"ID", 1},
+                {"Company", "ExpandoCom"},
+                {"Date", dt},
+                {"YearFounded", 2012}
             });
 
 
             var expando = d.ToExpando();
-            var dyn = (dynamic)expando;
+            var dyn = (dynamic) expando;
 
             Assert.AreEqual(4, expando.Count());
-            Assert.AreEqual(id, (Guid)dyn.ID);
-            Assert.AreEqual("Chris", (string)dyn.FirstName);
-            Assert.AreEqual("Pietschmann", (string)dyn.LastName);
+            Assert.AreEqual(id, (Guid) dyn.ID);
+            Assert.AreEqual("Chris", (string) dyn.FirstName);
+            Assert.AreEqual("Pietschmann", (string) dyn.LastName);
 
             var dyn2 = dyn.Obj;
-            Assert.AreEqual(4, ((ExpandoObject)dyn2).Count());
-            Assert.AreEqual(1, (int)dyn2.ID);
-            Assert.AreEqual("ExpandoCom", (string)dyn2.Company);
-            Assert.AreEqual(dt, (DateTime)dyn2.Date);
-            Assert.AreEqual(2012, (int)dyn2.YearFounded);
+            Assert.AreEqual(4, ((ExpandoObject) dyn2).Count());
+            Assert.AreEqual(1, (int) dyn2.ID);
+            Assert.AreEqual("ExpandoCom", (string) dyn2.Company);
+            Assert.AreEqual(dt, (DateTime) dyn2.Date);
+            Assert.AreEqual(2012, (int) dyn2.YearFounded);
         }
 
         [TestMethod]
         public void IDictionaryTest_ToNameValueCollection_001()
         {
-            IDictionary<string, string> dict = new Dictionary<string, string>{
-                { "One", "1" },
-                { "Two", "22" }
+            IDictionary<string, string> dict = new Dictionary<string, string>
+            {
+                {"One", "1"},
+                {"Two", "22"}
             };
 
             var actual = dict.ToNameValueCollection();

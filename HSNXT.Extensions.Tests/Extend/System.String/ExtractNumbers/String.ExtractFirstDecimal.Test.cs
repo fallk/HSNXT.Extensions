@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -16,21 +16,21 @@ namespace Extend.Testing
         [UseCulture("en-US")]
         public void ExtractFirstDecimalTest()
         {
-            var value0 = new Decimal( 100.2 );
-            var value1 = new Decimal( 100.212 );
-            var value2 = new Decimal( -1100.2231232 );
-            var value3 = new Decimal( 12300 );
+            var value0 = new Decimal(100.2);
+            var value1 = new Decimal(100.212);
+            var value2 = new Decimal(-1100.2231232);
+            var value3 = new Decimal(12300);
 
-            var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
-                                .Replace( ",", "." );
+            var stringValue = "".ConcatAll(value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3)
+                .Replace(",", ".");
 
             var actual =
-                stringValue.ExtractFirstDecimal( stringValue.IndexOf( value1.ToString( CultureInfo.InvariantCulture ),
-                                                                      StringComparison.Ordinal ) );
-            Assert.Equal( value1, actual );
+                stringValue.ExtractFirstDecimal(stringValue.IndexOf(value1.ToString(CultureInfo.InvariantCulture),
+                    StringComparison.Ordinal));
+            Assert.Equal(value1, actual);
 
             actual = stringValue.ExtractFirstDecimal();
-            Assert.Equal( value0, actual );
+            Assert.Equal(value0, actual);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing
             const String sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDecimal();
 
-            Assert.Equal( -100.1234m, actual );
+            Assert.Equal(-100.1234m, actual);
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Extend.Testing
         {
             var sValue = Extensions.GetRandomString();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => sValue.ExtractFirstDecimal( sValue.Length );
+            Action test = () => sValue.ExtractFirstDecimal(sValue.Length);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
         {
             var sValue = Extensions.GetRandomString();
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => sValue.ExtractFirstDecimal( -1 );
+            Action test = () => sValue.ExtractFirstDecimal(-1);
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -68,7 +68,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractFirstDecimal( null );
+            Action test = () => Extensions.ExtractFirstDecimal(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -78,7 +78,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractFirstDecimal( null, 1 );
+            Action test = () => Extensions.ExtractFirstDecimal(null, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }

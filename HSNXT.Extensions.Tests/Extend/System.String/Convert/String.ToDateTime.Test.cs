@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDateTime( null );
+            Action test = () => Extensions.ToDateTime(null);
 
             test.ShouldNotThrow();
         }
@@ -35,12 +35,12 @@ namespace Extend.Testing
         public void ToDateTimeOtherCultureTest()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.InvariantCulture )
-                              .ToDateTime();
+            var actual = value.ToString(CultureInfo.InvariantCulture)
+                .ToDateTime();
 
             actual
                 .Should()
-                .BeCloseTo( value, 999 );
+                .BeCloseTo(value, 999);
         }
 
         [Fact]
@@ -48,8 +48,8 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
-                                        .ToDateTime( null );
+            Action test = () => DateTime.Now.ToString(CultureInfo.InvariantCulture)
+                .ToDateTime(null);
 
             test.ShouldNotThrow();
         }
@@ -58,7 +58,7 @@ namespace Extend.Testing
         public void ToDateTimeOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "invalidFormat".ToDateTime( CultureInfo.CurrentCulture );
+            Action test = () => "invalidFormat".ToDateTime(CultureInfo.CurrentCulture);
 
             test.ShouldThrow<FormatException>();
         }
@@ -68,7 +68,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ToDateTime( null, CultureInfo.CurrentCulture );
+            Action test = () => Extensions.ToDateTime(null, CultureInfo.CurrentCulture);
 
             test.ShouldNotThrow();
         }
@@ -76,39 +76,39 @@ namespace Extend.Testing
         [Fact]
         public void ToDateTimeOverloadOtherCultureTest()
         {
-            var culture = new CultureInfo( "de-CH" );
+            var culture = new CultureInfo("de-CH");
 
             var value = DateTime.Now;
-            var actual = value.ToString( culture )
-                              .ToDateTime( culture );
+            var actual = value.ToString(culture)
+                .ToDateTime(culture);
 
             actual
                 .Should()
-                .BeCloseTo( value, 999 );
+                .BeCloseTo(value, 999);
         }
 
         [Fact]
         public void ToDateTimeOverloadTest()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.InvariantCulture )
-                              .ToDateTime( CultureInfo.InvariantCulture );
+            var actual = value.ToString(CultureInfo.InvariantCulture)
+                .ToDateTime(CultureInfo.InvariantCulture);
 
             actual
                 .Should()
-                .BeCloseTo( value, 999 );
+                .BeCloseTo(value, 999);
         }
 
         [Fact]
         public void ToDateTimeTest()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.InvariantCulture )
-                              .ToDateTime();
+            var actual = value.ToString(CultureInfo.InvariantCulture)
+                .ToDateTime();
 
             actual
                 .Should()
-                .BeCloseTo( value, 999 );
+                .BeCloseTo(value, 999);
         }
     }
 }

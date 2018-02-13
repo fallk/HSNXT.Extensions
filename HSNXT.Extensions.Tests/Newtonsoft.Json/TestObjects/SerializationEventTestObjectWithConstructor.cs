@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -40,8 +42,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         // This field is not serialized. The OnDeserializedAttribute 
         // is used to set the member value after serialization.
-        [JsonIgnore]
-        public string Member3 { get; private set; }
+        [JsonIgnore] public string Member3 { get; private set; }
 
         // This field is set to null, but populated after deserialization.
         public string Member4 { get; private set; }

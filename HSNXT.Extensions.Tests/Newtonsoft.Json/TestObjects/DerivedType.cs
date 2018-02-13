@@ -1,4 +1,5 @@
 ﻿#region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System.Runtime.Serialization;
@@ -31,26 +33,19 @@ namespace Newtonsoft.Json.Tests.TestObjects
     [DataContract]
     public class DerivedType : BaseType
     {
-        [DataMember(Order = 0)]
-        public string bird;
+        [DataMember(Order = 0)] public string bird;
 
-        [DataMember(Order = 1)]
-        public string parrot;
+        [DataMember(Order = 1)] public string parrot;
 
-        [DataMember]
-        public string dog;
+        [DataMember] public string dog;
 
-        [DataMember(Order = 3)]
-        public string antelope;
+        [DataMember(Order = 3)] public string antelope;
 
-        [DataMember]
-        public string cat;
+        [DataMember] public string cat;
 
-        [JsonProperty(Order = 1)]
-        public string albatross;
+        [JsonProperty(Order = 1)] public string albatross;
 
-        [JsonProperty(Order = -2)]
-        public string dinosaur;
+        [JsonProperty(Order = -2)] public string dinosaur;
     }
 #endif
 }

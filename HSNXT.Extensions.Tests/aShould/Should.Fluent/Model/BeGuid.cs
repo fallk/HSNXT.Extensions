@@ -23,6 +23,7 @@ namespace erichexter.Should.Fluent.Model
             {
                 assertProvider.AreEqual(Guid.Empty, should.Target);
             }
+
             return should.Target;
         }
     }

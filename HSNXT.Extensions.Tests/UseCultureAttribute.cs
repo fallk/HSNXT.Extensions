@@ -31,7 +31,9 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// </para>
     /// </remarks>
     public UseCultureAttribute(string culture)
-        : this(culture, culture) { }
+        : this(culture, culture)
+    {
+    }
 
     /// <summary>
     /// Replaces the culture and UI culture of the current thread with
@@ -48,12 +50,18 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <summary>
     /// Gets the culture.
     /// </summary>
-    public CultureInfo Culture { get { return culture.Value; } }
+    public CultureInfo Culture
+    {
+        get { return culture.Value; }
+    }
 
     /// <summary>
     /// Gets the UI culture.
     /// </summary>
-    public CultureInfo UICulture { get { return uiCulture.Value; } }
+    public CultureInfo UICulture
+    {
+        get { return uiCulture.Value; }
+    }
 
     /// <summary>
     /// Stores the current <see cref="Thread.CurrentPrincipal" />

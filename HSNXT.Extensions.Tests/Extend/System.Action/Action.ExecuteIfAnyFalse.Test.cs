@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -21,10 +21,10 @@ namespace Extend.Testing
                 () => falseActionExecuted = true,
                 () => { },
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
@@ -33,10 +33,10 @@ namespace Extend.Testing
                 () => falseActionExecuted = true,
                 () => trueActionExecuted = true,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
@@ -45,10 +45,10 @@ namespace Extend.Testing
                 () => falseActionExecuted = true,
                 () => trueActionExecuted = true,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.True( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.True(trueActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
@@ -57,10 +57,10 @@ namespace Extend.Testing
                 () => falseActionExecuted = true,
                 () => { },
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
@@ -69,10 +69,10 @@ namespace Extend.Testing
                 () => { },
                 () => { },
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
         }
 
         [Fact]
@@ -88,10 +88,10 @@ namespace Extend.Testing
                 parameter,
                 null,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
@@ -101,10 +101,10 @@ namespace Extend.Testing
                 parameter,
                 p1 => trueActionExecuted = p1 == parameter,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
@@ -114,10 +114,10 @@ namespace Extend.Testing
                 parameter,
                 p1 => trueActionExecuted = p1 == parameter,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.True( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.True(trueActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
@@ -127,10 +127,10 @@ namespace Extend.Testing
                 parameter,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
@@ -140,17 +140,17 @@ namespace Extend.Testing
                 parameter,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
         }
 
         [Fact]
         public void ExecuteIfAnyFalseTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ExecuteIfAnyFalse( null, Extensions.GetRandomString(), null, false, true );
+            Action test = () => Extensions.ExecuteIfAnyFalse(null, Extensions.GetRandomString(), null, false, true);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -164,83 +164,83 @@ namespace Extend.Testing
             var trueActionExecuted = false;
             var falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 null,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
-                ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
-                ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.True( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.True(trueActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
         }
 
         [Fact]
         public void ExecuteIfAnyFalseTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ExecuteIfAnyFalse( null,
-                                                            Extensions.GetRandomString(),
-                                                            Extensions.GetRandomString(),
-                                                            null,
-                                                            false,
-                                                            true );
+            Action test = () => Extensions.ExecuteIfAnyFalse(null,
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                null,
+                false,
+                true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -256,89 +256,89 @@ namespace Extend.Testing
             var trueActionExecuted = false;
             var falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 null,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
-                ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
-                ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.True( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.True(trueActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
         }
 
         [Fact]
         public void ExecuteIfAnyFalseTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ExecuteIfAnyFalse( null,
-                                                            Extensions.GetRandomString(),
-                                                            Extensions.GetRandomString(),
-                                                            Extensions.GetRandomString(),
-                                                            null,
-                                                            false,
-                                                            true );
+            Action test = () => Extensions.ExecuteIfAnyFalse(null,
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                null,
+                false,
+                true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -355,59 +355,60 @@ namespace Extend.Testing
             var trueActionExecuted = false;
             var falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) => falseActionExecuted =
+                    p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 null,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 2
             // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.True(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.True( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.True(trueActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
@@ -415,40 +416,41 @@ namespace Extend.Testing
                 parameter4,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) => falseActionExecuted =
+                    p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 null,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
-            Assert.False( trueActionExecuted );
+            Assert.False(falseActionExecuted);
+            Assert.False(trueActionExecuted);
         }
 
         [Fact]
         public void ExecuteIfAnyFalseTest4NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ExecuteIfAnyFalse( null,
-                                                            Extensions.GetRandomString(),
-                                                            Extensions.GetRandomString(),
-                                                            Extensions.GetRandomString(),
-                                                            Extensions.GetRandomString(),
-                                                            null,
-                                                            false,
-                                                            true );
+            Action test = () => Extensions.ExecuteIfAnyFalse(null,
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                null,
+                false,
+                true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -461,44 +463,44 @@ namespace Extend.Testing
             Extensions.ExecuteIfAnyFalse(
                 () => falseActionExecuted = true,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 2
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
                 () => falseActionExecuted = true,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
                 () => falseActionExecuted = true,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
                 () => falseActionExecuted = true,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
             Action action = () => { };
             falseActionExecuted = false;
-            action.ExecuteIfAnyFalse( true, true );
+            action.ExecuteIfAnyFalse(true, true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
         }
 
         [Fact]
@@ -506,7 +508,7 @@ namespace Extend.Testing
         {
             Action action = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => action.ExecuteIfAnyFalse( false, true );
+            Action test = () => action.ExecuteIfAnyFalse(false, true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -522,9 +524,9 @@ namespace Extend.Testing
                 p1 => falseActionExecuted = p1 == parameter,
                 parameter,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 2
             falseActionExecuted = false;
@@ -532,9 +534,9 @@ namespace Extend.Testing
                 p1 => falseActionExecuted = p1 == parameter,
                 parameter,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
@@ -542,9 +544,9 @@ namespace Extend.Testing
                 p1 => falseActionExecuted = p1 == parameter,
                 parameter,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
@@ -552,16 +554,16 @@ namespace Extend.Testing
                 p1 => falseActionExecuted = p1 == parameter,
                 parameter,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
             Action<String> action = x => { };
-            action.ExecuteIfAnyFalse( parameter, true, true );
+            action.ExecuteIfAnyFalse(parameter, true, true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
         }
 
         [Fact]
@@ -569,7 +571,7 @@ namespace Extend.Testing
         {
             Action<String> action = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => action.ExecuteIfAnyFalse( Extensions.GetRandomString(), false, true );
+            Action test = () => action.ExecuteIfAnyFalse(Extensions.GetRandomString(), false, true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -583,53 +585,53 @@ namespace Extend.Testing
             // Case 1
             var falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 2
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
                 parameter2,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
-            Action<String, String> action = ( x, y ) => { };
-            action.ExecuteIfAnyFalse( parameter1, parameter2, true, true );
+            Action<String, String> action = (x, y) => { };
+            action.ExecuteIfAnyFalse(parameter1, parameter2, true, true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
         }
 
         [Fact]
@@ -637,7 +639,8 @@ namespace Extend.Testing
         {
             Action<String, String> action = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => action.ExecuteIfAnyFalse( Extensions.GetRandomString(), Extensions.GetRandomString(), false, true );
+            Action test = () =>
+                action.ExecuteIfAnyFalse(Extensions.GetRandomString(), Extensions.GetRandomString(), false, true);
             test.ShouldThrow<ArgumentNullException>();
         }
 
@@ -651,57 +654,57 @@ namespace Extend.Testing
             // Case 1
             var falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 2
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
                 parameter2,
                 parameter3,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
-            Action<String, String, String> action = ( x, y, z ) => { };
-            action.ExecuteIfAnyFalse( parameter1, parameter2, parameter3, true, true );
+            Action<String, String, String> action = (x, y, z) => { };
+            action.ExecuteIfAnyFalse(parameter1, parameter2, parameter3, true, true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
         }
 
         [Fact]
@@ -709,11 +712,11 @@ namespace Extend.Testing
         {
             Action<String, String, String> action = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => action.ExecuteIfAnyFalse( Extensions.GetRandomString(),
-                                                          Extensions.GetRandomString(),
-                                                          Extensions.GetRandomString(),
-                                                          false,
-                                                          true );
+            Action test = () => action.ExecuteIfAnyFalse(Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                false,
+                true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -729,65 +732,65 @@ namespace Extend.Testing
             // Case 1$
             var falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 2
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 false,
-                true );
+                true);
 
-            Assert.True( falseActionExecuted );
+            Assert.True(falseActionExecuted);
 
             // Case 3
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 4
             falseActionExecuted = false;
             Extensions.ExecuteIfAnyFalse(
-                ( p1, p2, p3, p4 ) =>
+                (p1, p2, p3, p4) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 true,
-                true );
+                true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
 
             // Case 5
             falseActionExecuted = false;
-            Action<String, String, String, String> action = ( x, y, z, a ) => { };
-            action.ExecuteIfAnyFalse( parameter1, parameter2, parameter3, parameter4, true, true );
+            Action<String, String, String, String> action = (x, y, z, a) => { };
+            action.ExecuteIfAnyFalse(parameter1, parameter2, parameter3, parameter4, true, true);
 
-            Assert.False( falseActionExecuted );
+            Assert.False(falseActionExecuted);
         }
 
         [Fact]
@@ -795,12 +798,12 @@ namespace Extend.Testing
         {
             Action<String, String, String, String> action = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => action.ExecuteIfAnyFalse( Extensions.GetRandomString(),
-                                                          Extensions.GetRandomString(),
-                                                          Extensions.GetRandomString(),
-                                                          Extensions.GetRandomString(),
-                                                          false,
-                                                          true );
+            Action test = () => action.ExecuteIfAnyFalse(Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                Extensions.GetRandomString(),
+                false,
+                true);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -809,7 +812,7 @@ namespace Extend.Testing
         public void ExecuteIfAnyFalseTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => Extensions.ExecuteIfAnyFalse( null, null, false, true );
+            Action test = () => Extensions.ExecuteIfAnyFalse(null, null, false, true);
             test.ShouldThrow<ArgumentNullException>();
         }
     }

@@ -1,4 +1,5 @@
 #region License
+
 // Copyright (c) 2007 James Newton-King
 //
 // Permission is hereby granted, free of charge, to any person
@@ -21,6 +22,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 #endregion
 
 using System;
@@ -43,6 +45,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
         }
 
         #region Properties
+
         public int Numerator
         {
             get { return _numerator; }
@@ -57,9 +60,11 @@ namespace Newtonsoft.Json.Tests.TestObjects
         {
             get { return _denominator == 0; }
         }
+
         #endregion
 
         #region Serialization operations
+
         public Ratio(SerializationInfo info, StreamingContext context)
         {
             _numerator = info.GetInt32("n");
@@ -71,9 +76,11 @@ namespace Newtonsoft.Json.Tests.TestObjects
             info.AddValue("n", _numerator);
             info.AddValue("d", _denominator);
         }
+
         #endregion
 
         #region IConvertible Members
+
         public TypeCode GetTypeCode()
         {
             return TypeCode.Object;
@@ -86,7 +93,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public byte ToByte(IFormatProvider provider)
         {
-            return (byte)(_numerator / _denominator);
+            return (byte) (_numerator / _denominator);
         }
 
         public char ToChar(IFormatProvider provider)
@@ -101,19 +108,19 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public decimal ToDecimal(IFormatProvider provider)
         {
-            return (decimal)_numerator / _denominator;
+            return (decimal) _numerator / _denominator;
         }
 
         public double ToDouble(IFormatProvider provider)
         {
             return _denominator == 0
                 ? double.NaN
-                : (double)_numerator / _denominator;
+                : (double) _numerator / _denominator;
         }
 
         public short ToInt16(IFormatProvider provider)
         {
-            return (short)(_numerator / _denominator);
+            return (short) (_numerator / _denominator);
         }
 
         public int ToInt32(IFormatProvider provider)
@@ -128,14 +135,14 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public sbyte ToSByte(IFormatProvider provider)
         {
-            return (sbyte)(_numerator / _denominator);
+            return (sbyte) (_numerator / _denominator);
         }
 
         public float ToSingle(IFormatProvider provider)
         {
             return _denominator == 0
                 ? float.NaN
-                : (float)_numerator / _denominator;
+                : (float) _numerator / _denominator;
         }
 
         public string ToString(IFormatProvider provider)
@@ -152,21 +159,23 @@ namespace Newtonsoft.Json.Tests.TestObjects
 
         public ushort ToUInt16(IFormatProvider provider)
         {
-            return (ushort)(_numerator / _denominator);
+            return (ushort) (_numerator / _denominator);
         }
 
         public uint ToUInt32(IFormatProvider provider)
         {
-            return (uint)(_numerator / _denominator);
+            return (uint) (_numerator / _denominator);
         }
 
         public ulong ToUInt64(IFormatProvider provider)
         {
-            return (ulong)(_numerator / _denominator);
+            return (ulong) (_numerator / _denominator);
         }
+
         #endregion
 
         #region String operations
+
         public override string ToString()
         {
             return ToString(CultureInfo.InvariantCulture);
@@ -193,6 +202,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
                         "Text '{0}' is invalid text representation of ratio",
                         input));
             }
+
             return result;
         }
 
@@ -219,8 +229,10 @@ namespace Newtonsoft.Json.Tests.TestObjects
                 else
                 {
                     int denominator;
-                    if (int.TryParse(input.Substring(0, fractionIndex), NumberStyles.Integer, formatProvider, out numerator) &&
-                        int.TryParse(input.Substring(fractionIndex + 1), NumberStyles.Integer, formatProvider, out denominator))
+                    if (int.TryParse(input.Substring(0, fractionIndex), NumberStyles.Integer, formatProvider,
+                            out numerator) &&
+                        int.TryParse(input.Substring(fractionIndex + 1), NumberStyles.Integer, formatProvider,
+                            out denominator))
                     {
                         result = new Ratio(numerator, denominator);
                         return true;
@@ -231,6 +243,7 @@ namespace Newtonsoft.Json.Tests.TestObjects
             result = default(Ratio);
             return false;
         }
+
         #endregion
     }
 #endif

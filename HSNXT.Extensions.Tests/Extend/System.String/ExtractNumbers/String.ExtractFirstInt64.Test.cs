@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Globalization;
 using FluentAssertions;
@@ -20,16 +20,16 @@ namespace Extend.Testing
             const Int32 value2 = -1100;
             const Int32 value3 = 12300;
 
-            var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
-                                .Replace( ",", "." );
+            var stringValue = "".ConcatAll(value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3)
+                .Replace(",", ".");
 
             var actual =
-                stringValue.ExtractFirstInt64( stringValue.IndexOf( value1.ToString( CultureInfo.InvariantCulture ),
-                                                                    StringComparison.Ordinal ) );
-            Assert.Equal( value1, actual );
+                stringValue.ExtractFirstInt64(stringValue.IndexOf(value1.ToString(CultureInfo.InvariantCulture),
+                    StringComparison.Ordinal));
+            Assert.Equal(value1, actual);
 
             actual = stringValue.ExtractFirstInt64();
-            Assert.Equal( value0, actual );
+            Assert.Equal(value0, actual);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Extend.Testing
             const String sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt64();
 
-            Assert.Equal( -100, actual );
+            Assert.Equal(-100, actual);
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractFirstInt64( null );
+            Action test = () => Extensions.ExtractFirstInt64(null);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -56,7 +56,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => Extensions.ExtractFirstInt64( null, 1 );
+            Action test = () => Extensions.ExtractFirstInt64(null, 1);
 
             test.ShouldThrow<ArgumentNullException>();
         }

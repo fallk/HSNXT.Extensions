@@ -13,7 +13,8 @@ namespace erichexter.Should.Facts.Core
         {
             int index = 0;
 
-            Should.Core.Assertions.Assert.Throws<Should.Core.Exceptions.SameException>(() => Should.Core.Assertions.Assert.Same(index, index));
+            Should.Core.Assertions.Assert.Throws<Should.Core.Exceptions.SameException>(() =>
+                Should.Core.Assertions.Assert.Same(index, index));
         }
 
         [Fact]
@@ -28,7 +29,8 @@ namespace erichexter.Should.Facts.Core
             }
             catch (Exception ex)
             {
-                Should.Core.Exceptions.AssertException aex = Should.Core.Assertions.Assert.IsAssignableFrom<Should.Core.Exceptions.AssertException>(ex);
+                Should.Core.Exceptions.AssertException aex = Should.Core.Assertions.Assert
+                    .IsAssignableFrom<Should.Core.Exceptions.AssertException>(ex);
                 Should.Core.Assertions.Assert.Equal("Assert.Same() Failure", aex.UserMessage);
                 Should.Core.Assertions.Assert.DoesNotContain("Position:", aex.Message);
             }
@@ -37,7 +39,8 @@ namespace erichexter.Should.Facts.Core
         [Fact]
         public void ValuesAreNotTheSame()
         {
-            Should.Core.Assertions.Assert.Throws<Should.Core.Exceptions.SameException>(() => Should.Core.Assertions.Assert.Same("bob", "jim"));
+            Should.Core.Assertions.Assert.Throws<Should.Core.Exceptions.SameException>(() =>
+                Should.Core.Assertions.Assert.Same("bob", "jim"));
         }
 
         [Fact]

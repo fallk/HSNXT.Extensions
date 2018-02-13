@@ -10,6 +10,8 @@ namespace erichexter.Should.Core.Exceptions
         /// </summary>
         /// <param name="timeout">The timeout value, in milliseconds</param>
         public TimeoutException(long timeout)
-            : base(string.Format("Test execution time exceeded: {0}ms", timeout)) { }
+            : base(string.Format("Test execution time exceeded: {0}ms", timeout))
+        {
+        }
     }
 }

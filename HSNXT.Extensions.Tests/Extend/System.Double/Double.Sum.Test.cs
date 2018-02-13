@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -14,22 +14,22 @@ namespace Extend.Testing
         [Fact]
         public void SumTest()
         {
-            var actual = 10.1d.Sum( 20.1, 30.1, 40.1, 50.1 );
-            Assert.Equal( 150.5, actual );
+            var actual = 10.1d.Sum(20.1, 30.1, 40.1, 50.1);
+            Assert.Equal(150.5, actual);
         }
 
         [Fact]
         public void SumTest1()
         {
-            var actual = ( 10.5 as Double? ).Sum( 20.5, null, 40.5, null );
-            Assert.Equal( 71.5, actual );
+            var actual = (10.5 as Double?).Sum(20.5, null, 40.5, null);
+            Assert.Equal(71.5, actual);
 
-            actual = ( null as Double? ).Sum( new Double?[]
+            actual = (null as Double?).Sum(new Double?[]
             {
                 null,
                 null
-            } );
-            Assert.Equal( 0d, actual );
+            });
+            Assert.Equal(0d, actual);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Extend.Testing
             Double?[] values = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => ( 10d as Double? ).Sum( values );
+            Action test = () => (10d as Double?).Sum(values);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -46,11 +46,11 @@ namespace Extend.Testing
         [Fact]
         public void SumTest2()
         {
-            var actual = "test".Sum( x => (Double) x.Length, "a", "b", "c", "d" );
-            Assert.Equal( 8d, actual );
+            var actual = "test".Sum(x => (Double) x.Length, "a", "b", "c", "d");
+            Assert.Equal(8d, actual);
 
-            actual = "".Sum( x => x.Length, "a", "b", "c", "d" );
-            Assert.Equal( 4d, actual );
+            actual = "".Sum(x => x.Length, "a", "b", "c", "d");
+            Assert.Equal(4d, actual);
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace Extend.Testing
             String[] values = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "Test".Sum( x => (Double) x.Length, values );
+            Action test = () => "Test".Sum(x => (Double) x.Length, values);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -70,7 +70,7 @@ namespace Extend.Testing
             Func<String, Double> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "Test".Sum( func, "test", "test2" );
+            Action test = () => "Test".Sum(func, "test", "test2");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -78,11 +78,11 @@ namespace Extend.Testing
         [Fact]
         public void SumTest3()
         {
-            var actual = "test".Sum( x => x.Length > 1d ? (Double?) x.Length : null, "a", "b", "c", "d" );
-            Assert.Equal( 4d, actual );
+            var actual = "test".Sum(x => x.Length > 1d ? (Double?) x.Length : null, "a", "b", "c", "d");
+            Assert.Equal(4d, actual);
 
-            actual = "test".Sum( x => x.Length > 1d ? (Double?) x.Length : null, "aaaa", "b", "c", "d" );
-            Assert.Equal( 8d, actual );
+            actual = "test".Sum(x => x.Length > 1d ? (Double?) x.Length : null, "aaaa", "b", "c", "d");
+            Assert.Equal(8d, actual);
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace Extend.Testing
             String[] values = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "Test".Sum( x => (Double?) x.Length, values );
+            Action test = () => "Test".Sum(x => (Double?) x.Length, values);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -102,7 +102,7 @@ namespace Extend.Testing
             Func<String, Double?> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "Test".Sum( func, "test", "test2" );
+            Action test = () => "Test".Sum(func, "test", "test2");
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -113,7 +113,7 @@ namespace Extend.Testing
             Double[] values = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => 10.1.Sum( values );
+            Action test = () => 10.1.Sum(values);
 
             test.ShouldThrow<ArgumentNullException>();
         }

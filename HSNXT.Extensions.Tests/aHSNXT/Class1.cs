@@ -13,7 +13,8 @@ namespace TestProjTest.aHSNXT
         public void GetDateTimeFormatsInvariant()
         {
             var now = DateTime.Now;
-            now.GetDateTimeFormats(CultureInfo.InvariantCulture).ShouldBeEquivalentTo(now.GetDateTimeFormatsInvariant());
+            now.GetDateTimeFormats(CultureInfo.InvariantCulture)
+                .ShouldBeEquivalentTo(now.GetDateTimeFormatsInvariant());
         }
 
         [TestMethod]
@@ -23,7 +24,8 @@ namespace TestProjTest.aHSNXT
             foreach (var c in chars)
             {
                 var now = DateTime.Now;
-                now.GetDateTimeFormats(c, CultureInfo.InvariantCulture).ShouldBeEquivalentTo(now.GetDateTimeFormatsInvariant(c));
+                now.GetDateTimeFormats(c, CultureInfo.InvariantCulture)
+                    .ShouldBeEquivalentTo(now.GetDateTimeFormatsInvariant(c));
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +19,20 @@ namespace Extend.Testing
         {
             var list = new List<KeyValuePair<String, String>>
             {
-                new KeyValuePair<String, String>( Extensions.GetRandomString(), "Test" ),
-                new KeyValuePair<String, String>( Extensions.GetRandomString(), "Test" ),
-                new KeyValuePair<String, String>( Extensions.GetRandomString(), "Test1" ),
-                new KeyValuePair<String, String>( Extensions.GetRandomString(), "Test1" ),
-                new KeyValuePair<String, String>( Extensions.GetRandomString(), "Test2" ),
-                new KeyValuePair<String, String>( Extensions.GetRandomString(), "Test2" )
+                new KeyValuePair<String, String>(Extensions.GetRandomString(), "Test"),
+                new KeyValuePair<String, String>(Extensions.GetRandomString(), "Test"),
+                new KeyValuePair<String, String>(Extensions.GetRandomString(), "Test1"),
+                new KeyValuePair<String, String>(Extensions.GetRandomString(), "Test1"),
+                new KeyValuePair<String, String>(Extensions.GetRandomString(), "Test2"),
+                new KeyValuePair<String, String>(Extensions.GetRandomString(), "Test2")
             };
 
-            var actual = list.Distinct( x => x.Value )
-                             .ToList();
-            Assert.Equal( 3, actual.Count );
-            Assert.Equal( 1, actual.Count( x => x.Value == "Test" ) );
-            Assert.Equal( 1, actual.Count( x => x.Value == "Test1" ) );
-            Assert.Equal( 1, actual.Count( x => x.Value == "Test2" ) );
+            var actual = list.Distinct(x => x.Value)
+                .ToList();
+            Assert.Equal(3, actual.Count);
+            Assert.Equal(1, actual.Count(x => x.Value == "Test"));
+            Assert.Equal(1, actual.Count(x => x.Value == "Test1"));
+            Assert.Equal(1, actual.Count(x => x.Value == "Test2"));
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
             List<KeyValuePair<Object, Object>> list = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => list.Distinct( x => x.Value );
+            Action test = () => list.Distinct(x => x.Value);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -52,7 +52,7 @@ namespace Extend.Testing
             Func<Object, Boolean> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => new List<Object>().Distinct( func );
+            Action test = () => new List<Object>().Distinct(func);
 
             test.ShouldThrow<ArgumentNullException>();
         }

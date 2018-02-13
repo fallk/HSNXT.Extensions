@@ -1,4 +1,5 @@
 ﻿#region Usings
+
 using HSNXT;
 
 #region Usings
@@ -21,28 +22,28 @@ namespace Extend.Testing
         public void ThrowIfNullTest2()
         {
             var varName = Extensions.GetRandomString();
-            varName.ThrowIfNull( "varName" );
+            varName.ThrowIfNull("varName");
 
             varName = null;
             var errorMessage = String.Empty;
             try
             {
                 // ReSharper disable once ExpressionIsAlwaysNull
-                varName.ThrowIfNull( "varName" );
+                varName.ThrowIfNull("varName");
             }
-            catch ( ArgumentNullException ex )
+            catch (ArgumentNullException ex)
             {
                 errorMessage = ex.Message;
             }
 
-            Assert.Contains( "varName", errorMessage );
+            Assert.Contains("varName", errorMessage);
         }
 
         [Fact]
         public void ThrowIfNullTest3()
         {
             var varName = Extensions.GetRandomString();
-            varName.ThrowIfNull( "varName" );
+            varName.ThrowIfNull("varName");
 
             varName = null;
             var expectedErrorMessage = Extensions.GetRandomString();
@@ -50,14 +51,14 @@ namespace Extend.Testing
             try
             {
                 // ReSharper disable once ExpressionIsAlwaysNull
-                varName.ThrowIfNull( "varName", expectedErrorMessage );
+                varName.ThrowIfNull("varName", expectedErrorMessage);
             }
-            catch ( ArgumentNullException ex )
+            catch (ArgumentNullException ex)
             {
                 errorMessage = ex.Message;
             }
 
-            Assert.Contains( expectedErrorMessage, errorMessage );
+            Assert.Contains(expectedErrorMessage, errorMessage);
         }
 
         [Fact]
@@ -65,7 +66,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => value.ThrowIfNull( "varName" );
+            Action test = () => value.ThrowIfNull("varName");
 
             test.ShouldThrow<ArgumentNullException>();
         }

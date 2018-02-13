@@ -1,6 +1,6 @@
 ﻿#region Usings
-using HSNXT;
 
+using HSNXT;
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
@@ -27,13 +27,13 @@ namespace Extend.Testing
         [Fact]
         public void GetRandomItemTest()
         {
-            var list = new List<String> { "a", "b", "c", "d" };
+            var list = new List<String> {"a", "b", "c", "d"};
             var actual = list.GetRandomItem();
 
             actual.Should()
-                  .NotBeNull();
+                .NotBeNull();
             list.Should()
-                .Contain( actual );
+                .Contain(actual);
         }
     }
 }
