@@ -21,6 +21,7 @@ namespace HSNXT
                 i++;
             }
         }
+
         /// <summary>Determines whether all elements of a sequence satisfy a condition.</summary>
         /// <param name="self">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements to apply the predicate to.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
@@ -30,7 +31,6 @@ namespace HSNXT
         /// <exception cref="T:System.ArgumentNullException">
         /// <paramref name="self" /> or <paramref name="predicate" /> is <see langword="null" />.</exception>
         public static bool Every<T>(this IEnumerable<T> self, Func<T, bool> predicate) => self.All(predicate);
-
 
         /// <summary>
         /// The fill() method fills all the elements of an array from a start index to an end index with a static value.
@@ -65,17 +65,6 @@ namespace HSNXT
 
             return arr;
         }
-
-        /// <summary>Returns the first element of the sequence that satisfies a condition or a default value if no such element is found.</summary>
-        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-        /// <returns>
-        /// <see langword="default" />(<typeparam name="TSource" />) if <paramref name="source" /> is empty or if no element passes the test specified by <paramref name="predicate" />; otherwise, the first element in <paramref name="source" /> that passes the test specified by <paramref name="predicate" />.</returns>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// <paramref name="source" /> or <paramref name="predicate" /> is <see langword="null" />.</exception>
-        public static TSource Find<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) =>
-            source.FirstOrDefault(predicate);
 
         /// <summary>The findIndex() method returns the index of the first element in the array that satisfies the
         /// provided testing function. Otherwise -1 is returned.</summary>
@@ -113,10 +102,16 @@ namespace HSNXT
         /// <paramref name="source" /> is <see langword="null" />.</exception>
         public static bool Includes<TSource>(this IEnumerable<TSource> source, TSource value) => source.Contains(value);
 
+        /// <summary>
+        /// The keys() method returns a new IEnumerable object that contains the keys for each index in the IEnumerable.
+        /// </summary>
+        /// <param name="self">the IEnumerable</param>
+        /// <typeparam name="T">the IEnumerable's element type</typeparam>
+        /// <returns>A new IEnumerable object.</returns>
         public static IEnumerable<int> Keys<T>(this IEnumerable<T> self)
         {
             var i = 0;
-            foreach (var x in self)
+            foreach (var _ in self)
             {
                 yield return i;
                 i++;

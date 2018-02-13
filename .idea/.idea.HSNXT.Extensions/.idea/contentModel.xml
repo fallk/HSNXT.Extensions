@@ -6895,6 +6895,9 @@
       </e>
       <e p="HSNXT.Extensions.sln" t="IncludeFlat" />
       <e p="HSNXT.Extensions.Tests" t="IncludeRecursive">
+        <e p="aHSNXT" t="Include">
+          <e p="Class1.cs" t="Include" />
+        </e>
         <e p="aShould" t="Include">
           <e p="should" t="Include">
             <e p="ActionAssertionExtensions.cs" t="Include" />
